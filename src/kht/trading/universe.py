@@ -88,6 +88,16 @@ def fetch_markets(pm: Polymarket, market_ids: list[int]) -> dict[int, LiveMarket
     return out
 
 
+# Tags Polymarket uses for its own plumbing (reward tiers, display flags). They
+# group markets that have nothing in common, so they are never themes.
+OPERATIONAL_TAG_PREFIXES = ("earn-", "rewards-", "hide-", "show-")
+OPERATIONAL_TAGS = {"recurring", "games", "monthly", "weekly", "daily", "hit-price", "up-or-down"}
+
+
+def is_operational_tag(tag: str) -> bool:
+    return tag in OPERATIONAL_TAGS or tag.startswith(OPERATIONAL_TAG_PREFIXES)
+
+
 def theme_tags(markets: dict[int, LiveMarket], max_share: float = 0.03, min_markets: int = 2) -> dict[int, frozenset[str]]:
     """Narrow tags per market: the ones that identify a *story* (a conflict, an
     election, a commodity) rather than a broad category.
@@ -102,5 +112,5 @@ def theme_tags(markets: dict[int, LiveMarket], max_share: float = 0.03, min_mark
         for tag in set(lm.info.tags):
             counts[tag] = counts.get(tag, 0) + 1
     limit = max(min_markets, max_share * max(len(markets), 1))
-    themes = {tag for tag, n in counts.items() if min_markets <= n <= limit}
+    themes = {tag for tag, n in counts.items() if min_markets <= n <= limit and not is_operational_tag(tag)}
     return {mid: frozenset(set(lm.info.tags) & themes) for mid, lm in markets.items()}

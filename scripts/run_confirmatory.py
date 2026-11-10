@@ -238,7 +238,9 @@ def main() -> None:
     tag_lists = meta.set_index("market_id")["tags"].fillna("").str.split("|")
     counts = tag_lists.explode().value_counts()
     limit = max(2, 0.03 * len(meta))
-    theme_set = set(counts[(counts >= 2) & (counts <= limit)].index) - {""}
+    from kht.trading.universe import is_operational_tag
+
+    theme_set = {t for t in counts[(counts >= 2) & (counts <= limit)].index if t and not is_operational_tag(t)}
     themes_of = tag_lists.map(lambda tags: tuple(sorted(set(tags) & theme_set)))
     acct = []
     base_trades = h.drop(columns=["year", "half", "dte_bin", "px_bin", "outcome_side"]).copy()
