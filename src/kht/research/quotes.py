@@ -30,12 +30,30 @@ CURRENT_FEE_RATE = {
 }
 
 
-def period_quotes(tr: pd.DataFrame, period_seconds: int = 86_400, min_cum: float = 100_000) -> pd.DataFrame:
+def period_quotes(tr: pd.DataFrame, period_seconds: int = 86_400, min_cum: float = 100_000,
+                  chunk_rows: int = 6_000_000) -> pd.DataFrame:
     """One row per (market, period) with end-of-period quote proxies and flow.
 
     Only trades made after the market had already traded ``min_cum`` shares are
-    used (ex-ante universe; see ``sports.build_trades_table``).
+    used (ex-ante universe; see ``sports.build_trades_table``). ``tr`` must be
+    sorted by market then time, as ``build_trades_table`` returns it. The work
+    is done in chunks of whole markets to keep memory flat on ~50M-row tapes.
     """
+    mids = tr["market_id"].to_numpy()
+    n = len(mids)
+    parts: list[pd.DataFrame] = []
+    lo = 0
+    while lo < n:
+        hi = min(lo + chunk_rows, n)
+        if hi < n:
+            # extend to the end of the market that straddles the chunk boundary
+            hi = int(np.searchsorted(mids, mids[hi - 1], side="right"))
+        parts.append(_period_quotes_chunk(tr.iloc[lo:hi], period_seconds, min_cum))
+        lo = hi
+    return pd.concat(parts, ignore_index=True) if parts else pd.DataFrame()
+
+
+def _period_quotes_chunk(tr: pd.DataFrame, period_seconds: int, min_cum: float) -> pd.DataFrame:
     t = tr[tr["cum_before"] >= min_cum]
     period = (t["ts"].to_numpy() // period_seconds).astype(np.int64)
     key = [t["market_id"].to_numpy(), period]

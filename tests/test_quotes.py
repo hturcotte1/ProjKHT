@@ -79,3 +79,17 @@ def test_tape_mid_falls_back_to_last_trade_when_one_side_is_missing():
     assert m.iloc[0]["price"] == pytest.approx(0.60)
     both = tape([(1, 10 * DAY + 100, 0.60, +1, 10, 200_000), (1, 10 * DAY + 200, 0.58, -1, 10, 200_010)])
     assert tape_mids(period_quotes(both)).iloc[0]["price"] == pytest.approx(0.59)
+
+
+def test_chunked_processing_gives_the_same_panel():
+    rng = np.random.default_rng(0)
+    rows = []
+    for market in range(1, 41):
+        cum = 150_000.0
+        for k in range(60):
+            rows.append((market, 10 * DAY + k * 7_000, float(rng.uniform(0.2, 0.8)), int(rng.choice([-1, 1])), 10.0, cum))
+            cum += 10
+    t = tape(rows)
+    whole = period_quotes(t, chunk_rows=10**9)
+    chunked = period_quotes(t, chunk_rows=97)          # forces many chunks, none splitting a market
+    pd.testing.assert_frame_equal(whole, chunked)

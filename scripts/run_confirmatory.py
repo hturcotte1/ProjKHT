@@ -234,13 +234,21 @@ def main() -> None:
 
     # ------------------------------------------------------------------ 4
     section("4. R1 as an account: $1,000 bankroll, finite capital (holdout period only)")
+    # narrow topic tags ("themes"): the same definition the live risk manager uses
+    tag_lists = meta.set_index("market_id")["tags"].fillna("").str.split("|")
+    counts = tag_lists.explode().value_counts()
+    limit = max(2, 0.03 * len(meta))
+    theme_set = set(counts[(counts >= 2) & (counts <= limit)].index) - {""}
+    themes_of = tag_lists.map(lambda tags: tuple(sorted(set(tags) & theme_set)))
     acct = []
-    for stake, max_event in ((20, 20), (20, 40), (50, 50), (100, 100)):
-        for compound in (False, True):
-            r = run_portfolio(h.drop(columns=["year", "half", "dte_bin", "px_bin", "outcome_side"]),
-                              Capital(bankroll=1000, stake=stake, max_event=max_event, compound=compound))
-            acct.append({"stake": stake, "max_event": max_event, "compound": compound, **r.stats})
-            if stake == 20 and not compound:
+    base_trades = h.drop(columns=["year", "half", "dte_bin", "px_bin", "outcome_side"]).copy()
+    base_trades["themes"] = base_trades["market_id"].map(themes_of)
+    for stake, max_event, max_theme in ((20, 20, None), (20, 20, 60), (20, 40, None), (50, 50, 150), (100, 100, 300)):
+        for compound in (False,):
+            r = run_portfolio(base_trades, Capital(bankroll=1000, stake=stake, max_event=max_event,
+                                                   compound=compound, max_theme=max_theme))
+            acct.append({"stake": stake, "max_event": max_event, "max_theme": max_theme, **r.stats})
+            if stake == 20 and max_event == 20 and max_theme == 60:
                 r.equity.assign(date=pd.to_datetime(r.equity["period"] * 86_400, unit="s")).to_csv(
                     out / "c4_r1_equity_stake20.csv", index=False)
                 r.trades.to_csv(out / "c4_r1_account_trades_stake20.csv", index=False)
