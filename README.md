@@ -92,9 +92,11 @@ Three things are yours to settle first.
    environment variables on the machine that trades: never in this
    repository, never in a chat.
 
-Then: wait for the forward-test log to say something
-([findings, section 10](docs/02_research_findings.md#10-what-happens-next)),
-and place one minimum-size order by hand, checked against the website, before
+Then: let the forward-test log rule out a clear failure, which it can do by
+about January. Confirming an edge this thin takes around a thousand resolved
+signals, a year or so
+([findings, section 10](docs/02_research_findings.md#10-what-happens-next)).
+And place one minimum-size order by hand, checked against the website, before
 any loop is switched on. Details in [`docs/03_system.md`](docs/03_system.md).
 
 ## Layout

@@ -491,16 +491,29 @@ of anything.
 
 The paper accounts run every three hours and log every signal they see, in the
 traded band and on either side of it, whether or not there is money to take
-it (`kht shadow`). The first cycle alone logged about 250 signals, most of
-which resolve within two months, so the log will say more by January than the
-paper account can in a year.
+it (`kht shadow`). The first cycle alone logged about 250 signals, 107 of them
+in the traded band, most of which resolve within two months, so the log will
+say more by January than the paper account can in a year.
+
+It will still not say much, and it is worth knowing why before reading it. A
+signal in the traded band has to win 96.6% of the time to break even, and won
+98.1% in the backtest. Those are one and a half points apart, and 200 signals
+measure a win rate only to within about two points either way. Telling the
+two apart takes roughly 1,000 resolved signals, which at the rate they arrive
+is a year or so. An edge this thin cannot be confirmed quickly by anyone.
 
 | After | If the traded band shows | Then |
 |---|---|---|
-| ~200 resolved signals | fewer than 96.5% winning | The edge is not there now. Stop. |
-| ~200 resolved signals | 97.5–98.5% winning | Consistent with the backtest. Keep going; consider a small live test. |
+| ~200 resolved signals (about January) | fewer than 95% winning | Something has changed. Stop. |
+| ~200 resolved signals | 95% or more | Not a failure, and not yet a confirmation. Keep logging. |
+| ~1,000 resolved signals (a year or so) | fewer than 97% winning | No edge worth the tail risk. Stop. |
+| ~1,000 resolved signals | 97.5% or more | Consistent with the backtest, and something that would happen only about one time in fifteen if there were no edge at all. |
 | Any time | the experimental account's fills are scarce or its losers bunch | Resting bids are being picked off. Drop it. |
 | Any time | 4 or more losses in a week | Stop and read them before anything else. |
+
+A small live test does not need to wait for the thousandth signal: its
+purpose would be to check that real fills match paper fills, which a few
+dozen trades can show, not to prove the edge.
 
 Ideas not tested here: outside signals such as sportsbook lines, and reacting
 to informed wallets within seconds rather than a minute. The second needs a
