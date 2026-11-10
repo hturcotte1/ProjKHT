@@ -126,9 +126,29 @@ both ways (`x_a3_roundtrip_trades.csv`):
 
 Every signal does about as badly as no signal. The loss *is* the cost of the
 round trip. In geopolitics markets, which carry no fee, the cost falls to 2.5%
-and buying after a 20¢ drop roughly breaks even (−0.4%, 443 trades): the one
-place where a patient trader resting orders rather than crossing the spread
-might find something, and too little data to say.
+and buying after a 20¢ drop roughly breaks even (−0.4%, 443 trades).
+
+That left one obvious follow-up: the same trades entered with a resting bid
+instead of paying the spread. The bid is left at the signal day's closing bid
+and counts as filled only if a later sale prints through it, the fill rule of
+R1m; the exit is unchanged. Same grid, nothing tuned, exploratory
+(`x_a3c_roundtrip_resting_bid.csv`):
+
+| Signal | Bought at the ask | With a resting bid | t |
+|---|---:|---:|---:|
+| Fell 10¢ or more, hold 1 day | −6.7% | −4.0% | −2.5 |
+| Rose 10¢ or more, hold 1 day | −7.0% | −3.9% | −3.1 |
+| Fell 20¢ or more, hold 3 days | −6.7% | −4.3% | −1.1 |
+| Rose 20¢ or more, hold 3 days | −8.0% | −4.6% | −2.1 |
+| No signal at all, hold 3 days | −6.5% | −4.3% | −6.1 |
+| Fee-free markets: fell 20¢ or more, hold 3 days | −1.7% | −0.4% | −0.0 |
+| Fee-free markets: no signal, hold 3 days | −2.5% | −0.2% | −0.1 |
+
+A resting bid saves about two points and changes nothing else. Every signal
+still does as badly as no signal; the fee-free cells sit at zero beside their
+own no-signal benchmark; and where a cell is positive in one half of the
+sample it is negative in the other. A bid that fills only when the price keeps
+falling is not a cheap way to buy a dip.
 
 ### 3.3 Sports before the game
 
@@ -439,6 +459,5 @@ paper account can in a year.
 | Any time | the experimental account's fills are scarce or its losers bunch | Resting bids are being picked off. Drop it. |
 | Any time | 4 or more losses in a week | Stop and read them before anything else. |
 
-Ideas not tested here that the data would support next: resting orders in
-fee-free markets after large moves (section 3.2), a wallet-level split of
-informed and uninformed flow, and outside signals such as sportsbook lines.
+Ideas not tested here that the data would support next: a wallet-level split
+of informed and uninformed flow, and outside signals such as sportsbook lines.

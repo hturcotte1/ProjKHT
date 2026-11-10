@@ -238,6 +238,10 @@ python scripts/run_exploratory.py           # everything that was not pre-regist
 ```
 
 ```bash
+python scripts/run_exploratory_resting.py   # the round-trip trades with a resting bid
+```
+
+```bash
 python scripts/run_deployed_rules.py        # the exact rules the paper accounts run
 ```
 
