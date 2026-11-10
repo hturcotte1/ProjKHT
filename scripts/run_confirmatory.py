@@ -147,8 +147,20 @@ def main() -> None:
     # ------------------------------------------------------------------ 2
     section("2. R1, variants and controls: every qualifying trade, equal dollars per trade")
     rows, trade_lists = [], {}
-    for label, rule in RULES.items():
-        cands = candidate_trades(s, rule)
+    info = meta.set_index("market_id")
+    yes_no = (info["outcome0"].reindex(s["market_id"]) == "Yes").to_numpy()
+    single = ~info["neg_risk"].reindex(s["market_id"]).fillna(False).to_numpy(dtype=bool)
+    deadline = info["question"].reindex(s["market_id"]).str.contains(r"\b(?:by|before)\b", case=False, regex=True, na=False).to_numpy()
+    r1_band = ((s["ask"] > 0.90) & (s["ask"] <= 0.97) & (s["days_to_end"] > 3) & (s["days_to_end"] <= 60)).to_numpy()
+    buy_no = yes_no & (s["side"] == 1).to_numpy()
+    extra = {
+        "R2  R1, 'No' side of single yes/no markets": (Rule(0.90, 0.97, 3, 60, name="R2"), r1_band & buy_no & single),
+        "R3  R2, 'by/before' questions": (Rule(0.90, 0.97, 3, 60, name="R3"), r1_band & buy_no & single & deadline),
+        "R1m R1 with a resting bid (3 days)": (Rule(0.90, 0.97, 3, 60, entry="maker", name="R1m"), None),
+    }
+    todo = [(label, rule, None) for label, rule in RULES.items()] + [(l, r, sig) for l, (r, sig) in extra.items()]
+    for label, rule, sig in todo:
+        cands = candidate_trades(s, rule, signal=sig)
         if cands.empty:
             continue
         cands["holdout"] = cands["market_id"].map(s.groupby("market_id")["holdout"].first())

@@ -271,3 +271,22 @@ that size implies the largest edge after fees for favourites priced around
 Control that should lose: the same rule for sides priced 5–25¢.
 **Holdout:** games that started before 2026-09-22. Same bar: positive with
 |t| ≥ 3 clustered by event, control negative.
+
+### Refinements fixed before the holdout was opened (06:50 UTC)
+
+Cutting R1's trades in the newest slice (exploratory, so not trustworthy on
+its own) suggested the edge sits in a recognisable corner: the **"No" side of
+single yes/no questions**, especially those worded "by" or "before" a date.
+That is the psychological story from section 5 (B3, C3): people overpay for
+the dramatic outcome, and nobody is paid to correct a 5¢ error on a boring
+"No". To test the story rather than the cut, three more rules are fixed now
+and will be judged on the same holdout:
+
+> **R2.** R1, restricted to buying "No" in single yes/no markets (not one leg
+> of a multi-outcome event).
+> **R3.** R2, restricted to questions containing "by" or "before".
+> **R1m.** R1 entered with a resting bid at the signal day's bid (filled only
+> if a later sale prints strictly below that bid within 3 days; no fee).
+
+R2 and R3 count as supported only if they beat R1 on the holdout *and* clear
+the same |t| ≥ 3 bar; otherwise the simpler R1 stands.
