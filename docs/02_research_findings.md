@@ -411,6 +411,13 @@ of anything.
   a larger account would have to buy, the holdout return is +1.20% with
   t = 2.9, just under the bar, and the capacity figures assume a tenth of the
   flow could have been taken without moving the price (section 7).
+- **"Days to the end" comes from Polymarket's own end-date field, and that
+  field is noisy.** For about one in seven questions with a written deadline
+  ("by June 30") it is more than a week away from the date in the question.
+  The backtest and the live system read the same field, so they agree with
+  each other, and nothing suggests the field is rewritten when a market
+  closes (98% of dated markets that closed on schedule match their written
+  date). I cannot check that it never changed while a market was open.
 - **Resolution risk is not modelled** beyond counting split resolutions as
   half-payouts: disputes, delays and rule changes are assumed to look like the
   past.
