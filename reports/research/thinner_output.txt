@@ -1,0 +1,245 @@
+news markets that ended at 5,000 to 20,000 shares: 71,626; tapes on disk: 71,626
+
+==============================================================================================================
+AS FIRST FIXED: markets that ENDED at 5,000 to 20,000 shares (chosen with hindsight; not the standard)
+==============================================================================================================
+panel: 402,488 outcome-days in 68,321 markets, 21,182 events, 2023-11-12 to 2026-11-11
+
+                           rule  trades  events  lost  lost %  return a trade %  t_event  t_week  at the 3-day average %     t   in-range $: 10th pct  median  90th pct  under $100 in range %
+    R1d: 95-99c, legs included    2410    1667    19    0.79              1.58     8.09    8.02                    1.32   6.78                 14.83  220.10   1589.47                  34.02
+main rule: 95-98c, stand-alone     828     610     4    0.48              2.57    10.24   10.67                    2.38   9.50                 14.37  215.38   1346.68                  33.57
+thin band: 90-98c, stand-alone    1327     862    25    1.88              3.36     8.10    8.72                    2.79   6.80                 16.79  274.65   1524.76                  28.18
+           90-95c, stand-alone     756     554    18    2.38              4.59     7.30    7.81                    4.23   6.75                 12.38  182.23    991.03                  35.19
+     control: long shots 3-10c    1868    1434  1828   97.86            -68.42   -12.58  -13.41                  -71.02 -14.41                  0.75    8.36     67.91                  94.27
+--------------------------------------------------------------------------------------------------------------
+T5: R1d: 2,410 trades in 1,667 events, 19 lost; return per trade +1.58% (t = 8.09)
+  bar (positive with |t| >= 3)  ->  PASSED
+--------------------------------------------------------------------------------------------------------------
+
+main rule: 95-98c, stand-alone by year of entry:
+      trades  lost  avg_ret_pct
+year                           
+2023      10     0         2.61
+2024      35     1         0.17
+2025     187     0         3.07
+2026     596     3         2.55
+
+thin band: 90-98c, stand-alone by year of entry:
+      trades  lost  avg_ret_pct
+year                           
+2023      20     1        -0.30
+2024      58     1         3.29
+2025     264     2         4.16
+2026     985    21         3.22
+
+##############################################################################################################
+Third round (docs/05_third_round.md, section 3)
+##############################################################################################################
+T5-Y, the leader: 299 trades in 299 events, 4 lost; return per trade +1.31% (t = 1.91)
+  the price paid implies 2.61% lose; chance of 4 or fewer in 299 if that were true: 0.10822
+  bar (positive with |t| >= 3, and that chance below 0.01)  ->  NOT PASSED
+
+T5-L, long-dated No: 92 trades in 71 events, 1 lost; return per trade +4.47% (t = 3.75), median hold 91 days
+  bar (positive with |t| >= 3, on 150 trades or more)  ->  CANNOT SETTLE IT (fewer than 150 trades)
+
+T5-N, which side (thin band, stand-alone, Yes/No markets):
+  in these markets: No minus Yes +2.68 points (t = 1.86); predicted sign held
+  pooled over the three universes (5,608 No and 1,025 Yes trades): No minus Yes +2.42 points (t = 2.70)
+  decision rule (sign holds here and pooled |t| >= 3)  ->  LEAVE THE ACCOUNTS ALONE
+
+T5-TM, resting bids: 734 filled of 1,246 bought at the ask (59%); return per trade +4.64% (t = 3.60); bid minus ask +1.13 points (t = 0.97)
+  bar (positive with |t| >= 3; above the ask version with |t| >= 2)  ->  NOT PASSED
+
+T5-H, the house: 907 trades in 581 events, 81.2% won at an average cost of 75.7c; +5.54c a share (t = 4.04); return per trade +6.63% (t = 3.23)
+  bar (return per trade positive with |t| >= 3)  ->  PASSED
+  prediction as first written (+6.7c a share, a figure since found to be overstated)  ->  did not hold
+
+Every price, each side (stand-alone Yes/No markets, 3-60 days; no bar):
+   paid side  trades  won %  avg cost  cents a share      t
+ 3-10c   No     152   4.93      0.06          -1.41  -0.81
+ 3-10c  Yes     770   1.56      0.06          -4.71 -10.54
+10-20c   No     186   8.33      0.14          -6.07  -2.89
+10-20c  Yes     539   4.82      0.15          -9.70 -10.32
+20-35c   No     177  22.88      0.28          -5.45  -1.56
+20-35c  Yes     420  15.95      0.27         -11.26  -5.49
+35-50c   No     189  44.18      0.44           0.18   0.05
+35-50c  Yes     232  38.58      0.43          -4.66  -1.29
+50-65c   No     212  61.56      0.59           2.27   0.63
+50-65c  Yes     195  53.08      0.59          -5.47  -1.44
+65-80c   No     418  80.38      0.74           6.50   3.18
+65-80c  Yes     196  71.94      0.74          -1.66  -0.48
+80-90c   No     543  94.29      0.86           7.87   7.75
+80-90c  Yes     198  90.66      0.86           4.48   2.06
+90-95c   No     606  98.51      0.93           5.20   9.61
+90-95c  Yes     147  92.86      0.93          -0.33  -0.15
+95-98c   No     715  99.58      0.97           2.56  10.45
+95-98c  Yes     105  99.05      0.97           1.92   2.00
+
+                                             test                 group  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  per 30 days held %
+                  inside R1d (95-99c, 3-60 days)       stand-alone, No    1084     711     6    0.55      0.98              1.89     8.12    8.75               12.0                 NaN
+                  inside R1d (95-99c, 3-60 days)      stand-alone, Yes     173     142     2    1.16      0.98              1.14     1.36    1.36                5.0                 NaN
+                  inside R1d (95-99c, 3-60 days) leg, Yes (the leader)     299     299     4    1.34      0.97              1.31     1.91    2.06               15.0                 NaN
+                  inside R1d (95-99c, 3-60 days) leg, No (an also-ran)     844     622     7    0.83      0.98              1.36     4.20    3.99               11.0                 NaN
+   long-dated (90-98c, 60-180 days, stand-alone)                    No      92      71     1    1.09      0.95              4.47     3.75    3.83               91.0                1.42
+   long-dated (90-98c, 60-180 days, stand-alone)                   Yes      16      15     0    0.00      0.96              4.71    19.03   20.67               19.0                3.42
+      thin band (90-98c, 3-60 days, stand-alone)                    No    1074     711    15    1.40      0.95              3.84     9.42    9.67               14.0                 NaN
+      thin band (90-98c, 3-60 days, stand-alone)                   Yes     243     184    10    4.12      0.95              1.16     0.84    0.88                5.0                 NaN
+           thin account's signals (90-98c, calm)            at the ask    1246     827    21    1.69      0.95              3.51     8.89    9.45               12.0                 NaN
+           thin account's signals (90-98c, calm)           resting bid     734     556    37    5.04      0.91              4.64     3.60    4.28               10.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)           all markets     907     581   170   18.74      0.76              6.63     3.23    3.61               13.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)  scheduled end passed     786     517   145   18.45      0.76              6.94     3.19    3.49               13.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)        3-20 days left     599     399   123   20.53      0.75              5.09     1.94    2.02                9.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)       20-60 days left     308     243    47   15.26      0.77              9.62     3.15    3.29               25.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)           paid 50-60c     131     116    59   45.04      0.56             -3.51    -0.43   -0.42                9.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)           paid 60-70c     176     154    49   27.84      0.66              8.24     1.59    1.90               10.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)           paid 70-80c     228     196    46   20.18      0.76              4.51     1.26    1.30               12.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)           paid 80-90c     372     294    16    4.30      0.86             10.75     8.21    9.21               15.5                 NaN
+                          the house, by category               culture      48      38     7   14.58      0.75             12.99     1.71    1.55               11.5                 NaN
+                          the house, by category             economics       6       5     2   33.33      0.74             -5.41    -0.16   -0.17               11.5                 NaN
+                          the house, by category               finance     401     232    92   22.94      0.75              1.21     0.38    0.40               11.0                 NaN
+                          the house, by category           geopolitics     148     110    13    8.78      0.79             14.65     4.38    4.48               17.0                 NaN
+                          the house, by category                 other      24      17     3   12.50      0.83              4.41     0.54    0.50               10.0                 NaN
+                          the house, by category              politics     216     134    36   16.67      0.74             12.63     2.78    3.71               12.5                 NaN
+                          the house, by category                  tech      54      37    13   24.07      0.74              1.77     0.17    0.25               19.0                 NaN
+                          the house, by category               weather      10       8     4   40.00      0.72            -15.74    -0.80   -0.66                8.5                 NaN
+                the house, by half-year of entry               2023 H2      10      10     2   20.00      0.78              3.35     0.18    0.25               21.0                 NaN
+                the house, by half-year of entry               2024 H1      21      20     3   14.29      0.78             12.22     0.99    1.08               21.0                 NaN
+                the house, by half-year of entry               2024 H2      15      13     2   13.33      0.73             21.61     1.46    1.43               17.0                 NaN
+                the house, by half-year of entry               2025 H1      35      32     6   17.14      0.78              1.16     0.15    0.12               12.0                 NaN
+                the house, by half-year of entry               2025 H2     113      85    23   20.35      0.76              3.40     0.57    0.50               12.0                 NaN
+                the house, by half-year of entry               2026 H1     392     231    61   15.56      0.75             12.05     4.12    6.46               14.0                 NaN
+                the house, by half-year of entry               2026 H2     321     198    73   22.74      0.75              0.79     0.22    0.24               12.0                 NaN
+     the other side of the house (Yes at 10-50c)           all markets     928     607   769   82.87      0.25            -44.35    -9.13  -10.37               12.0                 NaN
+
+R1d by category (no bar):
+    category  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+    culture     265     195     5    1.89      0.98              0.34     0.40    0.41                6.0
+  economics     112      77     0    0.00      0.98              2.24    21.45   16.78                9.0
+    finance     529     288     5    0.95      0.98              1.35     3.11    3.54               10.0
+geopolitics     300     209     0    0.00      0.98              2.56    36.20   32.54               10.5
+      other      45      30     0    0.00      0.98              2.26    19.54   15.91               14.0
+   politics     836     658     6    0.72      0.98              1.77     5.08    4.78               20.0
+       tech     263     164     3    1.14      0.98              1.02     1.51    1.22               11.0
+    weather      60      46     0    0.00      0.98              2.24    12.13   13.80                8.0
+
+==============================================================================================================
+CORRECTED, AND THE ONE THE BARS ARE JUDGED ON: markets WHILE they had traded 5,000 to 20,000 shares
+==============================================================================================================
+panel: 997,612 outcome-days in 110,040 markets, 28,457 events, 2023-11-12 to 2026-11-11
+
+                           rule  trades  events  lost  lost %  return a trade %  t_event  t_week  at the 3-day average %    t   in-range $: 10th pct  median  90th pct  under $100 in range %
+    R1d: 95-99c, legs included    7306    3800   201    2.75             -0.26    -1.32   -1.26                   -0.51 -2.55                 27.47  734.97   5455.47                  20.33
+main rule: 95-98c, stand-alone    2226    1494    55    2.47              0.64     1.80    1.79                    0.45  1.28                 19.40  421.31   2924.82                  25.07
+thin band: 90-98c, stand-alone    3797    2272   191    5.03              0.37     0.89    0.95                   -0.14 -0.33                 31.44  618.95   3867.72                  19.49
+           90-95c, stand-alone    2424    1630   150    6.19              0.65     1.18    1.28                    0.30  0.54                 23.65  440.35   2941.27                  22.40
+     control: long shots 3-10c    6861    3888  6476   94.39            -14.17    -3.03   -3.04                  -20.10 -4.72                  1.84   35.38    277.15                  69.92
+--------------------------------------------------------------------------------------------------------------
+T5: R1d: 7,306 trades in 3,800 events, 201 lost; return per trade -0.26% (t = -1.32)
+  bar (positive with |t| >= 3)  ->  NOT PASSED
+--------------------------------------------------------------------------------------------------------------
+
+main rule: 95-98c, stand-alone by year of entry:
+      trades  lost  avg_ret_pct
+year                           
+2023      14     0         2.88
+2024     176     5         0.32
+2025     753    23         0.06
+2026    1283    27         1.00
+
+thin band: 90-98c, stand-alone by year of entry:
+      trades  lost  avg_ret_pct
+year                           
+2023      30     1         2.02
+2024     339    10         2.52
+2025    1170    70        -0.85
+2026    2258   110         0.66
+
+##############################################################################################################
+Third round (docs/05_third_round.md, section 3)
+##############################################################################################################
+T5-Y, the leader: 536 trades in 536 events, 9 lost; return per trade +1.07% (t = 1.87)
+  the price paid implies 2.72% lose; chance of 9 or fewer in 536 if that were true: 0.08197
+  bar (positive with |t| >= 3, and that chance below 0.01)  ->  NOT PASSED
+
+T5-L, long-dated No: 696 trades in 514 events, 24 lost; return per trade +2.51% (t = 2.69), median hold 101 days
+  bar (positive with |t| >= 3, on 150 trades or more)  ->  NOT PASSED
+
+T5-N, which side (thin band, stand-alone, Yes/No markets):
+  in these markets: No minus Yes +4.86 points (t = 3.87); predicted sign held
+  pooled over the three universes (7,586 No and 1,498 Yes trades): No minus Yes +3.63 points (t = 4.42)
+  decision rule (sign holds here and pooled |t| >= 3)  ->  DROP THE YES SIDE
+
+T5-TM, resting bids: 2,681 filled of 3,603 bought at the ask (74%); return per trade +0.82% (t = 1.19); bid minus ask +0.49 points (t = 1.10)
+  bar (positive with |t| >= 3; above the ask version with |t| >= 2)  ->  NOT PASSED
+
+T5-H, the house: 3,846 trades in 2,167 events, 75.9% won at an average cost of 74.2c; +1.65c a share (t = 2.24); return per trade +1.96% (t = 1.81)
+  bar (return per trade positive with |t| >= 3)  ->  NOT PASSED
+  prediction as first written (+6.7c a share, a figure since found to be overstated)  ->  did not hold
+
+Every price, each side (stand-alone Yes/No markets, 3-60 days; no bar):
+   paid side  trades  won %  avg cost  cents a share     t
+ 3-10c   No     507   8.58      0.07           1.91  1.57
+ 3-10c  Yes    2400   4.25      0.06          -2.20 -4.53
+10-20c   No     732  17.96      0.15           2.85  1.82
+10-20c  Yes    2032  10.93      0.15          -3.82 -5.33
+20-35c   No     869  33.08      0.28           4.76  2.73
+20-35c  Yes    1851  22.64      0.27          -4.74 -4.48
+35-50c   No    1007  47.52      0.43           4.05  2.46
+35-50c  Yes    1243  39.54      0.43          -3.70 -2.55
+50-65c   No    1193  58.55      0.59          -0.12 -0.08
+50-65c  Yes     995  50.80      0.59          -7.81 -4.83
+65-80c   No    1852  75.70      0.74           2.18  2.07
+65-80c  Yes     918  65.47      0.73          -7.81 -4.56
+80-90c   No    2094  87.68      0.86           1.75  2.34
+80-90c  Yes     770  81.62      0.86          -3.92 -2.56
+90-95c   No    1937  94.99      0.93           1.78  3.32
+90-95c  Yes     470  88.62      0.93          -4.46 -2.99
+95-98c   No    1892  97.89      0.97           0.98  2.77
+95-98c  Yes     317  95.27      0.97          -1.67 -1.42
+
+                                             test                 group  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  per 30 days held %
+                  inside R1d (95-99c, 3-60 days)       stand-alone, No    2576    1583    50    1.94      0.97              0.67     2.11    2.43               17.0                 NaN
+                  inside R1d (95-99c, 3-60 days)      stand-alone, Yes     450     334    17    3.78      0.97             -1.23    -1.28   -1.32                5.0                 NaN
+                  inside R1d (95-99c, 3-60 days) leg, Yes (the leader)     536     536     9    1.68      0.97              1.07     1.87    2.01               20.0                 NaN
+                  inside R1d (95-99c, 3-60 days) leg, No (an also-ran)    3725    1673   125    3.36      0.98             -1.00    -3.50   -2.85               10.0                 NaN
+   long-dated (90-98c, 60-180 days, stand-alone)                    No     696     514    24    3.45      0.94              2.51     2.69    2.77              101.0                0.71
+   long-dated (90-98c, 60-180 days, stand-alone)                   Yes     121      92     7    5.79      0.95             -0.56    -0.24   -0.25               52.0               -0.28
+      thin band (90-98c, 3-60 days, stand-alone)                    No    3052    1895   126    4.13      0.95              1.28     2.88    3.06               20.0                 NaN
+      thin band (90-98c, 3-60 days, stand-alone)                   Yes     716     506    64    8.94      0.94             -3.58    -3.06   -2.87                7.0                 NaN
+           thin account's signals (90-98c, calm)            at the ask    3603    2194   181    5.02      0.95              0.32     0.76    0.80               18.0                 NaN
+           thin account's signals (90-98c, calm)           resting bid    2681    1754   199    7.42      0.92              0.82     1.19    1.29               17.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)           all markets    3846    2167   928   24.13      0.74              1.96     1.81    1.76               18.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)  scheduled end passed    3628    2073   871   24.01      0.74              2.18     1.95    1.89               18.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)        3-20 days left    1811    1124   467   25.79      0.74              0.02     0.01    0.01                9.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)       20-60 days left    2035    1312   461   22.65      0.74              3.68     2.64    2.31               29.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)           paid 50-60c     723     565   318   43.98      0.56             -0.71    -0.23   -0.19               16.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)           paid 60-70c     760     593   256   33.68      0.66             -0.16    -0.06   -0.06               16.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)           paid 70-80c     927     742   190   20.50      0.76              4.46     2.48    2.49               18.0                 NaN
+the house (No at 50-90c, 3-60 days, stand-alone)           paid 80-90c    1436    1067   164   11.42      0.86              2.81     2.77    2.88               20.0                 NaN
+                          the house, by category               culture     303     174    67   22.11      0.74              5.04     1.53    1.37               24.0                 NaN
+                          the house, by category             economics      50      30    14   28.00      0.74             -0.57    -0.07   -0.06               19.0                 NaN
+                          the house, by category               finance     967     409   242   25.03      0.74              1.08     0.49    0.40               16.0                 NaN
+                          the house, by category           geopolitics    1267     734   288   22.73      0.74              3.29     1.74    1.72               21.0                 NaN
+                          the house, by category                 other     101      62    28   27.72      0.77             -8.53    -1.32   -1.56               16.0                 NaN
+                          the house, by category              politics     900     601   221   24.56      0.74              1.55     0.71    0.84               17.0                 NaN
+                          the house, by category                  tech     199     111    51   25.63      0.74              1.75     0.31    0.31               16.0                 NaN
+                          the house, by category               weather      59      46    17   28.81      0.73             -1.15    -0.12   -0.13               16.0                 NaN
+                the house, by half-year of entry               2023 H2      35      35     9   25.71      0.74              1.68     0.16    0.20               17.0                 NaN
+                the house, by half-year of entry               2024 H1     104      95    23   22.12      0.75              4.36     0.76    0.93               22.0                 NaN
+                the house, by half-year of entry               2024 H2     286     230    63   22.03      0.75              4.24     1.21    1.18               23.0                 NaN
+                the house, by half-year of entry               2025 H1     339     288    78   23.01      0.77             -0.10    -0.03   -0.03               20.0                 NaN
+                the house, by half-year of entry               2025 H2     739     488   185   25.03      0.75              0.69     0.28    0.34               21.0                 NaN
+                the house, by half-year of entry               2026 H1    1614     713   385   23.85      0.73              3.45     2.09    1.64               17.0                 NaN
+                the house, by half-year of entry               2026 H2     729     372   185   25.38      0.74             -0.33    -0.12   -0.16               16.0                 NaN
+     the other side of the house (Yes at 10-50c)           all markets    3909    2208  3022   77.31      0.27            -18.59    -6.07   -6.43               18.0                 NaN
+
+R1d by category (no bar):
+    category  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+    culture     941     517    37    3.93      0.98             -1.56    -2.53   -2.38                9.0
+  economics     358     215    12    3.35      0.98             -0.99    -1.06   -0.99               20.0
+    finance    1057     462    26    2.46      0.98             -0.09    -0.17   -0.15               13.0
+geopolitics    1060     580    22    2.08      0.97              0.63     1.37    1.37               14.0
+      other     126      68     6    4.76      0.98             -2.44    -0.79   -0.96               18.5
+   politics    2952    1566    79    2.68      0.97             -0.12    -0.41   -0.37               12.0
+       tech     624     285    15    2.40      0.98             -0.10    -0.17   -0.16               16.5
+    weather     188     107     4    2.13      0.98              0.23     0.22    0.21               16.5
