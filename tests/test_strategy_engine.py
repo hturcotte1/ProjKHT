@@ -210,3 +210,23 @@ def test_forward_test_log_records_each_signal_once_and_scores_resolutions(engine
     assert rets[0] == pytest.approx(-1.0) and rets[1] > 0
     assert res["events"] == 1                                  # one event: no standard error is claimed
     assert "t" not in res
+
+
+def test_one_failing_order_does_not_abort_the_cycle_or_lose_state(engine, monkeypatch):
+    e, pm, path, limits = engine
+    real_book = pm.book
+    calls = {"n": 0}
+
+    def flaky(token):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise ConnectionError("network down")
+        return real_book(token)
+
+    monkeypatch.setattr(pm, "book", flaky)
+    # give the two candidates separate events so that both orders are attempted
+    pm.markets[2] = live(2, 0.06, 0.07, event=11)
+    rep = e.run_cycle(NOW)
+    assert rep.placed == 1 and rep.rejected == 1
+    assert any("order failed" in n for n in rep.notes)
+    assert (path / "state.json").exists() and rep.n_positions == 1

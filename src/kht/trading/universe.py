@@ -80,7 +80,10 @@ def fetch_markets(pm: Polymarket, market_ids: list[int]) -> dict[int, LiveMarket
     """Current state of specific markets, open or closed (used to settle positions)."""
     out: dict[int, LiveMarket] = {}
     for mid in market_ids:
-        m = pm.market_by_id(mid)
+        try:
+            m = pm.market_by_id(mid)
+        except Exception:  # noqa: BLE001 - a market that cannot be read now is retried next cycle
+            continue
         # /markets/{id} does not embed tags; category is not needed for settlement
         row = flatten_market(m)
         if row is not None:

@@ -178,8 +178,18 @@ class Engine:
                 self.store.append_jsonl("decisions.jsonl", {"ts": now, "action": "blocked", "why": why,
                                                             "market_id": it.market_id, "reason": it.reason})
                 continue
-            order, new_fills = self.broker.place(it, info, now)
+            try:
+                order, new_fills = self.broker.place(it, info, now)
+            except Exception as exc:  # noqa: BLE001 - one failed order must not abort the cycle
+                rejected += 1
+                notes.append(f"order failed for market {it.market_id}: {exc!r}"[:200])
+                self.store.append_jsonl("decisions.jsonl", {"ts": now, "action": "error", "why": repr(exc)[:300],
+                                                            "market_id": it.market_id, "reason": it.reason})
+                continue
             self._remember(markets[it.market_id], it.token, themes.get(it.market_id, frozenset()))
+            # Persist straight away: if anything later in the cycle fails, the
+            # record of an order that has already been sent must survive.
+            self.save()
             self.store.append_jsonl("decisions.jsonl", {
                 "ts": now, "action": "order", "order_id": order.order_id, "status": order.status.value,
                 "market_id": it.market_id, "side": it.side.value, "kind": it.kind.value, "price": it.price,
