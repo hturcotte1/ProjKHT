@@ -43,6 +43,7 @@ def main() -> None:
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--max-pages", type=int, default=400)
     ap.add_argument("--max-volume", type=float, default=None, help="skip markets above this share volume")
+    ap.add_argument("--shard", default=None, help="i/n: take every n-th market starting at i (run n processes in parallel)")
     args = ap.parse_args()
 
     meta = subset(load_meta("open" if args.subset.startswith("open") else "closed"), args.subset)
@@ -52,6 +53,9 @@ def main() -> None:
     meta = meta.sort_values("closed_ts", ascending=False, na_position="first")
     if args.limit:
         meta = meta.head(args.limit)
+    if args.shard:
+        i, n = (int(x) for x in args.shard.split("/"))
+        meta = meta.iloc[i::n]
     log(f"{args.subset}: {len(meta)} markets, total volume {meta['volume'].sum() / 1e9:.2f}B shares")
     pm = Polymarket(Http(rate_per_host={"data-api.polymarket.com": args.rate}))
     download_trades_many(pm, meta["condition_id"].tolist(), workers=args.workers, max_pages=args.max_pages)
