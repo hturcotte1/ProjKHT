@@ -71,6 +71,8 @@ def part_a(out: Path, dry: bool) -> None:
         meta = meta[meta["closed_ts"] >= pd.Timestamp("2026-06-08", tz="UTC").timestamp()]
     tr = build_trades_table(meta)
     q = period_quotes(tr)
+    # when each market first satisfied the no-hindsight rule (used for the 3-hour panel below)
+    cross_ts = tr.loc[tr["cum_before"] >= 100_000].groupby("market_id")["ts"].min()
     del tr
     print(f"non-sports: {q['market_id'].nunique():,} markets, {len(q):,} market-days")
 
@@ -99,6 +101,34 @@ def part_a(out: Path, dry: bool) -> None:
     print("t\n", j.pivot(index="abs_move", columns="next", values="t").reindex(lv).round(2))
     print("n\n", j.pivot(index="abs_move", columns="next", values="n").reindex(lv))
 
+    section("A2b. Finer grain: quoted 3-hour mids (July-November 2026 only), same universe rule")
+    try:
+        from kht.data.download import load_price_panel
+
+        px = load_price_panel("3h")
+        px = px[px["market_id"].isin(cross_ts.index)]
+        px = px[px["ts"] >= px["market_id"].map(cross_ts)]
+        d3, _ = make_dataset(px, meta, "3h")
+        r3 = H.h1_momentum(d3, by_category=False)
+        r3.to_csv(out / "x_a2b_momentum_3h.csv", index=False)
+        o3 = list(d3.attrs["horizons"])
+        print(f"{d3['market_id'].nunique():,} markets, {len(d3):,} three-hour bars")
+        print("slope\n", r3.pivot(index="past", columns="next", values="beta").loc[o3, o3].round(4))
+        print("t\n", r3.pivot(index="past", columns="next", values="t").loc[o3, o3].round(2))
+        j3 = H.h2_jump_response(d3, "3h", ["3h", "12h", "1d", "3d"])
+        j3.to_csv(out / "x_a2b_jump_response_3h.csv", index=False)
+        print("after a 3-hour move: continuation in cents\n",
+              (100 * j3.pivot(index="abs_move", columns="next", values="cont")).reindex(lv).round(3))
+        print("t\n", j3.pivot(index="abs_move", columns="next", values="t").reindex(lv).round(2))
+    except FileNotFoundError as exc:
+        print("skipped:", exc)
+
+    section("A2c. Day-of-week pattern in the favoured side's daily change (cents)")
+    cal = H.h6_calendar(d, "1d")
+    cal = cal[cal["dim"] == "weekday"]
+    cal.to_csv(out / "x_a2c_weekday.csv", index=False)
+    print(cal.assign(mean_h1=100 * cal["mean_h1"], mean_h2=100 * cal["mean_h2"]).round(3).to_string(index=False))
+
     section("A3. The same ideas as real round trips: buy at the ask, sell at the bid, fees both ways")
     s = prepare(add_taker_buy_pnl(by_side(q, meta)))
     s = s[s["won"].notna()].reset_index(drop=True)
@@ -126,6 +156,21 @@ def part_a(out: Path, dry: bool) -> None:
     a3 = pd.DataFrame(rows)
     a3.to_csv(out / "x_a3_roundtrip_trades.csv", index=False)
     print(a3.round(2).to_string(index=False))
+
+    # the same trades where a round trip is cheapest: geopolitics markets carry no fee
+    geo = (s["category"] == "geopolitics").to_numpy()
+    rows = []
+    for thr in (0.10, 0.20):
+        for hold in (1, 3):
+            for label, sig in (("fell", s["chg_1d"] <= -thr), ("rose", s["chg_1d"] >= thr)):
+                t = candidate_trades(s, Rule(**band, hold_periods=hold, reentry=True), signal=sig.to_numpy() & geo)
+                rows.append(rstats(t, f"fee-free only: buy what {label} >= {int(100 * thr)}c, hold {hold}d"))
+    t = candidate_trades(s, Rule(**band, hold_periods=3, reentry=True),
+                         signal=(s["chg_1d"].abs() < 0.01).to_numpy() & (s["period"].to_numpy() % 7 == 0) & geo)
+    rows.append(rstats(t, "fee-free only: benchmark, no move, hold 3d"))
+    a3b = pd.DataFrame(rows)
+    a3b.to_csv(out / "x_a3b_roundtrip_fee_free.csv", index=False)
+    print("\n", a3b.round(2).to_string(index=False))
 
     section("A4. Yes versus No at the same price (buy at the ask, hold to resolution, net of fees)")
     yn = s.merge(meta[["market_id", "outcome0"]], on="market_id", how="left")

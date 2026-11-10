@@ -71,6 +71,42 @@ def build_trades(tr: pd.DataFrame, meta: pd.DataFrame, lo: float, hi: float) -> 
     return t
 
 
+def build_move_trades(tr: pd.DataFrame, meta: pd.DataFrame, min_move: float = 0.03, follow: bool = True) -> pd.DataFrame:
+    """S2: buy the side whose price rose between T-24h and T-1h (or, as the
+    control, the side that fell), at the next taker-buy print before the start."""
+    from kht.research.sports import _quote_asof
+
+    lead_h = tr["lead_s"].to_numpy() / 3600.0
+    cum = tr[lead_h > 1.0].groupby("market_id")["size"].sum().rename("cum_before_signal")
+    q = pd.concat([_quote_asof(tr, 24.0), _quote_asof(tr, 1.0), cum], axis=1)
+    q["move"] = q["mid_1h"] - q["mid_24h"]
+    q = q[(q["cum_before_signal"] >= MIN_CUM) & q["move"].notna() & (q["move"].abs() >= min_move)]
+    late = tr[(lead_h <= 1.0) & (lead_h > 0)]
+    first_buy0 = late[late["dir0"] > 0].groupby("market_id")["p0"].first()        # ask of outcome 0
+    first_sell0 = late[late["dir0"] < 0].groupby("market_id")["p0"].first()       # bid of outcome 0 -> ask of outcome 1
+    q["ask0"] = first_buy0.reindex(q.index)
+    q["ask1"] = 1.0 - first_sell0.reindex(q.index)
+    rose0 = q["move"] > 0
+    buy0 = rose0 if follow else ~rose0
+    d = pd.DataFrame({"market_id": q.index, "side": np.where(buy0, 0, 1), "ent": np.where(buy0, q["ask0"], q["ask1"]),
+                      "move": q["move"].to_numpy(), "mid_1h": q["mid_1h"].to_numpy()})
+    m = meta.set_index("market_id")
+    winner = m["winner"].reindex(d["market_id"]).to_numpy()
+    d["won"] = np.where(winner == d["side"], 1.0, np.where(np.isfinite(winner), 0.0, np.nan))
+    ev = m["event_id"].reindex(d["market_id"]).to_numpy()
+    d["cluster"] = np.where(ev >= 0, ev, -d["market_id"].to_numpy())
+    d["game_start_ts"] = m["game_start_ts"].reindex(d["market_id"]).to_numpy()
+    d["day"] = (d["game_start_ts"] // 86_400).astype(int)
+    d["league"] = m["tags"].reindex(d["market_id"]).map(league_of).to_numpy()
+    d["holdout"] = d["game_start_ts"] < SPLIT_TS
+    t = d[d["ent"].notna() & d["won"].notna() & (d["ent"] > 0.05) & (d["ent"] <= 0.95)].copy()
+    t["fee"] = FEE_RATE * t["ent"] * (1 - t["ent"])
+    t["cost"] = t["ent"] + t["fee"]
+    t["ret"] = (t["won"] - t["cost"]) / t["cost"]
+    t["gross_c"] = 100 * (t["won"] - t["ent"])
+    return t
+
+
 def stats(t: pd.DataFrame) -> dict:
     if len(t) < 10:
         return {"trades": len(t)}
@@ -105,6 +141,14 @@ def main() -> None:
         keep[label] = t
         for name, mask in (("holdout", t["holdout"]), ("discovery", ~t["holdout"])):
             rows.append({"rule": label, "sample": name, **stats(t[mask])})
+    for label, kw in (("S2 follow a pre-game move >= 3c", dict(follow=True)),
+                      ("control: fade a pre-game move >= 3c", dict(follow=False)),
+                      ("S2 with moves >= 5c", dict(follow=True, min_move=0.05))):
+        t = build_move_trades(tr, ml, **kw)
+        keep[label] = t
+        for name, mask in (("holdout", t["holdout"]), ("discovery", ~t["holdout"])):
+            rows.append({"rule": label, "sample": name, **stats(t[mask])})
+    keep["S2 follow a pre-game move >= 3c"].to_csv(out / "s2_trades.csv", index=False)
     res = pd.DataFrame(rows)
     res.to_csv(out / "s1_rules.csv", index=False)
     for name in ("holdout", "discovery"):
@@ -124,6 +168,20 @@ def main() -> None:
         rob = pd.DataFrame(rob)
         rob.to_csv(out / "s1_holdout_breakdowns.csv", index=False)
         print("\nS1 holdout breakdowns\n", rob.round(2).to_string(index=False))
+
+    s2 = keep["S2 follow a pre-game move >= 3c"]
+    h2 = s2[s2["holdout"]].copy()
+    if len(h2) > 50:
+        h2["quarter"] = pd.to_datetime(h2["game_start_ts"], unit="s").dt.to_period("Q").astype(str)
+        h2["reliable_start"] = h2["league"].isin(RELIABLE_START)
+        h2["move_bin"] = pd.cut(h2["move"].abs(), [0.03, 0.05, 0.10, 1.0])
+        rob2 = []
+        for dim in ("league", "quarter", "reliable_start", "move_bin"):
+            for level, g in h2.groupby(dim, observed=True):
+                rob2.append({"dimension": dim, "level": str(level), **stats(g)})
+        rob2 = pd.DataFrame(rob2)
+        rob2.to_csv(out / "s2_holdout_breakdowns.csv", index=False)
+        print("\nS2 holdout breakdowns\n", rob2.round(2).to_string(index=False))
 
     # calibration of the pre-game price (six hours out), both samples
     cal = []

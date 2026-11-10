@@ -290,3 +290,22 @@ and will be judged on the same holdout:
 
 R2 and R3 count as supported only if they beat R1 on the holdout *and* clear
 the same |t| ≥ 3 bar; otherwise the simpler R1 stands.
+
+### A second sports rule, fixed before the sports holdout was opened (07:02 UTC)
+
+In the games seen so far there was no drift of favourites into the start and
+no pre-game momentum. But results tended to go *further* in the direction the
+price had already moved before the game (a slope of roughly 0.5, t ≈ 1.5–2):
+the market seemed to under-adjust rather than overshoot. That is the opposite
+of what Moskowitz found for sportsbooks, and it is the thesis turned around:
+not "predict the move", but "the move that has happened has not gone far
+enough".
+
+> **S2.** In head-to-head game-winner markets that have traded 100,000 shares
+> by one hour before the scheduled start: if the mid moved by 3¢ or more
+> between 24 hours and 1 hour before the start, buy the side that **rose**, at
+> the next taker-buy print before the start, pay the 5% sports fee rate, hold
+> to the result. Sides priced under 5¢ or over 95¢ are skipped.
+
+Control that should do worse: the same rule buying the side that **fell**.
+**Holdout:** games that started before 2026-09-22. Same bar as S1.
