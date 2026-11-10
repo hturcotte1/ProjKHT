@@ -44,17 +44,35 @@ Code: `src/kht/trading/engine.py` (`Engine.run_cycle`).
 
 For every scanned market and each of its two outcomes it asks:
 
-1. Is the market in an allowed category, with a scheduled end between
-   `dte_lo` and `dte_hi` days away?
-2. Is this outcome's ask inside the price window, and is the spread sane?
-3. Does the edge model say the outcome pays more often than its price, by at
-   least `min_edge` per share **after the taker fee**?
+1. Is it a stand-alone yes/no market (not one leg of a multi-outcome event),
+   in an allowed category, with a scheduled end between `dte_lo` and `dte_hi`
+   days away?
+2. Is this outcome's ask inside the price window (95–98¢ for the main
+   account), and is the spread sane?
+3. Does the edge model put the estimated profit per share, **after the taker
+   fee**, at `min_edge` or more?
+4. Was the contract already in the price window `confirm_hours` (18) hours
+   ago? This is checked against Polymarket's own price history. The rule was
+   tested as "seen in range one day, bought the next if still in range", and
+   the wait matters: it screens out contracts that are falling through the
+   range.
 
 Survivors are ranked by estimated return per day of capital tied up, and at
 most `max_new_per_cycle` are bought, one position per market. Positions are
-held to resolution unless an exit rule is configured.
+held to resolution.
 
 All of that is configuration (`config/paper.json`), not code.
+
+### The forward-test log
+
+Each cycle also writes every signal it sees to `shadow.csv`, once per market
+per price band: the traded band, and the bands just below and above it that
+did not pass the historical test. A signal is logged when it meets the same
+18-hour confirmation as a real trade, whether or not the account has money or
+room under its caps to take it. `kht shadow` scores the log against how the
+markets resolved. This is how the rule gets tested on genuinely new data at a
+useful speed: the account can hold a few dozen positions, the log sees
+hundreds.
 
 ## What can stop an order
 
@@ -137,15 +155,27 @@ kht report                      # print the account status
 ```
 
 ```bash
+kht shadow                      # score every logged signal against how it resolved
+```
+
+```bash
 kht geoblock                    # may this machine place orders?
 ```
 
 ### On a schedule, without a server
 
-`.github/workflows/paper-trader.yml` runs one paper cycle on GitHub's servers
-and commits `state/paper/` back to the repository, so the paper account keeps
-going after any one session ends. `state/paper/STATUS.md` is the page to read.
-To stop it: repository → Actions → *paper-trader* → ⋯ → *Disable workflow*.
+`.github/workflows/paper-trader.yml` runs one cycle for each paper account on
+GitHub's servers every two hours and commits the state back to the repository,
+so the accounts keep going after any one session ends. A run takes under a
+minute.
+
+| Account | Config | State | What it is |
+|---|---|---|---|
+| Main | `config/paper.json` | `state/paper/` | The rule that passed its test |
+| Experimental | `config/paper_maker.json` | `state/paper-maker/` | Resting-bid entry on a wider band; unproven |
+
+`STATUS.md` in each state directory is the page to read. To stop the schedule:
+repository → Actions → *paper-trader* → ⋯ → *Disable workflow*.
 
 ## Files the system writes
 
@@ -159,6 +189,7 @@ All under the state directory (default `state/paper/`):
 | `fills.csv` | Every fill |
 | `settlements.csv` | Every resolved position and its profit |
 | `decisions.jsonl` | Every order placed and every order a limit blocked, with the reason |
+| `shadow.csv` | The forward-test log: every signal seen, traded or not |
 
 ## Reproducing the research
 
@@ -171,21 +202,42 @@ python scripts/download_research_data.py meta
 ```
 
 ```bash
+python scripts/download_research_data.py prices     # quoted price histories; about 75 minutes
+```
+
+```bash
 python scripts/download_trades.py non_sports --shard 0/3
 ```
 
 ```bash
-python scripts/run_confirmatory.py
+python scripts/download_trades.py sports_ml --shard 0/3
 ```
 
 ```bash
-python scripts/fit_model.py
+python scripts/run_confirmatory.py          # the pre-registered test (non-sports)
+```
+
+```bash
+python scripts/run_confirmatory_sports.py   # the pre-registered test (sports)
+```
+
+```bash
+python scripts/run_exploratory.py           # everything that was not pre-registered
+```
+
+```bash
+python scripts/run_deployed_rules.py        # the exact rules the paper accounts run
+```
+
+```bash
+python scripts/fit_model.py && python scripts/make_figures.py
 ```
 
 ```bash
 pytest
 ```
 
-The raw data (about 2 GB of trade tapes) is not in the repository; the scripts
-re-download it from Polymarket's public APIs. Result tables are in
+The raw data (about 3.5 GB of trade tapes; the downloads took about two hours)
+is not in the repository; the scripts re-fetch it from Polymarket's public
+APIs. Run each `--shard i/3` in its own terminal. Result tables are in
 `reports/research/`.
