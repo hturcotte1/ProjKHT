@@ -357,7 +357,7 @@ to be traded with real money on that evidence.
 
 ## 8. Where the quiet rule should be tested instead
 
-*Written at 18:40 UTC on 10 November, before any of the data below was
+*Written at 18:33 UTC on 10 November, before any of the data below was
 downloaded.*
 
 The right replication is in markets of the same kind as the ones the effect
@@ -381,8 +381,12 @@ control with |t| ≥ 2; and fewer events with a losing Q trade than the
 control's loss rate would produce (one-sided exact p under 0.01).
 
 Reported alongside: the first round's main rule (95–98¢, stand-alone) on the
-same markets, as a replication of the first round in thinner markets; and Q
-within the 90–95¢ band alone, where the effect was largest.
+same markets, as a replication of the first round in thinner markets; Q
+within the 90–95¢ band alone, where the effect was largest; and the main rule
+split by whether the outcome's traded range over the last 14 days was above
+15¢, because on the first round's panel the contracts that had moved that much
+earned nothing (added at 18:36 UTC, while the list of thinner markets was
+still downloading and before any of their tapes existed).
 
 If QT passes, the quiet rule has repeated once in the right kind of market
 and failed once in the wrong kind, and it earns a paper account and a place
