@@ -117,7 +117,8 @@ class Http:
                 resp = self._session().request(
                     method, url, params=params, json=json_body, headers=headers, timeout=self.timeout
                 )
-            except (requests.ConnectionError, requests.Timeout) as exc:
+            except requests.RequestException as exc:
+                # connection resets, timeouts, truncated chunked bodies...
                 last_exc = exc
             else:
                 if resp.status_code == 200:

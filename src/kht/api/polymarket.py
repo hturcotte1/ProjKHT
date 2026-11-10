@@ -123,7 +123,7 @@ class Polymarket:
             pag = payload.get("pagination") or {}
             if not pag.get("has_more") or not pag.get("next_cursor"):
                 return out
-            params = {"token_id": token_id, "cursor": pag["next_cursor"]}
+            params = dict(params, cursor=pag["next_cursor"])
 
     def prices_history_range(
         self, token_id: str, start: int, end: int, bucket_seconds: int
@@ -150,17 +150,26 @@ class Polymarket:
         page_size: int = 1000, max_pages: int | None = None, taker_only: bool = True,
     ) -> Iterator[dict[str, Any]]:
         """Trade tape for a market (newest first). Covers a fixed 3-year window."""
-        params: dict[str, Any] = {"limit": page_size}
+        base: dict[str, Any] = {"limit": page_size}
         if condition:
-            params["condition"] = condition
+            base["condition"] = condition
         if event_id:
-            params["event_id"] = event_id
+            base["event_id"] = event_id
         if not taker_only:
-            params["taker_only"] = "false"
+            base["taker_only"] = "false"
+        params = dict(base)
         pages = 0
         while True:
             payload = self.http.get(f"{DATA}/trades", params)
             items = payload.get("data") or []
+            if condition:
+                # The cursor does NOT carry the market filter: a cursor sent on
+                # its own silently continues through the global trade feed. The
+                # filter is therefore re-sent with every page, and rows are
+                # checked so that a regression can never pollute a tape.
+                stray = [t for t in items if t.get("condition_id") != condition]
+                if stray:
+                    raise RuntimeError(f"trade feed returned {len(stray)} rows for other markets")
             yield from items
             pages += 1
             pag = payload.get("pagination") or {}
@@ -168,7 +177,7 @@ class Polymarket:
                 return
             if max_pages is not None and pages >= max_pages:
                 return
-            params = {"cursor": pag["next_cursor"]}
+            params = dict(base, cursor=pag["next_cursor"])
 
     def open_interest(self, condition: str) -> Any:
         return self.http.get(f"{DATA}/oi", {"condition": condition})

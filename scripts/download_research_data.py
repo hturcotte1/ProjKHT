@@ -13,7 +13,7 @@ import argparse
 
 import pandas as pd
 
-from kht.api import Polymarket
+from kht.api import Http, Polymarket
 from kht.data.download import download_market_meta, download_price_panel, load_meta, log
 
 GRAINS = {"3h": 10_800, "12h": 43_200}
@@ -33,15 +33,17 @@ def main() -> None:
     ap.add_argument("stage", choices=["meta", "prices"])
     ap.add_argument("--min-volume", type=float, default=100_000)
     ap.add_argument("--grain", choices=sorted(GRAINS), default="3h")
-    ap.add_argument("--workers", type=int, default=12)
+    ap.add_argument("--workers", type=int, default=16)
+    ap.add_argument("--rate", type=float, default=16.0, help="data-api requests per second")
     args = ap.parse_args()
 
-    pm = Polymarket()
+    pm = Polymarket(Http(rate_per_host={"data-api.polymarket.com": args.rate}))
     if args.stage == "meta":
         download_market_meta(pm, "closed", closed=True, volume_num_min=args.min_volume)
     else:
         meta = load_meta("closed")
-        panel = select_for_panel(meta)
+        # shuffled so that a partial download is already a random sample
+        panel = select_for_panel(meta).sample(frac=1.0, random_state=0).reset_index(drop=True)
         log(f"panel universe: {len(panel)} of {len(meta)} closed markets")
         download_price_panel(pm, panel, grain=args.grain, bucket_seconds=GRAINS[args.grain], workers=args.workers)
 
