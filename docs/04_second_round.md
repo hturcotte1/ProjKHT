@@ -319,7 +319,7 @@ timing mismatch.
 
 ## 7. The replication of the quiet rule in sports: failed
 
-*`run_quiet_replication.py`, `qs_*.csv`. 3,182 season-long and tournament
+*`run_quiet_replication.py sports_other`, `qs_*.csv`. 3,182 season-long and tournament
 markets, none of them read before.*
 
 | | Trades | Events | Lost | Return a trade | t |
@@ -391,3 +391,32 @@ still downloading and before any of their tapes existed).
 If QT passes, the quiet rule has repeated once in the right kind of market
 and failed once in the wrong kind, and it earns a paper account and a place
 in the forward test. If it fails, it is dropped.
+
+**A second, smoother test on the same markets, added at 18:45 UTC while their
+tapes were still downloading and before any had been read.** A rule with a
+cut-off at 3¢ throws away most of the data, and a cut-off chosen after looking
+tends to look sharper than it is. So I also fitted the plainest possible model
+on the first round's panel: one row a week for every favourite priced 88–99¢
+with 3 to 180 days to run (14,896 rows, 3,705 markets, 2.5% of them lost), and
+a logistic regression of losing on the price paid and on how far the price had
+ranged over the last 7 days:
+
+> logit P(loses) = 0.311 − 1.046 × logit(price) + 0.295 × log(range + 0.005)
+
+The range term has t = 3.1 (clustered by event) and is the only thing that
+improved the fit out of sample; a 28-day range, days to the end, whether the
+market is a leg, its category, its recent dollar volume and its price change
+over the week all added nothing or made it worse. The model says a favourite
+that has ranged 15¢ in a week is about twice as likely to lose as one at the
+same price that has ranged 1¢: a real difference and a much smaller one than
+"one loser in 196" suggests. That gap is itself a warning that the 3¢ cut-off
+flatters the effect.
+
+> **QT-smooth.** On the thinner markets, the same weekly rows and the same
+> regression. The bar is a positive coefficient on the range with t ≥ 2,
+> clustered by event.
+
+Reported with it: how often favourites lost in each third of the frozen
+model's predicted loss, among those priced 90–98.5¢ with 3 to 60 days to run.
+If QT-smooth passes, the frozen model replaces the first round's calibration
+line for ranking candidates, whatever happens to the 3¢ rule.

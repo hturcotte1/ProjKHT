@@ -1,7 +1,7 @@
-"""Second round: the quiet-favourite rule Q on a universe it has never seen.
+"""Second round: the quiet-favourite rule Q on universes it has never seen.
 
-docs/04_second_round.md (section 5) fixes the rule, its control and the bar
-before any tape of these markets was read.
+docs/04_second_round.md (sections 5 and 8) fixes the rule, its control and the
+bar before any tape of these markets was read.
 
     Q       ask above 90c and at most 98c; scheduled end more than 3 and at
             most 60 days away; the outcome's traded range over the last 7 days
@@ -14,12 +14,21 @@ before any tape of these markets was read.
             with |t| >= 2; and fewer events with a losing Q trade than the
             control's loss rate would produce (one-sided exact p < 0.01).
 
-Universe QS: resolved sports markets that are not single games (season-long,
-tournament and similar questions), 100,000 shares or more, a life of 14 days
-or more. Legs of multi-outcome events and stand-alone markets are both
-traded and reported separately.
+Universes:
 
-    python scripts/run_quiet_replication.py
+    sports_other     resolved sports markets that are not single games
+                     (season-long, tournament and similar questions), 100,000
+                     shares or more, a life of 14 days or more.
+    non_sports_thin  resolved markets outside sports and crypto with a life of
+                     two days or more that traded 20,000 to 100,000 shares,
+                     used once 20,000 have traded. The same kind of market the
+                     effect was found in, never in the data before.
+
+Legs of multi-outcome events and stand-alone markets are both traded and
+reported separately.
+
+    python scripts/run_quiet_replication.py sports_other
+    python scripts/run_quiet_replication.py non_sports_thin
 """
 
 from __future__ import annotations
@@ -53,6 +62,21 @@ def sports_other_meta() -> pd.DataFrame:
     resolved = meta["winner"].notna() | (meta["final0"] == 0.5)
     not_game = ~meta["is_game"].fillna(False).astype(bool) & meta["game_start_ts"].isna()
     return meta[(meta["category"] == "sports") & not_game & (life >= 14) & resolved].copy()
+
+
+def thin_meta() -> pd.DataFrame:
+    meta = load_meta("closed_thin")
+    life = (meta["closed_ts"].fillna(meta["end_ts"]) - meta["start_ts"]) / 86_400
+    resolved = meta["winner"].notna() | (meta["final0"] == 0.5)
+    return meta[(meta["category"] != "sports") & (meta["category"] != "crypto") & (life >= 2) & resolved].copy()
+
+
+UNIVERSES = {
+    "sports_other": {"meta": sports_other_meta, "min_cum": 100_000, "prefix": "qs",
+                     "title": "sports markets that are not single games"},
+    "non_sports_thin": {"meta": thin_meta, "min_cum": 20_000, "prefix": "qt",
+                        "title": "news markets that traded 20,000 to 100,000 shares"},
+}
 
 
 def stats(t: pd.DataFrame) -> dict:
@@ -91,11 +115,13 @@ def verdict(label: str, q: pd.DataFrame, control: pd.DataFrame) -> None:
     print(f"  bar (positive with |t| >= 3; above control with |t| >= 2; exact p < 0.01)  ->  {'PASSED' if ok else 'NOT PASSED'}")
 
 
-def main() -> None:
-    meta = sports_other_meta()
+def main(universe: str) -> None:
+    u = UNIVERSES[universe]
+    prefix = u["prefix"]
+    meta = u["meta"]()
     have = {p.stem for p in (ROOT / "data" / "trades").glob("*.parquet")}
-    print(f"sports markets that are not single games: {len(meta):,}; tapes on disk: {int(meta['condition_id'].isin(have).sum()):,}")
-    s = prepare(add_taker_buy_pnl(by_side(period_quotes(build_trades_table(meta)), meta)))
+    print(f"{u['title']}: {len(meta):,}; tapes on disk: {int(meta['condition_id'].isin(have).sum()):,}")
+    s = prepare(add_taker_buy_pnl(by_side(period_quotes(build_trades_table(meta), min_cum=u["min_cum"]), meta)))
     s = s[s["won"].notna()].reset_index(drop=True)
     s["series"] = s.groupby(["market_id", "side"], sort=False).ngroup()
     print(f"panel: {len(s):,} outcome-days in {s['market_id'].nunique():,} markets, {s['cluster'].nunique():,} events, "
@@ -128,13 +154,13 @@ def main() -> None:
     ql = report("Q-long: quiet, 90-98c, 60-365 days", trades(rule_long, band(0.90, 0.98, 60, 365) & quiet))
     qlc = report("   control: not quiet", trades(rule_long, band(0.90, 0.98, 60, 365) & ~quiet))
     print("=" * 110)
-    print("THE PRE-REGISTERED REPLICATION (sports markets that are not single games)")
+    print(f"THE PRE-REGISTERED REPLICATION ({u['title']})")
     verdict("Q", q, qc)
     verdict("Q-long", ql, qlc)
     print("=" * 110)
-    q.to_csv(OUT / "qs_trades_Q.csv", index=False)
-    qc.to_csv(OUT / "qs_trades_Q_control.csv", index=False)
-    ql.to_csv(OUT / "qs_trades_Qlong.csv", index=False)
+    q.to_csv(OUT / f"{prefix}_trades_Q.csv", index=False)
+    qc.to_csv(OUT / f"{prefix}_trades_Q_control.csv", index=False)
+    ql.to_csv(OUT / f"{prefix}_trades_Qlong.csv", index=False)
 
     # reported alongside
     for label, mask in (("stand-alone", single), ("legs of multi-outcome events", ~single)):
@@ -146,10 +172,16 @@ def main() -> None:
         report(f"Q, {lo:.2f}-{hi:.2f} only", trades(Rule(lo, hi, 3, 60), band(lo, hi, 3, 60) & quiet))
         report(f"   control, {lo:.2f}-{hi:.2f} only", trades(Rule(lo, hi, 3, 60), band(lo, hi, 3, 60) & ~quiet))
     report("first round's main rule as configured: 95-98c, stand-alone, 3-60 days", trades(Rule(0.95, 0.98, 3, 60), band(0.95, 0.98, 3, 60) & single))
+    rng14, seasoned14 = rq.trailing_range(s, 14)
+    moved = seasoned14 & (rng14 > 0.15)
+    report("   main rule, traded range over 14 days above 15c", trades(Rule(0.95, 0.98, 3, 60), band(0.95, 0.98, 3, 60) & single & moved))
+    report("   main rule, the rest", trades(Rule(0.95, 0.98, 3, 60), band(0.95, 0.98, 3, 60) & single & ~moved))
+    report("Q, 0.90-0.95 only, stand-alone", trades(Rule(0.90, 0.95, 3, 60), band(0.90, 0.95, 3, 60) & quiet & single))
+    report("   control, 0.90-0.95 only, stand-alone", trades(Rule(0.90, 0.95, 3, 60), band(0.90, 0.95, 3, 60) & ~quiet & single))
     report("first round's R1d: 95-99c, legs included, 3-60 days", trades(Rule(0.95, 0.99, 3, 60), band(0.95, 0.99, 3, 60)))
     report("long shots 3-10c, 3-60 days", trades(Rule(0.03, 0.10, 3, 60), band(0.03, 0.10, 3, 60)))
     res = pd.DataFrame(rows)
-    res.to_csv(OUT / "qs_quiet_replication.csv", index=False)
+    res.to_csv(OUT / f"{prefix}_quiet_replication.csv", index=False)
     print("\n", res.round(2).to_string(index=False))
 
     for name, t in (("Q", q), ("Q-long", ql)):
@@ -178,9 +210,12 @@ class Tee:
 
 
 if __name__ == "__main__":
-    with (OUT / "quiet_replication_sports_output.txt").open("w") as fh:
+    if len(sys.argv) != 2 or sys.argv[1] not in UNIVERSES:
+        raise SystemExit(f"usage: run_quiet_replication.py {{{' | '.join(UNIVERSES)}}}")
+    name = {"sports_other": "sports", "non_sports_thin": "thin"}[sys.argv[1]]
+    with (OUT / f"quiet_replication_{name}_output.txt").open("w") as fh:
         sys.stdout = Tee(sys.__stdout__, fh)
         try:
-            main()
+            main(sys.argv[1])
         finally:
             sys.stdout = sys.__stdout__
