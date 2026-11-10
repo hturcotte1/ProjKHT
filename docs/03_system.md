@@ -132,6 +132,14 @@ runners, as blocked. The code refuses to start there and must not be made to.
 
 Paper and live accounts cannot share a state directory; the engine refuses.
 
+**Polymarket US is a different exchange.** It has its own accounts, markets,
+fee schedule and API (documented at docs.polymarket.us, with an official
+Python SDK), and `trading/live.py` does not talk to it. Everything in the
+research was measured on the international platform's data: 896 of the main
+rule's 1,836 backtest trades were in geopolitics markets, which I could not
+confirm the US exchange lists. An account there needs its own adapter and,
+before that, its own test of the rule on that exchange's markets.
+
 ## Running it
 
 ```bash

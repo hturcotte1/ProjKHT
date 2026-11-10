@@ -79,8 +79,11 @@ Live trading is built but switched off, and has never touched a real account.
 Three things are yours to settle first.
 
 1. **Which Polymarket.** The live code targets polymarket.com's API through
-   the official SDK. If the account is on the separate Polymarket US app, a
-   different adapter is needed.
+   the official SDK. Polymarket US is a separate exchange with its own
+   accounts, markets, fees and API (it publishes a Python SDK, so an adapter
+   is possible). None of this research used its data, and about half of the
+   rule's trades were in geopolitics markets, which I could not confirm it
+   lists. If the account is there, the rule has to be re-tested there first.
 2. **Where it runs.** Polymarket only accepts orders from permitted locations
    and publishes a check for it. The cloud machine this was built on, and
    GitHub's runners, fail that check (United States). The code refuses to
