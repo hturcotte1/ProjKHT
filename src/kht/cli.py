@@ -96,17 +96,21 @@ def cmd_shadow(args: argparse.Namespace) -> int:
     # only markets past their scheduled end can have resolved; saves requests
     due = sorted({int(r["market_id"]) for r in rows if float(r["end_ts"]) < now + 86_400 * args.lookahead_days})
     markets = fetch_markets(Polymarket(), due)
-    res = score_shadow(args.state, markets)
-    print(f"signals logged: {res['signals']}   resolved: {res['resolved']}   still open: {res['open']}")
-    if res["resolved"]:
-        print(f"won {100 * res['win_rate']:.1f}% at an average cost of {100 * res['avg_cost']:.1f}c "
-              f"(model expected {100 * res['avg_p_model']:.1f}%)")
-        line = f"average return per signal: {100 * res['avg_ret']:+.2f}%"
-        if "t" in res:
-            line += f"   (t = {res['t']:.2f} across {res['events']} events)"
-        print(line)
-        for x in sorted(res["rows"], key=lambda r: r["ret"])[:5]:
-            print(f"   worst: {100 * x['ret']:+7.1f}%  {x['question'][:80]}")
+    labels = {"core": "the traded band", "below": "below it (logged only)", "above": "above it (logged only)"}
+    for band, label in labels.items():
+        res = score_shadow(args.state, markets, band)
+        if not res["signals"]:
+            continue
+        print(f"\n{label}: {res['signals']} signals logged, {res['resolved']} resolved, {res['open']} still open")
+        if res["resolved"]:
+            print(f"  won {100 * res['win_rate']:.1f}% at an average cost of {100 * res['avg_cost']:.1f}c "
+                  f"(model expected {100 * res['avg_p_model']:.1f}%)")
+            line = f"  average return per signal: {100 * res['avg_ret']:+.2f}%"
+            if "t" in res:
+                line += f"   (t = {res['t']:.2f} across {res['events']} events)"
+            print(line)
+            for x in sorted(res["rows"], key=lambda r: r["ret"])[:3]:
+                print(f"     worst: {100 * x['ret']:+7.1f}%  {x['question'][:80]}")
     return 0
 
 

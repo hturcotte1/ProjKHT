@@ -125,6 +125,12 @@ class Polymarket:
                 return out
             params = dict(params, cursor=pag["next_cursor"])
 
+    def price_as_of(self, token_id: str, ts: float) -> float | None:
+        """Quoted mid of a token at (the latest observation at or before) ``ts``."""
+        payload = self.http.get(f"{DATA}/prices-history", {"token_id": token_id, "as_of": int(ts)})
+        data = payload.get("data") or []
+        return float(data[-1]["price"]) if data else None
+
     def prices_history_range(
         self, token_id: str, start: int, end: int, bucket_seconds: int
     ) -> list[tuple[int, float]]:

@@ -105,6 +105,17 @@ class FakePM:
     def iter_trades(self, condition, max_pages=None):
         return iter(self.tape.get(condition, []))
 
+    history = None      # token -> mid a day ago; default: the same as now
+
+    def price_as_of(self, token, ts):
+        if self.history is not None and token in self.history:
+            return self.history[token]
+        for lm in self.markets.values():
+            for outcome in (0, 1):
+                if lm.info.token(outcome) == token:
+                    return 0.5 * (lm.bid(outcome) + lm.ask(outcome))
+        return None
+
 
 @pytest.fixture
 def engine(tmp_path, monkeypatch):
@@ -201,6 +212,7 @@ def test_forward_test_log_records_each_signal_once_and_scores_resolutions(engine
     e.run_cycle(NOW + 600)                                    # same candidates again
     rows = list(csv.DictReader((path / "shadow.csv").open()))
     assert sorted(int(r["market_id"]) for r in rows) == [1, 2]   # both signals logged, although only one was bought
+    assert {r["band"] for r in rows} == {"core"} and {r["tradable"] for r in rows} == {"1"}
     # market 1 resolves Yes (we logged buying Yes -> win); market 2 resolves Yes (we logged buying No -> loss)
     resolved = {1: live(1, None, None, event=10, closed=True, final0=1.0, accepting=False),
                 2: live(2, None, None, event=10, closed=True, final0=1.0, accepting=False)}
@@ -230,3 +242,39 @@ def test_one_failing_order_does_not_abort_the_cycle_or_lose_state(engine, monkey
     assert rep.placed == 1 and rep.rejected == 1
     assert any("order failed" in n for n in rep.notes)
     assert (path / "state.json").exists() and rep.n_positions == 1
+
+
+def test_no_purchase_unless_the_contract_was_already_in_the_band_a_day_ago(engine):
+    """The tested rule buys the day after the signal. A contract that has just
+    arrived in the band (here: it was at 0.80 yesterday) must wait."""
+    e, pm, path, limits = engine
+    pm.history = {"T1a": 0.80, "T2b": 0.80}
+    rep = e.run_cycle(NOW)
+    assert rep.n_candidates == 2 and rep.placed == 0 and rep.n_positions == 0
+    assert not (path / "shadow.csv").exists()               # an unconfirmed signal is not logged either
+    pm.history = {"T1a": 0.925, "T2b": 0.80}                # market 1 has now been in the band for a day
+    rep = e.run_cycle(NOW + DAY)
+    assert rep.placed == 1 and {p.market_id for p in e.portfolio.positions.values()} == {1}
+
+
+def test_missing_history_means_no_trade_not_a_crash(engine):
+    e, pm, path, limits = engine
+    pm.price_as_of = lambda token, ts: (_ for _ in ()).throw(ConnectionError("down"))
+    rep = e.run_cycle(NOW)
+    assert rep.placed == 0 and rep.n_positions == 0
+
+
+def test_bands_outside_the_traded_one_are_logged_but_never_bought(engine):
+    import csv
+    e, pm, path, limits = engine
+    cfg = StrategyConfig(**{**CFG.to_dict(), "ask_lo": 0.95, "ask_hi": 0.98, "watch_lo": 0.90, "watch_hi": 0.99,
+                            "min_edge": 0.0})
+    e.strategy = HarvestStrategy(cfg, MODEL)
+    pm.markets = {1: live(1, 0.92, 0.93, event=10),         # below the traded band: watch only
+                  2: live(2, 0.955, 0.965, event=11),       # in the traded band
+                  3: live(3, 0.98, 0.985, event=12)}        # above it: watch only
+    rep = e.run_cycle(NOW)
+    assert {p.market_id for p in e.portfolio.positions.values()} == {2}
+    rows = {int(r["market_id"]): r for r in csv.DictReader((path / "shadow.csv").open())}
+    assert (rows[1]["band"], rows[2]["band"], rows[3]["band"]) == ("below", "core", "above")
+    assert (rows[1]["tradable"], rows[2]["tradable"], rows[3]["tradable"]) == ("0", "1", "0")

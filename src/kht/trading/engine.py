@@ -106,8 +106,8 @@ class Engine:
         self.broker: Broker = self._make_broker(raw)
         self.risk = RiskManager(limits) if raw is None else RiskManager(limits, RiskState(**raw["risk"]))
         self.market_names: dict[str, dict[str, Any]] = {} if raw is None else raw.get("market_names", {})
-        # markets already written to the forward-test log (see _log_shadow)
-        self.shadow_seen: set[int] = set() if raw is None else set(raw.get("shadow_seen", []))
+        # signals already written to the forward-test log (see _log_shadow)
+        self.shadow_seen: set[str] = set() if raw is None else {str(x) for x in raw.get("shadow_seen", [])}
         self.started_ts = time.time() if raw is None else raw.get("started_ts", time.time())
 
     def _make_broker(self, raw: dict[str, Any] | None) -> Broker:
@@ -160,8 +160,13 @@ class Engine:
 
         # 5. strategy -> risk -> broker
         candidates = self.strategy.candidates(markets, now)
-        self._log_shadow(candidates, now)
-        intents = self.strategy.decide(markets, self.portfolio, self.broker.open_orders(), now)
+        held = {p.market_id for p in self.portfolio.positions.values()}
+        # only the best-ranked few can be bought this cycle, so only they need a history lookup
+        shortlist = [c for c in candidates if c.market.info.market_id not in held]
+        shortlist = shortlist[: 6 * self.strategy.cfg.max_new_per_cycle]
+        confirmed = self._confirmed(shortlist, now)
+        self._log_shadow(self.strategy.watchlist(markets, now), confirmed, now)
+        intents = self.strategy.decide(markets, self.portfolio, self.broker.open_orders(), now, confirmed)
         market_event = {mid: lm.info.event_id for mid, lm in markets.items()}
         themes = theme_tags(markets)
         # a held market that has dropped out of the scan keeps the themes it was bought under
@@ -246,27 +251,62 @@ class Engine:
                 "shares": round(pos.shares, 4), "cost": round(pos.cost, 4), "payoff": payoff, "pnl": round(pnl, 4)})
         return n
 
-    def _log_shadow(self, candidates: list[Any], now: float) -> None:
+    def _was_in_band(self, c: Any, lo: float, hi: float, now: float) -> bool | None:
+        """Was this contract already in (lo, hi] ``confirm_hours`` ago?  None = could not tell."""
+        cfg = self.strategy.cfg
+        key = (c.market.info.market_id, c.outcome)
+        cache = self._history_cache
+        if key not in cache:
+            try:
+                cache[key] = self.pm.price_as_of(c.market.info.token(c.outcome), now - cfg.confirm_hours * 3600)
+            except Exception:  # noqa: BLE001 - no history means no confirmation, not a crash
+                cache[key] = None
+        then = cache[key]
+        if then is None:
+            return None
+        return lo - cfg.confirm_slack < then <= hi + 0.005
+
+    def _confirmed(self, candidates: list[Any], now: float) -> set[tuple[int, int]]:
+        """Tradable candidates that were also in the trading band a day ago."""
+        self._history_cache: dict[tuple[int, int], float | None] = {}
+        cfg = self.strategy.cfg
+        if cfg.confirm_hours <= 0:
+            return {(c.market.info.market_id, c.outcome) for c in candidates}
+        return {(c.market.info.market_id, c.outcome) for c in candidates
+                if self._was_in_band(c, cfg.ask_lo, cfg.ask_hi, now)}
+
+    def _log_shadow(self, watch: list[Any], confirmed: set[tuple[int, int]], now: float) -> None:
         """Forward-test log: every signal the first time it appears, whether or
-        not there is capital to trade it.
+        not there is capital to trade it, and including the price bands that
+        did not pass the historical test.
 
         The account can only hold a few dozen positions, so on its own it would
         take a long time to say anything statistically. Scoring *all* signals
-        once their markets resolve (``kht shadow``) tests the rule on live,
-        never-before-seen data many times faster.
+        once their markets resolve (``kht shadow``) tests the rules on live,
+        never-before-seen data many times faster. Each signal is logged once
+        per band, at the moment it satisfies the same next-day confirmation as
+        a real trade.
         """
-        for c in candidates:
-            mid = c.market.info.market_id
-            if mid in self.shadow_seen:
-                continue
-            self.shadow_seen.add(mid)
+        cfg = self.strategy.cfg
+        bands = {"below": (cfg.watch_lo, cfg.ask_lo), "core": (cfg.ask_lo, cfg.ask_hi), "above": (cfg.ask_hi, cfg.watch_hi)}
+        for c in watch:
             info = c.market.info
+            band = self.strategy.band_of(c.ask)
+            key = f"{info.market_id}:{band}"
+            if key in self.shadow_seen:
+                continue
+            lo, hi = bands[band]
+            if cfg.confirm_hours > 0 and not self._was_in_band(c, lo, hi, now):
+                continue
+            self.shadow_seen.add(key)
             self.store.append_csv("shadow.csv", {
-                "ts": int(now), "market_id": mid, "token": info.token(c.outcome), "outcome": c.outcome,
-                "outcome_name": info.outcome0 if c.outcome == 0 else info.outcome1,
+                "ts": int(now), "market_id": info.market_id, "band": band, "token": info.token(c.outcome),
+                "outcome": c.outcome, "outcome_name": info.outcome0 if c.outcome == 0 else info.outcome1,
                 "question": c.market.question[:140], "category": info.category, "event_id": info.event_id,
-                "ask": round(c.ask, 4), "bid": round(c.bid, 4), "fee_ps": round(c.fee, 5), "p_model": round(c.p_win, 4),
-                "edge": round(c.edge, 4), "dte": round(c.dte, 2), "end_ts": int(info.end_ts)})
+                "neg_risk": int(info.neg_risk), "ask": round(c.ask, 4), "bid": round(c.bid, 4),
+                "fee_ps": round(c.fee, 5), "p_model": round(c.p_win, 4), "edge": round(c.edge, 4),
+                "tradable": int(band == "core" and c.edge >= cfg.min_edge and (info.market_id, c.outcome) in confirmed),
+                "dte": round(c.dte, 2), "end_ts": int(info.end_ts)})
 
     def _remember(self, lm: LiveMarket, token: str, themes: frozenset[str] = frozenset()) -> None:
         outcome = lm.info.outcome_of(token)

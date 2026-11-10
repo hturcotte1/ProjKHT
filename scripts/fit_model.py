@@ -1,14 +1,13 @@
 """Fit the edge model the live strategy uses, and check it walk-forward.
 
-The model is deliberately tiny. For each segment it estimates one number,
-``delta``: how much higher the true log-odds of paying out are than the
-log-odds implied by the ask.
+The model is deliberately tiny: one calibration line for all trades,
 
-    P(pays) = sigmoid(logit(ask) + delta)
+    P(pays) = sigmoid(a + b * logit(ask))
 
-``delta = 0`` means the price is right. Segment estimates are shrunk toward
-the pooled estimate in proportion to how little data they have, so a segment
-with 20 trades cannot talk itself into a large edge.
+(``a = 0, b = 1`` means prices are right; ``b > 1`` means they are compressed
+toward 50%), plus one intercept shift per segment. Shifts are shrunk toward
+zero in proportion to how little data a segment has, so a segment with 40
+trades cannot talk itself into a large edge.
 
 Training rows are R1-style signals (one per market: the first day a side's ask
 is in the band with 3-60 scheduled days left), entered at the next taker-buy
@@ -50,12 +49,11 @@ def logit(p: np.ndarray) -> np.ndarray:
     return np.log(p / (1 - p))
 
 
-def fit_delta(price: np.ndarray, won: np.ndarray, iters: int = 60) -> tuple[float, float]:
-    """MLE of ``delta`` in sigmoid(logit(price) + delta); returns (delta, naive se)."""
-    off = logit(price)
+def fit_delta(offset: np.ndarray, won: np.ndarray, iters: int = 60) -> tuple[float, float]:
+    """MLE of ``delta`` in sigmoid(offset + delta); returns (delta, naive se)."""
     d = 0.0
     for _ in range(iters):
-        mu = 1 / (1 + np.exp(-(off + d)))
+        mu = 1 / (1 + np.exp(-(offset + d)))
         grad = float((won - mu).sum())
         hess = float((mu * (1 - mu)).sum())
         if hess <= 0:
@@ -64,26 +62,43 @@ def fit_delta(price: np.ndarray, won: np.ndarray, iters: int = 60) -> tuple[floa
         d += max(min(step, 1.0), -1.0)
         if abs(step) < 1e-10:
             break
-    mu = 1 / (1 + np.exp(-(off + d)))
+    mu = 1 / (1 + np.exp(-(offset + d)))
     return d, 1 / math.sqrt(max(float((mu * (1 - mu)).sum()), 1e-9))
 
 
+def fit_line(price: np.ndarray, won: np.ndarray, iters: int = 80) -> tuple[float, float]:
+    """MLE of (a, b) in sigmoid(a + b * logit(price))."""
+    X = np.column_stack([np.ones(len(price)), logit(price)])
+    beta = np.array([0.0, 1.0])
+    for _ in range(iters):
+        mu = 1 / (1 + np.exp(-(X @ beta)))
+        w = mu * (1 - mu)
+        step = np.linalg.solve(X.T @ (X * w[:, None]) + 1e-9 * np.eye(2), X.T @ (won - mu))
+        beta = beta + np.clip(step, -1.0, 1.0)
+        if np.abs(step).max() < 1e-10:
+            break
+    return float(beta[0]), float(beta[1])
+
+
 def fit_model(t: pd.DataFrame) -> tuple[EdgeModel, pd.DataFrame]:
-    d_pool, se_pool = fit_delta(t["entry_px"].to_numpy(), t["won"].to_numpy())
-    rows = [{"segment": "(pooled)", "n": len(t), "delta_raw": d_pool, "delta": d_pool, "se": se_pool,
-             "win%": 100 * t["won"].mean(), "avg_px": t["entry_px"].mean()}]
+    """Pooled line plus one shrunken intercept shift per segment."""
+    px, won = t["entry_px"].to_numpy(), t["won"].to_numpy()
+    a, b = fit_line(px, won)
+    rows = [{"segment": "(pooled)", "n": len(t), "shift_raw": 0.0, "shift": 0.0, "se": float("nan"),
+             "a": a, "b": b, "win%": 100 * won.mean(), "avg_px": px.mean()}]
     segments: dict[str, tuple[float, float]] = {}
     for col in ("seg_full", "seg_kind", "seg_cat"):
         for key, g in t.groupby(col):
             if len(g) < MIN_SEGMENT:
                 continue
-            d_raw, se = fit_delta(g["entry_px"].to_numpy(), g["won"].to_numpy())
+            gp, gw = g["entry_px"].to_numpy(), g["won"].to_numpy()
+            d_raw, se = fit_delta(a + b * logit(gp), gw)
             w = len(g) / (len(g) + PRIOR_STRENGTH)
-            d = w * d_raw + (1 - w) * d_pool
-            segments[str(key)] = (float(d), 1.0)
-            rows.append({"segment": str(key), "n": len(g), "delta_raw": d_raw, "delta": d, "se": se,
-                         "win%": 100 * g["won"].mean(), "avg_px": g["entry_px"].mean()})
-    return EdgeModel(pooled=(float(d_pool), 1.0), segments=segments), pd.DataFrame(rows)
+            d = w * d_raw                                   # shrunk toward zero = toward the pooled line
+            segments[str(key)] = (float(a + d), float(b))
+            rows.append({"segment": str(key), "n": len(g), "shift_raw": d_raw, "shift": d, "se": se,
+                         "a": a + d, "b": b, "win%": 100 * gw.mean(), "avg_px": gp.mean()})
+    return EdgeModel(pooled=(a, b), segments=segments), pd.DataFrame(rows)
 
 
 def training_trades(s: pd.DataFrame, meta: pd.DataFrame) -> pd.DataFrame:
@@ -159,11 +174,10 @@ def main() -> None:
     model, table = fit_model(t)
     model.info = {
         "fitted_utc": time.strftime("%Y-%m-%d %H:%M", time.gmtime()),
-        "form": "P(pays) = sigmoid(logit(ask) + delta); delta shrunk toward the pooled value",
+        "form": "P(pays) = sigmoid(a + b*logit(ask)); per-segment shift of a, shrunk toward the pooled line",
         "training": f"{len(t)} trades, ask in {BAND}, 3-60 scheduled days to end, non-sports non-crypto, "
                     "markets with >=100k shares already traded",
         "prior_strength": PRIOR_STRENGTH,
-        "pooled_delta_se": float(table.loc[0, "se"]),
     }
     model.save(args.out)
     table.to_csv(rep / "m_model_segments.csv", index=False)

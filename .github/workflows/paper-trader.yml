@@ -1,15 +1,12 @@
-# Runs one paper-trading cycle and commits the resulting account state.
+# Runs one paper-trading cycle for each paper account and commits the state.
 # Paper mode reads public market data only: no credentials, no orders.
 # To stop it: Actions tab -> "paper-trader" -> "..." -> "Disable workflow".
 name: paper-trader
 
 on:
-  workflow_dispatch:
-    inputs:
-      state:
-        description: "State directory (the default is the real paper account)"
-        required: false
-        default: "state/paper"
+  schedule:
+    - cron: "17 */2 * * *"     # every two hours; each run takes well under a minute
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -22,8 +19,6 @@ jobs:
   cycle:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    env:
-      STATE_DIR: ${{ github.event.inputs.state || 'state/paper' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -31,13 +26,17 @@ jobs:
           python-version: "3.12"
       - name: Install (engine only, no research stack)
         run: pip install -e .
-      - name: Run one cycle
-        run: kht cycle --config config/paper.json --state "$STATE_DIR" --report "$STATE_DIR/STATUS.md"
+      - name: Main account (the rule that passed its test)
+        run: kht cycle --config config/paper.json --state state/paper --report state/paper/STATUS.md
+      - name: Experimental account (resting-bid entry; unproven)
+        if: always()
+        run: kht cycle --config config/paper_maker.json --state state/paper-maker --report state/paper-maker/STATUS.md
       - name: Commit account state
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$STATE_DIR"
+          git add state/paper state/paper-maker
           if git diff --cached --quiet; then
             echo "nothing changed"
           else

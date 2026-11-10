@@ -109,7 +109,7 @@ def build_report(state_dir: str | Path) -> str:
     return "\n".join(lines) + "\n"
 
 
-def score_shadow(state_dir: str | Path, markets: dict[int, Any]) -> dict[str, Any]:
+def score_shadow(state_dir: str | Path, markets: dict[int, Any], band: str | None = None) -> dict[str, Any]:
     """Score the forward-test log against resolutions.
 
     ``markets`` maps market id to a ``LiveMarket`` (closed ones carry
@@ -117,6 +117,8 @@ def score_shadow(state_dir: str | Path, markets: dict[int, Any]) -> dict[str, An
     resolved signal, bought at the logged ask plus fee.
     """
     rows = _read_csv(Path(state_dir) / "shadow.csv")
+    if band is not None:
+        rows = [r for r in rows if r.get("band", "core") == band]
     resolved = []
     for r in rows:
         lm = markets.get(int(r["market_id"]))

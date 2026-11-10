@@ -100,6 +100,15 @@ class StrategyConfig:
     min_volume: float = 100_000         # shares traded so far (same rule as research)
     max_spread: float = 0.03
     min_edge: float = 0.01              # estimated profit per share after the fee
+    # The rule was tested as "in the band at one day's close, bought the next
+    # day if still in the band". The delay matters: it weeds out contracts that
+    # are falling through the band. Live, a contract must also have been in the
+    # band this many hours ago.
+    confirm_hours: float = 18.0
+    confirm_slack: float = 0.01         # the earlier price is a mid, the band is defined on the ask
+    # wider band that is only *logged* for the forward test, never traded
+    watch_lo: float = 0.90
+    watch_hi: float = 0.99
     # --- how to trade them
     stake_usd: float = 20.0
     max_new_per_cycle: int = 5
@@ -150,6 +159,20 @@ class HarvestStrategy:
 
     # ------------------------------------------------------------ candidates
     def candidates(self, markets: dict[int, LiveMarket], now: float) -> list[Candidate]:
+        """Contracts the rule may buy: in the trading band with enough estimated edge."""
+        return self.scan(markets, now, self.cfg.ask_lo, self.cfg.ask_hi, self.cfg.min_edge)
+
+    def watchlist(self, markets: dict[int, LiveMarket], now: float) -> list[Candidate]:
+        """Everything in the wider logged band, whatever the model thinks of it."""
+        return self.scan(markets, now, self.cfg.watch_lo, self.cfg.watch_hi, None)
+
+    def band_of(self, ask: float) -> str:
+        if ask <= self.cfg.ask_lo:
+            return "below"
+        return "core" if ask <= self.cfg.ask_hi else "above"
+
+    def scan(self, markets: dict[int, LiveMarket], now: float, lo: float, hi: float,
+             min_edge: float | None) -> list[Candidate]:
         cfg = self.cfg
         out: list[Candidate] = []
         for lm in markets.values():
@@ -165,14 +188,14 @@ class HarvestStrategy:
                 continue
             for outcome in (0, 1):
                 ask, bid = lm.ask(outcome), lm.bid(outcome)
-                if ask is None or bid is None or not (cfg.ask_lo < ask <= cfg.ask_hi):
+                if ask is None or bid is None or not (lo < ask <= hi):
                     continue
                 if ask - bid > cfg.max_spread + 1e-9 or ask - bid < -1e-9:
                     continue
                 p = self.model.p_win(ask, segment_keys(info.category, info.outcome0, outcome, info.neg_risk))
                 fee = taker_fee_per_share(ask, info.fee_rate, info.fee_exponent) if cfg.entry == "taker" else 0.0
                 edge = p - ask - fee
-                if edge < cfg.min_edge:
+                if min_edge is not None and edge < min_edge:
                     continue
                 out.append(Candidate(lm, outcome, ask, bid, dte, p, fee, edge, edge / ask / max(dte, 1.0)))
         out.sort(key=lambda c: c.daily_return, reverse=True)
@@ -185,7 +208,11 @@ class HarvestStrategy:
         portfolio: Portfolio,
         open_orders: list[Order],
         now: float,
+        confirmed: set[tuple[int, int]] | None = None,
     ) -> list[Intent]:
+        """Orders the strategy wants. ``confirmed`` is the set of (market id,
+        outcome) that were also in the band ``confirm_hours`` ago; when given,
+        nothing else is bought. Exits never need confirmation."""
         cfg = self.cfg
         intents: list[Intent] = []
         held_markets = {p.market_id for p in portfolio.positions.values()}
@@ -219,10 +246,12 @@ class HarvestStrategy:
             info = c.market.info
             if info.market_id in held_markets or info.market_id in working_markets:
                 continue
+            if confirmed is not None and (info.market_id, c.outcome) not in confirmed:
+                continue
             token = info.token(c.outcome)
             if cfg.entry == "maker":
-                # join the bid one tick below the ask: earn the spread, pay no fee
-                price = round_to_tick(min(c.ask - info.tick, c.bid + info.tick), info.tick, Side.BUY)
+                # join the best bid, as in the backtest: earn the spread, pay no fee
+                price = round_to_tick(c.bid, info.tick, Side.BUY)
                 kind, expires = OrderKind.MAKER, now + cfg.maker_ttl_hours * 3600
             else:
                 price = round_to_tick(c.ask, info.tick, Side.SELL)   # limit exactly at the ask
