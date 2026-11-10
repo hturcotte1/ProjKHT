@@ -34,6 +34,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "data" / "cache"
 SETS = {"big": "closed", "thin": "closed_thin", "thinner": "closed_thinner"}
 CEILING = {"big": float("inf"), "thin": 100_000, "thinner": 20_000}     # every market in the set ended below this
+TOP = 10**12                                                            # "no upper limit" for a range
 
 
 def news_meta(name: str) -> pd.DataFrame:
@@ -109,6 +110,6 @@ if __name__ == "__main__":
     import sys
 
     for set_name in sys.argv[1:]:
-        got = _part(set_name, [r for r in ((5_000, 20_000), (20_000, 100_000)) if CEILING[set_name] > r[0]])
+        got = _part(set_name, [r for r in ((5_000, 20_000), (20_000, 100_000), (100_000, TOP)) if CEILING[set_name] > r[0]])
         for (lo_, hi_), frame in got.items():
             print(f"{set_name}: {len(frame):,} trades in {frame['market_id'].nunique():,} markets while at {lo_:,} to {hi_:,} shares")

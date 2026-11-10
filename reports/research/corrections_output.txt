@@ -1,0 +1,166 @@
+##############################################################################################################
+1. The first round's rules in big markets
+##############################################################################################################
+big markets: 16,549 as the first round had them; 127 short-lived markets put back (Yes won in 50% of those, against 22% of the rest)
+
+R1d: 95-99c, legs included, holdout (the confirmed test)
+                     universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  of them in the markets put back  lost there
+   as the first round had it    2822    1652    52    1.84      0.97              0.96     3.62    3.22               17.0                                0           0
+short-lived markets put back    2829    1653    52    1.84      0.97              0.97     3.64    3.24               17.0                                7           0
+
+R1d: 95-99c, legs included, all three years
+                     universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  of them in the markets put back  lost there
+   as the first round had it    3810    2062    69    1.81      0.97              1.05     4.52    4.21               17.0                                0           0
+short-lived markets put back    3817    2063    69    1.81      0.97              1.05     4.54    4.22               17.0                                7           0
+
+R1: 90-97c, legs included, holdout
+                     universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  of them in the markets put back  lost there
+   as the first round had it    2319    1415   121    5.22      0.94              0.88     1.70    1.45               19.0                                0           0
+short-lived markets put back    2323    1417   121    5.21      0.94              0.88     1.71    1.47               19.0                                4           0
+
+main rule: 95-98c, stand-alone, holdout
+                     universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  of them in the markets put back  lost there
+   as the first round had it    1263    1007    24     1.9      0.97              1.52     3.68    3.52               21.0                                0           0
+short-lived markets put back    1265    1008    24     1.9      0.97              1.52     3.69    3.53               21.0                                2           0
+
+main rule: 95-98c, stand-alone, all three years
+                     universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  of them in the markets put back  lost there
+   as the first round had it    1836    1252    33     1.8      0.97              1.64     4.84    4.83               20.5                                0           0
+short-lived markets put back    1838    1253    33     1.8      0.97              1.64     4.86    4.84               20.0                                2           0
+
+90-98c, stand-alone, all three years
+                     universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  of them in the markets put back  lost there
+   as the first round had it    2171    1432    87    4.01      0.94              1.74     3.81    3.41               22.0                                0           0
+short-lived markets put back    2175    1434    87    4.00      0.94              1.75     3.83    3.43               22.0                                4           0
+
+stand-alone No, 95-99c
+                     universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  of them in the markets put back  lost there
+   as the first round had it    1938    1301    30    1.55      0.97              1.52     4.92    4.74               22.0                                0           0
+short-lived markets put back    1944    1302    30    1.54      0.97              1.52     4.94    4.76               22.0                                6           0
+
+stand-alone Yes, 95-99c
+                     universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  of them in the markets put back  lost there
+   as the first round had it     251     206     5    1.99      0.97              0.78     0.73    0.74                4.0                                0           0
+short-lived markets put back     252     206     5    1.98      0.97              0.79     0.73    0.74                4.0                                1           0
+
+leader: leg Yes, 95-99c
+                     universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  of them in the markets put back  lost there
+   as the first round had it     265     265     1    0.38      0.97              2.85     7.23    7.14               14.0                                0           0
+short-lived markets put back     265     265     1    0.38      0.97              2.85     7.23    7.14               14.0                                0           0
+
+stand-alone No, 50-90c
+                     universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  of them in the markets put back  lost there
+   as the first round had it    1428     937   326   22.83      0.75              3.75     2.07    2.27               23.0                                0           0
+short-lived markets put back    1433     938   327   22.82      0.75              3.77     2.09    2.28               22.0                                5           1
+
+long-dated No: 90-98c, 60-180 days, scheduled end passed
+                     universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days  of them in the markets put back  lost there
+   as the first round had it     524     401     7    1.34      0.94              5.41     9.91   10.45              100.5                                0           0
+short-lived markets put back     524     401     7    1.34      0.94              5.41     9.91   10.45              100.5                                0           0
+
+##############################################################################################################
+2. Round two's rules in thin markets
+##############################################################################################################
+
+R1d: 95-99c, legs included
+                                         universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+as round two had it (ended thin, lived two days)    3135    2167    31    0.99      0.97              1.69     9.01    7.81               14.0
+      the thin part of markets that ended bigger    3358    1544   121    3.60      0.97             -0.95    -2.92   -2.82               12.0
+      thin at the time, short-lived markets back    6502    3387   152    2.34      0.97              0.33     1.73    1.49               13.0
+
+main rule: 95-98c, stand-alone
+                                         universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+as round two had it (ended thin, lived two days)    1393    1069    18    1.29      0.97              1.96     5.96    5.42               15.0
+      the thin part of markets that ended bigger     933     723    33    3.54      0.97             -0.20    -0.32   -0.29               23.0
+      thin at the time, short-lived markets back    2332    1683    51    2.19      0.97              1.10     3.39    2.78               17.0
+
+thin band: 90-98c, stand-alone
+                                         universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+as round two had it (ended thin, lived two days)    1744    1265    53    3.04      0.95              2.40     5.47    5.75               16.0
+      the thin part of markets that ended bigger    1415    1015    97    6.86      0.94             -1.41    -1.69   -1.61               24.0
+      thin at the time, short-lived markets back    3168    2121   150    4.73      0.95              0.70     1.49    1.42               19.0
+
+90-95c, stand-alone
+                                         universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+as round two had it (ended thin, lived two days)    1073     830    41    3.82      0.93              3.24     5.22    5.69               16.0
+      the thin part of markets that ended bigger     962     745    88    9.15      0.93             -2.42    -2.15   -2.15               24.0
+      thin at the time, short-lived markets back    2037    1479   129    6.33      0.93              0.57     0.89    0.89               19.0
+
+thin account: 90-98c, stand-alone, calm, at the ask
+                                         universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+as round two had it (ended thin, lived two days)    1637    1221    46    2.81      0.95              2.52     5.75    6.15               17.0
+      the thin part of markets that ended bigger    1343     964    89    6.63      0.95             -1.26    -1.47   -1.39               24.0
+      thin at the time, short-lived markets back    2989    2037   135    4.52      0.95              0.83     1.73    1.67               20.0
+
+thin account's signals with a resting bid (TM)
+                                         universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+as round two had it (ended thin, lived two days)    1336    1022    52    3.89      0.93              3.57     5.63    5.31               16.0
+      the thin part of markets that ended bigger    1221     895    97    7.94      0.93             -0.97    -0.97   -0.95               22.0
+      thin at the time, short-lived markets back    2563    1794   149    5.81      0.93              1.42     2.33    2.15               19.0
+
+95-98c, stand-alone, calm, at the ask
+                                         universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+as round two had it (ended thin, lived two days)    1272     997    14    1.10      0.97              2.15     6.64    6.11               16.0
+      the thin part of markets that ended bigger     877     677    31    3.53      0.97             -0.21    -0.31   -0.29               24.0
+      thin at the time, short-lived markets back    2155    1575    45    2.09      0.97              1.20     3.60    3.03               19.0
+
+95-98c, stand-alone, calm, with a resting bid
+                                         universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+as round two had it (ended thin, lived two days)     953     776    22    2.31      0.95              2.84     4.40    3.74               15.0
+      the thin part of markets that ended bigger     765     599    39    5.10      0.95             -0.53    -0.57   -0.52               23.0
+      thin at the time, short-lived markets back    1722    1296    61    3.54      0.95              1.35     2.45    1.93               19.0
+
+==============================================================================================================
+TM on 'as round two had it (ended thin, lived two days)': 1,336 filled of 1,637 (82%); resting bid +3.57% (t = 5.63); bid minus ask +1.05 points (t = 2.65)  ->  PASSED
+TM on 'the thin part of markets that ended bigger': 1,221 filled of 1,343 (91%); resting bid -0.97% (t = -0.97); bid minus ask +0.29 points (t = 0.76)  ->  NOT PASSED
+TM on 'thin at the time, short-lived markets back': 2,563 filled of 2,989 (86%); resting bid +1.42% (t = 2.33); bid minus ask +0.59 points (t = 2.11)  ->  NOT PASSED
+==============================================================================================================
+
+Bid first, then the ask, thin at the time (3,358 first signals; exploratory, as in round two)
+                                                       entry  trades  share of first signals %  lost  avg cost  return a trade %  t_event  profit per first signal %
+                              bid filled on the first signal    1685                     50.18   117      0.92              1.05     1.28                       0.53
+not filled: the ask, 4 to 7 days later, if still in the band     988                     29.42    30      0.96              1.29     2.24                       0.38
+                     bid first, then the ask (both together)    2673                     79.60   147      0.93              1.14     2.02                       0.91
+                       the ask straight away, for comparison    2708                     80.64   120      0.95              0.88     1.75                       0.71
+
+##############################################################################################################
+3. What the markets could take, and the accounts
+##############################################################################################################
+
+the trade lists on the corrected universes (first print as in every backtest; 3-day average as a larger order would pay)
+
+              trades    n  a year  lost  ret % at first print    t  ret % at 3-day average   t   median hold, days  in-range $ bought: 10th pct  median  90th pct  trades with under $200 in range
+          thin tight 2332  782.15    51                  1.10 3.39                    0.84 2.61               17.0                        50.66 1158.68   8572.83                            22.43
+           thin wide 3168 1060.60   150                  0.70 1.49                    0.17 0.36               19.0                        80.90 1838.63  12851.44                            16.82
+thin wide, calm only 2989 1000.67   135                  0.83 1.73                    0.30 0.63               20.0                        82.59 1915.47  13326.50                            16.49
+           big tight 1838  619.31    33                  1.64 4.86                    1.30 3.84               20.0                       232.59 5517.21  79545.82                             9.09
+            big wide 2175  732.18    87                  1.75 3.83                    1.03 2.26               22.0                       343.54 8347.43  96180.00                             7.26
+ big wide, calm only 1951  656.78    63                  2.22 5.24                    1.54 3.66               23.0                       348.27 7656.22  84605.60                             7.33
+
+accounts: positions at most 10% of the in-range flow, priced at the 3-day average, one position per event, four per story, at most 80% invested
+
+                                    account  bankroll stake  taken  average position $  cut by flow %  losers  per year %  profit a year $  worst drawdown %  money in use %
+A. big tight (the main paper account today)      1000    2%    703                19.3            8.8      11         6.7             71.4              -4.5            31.5
+A. big tight (the main paper account today)      1000    4%    604                36.2           18.7       7        12.1            135.9              -9.0            46.1
+A. big tight (the main paper account today)      5000    2%    793                85.2           26.1      12         6.5            345.5              -4.1            29.7
+A. big tight (the main paper account today)      5000    4%    682               154.7           38.6       9        10.2            562.8              -9.7            44.3
+A. big tight (the main paper account today)     25000    2%    967               319.0           57.0      13         6.9           1841.1              -3.9            24.5
+A. big tight (the main paper account today)     25000    4%    966               499.6           71.2      12        12.1           3410.3              -3.6            34.9
+                          B. A + thin tight      1000    2%   1046                18.7           14.8      18         7.6             82.1              -5.2            41.3
+                          B. A + thin tight      1000    4%    771                34.3           28.9      14         8.6             93.3              -7.9            57.0
+                          B. A + thin tight      5000    2%   1274                74.6           44.7      23         6.5            344.8              -5.2            39.1
+                          B. A + thin tight      5000    4%   1042               126.7           58.1      17         9.1            495.9              -9.3            53.8
+                          B. A + thin tight     25000    2%   1806               234.1           74.7      37         5.1           1351.7              -3.2            32.0
+                          B. A + thin tight     25000    4%   1756               349.7           84.2      36         9.0           2458.4              -5.9            42.9
+                           C. A + thin wide      1000    2%   1095                18.4           17.5      37         2.5             25.4             -12.7            45.0
+                           C. A + thin wide      1000    4%    799                33.8           29.9      26         2.7             27.4             -18.0            59.0
+                           C. A + thin wide      5000    2%   1357                72.4           46.4      48         3.2            164.2              -9.5            41.8
+                           C. A + thin wide      5000    4%   1035               125.3           59.6      38        -2.4           -115.9             -22.0            57.4
+                           C. A + thin wide     25000    2%   1911               241.5           74.4      66         4.9           1289.5              -4.7            34.5
+                           C. A + thin wide     25000    4%   1882               367.9           85.2      64         8.4           2291.1              -7.0            46.4
+                D. A + thin wide, calm only      1000    2%   1077                18.5           16.2      38         1.9             19.6             -12.2            45.4
+                D. A + thin wide, calm only      1000    4%    785                34.0           28.9      26         3.2             33.0             -18.2            58.9
+                D. A + thin wide, calm only      5000    2%   1344                73.0           45.5      46         4.5            234.1              -8.9            41.6
+                D. A + thin wide, calm only      5000    4%   1077               124.1           59.3      39         2.1            106.7             -16.6            56.8
+                D. A + thin wide, calm only     25000    2%   1882               245.6           73.5      60         5.9           1572.7              -4.6            34.2
+                D. A + thin wide, calm only     25000    4%   1850               373.4           84.8      58         9.4           2570.6              -7.4            46.1

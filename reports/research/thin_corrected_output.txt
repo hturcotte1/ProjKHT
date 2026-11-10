@@ -1,0 +1,61 @@
+
+R1d: 95-99c, legs included
+                               universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+                ended thin (round two)    3135    2167    31    0.99      0.97              1.69     9.01    7.81               14.0
+thin part of markets that ended bigger    3351    1539   121    3.61      0.97             -0.96    -2.94   -2.84               12.0
+                      thin at the time    6486    3376   152    2.34      0.97              0.33     1.69    1.46               13.0
+
+main rule: 95-98c, stand-alone
+                               universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+                ended thin (round two)    1393    1069    18    1.29      0.97              1.96     5.96    5.42               15.0
+thin part of markets that ended bigger     929     719    33    3.55      0.97             -0.22    -0.34   -0.31               23.0
+                      thin at the time    2322    1676    51    2.20      0.97              1.09     3.35    2.74               18.0
+
+thin band: 90-98c, stand-alone
+                               universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+                ended thin (round two)    1744    1265    53    3.04      0.95              2.40     5.47    5.75               16.0
+thin part of markets that ended bigger    1408    1011    97    6.89      0.94             -1.44    -1.71   -1.64               24.0
+                      thin at the time    3152    2113   150    4.76      0.95              0.68     1.45    1.37               19.0
+
+90-95c, stand-alone
+                               universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+                ended thin (round two)    1073     830    41    3.82      0.93              3.24     5.22    5.69               16.0
+thin part of markets that ended bigger     961     744    88    9.16      0.93             -2.43    -2.16   -2.16               24.0
+                      thin at the time    2034    1476   129    6.34      0.93              0.56     0.87    0.87               19.0
+
+thin account: 90-98c, stand-alone, calm, at the ask
+                               universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+                ended thin (round two)    1637    1221    46    2.81      0.95              2.52     5.75    6.15               17.0
+thin part of markets that ended bigger    1336     960    89    6.66      0.95             -1.29    -1.50   -1.42               24.0
+                      thin at the time    2973    2029   135    4.54      0.95              0.81     1.68    1.63               20.0
+
+thin account's signals with a resting bid (TM)
+                               universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+                ended thin (round two)    1336    1022    52    3.89      0.93              3.57     5.63    5.31               16.0
+thin part of markets that ended bigger    1217     892    97    7.97      0.93             -1.00    -0.99   -0.98               22.0
+                      thin at the time    2553    1788   149    5.84      0.93              1.39     2.28    2.11               19.0
+
+95-98c, stand-alone, calm, at the ask
+                               universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+                ended thin (round two)    1272     997    14    1.10      0.97              2.15     6.64    6.11               16.0
+thin part of markets that ended bigger     873     673    31    3.55      0.97             -0.22    -0.33   -0.32               24.0
+                      thin at the time    2145    1568    45    2.10      0.97              1.19     3.55    2.99               19.0
+
+95-98c, stand-alone, calm, with a resting bid
+                               universe  trades  events  lost  lost %  avg cost  return a trade %  t_event  t_week  median hold, days
+                ended thin (round two)     953     776    22    2.31      0.95              2.84     4.40    3.74               15.0
+thin part of markets that ended bigger     762     596    39    5.12      0.95             -0.56    -0.61   -0.55               23.0
+                      thin at the time    1715    1292    61    3.56      0.95              1.33     2.40    1.89               19.0
+
+==============================================================================================================
+TM on 'ended thin (round two)': 1,336 filled of 1,637 (82%); resting bid +3.57% (t = 5.63); bid minus ask +1.05 points (t = 2.65)  ->  PASSED
+TM on 'thin part of markets that ended bigger': 1,217 filled of 1,336 (91%); resting bid -1.00% (t = -0.99); bid minus ask +0.29 points (t = 0.76)  ->  NOT PASSED
+TM on 'thin at the time': 2,553 filled of 2,973 (86%); resting bid +1.39% (t = 2.28); bid minus ask +0.58 points (t = 2.09)  ->  NOT PASSED
+==============================================================================================================
+
+Bid first, then the ask, thin at the time (3,325 first signals; exploratory, as in round two)
+                                                       entry  trades  share of first signals %  lost  avg cost  return a trade %  t_event  profit per first signal %
+                              bid filled on the first signal    1675                     50.38   117      0.92              1.01     1.23                       0.51
+not filled: the ask, 4 to 7 days later, if still in the band     988                     29.71    30      0.96              1.29     2.24                       0.38
+                     bid first, then the ask (both together)    2663                     80.09   147      0.93              1.12     1.97                       0.89
+                       the ask straight away, for comparison    2692                     80.96   120      0.95              0.86     1.69                       0.69
