@@ -1,0 +1,93 @@
+21,244,712 pre-game trades in 32,410 games (71s)
+
+[holdout]
+                                rule  trades  events  win%  avg_entry  gross_c  avg_ret%  t_2way  t_event
+               S1 favourites 75-95c    1083     998 82.92       0.84    -0.77     -1.74   -1.28    -1.24
+           control: underdogs 5-25c    1086    1001 17.13       0.17    -0.07     -7.65   -1.12    -1.11
+                  favourites 60-75c    1749    1701 64.27       0.67    -2.67     -5.63   -3.35    -3.38
+                  favourites 90-97c     177     169 96.05       0.93     2.74      2.56    1.47     1.44
+             near coin flips 45-55c    2161    1087 50.12       0.50    -0.36     -2.92  -12.86   -12.23
+    S2 follow a pre-game move >= 3c    2003    1947 57.51       0.57     0.64      0.04    0.02     0.02
+control: fade a pre-game move >= 3c    2006    1950 42.42       0.44    -1.60     -4.70   -1.61    -1.57
+                S2 with moves >= 5c     848     839 58.84       0.59    -0.25     -0.36   -0.11    -0.11
+
+[discovery]
+                                rule  trades  events  win%  avg_entry  gross_c  avg_ret%  t_2way  t_event
+               S1 favourites 75-95c      98      93 88.78       0.83     5.68      6.30    1.60     1.62
+           control: underdogs 5-25c      97      92 11.34       0.18    -6.42    -32.35   -1.47    -1.51
+                  favourites 60-75c     160     158 63.75       0.67    -3.52     -6.87   -1.33    -1.24
+                  favourites 90-97c      20      19 90.00       0.93    -3.09     -3.69   -0.49    -0.50
+             near coin flips 45-55c     219     110 49.77       0.50    -0.69     -3.11   -4.81    -4.63
+    S2 follow a pre-game move >= 3c     206     194 60.68       0.58     2.87      2.45    0.44     0.38
+control: fade a pre-game move >= 3c     207     195 39.13       0.43    -3.81    -16.52   -2.10    -2.05
+                S2 with moves >= 5c     106     102 59.43       0.59     0.13     -4.04   -0.41    -0.48
+
+S1 holdout breakdowns
+      dimension           level  trades  events   win%  avg_entry  gross_c  avg_ret%  t_2way  t_event
+        league             cfb      31    31.0  93.55       0.84     9.33     10.40    1.85     1.90
+        league         cricket       1     NaN    NaN        NaN      NaN       NaN     NaN      NaN
+        league         esports      93    93.0  81.72       0.83    -1.26     -2.14   -0.42    -0.44
+        league             mlb       1     NaN    NaN        NaN      NaN       NaN     NaN      NaN
+        league             nba     413   413.0  81.60       0.84    -2.29     -3.60   -1.53    -1.58
+        league ncaa-basketball       7     NaN    NaN        NaN      NaN       NaN     NaN      NaN
+        league             nfl      83    83.0  84.34       0.82     1.95      1.39    0.28     0.28
+        league             nhl       8     NaN    NaN        NaN      NaN       NaN     NaN      NaN
+        league           other      20    20.0 100.00       0.84    16.12     18.83    9.78    10.33
+        league          soccer     322   237.0  82.92       0.84    -0.89     -1.92   -0.70    -0.71
+        league          tennis      87    87.0  81.61       0.85    -3.66     -5.41   -1.20    -1.11
+        league             ufc      17    17.0  70.59       0.82   -11.22    -13.57   -1.32    -0.97
+       quarter          2024Q4      14    14.0  92.86       0.82    10.52     11.77    1.31     1.33
+       quarter          2025Q1      35    35.0  82.86       0.86    -3.09     -3.95   -0.48    -0.52
+       quarter          2025Q2      26    26.0  80.77       0.83    -2.64     -4.65   -0.49    -0.50
+       quarter          2025Q3       9     NaN    NaN        NaN      NaN       NaN     NaN      NaN
+       quarter          2025Q4     289   284.0  81.31       0.83    -1.56     -2.83   -1.11    -1.02
+       quarter          2026Q1     274   270.0  84.67       0.84     1.10      0.55    0.21     0.21
+       quarter          2026Q2     306   250.0  82.35       0.84    -1.79     -2.92   -1.13    -1.06
+       quarter          2026Q3     130   110.0  83.08       0.84    -1.22     -2.22   -0.51    -0.54
+reliable_start           False     201   201.0  83.58       0.84    -0.50     -1.40   -0.45    -0.45
+reliable_start            True     882   797.0  82.77       0.84    -0.82     -1.82   -1.17    -1.16
+        px_bin     (0.75, 0.8]     316   314.0  77.85       0.77     0.43     -0.54   -0.18    -0.18
+        px_bin     (0.8, 0.85]     316   313.0  78.48       0.82    -3.53     -5.14   -1.79    -1.84
+        px_bin     (0.85, 0.9]     304   300.0  86.84       0.88    -0.73     -1.42   -0.65    -0.63
+        px_bin    (0.9, 0.955]     147   144.0  95.24       0.93     2.54      2.33    1.11     1.09
+
+S2 holdout breakdowns
+      dimension           level  trades  events  win%  avg_entry  gross_c  avg_ret%  t_2way  t_event
+        league             cfb      33    33.0 54.55       0.55    -0.09      0.19    0.01     0.01
+        league         cricket       5     NaN   NaN        NaN      NaN       NaN     NaN      NaN
+        league         esports     178   178.0 57.30       0.57     0.03     -3.44   -0.49    -0.47
+        league             mlb     267   267.0 56.18       0.55     0.70     -0.54   -0.10    -0.10
+        league             nba     590   590.0 63.39       0.59     3.92      8.28    2.10     2.06
+        league ncaa-basketball       7     NaN   NaN        NaN      NaN       NaN     NaN      NaN
+        league             nfl      50    50.0 54.00       0.57    -2.52     -5.92   -0.37    -0.41
+        league             nhl     245   245.0 53.88       0.53     0.93     -0.62   -0.11    -0.10
+        league           other      19    18.0 52.63       0.57    -4.00    -13.88   -0.56    -0.66
+        league          soccer     415   360.0 53.25       0.54    -0.47     -3.06   -0.58    -0.56
+        league          tennis     161   161.0 59.63       0.63    -3.84     -6.13   -0.90    -0.88
+        league             ufc      16    16.0 43.75       0.60   -15.82    -27.04   -1.25    -1.21
+        league            wnba      17    17.0 52.94       0.57    -4.22    -21.89   -1.10    -1.17
+       quarter          2024Q3       1     NaN   NaN        NaN      NaN       NaN     NaN      NaN
+       quarter          2024Q4      30    30.0 70.00       0.62     7.70      7.05    0.58     0.52
+       quarter          2025Q1     112   112.0 69.64       0.63     6.28     12.07    1.42     1.40
+       quarter          2025Q2      49    49.0 61.22       0.56     4.84      8.18    0.64     0.59
+       quarter          2025Q3      22    22.0 59.09       0.57     2.05     -3.26   -0.19    -0.18
+       quarter          2025Q4     401   397.0 56.86       0.56     1.10      4.71    0.93     0.90
+       quarter          2026Q1     476   457.0 59.03       0.56     3.11      3.03    0.80     0.68
+       quarter          2026Q2     548   522.0 54.01       0.57    -2.83     -6.85   -1.57    -1.60
+       quarter          2026Q3     364   357.0 56.32       0.57    -0.75     -3.53   -0.70    -0.71
+reliable_start           False     363   362.0 58.13       0.60    -1.88     -5.26   -1.08    -1.08
+reliable_start            True    1640  1585.0 57.38       0.56     1.20      1.21    0.52     0.49
+      move_bin    (0.03, 0.05]    1155  1131.0 56.54       0.55     1.30      0.34    0.12     0.11
+      move_bin     (0.05, 0.1]     657   648.0 57.38       0.58    -0.13     -0.30   -0.08    -0.08
+      move_bin      (0.1, 1.0]     191   191.0 63.87       0.65    -0.67     -0.57   -0.10    -0.10
+
+calibration slope of the entry price (slope > 1: favourites underpriced)
+    sample  slope    se  t_vs_1    n
+  holdout  0.967 0.041  -0.814 4950
+discovery  1.127 0.140   0.903  492
+
+done in 112s
+
+real	1m52.886s
+user	3m8.290s
+sys	0m38.029s
