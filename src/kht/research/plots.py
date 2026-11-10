@@ -111,3 +111,12 @@ def save(fig, path: str | Path, top: float = 0.83) -> Path:
     fig.savefig(path)
     plt.close(fig)
     return path
+
+
+def percent_axis(ax, step: float | None = None) -> None:
+    """Percent tick labels with a real minus sign, on round steps."""
+    from matplotlib.ticker import FuncFormatter, MultipleLocator
+
+    if step:
+        ax.yaxis.set_major_locator(MultipleLocator(step))
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:.0f}%".replace("-", "\u2212")))

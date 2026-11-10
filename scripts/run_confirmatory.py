@@ -235,15 +235,15 @@ def main() -> None:
     # ------------------------------------------------------------------ 4
     section("4. R1 as an account: $1,000 bankroll, finite capital (holdout period only)")
     acct = []
-    for stake, max_event in ((20, 40), (50, 100), (100, 200)):
+    for stake, max_event in ((20, 20), (20, 40), (50, 50), (100, 100)):
         for compound in (False, True):
             r = run_portfolio(h.drop(columns=["year", "half", "dte_bin", "px_bin", "outcome_side"]),
                               Capital(bankroll=1000, stake=stake, max_event=max_event, compound=compound))
             acct.append({"stake": stake, "max_event": max_event, "compound": compound, **r.stats})
-            if stake == 50 and not compound:
+            if stake == 20 and not compound:
                 r.equity.assign(date=pd.to_datetime(r.equity["period"] * 86_400, unit="s")).to_csv(
-                    out / "c4_r1_equity_stake50.csv", index=False)
-                r.trades.to_csv(out / "c4_r1_account_trades_stake50.csv", index=False)
+                    out / "c4_r1_equity_stake20.csv", index=False)
+                r.trades.to_csv(out / "c4_r1_account_trades_stake20.csv", index=False)
     acct = pd.DataFrame(acct)
     acct.to_csv(out / "c4_r1_account.csv", index=False)
     print(acct.round(3).to_string(index=False))
