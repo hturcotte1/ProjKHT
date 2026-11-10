@@ -35,11 +35,19 @@ tapes were still downloading and before any had been opened:
     T5-H   the house: stand-alone, "No" at 50-90c, 3-60 days.
            Bar: return per trade positive with |t| >= 3.
 
+Also before any tape was opened, the universe above was found to be chosen
+with hindsight: a market's final volume is not known when a trade is made,
+and markets where the surprise happens trade more and leave the group. Every
+test is therefore judged on markets WHILE they had traded 5,000 to 20,000
+shares, whatever they traded later (scripts/at_the_time.py). The universe as
+first fixed is run beside it as a measure of the flaw.
+
     python scripts/run_thinner.py
 """
 
 from __future__ import annotations
 
+import gc
 import sys
 import warnings
 from pathlib import Path
@@ -48,12 +56,11 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import at_the_time as att  # noqa: E402
 import run_quiet_favourites as rq  # noqa: E402
-import run_quiet_replication as rr  # noqa: E402
 import run_thin_markets as tm  # noqa: E402
 
 from kht.backtest.harvest import Rule, candidate_trades, prepare  # noqa: E402
-from kht.data.download import load_meta  # noqa: E402
 from kht.research.quotes import add_taker_buy_pnl, by_side, period_quotes  # noqa: E402
 from kht.research.sports import build_trades_table  # noqa: E402
 from kht.research.stats import mean_cluster  # noqa: E402
@@ -63,35 +70,25 @@ warnings.filterwarnings("ignore")
 pd.set_option("display.width", 250)
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "reports" / "research"
-MIN_CUM = 5_000
+MIN_CUM, MAX_CUM = 5_000, 20_000
 SCHEDULED_BY = pd.Timestamp("2026-10-27").timestamp()     # T5-L: only markets whose scheduled end is behind us
 BIG_PANEL = ROOT / "data" / "cache" / "panel_non_sports.parquet"
-THIN_PANEL = ROOT / "data" / "cache" / "panel_thin.parquet"
-# the same rules on the 20,000-100,000 markets, from qt_quiet_replication.csv and t_thin_trades.csv
-THIN = {"R1d: 95-99c, legs included": (1.69, 9.01, 3135), "main rule: 95-98c, stand-alone": (1.96, 5.96, 1393),
-        "thin band: 90-98c, stand-alone": (2.40, 5.47, 1744)}
+UNIVERSES = (("AS FIRST FIXED: markets that ENDED at 5,000 to 20,000 shares (chosen with hindsight; not the standard)", ("thinner",), "_as_fixed"),
+             ("CORRECTED, AND THE ONE THE BARS ARE JUDGED ON: markets WHILE they had traded 5,000 to 20,000 shares", None, ""))
 
 
-def thinner_meta() -> pd.DataFrame:
-    meta = load_meta("closed_thinner")
-    life = (meta["closed_ts"].fillna(meta["end_ts"]) - meta["start_ts"]) / 86_400
-    resolved = meta["winner"].notna() | (meta["final0"] == 0.5)
-    meta = meta[(meta["category"] != "sports") & (meta["category"] != "crypto") & (life >= 2) & resolved].copy()
-    meta["closed_ts"] = meta["closed_ts"].fillna(meta["end_ts"])
-    return meta[meta["closed_ts"].notna()]
+def ready(p: pd.DataFrame) -> pd.DataFrame:
+    p = prepare(p)
+    p = p[p["won"].notna()].reset_index(drop=True)
+    p["series"] = p.groupby(["market_id", "side"], sort=False).ngroup()
+    return p
 
 
-def main() -> None:
-    meta = thinner_meta()
-    have = {p.stem for p in (ROOT / "data" / "trades").glob("*.parquet")}
-    print(f"news markets that traded 5,000 to 20,000 shares: {len(meta):,}; tapes on disk: {int(meta['condition_id'].isin(have).sum()):,}")
-    tr = build_trades_table(meta)
-    s = prepare(add_taker_buy_pnl(by_side(period_quotes(tr, min_cum=MIN_CUM), meta)))
-    s = s[s["won"].notna()].reset_index(drop=True)
-    s["series"] = s.groupby(["market_id", "side"], sort=False).ngroup()
+def run(label: str, meta: pd.DataFrame, tr: pd.DataFrame, s: pd.DataFrame, suffix: str, min_cum: int = MIN_CUM) -> None:
+    print("\n" + "=" * 110 + f"\n{label}\n" + "=" * 110)
     print(f"panel: {len(s):,} outcome-days in {s['market_id'].nunique():,} markets, {s['cluster'].nunique():,} events, "
           f"{pd.to_datetime(s.ts.min(), unit='s').date()} to {pd.to_datetime(s.ts.max(), unit='s').date()}")
-    single = ~meta.set_index("market_id")["neg_risk"].reindex(s["market_id"]).fillna(False).to_numpy(dtype=bool)
+    single = ~s["neg_risk"].fillna(False).to_numpy(dtype=bool)
     ask, dte = s["ask"].to_numpy(), s["days_to_end"].to_numpy()
     ok = (dte > 3) & (dte <= 60)
 
@@ -104,46 +101,58 @@ def main() -> None:
     kept = {}
     for name, lo, hi, mask in rules:
         t = candidate_trades(s, Rule(lo, hi, 3, 60), signal=(ask > lo) & (ask <= hi) & ok & mask)
-        t = t.join(tm.band_flow(tr, t, lo, hi, MIN_CUM), on="market_id")
+        t = t.join(tm.band_flow(tr, t, lo, hi, min_cum), on="market_id")
         fee_rate = t["entry_fee"] / (t["entry_px"] * (1 - t["entry_px"]))
         t["cost_vwap"] = t["vwap"] + fee_rate * t["vwap"] * (1 - t["vwap"])
         t["ret_vwap"] = (t["proceeds"] - t["cost_vwap"]) / t["cost_vwap"]
         kept[name] = t
         a = mean_cluster(t["ret"].to_numpy(), t["cluster"].to_numpy())
+        w = mean_cluster(t["ret"].to_numpy(), (t["entry_period"] // 7).to_numpy())
         b = mean_cluster(t["ret_vwap"].to_numpy(), t["cluster"].to_numpy())
         q = t["usd_window"].quantile([0.10, 0.50, 0.90])
         rows.append({"rule": name, "trades": len(t), "events": int(t["cluster"].nunique()), "lost": int((t["won"] == 0).sum()),
-                     "lost %": 100 * float((t["won"] == 0).mean()), "return a trade %": 100 * a.mean, "t_event": a.t,
-                     "at the 3-day average %": 100 * b.mean, "t ": b.t, "in the 20-100k markets %": THIN.get(name, (np.nan,))[0],
+                     "lost %": 100 * float((t["won"] == 0).mean()), "return a trade %": 100 * a.mean, "t_event": a.t, "t_week": w.t,
+                     "at the 3-day average %": 100 * b.mean, "t ": b.t,
                      "in-range $: 10th pct": q[0.10], "median": q[0.50], "90th pct": q[0.90],
                      "under $100 in range %": 100 * float((t["usd_window"] < 100).mean())})
     res = pd.DataFrame(rows)
-    res.to_csv(OUT / "t5_thinner.csv", index=False)
+    res.to_csv(OUT / f"t5_thinner{suffix}.csv", index=False)
     print("\n", res.round(2).to_string(index=False))
     r1d = kept["R1d: 95-99c, legs included"]
     r = mean_cluster(r1d["ret"].to_numpy(), r1d["cluster"].to_numpy())
-    print("=" * 110)
-    print(f"T5: R1d on markets with 5,000 to 20,000 shares: {len(r1d):,} trades in {r1d['cluster'].nunique():,} events, "
+    print("-" * 110)
+    print(f"T5: R1d: {len(r1d):,} trades in {r1d['cluster'].nunique():,} events, "
           f"{int((r1d['won'] == 0).sum())} lost; return per trade {100 * r.mean:+.2f}% (t = {r.t:.2f})")
     print(f"  bar (positive with |t| >= 3)  ->  {'PASSED' if r.mean > 0 and abs(r.t) >= 3 else 'NOT PASSED'}")
-    print(f"  prediction (at least the +1.69% of the 20,000-100,000 markets)  ->  {'held' if 100 * r.mean >= 1.69 else 'did not hold'}")
-    print("=" * 110)
+    print("-" * 110)
     for name in ("main rule: 95-98c, stand-alone", "thin band: 90-98c, stand-alone"):
         t = kept[name]
         t["year"] = pd.to_datetime(t["entry_period"], unit="D").dt.year
         print(f"\n{name} by year of entry:")
         print(t.groupby("year").agg(trades=("won", "size"), lost=("won", lambda w: int((w == 0).sum())),
                                     avg_ret_pct=("ret", lambda x: 100 * x.mean())).round(2).to_string())
-    third_round(meta, s, kept)
+    third_round(meta, s, kept, suffix)
+
+
+def main() -> None:
+    have = {p.stem for p in (ROOT / "data" / "trades").glob("*.parquet")}
+    new = att.news_meta("thinner")
+    print(f"news markets that ended at 5,000 to 20,000 shares: {len(new):,}; tapes on disk: {int(new['condition_id'].isin(have).sum()):,}")
+    for label, only, suffix in UNIVERSES:
+        meta, tr, p = att.panel(MIN_CUM, MAX_CUM, only)
+        run(label, meta, tr, ready(p), suffix)
+        del meta, tr, p
+        gc.collect()
 
 
 def line(t: pd.DataFrame) -> dict:
     if len(t) < 2:
         return {"trades": len(t)}
     r = mean_cluster(t["ret"].to_numpy(), t["cluster"].to_numpy())
+    w = mean_cluster(t["ret"].to_numpy(), (t["entry_period"] // 7).to_numpy())       # by week of entry: news that hits many events at once
     return {"trades": len(t), "events": int(t["cluster"].nunique()), "lost": int((t["won"] == 0).sum()),
             "lost %": 100 * float((t["won"] == 0).mean()), "avg cost": float(t["cost"].mean()),
-            "return a trade %": 100 * r.mean, "t_event": r.t, "median hold, days": float(t["hold"].median())}
+            "return a trade %": 100 * r.mean, "t_event": r.t, "t_week": w.t, "median hold, days": float(t["hold"].median())}
 
 
 def yes_no(meta: pd.DataFrame) -> pd.Series:
@@ -177,7 +186,7 @@ def earlier_panel(path: Path, meta: pd.DataFrame, min_cum: float) -> pd.DataFram
     return p
 
 
-def third_round(meta: pd.DataFrame, s: pd.DataFrame, kept: dict[str, pd.DataFrame]) -> None:
+def third_round(meta: pd.DataFrame, s: pd.DataFrame, kept: dict[str, pd.DataFrame], suffix: str = "") -> None:
     """The four tests fixed in docs/05_third_round.md, section 3."""
     m = meta.set_index("market_id")
     yn_of = yes_no(meta)
@@ -238,9 +247,10 @@ def third_round(meta: pd.DataFrame, s: pd.DataFrame, kept: dict[str, pd.DataFram
         d, t_d = rq.gap(here[here["side"] == 1], here[here["side"] == 0])
         sign_ok = d > 0
         print(f"  in these markets: No minus Yes {100 * d:+.2f} points (t = {t_d:.2f}); predicted sign {'held' if sign_ok else 'did not hold'}")
-    big_meta, thin_meta = tm.big_meta(), rr.thin_meta()
+    big_meta = tm.big_meta()
+    thin_meta, _, thin_panel = att.panel(20_000, 100_000)            # thin at the time
     allt = pd.concat([here, side_split(earlier_panel(BIG_PANEL, big_meta, 100_000), big_meta, "big:"),
-                      side_split(earlier_panel(THIN_PANEL, thin_meta, 20_000), thin_meta, "thin:")], ignore_index=True)
+                      side_split(ready(thin_panel), thin_meta, "thin:")], ignore_index=True)
     d, t_d = rq.gap(allt[allt["side"] == 1], allt[allt["side"] == 0])
     print(f"  pooled over the three universes ({int((allt['side'] == 1).sum()):,} No and {int((allt['side'] == 0).sum()):,} Yes trades): "
           f"No minus Yes {100 * d:+.2f} points (t = {t_d:.2f})")
@@ -272,7 +282,7 @@ def third_round(meta: pd.DataFrame, s: pd.DataFrame, kept: dict[str, pd.DataFram
         print(f"\nT5-H, the house: {len(house):,} trades in {house['cluster'].nunique():,} events, {100 * house['won'].mean():.1f}% won at an average cost of "
               f"{100 * house['cost'].mean():.1f}c; {100 * c.mean:+.2f}c a share (t = {c.t:.2f}); return per trade {100 * r.mean:+.2f}% (t = {r.t:.2f})")
         print(f"  bar (return per trade positive with |t| >= 3)  ->  {'PASSED' if r.mean > 0 and abs(r.t) >= 3 else 'NOT PASSED'}")
-        print(f"  prediction (at least the thin markets' +6.7c a share)  ->  {'held' if 100 * c.mean >= 6.7 else 'did not hold'}")
+        print(f"  prediction as first written (+6.7c a share, a figure since found to be overstated)  ->  {'held' if 100 * c.mean >= 6.7 else 'did not hold'}")
         behind = house[m["end_ts"].reindex(house["market_id"]).to_numpy() <= SCHEDULED_BY]
         rows.append({"test": "the house (No at 50-90c, 3-60 days, stand-alone)", "group": "scheduled end passed", **line(behind)})
         for name, g in (("3-20 days left", house[house["dte_at_signal"] <= 20]), ("20-60 days left", house[house["dte_at_signal"] > 20]),
@@ -299,11 +309,11 @@ def third_round(meta: pd.DataFrame, s: pd.DataFrame, kept: dict[str, pd.DataFram
             grid.append({"paid": f"{100 * lo:.0f}-{100 * hi:.0f}c", "side": sn, "trades": len(g), "won %": 100 * float(g["won"].mean()),
                          "avg cost": float(g["cost"].mean()), "cents a share": 100 * c.mean, "t": c.t})
     grid = pd.DataFrame(grid)
-    grid.to_csv(OUT / "t5_side_by_price.csv", index=False)
+    grid.to_csv(OUT / f"t5_side_by_price{suffix}.csv", index=False)
     print("\nEvery price, each side (stand-alone Yes/No markets, 3-60 days; no bar):\n", grid.round(2).to_string(index=False))
 
     res = pd.DataFrame(rows)
-    res.to_csv(OUT / "t5_third_round.csv", index=False)
+    res.to_csv(OUT / f"t5_third_round{suffix}.csv", index=False)
     print("\n", res.round(2).to_string(index=False))
     # reported without a bar: categories inside R1d
     cats = pd.DataFrame([{"category": c, **line(g)} for c, g in kept["R1d: 95-99c, legs included"].groupby("category")])
