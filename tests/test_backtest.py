@@ -18,6 +18,7 @@ def panel(rows):
     df["usd"] = 1_000.0
     df["fee_rate"] = 0.04
     df["category"] = "politics"
+    df["bid_lo"] = df["bid"]
     return prepare(df)
 
 
@@ -109,3 +110,52 @@ def test_cannot_spend_more_than_cash():
     res = run_portfolio(t, Capital(bankroll=30, stake=20, max_event=40, max_exposure_frac=1.0))
     assert res.trades["stake"].sum() <= 30 + 1e-9
     assert res.equity["cash"].min() >= -1e-9
+
+
+def maker_panel(rows):
+    """rows: (period, ask, bid, bid_lo, won)"""
+    df = pd.DataFrame([(1, 0, p, a, b, a, b, w, 30, 20.0 - p, 5, lo) for p, a, b, lo, w in rows],
+                      columns=["market_id", "side", "period", "ask", "bid", "ask_first", "bid_first", "won",
+                               "closed_p", "days_to_end", "cluster", "bid_lo"])
+    df["ts"] = (df["period"] + 1) * DAY
+    df["closed_ts"] = df["closed_p"] * DAY + 10
+    df["usd"] = 1_000.0
+    df["fee_rate"] = 0.04
+    df["category"] = "politics"
+    return prepare(df)
+
+
+def test_maker_entry_needs_a_print_through_the_bid_and_pays_no_fee():
+    s = maker_panel([(10, 0.94, 0.93, 0.93, 1.0),      # signal: rest a bid at 0.93
+                     (11, 0.94, 0.93, 0.93, 1.0),      # sells print AT 0.93 only: queue unknown -> no fill
+                     (12, 0.93, 0.92, 0.92, 1.0)])     # a sell prints at 0.92 < 0.93: we were swept
+    t = candidate_trades(s, Rule(entry="maker"))
+    assert len(t) == 1 and t.loc[0, "entry_period"] == 12
+    assert t.loc[0, "entry_px"] == 0.93 and t.loc[0, "entry_fee"] == 0.0
+
+
+def test_maker_entry_does_not_fill_without_a_trade_through():
+    # every later sell prints at or above the bids we would have rested (0.93, then 0.94)
+    s = maker_panel([(10, 0.94, 0.93, 0.93, 1.0), (11, 0.95, 0.94, 0.94, 1.0), (12, 0.95, 0.94, 0.94, 1.0)])
+    assert candidate_trades(s, Rule(entry="maker")).empty
+
+
+def test_custom_signal_and_fixed_holding_period():
+    rows = [(1, 0, p, 0.50, 0.49, 0.50, 0.49, 1.0, 40, 30.0 - p, 5) for p in range(10, 20)]
+    s = panel(rows)
+    sig = (s["period"] == 12).to_numpy()
+    t = candidate_trades(s, Rule(ask_lo=0.05, ask_hi=0.95, hold_periods=2), signal=sig)
+    assert len(t) == 1
+    assert t.loc[0, "signal_period"] == 12 and t.loc[0, "entry_period"] == 13
+    assert t.loc[0, "exit_reason"] == "hold" and t.loc[0, "exit_period"] == 16     # trigger at 15, sell at next print
+    # bought at the ask, sold at the bid, fee both ways: a round trip in a flat market loses
+    assert t.loc[0, "pnl_ps"] == pytest.approx(0.49 - 0.50 - 2 * 0.04 * 0.25, abs=1e-4)
+
+
+def test_reentry_allows_non_overlapping_trades_only():
+    rows = [(1, 0, p, 0.50, 0.49, 0.50, 0.49, 1.0, 60, 50.0 - p, 5) for p in range(10, 30)]
+    s = panel(rows)
+    sig = np.ones(len(s), dtype=bool)
+    t = candidate_trades(s, Rule(ask_lo=0.05, ask_hi=0.95, hold_periods=2, reentry=True), signal=sig)
+    assert len(t) > 1
+    assert (t["entry_period"].to_numpy()[1:] > t["exit_period"].to_numpy()[:-1]).all()

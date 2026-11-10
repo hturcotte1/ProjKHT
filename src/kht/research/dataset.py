@@ -22,8 +22,10 @@ from .panel import Panel, build_panel
 
 BAR_12H = 43_200
 BAR_3H = 10_800
+BAR_1D = 86_400
 HORIZONS_12H = {"12h": 1, "1d": 2, "2d": 4, "3d": 6, "7d": 14, "14d": 28}
 HORIZONS_3H = {"3h": 1, "6h": 2, "12h": 4, "1d": 8, "2d": 16, "3d": 24, "7d": 56}
+HORIZONS_1D = {"1d": 1, "2d": 2, "3d": 3, "7d": 7, "14d": 14}
 
 META_COLS = ["market_id", "event_id", "category", "winner", "start_ts", "end_ts", "closed_ts",
              "game_start_ts", "volume", "outcome0", "outcome1", "sports_type", "neg_risk",
@@ -56,6 +58,10 @@ def make_dataset(
     elif grain == "3h":
         bar_seconds, horizons = BAR_3H, HORIZONS_3H
         prices = prices.loc[prices["ts"] >= three_hour_era_start(prices)]
+    elif grain == "1d":
+        # daily mids rebuilt from the trade tape (research.quotes.tape_mids),
+        # which already start only once a market has traded enough
+        bar_seconds, horizons = BAR_1D, HORIZONS_1D
     else:
         raise ValueError(grain)
 

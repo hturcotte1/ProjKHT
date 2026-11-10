@@ -131,3 +131,16 @@ def add_taker_buy_pnl(s: pd.DataFrame) -> pd.DataFrame:
     s["net_ps"] = s["gross_ps"] - s["fee_ps"]
     s["net_ret"] = s["net_ps"] / s["ask"]          # return on the cash put up
     return s
+
+
+def tape_mids(q: pd.DataFrame, max_spread: float = 0.10) -> pd.DataFrame:
+    """Daily mid of outcome 0 from the tape panel, as ``(market_id, ts, price)``.
+
+    Uses the mid of the last taker buy and last taker sell when both printed
+    that day and the implied spread is sane; otherwise the last trade price.
+    The result plugs straight into ``dataset.make_dataset(..., grain="1d")``.
+    """
+    spread = q["ask0"] - q["bid0"]
+    ok = spread.between(-0.005, max_spread)
+    price = np.where(ok, 0.5 * (q["ask0"] + q["bid0"]), q["last0"])
+    return pd.DataFrame({"market_id": q["market_id"].to_numpy(), "ts": q["ts"].to_numpy(), "price": price})

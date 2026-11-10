@@ -37,9 +37,12 @@ class Rule:
     categories: tuple[str, ...] | None = None
     min_period_usd: float = 0.0      # activity in the signal period
     max_wait: int = 3                # periods to wait for an entry print
+    entry: str = "taker"             # "taker": lift the ask. "maker": rest a bid at the signal bar's bid
     exit_dte: float | None = None    # sell once scheduled days-to-end <= this (None = hold)
     stop_bid: float | None = None    # sell if the bid closes at or below this
     take_bid: float | None = None    # sell if the bid closes at or above this
+    hold_periods: int | None = None  # sell after this many periods (None = no time limit)
+    reentry: bool = False            # allow a new trade in the same market after the previous one exits
     name: str = "rule"
 
     def to_dict(self) -> dict:
@@ -78,9 +81,16 @@ def _series_index(s: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
     return start, stop
 
 
-def candidate_trades(s: pd.DataFrame, rule: Rule, period_seconds: int = 86_400) -> pd.DataFrame:
+def candidate_trades(
+    s: pd.DataFrame, rule: Rule, period_seconds: int = 86_400, signal: np.ndarray | None = None
+) -> pd.DataFrame:
     """All trades the rule would take with unlimited capital: at most one per
-    market (the first time it qualifies)."""
+    market (the first time it qualifies) unless ``rule.reentry`` is set.
+
+    ``signal`` optionally replaces the built-in price/duration filter with any
+    boolean array aligned to ``s`` (it must only use information available at
+    the end of each row's period). The price limits still apply to the entry.
+    """
     period = s["period"].to_numpy()
     ask = s["ask"].to_numpy()
     bid = s["bid"].to_numpy()
@@ -92,7 +102,13 @@ def candidate_trades(s: pd.DataFrame, rule: Rule, period_seconds: int = 86_400) 
     won = s["won"].to_numpy()
     closed_p = np.floor(s["closed_ts"].to_numpy() / float(period_seconds))
 
-    signal = (ask > rule.ask_lo) & (ask <= rule.ask_hi) & (dte > rule.dte_lo) & (dte <= rule.dte_hi)
+    bid_lo = s["bid_lo"].to_numpy()      # lowest price a taker sold this outcome at, per period
+    if signal is None:
+        signal = (ask > rule.ask_lo) & (ask <= rule.ask_hi) & (dte > rule.dte_lo) & (dte <= rule.dte_hi)
+    else:
+        signal = np.asarray(signal, dtype=bool) & (ask > rule.ask_lo) & (ask <= rule.ask_hi)
+    if rule.entry == "maker":
+        signal &= np.isfinite(bid)
     signal &= usd >= rule.min_period_usd
     if rule.categories is not None:
         signal &= s["category"].isin(rule.categories).to_numpy()
@@ -108,28 +124,50 @@ def candidate_trades(s: pd.DataFrame, rule: Rule, period_seconds: int = 86_400) 
         mid = int(market[a])
         if mid in taken_markets:
             continue
+        busy_until = -1                    # row index of the previous trade's exit (re-entry mode)
         for i0 in sig:
             i = a + i0
-            # first later row with a taker-buy print inside the limits
-            entry = -1
-            for j in range(i + 1, b):
-                if period[j] - period[i] > rule.max_wait:
-                    break
-                px = ask_first[j]
-                if np.isfinite(px):
-                    if rule.ask_lo < px <= rule.ask_hi + 0.005:
-                        entry = j
-                    break                      # the first print decides: in range or no trade
-            if entry < 0:
+            if i <= busy_until:
                 continue
-            px_in = float(ask_first[entry])
-            fee_in = float(fee_rate[entry] * px_in * (1 - px_in))
+            entry = -1
+            if rule.entry == "maker":
+                # A bid resting at the signal bar's bid. It fills only when a
+                # later taker sell prints strictly *through* it, which proves
+                # the level was swept; a print merely at the price is ignored
+                # because our place in the queue is unknown. Makers pay no fee.
+                my_bid = float(bid[i])
+                for j in range(i + 1, b):
+                    if period[j] - period[i] > rule.max_wait:
+                        break
+                    if np.isfinite(bid_lo[j]) and bid_lo[j] < my_bid - 1e-9:
+                        entry = j
+                        break
+                if entry < 0:
+                    continue
+                px_in, fee_in = my_bid, 0.0
+            else:
+                # first later row with a taker-buy print inside the limits
+                for j in range(i + 1, b):
+                    if period[j] - period[i] > rule.max_wait:
+                        break
+                    px = ask_first[j]
+                    if np.isfinite(px):
+                        if rule.ask_lo < px <= rule.ask_hi + 0.005:
+                            entry = j
+                        break                      # the first print decides: in range or no trade
+                if entry < 0:
+                    continue
+                px_in = float(ask_first[entry])
+                fee_in = float(fee_rate[entry] * px_in * (1 - px_in))
             # walk forward for a rule-based exit
             exit_row, exit_px, reason = -1, np.nan, "resolution"
-            if rule.exit_dte is not None or rule.stop_bid is not None or rule.take_bid is not None:
+            if (rule.exit_dte is not None or rule.stop_bid is not None or rule.take_bid is not None
+                    or rule.hold_periods is not None):
                 for j in range(entry, b - 1):
                     trig = None
-                    if rule.exit_dte is not None and dte[j] <= rule.exit_dte:
+                    if rule.hold_periods is not None and period[j] - period[entry] >= rule.hold_periods:
+                        trig = "hold"
+                    elif rule.exit_dte is not None and dte[j] <= rule.exit_dte:
                         trig = "time"
                     elif rule.stop_bid is not None and np.isfinite(bid[j]) and bid[j] <= rule.stop_bid:
                         trig = "stop"
@@ -156,6 +194,9 @@ def candidate_trades(s: pd.DataFrame, rule: Rule, period_seconds: int = 86_400) 
             rows.append((mid, int(s["side"].iloc[entry]), int(s["cluster"].iloc[entry]), s["category"].iloc[entry],
                          int(period[i]), int(period[entry]), max(exit_period, int(period[entry])), px_in, fee_in,
                          proceeds, reason, float(dte[i]), float(won[entry]) if np.isfinite(won[entry]) else np.nan))
+            if rule.reentry:
+                busy_until = exit_row if exit_row >= 0 else b
+                continue
             taken_markets.add(mid)
             break
     cols = ["market_id", "side", "cluster", "category", "signal_period", "entry_period", "exit_period",
