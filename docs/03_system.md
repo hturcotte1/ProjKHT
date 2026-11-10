@@ -105,7 +105,11 @@ Two **kill switches** are evaluated every cycle from equity marked at the bid:
 a daily loss limit and a maximum drawdown from the high-water mark. Once
 tripped, buying stops and resting buy orders are cancelled; selling stays
 allowed. It stays tripped until a person resets it — a new day does not clear
-it. An empty side of the order book is not read as a price: a position
+it. A day starts from the higher of the equity now and the equity the previous
+cycle ended on, so a loss that lands between two cycles on either side of
+midnight counts against the new day, and after several days without a cycle
+the daily limit covers everything lost since the last one. An empty side of
+the order book is not read as a price: a position
 with no usable quote is carried at cost until one returns, so a cleared book
 cannot trip the switch, while a real collapse (the other outcome bid high)
 still does.
@@ -119,7 +123,11 @@ The paper broker sends nothing to the exchange but is deliberately strict:
   is not filled is cancelled, not assumed.
 - A **resting** order fills only when a real trade later prints through its
   price on the public tape, or at its price after the shares that were already
-  queued ahead of it have traded.
+  queued ahead of it have traded. Every trade since the previous cycle is
+  replayed, however long ago that was, up to 30,000 a market. Beyond that the
+  oldest are out of reach, and `STATUS.md` then says that fills may be
+  missing: a resting bid is hit when the price falls, so a missed fill would
+  make the account look better than it was.
 - Positions are valued at the **bid**, so the account shows the spread as a
   loss the moment it buys.
 
@@ -255,7 +263,7 @@ All under the state directory (default `state/paper/`):
 | `equity.csv` | One row per cycle: equity, cash, exposure |
 | `fills.csv` | Every fill |
 | `settlements.csv` | Every resolved position and its profit |
-| `decisions.jsonl` | Every order placed, every order a limit blocked with the reason, and each cycle's count of candidates the limits screened out before they were proposed |
+| `decisions.jsonl` | Every order placed, every order a limit blocked with the reason, each cycle's count of candidates the limits screened out before they were proposed, and any market whose trades could not be read back to the previous cycle (`tape_incomplete`) |
 | `shadow.csv` | The forward-test log: every signal seen, traded or not |
 
 One file sits beside the account directories: `state/last_cycle_started`, the

@@ -7,7 +7,7 @@ from kht.trading.fills import in_token_frame, maker_fill, round_to_tick, taker_f
 from kht.trading.models import (Fill, Intent, MarketInfo, Order, OrderKind, OrderStatus, Side,
                                 TradePrint)
 from kht.trading.portfolio import Portfolio
-from kht.trading.risk import RiskLimits, RiskManager
+from kht.trading.risk import RiskLimits, RiskManager, RiskState
 
 M = MarketInfo(market_id=1, condition_id="0xc", question="A vs B", token0="T0", token1="T1",
                outcome0="A", outcome1="B", event_id=7, category="sports", fee_rate=0.05, tick=0.01)
@@ -186,6 +186,45 @@ def test_kill_switch_trips_and_blocks_buys_but_not_sells():
     assert r.check(intent(0.40, 50, side=Side.SELL), M, pf, [])[0]       # reducing risk stays allowed
     r.update(1000.0, now_ts=86_400 * 11)                                 # a new day does not un-halt
     assert r.state.halted
+
+
+def test_a_loss_between_two_days_counts_against_the_new_day():
+    r = rm(daily_loss_limit_usd=50, max_drawdown_usd=1e9)
+    r.update(1000.0, now_ts=86_400 * 10 + 82_800)                        # 23:00, the day's last cycle
+    r.update(949.0, now_ts=86_400 * 11 + 7_200)                          # 02:00: the loss came in between
+    assert r.state.halted and "daily loss" in r.state.halt_reason
+
+
+def test_after_a_silence_the_daily_limit_covers_everything_since_the_last_cycle():
+    r = rm(daily_loss_limit_usd=50, max_drawdown_usd=1e9)
+    r.update(1000.0, now_ts=86_400 * 10)
+    r.update(949.0, now_ts=86_400 * 15)
+    assert r.state.halted
+
+
+def test_a_gain_overnight_does_not_loosen_the_daily_limit():
+    r = rm(daily_loss_limit_usd=50, max_drawdown_usd=1e9)
+    r.update(1000.0, now_ts=86_400 * 10 + 82_800)
+    r.update(1040.0, now_ts=86_400 * 11 + 7_200)                         # the day starts from the higher figure
+    r.update(989.0, now_ts=86_400 * 11 + 18_000)
+    assert r.state.halted
+
+
+def test_the_day_starts_from_the_equity_the_last_cycle_ended_on():
+    r = rm(daily_loss_limit_usd=50, max_drawdown_usd=1e9)
+    r.update(1000.0, now_ts=86_400 * 10 + 82_800)
+    r.note_equity(998.0)                                                 # after that cycle's own orders
+    r.update(949.0, now_ts=86_400 * 11 + 7_200)                          # 49 down from where it ended
+    assert not r.state.halted and r.state.day_start_equity == 998.0
+    r.update(947.0, now_ts=86_400 * 11 + 18_000)
+    assert r.state.halted
+
+
+def test_state_saved_before_the_previous_equity_was_kept_still_loads():
+    old = {"halted": False, "halt_reason": "", "day": 10, "day_start_equity": 1000.0, "high_water": 1000.0}
+    r = RiskManager(RiskLimits(daily_loss_limit_usd=50, max_drawdown_usd=1e9), RiskState(**old))
+    r.update(990.0, now_ts=86_400 * 11)                                  # nothing to compare with: starts from now
+    assert not r.state.halted and r.state.day_start_equity == 990.0 and r.state.last_equity == 990.0
 
 
 def test_drawdown_limit_uses_high_water_mark():

@@ -20,6 +20,28 @@ def _when(ts: float) -> str:
     return time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime(ts))
 
 
+def _span(seconds: float) -> str:
+    hours = seconds / 3600
+    if hours < 1:
+        return f"{round(seconds / 60)} minutes"
+    return f"{hours:.1f} hours" if hours < 48 else f"{hours / 24:.1f} days"
+
+
+def _count_decisions(path: Path, action: str) -> int:
+    if not path.exists():
+        return 0
+    n = 0
+    with path.open() as fh:
+        for line in fh:
+            if f'"{action}"' not in line:
+                continue
+            try:
+                n += json.loads(line).get("action") == action
+            except ValueError:
+                continue
+    return n
+
+
 def build_report(state_dir: str | Path) -> str:
     d = Path(state_dir)
     state_path = d / "state.json"
@@ -61,6 +83,10 @@ def build_report(state_dir: str | Path) -> str:
     risk = st.get("risk", {})
     if risk.get("halted"):
         lines += ["", f"**Trading is halted:** {risk.get('halt_reason', '')}"]
+    gaps = _count_decisions(d / "decisions.jsonl", "tape_incomplete")
+    if gaps:
+        lines += ["", f"**Fills may be missing:** {gaps} time{'s' if gaps != 1 else ''} the trades in a market with a "
+                      "resting order could not be read back to the previous cycle (`tape_incomplete` in `decisions.jsonl`)."]
 
     if positions:
         lines += ["", "## Open positions", "",
@@ -103,9 +129,12 @@ def build_report(state_dir: str | Path) -> str:
 
     if len(equity_rows) > 1:
         first, last = equity_rows[0], equity_rows[-1]
+        times = [float(r["ts"]) for r in equity_rows]
+        longest = max(b - a for a, b in zip(times, times[1:]))
         lines += ["", "## Equity history", "",
                   f"{len(equity_rows)} cycles from {_when(float(first['ts']))} to {_when(float(last['ts']))}; "
-                  f"equity ${float(first['equity']):,.2f} → ${float(last['equity']):,.2f}."]
+                  f"equity ${float(first['equity']):,.2f} → ${float(last['equity']):,.2f}. "
+                  f"The longest gap between two cycles was {_span(longest)}."]
     return "\n".join(lines) + "\n"
 
 

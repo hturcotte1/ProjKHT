@@ -141,6 +141,10 @@ class Engine:
         fills = self.broker.sync(infos, now)
         for f in fills:
             self._log_fill(f, markets)
+        for gap in getattr(self.broker, "tape_gaps", ()):
+            notes.append(f"trade tape of market {gap['market_id']} could not be read back to the previous cycle: "
+                         "fills on resting orders there may be missing")
+            self.store.append_jsonl("decisions.jsonl", {"ts": now, "action": "tape_incomplete", **gap})
 
         # 2. resolutions
         settled = self._settle(markets, now, notes)
@@ -235,6 +239,7 @@ class Engine:
         # 6. write everything down
         marks = self._marks(markets)
         equity = self.portfolio.equity(marks)
+        self.risk.note_equity(equity)
         report = CycleReport(
             ts=now, equity=equity, cash=self.portfolio.cash, invested=self.portfolio.invested(),
             n_positions=len(self.portfolio.positions), n_open_orders=len(self.broker.open_orders()),

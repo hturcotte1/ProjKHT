@@ -41,6 +41,7 @@ class RiskState:
     day: int = -1
     day_start_equity: float = 0.0
     high_water: float = 0.0
+    last_equity: float = 0.0             # equity at the previous cycle; 0 = none recorded yet
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -54,11 +55,20 @@ class RiskManager:
     # ----------------------------------------------------------- kill switch
     def update(self, equity: float, now_ts: float) -> None:
         """Roll the trading day and trip the kill switch if a loss limit is hit.
-        Once halted, trading stays halted until a human resets it."""
+        Once halted, trading stays halted until a human resets it.
+
+        A day starts from the higher of the equity now and the equity at the
+        previous cycle. Starting from the equity now alone would let a loss
+        that lands between the last cycle of one day and the first of the
+        next count against neither, and cycles are hours apart at best. After
+        a silence of several days, "today's loss" is therefore everything
+        lost since the account was last looked at.
+        """
         day = int(now_ts // 86_400)
         if day != self.state.day:
             self.state.day = day
-            self.state.day_start_equity = equity
+            self.state.day_start_equity = max(self.state.last_equity, equity)
+        self.state.last_equity = equity
         self.state.high_water = max(self.state.high_water, equity)
         if self.state.halted:
             return
@@ -66,6 +76,11 @@ class RiskManager:
             self._halt(f"daily loss limit: equity {equity:.2f} vs day start {self.state.day_start_equity:.2f}")
         elif self.state.high_water - equity >= self.limits.max_drawdown_usd:
             self._halt(f"max drawdown: equity {equity:.2f} vs high-water {self.state.high_water:.2f}")
+
+    def note_equity(self, equity: float) -> None:
+        """Record the equity a cycle ended on, after its own orders, so that
+        the next day starts from the figure written to the equity history."""
+        self.state.last_equity = equity
 
     def _halt(self, reason: str) -> None:
         self.state.halted = True

@@ -25,6 +25,8 @@ from .models import Fill, Intent, MarketInfo, Order, OrderKind, OrderStatus, Quo
 from .portfolio import Portfolio
 
 EPS = 1e-9
+TAPE_PAGE = 1000          # prints per request to the trade feed
+TAPE_MAX_PAGES = 30       # per market per sync; see PaperBroker._prints_since
 
 
 def quote_from_book(token: str, book: dict[str, Any], ts: float) -> Quote:
@@ -85,6 +87,8 @@ class PaperBroker(Broker):
         self._ids = itertools.count(next_id)
         self._next_id = next_id
         self.taker_slippage_ticks = taker_slippage_ticks
+        # markets whose tape could not be read back far enough in the latest sync
+        self.tape_gaps: list[dict[str, Any]] = []
 
     # ------------------------------------------------------------- helpers
     def _new_id(self) -> str:
@@ -136,6 +140,7 @@ class PaperBroker(Broker):
     def sync(self, markets: dict[int, MarketInfo], now: float) -> list[Fill]:
         """Replay tape prints since the last sync against resting orders."""
         new_fills: list[Fill] = []
+        self.tape_gaps = []
         by_market: dict[int, list[Order]] = {}
         for o in self.open_orders():
             by_market.setdefault(o.market_id, []).append(o)
@@ -143,8 +148,15 @@ class PaperBroker(Broker):
             market = markets.get(market_id)
             if market is None:
                 continue
-            since = self.last_print_ts.get(market_id, min(o.created_ts for o in orders))
-            prints = self._prints_since(market, since)
+            # Nothing printed before the oldest open order can fill anything,
+            # so the tape is never read further back than that, however old
+            # the last record for this market is.
+            oldest = min(o.created_ts for o in orders)
+            since = max(self.last_print_ts.get(market_id, oldest), oldest)
+            prints, complete = self._prints_since(market, since)
+            if not complete:
+                self.tape_gaps.append({"market_id": market_id, "since": since, "prints_read": len(prints),
+                                       "oldest_read": prints[0].ts if prints else None})
             for p in prints:
                 for o in sorted(orders, key=lambda x: x.created_ts):
                     if o.status != OrderStatus.OPEN:
@@ -166,25 +178,40 @@ class PaperBroker(Broker):
                 o.reason = (o.reason + " | expired").strip(" |")
         return new_fills
 
-    def _prints_since(self, market: MarketInfo, since: float, max_pages: int = 5) -> list[TradePrint]:
+    def _prints_since(self, market: MarketInfo, since: float) -> tuple[list[TradePrint], bool]:
+        """Taker prints after ``since``, oldest first, and whether that is all of them.
+
+        The feed comes newest first and is read until it reaches ``since``.
+        If the page limit cuts it off before that, the oldest prints of the
+        gap are missing, and with them any fill they would have caused. A
+        resting bid is hit when the price falls, so a missed fill flatters
+        the account; the caller records the gap instead of hiding it. At
+        30,000 prints a market this should need both a very long silence
+        between cycles and a very busy market.
+        """
+        limit = TAPE_PAGE * TAPE_MAX_PAGES
         out: list[TradePrint] = []
-        for t in self.pm.iter_trades(condition=market.condition_id, max_pages=max_pages):
+        reached = False
+        for t in self.pm.iter_trades(condition=market.condition_id, page_size=TAPE_PAGE, max_pages=TAPE_MAX_PAGES):
             ts = float(t["timestamp"])
             if ts <= since:
+                reached = True
                 break
             token = str(t.get("token_id") or market.token(int(t.get("outcome_index", 0))))
             out.append(TradePrint(ts, token, Side(t["side"]), float(t["price"]), float(t["size"])))
         out.sort(key=lambda p: p.ts)
-        return out
+        return out, reached or len(out) < limit
 
     # --------------------------------------------------------------- state
     def to_dict(self) -> dict[str, Any]:
         # closed orders are kept for a while for the report, then dropped
         keep = {k: o for k, o in self.orders.items()
                 if o.status == OrderStatus.OPEN or o.created_ts > time.time() - 3 * 86_400}
+        # the tape position only matters where an order is still resting (see sync)
+        resting = {o.market_id for o in self.open_orders()}
         return {
             "orders": {k: o.to_dict() for k, o in keep.items()},
-            "last_print_ts": {str(k): v for k, v in self.last_print_ts.items()},
+            "last_print_ts": {str(k): v for k, v in self.last_print_ts.items() if k in resting},
             "next_id": self._next_id + 1,
         }
 

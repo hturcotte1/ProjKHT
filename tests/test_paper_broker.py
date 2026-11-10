@@ -2,6 +2,7 @@
 
 import pytest
 
+from kht.trading import broker
 from kht.trading.broker import PaperBroker
 from kht.trading.models import Intent, MarketInfo, OrderKind, OrderStatus, Side
 from kht.trading.portfolio import Portfolio
@@ -21,9 +22,10 @@ class FakeExchange:
     def book(self, token):
         return self.books[token]
 
-    def iter_trades(self, condition, max_pages=None):
+    def iter_trades(self, condition, page_size=1000, max_pages=None):
         assert condition == "0xc"
-        return iter(self.tape)
+        cut = None if max_pages is None else page_size * max_pages      # the feed stops at the page limit
+        return iter(self.tape[:cut])
 
     def trade(self, ts, token_index, side, price, size):
         self.tape.insert(0, {"timestamp": ts, "outcome_index": token_index, "side": side, "price": price,
@@ -67,6 +69,54 @@ def test_print_older_than_order_never_fills_it():
     ex.trade(50, 0, "SELL", 0.30, 1000)
     br.place(Intent("place", 1, "T0", Side.BUY, OrderKind.MAKER, 0.40, 100), M, now=100)
     assert br.sync({1: M}, now=200) == []
+
+
+def test_a_long_gap_between_syncs_is_read_back_in_full():
+    """The price dips through the bid and recovers, and the next sync comes
+    6,000 prints later. The dip is the oldest thing in the gap, so a short
+    read of the tape would miss the fill, and a missed dip flatters the account."""
+    ex, br = make()
+    br.place(Intent("place", 1, "T0", Side.BUY, OrderKind.MAKER, 0.40, 100), M, now=100)
+    ex.trade(150, 0, "SELL", 0.39, 10)                # through our 0.40: the level was swept
+    for i in range(6000):
+        ex.trade(200 + i, 0, "BUY", 0.42, 1)          # then a long recovery
+    fills = br.sync({1: M}, now=10_000)
+    assert sum(f.size for f in fills) == 100 and br.tape_gaps == []
+
+
+def test_a_tape_too_long_to_read_back_is_reported(monkeypatch):
+    monkeypatch.setattr(broker, "TAPE_PAGE", 10)
+    monkeypatch.setattr(broker, "TAPE_MAX_PAGES", 3)
+    ex, br = make()
+    br.place(Intent("place", 1, "T0", Side.BUY, OrderKind.MAKER, 0.40, 100), M, now=100)
+    ex.trade(150, 0, "SELL", 0.39, 10)                # would have filled us, but lies beyond the limit
+    for i in range(30):
+        ex.trade(200 + i, 0, "BUY", 0.42, 1)
+    assert br.sync({1: M}, now=1000) == []
+    assert [g["market_id"] for g in br.tape_gaps] == [1] and br.tape_gaps[0]["prints_read"] == 30
+    assert br.sync({1: M}, now=1100) == [] and br.tape_gaps == []     # nothing new since: reported once
+
+
+def test_tape_is_not_read_back_past_the_oldest_resting_order(monkeypatch):
+    monkeypatch.setattr(broker, "TAPE_PAGE", 10)
+    monkeypatch.setattr(broker, "TAPE_MAX_PAGES", 3)
+    ex, br = make()
+    br.last_print_ts[1] = 50.0                        # left behind by an order long gone
+    for i in range(100):
+        ex.trade(60 + i, 0, "BUY", 0.42, 1)           # a busy stretch in which nothing was resting
+    br.place(Intent("place", 1, "T0", Side.BUY, OrderKind.MAKER, 0.40, 100), M, now=1000)
+    ex.trade(1050, 0, "SELL", 0.39, 10)
+    fills = br.sync({1: M}, now=2000)
+    assert sum(f.size for f in fills) == 100 and br.tape_gaps == []
+
+
+def test_only_markets_with_a_resting_order_keep_a_tape_position():
+    ex, br = make()
+    br.place(Intent("place", 1, "T0", Side.BUY, OrderKind.MAKER, 0.41, 100), M, now=100)
+    assert br.to_dict()["last_print_ts"] == {"1": 100}
+    ex.trade(150, 0, "SELL", 0.40, 10)
+    br.sync({1: M}, now=200)                          # filled in full: nothing rests there any more
+    assert br.to_dict()["last_print_ts"] == {}
 
 
 def test_taker_buy_pays_ask_and_fee_and_kills_remainder():
