@@ -505,3 +505,139 @@ What is and is not established by this table:
   have ranged more than 15¢ in two weeks earn about half as much.
 - *Not established:* that any of this can be bought in size. These markets
   are thin by definition. Section 10 looks at that.
+
+## 10. What the thinner markets can take, and what it is worth
+
+*`run_thin_markets.py`, `t_*.csv`. Exploratory: it rests on the first round's
+assumption that a tenth of what others bought at in-range prices could have
+been bought without moving them.*
+
+A market that trades $30,000 in its life cannot take much. For each trade I
+added up the dollars takers paid at in-range prices on the entry day and the
+two days after it.
+
+| Trades | A year | Dollars bought in range, median | Lowest tenth | Return at the first print | t | Return at the three-day average | t |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Big markets, 95–98¢ (the main account) | 620 | $5,500 | $230 | +1.64% | 4.8 | +1.29% | 3.8 |
+| Thinner markets, 95–98¢ | 470 | $700 | $40 | +1.96% | 6.0 | +1.71% | 5.2 |
+| Thinner markets, 90–98¢ | 580 | $970 | $45 | +2.40% | 5.5 | +1.83% | 4.2 |
+| …skipping those that ranged over 15¢ in two weeks | 550 | $1,000 | $49 | +2.52% | 5.8 | +1.96% | 4.5 |
+| Big markets, 90–98¢ | 730 | $8,300 | $340 | +1.74% | 3.8 | +1.02% | 2.3 |
+
+A quarter of the thinner trades saw less than $200 bought in range, so a tenth
+of the flow is under $20 there. These are markets for $20 to $100 positions.
+Priced the way a larger order would have to buy, the thinner markets still
+clear the bar (t = 4.2 to 5.2); the big markets' 90–98¢ band does not, which
+agrees with the first round.
+
+**As accounts.** Positions limited to a tenth of the flow and priced at the
+three-day average; one position per event, four per story, at most 80%
+invested; all three years.
+
+| Account | Bankroll | Position | Trades | Per year | Worst drawdown | Money in use |
+|---|---:|---:|---:|---:|---:|---:|
+| Big markets only (today's main account) | $1,000 | 2% | 702 | 6.7% | −4.5% | 32% |
+| | $1,000 | 4% | 603 | 12.1% | −9.0% | 46% |
+| | $25,000 | 4% | 965 | 12.1% | −3.6% | 35% |
+| **Big markets + thinner markets at 90–98¢, calm only** | $1,000 | 2% | 1,041 | 9.6% | −4.2% | 40% |
+| | $1,000 | 4% | 842 | 14.5% | −7.5% | 55% |
+| | $5,000 | 4% | 1,083 | 13.6% | −7.2% | 53% |
+| | $25,000 | 4% | 1,720 | 15.7% | −2.9% | 41% |
+| Both universes at 90–98¢ | $1,000 | 4% | 705 | 5.5% | −12.3% | 59% |
+
+Adding the thinner markets is worth two to four points a year at the same
+position size, with no deeper drawdown in this history, and the gain holds up
+to $25,000 because the extra trades are extra markets, not bigger positions.
+Widening the band in the big markets makes things worse, as the first round
+said it would.
+
+Read the table the way the first round's was read: as a range. The account
+takes about half of what is on offer, and which half matters. Small changes
+to the thin-market rule (95–98¢ or 90–98¢, skipping the volatile ones or not)
+moved a $1,000 account between 9.6% and 9.9% a year at 2% a position and
+between 13.5% and 14.5% at 4%. The drawdowns are the ones that happened.
+Nothing here can price a week in which a dozen quiet stories wake up
+together.
+
+### Three smaller results
+
+**Position size** (`run_position_size.py`, `ps_position_size.csv`; first-print
+prices, no flow limit). The main rule on a $1,000 account made 9.1% a year at
+2% a position, 12.0% at 3%, 16.2% at 5% and 17.3% at 7.5%, with drawdowns of
+4% to 7%. At 10% it made 10.0% with a 19% drawdown: with eight positions
+filling the account, which trades get in is luck, and one loser costs a tenth
+of everything. Somewhere between 3% and 5% a position the return roughly
+doubles and the worst case in this history stays in single digits. That is
+the account owner's choice to make, and the history contains 33 losses to
+make it with.
+
+**Stop-losses do not help** (`check_stops_and_paths.py`, `q_stops.csv`).
+Selling when the bid closes at or below 85¢ cut the main rule's outright
+losses from 33 to 6 and its return from +1.64% to +1.09% a trade: 151 trades
+were stopped out and most of them would have won. Every level from 90¢ to 50¢
+lowered the return. A favourite that dips usually comes back, and the ones
+that do not mostly fall too fast to sell.
+
+**The price of a dormant long shot moves on a schedule**
+(`q_price_path.csv`). This is the one place the project's original idea
+holds. Quiet favourites bought at an average of 96.2¢ with thirty or more
+days to run were, on average, at 97.2¢ thirty days from the end, 98.1¢ at
+twenty-one days and 98.6¢ at fourteen; two weeks before the deadline 86% of
+them traded at 98¢ or more. Nothing has to happen for that move. The crowd's
+price for "it will happen" decays as the time for it to happen runs out, and
+it decays well before the end. Selling early gives up the last cent and pays
+a spread, so the account holds; but the shift in perception the first round
+could not find anywhere is here, and it is the same edge seen from the side.
+
+## 11. What changed in the system
+
+- **A third paper account** (`config/paper_thin.json`, `state/paper-thin/`):
+  90–98¢, stand-alone news markets that have traded 20,000 to 100,000 shares,
+  3 to 60 days to run, skipping any outcome that has ranged more than 15¢ in
+  the last two weeks. $20 a position and the same caps as the main account.
+  Its first cycle on a scratch copy found 194 candidates and bought five,
+  each filled in full against the real order book. It keeps its own
+  forward-test log.
+- **Every forward-test signal now has its 7-day traded range recorded** as of
+  the moment it was logged (`shadow_quiet.csv`), including the signals logged
+  before this existed. `kht shadow` reports quiet and not-quiet signals
+  separately. Of the first 120 measured, 50 were quiet.
+- The main and experimental accounts trade exactly as before.
+
+## 12. Verdict on the second round
+
+| Idea | Result |
+|---|---|
+| Quiet favourites as a rule of their own | Not passed. They lose a third to a half as often and cost more; the advantage is half a point a trade and not significant. Kept as information |
+| An outside yardstick for crypto price markets | No. The market's price beats the model wherever they differ |
+| The confirmed rule in crypto price markets | Not repeated: same return, losses bunched by week |
+| The confirmed rule in sports season-long markets | No edge at all, as in sports games |
+| **The confirmed rule in thinner news markets** | **Repeated, t = 9.0 on 3,135 trades, and larger than in the big markets** |
+| Stop-losses | Lower the return at every level |
+| Larger positions | Roughly double the return between 2% and 4–5%, on 33 losses' worth of evidence |
+| The original idea, that the crowd's price moves predictably | True in one place: the decay of a dormant long shot |
+
+Across both rounds twenty tests had a bar fixed in advance: eleven in the
+first round and nine in the second (A1, C1, C2, and the quiet rule in its
+short and long forms on sports and on the thinner markets, on crypto, and as
+the smoother regression). One passed cleanly, R1d in the first round. One met
+its bar on paper and was set aside because the bar could not judge it (A1).
+None of the second round's new ideas passed. The thin-market result is not
+one of the twenty: the first round's rules were run there as a declared
+replication with no new bar, and cleared the first round's bar of |t| ≥ 3 by a
+wide margin (6.0 and 9.0).
+
+The strategy at the end of the second round is the first round's strategy
+with a clearer description and a wider field. It sells long shots on news
+stories, by buying the near-certain side and holding it. It works because
+people overpay for a small chance of something dramatic, and it is largest
+in markets too small to be worth a professional's attention, which is where
+a small account can go and a large one cannot. It does not work where a
+price feed settles the question (crypto), where professionals set the line
+(sports), or as a way to trade short-term moves.
+
+What the backtests say it is worth: about 10% a year on a small account at 2%
+a position and about 14–16% at 4%, up to roughly $25,000, with the tail risk
+unpriced. What would change that estimate fastest is the thin-market paper
+account: whether $20 orders fill in those markets at the prices the backtest
+assumed is the one thing history cannot show.
