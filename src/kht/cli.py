@@ -96,9 +96,15 @@ def cmd_shadow(args: argparse.Namespace) -> int:
     # only markets past their scheduled end can have resolved; saves requests
     due = sorted({int(r["market_id"]) for r in rows if float(r["end_ts"]) < now + 86_400 * args.lookahead_days})
     markets = fetch_markets(Polymarket(), due)
-    labels = {"core": "the traded band", "below": "below it (logged only)", "above": "above it (logged only)"}
-    for band, label in labels.items():
-        res = score_shadow(args.state, markets, band)
+    # Only signals whose scheduled end has passed are scored. Counting early
+    # resolutions as they happen would bias the result downward: a "by
+    # December" market that closes in November is one where the thing happened.
+    groups = [("core", False, "the rule as traded: stand-alone markets in the traded band"),
+              ("core", True, "legs of multi-outcome events in the traded band (logged only)"),
+              ("below", None, "below the traded band (logged only)"),
+              ("above", None, "above the traded band (logged only)")]
+    for band, legs, label in groups:
+        res = score_shadow(args.state, markets, band, legs)
         if not res["signals"]:
             continue
         print(f"\n{label}: {res['signals']} signals logged, {res['resolved']} resolved, {res['open']} still open")

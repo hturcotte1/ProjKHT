@@ -491,9 +491,9 @@ of anything.
 
 The paper accounts run every three hours and log every signal they see, in the
 traded band and on either side of it, whether or not there is money to take
-it (`kht shadow`). The first cycle alone logged about 250 signals, 107 of them
-in the traded band, most of which resolve within two months, so the log will
-say more by January than the paper account can in a year.
+it (`kht shadow`). The first cycle alone logged about 250 signals, 99 of them
+the kind the account trades, most of which resolve within two months, so the
+log will say more by January than the paper account can in a year.
 
 It will still not say much, and it is worth knowing why before reading it. A
 signal in the traded band has to win 96.6% of the time to break even, and won

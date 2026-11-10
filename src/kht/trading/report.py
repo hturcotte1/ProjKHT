@@ -109,22 +109,30 @@ def build_report(state_dir: str | Path) -> str:
     return "\n".join(lines) + "\n"
 
 
-def score_shadow(state_dir: str | Path, markets: dict[int, Any], band: str | None = None) -> dict[str, Any]:
+def score_shadow(state_dir: str | Path, markets: dict[int, Any], band: str | None = None,
+                 legs: bool | None = None) -> dict[str, Any]:
     """Score the forward-test log against resolutions.
 
-    ``markets`` maps market id to a ``LiveMarket`` (closed ones carry
-    ``final0``). Returns counts and the realised return per dollar of every
-    resolved signal, bought at the logged ask plus fee.
+    ``markets`` maps market id to a ``LiveMarket``. Returns counts and the
+    realised return per dollar of every resolved signal, bought at the logged
+    ask plus fee. ``band`` keeps one price band; ``legs`` keeps only legs of
+    multi-outcome events (True) or only stand-alone markets (False). The
+    split uses facts logged with the signal, not the log's ``tradable``
+    column, which records the configuration in force on the day and so goes
+    stale when the rule is changed.
     """
     rows = _read_csv(Path(state_dir) / "shadow.csv")
     if band is not None:
         rows = [r for r in rows if r.get("band", "core") == band]
+    if legs is not None:
+        rows = [r for r in rows if bool(int(r.get("neg_risk", 0) or 0)) == legs]
     resolved = []
     for r in rows:
         lm = markets.get(int(r["market_id"]))
-        if lm is None or not lm.closed or lm.final0 not in (0.0, 1.0, 0.5):
+        final0 = None if lm is None else lm.result0()
+        if final0 is None:
             continue
-        payoff = lm.final0 if int(r["outcome"]) == 0 else 1.0 - lm.final0
+        payoff = final0 if int(r["outcome"]) == 0 else 1.0 - final0
         cost = float(r["ask"]) + float(r["fee_ps"])
         resolved.append({"market_id": int(r["market_id"]), "event_id": int(r["event_id"]), "question": r["question"],
                          "cost": cost, "payoff": payoff, "ret": (payoff - cost) / cost, "p_model": float(r["p_model"])})

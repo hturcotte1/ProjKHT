@@ -31,6 +31,24 @@ class LiveMarket:
     final0: float | None       # final price of outcome 0 once closed (0, 1, or 0.5 for a split)
     question: str = ""
 
+    def result0(self) -> float | None:
+        """Final payoff of outcome 0 (1, 0, or 0.5 for a split) once the market
+        has been resolved; None before that.
+
+        A resolved market reports 1 and 0; a few report 0.999999 and 0.000001.
+        Anything further from those is the last quote of a market that has
+        closed but not yet been finally resolved.
+        """
+        if not self.closed or self.final0 is None:
+            return None
+        if self.final0 >= 1.0 - 1e-4:
+            return 1.0
+        if self.final0 <= 1e-4:
+            return 0.0
+        if abs(self.final0 - 0.5) < 1e-6:
+            return 0.5
+        return None
+
     def ask(self, outcome: int) -> float | None:
         """Price to buy ``outcome`` now, using the mirrored book."""
         if outcome == 0:

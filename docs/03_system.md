@@ -70,7 +70,11 @@ per price band: the traded band, and the bands just below and above it that
 did not pass the historical test. A signal is logged when it meets the same
 18-hour confirmation as a real trade, whether or not the account has money or
 room under its caps to take it. `kht shadow` scores the log against how the
-markets resolved. This is how the rule gets tested on genuinely new data at a
+markets resolved, in four groups: the rule as traded (stand-alone markets in
+the traded band), legs of multi-outcome events in that band, and the bands
+below and above. Only signals whose scheduled end has passed are scored.
+Counting early resolutions as they happen would bias the result downward: a
+"by December" market that closes in November is one where the thing happened. This is how the rule gets tested on genuinely new data at a
 useful speed: the account can hold a few dozen positions, the log sees
 hundreds.
 

@@ -265,19 +265,9 @@ class Engine:
         n = 0
         for token, pos in list(self.portfolio.positions.items()):
             lm = markets.get(pos.market_id)
-            if lm is None or not lm.closed or lm.final0 is None:
-                continue
-            # A resolved market reports 1 and 0 (0.5 each for a split); a few report
-            # 0.999999 and 0.000001. Anything further from those is a last quote on a
-            # market that has closed but not yet been finally resolved: wait.
-            if lm.final0 >= 1.0 - 1e-4:
-                final0 = 1.0
-            elif lm.final0 <= 1e-4:
-                final0 = 0.0
-            elif abs(lm.final0 - 0.5) < 1e-6:
-                final0 = 0.5
-            else:
-                continue
+            final0 = None if lm is None else lm.result0()
+            if final0 is None:
+                continue                     # still open, or closed but not finally resolved
             payoff = final0 if lm.info.outcome_of(token) == 0 else 1.0 - final0
             pnl = self.portfolio.settle(token, payoff)
             n += 1

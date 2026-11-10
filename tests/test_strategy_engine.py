@@ -331,6 +331,35 @@ def test_forward_test_log_records_each_signal_once_and_scores_resolutions(engine
     assert "t" not in res
 
 
+def test_forward_test_scores_the_traded_rule_apart_from_legs_and_accepts_rounding_dust(tmp_path):
+    import csv
+    from kht.trading.report import score_shadow
+    cols = ["ts", "market_id", "band", "outcome", "question", "event_id", "neg_risk", "ask", "fee_ps", "p_model",
+            "tradable", "end_ts"]
+    rows = [  # market, band, leg?, the stale flag deliberately disagrees with what the rule trades today
+        (1, "core", 0, 0), (2, "core", 0, 0), (3, "core", 1, 1), (4, "above", 0, 0)]
+    with (tmp_path / "shadow.csv").open("w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=cols)
+        w.writeheader()
+        for mid, band, leg, stale in rows:
+            w.writerow({"ts": int(NOW), "market_id": mid, "band": band, "outcome": 0, "question": f"Q{mid}",
+                        "event_id": mid, "neg_risk": leg, "ask": 0.96, "fee_ps": 0.0, "p_model": 0.97,
+                        "tradable": stale, "end_ts": int(NOW)})
+    dusty = live(1, None, None, closed=True, final0=1.0, accepting=False)
+    dusty.final0 = 0.999999                                   # resolved, reported with rounding dust
+    pending = live(2, None, None, closed=True, final0=1.0, accepting=False)
+    pending.final0 = 0.9995                                   # closed, still showing a last quote
+    markets = {1: dusty, 2: pending,
+               3: live(3, None, None, closed=True, final0=0.0, accepting=False),
+               4: live(4, None, None, closed=True, final0=1.0, accepting=False)}
+    traded = score_shadow(tmp_path, markets, "core", legs=False)
+    assert traded["signals"] == 2 and traded["resolved"] == 1 and traded["win_rate"] == 1.0
+    legs = score_shadow(tmp_path, markets, "core", legs=True)
+    assert legs["signals"] == 1 and legs["resolved"] == 1 and legs["win_rate"] == 0.0
+    assert score_shadow(tmp_path, markets, "core")["signals"] == 3
+    assert score_shadow(tmp_path, markets, "above")["resolved"] == 1
+
+
 def test_one_failing_order_does_not_abort_the_cycle_or_lose_state(engine, monkeypatch):
     e, pm, path, limits = engine
     real_book = pm.book
