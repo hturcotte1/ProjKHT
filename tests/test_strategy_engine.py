@@ -351,6 +351,19 @@ def test_theme_tags_keeps_narrow_tags_and_drops_broad_ones():
     assert th[50] == frozenset()                   # a tag on a single market groups nothing
 
 
+def test_plumbing_tags_are_never_themes():
+    from dataclasses import replace
+    from kht.trading.universe import theme_tags
+    mk = {}
+    for i in range(100):
+        lm = live(i, 0.5, 0.52)
+        # each of these is on 3 markets in 100, which would make a story of it
+        tags = ("politics",) + (("yearly", "monthly", "earn-4", "hide-from-new", "parent-for-derivative", "hormuz") if i < 3 else ())
+        mk[i] = LiveMarket(replace(lm.info, tags=tags), lm.best_bid0, lm.best_ask0, lm.volume, lm.volume_24h,
+                           lm.liquidity, lm.accepting_orders, lm.closed, lm.winner, lm.final0, lm.question)
+    assert theme_tags(mk)[0] == frozenset({"hormuz"})
+
+
 def test_forward_test_log_records_each_signal_once_and_scores_resolutions(engine):
     import csv
     from kht.trading.report import score_shadow

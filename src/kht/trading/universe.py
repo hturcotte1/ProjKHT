@@ -126,7 +126,8 @@ def fetch_markets(pm: Polymarket, market_ids: list[int]) -> dict[int, LiveMarket
 # Tags Polymarket uses for its own plumbing (reward tiers, display flags). They
 # group markets that have nothing in common, so they are never themes.
 OPERATIONAL_TAG_PREFIXES = ("earn-", "rewards-", "hide-", "show-")
-OPERATIONAL_TAGS = {"recurring", "games", "monthly", "weekly", "daily", "hit-price", "up-or-down"}
+OPERATIONAL_TAGS = {"recurring", "games", "yearly", "monthly", "weekly", "daily", "hit-price", "up-or-down",
+                    "parent-for-derivative"}
 
 
 def is_operational_tag(tag: str) -> bool:
