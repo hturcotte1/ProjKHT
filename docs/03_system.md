@@ -242,6 +242,10 @@ python scripts/run_exploratory_resting.py   # the round-trip trades with a resti
 ```
 
 ```bash
+python scripts/run_wallet_skill.py          # does past wallet skill persist, and can it be followed
+```
+
+```bash
 python scripts/run_deployed_rules.py        # the exact rules the paper accounts run
 ```
 

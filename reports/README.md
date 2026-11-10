@@ -12,6 +12,7 @@ carries.
 | `x_a…` | `run_exploratory.py --part A` | Momentum, reversal, round-trip trades, Yes vs No, resting-bid entry, breakdowns (non-sports) | Exploratory |
 | `x_a3c_` | `run_exploratory_resting.py` | The round-trip trades entered with a resting bid instead of at the ask | Exploratory |
 | `x_b…` | `run_exploratory.py --part B` | Sports: drift, momentum, tickets versus money | Exploratory |
+| `w_` | `run_wallet_skill.py` | Does a wallet's past skill persist, and can it be followed? Plan fixed in the script before it ran; one table is marked as unplanned | Exploratory (negative) |
 | `d_` | `run_deployed_rules.py` | The exact rules the two paper accounts run | Not independent: tuned after the holdout was opened |
 | `m_` | `fit_model.py` | Model segments and the walk-forward check | Model is for ranking only |
 | `k_` | `run_capacity.py` | How much traded at in-range prices in each market the main rule bought, and what larger accounts would have made if limited to a share of it | Exploratory; rests on an assumption about market impact |

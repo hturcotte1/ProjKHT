@@ -12,7 +12,9 @@ that produced each one is named alongside it.*
    Polymarket move almost unpredictably from day to day, and a round trip
    costs about 6% of the stake at mid-range prices (2.5% where there is no
    fee). Sports prices before a game do not drift the way the Seahawks
-   example imagines.
+   example imagines. Following wallets with a good record does not help
+   either: their edge is half a cent a share and it is in the price within a
+   minute.
 2. **The crowd does have a standing blind spot.** In non-sports markets,
    cheap contracts are badly overpriced: one bought for under 10¢ loses about
    60% of the stake on average. The mirror image is that near-certain
@@ -166,12 +168,53 @@ falling is not a cheap way to buy a dip.
 
 Sports is where the most professional money is, and it shows.
 
+### 3.4 Following wallets that were right before
+
+Every tape row names the wallet that took the trade, so the cleanest form of
+the thesis can be tested directly: if some wallets are reliably better
+informed, their buying is a shift in perception you can see happening. The
+plan and the bar were written into `run_wallet_skill.py` and committed before
+it was run.
+
+Each quarter from late 2024, wallets with at least 50 past trades in at least
+10 resolved markets were ranked on how far their purchases had beaten a
+calibration line fitted to the same past (so that simply buying favourites
+does not count as skill), and cut into fifths. The test is what they did in
+the *following* quarter: 1.84 million trades, at prices from 5¢ to 95¢, from
+up to 38,900 ranked wallets, with a follower buying the same outcome at the
+next print at least a minute later and paying today's fee
+(`w_wallet_skill_fifths.csv`).
+
+| Past-skill fifth | Wallet's own edge per share | t | Price a minute later | Follower, all markets | Follower, fee-free markets |
+|---|---:|---:|---:|---:|---:|
+| Bottom | +0.04¢ | 0.2 | +0.17¢ | −0.57¢ (t −3.5) | −0.06¢ (t −0.2) |
+| 2 | −0.03¢ | −0.2 | +0.14¢ | −0.57¢ (t −4.2) | −0.36¢ (t −1.5) |
+| 3 | +0.03¢ | 0.2 | +0.14¢ | −0.52¢ (t −3.6) | −0.25¢ (t −1.0) |
+| 4 | +0.30¢ | 2.6 | +0.19¢ | −0.31¢ (t −2.7) | −0.06¢ (t −0.4) |
+| Top | +0.51¢ | 4.4 | +0.40¢ | −0.30¢ (t −2.5) | +0.14¢ (t 0.9) |
+
+By the measure fixed in advance, the follower's return per trade, the top
+fifth lost 4.0% (t −3.0) and beat the bottom fifth by 1.2 points (t 1.75),
+against a bar of a positive return and a gap, each with |t| ≥ 3. **Not a
+lead.** That return is a ratio, which the cheap contracts in the sample
+dominate, so the table gives the same trades in cents per share and splits
+them by fee; those columns were added after the planned ones had been read
+and are labelled as unplanned in the output.
+
+What it shows is the thesis in miniature. Skill is real and it persists: the
+top fifth go on beating their own purchase price by half a cent a share. And
+the price moves 0.4¢ their way by the very next print, two to three times
+what it moves after anyone else's trade. Four fifths of the edge has gone
+before a follower can act, and the fee takes the rest. Informed buying does
+shift the price. The shift is over within a minute.
+
 ### Verdict on the thesis as stated
 
 Short-term changes in the crowd's price are close to unpredictable from
 anything in the price or the order flow, and where a pattern exists it is ten
 to fifty times smaller than the cost of acting on it. "Buy at 70 because it
-will be 80 on Tuesday" needs information the market does not already have.
+will be 80 on Tuesday" needs information the market does not already have,
+and the wallets that have it are in and priced within a minute.
 
 ## 4. What the crowd gets predictably wrong
 
@@ -459,5 +502,7 @@ paper account can in a year.
 | Any time | the experimental account's fills are scarce or its losers bunch | Resting bids are being picked off. Drop it. |
 | Any time | 4 or more losses in a week | Stop and read them before anything else. |
 
-Ideas not tested here that the data would support next: a wallet-level split
-of informed and uninformed flow, and outside signals such as sportsbook lines.
+Ideas not tested here: outside signals such as sportsbook lines, and reacting
+to informed wallets within seconds rather than a minute. The second needs a
+different kind of engine from this one and competes with people who do
+nothing else.

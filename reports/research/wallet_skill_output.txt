@@ -1,0 +1,79 @@
+47,199,436 trades by 1,777,121 wallets in 16,212 markets (68s)
+2024Q4: calibration a=-0.023 b=0.667; 460 ranked wallets; 43,001 test trades (74s)
+2025Q1: calibration a=-0.080 b=0.876; 2,277 ranked wallets; 80,047 test trades (75s)
+2025Q2: calibration a=-0.072 b=1.007; 4,118 ranked wallets; 144,192 test trades (77s)
+2025Q3: calibration a=-0.046 b=0.956; 6,667 ranked wallets; 144,582 test trades (78s)
+2025Q4: calibration a=-0.053 b=1.027; 8,493 ranked wallets; 212,120 test trades (80s)
+2026Q1: calibration a=-0.059 b=1.120; 12,540 ranked wallets; 360,605 test trades (82s)
+2026Q2: calibration a=-0.052 b=1.063; 21,966 ranked wallets; 435,679 test trades (84s)
+2026Q3: calibration a=-0.047 b=1.043; 34,103 ranked wallets; 285,547 test trades (87s)
+2026Q4: calibration a=-0.044 b=1.063; 38,877 ranked wallets; 136,053 test trades (91s)
+
+[all quarters] trades of ranked wallets in the quarter after ranking
+  past-skill fifth  wallets  trades  events  avg price  edge at own price c  t own  calibrated edge c  t calib  followed  avg follow price  follower ret %  t follow
+                1     4676  395124    3327       0.55                 0.03   0.20               0.79     5.01    392958              0.55           -5.21     -3.67
+                2     5410  254433    3258       0.53                -0.03  -0.22               0.76     5.54    252851              0.53           -5.04     -3.52
+                3     4910  204088    3221       0.52                 0.04   0.24               0.86     6.02    202917              0.52           -5.85     -4.38
+                4     5876  340443    3358       0.52                 0.29   2.53               1.09     9.60    338768              0.53           -4.32     -3.36
+                5     5423  647738    3457       0.53                 0.51   4.39               1.34    11.64    644881              0.54           -4.04     -2.98
+top fifth minus bottom fifth, follower return: +1.18% (t = 1.75)
+
+[scheduled end before May 2026] trades of ranked wallets in the quarter after ranking
+  past-skill fifth  wallets  trades  events  avg price  edge at own price c  t own  calibrated edge c  t calib  followed  avg follow price  follower ret %  t follow
+                1     2695  220531    2368       0.55                -0.16  -0.80               0.69     3.52    219131              0.55           -6.26     -3.32
+                2     3198  141236    2329       0.53                 0.02   0.12               0.87     5.37    140106              0.53           -5.27     -2.66
+                3     2748  109531    2308       0.52                -0.17  -1.05               0.73     4.31    108721              0.52           -7.52     -4.71
+                4     3492  193321    2423       0.52                 0.22   1.77               1.09     8.47    192170              0.53           -5.43     -3.32
+                5     3095  342704    2482       0.54                 0.40   3.19               1.35    10.64    340858              0.55           -5.15     -3.08
+top fifth minus bottom fifth, follower return: +1.11% (t = 1.25)
+
+[scheduled end from May 2026] trades of ranked wallets in the quarter after ranking
+  past-skill fifth  wallets  trades  events  avg price  edge at own price c  t own  calibrated edge c  t calib  followed  avg follow price  follower ret %  t follow
+                1     3867  174593    1018       0.54                 0.27   1.05               0.92     3.67    173827              0.54           -3.90     -1.82
+                2     4313  113197     986       0.53                -0.09  -0.40               0.62     2.71    112745              0.53           -4.76     -2.33
+                3     3961   94557     974       0.52                 0.28   1.11               1.02     4.16     94196              0.52           -3.91     -1.83
+                4     4705  147122     994       0.52                 0.38   1.86               1.10     5.54    146598              0.52           -2.87     -1.43
+                5     4654  305034    1037       0.53                 0.62   3.17               1.33     6.81    304023              0.53           -2.79     -1.29
+top fifth minus bottom fifth, follower return: +1.11% (t = 1.11)
+
+by quarter, bottom and top fifth
+ quarter  fifth  followed  follower ret %     t
+ 2024Q4      1      5501           -9.57 -2.12
+ 2024Q4      5     12297          -10.75 -4.20
+ 2025Q1      1     20963           -0.58 -0.08
+ 2025Q1      5     27765           -6.06 -1.87
+ 2025Q2      1     29810           -3.19 -0.74
+ 2025Q2      5     56834           -3.40 -0.88
+ 2025Q3      1     25456          -17.79 -8.30
+ 2025Q3      5     50148          -16.44 -9.81
+ 2025Q4      1     54810          -11.56 -4.08
+ 2025Q4      5     68593           -7.90 -3.21
+ 2026Q1      1     84213           -3.23 -1.31
+ 2026Q1      5    116183           -1.28 -0.52
+ 2026Q2      1     89554           -1.20 -0.35
+ 2026Q2      5    150227            0.84  0.26
+ 2026Q3      1     55810           -4.71 -1.46
+ 2026Q3      5    104742           -5.25 -1.50
+ 2026Q4      1     26841           -6.00 -0.79
+ 2026Q4      5     58092           -2.95 -0.50
+
+NOT IN THE PLAN: the follower's result in cents per share, by whether the market charges a fee
+                markets  past-skill fifth  followed  events  wallet's own edge c  t own  price paid later c  fee c  follower edge c  t follower
+           all markets                 1    392958    3317                 0.04   0.23                0.17   0.44            -0.57       -3.49
+           all markets                 2    252851    3251                -0.03  -0.23                0.14   0.41            -0.57       -4.17
+           all markets                 3    202917    3202                 0.03   0.22                0.14   0.41            -0.52       -3.62
+           all markets                 4    338768    3351                 0.30   2.58                0.19   0.42            -0.31       -2.71
+           all markets                 5    644881    3446                 0.51   4.39                0.40   0.41            -0.30       -2.52
+fee-free (geopolitics)                 1    126681     936                 0.07   0.23                0.13   0.00            -0.06       -0.21
+fee-free (geopolitics)                 2     97066     933                -0.23  -0.95                0.13   0.00            -0.36       -1.48
+fee-free (geopolitics)                 3     76736     926                -0.13  -0.51                0.12   0.00            -0.25       -0.98
+fee-free (geopolitics)                 4    122319     962                 0.14   0.80                0.20   0.00            -0.06       -0.35
+fee-free (geopolitics)                 5    241954     978                 0.55   3.42                0.42   0.00             0.14        0.85
+    markets with a fee                 1    266277    2381                 0.02   0.12                0.19   0.65            -0.81       -4.16
+    markets with a fee                 2    155785    2318                 0.09   0.57                0.14   0.66            -0.71       -4.28
+    markets with a fee                 3    126181    2276                 0.13   0.75                0.15   0.67            -0.69       -3.98
+    markets with a fee                 4    216449    2389                 0.39   2.57                0.19   0.65            -0.45       -3.02
+    markets with a fee                 5    402927    2468                 0.48   3.05                0.39   0.65            -0.56       -3.54
+
+a ranked wallet has, at the median quarter, 91 past trades in 30 markets
+done in 100s

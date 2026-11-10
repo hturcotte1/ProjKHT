@@ -257,6 +257,29 @@ def main() -> None:
     byq = pd.DataFrame(byq)
     byq.to_csv(out / "w_wallet_skill_by_quarter.csv", index=False)
     print("\nby quarter, bottom and top fifth\n", byq.round(2).to_string(index=False))
+    # ---- NOT IN THE PLAN, added after the planned tables were read. The
+    # planned return is a ratio, which cheap contracts dominate; in cents per
+    # share the picture is easier to read, and the fee is the obvious suspect,
+    # so the same followers are split by whether their market charges one.
+    t["category"] = m["category"].reindex(t["market_id"]).to_numpy()
+    t["follow_edge_c"] = 100 * (t["pay"] - cost)
+    t["follow_gross_c"] = 100 * (t["pay"] - t["follow_px"])
+    t["slip_c"] = 100 * (t["follow_px"] - t["px"])
+    rows = []
+    for name, mask in (("all markets", np.ones(len(t), bool)), ("fee-free (geopolitics)", (t["category"] == "geopolitics").to_numpy()),
+                       ("markets with a fee", (t["category"] != "geopolitics").to_numpy())):
+        for fifth, g in t[mask & t["follow_px"].notna().to_numpy()].groupby("fifth"):
+            own = mean_cluster((100 * g["own_edge"]).to_numpy(), g["cluster"].to_numpy())
+            net = mean_cluster(g["follow_edge_c"].to_numpy(), g["cluster"].to_numpy())
+            rows.append({"markets": name, "past-skill fifth": int(fifth), "followed": len(g), "events": int(g["cluster"].nunique()),
+                         "wallet's own edge c": own.mean, "t own": own.t, "price paid later c": float(g["slip_c"].mean()),
+                         "fee c": float((g["follow_gross_c"] - g["follow_edge_c"]).mean()),
+                         "follower edge c": net.mean, "t follower": net.t})
+    extra = pd.DataFrame(rows)
+    extra.to_csv(out / "w_wallet_follow_cents_unplanned.csv", index=False)
+    print("\nNOT IN THE PLAN: the follower's result in cents per share, by whether the market charges a fee\n",
+          extra.round(2).to_string(index=False))
+
     med = np.median(np.array(ranked_n), axis=0)
     print(f"\na ranked wallet has, at the median quarter, {med[0]:.0f} past trades in {med[1]:.0f} markets")
     print(f"done in {time.time() - t0:.0f}s")

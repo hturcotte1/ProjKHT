@@ -331,6 +331,7 @@ tables are in `02_research_findings.md`.
 | Control: long shots 3–10¢ | −37% per trade, t −5.8 | Negative, as predicted |
 | **S1** sports favourites | −1.7% per trade, t −1.2 | Not confirmed |
 | **S2** follow the pre-game move | +0.04% per trade, t 0.0 | Not confirmed |
+| Following wallets with a good record (plan fixed in `scripts/run_wallet_skill.py` before it ran) | Top fifth by past skill: followers −4.0% per trade, t −3.0; top minus bottom +1.2 points, t 1.75 | Not a lead |
 
 The test split the data on the *scheduled* end date (before May 2026) rather
 than on the close date written in section 8, for the reason given in
