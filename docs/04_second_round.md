@@ -171,7 +171,7 @@ risked. This chooses nothing; position size is the account owner's decision.
 
 ## 5. Track A: what happened, and what is fixed next
 
-*Written at 18:20 UTC on 10 November, after track A was run on the first
+*Written at 18:10 UTC on 10 November, after track A was run on the first
 round's panel and before any tape of a sports or crypto market had been read.*
 
 **A1 as written.** 45 trades in 41 events, none lost, +5.88% a trade; the
@@ -255,3 +255,64 @@ wait.
 
 If Q fails in both universes it is not traded with real money on the strength
 of the first round's panel alone. A paper account can still test it forward.
+
+## 6. Track C: crypto price markets
+
+*Discovery set only: 6,429 markets scheduled to end before 1 June 2026. The
+holdout (1,738 markets) has not been read.*
+
+**C1, the confirmed rule where it had never been tried: not repeated.** 511
+trades, 10 lost, +1.30% a trade, but t = 1.07 (`run_crypto_price.py`,
+`cp_rules_discovery.csv`). The return is the size it was in the first round.
+What differs is how the losses arrive: all ten fell in five weeks, because one
+move in Bitcoin settles every target that week. Thirty-eight weeks with five
+bad ones cannot tell +1.3% from zero. The long-shot control lost 56% a trade
+(t = −3.1), so the crowd overpays for long shots here too; the favourites'
+side of it is too small to see through the bunching.
+
+**QC, quiet favourites in crypto: nothing to judge.** 47 trades, none lost.
+Most of these markets live a week and cannot meet a 7-day condition.
+
+**C2, the outside yardstick: it does not find mispriced contracts.**
+(`run_crypto_yardstick.py`, `cy_*.csv`.) The model is a driftless lognormal
+walk fed with the coin's last hourly price and the options market's
+volatility index.
+
+- *It is a fair yardstick.* Across the middle of the range, things happened
+  about as often as the model said.
+- *When it disagrees with the price somebody paid, the price is right.* Over
+  2.04 million taker prints with 3 to 60 days to run, profit per share against
+  the model's edge has a slope of +0.08 (t = 0.19). A slope of 1 would mean
+  the model's edge is real; 0 means it is noise. Nothing at 1–3 days or in the
+  last day either.
+- *My first pass said the opposite, and was wrong.* Using each day's last
+  quoted price beside the coin's price at the end of that day gave a slope of
+  +1.35 (t = 4.5), which would have been the best result of the project. The
+  quote can be hours older than the coin price next to it, so the model was
+  being credited with knowing where the coin went afterwards. The table is
+  kept in the output under the word ARTEFACT.
+- *Distance does not make a tail safe.* Near-certain "No" contracts on price
+  barriers at least three expected moves away: 249 trades, 4 lost, +0.55% a
+  trade (t = 0.3). The four were Bitcoin, Ether, Solana and XRP "dip" markets
+  in the same week of January 2026, each bought at 98¢. One crash week erased
+  most of two years of 2% gains. The lognormal walk calls that move a
+  once-in-decades event; in crypto it is not.
+- *Upside targets looked overpriced and downside targets underpriced*: "No" on
+  "reach" markets 2.5 moves away lost 0 of 200, "No" on "dip" markets 5 of
+  199. That cannot be told apart from the direction prices went. Bitcoin fell
+  by a fifth in each of the two quarters that hold most of these trades, and
+  quarter by quarter the losers are on whichever side the coin moved
+  (`cy_by_quarter.csv`).
+
+**Verdict.** Crypto price markets are closed for this strategy. Selling their
+tails is selling crash insurance, the premium is about what the first round
+found elsewhere, and the claims arrive together. No C2 rule came out of the
+discovery set, so nothing is committed for the holdout and it stays unread,
+which keeps it available for a future idea. The bar for C2 was written for a
+rule; there is no rule to hold to it.
+
+What the track was worth: an untouched universe in which the favourite side of
+the bias did not repeat cleanly, which is a reason for caution about the first
+round's result everywhere that losses can bunch; and a second example, after
+the first round's biased sample, of a strong result made out of nothing by a
+timing mismatch.

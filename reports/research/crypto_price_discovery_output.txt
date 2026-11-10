@@ -1,0 +1,49 @@
+crypto price markets: 8,510; questions read: 8,167 ({'above': 4815, 'reach': 1184, 'between': 1020, 'dip': 965, 'below': 183}); not read: 343
+discovery (scheduled end before 2026-06-01): 6,429 markets; holdout: 1,738
+
+=== DISCOVERY SET: 6,429 markets, scheduled ends 2023-12-31 to 2026-05-31 ===
+panel: 74,380 outcome-days in 6,360 markets, 99 weeks of scheduled ends
+--------------------------------------------------------------------------------------------------------------
+C1 on the discovery set: 511 trades in 38 weeks, 10 lost; return per trade +1.30% (t = 1.07)  ->  DOES NOT REPLICATE at |t| >= 3
+--------------------------------------------------------------------------------------------------------------
+QC on the discovery set: 47 trades in 16 weeks, 0 lost in 0 weeks; return per trade +2.55% (t = 16.19)
+  control: 619 trades, 22 lost (3.55%); return per trade +1.89% (t = 1.47)
+  Q minus control +0.67 points (t = 0.52); exact p for the count of losing weeks 0.5605
+  bar (positive with |t| >= 3; above control with |t| >= 2; exact p < 0.01)  ->  NOT PASSED
+--------------------------------------------------------------------------------------------------------------
+Q-long on the discovery set: only 18 trades; no verdict
+
+                                                            rule    sample  trades  weeks   win%  lost  weeks_with_a_loss  avg_cost  avg_ret%   se%  t_week  med_dte
+                     C1: main account's rule, 95-98c, not a leg discovery     511   38.0  98.04    10                5.0      0.97      1.30  1.21    1.07    16.17
+                   R1d as pre-registered, 95-99c, legs included discovery     626   43.0  98.40    10                5.0      0.97      1.23  0.99    1.24    16.17
+                                      control: long shots 3-10c discovery     570   57.0   3.33   551               57.0      0.07    -55.74 18.07   -3.08    18.17
+                                     control: coin flips 40-60c discovery     305   65.0  42.62   175               50.0      0.51    -16.56  5.62   -2.95    19.50
+                                              90-95c, not a leg discovery     443   46.0  95.26    21                9.0      0.93      2.05  1.79    1.15    18.21
+                                              C1 by kind: above discovery       7    NaN    NaN     0                NaN       NaN       NaN   NaN     NaN      NaN
+                                              C1 by kind: below discovery       0    NaN    NaN     0                NaN       NaN       NaN   NaN     NaN      NaN
+                                              C1 by kind: reach discovery     293   34.0  99.32     2                2.0      0.97      2.61  0.50    5.20    16.21
+                                                C1 by kind: dip discovery     211   22.0  96.21     8                3.0      0.97     -0.59  3.00   -0.20    16.17
+                                            C1 by coin: bitcoin discovery     191   35.0  98.95     2                2.0      0.97      2.33  0.75    3.12    16.21
+                                           C1 by coin: ethereum discovery     149   26.0  97.99     3                2.0      0.97      1.27  1.53    0.83    19.17
+                                             C1 by coin: solana discovery     106   19.0  96.23     4                3.0      0.97     -0.64  2.16   -0.29    14.83
+                                                C1 by coin: xrp discovery      56   15.0  98.21     1                1.0      0.97      1.22  1.87    0.65    10.17
+    95-98c, not a leg, 1-3 days to the end (not pre-registered) discovery     160   62.0  95.62     7                3.0      0.97     -1.59  3.30   -0.48     1.71
+                        QC: quiet, 90-98c, not a leg, 3-60 days discovery      47   16.0 100.00     0                0.0      0.98      2.55  0.16   16.19    20.00
+                                             control: not quiet discovery     619   53.0  96.45    22               10.0      0.95      1.89  1.28    1.47    19.17
+                  Q-long: quiet, 90-98c, not a leg, 60-365 days discovery      18    NaN    NaN     0                NaN       NaN       NaN   NaN     NaN      NaN
+                                             control: not quiet discovery      26    4.0  92.31     2                2.0      0.93     -0.78  3.25   -0.24   175.00
+
+by price paid, not a leg, 3-60 days to the end, every outcome-day:
+   price paid  outcome-days  markets  won%  avg ask  profit per share, cents  t_week
+ (0.0, 0.03]          9436      957  0.28     0.99                    -0.78   -3.23
+(0.03, 0.05]          1342      462  1.56     3.90                    -2.60   -2.17
+ (0.05, 0.1]          1840      478  3.80     7.06                    -3.72   -1.74
+  (0.1, 0.2]          1973      529 12.27    14.30                    -2.89   -0.96
+  (0.2, 0.4]          2148      508 23.42    29.08                    -7.08   -4.38
+  (0.4, 0.6]          1697      318 48.08    50.00                    -3.64   -8.80
+  (0.6, 0.8]          2084      505 74.47    70.95                     2.10    1.28
+  (0.8, 0.9]          1872      514 87.29    85.94                     0.51    0.18
+ (0.9, 0.95]          1748      475 94.79    93.12                     1.22    0.54
+(0.95, 0.97]          1280      430 98.12    96.18                     1.69    1.26
+(0.97, 0.99]          3274      611 98.96    98.18                     0.66    0.74
+ (0.99, 1.0]          6629      823 99.98    99.61                     0.35   18.75
