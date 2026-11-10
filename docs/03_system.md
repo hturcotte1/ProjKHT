@@ -94,7 +94,10 @@ Two **kill switches** are evaluated every cycle from equity marked at the bid:
 a daily loss limit and a maximum drawdown from the high-water mark. Once
 tripped, buying stops and resting buy orders are cancelled; selling stays
 allowed. It stays tripped until a person resets it — a new day does not clear
-it.
+it. An empty side of the order book is not read as a price: a position
+with no usable quote is carried at cost until one returns, so a cleared book
+cannot trip the switch, while a real collapse (the other outcome bid high)
+still does.
 
 ## Paper trading, and why its results mean something
 

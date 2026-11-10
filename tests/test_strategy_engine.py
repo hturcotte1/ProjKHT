@@ -176,6 +176,34 @@ def test_kill_switch_stops_new_buying(engine):
     assert rep.halted and rep.placed == 0 and rep.n_positions == 0
 
 
+def test_an_empty_side_of_the_book_is_not_a_price():
+    # Gamma reports an ask of 1 for outcome 0 when nobody offers it
+    assert live(1, 0.02, 1.0).bid(1) is None           # outcome 0 is cheap and unoffered: the book is empty there
+    assert live(1, None, 1.0).bid(1) is None           # nothing on either side
+    assert live(1, 0.995, 1.0).bid(1) == pytest.approx(0.0)   # outcome 0 really is near-certain: the other is worthless
+    assert live(1, None, 0.002).bid(1) == pytest.approx(0.998)  # the ordinary case for a winning "No"
+    assert live(1, 0.02, 0.03).bid(1) == pytest.approx(0.97)
+
+
+def test_an_empty_book_does_not_trip_the_kill_switch_but_a_collapse_does(tmp_path, monkeypatch):
+    markets = {2: live(2, 0.03, 0.04)}                 # "No" is the favourite at 0.97
+    pm = FakePM(markets)
+    import kht.trading.engine as eng
+    monkeypatch.setattr(eng, "scan_open", lambda pm_, min_volume: {k: v for k, v in pm_.markets.items() if not v.closed})
+    monkeypatch.setattr(eng, "fetch_markets", lambda pm_, ids: {i: pm_.markets[i] for i in ids})
+    limits = RiskLimits(bankroll=1000, max_position_usd=25, max_event_usd=30, max_order_usd=25, daily_loss_limit_usd=10)
+    e = Engine(pm, StateStore(tmp_path), HarvestStrategy(CFG, MODEL), limits)
+    assert e.run_cycle(NOW).n_positions == 1
+    # the book empties: no bid for "No" is not the same as "No" being worth nothing
+    pm.markets[2] = live(2, 0.02, 1.0)
+    rep = e.run_cycle(NOW + 600)
+    assert not rep.halted and rep.equity == pytest.approx(1000, abs=1.0)
+    # a real collapse, with outcome 0 now bid at 0.90, is a real loss and must halt buying
+    pm.markets[2] = live(2, 0.90, 0.92)
+    rep = e.run_cycle(NOW + 1200)
+    assert rep.halted and rep.equity < 990
+
+
 def test_segment_lookup_prefers_the_most_specific_key():
     from kht.trading.strategy import segment_keys
     m = EdgeModel(pooled=(0.0, 1.0), segments={"politics|single": (0.5, 1.0), "*|single": (0.3, 1.0),

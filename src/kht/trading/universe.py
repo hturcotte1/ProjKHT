@@ -38,9 +38,23 @@ class LiveMarket:
         return None if self.best_bid0 is None else 1.0 - self.best_bid0
 
     def bid(self, outcome: int) -> float | None:
+        """Price to sell ``outcome`` now, or None when the book does not say.
+
+        Gamma reports an ask of 1 for outcome 0 when nobody is offering it.
+        If outcome 0 is also bid high, that is a real price (it is nearly
+        certain, and the other outcome is nearly worthless). If it is not,
+        that side of the book is simply empty, and mirroring it would value
+        the other outcome at zero: positions are marked with this number and
+        the kill switch reads those marks, so an empty book must not look
+        like a wipe-out.
+        """
         if outcome == 0:
             return self.best_bid0
-        return None if self.best_ask0 is None else 1.0 - self.best_ask0
+        if self.best_ask0 is None:
+            return None
+        if self.best_ask0 >= 1.0 and (self.best_bid0 is None or self.best_bid0 < 0.5):
+            return None
+        return 1.0 - self.best_ask0
 
 
 def to_live(row: dict[str, Any]) -> LiveMarket:
