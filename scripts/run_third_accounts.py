@@ -107,6 +107,18 @@ def main() -> None:
           "four per story, at most 80% invested\n")
     print(acc.round(1).to_string(index=False))
 
+    # what the limit of four positions a story costs, and what it buys
+    rows = []
+    for name, keys in (("no only: big, 95-98c, No", ["big tight, No"]), ("long No alone, 20,000 shares or more", ["big long No", "thin long No"])):
+        for frac in (0.02, 0.04):
+            for per_story in (4, 8, 16, None):
+                row, _ = att.account([lists[k] for k in keys], 1_000, frac, per_story=per_story)
+                rows.append({"account": name, "positions a story": "no limit" if per_story is None else per_story, **row})
+    caps = pd.DataFrame(rows)
+    caps.to_csv(OUT / "a3_caps.csv", index=False)
+    print("\nthe limit on positions in one story ($1,000; everything else as above)\n")
+    print(caps.round(1).to_string(index=False))
+
     # by calendar year, for the account the paper trader now runs as two accounts
     name = "no only + long No, 20,000 shares or more"
     eq = curves[name]

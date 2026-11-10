@@ -256,6 +256,15 @@ has nothing but a schedule. GitHub reported no incident, and runs started
 through the manual trigger worked every time, which is how all four cycles so
 far were run. Other new repositories have reported the same in 2026.
 
+*Update, 20:50 UTC on 10 November.* The scheduler started its first run of
+this workflow at 20:39 UTC, thirteen hours after the schedule was added and
+sixteen minutes after the workflow file was next committed as the repository
+owner (20:23 UTC, to add the long-dated account). That run came between
+cycles and did not trade; seven cycles had been started by hand by then. The
+check workflow had not run. Whether scheduled runs now trade on their own,
+and which of the two explanations below was right, will show within a few
+hours, and this section will be rewritten to say so.
+
 Two explanations fit, and the second workflow (`scheduler-check.yml`) is there
 to tell them apart:
 

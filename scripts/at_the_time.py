@@ -105,7 +105,8 @@ def panel(lo: int, hi: int, only: tuple[str, ...] | None = None) -> tuple[pd.Dat
     return meta, tr, p
 
 
-def account(lists: list[pd.DataFrame], bankroll: float, frac: float, exposure: float = 0.8, participation: float = 0.10):
+def account(lists: list[pd.DataFrame], bankroll: float, frac: float, exposure: float = 0.8, participation: float = 0.10,
+            per_story: int | None = 4):
     """One account trading several trade lists, each market bought once: at its EARLIEST entry.
 
     Trade lists from different universes or horizons can hold the same market
@@ -119,7 +120,8 @@ def account(lists: list[pd.DataFrame], bankroll: float, frac: float, exposure: f
 
     Positions are at most ``participation`` of the dollars takers bought in
     range over the entry window and are priced at that window's average; one
-    position per event, four per story. Returns (summary row, equity curve).
+    position per event, ``per_story`` per story (None = no limit on a story).
+    Returns (summary row, equity curve).
     """
     from kht.backtest.harvest import Capital, run_portfolio
 
@@ -131,8 +133,8 @@ def account(lists: list[pd.DataFrame], bankroll: float, frac: float, exposure: f
     t["max_stake"] = participation * t["usd_window"]
     t = t.sort_values(["entry_period", "prio", "market_id"]).reset_index(drop=True)
     stake = bankroll * frac
-    r = run_portfolio(t, Capital(bankroll=bankroll, stake=stake, max_event=stake, max_theme=4 * stake, max_exposure_frac=exposure,
-                                 min_stake=min(5.0, 0.25 * stake)))
+    r = run_portfolio(t, Capital(bankroll=bankroll, stake=stake, max_event=stake, max_theme=None if per_story is None else per_story * stake,
+                                 max_exposure_frac=exposure, min_stake=min(5.0, 0.25 * stake)))
     tk, eq = r.trades, r.equity
     month = pd.to_datetime(eq["period"], unit="D").dt.to_period("M")
     monthly = eq.groupby(month)["equity"].last().pct_change().dropna()

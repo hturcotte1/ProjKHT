@@ -109,11 +109,12 @@ the same events. The whole story is in
 Four **paper** accounts (no real money, no orders sent) trade against live
 Polymarket prices through GitHub Actions and commit their state to this
 repository. They are set to trade about every three hours: the workflow asks
-to be woken every 15 minutes and trades when three hours have passed. As of
-10 November 2026 GitHub's scheduler had not started it once, so every cycle
-so far was started by hand; `state/last_cycle_started` shows when the last
-one ran, and [`docs/03_system.md`](docs/03_system.md#on-a-schedule-without-a-server)
-lists the ways to keep it going.
+to be woken every 15 minutes and trades when three hours have passed.
+GitHub's scheduler passed over it for the first thirteen hours, so the cycles
+of 10 November 2026 were started by hand; it started its first run on its own
+at 20:39 UTC that day. `state/last_cycle_started` shows when the last cycle
+ran, and [`docs/03_system.md`](docs/03_system.md#on-a-schedule-without-a-server)
+lists the ways to keep it going if the scheduler stops.
 
 | Account | Rule | Status |
 |---|---|---|

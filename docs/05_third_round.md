@@ -535,6 +535,23 @@ a year on a small account, with the losses of three particular years. The
 per-trade statistics are strong; the money is limited by how many separate
 events there are to bet on, not by how good each bet is.
 
+One limit in that sentence is the account's own. It holds at most four
+positions in any one story (a tag shared by a few markets: a war, a trial, an
+election). In the history that limit cost about two points a year and bought
+nothing visible (`a3_caps.csv`, "No" only, $1,000 at 2% a position):
+
+| Positions allowed in one story | Trades taken | Per year | Worst drawdown |
+|---|---:|---:|---:|
+| 4 (the accounts today) | 635 | 6.7% | −3.7% |
+| 8 | 754 | 8.5% | −3.6% |
+| 16 | 835 | 9.6% | −3.6% |
+| No limit | 888 | 9.6% | −3.6% |
+
+The limit is insurance against one piece of news taking several positions at
+once, and these three years hold 29 losses that did not come in clusters, so
+the table cannot price it. It is left at four. It is a choice about risk, and
+the cheapest one to revisit.
+
 ## 8. What changed in the system
 
 - **Every account buys the "No" side only** (`no_side_only`, on by decision
