@@ -58,7 +58,8 @@ the project.
 
 The rule works where it was found, and works better in markets too small to
 be worth a professional's time: those that trade 20,000 to 100,000 shares in
-their whole life. A third paper account now trades them. With positions kept
+their whole life. Two more paper accounts now trade them, one paying the ask
+and one bidding first, which tested better there. With positions kept
 to a tenth of what actually traded, adding those markets took a simulated
 $1,000 account from about 7% a year to about 10% at 2% a position, and to
 about 14–16% at 4%, up to roughly $25,000. What history cannot show is
@@ -73,11 +74,11 @@ assumes. The new account's fills are against the real order book, so it can.
 | What the data said, with numbers, figures and what could still be wrong | [`docs/02_research_findings.md`](docs/02_research_findings.md) |
 | How the trading system works and how to operate it | [`docs/03_system.md`](docs/03_system.md) |
 | The second round: what was tried next, fixed in advance, and what happened | [`docs/04_second_round.md`](docs/04_second_round.md) |
-| What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md) |
+| What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-thin-bid/STATUS.md` (from its first cycle) |
 
 ## What is running
 
-Three **paper** accounts (no real money, no orders sent) trade against live
+Four **paper** accounts (no real money, no orders sent) trade against live
 Polymarket prices through GitHub Actions and commit their state to this
 repository. They are set to trade about every three hours: the workflow asks
 to be woken every 15 minutes and trades when three hours have passed. As of
@@ -91,6 +92,7 @@ lists the ways to keep it going.
 | Main, `state/paper/` | 95–98¢, stand-alone markets, buy at the ask | The rule that passed |
 | Experimental, `state/paper-maker/` | 90–98¢, stand-alone markets, resting bid | Better in the backtest, fell just short of the bar; unproven |
 | Thin markets, `state/paper-thin/` | 90–98¢, stand-alone markets with 20,000 to 100,000 shares, buy at the ask | The second round's finding; the test of whether it can actually be bought |
+| Thin markets, bid first, `state/paper-thin-bid/` | The same signals, with a resting bid for three days and then the ask | Resting bids passed their test in these markets: +3.57% a trade against +2.52% |
 
 Each cycle also logs *every* signal it sees, traded or not, so the rule can be
 scored on new data far faster than a small account allows.

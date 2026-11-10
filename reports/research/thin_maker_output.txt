@@ -12,3 +12,10 @@ TM, resting bids on 90-98c (the thin account's band): 1,336 filled of 1,637 sign
   in the 1,271 markets entered both ways: the bid paid 1.40c less a share and returned +1.58 points more (t = 5.24)
   the 366 signals a resting bid never filled returned +3.31% bought at the ask (4 lost): the trades a patient buyer misses
 ==============================================================================================================
+
+Exploratory: one attempt per market, on its first signal (1,771 first signals)
+                                                       entry  trades  share of first signals %  lost  avg cost  return a trade %  t_event  profit per first signal %
+                              bid filled on the first signal     812                     45.85    38      0.92              3.79     4.10                       1.74
+not filled: the ask, 4 to 7 days later, if still in the band     637                     35.97    12      0.96              2.49     4.36                       0.89
+                     bid first, then the ask (both together)    1449                     81.82    50      0.94              3.22     5.60                       2.63
+                       the ask straight away, for comparison    1449                     81.82    39      0.95              2.61     5.69                       2.14

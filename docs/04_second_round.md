@@ -677,3 +677,46 @@ round's fill rule, unchanged.
 signals bought at the ask, with |t| ≥ 2 on the difference. The first round's
 version of this in big markets fell just short (t = 2.7). If it passes here,
 the experimental account's method moves to the thin markets.
+
+## 14. TM: resting bids in the thinner markets pass
+
+*`run_thin_maker.py`, `tm_*.csv`. The 20,000–100,000 markets of section 9.*
+
+| The thin account's signals, 90–98¢ | Trades | Lost | Average cost | Return a trade | t |
+|---|---:|---:|---:|---:|---:|
+| Bought at the ask | 1,637 | 46 (2.8%) | 94.8¢ | +2.52% | 5.8 |
+| **Entered with a resting bid** | 1,336 | 52 (3.9%) | 92.8¢ | **+3.57%** | 5.6 |
+
+The bid version is positive with t = 5.6 and beats the ask version by 1.05
+points (t = 2.65). **Passed**, where the same test in the big markets fell just
+short in the first round. Spreads are the reason: in markets this thin a bid
+pays 1.4¢ a share less than the ask in the same market, and on a two-cent edge
+that is most of it. 82% of signals filled.
+
+The cost of waiting shows in the same table. A resting bid is filled by
+someone selling, so it fills more often in the contracts that are falling:
+3.9% of the bid's trades lost against 2.8% of the ask's. And the 366 signals
+a bid never caught were good ones, +3.31% bought at the ask with 4 losers:
+contracts that never dipped far enough to fill a bid.
+
+So the obvious arrangement is to bid first and pay the ask only if the bid
+does not fill. Measured one attempt per market on its first signal
+(exploratory; `tm_bid_then_ask.csv`):
+
+| Entry, on each market's first signal | Share that traded | Return a trade | Profit per signal |
+|---|---:|---:|---:|
+| The ask straight away | 82% | +2.61% | 2.14 |
+| A bid for three days, nothing after | 46% | +3.79% | 1.74 |
+| **A bid for three days, then the ask if still in range** | 82% | +3.22% (t 5.6) | **2.63** |
+
+Bidding first and then paying up earns about a quarter more per signal than
+paying the ask at once, and half as much again as a bid alone, which misses
+too many.
+
+**What changed in the system.** A fourth paper account
+(`config/paper_thin_bid.json`, `state/paper-thin-bid/`) trades the thin
+account's rule this way: a resting bid at the best bid, renewed for up to 72
+hours from the first one, and after that the ask, if the contract still
+qualifies. The engine remembers when it first bid in a market and does not
+restart that clock with later bids. The four accounts now make a two-by-two:
+big or thin markets, the ask or a bid first.

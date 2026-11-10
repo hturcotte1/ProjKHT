@@ -92,6 +92,47 @@ def main() -> None:
         print(f"  the {len(missed):,} signals a resting bid never filled returned {100 * m.mean:+.2f}% bought at the ask "
               f"({int((missed['won'] == 0).sum())} lost): the trades a patient buyer misses")
     print("=" * 110)
+    hybrid(s, ask, ok, taker, maker)
+
+
+def hybrid(s: pd.DataFrame, ask: np.ndarray, ok: np.ndarray, taker: pd.DataFrame, maker: pd.DataFrame) -> None:
+    """Exploratory, not part of TM: bid on the first signal, and if that bid has
+    not filled after three days, pay the ask over the next four days if the
+    contract is still in the band. Measured per first signal, so that a rule
+    which trades fewer of them cannot look better just by being choosier."""
+    lo, hi = 0.90, 0.98
+    sig = (ask > lo) & (ask <= hi) & ok
+    first = s[sig].sort_values(["market_id", "period", "side"]).drop_duplicates("market_id")[["market_id", "side", "period"]]
+    on_first = lambda t: t.merge(first, on=["market_id", "side"]).query("signal_period == period")  # noqa: E731
+    bid, at_ask = on_first(maker), on_first(taker)
+    rest = first[~first["market_id"].isin(bid["market_id"])]
+    by_series = {key: g for key, g in s[s["market_id"].isin(rest["market_id"])].groupby(["market_id", "side"])}
+    rows = []
+    for r in rest.itertuples():
+        g = by_series[(r.market_id, r.side)]
+        g = g[(g["period"] > r.period + 3) & (g["period"] <= r.period + 7) & np.isfinite(g["ask_first"])]
+        if not len(g):
+            continue
+        px = float(g["ask_first"].iloc[0])
+        if not (lo < px <= hi + 0.005):
+            continue                                   # the first print decides, as everywhere
+        fee = float(g["fee_rate"].iloc[0]) * px * (1 - px)
+        won = float(g["won"].iloc[0])
+        rows.append({"market_id": r.market_id, "cluster": int(g["cluster"].iloc[0]), "cost": px + fee, "won": won,
+                     "ret": (won - px - fee) / (px + fee)})
+    late = pd.DataFrame(rows)
+    both = pd.concat([bid[["market_id", "cluster", "ret", "won", "cost"]], late], ignore_index=True)
+    out = []
+    for name, t in (("bid filled on the first signal", bid), ("not filled: the ask, 4 to 7 days later, if still in the band", late),
+                    ("bid first, then the ask (both together)", both), ("the ask straight away, for comparison", at_ask)):
+        r = mean_cluster(t["ret"].to_numpy(), t["cluster"].to_numpy())
+        out.append({"entry": name, "trades": len(t), "share of first signals %": 100 * len(t) / len(first), "lost": int((t["won"] == 0).sum()),
+                    "avg cost": float(t["cost"].mean()), "return a trade %": 100 * r.mean, "t_event": r.t,
+                    "profit per first signal %": 100 * float(t["ret"].sum()) / len(first)})
+    res = pd.DataFrame(out)
+    res.to_csv(OUT / "tm_bid_then_ask.csv", index=False)
+    print(f"\nExploratory: one attempt per market, on its first signal ({len(first):,} first signals)")
+    print(res.round(2).to_string(index=False))
 
 
 class Tee:

@@ -42,6 +42,12 @@ def subset(meta: pd.DataFrame, name: str) -> pd.DataFrame:
         resolved = meta["winner"].notna() | (meta["final0"] == 0.5)
         not_game = ~meta["is_game"].fillna(False).astype(bool) & meta["game_start_ts"].isna()
         sel = (meta["category"] == "sports") & not_game & (life >= 14) & resolved
+    elif name == "non_sports_thinner":
+        # As "non_sports_thin", from the list of markets that traded 5,000 to
+        # 20,000 shares (data/meta/closed_thinner.parquet).
+        life = (meta["closed_ts"].fillna(meta["end_ts"]) - meta["start_ts"]) / 86_400
+        resolved = meta["winner"].notna() | (meta["final0"] == 0.5)
+        sel = (meta["category"] != "sports") & (meta["category"] != "crypto") & (life >= 2) & resolved
     elif name == "non_sports_thin":
         # The same kind of market as "non_sports", from the list of markets that
         # traded 20,000 to 100,000 shares (data/meta/closed_thin.parquet).
@@ -68,7 +74,8 @@ def main() -> None:
     ap.add_argument("--shard", default=None, help="i/n: take every n-th market starting at i (run n processes in parallel)")
     args = ap.parse_args()
 
-    source = "open" if args.subset.startswith("open") else "closed_thin" if args.subset.endswith("_thin") else "closed"
+    source = ("open" if args.subset.startswith("open") else "closed_thinner" if args.subset.endswith("_thinner")
+              else "closed_thin" if args.subset.endswith("_thin") else "closed")
     meta = subset(load_meta(source), args.subset)
     if args.max_volume:
         meta = meta[meta["volume"] <= args.max_volume]

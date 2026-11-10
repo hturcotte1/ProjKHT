@@ -72,6 +72,7 @@ settings came out of the second round of research
 | `max_volume` | Skips markets that have traded this many shares or more, so an account can be kept to thin markets | The thin-market account (20,000 to 100,000 shares) |
 | `busy_days`, `busy_range` | Skips an outcome whose traded price has ranged more than `busy_range` over the last `busy_days` days, in a market older than that | The thin-market account (14 days, 15¢) |
 | `quiet_days`, `quiet_range` | Buys only outcomes whose traded price has stayed within `quiet_range` over the last `quiet_days` days | No account: the rule it serves did not pass its tests |
+| `maker_fallback_hours` | With `entry: maker`, pays the ask once this account's bids in a market have gone unfilled this long, counted from the first bid | The bid-first thin-market account (72 hours) |
 
 The range is the highest minus the lowest price at which the outcome traded,
 with trades in the other outcome counted at one minus their price: the
@@ -309,12 +310,14 @@ these pass through the same three-hour check, so they can overlap safely:
 |---|---|---|---|
 | Main | `config/paper.json` | `state/paper/` | The rule that passed its test: 95–98¢, markets with 100,000 shares or more |
 | Experimental | `config/paper_maker.json` | `state/paper-maker/` | Resting-bid entry on a wider band; unproven |
-| Thin markets | `config/paper_thin.json` | `state/paper-thin/` | 90–98¢ in markets with 20,000 to 100,000 shares, where the second round found the same edge repeating and larger. Started 10 November 2026 |
+| Thin markets | `config/paper_thin.json` | `state/paper-thin/` | 90–98¢ in markets with 20,000 to 100,000 shares, bought at the ask. The second round found the first round's edge repeating there, and larger. Started 10 November 2026 |
+| Thin markets, bid first | `config/paper_thin_bid.json` | `state/paper-thin-bid/` | The same signals entered with a resting bid for up to three days, then at the ask. Resting bids passed their test in these markets (+3.57% a trade against +2.52%) |
 
-The thin-market account is the one to watch first. History can show that
-contracts in those markets were underpriced and cannot show whether a $20
-order fills at the price a backtest assumed. Its fills are against the real
-order book, so a few weeks of them answer that.
+The two thin-market accounts are the ones to watch first. History can show
+that contracts in those markets were underpriced and cannot show whether a
+$20 order fills at the price a backtest assumed, or how often a resting bid
+is hit. Their fills come from the real order book and the real trade feed,
+so a few weeks of them answer both.
 
 `STATUS.md` in each state directory is the page to read. To stop the schedule:
 repository → Actions → *paper-trader* → ⋯ → *Disable workflow*.

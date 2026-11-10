@@ -34,13 +34,17 @@ def main() -> None:
     ap.add_argument("--min-volume", type=float, default=100_000)
     ap.add_argument("--thin", action="store_true",
                     help="with 'meta': the markets that traded 20,000 to 100,000 shares, saved as closed_thin")
+    ap.add_argument("--thinner", action="store_true",
+                    help="with 'meta': the markets that traded 5,000 to 20,000 shares, saved as closed_thinner")
     ap.add_argument("--grain", choices=sorted(GRAINS), default="3h")
     ap.add_argument("--workers", type=int, default=16)
     ap.add_argument("--rate", type=float, default=16.0, help="data-api requests per second")
     args = ap.parse_args()
 
     pm = Polymarket(Http(rate_per_host={"data-api.polymarket.com": args.rate}))
-    if args.stage == "meta" and args.thin:
+    if args.stage == "meta" and args.thinner:
+        download_market_meta(pm, "closed_thinner", closed=True, volume_num_min=5_000, volume_num_max=19_999.99)
+    elif args.stage == "meta" and args.thin:
         download_market_meta(pm, "closed_thin", closed=True, volume_num_min=20_000, volume_num_max=99_999.99)
     elif args.stage == "meta":
         download_market_meta(pm, "closed", closed=True, volume_num_min=args.min_volume)
