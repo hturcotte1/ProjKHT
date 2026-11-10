@@ -1,0 +1,468 @@
+{
+ "bid_since": {
+  "2054224": 1794343844.9612584,
+  "2371046": 1794343844.9612584,
+  "5324614": 1794343844.9612584,
+  "609655": 1794343844.9612584,
+  "897843": 1794343844.9612584
+ },
+ "broker": {
+  "last_print_ts": {
+   "2054224": 1794343844.9612584,
+   "2371046": 1794343844.9612584,
+   "5324614": 1794343844.9612584,
+   "609655": 1794343844.9612584,
+   "897843": 1794343844.9612584
+  },
+  "next_id": 6,
+  "orders": {
+   "paper-1": {
+    "created_ts": 1794343844.9612584,
+    "expires_ts": 1794603044.9612584,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 609655,
+    "order_id": "paper-1",
+    "price": 0.959,
+    "queue_ahead": 2328.02,
+    "reason": "US recession by end of 2026? | buy 'No' at 0.961, est. 0.974, edge 1.25c, 81d",
+    "side": "BUY",
+    "size": 20.85,
+    "status": "OPEN",
+    "tag": "harvest-long",
+    "token": "113732820231608904682346496304917888352004831436510840986547065248348999143469"
+   },
+   "paper-2": {
+    "created_ts": 1794343844.9612584,
+    "expires_ts": 1794603044.9612584,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 2371046,
+    "order_id": "paper-2",
+    "price": 0.91,
+    "queue_ahead": 100.63,
+    "reason": "Will Jordan Bardella advance to the second round of the next | buy 'No' at 0.930, est. 0.948, edge 1.82c, 159d",
+    "side": "BUY",
+    "size": 21.97,
+    "status": "OPEN",
+    "tag": "harvest-long",
+    "token": "72021097927534289022361341011450053983269008762704582663082298122723324133671"
+   },
+   "paper-3": {
+    "created_ts": 1794343844.9612584,
+    "expires_ts": 1794603044.9612584,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 2054224,
+    "order_id": "paper-3",
+    "price": 0.921,
+    "queue_ahead": 42.5,
+    "reason": "Will Jordan Bardella be on the ballot for the 2027 French pr | buy 'No' at 0.932, est. 0.950, edge 1.80c, 159d",
+    "side": "BUY",
+    "size": 21.71,
+    "status": "OPEN",
+    "tag": "harvest-long",
+    "token": "34166537544584980835945387048987899679455576969076155852420765507546755821151"
+   },
+   "paper-4": {
+    "created_ts": 1794343844.9612584,
+    "expires_ts": 1794603044.9612584,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 5324614,
+    "order_id": "paper-4",
+    "price": 0.943,
+    "queue_ahead": 195.59,
+    "reason": "Friedrich Merz out as Chancellor of Germany before March 31, | buy 'No' at 0.948, est. 0.964, edge 1.58c, 141d",
+    "side": "BUY",
+    "size": 21.2,
+    "status": "OPEN",
+    "tag": "harvest-long",
+    "token": "11090044591710453693735594187294975309870309948326622960022716802993276946142"
+   },
+   "paper-5": {
+    "created_ts": 1794343844.9612584,
+    "expires_ts": 1794603044.9612584,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 897843,
+    "order_id": "paper-5",
+    "price": 0.973,
+    "queue_ahead": 20.55,
+    "reason": "9.0 or above earthquake before 2027? | buy 'No' at 0.975, est. 0.984, edge 0.94c, 82d",
+    "side": "BUY",
+    "size": 20.55,
+    "status": "OPEN",
+    "tag": "harvest-long",
+    "token": "48034741162414911677683690294521484296674889000564444056948845787306275984919"
+   }
+  }
+ },
+ "limits": {
+  "bankroll": 1000.0,
+  "daily_loss_limit_usd": 60.0,
+  "max_drawdown_usd": 200.0,
+  "max_event_usd": 25.0,
+  "max_open_orders": 60,
+  "max_order_usd": 25.0,
+  "max_position_usd": 25.0,
+  "max_price": 0.985,
+  "max_theme_usd": 80.0,
+  "max_total_exposure_frac": 0.8,
+  "min_price": 0.03,
+  "theme_max_share": 0.1
+ },
+ "market_names": {
+  "11090044591710453693735594187294975309870309948326622960022716802993276946142": {
+   "category": "politics",
+   "end_ts": 1806551940.0,
+   "market_id": 5324614,
+   "outcome": "No",
+   "question": "Friedrich Merz out as Chancellor of Germany before March 31, 2027?",
+   "themes": [
+    "germany"
+   ]
+  },
+  "113732820231608904682346496304917888352004831436510840986547065248348999143469": {
+   "category": "economics",
+   "end_ts": 1801353600.0,
+   "market_id": 609655,
+   "outcome": "No",
+   "question": "US recession by end of 2026?",
+   "themes": [
+    "ai-bubble",
+    "business",
+    "economic-policy",
+    "economy",
+    "macro-graph"
+   ]
+  },
+  "34166537544584980835945387048987899679455576969076155852420765507546755821151": {
+   "category": "politics",
+   "end_ts": 1808092740.0,
+   "market_id": 2054224,
+   "outcome": "No",
+   "question": "Will Jordan Bardella be on the ballot for the 2027 French presidential election?",
+   "themes": [
+    "france",
+    "french-election",
+    "french-elections",
+    "international-election-props"
+   ]
+  },
+  "48034741162414911677683690294521484296674889000564444056948845787306275984919": {
+   "category": "weather",
+   "end_ts": 1801457940.0,
+   "market_id": 897843,
+   "outcome": "No",
+   "question": "9.0 or above earthquake before 2027?",
+   "themes": [
+    "climate-science",
+    "earthquakes",
+    "natural-disasters",
+    "weather"
+   ]
+  },
+  "72021097927534289022361341011450053983269008762704582663082298122723324133671": {
+   "category": "politics",
+   "end_ts": 1808107140.0,
+   "market_id": 2371046,
+   "outcome": "No",
+   "question": "Will Jordan Bardella advance to the second round of the next French presidential election?",
+   "themes": [
+    "france",
+    "french-election",
+    "french-elections",
+    "international-election-props",
+    "macron"
+   ]
+  }
+ },
+ "marks": {},
+ "mode": "paper",
+ "model": {
+  "info": {
+   "fitted_utc": "2026-11-10 07:40",
+   "form": "P(pays) = sigmoid(a + b*logit(ask)); per-segment shift of a, shrunk toward the pooled line",
+   "prior_strength": 150.0,
+   "training": "4886 trades, ask in (0.85, 0.99), 3-60 scheduled days to end, non-sports non-crypto, markets with >=100k shares already traded"
+  },
+  "pooled": [
+   -0.2684958927126047,
+   1.1845474901643949
+  ],
+  "segments": {
+   "*|multi": [
+    -0.3715973958075513,
+    1.1845474901643949
+   ],
+   "*|single": [
+    -0.19164413378288264,
+    1.1845474901643949
+   ],
+   "culture": [
+    -0.1270224830783286,
+    1.1845474901643949
+   ],
+   "culture|multi": [
+    -0.18234922154815897,
+    1.1845474901643949
+   ],
+   "culture|single": [
+    -0.12247016000557553,
+    1.1845474901643949
+   ],
+   "economics": [
+    0.26197871422392655,
+    1.1845474901643949
+   ],
+   "economics|multi": [
+    0.3024583915801628,
+    1.1845474901643949
+   ],
+   "finance": [
+    -0.4227425292572451,
+    1.1845474901643949
+   ],
+   "finance|multi": [
+    -0.4621555850782495,
+    1.1845474901643949
+   ],
+   "finance|single": [
+    -0.34513945743181496,
+    1.1845474901643949
+   ],
+   "geopolitics": [
+    -0.13969513827041272,
+    1.1845474901643949
+   ],
+   "geopolitics|multi": [
+    -0.4195342901700865,
+    1.1845474901643949
+   ],
+   "geopolitics|single": [
+    -0.1114070221377923,
+    1.1845474901643949
+   ],
+   "other": [
+    -0.5713357892145252,
+    1.1845474901643949
+   ],
+   "other|single": [
+    -0.6175203741591679,
+    1.1845474901643949
+   ],
+   "politics": [
+    -0.34821686834553656,
+    1.1845474901643949
+   ],
+   "politics|multi": [
+    -0.45512372845824545,
+    1.1845474901643949
+   ],
+   "politics|single": [
+    -0.15707021591844691,
+    1.1845474901643949
+   ],
+   "tech": [
+    -0.22709476111587773,
+    1.1845474901643949
+   ],
+   "tech|multi": [
+    -0.2837522270314315,
+    1.1845474901643949
+   ],
+   "tech|single": [
+    -0.19516637094979689,
+    1.1845474901643949
+   ],
+   "weather": [
+    -0.3764662942843149,
+    1.1845474901643949
+   ]
+  }
+ },
+ "portfolio": {
+  "cash": 1000.0,
+  "fees_paid": 0.0,
+  "n_fills": 0,
+  "positions": {},
+  "realized": 0.0
+ },
+ "quiet_seen": {},
+ "risk": {
+  "day": 20767,
+  "day_start_equity": 1000.0,
+  "halt_reason": "",
+  "halted": false,
+  "high_water": 1000.0,
+  "last_equity": 1000.0
+ },
+ "saved_ts": 1794343883.6136415,
+ "shadow_pending": {
+  "1132823:above": 1794343844.9612584,
+  "1353091:above": 1794343844.9612584,
+  "3251452:core": 1794343844.9612584,
+  "5151695:above": 1794343844.9612584
+ },
+ "shadow_quiet_done": [
+  "1007579:above",
+  "1058997:core",
+  "1073738:core",
+  "1087309:core",
+  "1087310:above",
+  "1087313:above",
+  "1088912:core",
+  "1132796:core",
+  "1192820:core",
+  "1192821:above",
+  "1215429:core",
+  "1243900:core",
+  "2054223:core",
+  "2054224:core",
+  "2054229:core",
+  "2054235:core",
+  "2371045:core",
+  "2371046:core",
+  "2371055:core",
+  "2448844:core",
+  "2448846:core",
+  "2519230:core",
+  "2519232:core",
+  "2589864:above",
+  "2589865:core",
+  "2735511:core",
+  "2849423:core",
+  "2849424:core",
+  "2965155:core",
+  "2965164:core",
+  "2977658:core",
+  "3145010:core",
+  "3145012:core",
+  "3251057:core",
+  "3683442:core",
+  "3683443:core",
+  "3751879:core",
+  "4039960:core",
+  "4039961:core",
+  "5324614:core",
+  "5621941:core",
+  "609655:core",
+  "678686:core",
+  "678687:core",
+  "679019:core",
+  "679021:core",
+  "679027:above",
+  "679028:above",
+  "679029:core",
+  "679034:above",
+  "679060:core",
+  "679064:core",
+  "680601:core",
+  "897843:core",
+  "897844:above",
+  "995702:core",
+  "995704:core"
+ ],
+ "shadow_seen": [
+  "1007579:above",
+  "1058997:core",
+  "1073738:core",
+  "1087309:core",
+  "1087310:above",
+  "1087313:above",
+  "1088912:core",
+  "1132796:core",
+  "1192820:core",
+  "1192821:above",
+  "1215429:core",
+  "1243900:core",
+  "2054223:core",
+  "2054224:core",
+  "2054229:core",
+  "2054235:core",
+  "2371045:core",
+  "2371046:core",
+  "2371055:core",
+  "2448844:core",
+  "2448846:core",
+  "2519230:core",
+  "2519232:core",
+  "2589864:above",
+  "2589865:core",
+  "2735511:core",
+  "2849423:core",
+  "2849424:core",
+  "2965155:core",
+  "2965164:core",
+  "2977658:core",
+  "3145010:core",
+  "3145012:core",
+  "3251057:core",
+  "3683442:core",
+  "3683443:core",
+  "3751879:core",
+  "4039960:core",
+  "4039961:core",
+  "5324614:core",
+  "5621941:core",
+  "609655:core",
+  "678686:core",
+  "678687:core",
+  "679019:core",
+  "679021:core",
+  "679027:above",
+  "679028:above",
+  "679029:core",
+  "679034:above",
+  "679060:core",
+  "679064:core",
+  "680601:core",
+  "897843:core",
+  "897844:above",
+  "995702:core",
+  "995704:core"
+ ],
+ "started_ts": 1794343844.961256,
+ "strategy": {
+  "ask_hi": 0.98,
+  "ask_lo": 0.9,
+  "busy_days": 0.0,
+  "busy_range": 0.15,
+  "categories": [
+   "politics",
+   "geopolitics",
+   "finance",
+   "economics",
+   "culture",
+   "tech",
+   "weather",
+   "other",
+   "mentions"
+  ],
+  "confirm_hours": 18.0,
+  "confirm_slack": 0.01,
+  "dte_hi": 180.0,
+  "dte_lo": 60.0,
+  "entry": "maker",
+  "exit_dte": null,
+  "maker_fallback_hours": 72.0,
+  "maker_ttl_hours": 72.0,
+  "max_new_per_cycle": 5,
+  "max_spread": 0.03,
+  "max_volume": null,
+  "min_edge": 0.0,
+  "min_volume": 20000,
+  "no_side_only": true,
+  "quiet_days": 0.0,
+  "quiet_range": 0.03,
+  "single_only": true,
+  "stake_usd": 20.0,
+  "stop_bid": null,
+  "tag": "harvest-long",
+  "watch_hi": 0.99,
+  "watch_lo": 0.9,
+  "wide_watch_lo": null
+ },
+ "version": 1
+}

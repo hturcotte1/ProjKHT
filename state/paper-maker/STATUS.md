@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-10 19:18 UTC. Started 2026-11-10 07:39 UTC.
+As of 2026-11-10 20:49 UTC. Started 2026-11-10 07:39 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $1,000.16 |
+| Equity (positions marked at the bid) | $1,000.12 |
 | Starting bankroll | $1,000.00 |
-| Change | $+0.16 (+0.02%) |
+| Change | $+0.12 (+0.01%) |
 | Cash | $860.02 |
 | In positions (cost) | $139.98 |
 | Realised profit | $+0.00 |
@@ -19,11 +19,11 @@ As of 2026-11-10 19:18 UTC. Started 2026-11-10 07:39 UTC.
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| US imports Russian diesel by November 15? | No | 20.7 | 0.965 | 0.981 | $+0.33 | 5 |
-| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.956 | $+0.21 | 5 |
-| Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.960 | $-0.29 | 5 |
+| US imports Russian diesel by November 15? | No | 20.7 | 0.965 | 0.976 | $+0.23 | 5 |
+| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.958 | $+0.25 | 5 |
+| Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.959 | $-0.31 | 5 |
 | Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.950 | $+0.00 | 20 |
-| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.955 | $+0.13 | 20 |
+| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.957 | $+0.17 | 20 |
 | Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.890 | $-0.22 | 51 |
 | Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.900 | $-0.00 | 51 |
 
@@ -47,6 +47,11 @@ As of 2026-11-10 19:18 UTC. Started 2026-11-10 07:39 UTC.
 | Will Gavin Newsom announce a Presidential run before 2027? | BUY No | 0.920 | 21.7 | 0.0 |
 | Tesla and SpaceX merger officially announced by December 31? | BUY No | 0.900 | 22.2 | 0.0 |
 | Will OpenAI announce another Millennium Prize solution by December 31, | BUY No | 0.911 | 21.9 | 0.0 |
+| China x India military clash by December 31, 2026? | BUY No | 0.940 | 21.3 | 0.0 |
+| Will Russia capture all of Kostyantynivka by December 31, 2026? | BUY No | 0.930 | 21.5 | 0.0 |
+| Will Russia enter Sloviansk by December 31, 2026? | BUY No | 0.940 | 21.3 | 0.0 |
+| US Government removes public access to a major Chinese AI model in 202 | BUY No | 0.930 | 21.5 | 0.0 |
+| Jerome Powell out from Fed Board by December 31? | BUY No | 0.930 | 21.5 | 0.0 |
 | Strait of Hormuz traffic returns to normal by November 30? | BUY No | 0.957 | 20.9 | 0.0 |
 | Edi Rama out as Albania PM in 2026? | BUY No | 0.890 | 22.5 | 0.0 |
 | Will a new country join the Abraham Accords before 2027? | BUY No | 0.902 | 22.2 | 0.0 |
@@ -66,4 +71,4 @@ As of 2026-11-10 19:18 UTC. Started 2026-11-10 07:39 UTC.
 
 ## Equity history
 
-6 cycles from 2026-11-10 07:39 UTC to 2026-11-10 19:18 UTC; equity $1,000.00 → $1,000.16. The longest gap between two cycles was 3.0 hours.
+7 cycles from 2026-11-10 07:39 UTC to 2026-11-10 20:48 UTC; equity $1,000.00 → $1,000.12. The longest gap between two cycles was 3.0 hours.
