@@ -41,6 +41,30 @@ small positions: the biggest markets include the biggest losers.
 **Sports: nothing.** Both sports rules failed; pre-game prices there are well
 calibrated.
 
+### The second round
+
+A second round on the same day went looking for something better than a thin
+edge. Its own new ideas failed. One of its checks is the strongest result in
+the project.
+
+| Tried | Result |
+|---|---|
+| Buy only favourites whose price has gone quiet for a week | Not passed. They lose a third to a half as often and cost more; half a point a trade, not significant |
+| Price crypto markets from the coin's price and volatility, and buy where Polymarket disagrees | No. Where they disagree, Polymarket's price is right |
+| The confirmed rule on crypto price markets | Not repeated: same return, but the losses all come in the same weeks |
+| The confirmed rule on sports season-long markets | No edge at all |
+| **The confirmed rule on 25,283 thinner news markets that were never in the data** | **Repeated: 95–99¢, +1.69% a trade, t = 9.0 on 3,135 trades** |
+| Stop-losses | Lower the return at every level |
+
+The rule works where it was found, and works better in markets too small to
+be worth a professional's time: those that trade 20,000 to 100,000 shares in
+their whole life. A third paper account now trades them. With positions kept
+to a tenth of what actually traded, adding those markets took a simulated
+$1,000 account from about 7% a year to about 10% at 2% a position, and to
+about 14–16% at 4%, up to roughly $25,000. What history cannot show is
+whether small orders fill in markets that thin at the prices a backtest
+assumes. The new account's fills are against the real order book, so it can.
+
 ## Where to read what
 
 | If you want | Read |
@@ -48,11 +72,12 @@ calibrated.
 | The reasoning before any data: every route considered, and the rules fixed in advance | [`docs/01_thinking_session.md`](docs/01_thinking_session.md) |
 | What the data said, with numbers, figures and what could still be wrong | [`docs/02_research_findings.md`](docs/02_research_findings.md) |
 | How the trading system works and how to operate it | [`docs/03_system.md`](docs/03_system.md) |
-| What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md) |
+| The second round: what was tried next, fixed in advance, and what happened | [`docs/04_second_round.md`](docs/04_second_round.md) |
+| What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md) |
 
 ## What is running
 
-Two **paper** accounts (no real money, no orders sent) trade against live
+Three **paper** accounts (no real money, no orders sent) trade against live
 Polymarket prices through GitHub Actions and commit their state to this
 repository. They are set to trade about every three hours: the workflow asks
 to be woken every 15 minutes and trades when three hours have passed. As of
@@ -65,6 +90,7 @@ lists the ways to keep it going.
 |---|---|---|
 | Main, `state/paper/` | 95–98¢, stand-alone markets, buy at the ask | The rule that passed |
 | Experimental, `state/paper-maker/` | 90–98¢, stand-alone markets, resting bid | Better in the backtest, fell just short of the bar; unproven |
+| Thin markets, `state/paper-thin/` | 90–98¢, stand-alone markets with 20,000 to 100,000 shares, buy at the ask | The second round's finding; the test of whether it can actually be bought |
 
 Each cycle also logs *every* signal it sees, traded or not, so the rule can be
 scored on new data far faster than a small account allows.

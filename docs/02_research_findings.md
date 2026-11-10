@@ -4,6 +4,13 @@
 run. Every number here comes from a table in `reports/research/`; the script
 that produced each one is named alongside it.*
 
+*A second round followed the same day and is written up in
+`04_second_round.md`. It leaves everything below standing and adds three
+things: the rule that passed here repeated on 25,283 thinner markets that
+were not in this data (t = 9.0); it did not repeat in crypto price markets or
+in sports season-long markets; and crypto price markets, listed at the end as
+not tested, now have been.*
+
 ## The short version
 
 1. **The original idea, taken literally, does not make money.** Buying a

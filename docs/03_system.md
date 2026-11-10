@@ -12,9 +12,9 @@ be run by any scheduler and survives restarts.
 
 ```
             ┌─────────────────────────────────────────────────────────┐
-            │ 1 scan      every open market that has traded ≥100k      │
-            │             shares, plus any market we hold or have an   │
-            │             order in (even if it has since closed)       │
+            │ 1 scan      every open market that has traded enough     │
+            │             shares for this account, plus any market we  │
+            │             hold or have an order in (even if closed)    │
             │ 2 fills     did anything trade into our resting orders?  │
             │ 3 settle    pay out positions in resolved markets        │
             │ 4 mark      value positions at the bid; check kill switch│
@@ -40,6 +40,7 @@ Code: `src/kht/trading/engine.py` (`Engine.run_cycle`).
 | Ledger | `trading/portfolio.py` | Cash, positions, realised profit |
 | Record | `trading/engine.py` (`StateStore`), `trading/report.py` | State on disk and the readable status page |
 | Schedule gate | `trading/schedule.py` | Whether a scheduled run is due to trade or should end at once |
+| Traded range | `trading/quiet.py` | How far an outcome's price has ranged over the last few days, read from the public trade feed |
 
 ## What the strategy does
 
@@ -62,7 +63,21 @@ Survivors are ranked by estimated return per day of capital tied up, and at
 most `max_new_per_cycle` are bought, one position per market. Positions are
 held to resolution.
 
-All of that is configuration (`config/paper.json`), not code.
+All of that is configuration (`config/paper.json`), not code. Three more
+settings came out of the second round of research
+(`04_second_round.md`):
+
+| Setting | What it does | Used by |
+|---|---|---|
+| `max_volume` | Skips markets that have traded this many shares or more, so an account can be kept to thin markets | The thin-market account (20,000 to 100,000 shares) |
+| `busy_days`, `busy_range` | Skips an outcome whose traded price has ranged more than `busy_range` over the last `busy_days` days, in a market older than that | The thin-market account (14 days, 15¢) |
+| `quiet_days`, `quiet_range` | Buys only outcomes whose traded price has stayed within `quiet_range` over the last `quiet_days` days | No account: the rule it serves did not pass its tests |
+
+The range is the highest minus the lowest price at which the outcome traded,
+with trades in the other outcome counted at one minus their price: the
+measure the backtest used, read from the same public trade feed. Each check
+is one request, so a cycle is allowed 120 of them and remembers the answers
+(three hours for an outcome that passed, twelve for one that did not).
 
 ### The forward-test log
 
@@ -78,6 +93,16 @@ Counting early resolutions as they happen would bias the result downward: a
 "by December" market that closes in November is one where the thing happened. This is how the rule gets tested on genuinely new data at a
 useful speed: the account can hold a few dozen positions, the log sees
 hundreds.
+
+Beside each logged signal the engine records how far the outcome's price had
+ranged over the seven days before it was logged (`shadow_quiet.csv`). The feed
+is read as of the signal's own time, so a signal measured late gets the same
+answer as one measured at once, and signals logged before this existed are
+caught up a hundred or so a cycle. `kht shadow` then reports four more
+groups: quiet and not quiet (a range of 3¢ or less, or more), in the traded
+band and below it. The second round found that quiet favourites lose less
+often and cost more; these groups are how new data gets to say whether there
+is anything left over.
 
 ## What can stop an order
 
@@ -282,8 +307,14 @@ these pass through the same three-hour check, so they can overlap safely:
 
 | Account | Config | State | What it is |
 |---|---|---|---|
-| Main | `config/paper.json` | `state/paper/` | The rule that passed its test |
+| Main | `config/paper.json` | `state/paper/` | The rule that passed its test: 95–98¢, markets with 100,000 shares or more |
 | Experimental | `config/paper_maker.json` | `state/paper-maker/` | Resting-bid entry on a wider band; unproven |
+| Thin markets | `config/paper_thin.json` | `state/paper-thin/` | 90–98¢ in markets with 20,000 to 100,000 shares, where the second round found the same edge repeating and larger. Started 10 November 2026 |
+
+The thin-market account is the one to watch first. History can show that
+contracts in those markets were underpriced and cannot show whether a $20
+order fills at the price a backtest assumed. Its fills are against the real
+order book, so a few weeks of them answer that.
 
 `STATUS.md` in each state directory is the page to read. To stop the schedule:
 repository → Actions → *paper-trader* → ⋯ → *Disable workflow*.
@@ -322,6 +353,8 @@ All under the state directory (default `state/paper/`):
 | `settlements.csv` | Every resolved position and its profit |
 | `decisions.jsonl` | Every order placed, every order a limit blocked with the reason, each cycle's count of candidates the limits screened out before they were proposed, and any market whose trades could not be read back to the previous cycle (`tape_incomplete`) |
 | `shadow.csv` | The forward-test log: every signal seen, traded or not |
+| `shadow_quiet.csv` | For each logged signal, the traded range of its price over the seven days before it was logged |
+| `quiet.csv` | Each range check made for a trading decision (only in accounts with a range filter) |
 
 One file sits beside the account directories: `state/last_cycle_started`, the
 time the scheduled workflow last began a cycle.
@@ -362,6 +395,35 @@ python scripts/check_loss_bunching.py       # did the rule's losses bunch in tim
 
 ```bash
 python scripts/check_late_entry.py          # does buying a contract late do as well as buying it first?
+```
+
+The second round (`04_second_round.md`), in the order it was run:
+
+```bash
+python scripts/run_quiet_favourites.py                    # track A on the first round's panel
+```
+
+```bash
+python scripts/download_trades.py crypto_price --shard 0/3   # and 1/3, 2/3
+python scripts/download_crypto_prices.py
+python scripts/run_crypto_price.py                        # the first round's rule on crypto, discovery set
+python scripts/run_crypto_yardstick.py                    # an outside fair value for crypto price markets
+```
+
+```bash
+python scripts/download_trades.py sports_other --shard 0/3   # and 1/3, 2/3
+python scripts/run_quiet_replication.py sports_other
+```
+
+```bash
+python scripts/download_research_data.py meta --thin      # markets with 20,000 to 100,000 shares
+python scripts/download_trades.py non_sports_thin --shard 0/3   # and 1/3, 2/3
+python scripts/run_quiet_replication.py non_sports_thin   # the quiet rule and the first round's rules on thinner markets
+python scripts/run_thin_markets.py                        # what those markets can take, and accounts that add them
+```
+
+```bash
+python scripts/run_position_size.py && python scripts/check_stops_and_paths.py
 ```
 
 ```bash
