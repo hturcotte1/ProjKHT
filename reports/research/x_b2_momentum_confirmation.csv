@@ -1,0 +1,13 @@
+sample,test,beta,t,n
+all leagues,late move (T-24h..start) on early move (T-72h..T-24h),0.0513335395874221,1.7394400131830248,3771
+all leagues,result minus closing price on the move since T-72h,-0.18992046797422418,-1.4445990825800683,3771
+all leagues,late move (T-6h..start) on early move (T-24h..T-6h),0.022970084963273744,1.4197698381782795,10593
+all leagues,result minus closing price on the move since T-24h,0.04660568404365569,0.6093322554650706,10593
+all leagues,late move (T-1h..start) on early move (T-6h..T-1h),-0.04723663278663134,-0.8977396387276522,14506
+all leagues,result minus closing price on the move since T-6h,0.03200819720504013,0.32227530844875246,14506
+reliable start times,late move (T-24h..start) on early move (T-72h..T-24h),0.06262462563587665,1.9883864195793215,3296
+reliable start times,result minus closing price on the move since T-72h,-0.16287497406985596,-1.048616607460905,3296
+reliable start times,late move (T-6h..start) on early move (T-24h..T-6h),0.012491750198503305,0.6763707381823988,8652
+reliable start times,result minus closing price on the move since T-24h,0.16115580403351454,1.551885142022796,8652
+reliable start times,late move (T-1h..start) on early move (T-6h..T-1h),-0.004777611174404542,-0.12988283381531832,11077
+reliable start times,result minus closing price on the move since T-6h,0.042652440417701075,0.2791243010535465,11077

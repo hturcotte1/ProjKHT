@@ -1,0 +1,41 @@
+
+[holdout]
+                                                   rule  trades  events  win%  avg_entry  avg_ret%  t_event  med_hold_d  ret_per_30d%
+       main account: 95-98c, stand-alone, lift the ask    1263    1007 98.10       0.97      1.52     3.68        21.0          1.70
+  same band, legs of multi-outcome events (not traded)     929     387 97.74       0.97      1.01     1.97        14.0          1.37
+                          same rule with a resting bid    1168     928 97.60       0.96      1.99     4.09        22.0          2.27
+experimental account: 90-98c, stand-alone, resting bid    1404    1093 95.09       0.93      2.02     3.13        22.0          2.19
+                               same band, lift the ask    1497    1164 95.79       0.94      1.46     2.58        23.0          1.53
+                90-95c only, stand-alone, lift the ask    1015     799 94.09       0.93      1.27     1.53        21.0          1.44
+                 90-95c only, stand-alone, resting bid     935     742 93.26       0.91      2.01     2.14        20.0          2.35
+
+[recent]
+                                                   rule  trades  events  win%  avg_entry  avg_ret%  t_event  med_hold_d  ret_per_30d%
+       main account: 95-98c, stand-alone, lift the ask     573     285 98.43       0.97      1.91     3.23        18.0          2.38
+  same band, legs of multi-outcome events (not traded)     247     126 97.98       0.97      1.27     1.38        19.0          1.40
+                          same rule with a resting bid     515     261 98.25       0.96      2.48     3.72        18.0          3.19
+experimental account: 90-98c, stand-alone, resting bid     633     296 95.89       0.93      2.89     3.38        19.0          3.50
+                               same band, lift the ask     674     314 96.44       0.94      2.37     3.06        20.0          2.77
+                90-95c only, stand-alone, lift the ask     479     231 95.41       0.93      2.80     2.80        18.0          3.64
+                 90-95c only, stand-alone, resting bid     445     214 94.61       0.91      3.44     3.06        17.0          4.69
+
+[all]
+                                                   rule  trades  events  win%  avg_entry  avg_ret%  t_event  med_hold_d  ret_per_30d%
+       main account: 95-98c, stand-alone, lift the ask    1836    1252 98.20       0.97      1.64     4.84        20.5          1.90
+  same band, legs of multi-outcome events (not traded)    1176     513 97.79       0.97      1.06     2.38        15.0          1.38
+                          same rule with a resting bid    1683    1154 97.80       0.96      2.14     5.43        21.0          2.53
+experimental account: 90-98c, stand-alone, resting bid    2037    1346 95.34       0.93      2.29     4.39        21.0          2.56
+                               same band, lift the ask    2171    1432 95.99       0.94      1.74     3.81        22.0          1.89
+                90-95c only, stand-alone, lift the ask    1494    1003 94.51       0.93      1.76     2.73        20.0          2.08
+                 90-95c only, stand-alone, resting bid    1380     931 93.70       0.91      2.47     3.35        19.0          3.03
+
+as $1,000 accounts ($20 a position, one per event, $80 per theme, 80% maximum exposure)
+                 rule  sample  trades  win_rate  total_return  cagr  sharpe  max_drawdown  avg_utilisation  years  final_equity
+        main account holdout     534     0.983         0.184 0.070   1.418        -0.038            0.299  2.497      1184.408
+        main account     all     699     0.987         0.296 0.091   1.860        -0.038            0.324  2.990      1296.238
+experimental account holdout     555     0.941         0.115 0.042   0.496        -0.064            0.319  2.628      1114.709
+experimental account     all     728     0.948         0.243 0.076   0.828        -0.064            0.360  2.984      1243.115
+
+real	1m17.616s
+user	1m39.401s
+sys	0m28.669s

@@ -39,23 +39,33 @@ def fig_calibration(tables: Path, out: Path) -> None:
 
 
 def fig_equity(tables: Path, out: Path) -> None:
-    path = tables / "c4_r1d_equity_stake20.csv"
+    path = tables / "d_main_equity.csv"
     if not path.exists():
         return
     e = pd.read_csv(path, parse_dates=["date"])
     fig, ax = P.new_figure(8.6, 3.9)
     ax.plot(e["date"], e["equity"], color=P.BLUE, linewidth=2, solid_capstyle="round", solid_joinstyle="round", zorder=3)
-    ax.fill_between(e["date"], e["equity"].min() - 5, e["equity"], color=P.BLUE, alpha=0.10, zorder=2, linewidth=0)
+    ax.fill_between(e["date"], 990, e["equity"], color=P.BLUE, alpha=0.10, zorder=2, linewidth=0)
     last = e.iloc[-1]
     ax.scatter([last["date"]], [last["equity"]], s=42, color=P.BLUE, edgecolor=P.SURFACE, linewidth=2, zorder=4)
     ax.annotate(f"\\${last['equity']:,.0f}", (last["date"], last["equity"]), xytext=(-8, 8), textcoords="offset points",
                 ha="right", fontsize=9.5, color=P.INK)
     ax.axhline(1000, color=P.INK_3, linewidth=1.0, zorder=1)
+    # where the untouched holdout ends and the sample that shaped the rule begins
+    split = pd.Timestamp("2026-05-01")
+    ax.axvline(split, color=P.INK_3, linewidth=1.0, zorder=1)
+    ax.text(split, 1012, "  newer sample \u2192", ha="left", va="bottom", fontsize=8.5, color=P.INK_2)
+    ax.text(split, 1012, "\u2190 holdout  ", ha="right", va="bottom", fontsize=8.5, color=P.INK_2)
     ax.set_ylabel("account value (\\$)")
-    ax.set_ylim(e["equity"].min() - 5, e["equity"].max() + 12)
-    P.title(ax, "The rule that passed, run as a $1,000 account on the holdout",
-            "Buy 95–99¢, hold; $20 per position, one per event, $60 per theme; carried at cost until resolved")
-    P.save(fig, out / "r1d_equity_holdout.png")
+    ax.set_ylim(990, e["equity"].max() + 30)
+    import matplotlib.dates as mdates
+
+    ax.set_xlim(e["date"].min() - pd.Timedelta(days=20), e["date"].max() + pd.Timedelta(days=25))
+    ax.xaxis.set_major_locator(mdates.MonthLocator(bymonth=(1, 7)))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
+    P.title(ax, "The paper account's rule on three years of history",
+            "Buy 95–98¢ in stand-alone markets, hold; $20 a position, one per event, $80 per theme; carried at cost until resolved")
+    P.save(fig, out / "main_rule_equity.png")
 
 
 def fig_roundtrips(tables: Path, out: Path) -> None:

@@ -1,0 +1,63 @@
+sports: 32,410 games with tapes, 15,112 in the no-hindsight sample (11,412 in leagues with reliable start times)
+
+==============================================================================================================
+B1. Does the favourite's price drift into the start? (mid proxies from the tape, cents)
+==============================================================================================================
+              sample         window  fav_move_c      t     n  sd_c
+         all leagues T-72h -> start       0.016  0.165  3930 5.535
+         all leagues T-48h -> start       0.074  1.088  6514 5.510
+         all leagues T-24h -> start      -0.061 -1.195 10646 5.131
+         all leagues T-12h -> start      -0.095 -2.399 14195 4.239
+         all leagues  T-6h -> start      -0.007 -0.196 14560 3.898
+         all leagues  T-3h -> start      -0.034 -1.049 14640 3.669
+         all leagues  T-1h -> start      -0.018 -0.716 14688 2.840
+reliable start times T-72h -> start       0.002  0.021  3436 5.249
+reliable start times T-48h -> start       0.021  0.300  5571 5.136
+reliable start times T-24h -> start      -0.087 -1.829  8683 4.237
+reliable start times T-12h -> start      -0.190 -5.108 10940 3.724
+reliable start times  T-6h -> start      -0.103 -3.108 11114 3.265
+reliable start times  T-3h -> start      -0.098 -3.337 11153 3.060
+reliable start times  T-1h -> start      -0.063 -2.992 11166 2.085
+
+==============================================================================================================
+B2. Does the early move continue, and do results confirm it?
+==============================================================================================================
+              sample                                                  test    beta       t     n
+         all leagues late move (T-24h..start) on early move (T-72h..T-24h)  0.0513  1.7394  3771
+         all leagues    result minus closing price on the move since T-72h -0.1899 -1.4446  3771
+         all leagues   late move (T-6h..start) on early move (T-24h..T-6h)  0.0230  1.4198 10593
+         all leagues    result minus closing price on the move since T-24h  0.0466  0.6093 10593
+         all leagues    late move (T-1h..start) on early move (T-6h..T-1h) -0.0472 -0.8977 14506
+         all leagues     result minus closing price on the move since T-6h  0.0320  0.3223 14506
+reliable start times late move (T-24h..start) on early move (T-72h..T-24h)  0.0626  1.9884  3296
+reliable start times    result minus closing price on the move since T-72h -0.1629 -1.0486  3296
+reliable start times   late move (T-6h..start) on early move (T-24h..T-6h)  0.0125  0.6764  8652
+reliable start times    result minus closing price on the move since T-24h  0.1612  1.5519  8652
+reliable start times    late move (T-1h..start) on early move (T-6h..T-1h) -0.0048 -0.1299 11077
+reliable start times     result minus closing price on the move since T-6h  0.0427  0.2791 11077
+
+==============================================================================================================
+B3. Tickets versus money in the 24h-6h window: what do they predict?
+==============================================================================================================
+              sample                    outcome  b_tickets  t_tickets  b_money  t_money     n
+         all leagues     price move T-6h..start     0.0043     2.4397   0.0010   1.6400 12538
+         all leagues    result minus T-6h price     0.0220     1.0294  -0.0093  -1.0381 12538
+         all leagues result minus closing price     0.0177     0.8317  -0.0104  -1.1563 12538
+reliable start times     price move T-6h..start    -0.0002    -0.1185   0.0011   1.9105  9536
+reliable start times    result minus T-6h price     0.0209     0.8457  -0.0011  -0.1011  9536
+reliable start times result minus closing price     0.0211     0.8590  -0.0022  -0.2053  9536
+
+by quintile of the public's ticket share on outcome 0
+                         n  tickets_share0  late_move_c  surprise_at_6h_c  surprise_at_start_c
+tickets_imb                                                                                  
+(-0.478, -0.0995]    2508           0.310       -0.165            -0.464               -0.300
+(-0.0995, -0.00603]  2507           0.450        0.047             0.597                0.551
+(-0.00603, 0.0795]   2509           0.536       -0.059            -0.498               -0.439
+(0.0795, 0.197]      2515           0.634        0.153            -0.449               -0.602
+(0.197, 0.486]       2499           0.800        0.097             0.200                0.104
+
+done in 108s
+
+real	1m49.002s
+user	3m7.111s
+sys	0m34.383s
