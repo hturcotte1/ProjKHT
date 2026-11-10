@@ -54,6 +54,7 @@ class MarketInfo:
     neg_risk: bool = False
     end_ts: float = float("nan")
     game_start_ts: float = float("nan")
+    tags: tuple[str, ...] = ()
 
     def token(self, outcome: int) -> str:
         return self.token0 if outcome == 0 else self.token1

@@ -159,3 +159,11 @@ def test_reentry_allows_non_overlapping_trades_only():
     t = candidate_trades(s, Rule(ask_lo=0.05, ask_hi=0.95, hold_periods=2, reentry=True), signal=sig)
     assert len(t) > 1
     assert (t["entry_period"].to_numpy()[1:] > t["exit_period"].to_numpy()[:-1]).all()
+
+
+def test_theme_cap_in_portfolio_simulation():
+    t = candidate_trades(_two_trades(cluster_b=6), Rule())        # two different events
+    t["themes"] = [("hormuz",), ("hormuz",)]
+    capped = run_portfolio(t, Capital(bankroll=1000, stake=20, max_event=40, max_theme=25))
+    free = run_portfolio(t.drop(columns="themes"), Capital(bankroll=1000, stake=20, max_event=40))
+    assert capped.trades["stake"].sum() <= 25 + 1e-9 < free.trades["stake"].sum()

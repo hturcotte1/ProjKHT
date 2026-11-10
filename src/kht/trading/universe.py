@@ -53,6 +53,7 @@ def to_live(row: dict[str, Any]) -> LiveMarket:
         event_id=int(row["event_id"]), category=row["category"], fee_rate=float(row["fee_rate"] or 0.0),
         tick=float(row["tick"] or 0.01), min_size=float(row["min_size"] or 5.0), neg_risk=bool(row["neg_risk"]),
         end_ts=float(row["end_ts"]), game_start_ts=float(row["game_start_ts"]),
+        tags=tuple(t for t in str(row.get("tags") or "").split("|") if t),
     )
     winner = num(row.get("winner"))
     final0 = num(row.get("final0")) if row.get("closed") else None
@@ -85,3 +86,21 @@ def fetch_markets(pm: Polymarket, market_ids: list[int]) -> dict[int, LiveMarket
         if row is not None:
             out[int(row["market_id"])] = to_live(row)
     return out
+
+
+def theme_tags(markets: dict[int, LiveMarket], max_share: float = 0.03, min_markets: int = 2) -> dict[int, frozenset[str]]:
+    """Narrow tags per market: the ones that identify a *story* (a conflict, an
+    election, a commodity) rather than a broad category.
+
+    Several markets about one story tend to resolve together, so exposure is
+    capped per theme as well as per event. A tag counts as a theme if it is
+    shared by at least ``min_markets`` markets but by no more than
+    ``max_share`` of all markets scanned.
+    """
+    counts: dict[str, int] = {}
+    for lm in markets.values():
+        for tag in set(lm.info.tags):
+            counts[tag] = counts.get(tag, 0) + 1
+    limit = max(min_markets, max_share * max(len(markets), 1))
+    themes = {tag for tag, n in counts.items() if min_markets <= n <= limit}
+    return {mid: frozenset(set(lm.info.tags) & themes) for mid, lm in markets.items()}

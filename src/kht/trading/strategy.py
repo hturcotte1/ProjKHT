@@ -47,8 +47,16 @@ class EdgeModel:
     segments: dict[str, tuple[float, float]] = field(default_factory=dict)
     info: dict[str, Any] = field(default_factory=dict)
 
-    def p_win(self, price: float, segment: str | None = None) -> float:
-        a, b = self.segments.get(segment or "", self.pooled)
+    def params(self, segment: str | list[str] | tuple[str, ...] | None = None) -> tuple[float, float]:
+        """Parameters for the first matching segment key, most specific first."""
+        keys = [segment] if isinstance(segment, str) else list(segment or [])
+        for key in keys:
+            if key in self.segments:
+                return self.segments[key]
+        return self.pooled
+
+    def p_win(self, price: float, segment: str | list[str] | tuple[str, ...] | None = None) -> float:
+        a, b = self.params(segment)
         return sigmoid(a + b * logit(price))
 
     def to_dict(self) -> dict[str, Any]:
@@ -67,6 +75,18 @@ class EdgeModel:
     def save(self, path: str | Path) -> None:
         Path(path).parent.mkdir(parents=True, exist_ok=True)
         Path(path).write_text(json.dumps(self.to_dict(), indent=2) + "\n")
+
+
+def segment_keys(category: str, outcome0: str, outcome: int, neg_risk: bool) -> list[str]:
+    """Segment keys for one side of one market, most specific first.
+
+    ``no_single`` is the corner the research singles out: the "No" side of a
+    stand-alone yes/no question. The same function labels training rows and
+    live candidates, so the model can never be applied to a different
+    definition than it was fitted on.
+    """
+    kind = "no_single" if (outcome0 == "Yes" and outcome == 1 and not neg_risk) else "other"
+    return [f"{category}|{kind}", f"*|{kind}", category]
 
 
 @dataclass
@@ -149,7 +169,7 @@ class HarvestStrategy:
                     continue
                 if ask - bid > cfg.max_spread + 1e-9 or ask - bid < -1e-9:
                     continue
-                p = self.model.p_win(ask, info.category)
+                p = self.model.p_win(ask, segment_keys(info.category, info.outcome0, outcome, info.neg_risk))
                 fee = taker_fee_per_share(ask, info.fee_rate, info.fee_exponent) if cfg.entry == "taker" else 0.0
                 edge = p - ask - fee
                 if edge < cfg.min_edge:

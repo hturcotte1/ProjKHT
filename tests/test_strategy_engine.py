@@ -163,3 +163,31 @@ def test_kill_switch_stops_new_buying(engine):
     e.risk.state.halt_reason = "test"
     rep = e.run_cycle(NOW)
     assert rep.halted and rep.placed == 0 and rep.n_positions == 0
+
+
+def test_segment_lookup_prefers_the_most_specific_key():
+    from kht.trading.strategy import segment_keys
+    m = EdgeModel(pooled=(0.0, 1.0), segments={"politics|no_single": (0.5, 1.0), "*|no_single": (0.3, 1.0),
+                                               "politics": (0.1, 1.0)})
+    keys = segment_keys("politics", "Yes", 1, False)
+    assert keys == ["politics|no_single", "*|no_single", "politics"]
+    assert m.params(keys) == (0.5, 1.0)
+    assert m.params(segment_keys("tech", "Yes", 1, False)) == (0.3, 1.0)          # falls back to the cross-category key
+    assert m.params(segment_keys("politics", "Yes", 0, False)) == (0.1, 1.0)      # buying Yes is not the special corner
+    assert m.params(segment_keys("politics", "Yes", 1, True)) == (0.1, 1.0)       # nor is a leg of a multi-outcome event
+    assert m.params(segment_keys("weather", "Lakers", 1, False)) == (0.0, 1.0)    # nothing matches -> pooled
+
+
+def test_theme_tags_keeps_narrow_tags_and_drops_broad_ones():
+    from dataclasses import replace
+    from kht.trading.universe import theme_tags
+    mk = {}
+    for i in range(100):
+        lm = live(i, 0.5, 0.52)
+        tags = ("politics",) + (("hormuz",) if i < 3 else ()) + (("unique-%d" % i,) if i == 50 else ())
+        mk[i] = LiveMarket(replace(lm.info, tags=tags), lm.best_bid0, lm.best_ask0, lm.volume, lm.volume_24h,
+                           lm.liquidity, lm.accepting_orders, lm.closed, lm.winner, lm.final0, lm.question)
+    th = theme_tags(mk)
+    assert th[0] == frozenset({"hormuz"})          # shared by 3 of 100: a story
+    assert th[10] == frozenset()                   # 'politics' is on everything: a category
+    assert th[50] == frozenset()                   # a tag on a single market groups nothing

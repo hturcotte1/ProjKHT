@@ -20,6 +20,7 @@ class RiskLimits:
     bankroll: float = 1_000.0            # capital the system is allowed to treat as its own
     max_position_usd: float = 25.0       # cost basis + resting buys, per market
     max_event_usd: float = 50.0          # the same, summed over markets of one event
+    max_theme_usd: float = 75.0          # the same, summed over markets sharing a narrow topic tag
     max_total_exposure_frac: float = 0.60  # of bankroll, positions + resting buys
     max_open_orders: int = 60
     max_order_usd: float = 25.0
@@ -81,6 +82,7 @@ class RiskManager:
         portfolio: Portfolio,
         open_orders: list[Order],
         market_event: dict[int, int] | None = None,
+        market_themes: dict[int, frozenset[str]] | None = None,
     ) -> tuple[bool, str]:
         """Return (allowed, reason). Sells and cancels that reduce risk are
         always allowed, even when halted."""
@@ -122,6 +124,14 @@ class RiskManager:
             in_event += resting_buys(lambda o: o.market_id in same)
             if in_event + notional > lim.max_event_usd + 1e-9:
                 return False, f"event exposure {in_event + notional:.2f} above cap {lim.max_event_usd:.2f}"
+
+        if market_themes:
+            for theme in market_themes.get(market.market_id, ()):
+                same = {m for m, tags in market_themes.items() if theme in tags}
+                in_theme = sum(p.cost for p in portfolio.positions.values() if p.market_id in same)
+                in_theme += resting_buys(lambda o: o.market_id in same)
+                if in_theme + notional > lim.max_theme_usd + 1e-9:
+                    return False, f"theme '{theme}' exposure {in_theme + notional:.2f} above cap {lim.max_theme_usd:.2f}"
 
         total = portfolio.invested() + resting_buys(lambda o: True)
         if total + notional > lim.max_total_exposure_frac * lim.bankroll + 1e-9:

@@ -56,6 +56,7 @@ class Capital:
     max_event: float = 40.0          # dollars per event
     max_exposure_frac: float = 0.90  # of current equity
     compound: bool = False           # scale the stake with equity
+    max_theme: float | None = None   # dollars per narrow topic tag (needs a "themes" column on the trades)
 
 
 @dataclass
@@ -244,13 +245,18 @@ def run_portfolio(trades: pd.DataFrame, cap: Capital, period_days: float = 1.0) 
                 in_event = sum(p["shares"] * p["cost"] for p in open_pos if p["cluster"] == tr.cluster)
                 room = min(stake, cap.max_event * (equity / cap.bankroll if cap.compound else 1.0) - in_event,
                            cap.max_exposure_frac * equity - invested, cash)
+                themes = getattr(tr, "themes", None) or ()
+                if cap.max_theme is not None:
+                    for theme in themes:
+                        in_theme = sum(p["shares"] * p["cost"] for p in open_pos if theme in p["themes"])
+                        room = min(room, cap.max_theme - in_theme)
                 if room < 0.25 * stake or room <= 0:
                     continue
                 shares = room / tr.cost
                 cash -= shares * tr.cost
                 invested += shares * tr.cost
                 open_pos.append({"shares": shares, "cost": tr.cost, "proceeds": tr.proceeds,
-                                 "exit_period": tr.exit_period, "cluster": tr.cluster})
+                                 "exit_period": tr.exit_period, "cluster": tr.cluster, "themes": themes})
                 taken.append({**tr._asdict(), "shares": shares, "stake": shares * tr.cost,
                               "pnl": shares * tr.pnl_ps})
         curve.append((period, cash + invested, cash, len(open_pos)))

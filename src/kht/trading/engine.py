@@ -22,7 +22,7 @@ from .models import Fill, MarketInfo, OrderStatus
 from .portfolio import Portfolio
 from .risk import RiskLimits, RiskManager, RiskState
 from .strategy import EdgeModel, HarvestStrategy, StrategyConfig
-from .universe import LiveMarket, fetch_markets, scan_open
+from .universe import LiveMarket, fetch_markets, scan_open, theme_tags
 
 STATE_VERSION = 1
 
@@ -160,17 +160,23 @@ class Engine:
         candidates = self.strategy.candidates(markets, now)
         intents = self.strategy.decide(markets, self.portfolio, self.broker.open_orders(), now)
         market_event = {mid: lm.info.event_id for mid, lm in markets.items()}
+        themes = theme_tags(markets)
+        # a held market that has dropped out of the scan keeps the themes it was bought under
+        for token, pos in self.portfolio.positions.items():
+            saved = self.market_names.get(token, {}).get("themes")
+            if saved and not themes.get(pos.market_id):
+                themes[pos.market_id] = frozenset(saved)
         placed = rejected = 0
         for it in intents:
             info = infos[it.market_id]
-            ok, why = self.risk.check(it, info, self.portfolio, self.broker.open_orders(), market_event)
+            ok, why = self.risk.check(it, info, self.portfolio, self.broker.open_orders(), market_event, themes)
             if not ok:
                 rejected += 1
                 self.store.append_jsonl("decisions.jsonl", {"ts": now, "action": "blocked", "why": why,
                                                             "market_id": it.market_id, "reason": it.reason})
                 continue
             order, new_fills = self.broker.place(it, info, now)
-            self._remember(markets[it.market_id], it.token)
+            self._remember(markets[it.market_id], it.token, themes.get(it.market_id, frozenset()))
             self.store.append_jsonl("decisions.jsonl", {
                 "ts": now, "action": "order", "order_id": order.order_id, "status": order.status.value,
                 "market_id": it.market_id, "side": it.side.value, "kind": it.kind.value, "price": it.price,
@@ -227,12 +233,12 @@ class Engine:
                 "shares": round(pos.shares, 4), "cost": round(pos.cost, 4), "payoff": payoff, "pnl": round(pnl, 4)})
         return n
 
-    def _remember(self, lm: LiveMarket, token: str) -> None:
+    def _remember(self, lm: LiveMarket, token: str, themes: frozenset[str] = frozenset()) -> None:
         outcome = lm.info.outcome_of(token)
         self.market_names[token] = {
             "market_id": lm.info.market_id, "question": lm.question,
             "outcome": lm.info.outcome0 if outcome == 0 else lm.info.outcome1,
-            "end_ts": lm.info.end_ts, "category": lm.info.category}
+            "end_ts": lm.info.end_ts, "category": lm.info.category, "themes": sorted(themes)}
 
     def _log_fill(self, f: Fill, markets: dict[int, LiveMarket]) -> None:
         lm = markets.get(f.market_id)

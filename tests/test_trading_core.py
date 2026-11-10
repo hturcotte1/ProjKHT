@@ -209,3 +209,17 @@ def test_sell_limited_to_free_holding():
     resting_sell = Order("s", 1, "T0", Side.SELL, OrderKind.MAKER, 0.6, 30, created_ts=0)
     assert r.check(intent(0.6, 20, side=Side.SELL), M, pf, [resting_sell])[0]
     assert not r.check(intent(0.6, 21, side=Side.SELL), M, pf, [resting_sell])[0]
+
+
+def test_theme_cap_spans_events():
+    """Three different events about one story must not all be filled."""
+    r = RiskManager(RiskLimits(bankroll=1000, max_position_usd=25, max_event_usd=25, max_theme_usd=40, max_order_usd=25))
+    pf = Portfolio(cash=1000)
+    pf.apply(Fill("a", 2, "Z", Side.BUY, 0.50, 50, 0.0, 0, maker=True))      # $25 in market 2, a different event
+    themes = {1: frozenset({"hormuz"}), 2: frozenset({"hormuz", "iran"}), 3: frozenset({"fed"})}
+    ok, why = r.check(intent(0.40, 50), M, pf, [], market_event={1: 7, 2: 8}, market_themes=themes)
+    assert not ok and "theme 'hormuz'" in why
+    other = MarketInfo(market_id=3, condition_id="0xd", question="Fed?", token0="F0", token1="F1",
+                       outcome0="Yes", outcome1="No", event_id=9)
+    assert r.check(Intent("place", 3, "F0", Side.BUY, OrderKind.MAKER, 0.40, 50), other, pf, [],
+                   market_event={2: 8, 3: 9}, market_themes=themes)[0]
