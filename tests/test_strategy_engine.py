@@ -102,8 +102,9 @@ class FakePM:
                             "asks": [{"price": str(lm.ask(outcome)), "size": "5000"}]}
         raise KeyError(token)
 
-    def iter_trades(self, condition, max_pages=None):
-        return iter(self.tape.get(condition, []))
+    def iter_trades(self, condition, page_size=1000, max_pages=None):
+        self.tape_reads = getattr(self, "tape_reads", 0) + 1
+        return iter(sorted(self.tape.get(condition, []), key=lambda t: -t["timestamp"]))
 
     history = None      # token -> mid a day ago; default: the same as now
 
@@ -502,3 +503,101 @@ def test_unconfirmed_signals_are_not_looked_up_again_every_cycle(engine):
     calls.clear()
     e.run_cycle(NOW + 7 * 3600)                         # after the re-check interval it is looked up again
     assert "T4a" in calls
+
+
+# ------------------------------------------------------------------ quietness
+def print_(days_ago, token, price, now=NOW):
+    return {"timestamp": now - days_ago * DAY, "token_id": token, "price": price, "side": "BUY", "size": 10}
+
+
+def quiet_engine(tmp_path, monkeypatch, markets, tape, **cfg):
+    pm = FakePM(markets)
+    pm.tape = tape
+    import kht.trading.engine as eng
+    monkeypatch.setattr(eng, "scan_open", lambda pm_, min_volume: {k: v for k, v in pm_.markets.items() if not v.closed})
+    monkeypatch.setattr(eng, "fetch_markets", lambda pm_, ids: {i: pm_.markets[i] for i in ids})
+    config = StrategyConfig(**{**CFG.to_dict(), "categories": ("politics",), **cfg})
+    limits = RiskLimits(bankroll=1000, max_position_usd=25, max_event_usd=25, max_order_usd=25)
+    return Engine(pm, StateStore(tmp_path), HarvestStrategy(config, MODEL), limits), pm
+
+
+def test_quiet_filter_buys_only_what_has_not_moved(tmp_path, monkeypatch):
+    markets = {1: live(1, 0.92, 0.93), 2: live(2, 0.92, 0.93), 3: live(3, 0.92, 0.93)}
+    tape = {"0x1": [print_(1, "T1a", 0.93), print_(4, "T1a", 0.92), print_(10, "T1a", 0.93)],     # quiet
+            "0x2": [print_(1, "T2a", 0.93), print_(3, "T2a", 0.80), print_(10, "T2a", 0.93)],     # dipped this week
+            "0x3": [print_(1, "T3a", 0.93), print_(2, "T3a", 0.93)]}                               # too new to say
+    e, pm = quiet_engine(tmp_path, monkeypatch, markets, tape, quiet_days=7.0, quiet_range=0.03)
+    rep = e.run_cycle(NOW)
+    assert rep.placed == 1 and [p.market_id for p in e.portfolio.positions.values()] == [1]
+    import csv
+    checks = {int(r["market_id"]): r for r in csv.DictReader((tmp_path / "quiet.csv").open())}
+    assert checks[1]["quiet"] == "1" and checks[2]["quiet"] == "0" and checks[3]["quiet"] == "0"
+    assert checks[3]["seasoned"] == "0" and float(checks[2]["range"]) == pytest.approx(0.13)
+    decisions = [json.loads(line) for line in (tmp_path / "decisions.jsonl").open()]
+    assert any(d.get("action") == "screened" and d["by_limit"].get("not quiet") == 2 for d in decisions)
+
+
+def test_without_the_filter_nothing_is_looked_up_for_trading(tmp_path, monkeypatch):
+    markets = {1: live(1, 0.92, 0.93)}
+    e, pm = quiet_engine(tmp_path, monkeypatch, markets, {"0x1": [print_(1, "T1a", 0.50), print_(10, "T1a", 0.93)]})
+    assert e.run_cycle(NOW).placed == 1                          # busy, and bought all the same
+    assert not (tmp_path / "quiet.csv").exists()
+
+
+def test_quiet_answers_are_remembered_between_cycles(tmp_path, monkeypatch):
+    markets = {1: live(1, 0.92, 0.93), 2: live(2, 0.92, 0.93)}
+    tape = {"0x1": [print_(1, "T1a", 0.93), print_(3, "T1a", 0.70), print_(10, "T1a", 0.93)],
+            "0x2": [print_(1, "T2a", 0.93), print_(3, "T2a", 0.70), print_(10, "T2a", 0.93)]}
+    e, pm = quiet_engine(tmp_path, monkeypatch, markets, tape, quiet_days=7.0, confirm_hours=0.0, watch_lo=0.0, watch_hi=0.0)
+    e.run_cycle(NOW)
+    first = pm.tape_reads
+    assert first == 2
+    again = Engine(pm, StateStore(tmp_path), e.strategy, e.limits)       # a new process, as on the schedule
+    again.run_cycle(NOW + 3 * 3600)
+    assert pm.tape_reads == first                                 # both were busy: not asked again so soon
+    again.run_cycle(NOW + 13 * 3600)
+    assert pm.tape_reads == first + 2
+
+
+def test_every_forward_test_signal_gets_its_traded_range_recorded_once(tmp_path, monkeypatch):
+    import csv
+    from kht.trading.report import score_shadow, shadow_quiet
+    markets = {1: live(1, 0.92, 0.93), 2: live(2, 0.92, 0.93)}
+    tape = {"0x1": [print_(1, "T1a", 0.93), print_(4, "T1a", 0.92), print_(10, "T1a", 0.93)],
+            "0x2": [print_(1, "T2a", 0.93), print_(3, "T2a", 0.80), print_(10, "T2a", 0.93)]}
+    e, pm = quiet_engine(tmp_path, monkeypatch, markets, tape)    # no filter: this account trades everything
+    e.run_cycle(NOW)
+    e.run_cycle(NOW + 600)
+    rows = list(csv.DictReader((tmp_path / "shadow_quiet.csv").open()))
+    assert sorted(int(r["market_id"]) for r in rows) == [1, 2]    # once each
+    assert shadow_quiet(tmp_path) == {"1:core": True, "2:core": False}
+    resolved = {1: live(1, None, None, closed=True, final0=1.0, accepting=False),
+                2: live(2, None, None, closed=True, final0=0.0, accepting=False)}
+    assert score_shadow(tmp_path, resolved, "core", quiet=True)["win_rate"] == 1.0
+    assert score_shadow(tmp_path, resolved, "core", quiet=False)["win_rate"] == 0.0
+    assert score_shadow(tmp_path, resolved, "core")["signals"] == 2
+
+
+def test_signals_logged_before_ranges_were_recorded_are_caught_up_as_of_their_own_time(tmp_path, monkeypatch):
+    import csv
+    markets = {1: live(1, 0.92, 0.93)}
+    # quiet up to the signal, then a collapse afterwards that must not count
+    tape = {"0x1": [print_(-0.5, "T1a", 0.40), print_(1, "T1a", 0.93), print_(4, "T1a", 0.92), print_(10, "T1a", 0.93)]}
+    e, pm = quiet_engine(tmp_path, monkeypatch, markets, tape)
+    e.run_cycle(NOW)
+    (tmp_path / "shadow_quiet.csv").unlink()                      # as if the signal had been logged by older code
+    old = Engine(pm, StateStore(tmp_path), e.strategy, e.limits)
+    old.shadow_quiet_done.clear()
+    old.run_cycle(NOW + DAY)                                      # a day later, after the collapse
+    rows = list(csv.DictReader((tmp_path / "shadow_quiet.csv").open()))
+    assert len(rows) == 1 and float(rows[0]["range"]) == pytest.approx(0.01) and rows[0]["ts"] == str(int(NOW))
+
+
+def test_lookups_are_rationed_within_a_cycle(tmp_path, monkeypatch):
+    import kht.trading.engine as eng
+    monkeypatch.setattr(eng, "QUIET_LOOKUPS_PER_CYCLE", 3)
+    markets = {i: live(i, 0.92, 0.93) for i in range(1, 9)}
+    tape = {f"0x{i}": [print_(1, f"T{i}a", 0.93), print_(10, f"T{i}a", 0.93)] for i in range(1, 9)}
+    e, pm = quiet_engine(tmp_path, monkeypatch, markets, tape, quiet_days=7.0, confirm_hours=0.0)
+    e.run_cycle(NOW)
+    assert pm.tape_reads == 3

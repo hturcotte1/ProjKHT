@@ -104,6 +104,11 @@ class StrategyConfig:
     max_spread: float = 0.03
     min_edge: float = 0.01              # estimated profit per share after the fee
     single_only: bool = False           # skip legs of multi-outcome events (they are still logged)
+    # Only buy outcomes whose traded price has stayed within quiet_range over
+    # the last quiet_days days, in a market older than that (0 = no such
+    # filter). See trading/quiet.py and docs/04_second_round.md.
+    quiet_days: float = 0.0
+    quiet_range: float = 0.03
     # The rule was tested as "in the band at one day's close, bought the next
     # day if still in the band". The delay matters: it weeds out contracts that
     # are falling through the band. Live, a contract must also have been in the

@@ -138,8 +138,24 @@ def build_report(state_dir: str | Path) -> str:
     return "\n".join(lines) + "\n"
 
 
+def shadow_quiet(state_dir: str | Path, max_range: float = 0.03) -> dict[str, bool]:
+    """For each forward-test signal with a recorded traded range: was it quiet when logged?
+
+    Keyed "market:band", as in the log. A signal is quiet if it traded in the
+    window, never more than ``max_range`` apart, in a market older than the
+    window (the definition in trading/quiet.py and docs/04_second_round.md).
+    """
+    out: dict[str, bool] = {}
+    for r in _read_csv(Path(state_dir) / "shadow_quiet.csv"):
+        measured = r.get("range") not in (None, "")
+        out[f"{r['market_id']}:{r.get('band', 'core')}"] = bool(
+            int(r.get("complete", 0) or 0) and int(r.get("seasoned", 0) or 0) and measured
+            and float(r["range"]) <= max_range + 1e-9)
+    return out
+
+
 def score_shadow(state_dir: str | Path, markets: dict[int, Any], band: str | None = None,
-                 legs: bool | None = None) -> dict[str, Any]:
+                 legs: bool | None = None, quiet: bool | None = None) -> dict[str, Any]:
     """Score the forward-test log against resolutions.
 
     ``markets`` maps market id to a ``LiveMarket``. Returns counts and the
@@ -148,13 +164,18 @@ def score_shadow(state_dir: str | Path, markets: dict[int, Any], band: str | Non
     multi-outcome events (True) or only stand-alone markets (False). The
     split uses facts logged with the signal, not the log's ``tradable``
     column, which records the configuration in force on the day and so goes
-    stale when the rule is changed.
+    stale when the rule is changed. ``quiet`` keeps the signals that were
+    quiet when logged (True) or were not (False); signals whose traded range
+    was never recorded belong to neither.
     """
     rows = _read_csv(Path(state_dir) / "shadow.csv")
     if band is not None:
         rows = [r for r in rows if r.get("band", "core") == band]
     if legs is not None:
         rows = [r for r in rows if bool(int(r.get("neg_risk", 0) or 0)) == legs]
+    if quiet is not None:
+        was_quiet = shadow_quiet(state_dir)
+        rows = [r for r in rows if was_quiet.get(f"{r['market_id']}:{r.get('band', 'core')}") is quiet]
     resolved = []
     for r in rows:
         lm = markets.get(int(r["market_id"]))

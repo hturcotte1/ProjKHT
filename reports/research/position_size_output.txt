@@ -1,0 +1,42 @@
+main rule (95-98c): 1,836 candidate trades, 33 lost, average return +1.64%
+quiet rule Q (90-98c, not yet confirmed): 746 candidate trades, 7 lost, average return +2.74%
+both, quiet first: 1,843 candidate trades, 33 lost, average return +1.75%
+
+main rule (95-98c), $1,000 account, all three years:
+stake              story cap  taken  losers taken  per year %  total %  worst drawdown %  worst month %  losing months  months  money in use %  largest single loss $
+   2% four positions a story    699             9         9.1     29.6              -3.8           -3.0              5      36            32.4                  -20.0
+   2%      no cap on a story    985            19         8.9     29.0              -5.0           -3.1              8      36            42.4                  -20.0
+   3% four positions a story    631             8        12.0     40.2              -5.6           -4.7              5      36            41.3                  -30.0
+   3%      no cap on a story    801            13        12.6     42.7              -6.6           -2.6              7      36            49.9                  -30.0
+   5% four positions a story    503             6        16.2     56.5              -4.6           -3.4              4      36            52.3                  -50.0
+   5%      no cap on a story    524            10        11.7     39.3              -8.1           -5.8              8      36            58.1                  -50.0
+ 7.5% four positions a story    367             4        17.3     61.2              -6.6           -5.5              4      36            58.6                  -75.0
+ 7.5%      no cap on a story    373             8        11.7     39.1             -13.7           -6.0              7      36            63.2                  -75.0
+  10% four positions a story    258             5        10.0     33.0             -19.3           -7.3              5      36            63.2                 -100.0
+  10%      no cap on a story    282             6        10.5     34.7             -19.0           -7.4              6      36            66.8                 -100.0
+
+quiet rule Q (90-98c, not yet confirmed), $1,000 account, all three years:
+stake              story cap  taken  losers taken  per year %  total %  worst drawdown %  worst month %  losing months  months  money in use %  largest single loss $
+   2% four positions a story    365             5         5.2     16.2              -2.0           -1.6              4      36            25.3                  -20.0
+   2%      no cap on a story    469             7         6.4     20.2              -3.4           -1.6              5      36            31.6                  -20.0
+   3% four positions a story    325             5         6.4     20.3              -2.9           -2.4              5      36            33.3                  -30.0
+   3%      no cap on a story    379             6         7.3     23.2              -5.0           -2.5              6      36            38.2                  -30.0
+   5% four positions a story    257             4         8.2     26.2              -6.7           -4.6              4      36            42.6                  -50.0
+   5%      no cap on a story    289             4        10.3     33.7              -4.8           -4.0              4      36            45.4                  -50.0
+ 7.5% four positions a story    207             3         9.7     31.7              -7.2           -5.9              3      36            49.0                  -75.0
+ 7.5%      no cap on a story    224             3        10.7     35.3              -7.1           -6.2              3      36            51.4                  -75.0
+  10% four positions a story    173             3         9.1     29.5              -9.4           -8.3              3      36            52.9                 -100.0
+  10%      no cap on a story    183             3         9.7     31.5              -9.3           -8.2              3      36            55.5                 -100.0
+
+both, quiet first, $1,000 account, all three years:
+stake              story cap  taken  losers taken  per year %  total %  worst drawdown %  worst month %  losing months  months  money in use %  largest single loss $
+   2% four positions a story    720            10         9.4     30.7              -3.1           -2.3              5      36            30.7                  -20.0
+   2%      no cap on a story    994            19         9.7     31.9              -5.9           -3.1              8      36            40.8                  -20.0
+   3% four positions a story    640            10        11.3     37.5              -5.5           -4.7              5      36            40.0                  -30.0
+   3%      no cap on a story    798            16        11.9     39.9              -6.6           -4.1              7      36            48.6                  -30.0
+   5% four positions a story    502             6        16.4     57.2              -7.2           -5.5              5      36            49.8                  -50.0
+   5%      no cap on a story    569             8        16.6     58.0              -7.0           -5.0              4      36            55.4                  -50.0
+ 7.5% four positions a story    357             6        13.1     44.3             -12.6           -9.6              5      36            56.8                  -75.0
+ 7.5%      no cap on a story    396             8        12.1     40.5             -10.8           -9.0              7      36            61.1                  -75.0
+  10% four positions a story    293             4        18.1     64.2             -19.1           -8.4              3      36            60.5                 -100.0
+  10%      no cap on a story    339             5        18.3     65.3              -9.3           -7.0              5      36            64.2                 -100.0

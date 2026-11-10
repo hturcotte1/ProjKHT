@@ -11,6 +11,8 @@ carries.
 | `c6_` | `check_loss_bunching.py` | How the losing trades of the rule that passed were spread over events, weeks and months, against what chance would produce | Exploratory description of the evidence |
 | `c7_` | `check_late_entry.py` | The same rules entered late: days or weeks after a contract first qualified, and on "switch-on" dates a week apart | Exploratory check on how the paper accounts and the forward-test log start |
 | `q_` | `run_quiet_favourites.py` | Second round, track A: favourites that have not moved for one or two weeks against those that have. Rule and bar fixed in `docs/04_second_round.md` | A prediction made before looking, on data examined before for other questions |
+| `qs_` | `run_quiet_replication.py` | Second round: the quiet rule Q on sports markets that are not single games, never read before | A replication on untouched data (**failed**) |
+| `ps_` | `run_position_size.py` | The account simulation at larger position sizes, for the main rule, the quiet rule and both | Analysis; chooses nothing |
 | `cp_` | `run_crypto_price.py` | Second round, track C: the confirmed rule and the quiet rule on crypto price markets, discovery set | A replication on untouched data (not repeated) |
 | `cy_` | `run_crypto_yardstick.py` | Second round, track C: an outside fair value for crypto price markets from the coin's price and volatility; includes one table marked as an artefact | Exploratory on the discovery set (negative) |
 | `s1_`, `s2_` | `run_confirmatory_sports.py` | The pre-registered sports rules | **The evidence** (negative) |

@@ -316,3 +316,74 @@ the bias did not repeat cleanly, which is a reason for caution about the first
 round's result everywhere that losses can bunch; and a second example, after
 the first round's biased sample, of a strong result made out of nothing by a
 timing mismatch.
+
+## 7. The replication of the quiet rule in sports: failed
+
+*`run_quiet_replication.py`, `qs_*.csv`. 3,182 season-long and tournament
+markets, none of them read before.*
+
+| | Trades | Events | Lost | Return a trade | t |
+|---|---:|---:|---:|---:|---:|
+| **Q**, quiet, 3–60 days | 265 | 89 | 11 (4.2%) | −0.27% | −0.2 |
+| Control, not quiet | 658 | 227 | 29 (4.4%) | +0.35% | 0.4 |
+| **Q-long**, quiet, 60–365 days | 385 | 78 | 17 (4.4%) | −0.56% | −0.7 |
+| Control, not quiet | 449 | 115 | 20 (4.5%) | +0.17% | 0.2 |
+
+Every part of the bar failed. Quiet favourites lost exactly as often as the
+others, and neither group earned anything: at an average cost of 95–96¢, a
+loss rate of 4.2–4.4% is a fair price. The first round's own rule does nothing
+here either (95–99¢, 752 trades, +0.38%, t = 0.8).
+
+Two things follow.
+
+**There is no favourite–longshot edge in sports, in games or in season-long
+markets.** The first round found that for games; this extends it. Whatever
+the crowd gets wrong in news markets, it does not get wrong where outcomes
+are settled on a field and professionals price them.
+
+**"Quiet" is not a general property of prices that makes a favourite safe.**
+A team's title odds sit still between matches and then move on a result. The
+idea behind the quiet rule was that a still price means a story has gone
+dormant, and in a competition with a fixture list it means nothing of the
+kind. I registered sports as a replication because it was the untouched data
+I had, and the honest reading is that the rule failed the test I set, in a
+place where the reasoning behind it does not apply. That is weaker than
+failing where it should work and it is not a pass.
+
+So after two universes the quiet rule stands like this: a large effect on the
+first round's news markets, found by looking; nothing to judge in crypto;
+and a clear failure in sports. By the rule I wrote before testing, it is not
+to be traded with real money on that evidence.
+
+## 8. Where the quiet rule should be tested instead
+
+*Written at 18:40 UTC on 10 November, before any of the data below was
+downloaded.*
+
+The right replication is in markets of the same kind as the ones the effect
+was found in, that have never been in the data. There is such a set. Every
+market in both rounds so far had traded at least 100,000 shares. Polymarket
+has many resolved news markets that never got that far.
+
+**QT: thinner news markets.** Resolved Polymarket markets outside sports and
+crypto, with a life of two days or more, that traded at least 20,000 and
+fewer than 100,000 shares. A market is used only once it has traded 20,000
+shares. Everything else is rule Q exactly as fixed in section 5: ask above 90¢
+and at most 98¢, scheduled end 3 to 60 days away, traded range of 3¢ or less
+over the last 7 days in a market already in the panel 7 days ago, bought at
+the next taker-buy print within 3 days if still in range, today's fee, held,
+one per market. Stand-alone markets and legs are both traded and reported
+separately. The control is the same band on the first day not quiet. Clustered
+by event.
+
+**Bar.** The same three parts as before: Q positive with |t| ≥ 3; above its
+control with |t| ≥ 2; and fewer events with a losing Q trade than the
+control's loss rate would produce (one-sided exact p under 0.01).
+
+Reported alongside: the first round's main rule (95–98¢, stand-alone) on the
+same markets, as a replication of the first round in thinner markets; and Q
+within the 90–95¢ band alone, where the effect was largest.
+
+If QT passes, the quiet rule has repeated once in the right kind of market
+and failed once in the wrong kind, and it earns a paper account and a place
+in the forward test. If it fails, it is dropped.

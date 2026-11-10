@@ -99,12 +99,17 @@ def cmd_shadow(args: argparse.Namespace) -> int:
     # Only signals whose scheduled end has passed are scored. Counting early
     # resolutions as they happen would bias the result downward: a "by
     # December" market that closes in November is one where the thing happened.
-    groups = [("core", False, "the rule as traded: stand-alone markets in the traded band"),
-              ("core", True, "legs of multi-outcome events in the traded band (logged only)"),
-              ("below", None, "below the traded band (logged only)"),
-              ("above", None, "above the traded band (logged only)")]
-    for band, legs, label in groups:
-        res = score_shadow(args.state, markets, band, legs)
+    groups = [("core", False, None, "the rule as traded: stand-alone markets in the traded band"),
+              ("core", True, None, "legs of multi-outcome events in the traded band (logged only)"),
+              ("below", None, None, "below the traded band (logged only)"),
+              ("above", None, None, "above the traded band (logged only)"),
+              # the second round's finding, checked on new data: quiet against not quiet at the same prices
+              ("core", False, True, "traded band, stand-alone, QUIET when logged (3c or less traded range over 7 days)"),
+              ("core", False, False, "traded band, stand-alone, not quiet when logged"),
+              ("below", False, True, "below the traded band, stand-alone, QUIET when logged"),
+              ("below", False, False, "below the traded band, stand-alone, not quiet when logged")]
+    for band, legs, quiet, label in groups:
+        res = score_shadow(args.state, markets, band, legs, quiet)
         if not res["signals"]:
             continue
         print(f"\n{label}: {res['signals']} signals logged, {res['resolved']} resolved, {res['open']} still open")

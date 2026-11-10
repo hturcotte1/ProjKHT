@@ -20,12 +20,20 @@ from ..api import Polymarket
 from .broker import Broker, PaperBroker
 from .models import Fill, MarketInfo, OrderStatus
 from .portfolio import Portfolio
+from .quiet import Quietness, traded_range
 from .risk import RiskLimits, RiskManager, RiskState
 from .strategy import EdgeModel, HarvestStrategy, StrategyConfig
 from .universe import LiveMarket, fetch_markets, scan_open, theme_tags
 
 STATE_VERSION = 1
 SHADOW_RECHECK_SECONDS = 6 * 3600
+# Every forward-test signal has its traded range over this many days recorded
+# beside it, whatever the strategy trades, so that the quiet-favourite finding
+# can be checked on new data.
+QUIET_LOG_DAYS = 7.0
+QUIET_LOOKUPS_PER_CYCLE = 120       # reads of the trade feed allowed in one cycle
+QUIET_NO_SECONDS = 12 * 3600        # a busy outcome is not looked up again for this long
+QUIET_YES_SECONDS = 3 * 3600        # a quiet one is checked again sooner: it is about to be bought
 
 
 @dataclass
@@ -111,6 +119,11 @@ class Engine:
         self.shadow_seen: set[str] = set() if raw is None else {str(x) for x in raw.get("shadow_seen", [])}
         # signals that were not yet a day old when last checked, and when that was
         self.shadow_pending: dict[str, float] = {} if raw is None else dict(raw.get("shadow_pending", {}))
+        # forward-test signals whose traded range has been written to shadow_quiet.csv
+        self.shadow_quiet_done: set[str] = set() if raw is None else {str(x) for x in raw.get("shadow_quiet_done", [])}
+        # "market:outcome" -> [when it was checked, whether it was quiet]; see _is_quiet
+        self.quiet_seen: dict[str, list[float]] = {} if raw is None else dict(raw.get("quiet_seen", {}))
+        self._quiet_budget = QUIET_LOOKUPS_PER_CYCLE
         self.started_ts = time.time() if raw is None else raw.get("started_ts", time.time())
 
     def _make_broker(self, raw: dict[str, Any] | None) -> Broker:
@@ -127,6 +140,7 @@ class Engine:
     def run_cycle(self, now: float | None = None) -> CycleReport:
         now = time.time() if now is None else now
         notes: list[str] = []
+        self._quiet_budget = QUIET_LOOKUPS_PER_CYCLE
 
         markets = scan_open(self.pm, self.strategy.cfg.min_volume)
         # markets we are involved in may have closed and dropped out of the scan
@@ -188,17 +202,24 @@ class Engine:
                 continue
             ok, why = self.risk.check(probe, c.market.info, self.portfolio, self.broker.open_orders(),
                                       market_event, themes)
-            if ok:
-                shortlist.append(c)
-            else:
+            if not ok:
                 key = why.split(" exposure")[0].split(":")[0]       # "theme 'iran'", "event", "halted", ...
                 screened[key] = screened.get(key, 0) + 1
+                continue
+            if self.strategy.cfg.quiet_days > 0:
+                quiet = self._is_quiet(c, now)
+                if not quiet:
+                    key = "not quiet" if quiet is False else "quiet check postponed"
+                    screened[key] = screened.get(key, 0) + 1
+                    continue
+            shortlist.append(c)
         if screened:
             # one line per cycle rather than one per candidate: the same few dozen would repeat every three hours
             self.store.append_jsonl("decisions.jsonl", {"ts": now, "action": "screened", "count": sum(screened.values()),
                                                         "by_limit": screened})
         confirmed = self._confirmed(shortlist, now)
         self._log_shadow(self.strategy.watchlist(markets, now), now)
+        self._record_shadow_quiet(markets)
         intents = self.strategy.decide(markets, self.portfolio, self.broker.open_orders(), now, confirmed,
                                        max_new=len(shortlist))
         placed = rejected = opened = 0
@@ -346,6 +367,70 @@ class Engine:
                                 and not (cfg.single_only and info.neg_risk)),
                 "dte": round(c.dte, 2), "end_ts": int(info.end_ts)})
 
+    # ------------------------------------------------------------- quietness
+    def _traded_range(self, info: MarketInfo, outcome: int, as_of: float, days: float) -> Quietness | None:
+        """One read of the trade feed, if this cycle has any left. None = not looked up."""
+        if self._quiet_budget <= 0:
+            return None
+        self._quiet_budget -= 1
+        try:
+            return traded_range(self.pm, info, outcome, as_of, days)
+        except Exception:  # noqa: BLE001 - no tape means no answer, not a crash
+            return None
+
+    def _is_quiet(self, c: Any, now: float) -> bool | None:
+        """Has this candidate's price stayed inside the strategy's range? None = could not check this cycle.
+
+        Answers are remembered between cycles: a week's range changes slowly,
+        and without that the same busy candidates would use up every cycle's
+        lookups and the ones further down the list would never be reached.
+        """
+        cfg = self.strategy.cfg
+        info = c.market.info
+        key = f"{info.market_id}:{c.outcome}"
+        seen = self.quiet_seen.get(key)
+        if seen is not None and now - seen[0] < (QUIET_YES_SECONDS if seen[1] else QUIET_NO_SECONDS):
+            return bool(seen[1])
+        q = self._traded_range(info, c.outcome, now, cfg.quiet_days)
+        if q is None:
+            return None
+        quiet = q.is_quiet(cfg.quiet_range)
+        self.quiet_seen[key] = [now, int(quiet)]
+        self.store.append_csv("quiet.csv", {"ts": int(now), "market_id": info.market_id, "outcome": c.outcome,
+                                            "ask": round(c.ask, 4), "days": cfg.quiet_days, **q.to_dict(), "quiet": int(quiet)})
+        return quiet
+
+    def _record_shadow_quiet(self, markets: dict[int, LiveMarket]) -> None:
+        """Write the traded range of each forward-test signal, as of the moment it was logged.
+
+        Signals logged before this existed, or in a cycle that ran out of
+        lookups, are caught up here; the feed is read as of the signal's own
+        time, so a late lookup gives the same answer as a prompt one.
+        """
+        if len(self.shadow_quiet_done) >= len(self.shadow_seen):
+            return
+        path = self.store.dir / "shadow.csv"
+        if not path.exists():
+            return
+        with path.open() as fh:
+            rows = list(csv.DictReader(fh))
+        for r in rows:
+            key = f"{r['market_id']}:{r.get('band', 'core')}"
+            if key in self.shadow_quiet_done:
+                continue
+            lm = markets.get(int(r["market_id"]))
+            if lm is None:
+                continue                     # no longer listed: its tape cannot be matched to an outcome here
+            q = self._traded_range(lm.info, int(r["outcome"]), float(r["ts"]), QUIET_LOG_DAYS)
+            if q is None:
+                if self._quiet_budget <= 0:
+                    break
+                continue
+            self.shadow_quiet_done.add(key)
+            self.store.append_csv("shadow_quiet.csv", {"ts": int(float(r["ts"])), "market_id": r["market_id"],
+                                                       "band": r.get("band", "core"), "outcome": r["outcome"],
+                                                       "days": QUIET_LOG_DAYS, **q.to_dict()})
+
     def _sticky_themes(self, markets: dict[int, LiveMarket],
                        themes: dict[int, frozenset[str]]) -> dict[int, frozenset[str]]:
         """Keep a story capped for as long as the account is exposed to it.
@@ -404,6 +489,9 @@ class Engine:
             "limits": self.limits.to_dict(), "strategy": self.strategy.cfg.to_dict(),
             "model": self.strategy.model.to_dict(), "market_names": self.market_names,
             "shadow_seen": sorted(self.shadow_seen),
+            "shadow_quiet_done": sorted(self.shadow_quiet_done),
+            # answers older than two days are of no use to _is_quiet
+            "quiet_seen": {k: v for k, v in self.quiet_seen.items() if time.time() - v[0] < 2 * 86_400},
             # forget pending checks older than two weeks so the file cannot grow without bound
             "shadow_pending": {k: v for k, v in self.shadow_pending.items() if time.time() - v < 14 * 86_400},
             "marks": getattr(self, "last_marks", {}),
