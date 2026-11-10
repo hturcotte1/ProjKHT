@@ -1,0 +1,49 @@
+{
+  "mode": "paper",
+  "model": "model.json",
+  "strategy": {
+    "ask_lo": 0.9,
+    "ask_hi": 0.98,
+    "dte_lo": 3.0,
+    "dte_hi": 60.0,
+    "categories": [
+      "politics",
+      "geopolitics",
+      "finance",
+      "economics",
+      "culture",
+      "tech",
+      "weather",
+      "other",
+      "mentions"
+    ],
+    "min_volume": 20000,
+    "max_volume": 100000,
+    "max_spread": 0.03,
+    "min_edge": 0.0,
+    "confirm_hours": 18.0,
+    "watch_lo": 0.9,
+    "watch_hi": 0.99,
+    "stake_usd": 20.0,
+    "max_new_per_cycle": 5,
+    "entry": "taker",
+    "tag": "harvest-thin",
+    "single_only": true,
+    "busy_days": 14.0,
+    "busy_range": 0.15
+  },
+  "risk": {
+    "bankroll": 1000.0,
+    "max_position_usd": 25.0,
+    "max_event_usd": 25.0,
+    "max_theme_usd": 80.0,
+    "max_total_exposure_frac": 0.8,
+    "max_open_orders": 60,
+    "max_order_usd": 25.0,
+    "min_price": 0.03,
+    "max_price": 0.985,
+    "daily_loss_limit_usd": 60.0,
+    "max_drawdown_usd": 200.0,
+    "theme_max_share": 0.1
+  }
+}

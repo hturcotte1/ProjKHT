@@ -32,8 +32,8 @@ SHADOW_RECHECK_SECONDS = 6 * 3600
 # can be checked on new data.
 QUIET_LOG_DAYS = 7.0
 QUIET_LOOKUPS_PER_CYCLE = 120       # reads of the trade feed allowed in one cycle
-QUIET_NO_SECONDS = 12 * 3600        # a busy outcome is not looked up again for this long
-QUIET_YES_SECONDS = 3 * 3600        # a quiet one is checked again sooner: it is about to be bought
+RANGE_FAIL_SECONDS = 12 * 3600      # an outcome a range filter turned away is not looked up again for this long
+RANGE_PASS_SECONDS = 3 * 3600       # one that passed is checked again sooner: it is about to be bought
 
 
 @dataclass
@@ -121,8 +121,8 @@ class Engine:
         self.shadow_pending: dict[str, float] = {} if raw is None else dict(raw.get("shadow_pending", {}))
         # forward-test signals whose traded range has been written to shadow_quiet.csv
         self.shadow_quiet_done: set[str] = set() if raw is None else {str(x) for x in raw.get("shadow_quiet_done", [])}
-        # "market:outcome" -> [when it was checked, whether it was quiet]; see _is_quiet
-        self.quiet_seen: dict[str, list[float]] = {} if raw is None else dict(raw.get("quiet_seen", {}))
+        # "market:outcome:days" -> [when measured, range, prints, seasoned, complete]; see _range_of
+        self.quiet_seen: dict[str, list[Any]] = {} if raw is None else dict(raw.get("quiet_seen", {}))
         self._quiet_budget = QUIET_LOOKUPS_PER_CYCLE
         self.started_ts = time.time() if raw is None else raw.get("started_ts", time.time())
 
@@ -206,12 +206,10 @@ class Engine:
                 key = why.split(" exposure")[0].split(":")[0]       # "theme 'iran'", "event", "halted", ...
                 screened[key] = screened.get(key, 0) + 1
                 continue
-            if self.strategy.cfg.quiet_days > 0:
-                quiet = self._is_quiet(c, now)
-                if not quiet:
-                    key = "not quiet" if quiet is False else "quiet check postponed"
-                    screened[key] = screened.get(key, 0) + 1
-                    continue
+            turned_away = self._range_filters(c, now)
+            if turned_away:
+                screened[turned_away] = screened.get(turned_away, 0) + 1
+                continue
             shortlist.append(c)
         if screened:
             # one line per cycle rather than one per candidate: the same few dozen would repeat every three hours
@@ -378,27 +376,48 @@ class Engine:
         except Exception:  # noqa: BLE001 - no tape means no answer, not a crash
             return None
 
-    def _is_quiet(self, c: Any, now: float) -> bool | None:
-        """Has this candidate's price stayed inside the strategy's range? None = could not check this cycle.
+    def _range_of(self, c: Any, now: float, days: float, passes: Any) -> Quietness | None:
+        """Traded range of a candidate over ``days`` days. None = could not be measured this cycle.
 
-        Answers are remembered between cycles: a week's range changes slowly,
-        and without that the same busy candidates would use up every cycle's
-        lookups and the ones further down the list would never be reached.
+        Measurements are remembered between cycles: a week's range changes
+        slowly, and without that the same candidates would use up every
+        cycle's lookups and the ones further down the list would never be
+        reached. ``passes`` says whether a measurement lets the candidate
+        through; one that does is refreshed sooner.
         """
-        cfg = self.strategy.cfg
         info = c.market.info
-        key = f"{info.market_id}:{c.outcome}"
+        key = f"{info.market_id}:{c.outcome}:{days:g}"
         seen = self.quiet_seen.get(key)
-        if seen is not None and now - seen[0] < (QUIET_YES_SECONDS if seen[1] else QUIET_NO_SECONDS):
-            return bool(seen[1])
-        q = self._traded_range(info, c.outcome, now, cfg.quiet_days)
+        if seen is not None and len(seen) == 5:
+            q = Quietness(range=seen[1], prints=int(seen[2]), seasoned=bool(seen[3]), complete=bool(seen[4]))
+            if now - seen[0] < (RANGE_PASS_SECONDS if passes(q) else RANGE_FAIL_SECONDS):
+                return q
+        q = self._traded_range(info, c.outcome, now, days)
         if q is None:
             return None
-        quiet = q.is_quiet(cfg.quiet_range)
-        self.quiet_seen[key] = [now, int(quiet)]
+        self.quiet_seen[key] = [now, q.range, q.prints, int(q.seasoned), int(q.complete)]
         self.store.append_csv("quiet.csv", {"ts": int(now), "market_id": info.market_id, "outcome": c.outcome,
-                                            "ask": round(c.ask, 4), "days": cfg.quiet_days, **q.to_dict(), "quiet": int(quiet)})
-        return quiet
+                                            "ask": round(c.ask, 4), "days": days, **q.to_dict()})
+        return q
+
+    def _range_filters(self, c: Any, now: float) -> str | None:
+        """Why the strategy's range filters turn this candidate away, or None if they let it through."""
+        cfg = self.strategy.cfg
+        if cfg.quiet_days > 0:
+            q = self._range_of(c, now, cfg.quiet_days, lambda m: m.is_quiet(cfg.quiet_range))
+            if q is None:
+                return "range check postponed"
+            if not q.is_quiet(cfg.quiet_range):
+                return "not quiet"
+        if cfg.busy_days > 0:
+            q = self._range_of(c, now, cfg.busy_days, lambda m: m.complete and not m.ranged_more_than(cfg.busy_range))
+            if q is None:
+                return "range check postponed"
+            if not q.complete:
+                return "range unknown"          # more prints than could be read: too busy to call calm
+            if q.ranged_more_than(cfg.busy_range):
+                return "ranged too far"
+        return None
 
     def _record_shadow_quiet(self, markets: dict[int, LiveMarket]) -> None:
         """Write the traded range of each forward-test signal, as of the moment it was logged.

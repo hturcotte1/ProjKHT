@@ -531,7 +531,7 @@ def test_quiet_filter_buys_only_what_has_not_moved(tmp_path, monkeypatch):
     assert rep.placed == 1 and [p.market_id for p in e.portfolio.positions.values()] == [1]
     import csv
     checks = {int(r["market_id"]): r for r in csv.DictReader((tmp_path / "quiet.csv").open())}
-    assert checks[1]["quiet"] == "1" and checks[2]["quiet"] == "0" and checks[3]["quiet"] == "0"
+    assert float(checks[1]["range"]) == pytest.approx(0.01) and checks[1]["seasoned"] == "1"
     assert checks[3]["seasoned"] == "0" and float(checks[2]["range"]) == pytest.approx(0.13)
     decisions = [json.loads(line) for line in (tmp_path / "decisions.jsonl").open()]
     assert any(d.get("action") == "screened" and d["by_limit"].get("not quiet") == 2 for d in decisions)
@@ -601,3 +601,24 @@ def test_lookups_are_rationed_within_a_cycle(tmp_path, monkeypatch):
     e, pm = quiet_engine(tmp_path, monkeypatch, markets, tape, quiet_days=7.0, confirm_hours=0.0)
     e.run_cycle(NOW)
     assert pm.tape_reads == 3
+
+
+
+def test_busy_filter_skips_what_has_just_moved_a_long_way_and_keeps_the_rest(tmp_path, monkeypatch):
+    markets = {1: live(1, 0.92, 0.93), 2: live(2, 0.92, 0.93), 3: live(3, 0.92, 0.93)}
+    tape = {"0x1": [print_(1, "T1a", 0.93), print_(9, "T1a", 0.86), print_(20, "T1a", 0.93)],     # 7c: fine
+            "0x2": [print_(1, "T2a", 0.93), print_(9, "T2a", 0.70), print_(20, "T2a", 0.93)],     # 23c in two weeks
+            "0x3": [print_(1, "T3a", 0.93), print_(2, "T3a", 0.60)]}                               # new market: kept, as in the backtest
+    e, pm = quiet_engine(tmp_path, monkeypatch, markets, tape, busy_days=14.0, busy_range=0.15)
+    rep = e.run_cycle(NOW)
+    assert sorted(p.market_id for p in e.portfolio.positions.values()) == [1, 3]
+    decisions = [json.loads(line) for line in (tmp_path / "decisions.jsonl").open()]
+    assert any(d.get("action") == "screened" and d["by_limit"].get("ranged too far") == 1 for d in decisions)
+
+
+def test_upper_volume_limit_keeps_an_account_to_thin_markets():
+    cfg = StrategyConfig(**{**CFG.to_dict(), "categories": ("politics",), "min_volume": 20_000, "max_volume": 100_000})
+    s = HarvestStrategy(cfg, MODEL)
+    mk = {1: live(1, 0.92, 0.93, volume=50_000), 2: live(2, 0.92, 0.93, volume=500_000), 3: live(3, 0.92, 0.93, volume=5_000)}
+    assert [i.market_id for i in s.decide(mk, Portfolio(1000), [], NOW)] == [1]
+    assert [c.market.info.market_id for c in s.watchlist(mk, NOW)] == [1]      # the forward-test log follows the same limits

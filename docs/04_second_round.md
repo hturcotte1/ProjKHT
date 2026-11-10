@@ -478,7 +478,7 @@ round's rules, run here exactly as they were fixed a day ago, did this:
 | …of those, ranged more than 15¢ in the last 14 days | 242 | 219 | 5 | +1.11% | 1.2 |
 | …the rest | 1,272 | 997 | 14 | +2.15% | 6.6 |
 | R1d as pre-registered: 95–99¢, legs included | 3,135 | 2,167 | 31 (1.0%) | **+1.69%** | **9.0** |
-| Long shots, 3–10¢ | 2,576 | 1,865 | 97.5% | −64.8% | −13.6 |
+| Long shots, 3–10¢ | 2,576 | 1,865 | 2,513 (97.5%) | −64.8% | −13.6 |
 
 This is the confirmation the first round could not give itself. Its holdout
 was 2,822 trades with t = 3.6, in markets of the same size as the ones the

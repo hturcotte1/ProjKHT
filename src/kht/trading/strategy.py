@@ -101,6 +101,7 @@ class StrategyConfig:
     dte_hi: float = 60.0
     categories: tuple[str, ...] = ("politics", "geopolitics", "finance", "economics", "culture", "tech")
     min_volume: float = 100_000         # shares traded so far (same rule as research)
+    max_volume: float | None = None     # skip markets that have traded this many shares or more (None = no limit)
     max_spread: float = 0.03
     min_edge: float = 0.01              # estimated profit per share after the fee
     single_only: bool = False           # skip legs of multi-outcome events (they are still logged)
@@ -109,6 +110,12 @@ class StrategyConfig:
     # filter). See trading/quiet.py and docs/04_second_round.md.
     quiet_days: float = 0.0
     quiet_range: float = 0.03
+    # Skip outcomes whose traded price has ranged more than busy_range over
+    # the last busy_days days, in a market older than that (0 = no such
+    # filter). The opposite end of the same measure: a favourite that has
+    # just moved a long way earned about half as much in both rounds.
+    busy_days: float = 0.0
+    busy_range: float = 0.15
     # The rule was tested as "in the band at one day's close, bought the next
     # day if still in the band". The delay matters: it weeds out contracts that
     # are falling through the band. Live, a contract must also have been in the
@@ -187,6 +194,8 @@ class HarvestStrategy:
         for lm in markets.values():
             info = lm.info
             if lm.closed or not lm.accepting_orders or lm.volume < cfg.min_volume:
+                continue
+            if cfg.max_volume is not None and lm.volume >= cfg.max_volume:
                 continue
             if single_only and info.neg_risk:
                 continue

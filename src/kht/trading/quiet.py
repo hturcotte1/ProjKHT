@@ -34,6 +34,10 @@ class Quietness:
         """Traded in the window, never more than ``max_range`` apart, in a market older than the window."""
         return self.complete and self.seasoned and self.range is not None and self.range <= max_range + 1e-9
 
+    def ranged_more_than(self, max_range: float) -> bool:
+        """Moved further than ``max_range`` in the window, in a market older than the window."""
+        return self.seasoned and self.range is not None and self.range > max_range + 1e-9
+
     def to_dict(self) -> dict[str, Any]:
         return {"range": None if self.range is None else round(self.range, 4), "prints": self.prints,
                 "seasoned": int(self.seasoned), "complete": int(self.complete)}
