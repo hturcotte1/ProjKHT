@@ -140,6 +140,17 @@ runners, as blocked. The code refuses to start there and must not be made to.
 
 Paper and live accounts cannot share a state directory; the engine refuses.
 
+**Still to do before a live loop is left alone.** These need a real account,
+so they could not be done here:
+
+1. Place one minimum-size order by hand through `LiveBroker` and check the
+   fill, the balance and the position on the website.
+2. Wire in a check, every cycle, that the ledger agrees with what the exchange
+   reports for cash and positions, and halt on any difference. The helper for
+   cash exists (`cash_on_exchange`); the check itself does not.
+3. Decide what happens to orders the state file does not know about. `sync`
+   only asks the exchange about orders this system placed.
+
 **Polymarket US is a different exchange.** It has its own accounts, markets,
 fee schedule and API (documented at docs.polymarket.us, with an official
 Python SDK), and `trading/live.py` does not talk to it. Everything in the
