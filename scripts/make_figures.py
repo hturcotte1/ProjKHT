@@ -39,7 +39,7 @@ def fig_calibration(tables: Path, out: Path) -> None:
 
 
 def fig_equity(tables: Path, out: Path) -> None:
-    path = tables / "c4_r1_equity_stake20.csv"
+    path = tables / "c4_r1d_equity_stake20.csv"
     if not path.exists():
         return
     e = pd.read_csv(path, parse_dates=["date"])
@@ -48,14 +48,14 @@ def fig_equity(tables: Path, out: Path) -> None:
     ax.fill_between(e["date"], e["equity"].min() - 5, e["equity"], color=P.BLUE, alpha=0.10, zorder=2, linewidth=0)
     last = e.iloc[-1]
     ax.scatter([last["date"]], [last["equity"]], s=42, color=P.BLUE, edgecolor=P.SURFACE, linewidth=2, zorder=4)
-    ax.annotate(f"${last['equity']:,.0f}", (last["date"], last["equity"]), xytext=(-8, 8), textcoords="offset points",
+    ax.annotate(f"\\${last['equity']:,.0f}", (last["date"], last["equity"]), xytext=(-8, 8), textcoords="offset points",
                 ha="right", fontsize=9.5, color=P.INK)
     ax.axhline(1000, color=P.INK_3, linewidth=1.0, zorder=1)
-    ax.set_ylabel("account value ($)")
+    ax.set_ylabel("account value (\\$)")
     ax.set_ylim(e["equity"].min() - 5, e["equity"].max() + 12)
-    P.title(ax, "Rule R1 as a $1,000 account on the holdout",
-            "$20 per position, one position per event, positions carried at cost until they resolve")
-    P.save(fig, out / "r1_equity_holdout.png")
+    P.title(ax, "The rule that passed, run as a $1,000 account on the holdout",
+            "Buy 95–99¢, hold; $20 per position, one per event, $60 per theme; carried at cost until resolved")
+    P.save(fig, out / "r1d_equity_holdout.png")
 
 
 def fig_roundtrips(tables: Path, out: Path) -> None:

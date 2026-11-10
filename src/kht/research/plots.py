@@ -59,11 +59,16 @@ def style(ax) -> None:
     ax.tick_params(axis="both", length=0, labelsize=9)
 
 
+def _plain(text: str) -> str:
+    """Stop matplotlib from reading dollar amounts as maths."""
+    return text.replace("$", r"\$")
+
+
 def title(ax, text: str, subtitle: str | None = None) -> None:
     fig = ax.figure
-    fig.text(0.012, 0.975, text, ha="left", va="top", fontsize=12.5, fontweight="bold", color=INK)
+    fig.text(0.012, 0.975, _plain(text), ha="left", va="top", fontsize=12.5, fontweight="bold", color=INK)
     if subtitle:
-        fig.text(0.012, 0.915, subtitle, ha="left", va="top", fontsize=9.5, color=INK_2)
+        fig.text(0.012, 0.915, _plain(subtitle), ha="left", va="top", fontsize=9.5, color=INK_2)
 
 
 def rounded_bar(ax, x: float, height: float, width: float, color: str, radius_pts: float = 3.0) -> None:
