@@ -1,4 +1,10 @@
-"""Run the pre-registered hypothesis tests H1-H8 and write the result tables.
+"""Run the first-pass hypothesis tests H1-H8 on the quoted-price panel.
+
+NOTE: this panel selects markets by their *total* volume, which turned out to
+bias several of these tests (see docs/02_research_findings.md, "The sample
+that lied"). It is kept because that comparison is itself a finding; the tests
+that count are scripts/run_confirmatory*.py and scripts/run_exploratory.py,
+which use the no-hindsight sample built from trade tapes.
 
 Usage:
     python scripts/run_research.py [--out reports/research] [--only H1,H3]
@@ -42,6 +48,8 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="reports/research")
     ap.add_argument("--only", default="")
+    ap.add_argument("--sample-frac", type=float, default=1.0,
+                    help="use a random fraction of markets (the full panel needs ~10 GB of memory)")
     args = ap.parse_args()
     only = {x.strip().upper() for x in args.only.split(",") if x.strip()}
     want = lambda h: not only or h in only  # noqa: E731
@@ -51,6 +59,9 @@ def main() -> None:
     t0 = time.time()
     meta = load_meta("closed")
     prices = load_price_panel("3h")
+    if args.sample_frac < 1.0:
+        ids = pd.Series(prices["market_id"].unique()).sample(frac=args.sample_frac, random_state=0)
+        prices = prices[prices["market_id"].isin(ids)]
     print(f"loaded {prices['market_id'].nunique()} markets, {len(prices):,} price points ({time.time() - t0:.0f}s)")
     d12, _ = make_dataset(prices, meta, "12h")
     d3, _ = make_dataset(prices, meta, "3h")
