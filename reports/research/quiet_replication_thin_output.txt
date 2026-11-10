@@ -1,0 +1,86 @@
+news markets that traded 20,000 to 100,000 shares: 26,537; tapes on disk: 26,537
+panel: 390,850 outcome-days in 25,283 markets, 10,766 events, 2023-11-12 to 2026-11-11
+==============================================================================================================
+THE PRE-REGISTERED REPLICATION (news markets that traded 20,000 to 100,000 shares)
+--------------------------------------------------------------------------------------------------------------
+Q: 929 trades in 779 events, 10 lost in 10 events (1.08%); return per trade +2.93% (t = 8.16)
+  control: 2,823 trades, 84 lost (2.98%); return per trade +2.39% (t = 6.68)
+  Q minus control +0.54 points (t = 1.30); exact p for the count of losing events 0.00158
+  bar (positive with |t| >= 3; above control with |t| >= 2; exact p < 0.01)  ->  NOT PASSED
+--------------------------------------------------------------------------------------------------------------
+Q-long: 406 trades in 337 events, 5 lost in 5 events (1.23%); return per trade +4.07% (t = 6.89)
+  control: 745 trades, 17 lost (2.28%); return per trade +3.40% (t = 5.50)
+  Q minus control +0.67 points (t = 1.12); exact p for the count of losing events 0.21814
+  bar (positive with |t| >= 3; above control with |t| >= 2; exact p < 0.01)  ->  NOT PASSED
+--------------------------------------------------------------------------------------------------------------
+The smoother test (pre-registered as QT-smooth for the thinner markets only): 5,483 weekly rows in 2,726 markets and 1,941 events; 79 lost (1.44%)
+  refitted here: logit P(loses) = -0.086 -1.198 x logit(price) +0.195 x log(range + 0.005)
+  coefficient on the range +0.195, t = 1.25   (frozen from the first round: +0.295)
+  bar (positive with t >= 2)  ->  NOT PASSED
+  with small orders (no bar): against the favourite -0.165 (t = -0.92), for it -0.054 (t = -0.28);  first round: -0.290 (t -2.7), +0.304 (t 2.6)
+  favourites at 90-98.5c with 3-60 days to run, by the frozen model's predicted loss:
+frozen model's  rows  markets  predicted loss %  lost %  avg price  avg range  return %  t_event
+  safest third  1081      802              0.89    0.28       0.98       0.03      1.95     9.21
+  middle third  1080      867              1.92    0.83       0.96       0.08      3.02    10.44
+riskiest third  1081      876              4.49    3.33       0.93       0.17      3.42     5.05
+==============================================================================================================
+
+                                                                  rule  trades  events  win%  lost  events_with_a_loss  avg_cost  avg_ret%  se%  t_event  med_dte  med_hold_d
+                                          Q: quiet, 90-98c, 3-60 days     929     779 98.92    10                  10      0.96      2.93 0.36     8.16    28.50        28.0
+                                                   control: not quiet    2823    1976 97.02    84                  78      0.95      2.39 0.36     6.68    16.17        14.0
+                                   Q-long: quiet, 90-98c, 60-365 days     406     337 98.77     5                   5      0.95      4.07 0.59     6.89   113.35        92.0
+                                                   control: not quiet     745     561 97.72    17                  16      0.95      3.40 0.62     5.50   111.50        73.0
+                                                       Q, stand-alone     509     449 99.02     5                   5      0.96      2.85 0.46     6.20    30.00        30.0
+                                                 control, stand-alone    1666    1211 96.82    53                  52      0.95      2.34 0.46     5.11    18.00        15.0
+                                                  Q-long, stand-alone     196     165 98.47     3                   3      0.95      4.02 0.96     4.21   114.75        87.0
+                                                 control, stand-alone     367     288 97.55     9                   9      0.94      3.61 0.87     4.13   118.50        71.0
+                                      Q, legs of multi-outcome events     420     330 98.81     5                   5      0.96      3.02 0.57     5.34    26.00        25.0
+                                control, legs of multi-outcome events    1157     765 97.32    31                  26      0.95      2.45 0.57     4.30    14.00        12.0
+                                 Q-long, legs of multi-outcome events     210     172 99.05     2                   2      0.95      4.11 0.72     5.74   112.85        99.0
+                                control, legs of multi-outcome events     378     273 97.88     8                   7      0.95      3.19 0.87     3.66   106.00        74.0
+                                                    Q, 0.90-0.95 only     285     258 97.54     7                   7      0.94      3.99 0.99     4.05    30.00        30.0
+                                              control, 0.90-0.95 only    1718    1286 96.04    68                  63      0.93      3.06 0.53     5.74    16.00        14.0
+                                                    Q, 0.95-0.98 only     760     657 99.47     4                   4      0.97      2.48 0.27     9.10    26.21        26.0
+                                              control, 0.95-0.98 only    2099    1574 98.81    25                  24      0.97      2.03 0.25     8.01    15.00        13.0
+first round's main rule as configured: 95-98c, stand-alone, 3-60 days    1393    1069 98.71    18                  17      0.97      1.96 0.33     5.96    16.50        15.0
+                       main rule, traded range over 14 days above 15c     242     219 97.93     5                   5      0.97      1.11 0.95     1.17    12.00        10.5
+                                                  main rule, the rest    1272     997 98.90    14                  13      0.97      2.15 0.32     6.64    17.50        16.0
+                                       Q, 0.90-0.95 only, stand-alone     133     131 96.99     4                   4      0.94      3.48 1.59     2.19    31.50        31.0
+                                 control, 0.90-0.95 only, stand-alone    1053     813 96.11    41                  41      0.93      3.18 0.63     5.03    17.17        16.0
+                  first round's R1d: 95-99c, legs included, 3-60 days    3135    2167 99.01    31                  30      0.97      1.69 0.19     9.01    16.00        14.0
+                                          long shots 3-10c, 3-60 days    2576    1865  2.45  2513                1828      0.06    -64.75 4.78   -13.55    17.21        15.0
+
+Q by year of entry:
+      trades  lost  avg_ret_pct
+year                           
+2023       6     0         3.42
+2024     112     0         3.62
+2025     293     4         2.28
+2026     518     6         3.14
+Q losing trades:
+      entry  entry_px  dte_at_signal                                                                question
+2025-04-24  0.955999       6.500000      Will Elon Musk's net worth be between $330b and $340b on April 30?
+2025-09-03  0.936000      27.000000                                    James Comey indicted before October?
+2025-10-13  0.930000      24.000000                           Will Trump endorse a candidate for NYC Mayor?
+2025-11-07  0.940000      54.500000                                Will Trump pardon Rudy Giuliani in 2025?
+2026-02-23  0.930000      36.000000                   Will the 10-year treasury yield hit 4.4% by March 31?
+2026-05-15  0.967000      46.770833                          Will Crude Oil (CL) settle at $63-$70 in June?
+2026-07-05  0.970000      44.000000 Will Alexander Vindman be the Democratic nominee for Senate in Florida?
+2026-09-03  0.958000      28.165972 Will any AI model reach 1530 Overall Arena Score by September 30, 2026?
+2026-10-21  0.910000      14.207639                     Will the Democratic Party win the NC-14 House seat?
+2026-10-24  0.920000      11.207639                     Will the Democratic Party win the NC-06 House seat?
+
+Q-long by year of entry:
+      trades  lost  avg_ret_pct
+year                           
+2023       2     0         5.92
+2024      47     0         4.33
+2025     147     3         3.50
+2026     210     2         4.39
+Q-long losing trades:
+      entry  entry_px  dte_at_signal                                                                question
+2025-07-15  0.920000     171.500000                                    Will Drake release an album in 2025?
+2025-07-31  0.914213     155.000000                                            Will Trump end DOGE in 2025?
+2025-10-25  0.930000      67.500000                                Will Trump pardon Rudy Giuliani in 2025?
+2026-02-17  0.927000     134.729167                         Will Gold (GC) settle at $3,800-$4,200 in June?
+2026-05-20  0.919000      90.000000 Will Alexander Vindman be the Democratic nominee for Senate in Florida?

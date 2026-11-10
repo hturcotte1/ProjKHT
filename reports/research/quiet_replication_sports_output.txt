@@ -17,6 +17,7 @@ QT-smooth: 5,028 weekly rows in 927 markets and 231 events; 225 lost (4.47%)
   refitted here: logit P(loses) = -0.426 -1.001 x logit(price) -0.133 x log(range + 0.005)
   coefficient on the range -0.133, t = -0.78   (frozen from the first round: +0.295)
   bar (positive with t >= 2)  ->  NOT PASSED
+  with small orders (no bar): against the favourite -0.219 (t = -1.36), for it +0.145 (t = 0.98);  first round: -0.290 (t -2.7), +0.304 (t 2.6)
   favourites at 90-98.5c with 3-60 days to run, by the frozen model's predicted loss:
 frozen model's  rows  markets  predicted loss %  lost %  avg price  avg range  return %  t_event
   safest third   413      229              0.86    1.21       0.98       0.02      0.95     1.39

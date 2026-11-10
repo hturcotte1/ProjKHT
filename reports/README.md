@@ -12,6 +12,8 @@ carries.
 | `c7_` | `check_late_entry.py` | The same rules entered late: days or weeks after a contract first qualified, and on "switch-on" dates a week apart | Exploratory check on how the paper accounts and the forward-test log start |
 | `q_` | `run_quiet_favourites.py` | Second round, track A: favourites that have not moved for one or two weeks against those that have. Rule and bar fixed in `docs/04_second_round.md` | A prediction made before looking, on data examined before for other questions |
 | `qs_` | `run_quiet_replication.py` | Second round: the quiet rule Q on sports markets that are not single games, never read before | A replication on untouched data (**failed**) |
+| `qt_` | `run_quiet_replication.py non_sports_thin` | Second round: the quiet rule and the first round's rules on 25,283 thinner news markets (20,000 to 100,000 shares), never read before | **The evidence**: the quiet rule does not pass; the first round's rules repeat (t 6.0 and 9.0) |
+| `q_stops`, `q_price_path` | `check_stops_and_paths.py` | Stop-losses (they lower the return) and the price path of quiet favourites towards the deadline | Exploratory |
 | `ps_` | `run_position_size.py` | The account simulation at larger position sizes, for the main rule, the quiet rule and both | Analysis; chooses nothing |
 | `cp_` | `run_crypto_price.py` | Second round, track C: the confirmed rule and the quiet rule on crypto price markets, discovery set | A replication on untouched data (not repeated) |
 | `cy_` | `run_crypto_yardstick.py` | Second round, track C: an outside fair value for crypto price markets from the coin's price and volatility; includes one table marked as an artefact | Exploratory on the discovery set (negative) |

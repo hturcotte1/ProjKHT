@@ -429,3 +429,79 @@ are piling into it. Large orders on either side predicted nothing. This was
 one of seven order-flow variations tried, so it is a lead and no more.
 If QT-smooth passes, the frozen model replaces the first round's calibration
 line for ranking candidates, whatever happens to the 3¢ rule.
+
+## 9. The thinner markets: the quiet rule does not pass, and the first round's rule passes again
+
+*`run_quiet_replication.py non_sports_thin`, `qt_*.csv`. 26,537 resolved news
+markets that traded 20,000 to 100,000 shares, none of them in any earlier
+analysis; 25,283 have trades after their first 20,000 shares.*
+
+### The quiet rule
+
+| | Trades | Events | Lost | Return a trade | t |
+|---|---:|---:|---:|---:|---:|
+| **Q**, quiet, 90–98¢, 3–60 days | 929 | 779 | 10 (1.1%) | +2.93% | 8.2 |
+| Control, not quiet | 2,823 | 1,976 | 84 (3.0%) | +2.39% | 6.7 |
+| Q, 90–95¢ only | 285 | 258 | 7 (2.5%) | +3.99% | 4.1 |
+| Control, 90–95¢ only | 1,718 | 1,286 | 68 (4.0%) | +3.06% | 5.7 |
+| **Q-long**, 60–365 days | 406 | 337 | 5 (1.2%) | +4.07% | 6.9 |
+| Control, not quiet | 745 | 561 | 17 (2.3%) | +3.40% | 5.5 |
+
+Against the three-part bar: Q is positive (t = 8.2, passed); it has far fewer
+losing events than its control's loss rate would produce (exact p = 0.0016,
+passed); and it does **not** beat its control on return (+0.54 points,
+t = 1.3, failed). **Not passed.** QT-smooth fails too: the coefficient on the
+range is +0.195, the right sign and two-thirds the size found on the first
+panel, with t = 1.25.
+
+What that adds up to: quiet favourites do lose less often, here about a third
+as often, and the market mostly knows it. They cost a cent more, and the cent
+eats the advantage. The first panel's "one loser in 196" does not repeat: in
+the same 90–95¢ band, quiet contracts here lost 7 times in 285. The cut-off at
+3¢ was flattering the effect, as the smoother model warned. The small-order
+lead does not repeat either (−0.17, t = −0.9, and −0.05).
+
+The quiet rule is dropped as a rule. Quietness stays as information: the
+frozen model sorts these markets correctly (favourites in its safest, middle
+and riskiest thirds lost 0.3%, 0.8% and 3.3% of the time), and it is recorded
+beside every forward-test signal.
+
+### The result that matters
+
+The control was supposed to be the dull half of the table. It is not. Every
+group of favourites in these markets made money, quiet or not, and the first
+round's rules, run here exactly as they were fixed a day ago, did this:
+
+| First round's rule, on markets it has never seen | Trades | Events | Lost | Return a trade | t |
+|---|---:|---:|---:|---:|---:|
+| Main account's rule: 95–98¢, stand-alone | 1,393 | 1,069 | 18 (1.3%) | **+1.96%** | **6.0** |
+| …of those, ranged more than 15¢ in the last 14 days | 242 | 219 | 5 | +1.11% | 1.2 |
+| …the rest | 1,272 | 997 | 14 | +2.15% | 6.6 |
+| R1d as pre-registered: 95–99¢, legs included | 3,135 | 2,167 | 31 (1.0%) | **+1.69%** | **9.0** |
+| Long shots, 3–10¢ | 2,576 | 1,865 | 97.5% | −64.8% | −13.6 |
+
+This is the confirmation the first round could not give itself. Its holdout
+was 2,822 trades with t = 3.6, in markets of the same size as the ones the
+rule was shaped on. Here are 3,135 trades in a different set of markets,
+chosen by a rule that existed before they were looked at, with t = 9.0. The
+crypto and sports results say where the edge is not. This says that where it
+was found, it is real.
+
+It is also **larger in thinner markets**: +1.96% a trade against +1.52% for
+the same rule on the first round's holdout, and the 90–95¢ band, which failed
+its test in the big markets (+0.9%, t = 1.7), earns +3.1% here (t = 5.7, 1,718
+trades). That is what the explanation predicts. The mistake is the crowd's
+taste for long shots, and it survives where correcting it is not worth a
+professional's time. A market with $30,000 of trading in its whole life is
+not worth anyone's time except a small account's.
+
+What is and is not established by this table:
+
+- *Established:* the first round's two rules, unchanged, on untouched data.
+- *Seen once, in a group fixed before looking:* 90–95¢ in thinner markets. It
+  was the control of a test, so nothing about it was chosen, and its t is
+  5.7. I treat it as real and want the forward test to agree.
+- *Suggestive in both universes, significant in neither:* favourites that
+  have ranged more than 15¢ in two weeks earn about half as much.
+- *Not established:* that any of this can be bought in size. These markets
+  are thin by definition. Section 10 looks at that.

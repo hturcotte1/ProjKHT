@@ -68,7 +68,10 @@ def thin_meta() -> pd.DataFrame:
     meta = load_meta("closed_thin")
     life = (meta["closed_ts"].fillna(meta["end_ts"]) - meta["start_ts"]) / 86_400
     resolved = meta["winner"].notna() | (meta["final0"] == 0.5)
-    return meta[(meta["category"] != "sports") & (meta["category"] != "crypto") & (life >= 2) & resolved].copy()
+    meta = meta[(meta["category"] != "sports") & (meta["category"] != "crypto") & (life >= 2) & resolved].copy()
+    # a few of these markets have no recorded closing time; the scheduled end stands in, as it does for "life"
+    meta["closed_ts"] = meta["closed_ts"].fillna(meta["end_ts"])
+    return meta[meta["closed_ts"].notna()]
 
 
 UNIVERSES = {
@@ -117,7 +120,8 @@ def smooth_test(s: pd.DataFrame, rng7: np.ndarray) -> None:
     d["lp"] = np.log(d["entry_px"] / (1 - d["entry_px"]))
     d["lr7"] = np.log(d["range7"] + 0.005)
     print("-" * 110)
-    print(f"QT-smooth: {len(d):,} weekly rows in {d['market_id'].nunique():,} markets and {d['cluster'].nunique():,} events; "
+    print(f"The smoother test (pre-registered as QT-smooth for the thinner markets only): {len(d):,} weekly rows in "
+          f"{d['market_id'].nunique():,} markets and {d['cluster'].nunique():,} events; "
           f"{int(d['lost'].sum())} lost ({100 * d['lost'].mean():.2f}%)")
     if d["lost"].sum() < 10:
         print("  too few losses to fit")
