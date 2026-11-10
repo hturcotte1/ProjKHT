@@ -169,6 +169,17 @@ def test_theme_cap_in_portfolio_simulation():
     assert capped.trades["stake"].sum() <= 25 + 1e-9 < free.trades["stake"].sum()
 
 
+def test_per_trade_cap_limits_the_stake_and_small_remainders_are_skipped():
+    t = candidate_trades(_two_trades(), Rule())
+    t["max_stake"] = [8.0, np.nan]                               # the first market could only absorb $8
+    res = run_portfolio(t, Capital(bankroll=1000, stake=20, max_event=40, min_stake=5))
+    assert sorted(res.trades["stake"].round(6)) == [8.0, 20.0]
+    # without a floor of its own, anything under a quarter of the stake is not worth opening
+    t["max_stake"] = [4.0, np.nan]
+    res = run_portfolio(t, Capital(bankroll=1000, stake=20, max_event=40))
+    assert list(res.trades["stake"].round(6)) == [20.0]
+
+
 def test_market_that_flips_keeps_its_first_signal_not_its_first_listed_side():
     """Outcome 1 qualifies first and then collapses; outcome 0 qualifies later.
     A live trader would have bought outcome 1 and lost. The backtest must too."""

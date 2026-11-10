@@ -30,6 +30,12 @@ resolution. About 98 trades in 100 gain 3–4%; about 2 in 100 lose the whole
 stake. As a $1,000 account at $20 a position the backtest made roughly 7–9% a
 year with a third of the money in use. That is a real edge and a thin one.
 
+**It does not scale far.** Judged by how much actually traded at those
+prices, and assuming a tenth of it could be bought, a larger account would
+make about 6–7% a year up to $50,000–100,000 (roughly $4,000–7,000 a year),
+and no more than about $20,000 a year at any size. It only works as many
+small positions: the biggest markets include the biggest losers.
+
 **Sports: nothing.** Both sports rules failed; pre-game prices there are well
 calibrated.
 

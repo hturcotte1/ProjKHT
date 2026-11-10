@@ -230,6 +230,10 @@ python scripts/run_deployed_rules.py        # the exact rules the paper accounts
 ```
 
 ```bash
+python scripts/run_capacity.py              # how much money the main rule could absorb
+```
+
+```bash
 python scripts/fit_model.py && python scripts/make_figures.py
 ```
 

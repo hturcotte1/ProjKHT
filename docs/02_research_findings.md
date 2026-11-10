@@ -26,9 +26,13 @@ that produced each one is named alongside it.*
    evidence is: 95–98¢ contracts in stand-alone yes/no markets, bought a day
    after they are first seen in that range, held to resolution. About 98 in
    100 such trades gain 3–4%; about 2 in 100 lose everything staked.
-5. **It is a small edge.** Run as a $1,000 account at $20 a position, the
-   backtest made roughly 7–9% a year with a third of the money in use. It is
-   real enough to keep testing and too thin to be excited about.
+5. **It is a small edge, and it does not scale far.** Run as a $1,000 account
+   at $20 a position, the backtest made roughly 7–9% a year with a third of
+   the money in use. Judged by what actually traded at those prices, and
+   assuming a tenth of it could be bought, a larger account would make about
+   6–7% a year up to $50,000–100,000 and no more than about $20,000 a year at
+   any size (section 7). It is real enough to keep testing and too thin to be
+   excited about.
 6. **Sports: nothing.** Both sports rules failed. Pre-game sports prices on
    Polymarket are well calibrated.
 
@@ -257,6 +261,12 @@ an edge this thin is most of the difference. It fell just short of the bar as
 pre-registered (R1m, t = 2.68), so it gets its own paper account rather than a
 place in the main one.
 
+Not counted anywhere: Polymarket's maker rebate (a quarter of the taker fees
+collected in most categories, nothing in fee-free geopolitics), its liquidity
+rewards, and its taker rebate tiers. At 96¢ the fee is about 0.15¢ a share, so
+a share of it is worth a few hundredths of a percent, and the first taker tier
+needs roughly $40,000 a month of fee-paying volume at these prices.
+
 ### As an account
 
 ![Main rule as an account](../reports/figures/main_rule_equity.png)
@@ -281,6 +291,80 @@ have not resolved yet.
 A year is roughly 220–240 trades, of which about four lose (the simulated
 account had nine losers in three years). Expect something like +$60 to +$90 on
 $1,000 in an average year, and a losing year whenever losses bunch.
+
+### How much money it could take
+
+The backtest buys $20 at a time, which says nothing about a larger account.
+Polymarket publishes no historical order books, so the nearest thing to "how
+much was for sale" is how much takers actually bought. For each of the main
+rule's 1,836 trades (both samples) I added up the dollars takers paid at
+in-range prices on the entry day and the two days after it, limited a position
+to a share of that flow, and priced it at the volume-weighted average of those
+prints instead of the first one (`run_capacity.py`, `k_capacity_*.csv`). This
+is exploratory, and it rests on an assumption history cannot check: that
+taking a tenth of what others bought would not have moved the price.
+
+**Flow per market is small and very uneven.** The median market saw $5,500
+bought in range over the three days; a tenth of them saw under $230 and a
+tenth over $79,000. Eighteen markets, 1% of them, hold 36% of all the dollars.
+
+**The price is a little worse at size.** The average fill moves from 96.5¢ to
+96.9¢, and on the holdout the result slips just under the bar:
+
+| Entry priced at | Holdout | t | All three years | t |
+|---|---:|---:|---:|---:|
+| The first print, as in the backtest | +1.52% | 3.68 | +1.64% | 4.84 |
+| The three-day average | +1.20% | 2.91 | +1.29% | 3.84 |
+
+The edge is not confined to thin markets: the quarter with the most flow
+returned +1.96% (t 3.3) at the three-day average, the other three quarters
+about +1.0–1.2% each.
+
+**As accounts.** 2% of the bankroll per position, one position per event, 8%
+per theme, at most 80% invested, a position at most a tenth of the in-range
+flow, all three years:
+
+| Bankroll | Average position | Positions cut by flow | Per year | Profit per year | Worst drawdown |
+|---:|---:|---:|---:|---:|---:|
+| $1,000 | $19 | 9% | 6.7% | $71 | −4.5% |
+| $10,000 | $153 | 40% | 6.2% | $660 | −4.7% |
+| $50,000 | $503 | 72% | 7.0% | $3,700 | −2.0% |
+| $100,000 | $788 | 81% | 6.3% | $6,700 | −1.7% |
+| $250,000 | $1,255 | 90% | 4.1% | $10,600 | −1.8% |
+
+At a twentieth of the flow instead of a tenth, the return fades sooner (4.6% at
+$100,000, 2.9% at $250,000); at a quarter it holds to $250,000 (6.3%). The
+$1,000 row is lower than the 9.1% above mainly because of the worse entry price.
+
+**The ceiling is about $20,000 a year, and only with small positions.** Every
+trade taken at a tenth of its flow, no account limits at all, with a ceiling on
+the size of a position:
+
+| Largest position | Bought per year | Return on it | Profit per year |
+|---:|---:|---:|---:|
+| $500 | $0.2M | +1.44% | $3,000 |
+| $2,000 | $0.5M | +1.51% | $8,200 |
+| $5,000 | $0.9M | +1.54% | $13,700 |
+| $10,000 | $1.2M | +1.48% | $18,000 |
+| $25,000 | $1.7M | +1.32% | $22,400 |
+| $100,000 | $2.3M | +0.03% | $600 |
+| No ceiling | $2.8M | −1.27% | −$35,100 |
+
+The last two rows are the lesson. The dollars sit in a handful of very large
+markets, and two of the twenty largest lost: "US x Iran permanent peace deal
+by June 15, 2026?" ($2.5 million bought in range, the second largest of all)
+and "Khamenei out as Supreme Leader of Iran by February 28?" ($0.7 million). A
+position that follows the flow puts most of its money where one outcome
+erases years of small wins. The rule scales only as many small positions.
+
+So, if a tenth of the flow can be had: roughly $4,000–7,000 a year on
+$50,000–100,000, about $10,000 on $250,000, and no more than about $20,000 a
+year however much money is brought to it. Thirty-three losing trades in three
+years cannot pin those figures down; the shape (flat, then fading, and
+negative if concentrated) is the reliable part.
+One liberty is taken: a position is sized from flow over the days *after* the
+entry, which a real account could only match by buying a share of each day's
+trading as it happens.
 
 ## 8. The model
 
@@ -310,6 +394,10 @@ of anything.
   other traders have also adapted to them.
 - **Capital sits idle.** Two-thirds of the account is unused in the backtest.
   Larger positions would use more of it and concentrate the tail.
+- **The estimate at size is weaker than the estimate at $20.** Priced the way
+  a larger account would have to buy, the holdout return is +1.20% with
+  t = 2.9, just under the bar, and the capacity figures assume a tenth of the
+  flow could have been taken without moving the price (section 7).
 - **Resolution risk is not modelled** beyond counting split resolutions as
   half-payouts: disputes, delays and rule changes are assumed to look like the
   past.

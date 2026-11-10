@@ -1,0 +1,11 @@
+question,category,holdout,in-range flow $,vwap,paid
+Netanyahu out by March 31?,geopolitics,True,6901850.873802807,0.964966796749454,1.0
+"US x Iran permanent peace deal by June 15, 2026?",geopolitics,False,2452021.1628243756,0.9638522561376048,0.0
+"US strikes Iran by January 23, 2026?",geopolitics,True,2249710.403025744,0.9669392138070869,1.0
+"US x Iran permanent peace deal by June 7, 2026?",geopolitics,False,2131788.0889800563,0.9636924511023901,1.0
+Will the Iranian regime fall by March 31?,geopolitics,True,2081177.2398488172,0.9652745970711378,1.0
+Will the Iranian regime fall by April 30?,geopolitics,True,1611415.2338938247,0.9653538238713588,1.0
+"US x Iran permanent peace deal by April 30, 2026?",geopolitics,True,1520470.3221411824,0.9788223567352697,1.0
+Yoon out as president of South Korea before April?,geopolitics,True,1513371.5933437985,0.976511019669032,1.0
+Xi Jinping out in 2025?,geopolitics,True,1189899.0684123032,0.9713587444007031,1.0
+Khamenei out as Supreme Leader of Iran by March 31?,geopolitics,True,1086916.7712509532,0.9767518103974814,1.0

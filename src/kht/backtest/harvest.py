@@ -57,6 +57,7 @@ class Capital:
     max_exposure_frac: float = 0.90  # of current equity
     compound: bool = False           # scale the stake with equity
     max_theme: float | None = None   # dollars per narrow topic tag (needs a "themes" column on the trades)
+    min_stake: float | None = None   # smallest position worth opening; None = a quarter of the stake
 
 
 @dataclass
@@ -221,6 +222,7 @@ def run_portfolio(trades: pd.DataFrame, cap: Capital, period_days: float = 1.0) 
 
     Open positions are carried at cost until they exit (conservative for a
     strategy whose positions drift up, and it avoids marking to stale quotes).
+    An optional ``max_stake`` column caps the dollars put into that one trade.
     """
     if trades.empty:
         return Result(trades, pd.DataFrame(columns=["period", "equity", "cash", "open"]), {})
@@ -254,7 +256,13 @@ def run_portfolio(trades: pd.DataFrame, cap: Capital, period_days: float = 1.0) 
                     for theme in themes:
                         in_theme = sum(p["shares"] * p["cost"] for p in open_pos if theme in p["themes"])
                         room = min(room, cap.max_theme - in_theme)
-                if room < 0.25 * stake or room <= 0:
+                # a trade may carry its own ceiling (e.g. what the market could
+                # have absorbed), in a "max_stake" column
+                own_cap = getattr(tr, "max_stake", None)
+                if own_cap is not None and np.isfinite(own_cap):
+                    room = min(room, float(own_cap))
+                floor = 0.25 * stake if cap.min_stake is None else cap.min_stake
+                if room < floor or room <= 0:
                     continue
                 shares = room / tr.cost
                 cash -= shares * tr.cost
