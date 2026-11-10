@@ -159,6 +159,25 @@ def test_cycle_settles_resolved_markets(engine):
     assert (path / "settlements.csv").exists()
 
 
+def test_settlement_accepts_rounding_dust_but_not_a_last_quote(engine):
+    e, pm, path, limits = engine
+    e.run_cycle(NOW)
+    token, pos = next(iter(e.portfolio.positions.items()))
+    mid = pos.market_id
+    won = 1.0 if token.endswith("a") else 0.0
+    # closed, but still showing its last quote rather than a result: nothing to settle yet
+    last_quote = live(mid, None, None, event=10, closed=True, final0=1.0, accepting=False)
+    last_quote.final0 = 0.9995 if won == 1.0 else 0.0005
+    pm.markets[mid] = last_quote
+    assert e.run_cycle(NOW + DAY).settled == 0 and token in e.portfolio.positions
+    # resolved, reported with rounding dust instead of an exact 1 or 0
+    dusty = live(mid, None, None, event=10, closed=True, final0=1.0, accepting=False)
+    dusty.final0 = 0.999999 if won == 1.0 else 0.000001
+    pm.markets[mid] = dusty
+    assert e.run_cycle(NOW + 2 * DAY).settled == 1
+    assert e.portfolio.realized == pytest.approx(pos.shares * 1.0 - pos.cost)
+
+
 def test_split_resolution_pays_half(engine):
     e, pm, path, limits = engine
     e.run_cycle(NOW)
