@@ -254,3 +254,20 @@ is the second, forward-looking test.
 - A 93¢ position that fails loses 93¢. Report the worst event, the worst day
   and results with the best events removed.
 - Markets that resolved 50/50 must be included as a half-payout, not dropped.
+
+### The sports rule, fixed at the same time
+
+Only games from 2026-09-22 onward had been examined when this was written.
+There, with the no-hindsight sample, favourites looked slightly underpriced
+(slope 1.14, not yet significant) and tickets under 10¢ lost money. A slope of
+that size implies the largest edge after fees for favourites priced around
+75–95¢.
+
+> **S1.** In head-to-head game-winner markets that have already traded 100,000
+> shares six hours before the scheduled start: if one side's ask is above 75¢
+> and at most 95¢ at that point, buy it at the next taker-buy print before the
+> start (if still in range), pay the 5% sports fee rate, hold to the result.
+
+Control that should lose: the same rule for sides priced 5–25¢.
+**Holdout:** games that started before 2026-09-22. Same bar: positive with
+|t| ≥ 3 clustered by event, control negative.
