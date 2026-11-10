@@ -1,10 +1,14 @@
 """Which side of the bet carries the edge? (docs/05_third_round.md, section 2)
 
-Exploration on the two universes that had already been read when the third
-round began, on their corrected definitions (scripts/at_the_time.py):
+Exploration on the corrected universes (scripts/at_the_time.py):
 
-    big    news markets once they had traded 100,000 shares
-    thin   news markets while they had traded 20,000 to 100,000
+    big      news markets once they had traded 100,000 shares
+    thin     news markets while they had traded 20,000 to 100,000
+    thinner  news markets while they had traded 5,000 to 20,000
+
+Big and thin had already been read when the third round began. Thinner was
+read for the first time by scripts/run_thinner.py, with its tests fixed; it
+is repeated here afterwards so the three sit in one table.
 
 It splits the first round's rule by what was bought (stand-alone "No",
 stand-alone "Yes", the leader of a multi-way event, an also-ran), looks at
@@ -38,7 +42,8 @@ pd.set_option("display.max_rows", 300)
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "reports" / "research"
 SCHEDULED_BY = pd.Timestamp("2026-10-27").timestamp()
-UNIVERSES = (("big: 100,000 shares or more at the time", 100_000, att.TOP, ("big",)), ("thin: 20,000 to 100,000 at the time", 20_000, 100_000, None))
+UNIVERSES = (("big: 100,000 shares or more at the time", 100_000, att.TOP, ("big",)), ("thin: 20,000 to 100,000 at the time", 20_000, 100_000, None),
+             ("thinner: 5,000 to 20,000 at the time (read for the first time by run_thinner.py)", 5_000, 20_000, None))
 BANDS = ((0.03, 0.10), (0.10, 0.20), (0.20, 0.35), (0.35, 0.50), (0.50, 0.65), (0.65, 0.80), (0.80, 0.90), (0.90, 0.95), (0.95, 0.98))
 
 
@@ -62,7 +67,7 @@ def line(t: pd.DataFrame) -> dict:
 
 
 def main() -> None:
-    groups, grid, house_rows = [], [], []
+    groups, grid, house_rows, bid_or_ask = [], [], [], []
     for uni, lo_cum, hi_cum, only in UNIVERSES:
         meta, _, p = att.panel(lo_cum, hi_cum, only)
         s = ready(p)
@@ -101,6 +106,16 @@ def main() -> None:
             for sd, sn in ((1, "No"), (0, "Yes")):
                 grid.append({"universe": uni, "paid": f"{100 * lo:.0f}-{100 * hi:.0f}c", "side": sn, **line(trades(lo, hi, short & single & yn & (side == sd)))})
 
+        # the same "No" signals bought at the ask, or with a bid left at the day's bid for three days
+        for rule, lo, hi, d0, d1 in (("No, 95-98c, 3-60 days", 0.95, 0.98, 3, 60), ("No, 90-98c, 3-60 days", 0.90, 0.98, 3, 60),
+                                     ("No, 90-98c, 60-180 days", 0.90, 0.98, 60, 180), ("No, 50-90c, 3-60 days", 0.50, 0.90, 3, 60),
+                                     ("No, 50-90c, 20-60 days", 0.50, 0.90, 20, 60)):
+            sig = (ask > lo) & (ask <= hi) & (dte > d0) & (dte <= d1) & single & yn & (side == 1)
+            at_ask = candidate_trades(s, Rule(lo, hi, d0, d1), signal=sig)
+            at_bid = candidate_trades(s, Rule(lo, hi, d0, d1, entry="maker"), signal=sig)
+            bid_or_ask.append({"universe": uni, "rule": rule, "entry": "at the ask", **line(at_ask)})
+            bid_or_ask.append({"universe": uni, "rule": rule, "entry": "resting bid", "filled %": 100 * len(at_bid) / max(len(at_ask), 1), **line(at_bid)})
+
         house = trades(0.50, 0.90, short & single & yn & (side == 1))
         fee = house["entry_fee"] > 0
         half = pd.to_datetime(house["entry_period"], unit="D")
@@ -118,7 +133,8 @@ def main() -> None:
         gc.collect()
 
     for frame, name, title in ((pd.DataFrame(groups), "s3_groups.csv", "What was bought"), (pd.DataFrame(grid), "s3_side_by_price.csv", "Every price, each side (stand-alone, 3-60 days)"),
-                               (pd.DataFrame(house_rows), "s3_house.csv", '"No" at 50-90c, stand-alone, 3-60 days')):
+                               (pd.DataFrame(house_rows), "s3_house.csv", '"No" at 50-90c, stand-alone, 3-60 days'),
+                               (pd.DataFrame(bid_or_ask), "s3_bid_or_ask.csv", 'Paying the ask or leaving a bid, stand-alone "No"')):
         frame.to_csv(OUT / name, index=False)
         print("\n" + "=" * 110 + f"\n{title}\n" + "=" * 110)
         for uni, g in frame.groupby("universe", sort=False):

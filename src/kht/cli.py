@@ -105,6 +105,9 @@ def cmd_shadow(args: argparse.Namespace) -> int:
               ("core", False, None, "yes", "traded band, stand-alone, the YES side (logged only since the third round)"),
               ("core", True, None, None, "legs of multi-outcome events in the traded band (logged only)"),
               ("below", None, None, None, "below the traded band (logged only)"),
+              # the third round's wider finding: the same mid prices on each side
+              ("wide", False, None, "no", "mid prices up to the logged band, stand-alone, the NO side (logged only)"),
+              ("wide", False, None, "yes", "mid prices up to the logged band, stand-alone, the YES side (logged only)"),
               ("above", None, None, None, "above the traded band (logged only)"),
               # the second round's finding, checked on new data: quiet against not quiet at the same prices
               ("core", False, True, None, "traded band, stand-alone, QUIET when logged (3c or less traded range over 7 days)"),

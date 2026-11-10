@@ -514,6 +514,25 @@ def test_no_side_only_marks_the_yes_side_as_logged_only(engine):
     assert {p.market_id for p in e.portfolio.positions.values()} == {2}
 
 
+def test_wide_watch_logs_mid_priced_stand_alone_signals_and_never_trades_them(engine):
+    import csv
+    from dataclasses import replace
+    e, pm, path, limits = engine
+    e.strategy.cfg = replace(e.strategy.cfg, wide_watch_lo=0.5)
+    mid = live(1, 0.29, 0.30, event=11)                 # "No" at 71c: far below anything the account trades
+    leg = live(2, 0.29, 0.30, event=12)
+    leg = LiveMarket(replace(leg.info, neg_risk=True), leg.best_bid0, leg.best_ask0, leg.volume, leg.volume_24h,
+                     leg.liquidity, leg.accepting_orders, leg.closed, leg.winner, leg.final0, leg.question)
+    pm.markets = {1: mid, 2: leg}
+    pm.history = {"T1b": 0.70, "T2b": 0.70}
+    assert [(c.market.info.market_id, e.strategy.band_of(c.ask)) for c in e.strategy.watchlist(pm.markets, NOW)] == [(1, "wide")]
+    e.run_cycle(NOW)
+    rows = list(csv.DictReader((path / "shadow.csv").open()))
+    assert [(r["market_id"], r["band"], r["outcome_name"], r["tradable"]) for r in rows] == [("1", "wide", "No", "0")]
+    assert not e.portfolio.positions
+    assert not (path / "shadow_quiet.csv").exists()     # the quiet measurement is not spent on mid-priced signals
+
+
 def test_forward_test_can_be_scored_by_side(tmp_path):
     import csv
     from kht.trading.report import score_shadow

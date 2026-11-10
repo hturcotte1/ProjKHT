@@ -342,7 +342,8 @@ class Engine:
         a real trade.
         """
         cfg = self.strategy.cfg
-        bands = {"below": (cfg.watch_lo, cfg.ask_lo), "core": (cfg.ask_lo, cfg.ask_hi), "above": (cfg.ask_hi, cfg.watch_hi)}
+        bands = {"below": (cfg.watch_lo, cfg.ask_lo), "core": (cfg.ask_lo, cfg.ask_hi), "above": (cfg.ask_hi, cfg.watch_hi),
+                 "wide": (cfg.wide_watch_lo if cfg.wide_watch_lo is not None else cfg.watch_lo, cfg.watch_lo)}
         for c in watch:
             info = c.market.info
             band = self.strategy.band_of(c.ask)
@@ -455,6 +456,9 @@ class Engine:
         for r in rows:
             key = f"{r['market_id']}:{r.get('band', 'core')}"
             if key in self.shadow_quiet_done:
+                continue
+            if r.get("band") == "wide":
+                self.shadow_quiet_done.add(key)      # mid-priced signals: the quiet question was never asked of them
                 continue
             lm = markets.get(int(r["market_id"]))
             if lm is None:

@@ -31,7 +31,8 @@
     "single_only": true,
     "busy_days": 14.0,
     "busy_range": 0.15,
-    "no_side_only": true
+    "no_side_only": true,
+    "wide_watch_lo": 0.5
   },
   "risk": {
     "bankroll": 1000.0,

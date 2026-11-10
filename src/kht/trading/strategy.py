@@ -130,6 +130,11 @@ class StrategyConfig:
     # wider band that is only *logged* for the forward test, never traded
     watch_lo: float = 0.90
     watch_hi: float = 0.99
+    # Stand-alone signals priced above this and at most watch_lo are logged as
+    # well (band "wide"), never traded. The third round found "No" beating
+    # "Yes" at every price, not only near certainty, and missed the bar for
+    # trading it; this is how new data gets a say (docs/05_third_round.md).
+    wide_watch_lo: float | None = None
     # --- how to trade them
     stake_usd: float = 20.0
     max_new_per_cycle: int = 5
@@ -195,9 +200,14 @@ class HarvestStrategy:
 
     def watchlist(self, markets: dict[int, LiveMarket], now: float) -> list[Candidate]:
         """Everything in the wider logged band, whatever the model thinks of it."""
-        return self.scan(markets, now, self.cfg.watch_lo, self.cfg.watch_hi, None, False)
+        out = self.scan(markets, now, self.cfg.watch_lo, self.cfg.watch_hi, None, False)
+        if self.cfg.wide_watch_lo is not None:
+            out += self.scan(markets, now, self.cfg.wide_watch_lo, self.cfg.watch_lo, None, True)
+        return out
 
     def band_of(self, ask: float) -> str:
+        if self.cfg.wide_watch_lo is not None and ask <= self.cfg.watch_lo:
+            return "wide"
         if ask <= self.cfg.ask_lo:
             return "below"
         return "core" if ask <= self.cfg.ask_hi else "above"

@@ -25,10 +25,12 @@
     "watch_hi": 0.99,
     "stake_usd": 20.0,
     "max_new_per_cycle": 5,
-    "entry": "taker",
+    "entry": "maker",
     "tag": "harvest-long",
     "single_only": true,
-    "no_side_only": true
+    "no_side_only": true,
+    "maker_ttl_hours": 72.0,
+    "maker_fallback_hours": 72.0
   },
   "risk": {
     "bankroll": 1000.0,
