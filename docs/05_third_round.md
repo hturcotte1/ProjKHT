@@ -233,3 +233,53 @@ Reported without a bar: the also-rans ("No" legs), categories, years, the
 dollars that traded in range, and the full table of side by price.
 
 That makes 27 tests with a bar fixed in advance across the three rounds.
+
+### A flaw in the universe, found before the data was read
+
+*Written at 19:59 UTC, with the tapes still downloading and none opened.*
+
+The mid-priced "No" result looked too good, and checking why exposed a
+mistake that round two made and this section was about to repeat.
+
+Round two chose its thin markets by the number of shares they had traded *by
+the end*: 20,000 to 100,000. Nobody knows that number when a trade is made.
+And it is not neutral: when the surprise happens, a market draws a burst of
+trading on the way, and many end up over the line. "Markets that ended
+between 20,000 and 100,000 shares" had therefore already handed many of their
+losers to the bigger group. The first round's universe does not have the
+problem (a market is used from the moment it has traded 100,000 shares, with
+no upper limit), and the paper accounts do not have it either (they look at
+the volume a market has today).
+
+The measure of it: the same rules on the part of each bigger market's life
+when it had traded 20,000 to 100,000 shares, which round two never looked at,
+and on both together, which is what "thin" means to somebody trading.
+
+| Rule | Markets that ended thin (round two) | Thin part of markets that ended bigger | Both: thin at the time |
+|---|---:|---:|---:|
+| R1d, 95–99¢, legs included | +1.69% (t 9.0), 31 lost of 3,135 | −0.96% (t −2.9), 121 of 3,351 | **+0.33% (t 1.7)**, 152 of 6,486 |
+| Main rule, 95–98¢, stand-alone | +1.96% (t 6.0), 18 of 1,393 | −0.22% (t −0.3), 33 of 929 | **+1.09% (t 3.4)**, 51 of 2,322 |
+| Thin account's rule, 90–98¢, calm | +2.52% (t 5.8), 46 of 1,637 | −1.29% (t −1.5), 89 of 1,336 | **+0.81% (t 1.7)**, 135 of 2,973 |
+| The same with a resting bid (TM) | +3.57% (t 5.6) | −1.00% (t −1.0) | **+1.39% (t 2.3)** |
+| "No" at 50–90¢ | +8.8% (t 5.0) | +2.0% (t 1.2) | **+4.6% (t 3.7)** |
+| Long-dated "No", 90–98¢, 60–180 days | +4.6% (t 4.9) | +3.9% (t 4.9) | **+4.1% (t 6.4)** |
+
+Round two's headline, that the edge is larger in thinner markets, was
+produced by the way the markets were chosen. Thin at the time, the main rule
+earns about what it earns in big markets, the wider 90–98¢ band does not
+pass, and resting bids do not pass. The corrected numbers above come from
+exploration code; section 4 will give them from a committed script, with
+everything in round two that depended on them.
+
+**What changes in the tests above.** The universe fixed for T5 has the same
+flaw (markets that *ended* at 5,000 to 20,000 shares). Every test in this
+section is therefore judged on the corrected universe: **news markets while
+the shares they had traded so far were at least 5,000 and fewer than 20,000,
+whatever they went on to trade.** That is the newly downloaded markets plus
+the early life of every market already on disk, and nobody has looked at any
+of them in that range. The universe as first fixed is reported beside it, as
+a second measure of the flaw. The bars do not change. Where a test pools with
+"the thin markets", it uses them thin at the time; the comparison figures
+quoted as predictions (+1.69% for R1d, +6.7¢ for the house) are overstated
+for the reason above and are not the standard any more: the standard is the
+bar.
