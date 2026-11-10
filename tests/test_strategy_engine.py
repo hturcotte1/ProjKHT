@@ -204,6 +204,36 @@ def test_an_empty_book_does_not_trip_the_kill_switch_but_a_collapse_does(tmp_pat
     assert rep.halted and rep.equity < 990
 
 
+def test_a_story_stays_capped_after_it_outgrows_the_definition_of_a_theme(tmp_path, monkeypatch):
+    from dataclasses import replace
+
+    def tagged(lm, *tags):
+        return LiveMarket(replace(lm.info, tags=tags), lm.best_bid0, lm.best_ask0, lm.volume, lm.volume_24h,
+                          lm.liquidity, lm.accepting_orders, lm.closed, lm.winner, lm.final0, lm.question)
+
+    # forty quiet markets, and one story ("hormuz") on two of them: a theme by any definition
+    markets = {i: tagged(live(i, 0.50, 0.52), "politics") for i in range(100, 140)}
+    markets[1] = tagged(live(1, 0.92, 0.93), "politics", "hormuz")
+    markets[2] = tagged(live(2, 0.50, 0.52), "politics", "hormuz")
+    pm = FakePM(markets)
+    import kht.trading.engine as eng
+    monkeypatch.setattr(eng, "scan_open", lambda pm_, min_volume: {k: v for k, v in pm_.markets.items() if not v.closed})
+    monkeypatch.setattr(eng, "fetch_markets", lambda pm_, ids: {i: pm_.markets[i] for i in ids})
+    limits = RiskLimits(bankroll=1000, max_position_usd=25, max_event_usd=25, max_theme_usd=30, max_order_usd=25)
+    e = Engine(pm, StateStore(tmp_path), HarvestStrategy(CFG, MODEL), limits)
+    assert e.run_cycle(NOW).placed == 1                       # market 1, bought under the theme "hormuz"
+    # the story spreads: now thirty of the open markets carry the tag, far more than a tenth of them
+    for i in range(100, 130):
+        pm.markets[i] = tagged(live(i, 0.50, 0.52), "politics", "hormuz")
+    pm.markets[3] = tagged(live(3, 0.92, 0.93), "politics", "hormuz")   # a new candidate about the same story
+    from kht.trading.universe import theme_tags
+    assert theme_tags(pm.markets)[3] == frozenset()            # by share alone it is no longer a theme
+    rep = e.run_cycle(NOW + 600)
+    assert rep.placed == 0 and rep.rejected == 1               # but the account is exposed to it, so the cap holds
+    blocked = [json.loads(l) for l in (tmp_path / "decisions.jsonl").read_text().splitlines()][-1]
+    assert blocked["action"] == "blocked" and "theme 'hormuz'" in blocked["why"]
+
+
 def test_segment_lookup_prefers_the_most_specific_key():
     from kht.trading.strategy import segment_keys
     m = EdgeModel(pooled=(0.0, 1.0), segments={"politics|single": (0.5, 1.0), "*|single": (0.3, 1.0),

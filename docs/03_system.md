@@ -90,6 +90,11 @@ alike. A buy is refused if any of these would be exceeded:
 | Open orders | 60 | Bounded bookkeeping |
 | Taker edge | must exceed the fee | A taker order that cannot pay its own fee is refused |
 
+A story stays capped for as long as the account holds anything in it: each
+position remembers the themes it was bought under, so the cap does not lapse
+if the story later spreads past a tenth of all markets or its markets start
+to close.
+
 Two **kill switches** are evaluated every cycle from equity marked at the bid:
 a daily loss limit and a maximum drawdown from the high-water mark. Once
 tripped, buying stops and resting buy orders are cancelled; selling stays

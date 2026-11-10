@@ -171,12 +171,7 @@ class Engine:
         self._log_shadow(self.strategy.watchlist(markets, now), now)
         intents = self.strategy.decide(markets, self.portfolio, self.broker.open_orders(), now, confirmed)
         market_event = {mid: lm.info.event_id for mid, lm in markets.items()}
-        themes = theme_tags(markets, max_share=self.limits.theme_max_share)
-        # a held market that has dropped out of the scan keeps the themes it was bought under
-        for token, pos in self.portfolio.positions.items():
-            saved = self.market_names.get(token, {}).get("themes")
-            if saved and not themes.get(pos.market_id):
-                themes[pos.market_id] = frozenset(saved)
+        themes = self._sticky_themes(markets, theme_tags(markets, max_share=self.limits.theme_max_share))
         placed = rejected = 0
         for it in intents:
             info = infos[it.market_id]
@@ -317,6 +312,33 @@ class Engine:
                 "tradable": int(band == "core" and c.edge >= cfg.min_edge
                                 and not (cfg.single_only and info.neg_risk)),
                 "dte": round(c.dte, 2), "end_ts": int(info.end_ts)})
+
+    def _sticky_themes(self, markets: dict[int, LiveMarket],
+                       themes: dict[int, frozenset[str]]) -> dict[int, frozenset[str]]:
+        """Keep a story capped for as long as the account is exposed to it.
+
+        Whether a tag counts as a theme is recomputed every cycle from its
+        share of open markets, and a held market that has closed is re-read
+        without its tags. Left alone, the per-theme cap would lapse exactly
+        when a story grows past the share that defines a theme, or when its
+        markets start closing. So every position and resting order keeps the
+        themes it was bought under, and those tags stay themes for any other
+        market that carries them.
+        """
+        involved = {token: pos.market_id for token, pos in self.portfolio.positions.items()}
+        involved.update({o.token: o.market_id for o in self.broker.open_orders()})
+        held: set[str] = set()
+        for token, market_id in involved.items():
+            saved = frozenset(self.market_names.get(token, {}).get("themes") or ())
+            if saved:
+                themes[market_id] = themes.get(market_id, frozenset()) | saved
+                held |= saved
+        if held:
+            for market_id, lm in markets.items():
+                extra = held.intersection(lm.info.tags)
+                if extra:
+                    themes[market_id] = themes.get(market_id, frozenset()) | extra
+        return themes
 
     def _remember(self, lm: LiveMarket, token: str, themes: frozenset[str] = frozenset()) -> None:
         outcome = lm.info.outcome_of(token)
