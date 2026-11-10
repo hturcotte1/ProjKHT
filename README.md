@@ -18,7 +18,9 @@ a minute of their trades. Every version lost money or did nothing.
 way.** People overpay for long shots: a contract bought under 10¢ loses about
 60% of the stake on average. The other side of that is that near-certain
 contracts are slightly too cheap, and nobody is paid enough to fix it while
-their money sits locked up.
+their money sits locked up. The third round found the lean is more specific
+than long shots: asked "will this happen?", the crowd pays too much for
+"Yes", at every price, and the contract worth holding is the "No".
 
 | Tested on markets never looked at beforehand | Trades | Won | Return per trade | t |
 |---|---:|---:|---:|---:|
