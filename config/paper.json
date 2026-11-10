@@ -26,7 +26,8 @@
     "stake_usd": 20.0,
     "max_new_per_cycle": 5,
     "entry": "taker",
-    "tag": "harvest"
+    "tag": "harvest",
+    "single_only": true
   },
   "risk": {
     "bankroll": 1000.0,

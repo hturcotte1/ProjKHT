@@ -165,7 +165,7 @@ class Engine:
         shortlist = [c for c in candidates if c.market.info.market_id not in held]
         shortlist = shortlist[: 6 * self.strategy.cfg.max_new_per_cycle]
         confirmed = self._confirmed(shortlist, now)
-        self._log_shadow(self.strategy.watchlist(markets, now), confirmed, now)
+        self._log_shadow(self.strategy.watchlist(markets, now), now)
         intents = self.strategy.decide(markets, self.portfolio, self.broker.open_orders(), now, confirmed)
         market_event = {mid: lm.info.event_id for mid, lm in markets.items()}
         themes = theme_tags(markets)
@@ -275,7 +275,7 @@ class Engine:
         return {(c.market.info.market_id, c.outcome) for c in candidates
                 if self._was_in_band(c, cfg.ask_lo, cfg.ask_hi, now)}
 
-    def _log_shadow(self, watch: list[Any], confirmed: set[tuple[int, int]], now: float) -> None:
+    def _log_shadow(self, watch: list[Any], now: float) -> None:
         """Forward-test log: every signal the first time it appears, whether or
         not there is capital to trade it, and including the price bands that
         did not pass the historical test.
@@ -305,7 +305,8 @@ class Engine:
                 "question": c.market.question[:140], "category": info.category, "event_id": info.event_id,
                 "neg_risk": int(info.neg_risk), "ask": round(c.ask, 4), "bid": round(c.bid, 4),
                 "fee_ps": round(c.fee, 5), "p_model": round(c.p_win, 4), "edge": round(c.edge, 4),
-                "tradable": int(band == "core" and c.edge >= cfg.min_edge and (info.market_id, c.outcome) in confirmed),
+                "tradable": int(band == "core" and c.edge >= cfg.min_edge
+                                and not (cfg.single_only and info.neg_risk)),
                 "dte": round(c.dte, 2), "end_ts": int(info.end_ts)})
 
     def _remember(self, lm: LiveMarket, token: str, themes: frozenset[str] = frozenset()) -> None:

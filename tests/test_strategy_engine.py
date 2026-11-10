@@ -178,15 +178,14 @@ def test_kill_switch_stops_new_buying(engine):
 
 def test_segment_lookup_prefers_the_most_specific_key():
     from kht.trading.strategy import segment_keys
-    m = EdgeModel(pooled=(0.0, 1.0), segments={"politics|no_single": (0.5, 1.0), "*|no_single": (0.3, 1.0),
+    m = EdgeModel(pooled=(0.0, 1.0), segments={"politics|single": (0.5, 1.0), "*|single": (0.3, 1.0),
                                                "politics": (0.1, 1.0)})
     keys = segment_keys("politics", "Yes", 1, False)
-    assert keys == ["politics|no_single", "*|no_single", "politics"]
+    assert keys == ["politics|single", "*|single", "politics"]
     assert m.params(keys) == (0.5, 1.0)
-    assert m.params(segment_keys("tech", "Yes", 1, False)) == (0.3, 1.0)          # falls back to the cross-category key
-    assert m.params(segment_keys("politics", "Yes", 0, False)) == (0.1, 1.0)      # buying Yes is not the special corner
-    assert m.params(segment_keys("politics", "Yes", 1, True)) == (0.1, 1.0)       # nor is a leg of a multi-outcome event
-    assert m.params(segment_keys("weather", "Lakers", 1, False)) == (0.0, 1.0)    # nothing matches -> pooled
+    assert m.params(segment_keys("tech", "Yes", 0, False)) == (0.3, 1.0)          # falls back to the cross-category key
+    assert m.params(segment_keys("politics", "Yes", 1, True)) == (0.1, 1.0)       # a leg of a multi-outcome event
+    assert m.params(segment_keys("weather", "Lakers", 1, True)) == (0.0, 1.0)     # nothing matches -> pooled
 
 
 def test_theme_tags_keeps_narrow_tags_and_drops_broad_ones():
@@ -278,3 +277,15 @@ def test_bands_outside_the_traded_one_are_logged_but_never_bought(engine):
     rows = {int(r["market_id"]): r for r in csv.DictReader((path / "shadow.csv").open())}
     assert (rows[1]["band"], rows[2]["band"], rows[3]["band"]) == ("below", "core", "above")
     assert (rows[1]["tradable"], rows[2]["tradable"], rows[3]["tradable"]) == ("0", "1", "0")
+
+
+def test_single_only_skips_legs_of_multi_outcome_events_but_still_watches_them():
+    from dataclasses import replace
+    cfg = StrategyConfig(**{**CFG.to_dict(), "single_only": True})
+    s = HarvestStrategy(cfg, MODEL)
+    leg = live(1, 0.92, 0.93)
+    leg = LiveMarket(replace(leg.info, neg_risk=True), leg.best_bid0, leg.best_ask0, leg.volume, leg.volume_24h,
+                     leg.liquidity, leg.accepting_orders, leg.closed, leg.winner, leg.final0, leg.question)
+    markets = {1: leg, 2: live(2, 0.92, 0.93)}
+    assert [c.market.info.market_id for c in s.candidates(markets, NOW)] == [2]
+    assert sorted(c.market.info.market_id for c in s.watchlist(markets, NOW)) == [1, 2]

@@ -27,7 +27,8 @@
     "max_new_per_cycle": 5,
     "entry": "maker",
     "tag": "harvest-maker",
-    "maker_ttl_hours": 72.0
+    "maker_ttl_hours": 72.0,
+    "single_only": true
   },
   "risk": {
     "bankroll": 1000.0,

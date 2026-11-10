@@ -80,12 +80,15 @@ class EdgeModel:
 def segment_keys(category: str, outcome0: str, outcome: int, neg_risk: bool) -> list[str]:
     """Segment keys for one side of one market, most specific first.
 
-    ``no_single`` is the corner the research singles out: the "No" side of a
-    stand-alone yes/no question. The same function labels training rows and
-    live candidates, so the model can never be applied to a different
-    definition than it was fitted on.
+    The split the research supports (in both the holdout and the newer
+    sample) is between a **stand-alone** yes/no market and one **leg of a
+    multi-outcome event**: the underpricing of near-certain contracts shows up
+    in the former and barely in the latter, where other traders can lock in
+    arbitrage across the legs. The same function labels training rows and live
+    candidates, so the model can never be applied to a different definition
+    than it was fitted on.
     """
-    kind = "no_single" if (outcome0 == "Yes" and outcome == 1 and not neg_risk) else "other"
+    kind = "multi" if neg_risk else "single"
     return [f"{category}|{kind}", f"*|{kind}", category]
 
 
@@ -100,6 +103,7 @@ class StrategyConfig:
     min_volume: float = 100_000         # shares traded so far (same rule as research)
     max_spread: float = 0.03
     min_edge: float = 0.01              # estimated profit per share after the fee
+    single_only: bool = False           # skip legs of multi-outcome events (they are still logged)
     # The rule was tested as "in the band at one day's close, bought the next
     # day if still in the band". The delay matters: it weeds out contracts that
     # are falling through the band. Live, a contract must also have been in the
@@ -160,11 +164,11 @@ class HarvestStrategy:
     # ------------------------------------------------------------ candidates
     def candidates(self, markets: dict[int, LiveMarket], now: float) -> list[Candidate]:
         """Contracts the rule may buy: in the trading band with enough estimated edge."""
-        return self.scan(markets, now, self.cfg.ask_lo, self.cfg.ask_hi, self.cfg.min_edge)
+        return self.scan(markets, now, self.cfg.ask_lo, self.cfg.ask_hi, self.cfg.min_edge, self.cfg.single_only)
 
     def watchlist(self, markets: dict[int, LiveMarket], now: float) -> list[Candidate]:
         """Everything in the wider logged band, whatever the model thinks of it."""
-        return self.scan(markets, now, self.cfg.watch_lo, self.cfg.watch_hi, None)
+        return self.scan(markets, now, self.cfg.watch_lo, self.cfg.watch_hi, None, False)
 
     def band_of(self, ask: float) -> str:
         if ask <= self.cfg.ask_lo:
@@ -172,12 +176,14 @@ class HarvestStrategy:
         return "core" if ask <= self.cfg.ask_hi else "above"
 
     def scan(self, markets: dict[int, LiveMarket], now: float, lo: float, hi: float,
-             min_edge: float | None) -> list[Candidate]:
+             min_edge: float | None, single_only: bool = False) -> list[Candidate]:
         cfg = self.cfg
         out: list[Candidate] = []
         for lm in markets.values():
             info = lm.info
             if lm.closed or not lm.accepting_orders or lm.volume < cfg.min_volume:
+                continue
+            if single_only and info.neg_risk:
                 continue
             if info.category not in cfg.categories:
                 continue

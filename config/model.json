@@ -4,64 +4,60 @@
     1.1845474901643949
   ],
   "segments": {
-    "culture|no_single": [
-      -0.20558603677705994,
+    "culture|multi": [
+      -0.18234922154815897,
       1.1845474901643949
     ],
-    "culture|other": [
-      -0.13090528044659533,
+    "culture|single": [
+      -0.12247016000557553,
       1.1845474901643949
     ],
-    "economics|other": [
-      0.315183723937338,
+    "economics|multi": [
+      0.3024583915801628,
       1.1845474901643949
     ],
-    "finance|no_single": [
-      -0.3343876636748905,
+    "finance|multi": [
+      -0.4621555850782495,
       1.1845474901643949
     ],
-    "finance|other": [
-      -0.45731923351031517,
+    "finance|single": [
+      -0.34513945743181496,
       1.1845474901643949
     ],
-    "geopolitics|no_single": [
-      -0.011060622477327309,
+    "geopolitics|multi": [
+      -0.4195342901700865,
       1.1845474901643949
     ],
-    "geopolitics|other": [
-      -0.4938336437579349,
+    "geopolitics|single": [
+      -0.1114070221377923,
       1.1845474901643949
     ],
-    "other|no_single": [
-      -0.6057235354206318,
+    "other|single": [
+      -0.6175203741591679,
       1.1845474901643949
     ],
-    "other|other": [
-      -0.2174206973754848,
+    "politics|multi": [
+      -0.45512372845824545,
       1.1845474901643949
     ],
-    "politics|no_single": [
-      -0.14324049914294656,
+    "politics|single": [
+      -0.15707021591844691,
       1.1845474901643949
     ],
-    "politics|other": [
-      -0.4266415646769615,
+    "tech|multi": [
+      -0.2837522270314315,
       1.1845474901643949
     ],
-    "tech|no_single": [
-      -0.09005171605947712,
+    "tech|single": [
+      -0.19516637094979689,
       1.1845474901643949
     ],
-    "tech|other": [
-      -0.33437160741954797,
+    "*|multi": [
+      -0.3715973958075513,
       1.1845474901643949
     ],
-    "*|no_single": [
-      -0.13993408344500574,
-      1.1845474901643949
-    ],
-    "*|other": [
-      -0.3784815409208777,
+    "*|single": [
+      -0.19164413378288264,
       1.1845474901643949
     ],
     "culture": [
@@ -98,7 +94,7 @@
     ]
   },
   "info": {
-    "fitted_utc": "2026-11-10 07:30",
+    "fitted_utc": "2026-11-10 07:40",
     "form": "P(pays) = sigmoid(a + b*logit(ask)); per-segment shift of a, shrunk toward the pooled line",
     "training": "4886 trades, ask in (0.85, 0.99), 3-60 scheduled days to end, non-sports non-crypto, markets with >=100k shares already traded",
     "prior_strength": 150.0
