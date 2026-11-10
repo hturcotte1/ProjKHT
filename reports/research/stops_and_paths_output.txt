@@ -1,0 +1,33 @@
+1. Stop-losses
+                 rule sell if the bid closes at or below  trades  won %  lost everything  stopped out  return a trade %  t_event  spread of returns %
+   main rule, 95-98c                              never    1836  98.20               33            0              1.64     4.84                13.78
+   main rule, 95-98c                                90c    1836  86.82                5          257              0.73     2.70                10.99
+   main rule, 95-98c                                85c    1836  92.10                6          151              1.09     3.90                11.37
+   main rule, 95-98c                                80c    1836  94.23                6          111              1.20     4.12                11.85
+   main rule, 95-98c                                70c    1836  96.19                7           70              1.32     4.29                12.55
+   main rule, 95-98c                                50c    1836  97.44                8           39              1.48     4.68                13.07
+quiet rule Q, 90-98c                              never     746  99.06                7            0              2.74     7.34                10.14
+quiet rule Q, 90-98c                                90c     746  87.94                2          107              1.34     3.68                 9.79
+quiet rule Q, 90-98c                                85c     746  93.43                2           60              1.80     4.81                10.01
+quiet rule Q, 90-98c                                80c     746  95.44                2           41              2.08     5.64                 9.95
+quiet rule Q, 90-98c                                70c     746  97.18                2           25              2.28     6.09                10.13
+quiet rule Q, 90-98c                                50c     746  98.93                2            6              2.80     8.21                 9.24
+   90-95c, not quiet                              never    1472  94.43               82            0              1.71     2.61                24.76
+   90-95c, not quiet                                90c    1472  48.51                4          801             -0.52    -1.69                11.50
+   90-95c, not quiet                                85c    1472  72.55                8          420              0.33     0.76                16.21
+   90-95c, not quiet                                80c    1472  81.11               10          281              0.91     1.91                17.90
+   90-95c, not quiet                                70c    1472  87.57               16          173              1.05     1.93                20.45
+   90-95c, not quiet                                50c    1472  92.19               21           94              1.40     2.31                22.76
+
+2. The price of quiet favourites bought with 30 or more days to run (509 trades), as the end approaches
+                 markets  bought_at  last_price  at_98c_or_more  bid_at_97c_or_more
+days to the end                                                                    
+45                   383      0.962       0.966          20.888              37.337
+30                   505      0.962       0.972          45.941              52.673
+21                   501      0.962       0.981          68.463              71.856
+14                   501      0.962       0.986          85.828              76.248
+10                   501      0.962       0.988          90.020              77.645
+7                    500      0.962       0.989          92.200              78.000
+5                    499      0.962       0.992          95.190              75.952
+3                    498      0.962       0.995          97.992              81.928
+1                    488      0.961       0.997          98.156              80.123

@@ -79,6 +79,74 @@ UNIVERSES = {
 }
 
 
+# The model fitted on the first round's panel and frozen in docs/04_second_round.md, section 8:
+# logit P(loses) = A + B * logit(price paid) + C * log(7-day traded range + 0.005)
+FROZEN = (0.311, -1.046, 0.295)
+
+
+def smooth_test(s: pd.DataFrame, rng7: np.ndarray) -> None:
+    """QT-smooth: does a wider recent range go with more losses, price held fixed? One row a week per outcome."""
+    import statsmodels.api as sm
+
+    series, period, first = s["series"].to_numpy(), s["period"].to_numpy(), s["ask_first"].to_numpy()
+    # the first later day with a taker-buy print decides the entry, as in every rule
+    nxt = np.full(len(s), -1)
+    last_idx, last_series = -1, -1
+    for i in range(len(s) - 1, -1, -1):
+        if series[i] != last_series:
+            last_idx, last_series = -1, series[i]
+        nxt[i] = last_idx
+        if np.isfinite(first[i]):
+            last_idx = i
+    j = np.where(nxt >= 0, nxt, 0)
+    entry = np.where((nxt >= 0) & (period[j] - period <= 3), first[j], np.nan)
+    # small orders (under $50) over the last 7 days: against this outcome (they bought the other one) and for it
+    small = {}
+    change = np.flatnonzero(np.diff(series)) + 1
+    for col in ("small_sell_n", "small_buy_n"):
+        x, out = s[col].to_numpy(dtype=float), np.zeros(len(s))
+        for a, b in zip(np.concatenate(([0], change)), np.concatenate((change, [len(s)]))):
+            per, cs = period[a:b], np.cumsum(x[a:b])
+            start = np.searchsorted(per, per - 6, side="left")
+            out[a:b] = cs - np.where(start > 0, cs[start - 1], 0.0)
+        small[col] = out
+    d = s.assign(entry_px=entry, range7=rng7, small_against=np.log(small["small_sell_n"] + 1), small_for=np.log(small["small_buy_n"] + 1))
+    d = d[(d["ask"] > 0.88) & (d["ask"] < 0.99) & (d["days_to_end"] > 3) & (d["days_to_end"] <= 180)
+          & (d["entry_px"] > 0.88) & (d["entry_px"] < 0.995) & d["won"].isin([0.0, 1.0]) & (d["period"] % 7 == 0)].copy()
+    d["lost"] = (d["won"] == 0).astype(int)
+    d["lp"] = np.log(d["entry_px"] / (1 - d["entry_px"]))
+    d["lr7"] = np.log(d["range7"] + 0.005)
+    print("-" * 110)
+    print(f"QT-smooth: {len(d):,} weekly rows in {d['market_id'].nunique():,} markets and {d['cluster'].nunique():,} events; "
+          f"{int(d['lost'].sum())} lost ({100 * d['lost'].mean():.2f}%)")
+    if d["lost"].sum() < 10:
+        print("  too few losses to fit")
+        return
+    m = sm.Logit(d["lost"], sm.add_constant(d[["lp", "lr7"]])).fit(disp=0, cov_type="cluster", cov_kwds={"groups": d["cluster"]})
+    print(f"  refitted here: logit P(loses) = {m.params['const']:+.3f} {m.params['lp']:+.3f} x logit(price) "
+          f"{m.params['lr7']:+.3f} x log(range + 0.005)")
+    print(f"  coefficient on the range {m.params['lr7']:+.3f}, t = {m.tvalues['lr7']:.2f}   "
+          f"(frozen from the first round: {FROZEN[2]:+.3f})")
+    print(f"  bar (positive with t >= 2)  ->  {'PASSED' if m.params['lr7'] > 0 and m.tvalues['lr7'] >= 2 else 'NOT PASSED'}")
+    m2 = sm.Logit(d["lost"], sm.add_constant(d[["lp", "lr7", "small_against", "small_for"]])).fit(
+        disp=0, cov_type="cluster", cov_kwds={"groups": d["cluster"]})
+    print(f"  with small orders (no bar): against the favourite {m2.params['small_against']:+.3f} (t = {m2.tvalues['small_against']:.2f}), "
+          f"for it {m2.params['small_for']:+.3f} (t = {m2.tvalues['small_for']:.2f});  first round: -0.290 (t -2.7), +0.304 (t 2.6)")
+    fee = d["fee_rate"] * d["entry_px"] * (1 - d["entry_px"])
+    d["ret"] = (d["won"] - d["entry_px"] - fee) / (d["entry_px"] + fee)
+    d["predicted"] = 1 / (1 + np.exp(-(FROZEN[0] + FROZEN[1] * d["lp"] + FROZEN[2] * d["lr7"])))
+    z = d[(d["entry_px"] > 0.90) & (d["entry_px"] <= 0.985) & (d["days_to_end"] <= 60)].copy()
+    z["third"] = pd.qcut(z["predicted"], 3, labels=["safest third", "middle third", "riskiest third"])
+    rows = []
+    for name, g in z.groupby("third", observed=True):
+        r = mean_cluster(g["ret"].to_numpy(), g["cluster"].to_numpy())
+        rows.append({"frozen model's": name, "rows": len(g), "markets": g["market_id"].nunique(), "predicted loss %": 100 * g["predicted"].mean(),
+                     "lost %": 100 * g["lost"].mean(), "avg price": g["entry_px"].mean(), "avg range": g["range7"].mean(),
+                     "return %": 100 * r.mean, "t_event": r.t})
+    print("  favourites at 90-98.5c with 3-60 days to run, by the frozen model's predicted loss:")
+    print(pd.DataFrame(rows).round(2).to_string(index=False))
+
+
 def stats(t: pd.DataFrame) -> dict:
     if len(t) < 20:
         return {"trades": len(t), "lost": int((t["won"] == 0).sum()) if len(t) else 0}
@@ -157,6 +225,7 @@ def main(universe: str) -> None:
     print(f"THE PRE-REGISTERED REPLICATION ({u['title']})")
     verdict("Q", q, qc)
     verdict("Q-long", ql, qlc)
+    smooth_test(s, rng7)
     print("=" * 110)
     q.to_csv(OUT / f"{prefix}_trades_Q.csv", index=False)
     qc.to_csv(OUT / f"{prefix}_trades_Q_control.csv", index=False)

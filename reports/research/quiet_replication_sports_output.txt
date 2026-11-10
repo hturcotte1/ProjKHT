@@ -12,6 +12,16 @@ Q-long: 385 trades in 78 events, 17 lost in 17 events (4.42%); return per trade 
   control: 449 trades, 20 lost (4.45%); return per trade +0.17% (t = 0.20)
   Q minus control -0.73 points (t = -1.29); exact p for the count of losing events 1.00000
   bar (positive with |t| >= 3; above control with |t| >= 2; exact p < 0.01)  ->  NOT PASSED
+--------------------------------------------------------------------------------------------------------------
+QT-smooth: 5,028 weekly rows in 927 markets and 231 events; 225 lost (4.47%)
+  refitted here: logit P(loses) = -0.426 -1.001 x logit(price) -0.133 x log(range + 0.005)
+  coefficient on the range -0.133, t = -0.78   (frozen from the first round: +0.295)
+  bar (positive with t >= 2)  ->  NOT PASSED
+  favourites at 90-98.5c with 3-60 days to run, by the frozen model's predicted loss:
+frozen model's  rows  markets  predicted loss %  lost %  avg price  avg range  return %  t_event
+  safest third   413      229              0.86    1.21       0.98       0.02      0.95     1.39
+  middle third   412      246              1.89    3.40       0.96       0.05      0.51     0.39
+riskiest third   413      259              4.21    6.05       0.93       0.11      0.70     0.35
 ==============================================================================================================
 
                                                                   rule  trades  events   win%  lost  events_with_a_loss  avg_cost  avg_ret%   se%  t_event  med_dte  med_hold_d
@@ -32,6 +42,10 @@ Q-long: 385 trades in 78 events, 17 lost in 17 events (4.42%); return per trade 
                                                     Q, 0.95-0.98 only     213    78.0  97.65     5                 5.0      0.97      0.56  1.04     0.54    41.00        23.0
                                               control, 0.95-0.98 only     496   179.0  98.19     9                 9.0      0.97      1.34  0.59     2.27    25.00        10.0
 first round's main rule as configured: 95-98c, stand-alone, 3-60 days      47    30.0 100.00     0                 0.0      0.97      3.49  0.14    24.31    19.50        11.0
+                       main rule, traded range over 14 days above 15c      12     NaN    NaN     0                 NaN       NaN       NaN   NaN      NaN      NaN         NaN
+                                                  main rule, the rest      41    27.0 100.00     0                 0.0      0.97      3.53  0.16    22.76    19.50        10.0
+                                       Q, 0.90-0.95 only, stand-alone       6     NaN    NaN     0                 NaN       NaN       NaN   NaN      NaN      NaN         NaN
+                                 control, 0.90-0.95 only, stand-alone      51    35.0  94.12     3                 3.0      0.93      0.89  3.61     0.25    12.00         9.0
                   first round's R1d: 95-99c, legs included, 3-60 days     752   228.0  98.01    15                15.0      0.98      0.38  0.50     0.76    30.08        15.0
                                           long shots 3-10c, 3-60 days     604   210.0   4.47   577               205.0      0.06    -33.60 13.32    -2.52    28.50        14.0
 

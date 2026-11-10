@@ -392,7 +392,7 @@ If QT passes, the quiet rule has repeated once in the right kind of market
 and failed once in the wrong kind, and it earns a paper account and a place
 in the forward test. If it fails, it is dropped.
 
-**A second, smoother test on the same markets, added at 18:45 UTC while their
+**A second, smoother test on the same markets, added at 18:44 UTC while their
 tapes were still downloading and before any had been read.** A rule with a
 cut-off at 3¢ throws away most of the data, and a cut-off chosen after looking
 tends to look sharper than it is. So I also fitted the plainest possible model
@@ -418,5 +418,14 @@ flatters the effect.
 
 Reported with it: how often favourites lost in each third of the frozen
 model's predicted loss, among those priced 90–98.5¢ with 3 to 60 days to run.
+
+Also reported, with no bar (added at 18:50 UTC, tapes still downloading): the
+same regression with two more terms, the number of small orders (under $50)
+over the last 7 days that bought the long shot against the favourite, and the
+number that bought the favourite, each as log(count + 1). On the first round's
+panel the coefficients are −0.29 (t −2.7) and +0.30 (t 2.6): a favourite loses
+less often when small tickets are betting against it and more often when they
+are piling into it. Large orders on either side predicted nothing. This was
+one of seven order-flow variations tried, so it is a lead and no more.
 If QT-smooth passes, the frozen model replaces the first round's calibration
 line for ranking candidates, whatever happens to the 3¢ rule.
