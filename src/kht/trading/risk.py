@@ -19,7 +19,7 @@ from .portfolio import Portfolio
 class RiskLimits:
     bankroll: float = 1_000.0            # capital the system is allowed to treat as its own
     max_position_usd: float = 25.0       # cost basis + resting buys, per market
-    max_event_usd: float = 50.0          # the same, summed over markets of one event
+    max_event_usd: float = 25.0          # the same, summed over markets of one event (legs are one bet)
     max_theme_usd: float = 75.0          # the same, summed over markets sharing a narrow topic tag
     max_total_exposure_frac: float = 0.60  # of bankroll, positions + resting buys
     max_open_orders: int = 60
