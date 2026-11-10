@@ -641,3 +641,39 @@ a position and about 14–16% at 4%, up to roughly $25,000, with the tail risk
 unpriced. What would change that estimate fastest is the thin-market paper
 account: whether $20 orders fill in those markets at the prices the backtest
 assumed is the one thing history cannot show.
+
+## 13. Two follow-ups, fixed before they were run
+
+*Written at 19:25 UTC on 10 November, before either was run and before any
+market under 20,000 shares had been downloaded.*
+
+The thin-market result says the edge grows as markets get smaller. Two
+questions follow directly, and both bear on what the paper accounts should
+trade.
+
+**T5: thinner still.** Resolved news markets (outside sports and crypto, a
+life of two days or more) that traded at least 5,000 and fewer than 20,000
+shares, used once they have traded 5,000. The first round's two rules exactly
+as before: the main account's (95–98¢, stand-alone) and R1d (95–99¢, legs
+included); and the thin account's band (90–98¢, stand-alone). Clustered by
+event.
+
+*Bar:* R1d positive with |t| ≥ 3. *Prediction, not a bar:* a return per trade
+at least as large as in the 20,000–100,000 markets (+1.69% for R1d, +1.96%
+for the main rule), because if the explanation is right the mistake should be
+larger where there is even less reason to correct it. Reported with it: how
+many dollars traded in range, because below some size there is nothing to
+buy.
+
+**TM: resting bids in the thinner markets.** Spreads there are two to three
+cents, so a buyer who pays the ask gives up a cent or more of a two-cent
+edge. On the 20,000–100,000 markets already downloaded: the thin account's
+rule (90–98¢, stand-alone, skipping outcomes that ranged more than 15¢ in two
+weeks) entered with a resting bid at the signal day's bid, filled only if a
+later sale prints strictly below it within three days, no fee: the first
+round's fill rule, unchanged.
+
+*Bar:* positive with |t| ≥ 3 and a higher return per trade than the same
+signals bought at the ask, with |t| ≥ 2 on the difference. The first round's
+version of this in big markets fell just short (t = 2.7). If it passes here,
+the experimental account's method moves to the thin markets.
