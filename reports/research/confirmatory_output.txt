@@ -1,0 +1,251 @@
+59,322,242 trades in 16,335 markets (54s); 2023-11-11 .. 2026-11-10
+432,973 market-days after the 100k-share rule, 16,213 markets, 5,316 events; holdout share of rows 0.69
+
+==============================================================================================================
+1. Calibration at prices a taker paid (one row per market-day-side; net of today's fees)
+==============================================================================================================
+
+[holdout]
+          ask      n  events  avg_ask  win%  gross_c  net_c     t  net_ret%  med_days_to_close
+ (0.0, 0.03] 129903    3197     0.01  0.34    -0.51  -0.54 -6.77    -64.93              22.18
+(0.03, 0.05]  19993    1803     0.04  1.56    -2.35  -2.47 -7.27    -64.37              41.38
+ (0.05, 0.1]  30570    1884     0.07  3.03    -4.03  -4.24 -9.84    -60.72              54.70
+  (0.1, 0.2]  32318    1780     0.14  9.64    -4.56  -4.95 -4.93    -37.03              60.28
+  (0.2, 0.3]  18541    1486     0.25 21.27    -3.41  -4.04 -2.42    -16.67              55.28
+  (0.3, 0.4]  15534    1268     0.35 30.61    -4.17  -4.95 -2.69    -14.32              54.94
+  (0.4, 0.5]  13515    1025     0.45 43.03    -2.05  -2.91 -1.63     -6.61              54.42
+  (0.5, 0.6]  12041     940     0.55 54.59    -0.89  -1.74 -0.96     -3.20              53.92
+  (0.6, 0.7]  15507    1209     0.65 66.88     1.45   0.67  0.36      0.97              54.16
+  (0.7, 0.8]  18277    1418     0.76 76.95     1.44   0.82  0.48      1.06              56.25
+  (0.8, 0.9]  30668    1737     0.86 88.36     2.44   2.05  1.79      2.36              60.89
+ (0.9, 0.95]  30298    1788     0.93 96.38     3.27   3.06  6.46      3.29              59.34
+(0.95, 0.97]  19564    1694     0.96 98.14     1.96   1.84  5.22      1.92              47.31
+(0.97, 0.99]  38376    2208     0.98 99.01     0.89   0.83  3.88      0.85              30.34
+ (0.99, 1.0]  91186    3133     1.00 99.77     0.10   0.08  1.26      0.08              20.89
+
+[discovery]
+          ask     n  events  avg_ask  win%  gross_c  net_c     t  net_ret%  med_days_to_close
+ (0.0, 0.03] 58578     965     0.01  0.46    -0.36  -0.39 -1.58    -45.28              31.54
+(0.03, 0.05]  8706     594     0.04  1.25    -2.68  -2.78 -7.67    -69.17              49.51
+ (0.05, 0.1] 12556     647     0.07  2.65    -4.40  -4.58 -7.37    -66.81              51.26
+  (0.1, 0.2] 13425     612     0.14 10.53    -3.79  -4.14 -2.47    -31.08              54.32
+  (0.2, 0.3]  8552     514     0.25 20.70    -4.07  -4.62 -2.01    -18.57              53.62
+  (0.3, 0.4]  8307     436     0.35 32.38    -2.58  -3.30 -1.14     -9.67              53.84
+  (0.4, 0.5]  8891     354     0.46 45.29    -0.36  -1.19 -0.63     -2.36              72.12
+  (0.5, 0.6]  8208     321     0.55 53.89    -1.00  -1.83 -1.02     -3.22              73.88
+  (0.6, 0.7]  8398     425     0.65 65.14    -0.06  -0.78 -0.27     -1.28              55.57
+  (0.7, 0.8]  8329     494     0.75 77.64     2.28   1.72  0.73      2.30              53.26
+  (0.8, 0.9] 12683     588     0.86 87.59     1.83   1.48  0.76      1.69              56.82
+ (0.9, 0.95] 12273     625     0.93 96.48     3.36   3.19  4.13      3.43              52.26
+(0.95, 0.97]  8584     581     0.96 98.97     2.80   2.71 10.33      2.82              53.94
+(0.97, 0.99] 16873     707     0.98 99.16     1.03   0.98  3.19      1.01              40.25
+ (0.99, 1.0] 41866     910     1.00 99.47    -0.20  -0.21 -0.65     -0.21              33.30
+
+calibration slope of outcome 0 (slope > 1: prices compressed toward 50%)
+    sample       group  slope    se  t_vs_1  intercept      n  events
+  holdout         all  1.187 0.053   3.510     -0.210 146832    2916
+  holdout     culture  1.403 0.154   2.619     -0.097  11964     317
+  holdout   economics  1.510 0.171   2.980      0.273   9228     113
+  holdout     finance  1.396 0.167   2.367     -0.467   9497     165
+  holdout geopolitics  1.200 0.093   2.149     -0.568  32602     803
+  holdout       other  1.105 0.203   0.516     -0.011   3897      79
+  holdout    politics  1.100 0.076   1.319     -0.133  72524    1269
+  holdout        tech  1.201 0.191   1.050     -0.355   5294      99
+  holdout     weather  1.419 0.347   1.207      0.630   1826      71
+discovery         all  1.312 0.081   3.833      0.194  67131     955
+discovery     culture  1.548 0.310   1.767      0.149   2515      64
+discovery   economics  1.183 0.339   0.542      0.777   1039      24
+discovery     finance  1.478 0.168   2.853      0.607   8959      83
+discovery geopolitics  1.405 0.137   2.950      0.212  20057     321
+discovery    politics  1.202 0.134   1.516      0.071  30387     384
+discovery        tech  1.448 0.202   2.217     -0.136   3088      60
+discovery     weather  1.661 0.615   1.074      1.387   1046      12
+
+==============================================================================================================
+2. R1, variants and controls: every qualifying trade, equal dollars per trade
+==============================================================================================================
+
+[holdout]
+                                       rule  trades  events  win%  avg_entry  avg_ret%  t_2way  t_event  event_avg_ret%  med_hold_d  worst%  ret_per_30d%
+                   R1  90-97c, 3-60d, hold    2319    1415 94.78       0.94      0.88    1.55     1.70            1.01        19.0  -100.0          1.02
+                   R1a 90-97c, 7-60d, hold    1799    1193 94.83       0.94      0.97    1.46     1.64            1.04        25.0  -100.0          0.92
+     R1b 90-97c, 7-60d, sell 3d before end    1799    1193 86.88       0.94      0.34    0.64     0.70            0.53        22.0  -100.0          0.37
+                   R1c 80-97c, 3-60d, hold    2876    1645 91.10       0.90      1.20    1.85     1.90            1.42        19.0  -100.0          1.38
+                   R1d 95-99c, 3-60d, hold    2822    1652 98.16       0.97      0.96    3.57     3.62            1.07        17.0  -100.0          1.19
+                  control: longshots 3-10c    2378    1448  4.50       0.06    -36.96   -5.41    -5.77          -39.53        19.0  -100.0        -43.00
+                control: coin flips 40-60c     764     588 45.81       0.49     -7.45   -2.18    -2.13           -8.09        21.0  -100.0         -8.51
+R2  R1, 'No' side of single yes/no markets    1122     887 95.28       0.94      1.57    2.03     2.19            1.41        25.0  -100.0          1.54
+             R3  R2, 'by/before' questions     693     543 94.81       0.93      1.38    1.32     1.41            1.18        20.0  -100.0          1.64
+        R1m R1 with a resting bid (3 days)    2186    1340 94.19       0.93      1.54    2.47     2.68            1.55        18.0  -100.0          1.83
+
+[discovery]
+                                       rule  trades  events  win%  avg_entry  avg_ret%  t_2way  t_event  event_avg_ret%  med_hold_d  worst%  ret_per_30d%
+                   R1  90-97c, 3-60d, hold     901     428 95.23       0.94      1.45    1.67     1.74            1.36        19.0  -100.0          1.69
+                   R1a 90-97c, 7-60d, hold     740     372 95.14       0.94      1.39    1.43     1.46            1.44        25.0  -100.0          1.38
+     R1b 90-97c, 7-60d, sell 3d before end     740     372 87.97       0.94      0.43    0.53     0.55            0.53        22.0  -100.0          0.47
+                   R1c 80-97c, 3-60d, hold    1092     488 90.38       0.89      0.85    0.72     0.74            1.16        20.0  -100.0          0.98
+                   R1d 95-99c, 3-60d, hold     988     461 98.28       0.97      1.28    2.72     2.74            1.43        18.0  -100.0          1.51
+                  control: longshots 3-10c     894     427  4.36       0.07    -34.67   -2.74    -2.93          -23.00        19.0  -100.0        -40.85
+                control: coin flips 40-60c     283     162 45.94       0.48     -4.12   -0.71    -0.72           -9.95        19.0  -100.0         -4.73
+R2  R1, 'No' side of single yes/no markets     515     246 96.50       0.94      2.97    3.26     3.31            3.43        22.0  -100.0          3.26
+             R3  R2, 'by/before' questions     434     219 96.31       0.94      2.87    2.89     2.79            3.20        25.0  -100.0          2.96
+        R1m R1 with a resting bid (3 days)     837     402 94.38       0.93      1.76    1.98     1.90            1.93        18.0  -100.0          2.14
+
+==============================================================================================================
+3. Robustness of R1 on the holdout
+==============================================================================================================
+   dimension              level  trades  events   win%  avg_entry  avg_ret%  t_2way  t_event  event_avg_ret%  med_hold_d  worst%  ret_per_30d%
+        year               2023       8       7 100.00       0.94      5.96    7.17     8.15            5.78        46.5    4.00          5.28
+        year               2024     431     308  95.36       0.94      1.47    1.20     1.26            1.42        27.0 -100.00          1.34
+        year               2025    1203     794  94.93       0.94      1.06    1.37     1.51            1.54        23.0 -100.00          1.11
+        year               2026     677     332  94.09       0.94      0.11    0.10     0.11           -0.79        11.0 -100.00          0.20
+        half             2023Q4       8       7 100.00       0.94      5.96    7.17     8.15            5.78        46.5    4.00          5.28
+        half             2024Q1      25      20 100.00       0.94      6.64   12.94    13.62            6.46        16.0    2.97          9.24
+        half             2024Q2      26      17  88.46       0.95     -7.04   -0.93    -0.93           -3.73        41.5 -100.00         -5.36
+        half             2024Q3     140      98  93.57       0.94     -0.48   -0.19    -0.20           -0.84        40.5 -100.00         -0.39
+        half             2024Q4     240     184  96.67       0.94      3.00    2.18     2.44            2.81        25.0 -100.00          2.86
+        half             2025Q1     211     148  93.84       0.94     -0.12   -0.06    -0.06            1.70        22.0 -100.00         -0.13
+        half             2025Q2     297     202  94.61       0.94      0.95    0.59     0.63            1.33        20.0 -100.00          1.12
+        half             2025Q3     193     149  95.34       0.93      1.89    1.02     1.06            2.19        16.0 -100.00          2.31
+        half             2025Q4     502     313  95.42       0.94      1.30    1.18     1.38            1.38        28.0 -100.00          1.20
+        half             2026Q1     546     282  94.14       0.94      0.14    0.12     0.13           -0.23        11.0 -100.00          0.25
+        half             2026Q2     131      71  93.89       0.94     -0.04   -0.01    -0.02           -3.02        10.0 -100.00         -0.10
+    category            culture     183     120  96.72       0.94      2.80    2.01     2.01            2.21        17.0 -100.00          3.61
+    category          economics     106      57  98.11       0.94      4.24    3.02     3.03            3.77        19.0 -100.00          4.82
+    category            finance     193      88  94.30       0.94      0.18    0.08     0.08            0.75        22.0 -100.00          0.20
+    category        geopolitics     629     473  95.07       0.94      1.60    1.55     1.67            1.65        18.0 -100.00          1.91
+    category              other      52      30  94.23       0.94     -0.02   -0.01    -0.01           -0.02        32.5 -100.00         -0.02
+    category           politics     999     558  94.19       0.94      0.10    0.12     0.12            0.23        18.0 -100.00          0.11
+    category               tech     128      65  94.53       0.94      0.58    0.25     0.25            2.07        19.0 -100.00          0.82
+    category            weather      29      24  89.66       0.94     -4.81   -0.79    -0.77           -7.06        20.0 -100.00         -6.26
+     dte_bin             (3, 7]     520     295  94.62       0.94      0.55    0.50     0.52            1.37         4.0 -100.00          2.87
+     dte_bin            (7, 14]     360     289  91.67       0.94     -2.34   -1.27    -1.40           -1.85        11.0 -100.00         -5.41
+     dte_bin           (14, 30]     606     458  95.05       0.93      1.53    1.54     1.55            1.56        21.0 -100.00          2.19
+     dte_bin           (30, 60]     833     603  96.04       0.94      1.99    2.31     2.58            2.18        52.0 -100.00          1.26
+      px_bin        (0.9, 0.93]    1000     755  92.00       0.92      0.02    0.02     0.02           -0.49        19.0 -100.00          0.03
+      px_bin       (0.93, 0.95]     621     485  95.33       0.94      0.97    1.07     1.12            1.13        15.0 -100.00          1.22
+      px_bin      (0.95, 0.975]     698     537  98.28       0.96      2.01    3.71     4.03            2.31        23.0 -100.00          2.05
+outcome_side first-listed (Yes)     364     348  94.51       0.93      0.96    0.72     0.75            1.03        13.0 -100.00          1.43
+outcome_side second-listed (No)    1955    1246  94.83       0.94      0.86    1.49     1.62            1.06        20.0 -100.00          0.96
+
+R1 holdout: concentration checks
+                        variant  trades  events  win%  avg_entry  avg_ret%  t_2way  t_event  event_avg_ret%  med_hold_d  worst%  ret_per_30d%
+  without the 0 largest events    2319    1415 94.78       0.94      0.88    1.55     1.70            1.01        19.0  -100.0          1.02
+  without the 5 largest events    2246    1410 94.75       0.94      0.82    1.42     1.56            1.00        19.0  -100.0          0.96
+ without the 20 largest events    2111    1395 94.60       0.94      0.70    1.16     1.26            0.98        20.0  -100.0          0.80
+ without the 50 largest events    1925    1365 94.75       0.94      0.91    1.44     1.57            1.03        20.0  -100.0          1.01
+first trade of each event only    1415    1415 95.05       0.94      1.17    1.79     1.90            1.17        23.0  -100.0          1.22
+
+event bootstrap of R1 holdout mean return per trade: median 0.88%, 95% CI [-0.17%, 1.88%], 99% CI [-0.53%, 2.17%], P(mean <= 0) = 0.0490
+
+entry-print check (holdout): buying at the signal bar's ask, every first signal: 0.63% (t=1.20, n=2394); of those, markets where R1 later found a print: 0.86% (n=2319); where it did not: -6.62% (t=-1.50, n=75)
+
+==============================================================================================================
+4. R1 as an account: $1,000 bankroll, finite capital (holdout period only)
+==============================================================================================================
+ stake  max_event  max_theme  trades  events  win_rate  avg_ret_per_trade  median_hold_days  total_return   cagr  sharpe  max_drawdown  worst_trade  best_trade  avg_utilisation  years  final_equity
+    20         20        NaN     986     926     0.946              0.008              23.0         0.146  0.053   0.530        -0.124        -20.0       2.144            0.508  2.634      1145.503
+    20         20       60.0     879     829     0.939             -0.000              22.0        -0.018 -0.007  -0.002        -0.179        -20.0       2.198            0.476  2.634       982.288
+    20         40        NaN    1080     854     0.950              0.012              23.0         0.267  0.094   0.877        -0.096        -20.0       2.144            0.535  2.634      1267.392
+    50         50      150.0     463     452     0.948              0.010              26.0         0.163  0.059   0.459        -0.204        -50.0       5.311            0.626  2.634      1163.258
+   100        100      300.0     329     319     0.951              0.013              27.0         0.481  0.161   0.976        -0.259       -100.0      10.551            0.702  2.634      1481.024
+
+worst R1 holdout trades:
+                                                                                           question    category  entry_px  ret  dte_at_signal
+                                                    Will the DHS shutdown end after April 30, 2026?    politics     0.905 -1.0          5.000
+                                 QatarEnergy announces/resumes LNG production in Qatar by April 30? geopolitics     0.940 -1.0          5.000
+                                                                          Biden drops out in July?     politics     0.930 -1.0         14.500
+                                Will Kamala Harris win the 2024 Democratic Presidential Nomination?    politics     0.960 -1.0         51.000
+                                    Will Joe Biden win the 2024 Democratic Presidential Nomination?    politics     0.910 -1.0         51.500
+               [Single Market] Will Joe Biden win the U.S. 2024 Democratic presidential nomination?    politics     0.930 -1.0         43.500
+      Will UP hold the most seats in the Chamber of Deputies following the 2025 Argentina election?    politics     0.930 -1.0         47.500
+     Will LLA hold the most seats in the Chamber of Deputies following the 2025 Argentina election?    politics     0.958 -1.0         48.500
+                                                              Israel x Iran ceasefire before July?  geopolitics     0.920 -1.0          9.997
+Andrew Cuomo gets the most first-choice votes in the 2025 New York City Mayoral Democratic Primary?    politics     0.940 -1.0          5.000
+                                                     Will Kanye tweet 100-199 times February 20-28?       other     0.941 -1.0          5.500
+                                                           Will Elon tweet 600-649 times Feb 14-21?     culture     0.910 -1.0          4.500
+
+losing trades (> 50% loss): 121 of 2319 (5.22%); max in one event: 2; max resolving in one week: 8
+
+==============================================================================================================
+3. Robustness of R1d on the holdout
+==============================================================================================================
+   dimension              level  trades  events   win%  avg_entry  avg_ret%  t_2way  t_event  event_avg_ret%  med_hold_d  worst%  ret_per_30d%
+        year               2023      17      14 100.00       0.98      2.34    8.92     9.09            2.30        43.0    0.67          2.11
+        year               2024     519     363  98.65       0.97      1.52    2.93     2.93            1.41        23.0 -100.00          1.44
+        year               2025    1514     950  98.02       0.97      0.82    2.11     2.17            1.05        20.0 -100.00          0.92
+        year               2026     772     358  98.06       0.97      0.85    1.59     1.61            0.80        10.0 -100.00          1.74
+        half             2023Q4      17      14 100.00       0.98      2.34    8.92     9.09            2.30        43.0    0.67          2.11
+        half             2024Q1      28      25 100.00       0.97      2.98   14.48    14.70            2.98        15.5    0.77          4.81
+        half             2024Q2      36      24  97.22       0.97      0.11    0.04     0.04            2.15        36.5 -100.00          0.09
+        half             2024Q3     167     115  99.40       0.97      2.21    3.69     3.78            2.65        30.0 -100.00          1.91
+        half             2024Q4     288     214  98.26       0.97      1.15    1.43     1.43            0.57        21.0 -100.00          1.13
+        half             2025Q1     252     158  96.83       0.97     -0.47   -0.45    -0.42            0.18        16.5 -100.00         -0.61
+        half             2025Q2     348     236  97.70       0.97      0.64    0.72     0.76            0.16        17.0 -100.00          0.87
+        half             2025Q3     227     157  97.80       0.97      0.70    0.71     0.71            0.77        15.0 -100.00          0.90
+        half             2025Q4     687     421  98.69       0.97      1.42    3.21     3.25            1.73        28.0 -100.00          1.35
+        half             2026Q1     638     301  98.12       0.97      0.86    1.59     1.63            1.10        10.0 -100.00          1.67
+        half             2026Q2     134      73  97.76       0.97      0.79    0.61     0.58           -1.03         8.0 -100.00          2.16
+    category            culture     258     154  98.45       0.97      0.98    1.22     1.21           -0.11        14.0 -100.00          1.42
+    category          economics     140      75  98.57       0.97      1.31    1.26     1.26            0.97        18.0 -100.00          1.55
+    category            finance     248     114  97.58       0.97      0.26    0.25     0.25           -0.13        21.0 -100.00          0.30
+    category        geopolitics     753     526  98.54       0.97      1.56    3.19     3.16            1.87        15.0 -100.00          2.08
+    category              other      64      34 100.00       0.97      2.61   12.30    12.29            2.55        26.0    0.96          2.31
+    category           politics    1163     644  97.85       0.97      0.63    1.39     1.44            0.97        18.0 -100.00          0.72
+    category               tech     153      72  98.04       0.97      0.88    0.76     0.75            0.54        18.0 -100.00          1.31
+    category            weather      43      33  97.67       0.97      0.40    0.17     0.17           -0.25        19.0 -100.00          0.52
+     dte_bin             (3, 7]     666     400  97.90       0.97      0.60    1.09     1.10            1.00         4.0 -100.00          3.37
+     dte_bin            (7, 14]     440     370  98.18       0.97      1.13    1.54     1.55            1.55        11.0 -100.00          2.69
+     dte_bin           (14, 30]     765     547  97.65       0.97      0.50    0.93     0.88            0.45        21.0 -100.00          0.71
+     dte_bin           (30, 60]     951     628  98.74       0.97      1.52    3.91     4.08            1.49        51.0 -100.00          0.99
+      px_bin       (0.95, 0.96]     558     457  98.03       0.96      2.36    3.55     3.54            2.42        19.0 -100.00          2.90
+      px_bin       (0.96, 0.97]     828     675  97.58       0.96      1.14    2.00     2.07            0.96        19.0 -100.00          1.36
+      px_bin       (0.97, 0.98]     551     461  98.55       0.97      1.00    1.94     1.94            1.15        16.0 -100.00          1.23
+      px_bin      (0.98, 0.995]     885     620  98.53       0.99     -0.11   -0.27    -0.27            0.14        15.0 -100.00         -0.13
+outcome_side first-listed (Yes)     368     349  99.46       0.97      2.42    6.05     6.07            2.41        10.0 -100.00          4.21
+outcome_side second-listed (No)    2454    1473  97.96       0.97      0.75    2.50     2.55            0.91        18.0 -100.00          0.88
+
+R1d holdout: concentration checks
+                        variant  trades  events  win%  avg_entry  avg_ret%  t_2way  t_event  event_avg_ret%  med_hold_d  worst%  ret_per_30d%
+  without the 0 largest events    2822    1652 98.16       0.97      0.96    3.57     3.62            1.07        17.0  -100.0          1.19
+  without the 5 largest events    2724    1647 98.16       0.97      1.01    3.63     3.69            1.07        18.0  -100.0          1.21
+ without the 20 largest events    2552    1632 98.12       0.97      0.95    3.33     3.34            1.07        18.0  -100.0          1.15
+ without the 50 largest events    2334    1602 98.11       0.97      0.96    3.16     3.18            1.07        17.5  -100.0          1.18
+first trade of each event only    1652    1652 98.24       0.97      1.09    3.14     3.26            1.09        20.0  -100.0          1.24
+
+event bootstrap of R1d holdout mean return per trade: median 0.98%, 95% CI [0.43%, 1.48%], 99% CI [0.23%, 1.61%], P(mean <= 0) = 0.0002
+
+entry-print check (holdout): buying at the signal bar's ask, every first signal: 0.63% (t=2.21, n=2894); of those, markets where R1d later found a print: 0.92% (n=2822); where it did not: -10.99% (t=-2.62, n=72)
+
+==============================================================================================================
+4. R1d as an account: $1,000 bankroll, finite capital (holdout period only)
+==============================================================================================================
+ stake  max_event  max_theme  trades  events  win_rate  avg_ret_per_trade  median_hold_days  total_return  cagr  sharpe  max_drawdown  worst_trade  best_trade  avg_utilisation  years  final_equity
+    20         20        NaN     985     929     0.975              0.003              21.0         0.070 0.027   0.389        -0.091        -20.0       1.042            0.534   2.56      1069.971
+    20         20       60.0     956     900     0.975              0.003              19.0         0.059 0.023   0.351        -0.061        -20.0       1.042            0.480   2.56      1059.135
+    20         40        NaN    1050     834     0.976              0.004              21.0         0.081 0.031   0.439        -0.095        -20.0       1.042            0.565   2.56      1081.427
+    50         50      150.0     492     476     0.976              0.004              23.0         0.067 0.026   0.293        -0.115        -50.0       2.589            0.658   2.56      1066.925
+   100        100      300.0     330     321     0.982              0.010              26.0         0.397 0.140   1.296        -0.110       -100.0       5.178            0.757   2.56      1397.383
+
+worst R1d holdout trades:
+                                                                                      question    category  entry_px  ret  dte_at_signal
+                                                   Will Ukraine re-enter Rodynske by April 30? geopolitics     0.960 -1.0          6.000
+                                          Trump imposes 40% tariff on China in first 100 days?    politics     0.952 -1.0         58.500
+                                             Will Elon tweet 325-349 times March 28 - April 4?    politics     0.971 -1.0          3.500
+                       Will Elon Musk post 380-399 tweets from January 20 to January 27, 2026?    politics     0.956 -1.0          3.708
+                                       Will the US next strike Iran on February 28, 2026 (ET)? geopolitics     0.984 -1.0         25.000
+Will LLA hold the most seats in the Chamber of Deputies following the 2025 Argentina election?    politics     0.958 -1.0         48.500
+                                                                TikTok sale announced in 2025?        tech     0.960 -1.0         20.500
+                                                            US strikes Nigeria by December 31? geopolitics     0.958 -1.0         23.000
+                                                Will xAI have the top AI model on February 28?     finance     0.984 -1.0         20.500
+                                         Will Elon Musk tweet 800 or more times February 7-14?    politics     0.976 -1.0          5.500
+               Will Democrats win the most seats in the next Greenland parliamentary election?    politics     0.985 -1.0         55.500
+                                             Will Trump increase tariffs on Canada before May?    politics     0.958 -1.0         22.500
+
+losing trades (> 50% loss): 52 of 2822 (1.84%); max in one event: 2; max resolving in one week: 4
+
+done in 94s
+
+real	1m35.066s
+user	1m46.908s
+sys	0m35.934s

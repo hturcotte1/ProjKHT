@@ -91,6 +91,105 @@ def calib_table(s: pd.DataFrame, label: str) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def robustness(tag: str, slug: str, trades: pd.DataFrame, s: pd.DataFrame, meta: pd.DataFrame, out: Path,
+               lo: float, hi: float, px_edges: list[float]) -> None:
+    """Breakdowns, concentration, bootstrap, entry check, account simulation and
+    tail for one rule, on the holdout only."""
+    section(f"3. Robustness of {tag} on the holdout")
+    h = trades[trades["holdout"]].copy()
+    h["year"] = pd.to_datetime(h["entry_period"] * 86_400, unit="s").dt.year
+    h["half"] = pd.to_datetime(h["entry_period"] * 86_400, unit="s").dt.to_period("Q").astype(str)
+    h["dte_bin"] = pd.cut(h["dte_at_signal"], [3, 7, 14, 30, 60])
+    h["px_bin"] = pd.cut(h["entry_px"], px_edges)
+    h["outcome_side"] = np.where(h["side"] == 0, "first-listed (Yes)", "second-listed (No)")
+    rob = []
+    for dim in ("year", "half", "category", "dte_bin", "px_bin", "outcome_side"):
+        for level, g in h.groupby(dim, observed=True):
+            rob.append({"dimension": dim, "level": str(level), **trade_stats(g)})
+    rob = pd.DataFrame(rob)
+    rob.to_csv(out / f"c3_{slug}_holdout_breakdowns.csv", index=False)
+    print(rob.round(2).to_string(index=False))
+
+    # concentration: results without the events that supplied the most trades,
+    # and with at most one trade per event
+    counts = h.groupby("cluster").size().sort_values(ascending=False)
+    drop_rows = []
+    for k in (0, 5, 20, 50):
+        keep = h[~h["cluster"].isin(counts.index[:k])]
+        drop_rows.append({"variant": f"without the {k} largest events", **trade_stats(keep)})
+    one = h.sort_values("entry_period").groupby("cluster").head(1)
+    drop_rows.append({"variant": "first trade of each event only", **trade_stats(one)})
+    print(f"\n{tag} holdout: concentration checks\n", pd.DataFrame(drop_rows).round(2).to_string(index=False))
+    pd.DataFrame(drop_rows).to_csv(out / f"c3_{slug}_concentration.csv", index=False)
+
+    # event bootstrap of the mean return
+    rng = np.random.default_rng(7)
+    by_ev = h.groupby("cluster")["ret"].agg(["sum", "size"])
+    sums, sizes = by_ev["sum"].to_numpy(), by_ev["size"].to_numpy()
+    idx = rng.integers(0, len(sums), size=(5000, len(sums)))
+    boot = sums[idx].sum(axis=1) / sizes[idx].sum(axis=1)
+    ci = np.percentile(boot, [0.5, 2.5, 50, 97.5, 99.5])
+    print(f"\nevent bootstrap of {tag} holdout mean return per trade: median {100 * ci[2]:.2f}%, "
+          f"95% CI [{100 * ci[1]:.2f}%, {100 * ci[3]:.2f}%], 99% CI [{100 * ci[0]:.2f}%, {100 * ci[4]:.2f}%], "
+          f"P(mean <= 0) = {(boot <= 0).mean():.4f}")
+    json.dump({"ci95": [float(ci[1]), float(ci[3])], "ci99": [float(ci[0]), float(ci[4])], "median": float(ci[2]),
+               "p_nonpositive": float((boot <= 0).mean()), "events": int(len(sums)), "trades": int(len(h))},
+              open(out / f"c3_{slug}_bootstrap.json", "w"), indent=1)
+
+    # does requiring a later taker-buy print flatter the result?
+    sig = s[(s["ask"] > lo) & (s["ask"] <= hi) & (s["days_to_end"] > 3) & (s["days_to_end"] <= 60) & s["holdout"]]
+    first_sig = sig.sort_values("period").groupby("market_id").head(1)
+    alt = first_sig.assign(ret=(first_sig["won"] - first_sig["ask"] - first_sig["fee_ps"]) / (first_sig["ask"] + first_sig["fee_ps"]))
+    ra = mean_cluster(alt["ret"].to_numpy(), alt["cluster"].to_numpy())
+    took = alt["market_id"].isin(h["market_id"])
+    rb = mean_cluster(alt.loc[took, "ret"].to_numpy(), alt.loc[took, "cluster"].to_numpy())
+    rc = mean_cluster(alt.loc[~took, "ret"].to_numpy(), alt.loc[~took, "cluster"].to_numpy())
+    print(f"\nentry-print check (holdout): buying at the signal bar's ask, every first signal: "
+          f"{100 * ra.mean:.2f}% (t={ra.t:.2f}, n={ra.n}); of those, markets where {tag} later found a print: "
+          f"{100 * rb.mean:.2f}% (n={rb.n}); where it did not: {100 * rc.mean:.2f}% (t={rc.t:.2f}, n={rc.n})")
+    pd.DataFrame([{"entry": "signal-bar ask, all first signals", "ret%": 100 * ra.mean, "t": ra.t, "n": ra.n},
+                  {"entry": "markets the rule traded", "ret%": 100 * rb.mean, "t": rb.t, "n": rb.n},
+                  {"entry": "markets the rule could not enter", "ret%": 100 * rc.mean, "t": rc.t, "n": rc.n}]
+                 ).to_csv(out / f"c3_{slug}_entry_print_check.csv", index=False)
+
+    section(f"4. {tag} as an account: $1,000 bankroll, finite capital (holdout period only)")
+    # narrow topic tags ("themes"): the same definition the live risk manager uses
+    from kht.trading.universe import is_operational_tag
+
+    tag_lists = meta.set_index("market_id")["tags"].fillna("").str.split("|")
+    tcounts = tag_lists.explode().value_counts()
+    limit = max(2, 0.03 * len(meta))
+    theme_set = {t for t in tcounts[(tcounts >= 2) & (tcounts <= limit)].index if t and not is_operational_tag(t)}
+    themes_of = tag_lists.map(lambda tags: tuple(sorted(set(tags) & theme_set)))
+    acct = []
+    base_trades = h.drop(columns=["year", "half", "dte_bin", "px_bin", "outcome_side"]).copy()
+    base_trades["themes"] = base_trades["market_id"].map(themes_of)
+    for stake, max_event, max_theme in ((20, 20, None), (20, 20, 60), (20, 40, None), (50, 50, 150), (100, 100, 300)):
+        r = run_portfolio(base_trades, Capital(bankroll=1000, stake=stake, max_event=max_event, max_theme=max_theme))
+        acct.append({"stake": stake, "max_event": max_event, "max_theme": max_theme, **r.stats})
+        if stake == 20 and max_event == 20 and max_theme == 60:
+            r.equity.assign(date=pd.to_datetime(r.equity["period"] * 86_400, unit="s")).to_csv(
+                out / f"c4_{slug}_equity_stake20.csv", index=False)
+            r.trades.drop(columns=["themes"]).to_csv(out / f"c4_{slug}_account_trades_stake20.csv", index=False)
+    acct = pd.DataFrame(acct)
+    acct.to_csv(out / f"c4_{slug}_account.csv", index=False)
+    print(acct.round(3).to_string(index=False))
+
+    print(f"\nworst {tag} holdout trades:")
+    worst = h.sort_values("ret").head(12).merge(meta[["market_id", "question"]], on="market_id")
+    print(worst[["question", "category", "entry_px", "ret", "dte_at_signal"]].round(3).to_string(index=False))
+    worst.to_csv(out / f"c4_{slug}_worst_trades.csv", index=False)
+    losers = h[h["ret"] < -0.5]
+    by_week = losers.groupby(losers["exit_period"] // 7).size()
+    print(f"\nlosing trades (> 50% loss): {len(losers)} of {len(h)} ({100 * len(losers) / len(h):.2f}%); "
+          f"max in one event: {losers.groupby('cluster').size().max() if len(losers) else 0}; "
+          f"max resolving in one week: {by_week.max() if len(losers) else 0}")
+    json.dump({"losers": int(len(losers)), "trades": int(len(h)),
+               "max_in_one_event": int(losers.groupby("cluster").size().max()) if len(losers) else 0,
+               "max_in_one_week": int(by_week.max()) if len(losers) else 0},
+              open(out / f"c4_{slug}_tail.json", "w"), indent=1)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="reports/research")
@@ -173,100 +272,10 @@ def main() -> None:
     for name in ("holdout", "discovery"):
         print(f"\n[{name}]\n", res[res["sample"] == name].drop(columns="sample").round(2).to_string(index=False))
 
-    # ------------------------------------------------------------------ 3
-    section("3. Robustness of R1 on the holdout")
-    r1 = trade_lists["R1"]
-    h = r1[r1["holdout"]].copy()
-    h["year"] = pd.to_datetime(h["entry_period"] * 86_400, unit="s").dt.year
-    h["half"] = pd.to_datetime(h["entry_period"] * 86_400, unit="s").dt.to_period("Q").astype(str)
-    h["dte_bin"] = pd.cut(h["dte_at_signal"], [3, 7, 14, 30, 60])
-    h["px_bin"] = pd.cut(h["entry_px"], [0.90, 0.93, 0.95, 0.975])
-    h["outcome_side"] = np.where(h["side"] == 0, "first-listed (Yes)", "second-listed (No)")
-    rob = []
-    for dim in ("year", "half", "category", "dte_bin", "px_bin", "outcome_side"):
-        for level, g in h.groupby(dim, observed=True):
-            rob.append({"dimension": dim, "level": str(level), **trade_stats(g)})
-    rob = pd.DataFrame(rob)
-    rob.to_csv(out / "c3_r1_holdout_breakdowns.csv", index=False)
-    print(rob.round(2).to_string(index=False))
-
-    # concentration: results without the events that supplied the most trades,
-    # and with at most one trade per event
-    counts = h.groupby("cluster").size().sort_values(ascending=False)
-    drop_rows = []
-    for k in (0, 5, 20, 50):
-        keep = h[~h["cluster"].isin(counts.index[:k])]
-        drop_rows.append({"variant": f"without the {k} largest events", **trade_stats(keep)})
-    one = h.sort_values("entry_period").groupby("cluster").head(1)
-    drop_rows.append({"variant": "first trade of each event only", **trade_stats(one)})
-    print("\nR1 holdout: concentration checks\n", pd.DataFrame(drop_rows).round(2).to_string(index=False))
-    pd.DataFrame(drop_rows).to_csv(out / "c3_r1_concentration.csv", index=False)
-
-    # event bootstrap of the mean return
-    rng = np.random.default_rng(7)
-    by_ev = h.groupby("cluster")["ret"].agg(["sum", "size"])
-    sums, sizes = by_ev["sum"].to_numpy(), by_ev["size"].to_numpy()
-    idx = rng.integers(0, len(sums), size=(5000, len(sums)))
-    boot = sums[idx].sum(axis=1) / sizes[idx].sum(axis=1)
-    ci = np.percentile(boot, [0.5, 2.5, 50, 97.5, 99.5])
-    print(f"\nevent bootstrap of R1 holdout mean return per trade: median {100 * ci[2]:.2f}%, "
-          f"95% CI [{100 * ci[1]:.2f}%, {100 * ci[3]:.2f}%], 99% CI [{100 * ci[0]:.2f}%, {100 * ci[4]:.2f}%], "
-          f"P(mean <= 0) = {(boot <= 0).mean():.4f}")
-    json.dump({"ci95": [float(ci[1]), float(ci[3])], "ci99": [float(ci[0]), float(ci[4])], "median": float(ci[2]),
-               "p_nonpositive": float((boot <= 0).mean()), "events": int(len(sums)), "trades": int(len(h))},
-              open(out / "c3_r1_bootstrap.json", "w"), indent=1)
-
-    # does requiring a later taker-buy print flatter the result?
-    sig = s[(s["ask"] > 0.90) & (s["ask"] <= 0.97) & (s["days_to_end"] > 3) & (s["days_to_end"] <= 60) & s["holdout"]]
-    first_sig = sig.sort_values("period").groupby("market_id").head(1)
-    alt = first_sig.assign(ret=(first_sig["won"] - first_sig["ask"] - first_sig["fee_ps"]) / (first_sig["ask"] + first_sig["fee_ps"]))
-    ra = mean_cluster(alt["ret"].to_numpy(), alt["cluster"].to_numpy())
-    took = alt["market_id"].isin(h["market_id"])
-    rb = mean_cluster(alt.loc[took, "ret"].to_numpy(), alt.loc[took, "cluster"].to_numpy())
-    rc = mean_cluster(alt.loc[~took, "ret"].to_numpy(), alt.loc[~took, "cluster"].to_numpy())
-    print(f"\nentry-print check (holdout): buying at the signal bar's ask, every first signal: "
-          f"{100 * ra.mean:.2f}% (t={ra.t:.2f}, n={ra.n}); of those, markets where R1 later found a print: "
-          f"{100 * rb.mean:.2f}% (n={rb.n}); where it did not: {100 * rc.mean:.2f}% (t={rc.t:.2f}, n={rc.n})")
-    pd.DataFrame([{"entry": "signal-bar ask, all first signals", "ret%": 100 * ra.mean, "t": ra.t, "n": ra.n},
-                  {"entry": "…markets R1 traded", "ret%": 100 * rb.mean, "t": rb.t, "n": rb.n},
-                  {"entry": "…markets R1 could not enter", "ret%": 100 * rc.mean, "t": rc.t, "n": rc.n}]
-                 ).to_csv(out / "c3_entry_print_check.csv", index=False)
-
-    # ------------------------------------------------------------------ 4
-    section("4. R1 as an account: $1,000 bankroll, finite capital (holdout period only)")
-    # narrow topic tags ("themes"): the same definition the live risk manager uses
-    tag_lists = meta.set_index("market_id")["tags"].fillna("").str.split("|")
-    counts = tag_lists.explode().value_counts()
-    limit = max(2, 0.03 * len(meta))
-    from kht.trading.universe import is_operational_tag
-
-    theme_set = {t for t in counts[(counts >= 2) & (counts <= limit)].index if t and not is_operational_tag(t)}
-    themes_of = tag_lists.map(lambda tags: tuple(sorted(set(tags) & theme_set)))
-    acct = []
-    base_trades = h.drop(columns=["year", "half", "dte_bin", "px_bin", "outcome_side"]).copy()
-    base_trades["themes"] = base_trades["market_id"].map(themes_of)
-    for stake, max_event, max_theme in ((20, 20, None), (20, 20, 60), (20, 40, None), (50, 50, 150), (100, 100, 300)):
-        for compound in (False,):
-            r = run_portfolio(base_trades, Capital(bankroll=1000, stake=stake, max_event=max_event,
-                                                   compound=compound, max_theme=max_theme))
-            acct.append({"stake": stake, "max_event": max_event, "max_theme": max_theme, **r.stats})
-            if stake == 20 and max_event == 20 and max_theme == 60:
-                r.equity.assign(date=pd.to_datetime(r.equity["period"] * 86_400, unit="s")).to_csv(
-                    out / "c4_r1_equity_stake20.csv", index=False)
-                r.trades.to_csv(out / "c4_r1_account_trades_stake20.csv", index=False)
-    acct = pd.DataFrame(acct)
-    acct.to_csv(out / "c4_r1_account.csv", index=False)
-    print(acct.round(3).to_string(index=False))
-
-    # tail: worst events and worst days
-    print("\nworst R1 holdout trades:")
-    worst = h.sort_values("ret").head(12).merge(meta[["market_id", "question"]], on="market_id")
-    print(worst[["question", "category", "entry_px", "ret", "dte_at_signal"]].round(3).to_string(index=False))
-    worst.to_csv(out / "c4_r1_worst_trades.csv", index=False)
-    losers = h[h["ret"] < -0.5]
-    print(f"\nlosing trades (> 50% loss): {len(losers)} of {len(h)} ({100 * len(losers) / len(h):.2f}%); "
-          f"max in one event: {losers.groupby('cluster').size().max() if len(losers) else 0}; "
-          f"max resolving in one week: {losers.groupby(losers['exit_period'] // 7).size().max() if len(losers) else 0}")
+    # ------------------------------------------------------------- 3 and 4
+    # the pre-registered primary rule, and the pre-registered variant that cleared the bar
+    robustness("R1", "r1", trade_lists["R1"], s, meta, out, lo=0.90, hi=0.97, px_edges=[0.90, 0.93, 0.95, 0.975])
+    robustness("R1d", "r1d", trade_lists["R1d"], s, meta, out, lo=0.95, hi=0.99, px_edges=[0.95, 0.96, 0.97, 0.98, 0.995])
     print(f"\ndone in {time.time() - t0:.0f}s")
 
 

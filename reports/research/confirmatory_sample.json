@@ -1,0 +1,9 @@
+{
+ "markets_with_tapes": 16335,
+ "market_days": 432973,
+ "markets_in_panel": 16213,
+ "events": 5316,
+ "split": "scheduled end before/after 2026-05-01",
+ "holdout_markets": 11372,
+ "discovery_markets": 4841
+}
