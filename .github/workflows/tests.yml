@@ -1,0 +1,34 @@
+# Runs the test suite when code changes. The paper trader installs and runs
+# whatever is on the default branch, so a push that breaks the tests would
+# break the next cycle.
+name: tests
+
+on:
+  push:
+    paths-ignore:
+      - "state/**"
+      - "reports/**"
+      - "docs/**"
+      - "**.md"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install with the research and test dependencies
+        run: pip install -e ".[research,dev]"
+      - name: Tests
+        run: pytest -q
