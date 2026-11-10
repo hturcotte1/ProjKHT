@@ -23,7 +23,9 @@ def subset(meta: pd.DataFrame, name: str) -> pd.DataFrame:
         sel = (meta["category"] == "sports") & (meta["sports_type"] == "moneyline") & meta["game_start_ts"].notna()
     elif name == "non_sports":
         life = (meta["closed_ts"].fillna(meta["end_ts"]) - meta["start_ts"]) / 86_400
-        sel = (meta["category"] != "sports") & (meta["category"] != "crypto") & (life >= 2) & meta["winner"].notna()
+        # split (50/50) resolutions are kept: for a 93c position they are a real loss
+        resolved = meta["winner"].notna() | (meta["final0"] == 0.5)
+        sel = (meta["category"] != "sports") & (meta["category"] != "crypto") & (life >= 2) & resolved
     elif name == "open_non_sports":
         # still-open markets: needed so that results are not conditioned on
         # 'the market has already resolved' (censoring)

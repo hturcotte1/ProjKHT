@@ -75,6 +75,9 @@ def by_side(q: pd.DataFrame, meta: pd.DataFrame) -> pd.DataFrame:
     """
     m = meta.set_index("market_id")
     win = m["winner"].reindex(q["market_id"]).to_numpy()
+    # payoff of outcome 0: 1 or 0, or 0.5 for the rare split resolution
+    final0 = m["final0"].reindex(q["market_id"]).to_numpy()
+    pay0 = np.where(win == 0, 1.0, np.where(win == 1, 0.0, np.where(final0 == 0.5, 0.5, np.nan)))
     base = {
         "market_id": q["market_id"].to_numpy(), "period": q["period"].to_numpy(), "ts": q["ts"].to_numpy(),
         "vol": q["vol"].to_numpy(), "usd": q["usd"].to_numpy(), "n": q["n"].to_numpy(),
@@ -88,7 +91,7 @@ def by_side(q: pd.DataFrame, meta: pd.DataFrame) -> pd.DataFrame:
         "buy_n": q["buy_n"].to_numpy(), "sell_n": q["sell_n"].to_numpy(),
         "small_buy_n": q["small_buy_n"].to_numpy(), "small_sell_n": q["small_sell_n"].to_numpy(),
         "big_buy_usd": q["big_buy_usd"].to_numpy(), "big_sell_usd": q["big_sell_usd"].to_numpy(),
-        "won": np.where(win == 0, 1.0, np.where(win == 1, 0.0, np.nan)),
+        "won": pay0,
     })
     s1 = pd.DataFrame({
         **base, "side": 1, "ask": 1.0 - q["bid0"].to_numpy(), "bid": 1.0 - q["ask0"].to_numpy(),
@@ -100,7 +103,7 @@ def by_side(q: pd.DataFrame, meta: pd.DataFrame) -> pd.DataFrame:
         "buy_n": q["sell_n"].to_numpy(), "sell_n": q["buy_n"].to_numpy(),
         "small_buy_n": q["small_sell_n"].to_numpy(), "small_sell_n": q["small_buy_n"].to_numpy(),
         "big_buy_usd": q["big_sell_usd"].to_numpy(), "big_sell_usd": q["big_buy_usd"].to_numpy(),
-        "won": np.where(win == 1, 1.0, np.where(win == 0, 0.0, np.nan)),
+        "won": 1.0 - pay0,
     })
     out = pd.concat([s0, s1], ignore_index=True)
     mid = out["market_id"]

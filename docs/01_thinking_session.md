@@ -197,3 +197,60 @@ where the edge is thin, and decide sell-versus-hold per trade as in 3.1.
 
 If nothing survives costs, say so plainly, and fall back to the best-documented
 slow effect (H3) with maker execution.
+
+## 8. Second pre-registration (2026-11-10, 06:40 UTC)
+
+*Added while the data was still downloading, after two things had been learned
+from the newest slice only (non-sports markets that closed between 2026-06-08
+and 2026-11-10; about 3,200 of 16,500 markets, because tapes download
+newest-first). Nothing older had been looked at when this was written.*
+
+### What changed
+
+1. **The sample had to be redefined.** Markets had been chosen by *total*
+   volume. Total volume is larger when something dramatic happens, so the
+   sample over-represented upsets and made underdogs look underpriced
+   (calibration slope 0.81). Restricting to markets that had *already* traded
+   100,000 shares at the moment of each observation — a rule that uses no
+   hindsight — reversed the sign (slope 1.14). Every result from here on uses
+   the no-hindsight rule, which requires the trade tape, so the tape is now
+   the primary data set and the price panel secondary.
+
+2. **Prices come from the tape, not the mid.** Each tape row is a taker order
+   with a known side, so the last taker buy marks the ask and the last taker
+   sell marks the bid. Backtests now enter at a price a taker demonstrably
+   paid, one bar after the signal.
+
+3. **A candidate edge appeared in the newest slice**: contracts quoted at
+   90–97¢ paid out more often than their price (about +3¢ after today's
+   fees), and contracts under 10¢ lost most of their stake. The effect grew
+   with time to resolution.
+
+### The rule fixed here, to be judged on the older, unseen data
+
+> **R1.** In non-sports, non-crypto markets that have already traded 100,000
+> shares: when one side's ask is above 90¢ and at most 97¢ and the scheduled
+> end is more than 3 and at most 60 days away, buy it at the next taker-buy
+> print (if still in range and within 3 days), pay today's taker fee for the
+> category, and hold to resolution. One position per market.
+
+Variants fixed at the same time: (a) 7–60 days; (b) sell 3 days before the
+scheduled end instead of holding; (c) 80–97¢; (d) 95–99¢.
+Controls that should *lose* if the effect is real: the same rule on 3–10¢
+contracts, and on 40–60¢ contracts.
+
+**Holdout:** markets that closed before 2026-06-08. R1 counts as confirmed
+only if its average return per trade there is positive with |t| ≥ 3
+(clustered by event) and the longshot control is negative. The paper trader
+is the second, forward-looking test.
+
+### Known weaknesses to check, listed before looking
+
+- Entry requires a taker-buy print on the next days. If informed traders buy
+  favourites that are about to win, conditioning on that print flatters the
+  result; compare against entering at the signal bar's ask.
+- Markets still open today are missing (censoring). Limit the comparison to
+  entries whose scheduled end has passed, and count overdue open markets.
+- A 93¢ position that fails loses 93¢. Report the worst event, the worst day
+  and results with the best events removed.
+- Markets that resolved 50/50 must be included as a half-payout, not dropped.
