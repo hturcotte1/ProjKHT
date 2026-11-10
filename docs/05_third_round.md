@@ -469,6 +469,37 @@ positive in all three universes (+5.5%, +6.8%, +3.7%); it is the first thing
 to test on new data, and the forward log now records what is needed to do
 that (section 8).
 
+### Paying the ask or leaving a bid
+
+Round two's test of resting bids rested on the flawed sample and is
+withdrawn. On the corrected universes, for the "No" side only, and only for
+signals whose bid and ask were within 3¢ of each other, which is what the
+accounts require before they trade (`s3_bid_or_ask.csv`; exploratory):
+
+| "No" bought | Big: at the ask | Big: resting bid | Thin: ask | Thin: bid | Thinner: ask | Thinner: bid |
+|---|---:|---:|---:|---:|---:|---:|
+| 95–98¢, 3–60 days | +1.76% (4.9) | +2.35% (5.8) | +1.38% (3.9) | +1.53% (3.3) | +1.50% (4.1) | +1.92% (3.6) |
+| 90–98¢, 3–60 days | +1.88% (3.7) | +2.31% (4.1) | +1.30% (2.5) | +1.40% (2.2) | +1.65% (3.7) | +2.24% (4.0) |
+| 90–98¢, 60–180 days | +4.75% (7.2) | +5.32% (7.2) | +3.77% (5.7) | +4.41% (5.6) | +2.08% (2.0) | +3.61% (3.6) |
+| Share of the bids that filled | | 92–97% | | 82–93% | | 78–85% |
+
+A bid left at the day's bid for three days did better than the ask in all
+nine cells, by a tenth of a point to a point and a half, and most of the
+bids filled. None of the differences would pass a test on its own. For the
+long-dated account, where there is no hurry at all, it was enough to make it
+bid first and pay the ask only after three days.
+
+The same table shows something that was not looked for. With the spread
+limit on, the thinnest markets do much better than in the tests of section 5,
+which had no such limit: "No" at 95–98¢ earns +1.50% (t 4.1) there instead of
++1.01% (t 2.8). A wide gap between the last purchase and the last sale is a
+sign that nobody is quoting the market, and the markets nobody quotes are
+where the rule fails. This is an observation made after the fact on data
+that has now been read, so it changes nothing by itself: no account trades
+below 20,000 shares. It does mean the paper accounts, which have always
+required a tight spread, are trading a slightly better rule than the one
+that was backtested.
+
 ## 7. As accounts
 
 `scripts/run_third_accounts.py` (`a3_*.csv`): $1,000, positions capped at a
@@ -516,11 +547,19 @@ events there are to bet on, not by how good each bet is.
   corrected universe. It had not yet run a cycle.
 - **A long-dated account is added** (`config/paper_long.json`,
   `state/paper-long/`): "No" at 90–98¢ with 60 to 180 days to run, in
-  markets with 20,000 shares or more. It is there because a forward test is
-  the only clean test left for it, and a paper account costs nothing. On its
-  first dry run against live books it found twelve contracts to buy ("US
-  recession by end of 2026?", "9.0 or above earthquake before 2027?",
-  "Friedrich Merz out as Chancellor before March 31, 2027?").
+  markets with 20,000 shares or more. It leaves a bid for three days and
+  pays the ask after that. It is there because a forward test is the only
+  clean test left for it, and a paper account costs nothing. On its first
+  dry run against live books it found twelve contracts to buy ("US recession
+  by end of 2026?", "9.0 or above earthquake before 2027?", "Friedrich Merz
+  out as Chancellor before March 31, 2027?").
+- **Mid-priced signals are logged on both sides** (`wide_watch_lo`, on in the
+  main and thin accounts): stand-alone contracts from 50¢ up to the band the
+  log already covered, never traded. `kht shadow` scores their "No" and
+  "Yes" sides apart. On a dry run of the main account's next cycle this
+  logged 62 of them, 50 on the "No" side. It is the forward test of the table
+  in section 6: "No" at 50–90¢ missed its bar on history, and this is how it
+  gets a second hearing on prices nobody has seen yet.
 - `scripts/at_the_time.py` is now the only way a research universe is built.
 
 ## 9. Verdict on the third round

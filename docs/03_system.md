@@ -72,9 +72,10 @@ came out of the second and third rounds of research (`04_second_round.md`,
 | `max_volume` | Skips markets that have traded this many shares or more, so an account can be kept to thin markets | The thin-market account (20,000 to 100,000 shares) |
 | `busy_days`, `busy_range` | Skips an outcome whose traded price has ranged more than `busy_range` over the last `busy_days` days, in a market older than that | The thin-market account (14 days, 15¢) |
 | `quiet_days`, `quiet_range` | Buys only outcomes whose traded price has stayed within `quiet_range` over the last `quiet_days` days | No account: the rule it serves did not pass its tests |
-| `maker_fallback_hours` | With `entry: maker`, pays the ask once this account's bids in a market have gone unfilled this long, counted from the first bid | No account: the result it served did not survive the corrected universe |
+| `maker_fallback_hours` | With `entry: maker`, pays the ask once this account's bids in a market have gone unfilled this long, counted from the first bid | The long-dated account (72 hours) |
 | `no_side_only` | Buys only the outcome named "No" of a Yes/No question; the other side is still logged | Every account, by decision of the third round's test T5-N |
 | `dte_lo`, `dte_hi` | Scheduled days to the end between which a contract qualifies | 3 to 60 everywhere except the long-dated account (60 to 180) |
+| `wide_watch_lo` | Also logs stand-alone signals priced from here up to `watch_lo`, on both sides, as band "wide"; never traded | The main and thin accounts (50¢): the forward test of "No" against "Yes" at mid prices |
 
 The range is the highest minus the lowest price at which the outcome traded,
 with trades in the other outcome counted at one minus their price: the
@@ -314,7 +315,7 @@ these pass through the same three-hour check, so they can overlap safely:
 | Main | `config/paper.json` | `state/paper/` | The rule that passed its test, on the side that carries it: "No" at 95–98¢, markets with 100,000 shares or more |
 | Experimental | `config/paper_maker.json` | `state/paper-maker/` | Resting-bid entry on a wider band; unproven |
 | Thin markets | `config/paper_thin.json` | `state/paper-thin/` | "No" at 95–98¢ in markets with 20,000 to 100,000 shares so far. Weakly supported: +1.1% a trade (t = 3.4) measured without hindsight. Started 10 November 2026 on a 90–98¢ band that the third round withdrew; what it bought then is held to resolution |
-| Long-dated | `config/paper_long.json` | `state/paper-long/` | "No" at 90–98¢ with 60 to 180 days to run, 20,000 shares or more. Exploratory: +4–5% a trade where it was explored (t = 6 to 10), +2.5% (t = 2.7) where it was tested. Started 10 November 2026 |
+| Long-dated | `config/paper_long.json` | `state/paper-long/` | "No" at 90–98¢ with 60 to 180 days to run, 20,000 shares or more, entered with a resting bid for up to three days and then at the ask. Exploratory: +4–5% a trade where it was explored (t = 6 to 10), +2.5% (t = 2.7) where it was tested. Started 10 November 2026 |
 
 The forward log is the thing to watch. It scores the "No" and the "Yes" side
 of every signal apart, which is the one claim that passed a test in the third

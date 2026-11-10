@@ -120,7 +120,7 @@ lists the ways to keep it going.
 | Main, `state/paper/` | "No" at 95–98¢, stand-alone markets with 100,000 shares or more, buy at the ask | The rule that passed, on the side that carries it |
 | Experimental, `state/paper-maker/` | "No" at 90–98¢, same markets, resting bid | Better in the backtest, fell just short of the bar; unproven |
 | Thin markets, `state/paper-thin/` | "No" at 95–98¢, markets with 20,000 to 100,000 shares so far | Weakly supported (+1.1% a trade, t = 3.4). It traded 90–98¢ until round three showed that band rested on a flawed sample |
-| Long-dated, `state/paper-long/` | "No" at 90–98¢ with 60 to 180 days to run, 20,000 shares or more | Exploratory: strong where explored, short of its bar where tested |
+| Long-dated, `state/paper-long/` | "No" at 90–98¢ with 60 to 180 days to run, 20,000 shares or more; a resting bid for three days, then the ask | Exploratory: strong where explored, short of its bar where tested |
 
 Each cycle also logs *every* signal it sees, traded or not, so the rule can be
 scored on new data far faster than a small account allows.

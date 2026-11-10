@@ -106,11 +106,15 @@ def main() -> None:
             for sd, sn in ((1, "No"), (0, "Yes")):
                 grid.append({"universe": uni, "paid": f"{100 * lo:.0f}-{100 * hi:.0f}c", "side": sn, **line(trades(lo, hi, short & single & yn & (side == sd)))})
 
-        # the same "No" signals bought at the ask, or with a bid left at the day's bid for three days
+        # The same "No" signals bought at the ask, or with a bid left at the day's bid for three days.
+        # Only signals whose bid and ask were within 3c of each other, as the accounts require: without
+        # that, a "bid" in a thin market can be a stale print far below the ask, and filling at it is a fantasy.
+        bid_px = s["bid"].to_numpy()
+        tight = np.isfinite(bid_px) & (ask - bid_px <= 0.03 + 1e-9) & (ask - bid_px >= -1e-9)
         for rule, lo, hi, d0, d1 in (("No, 95-98c, 3-60 days", 0.95, 0.98, 3, 60), ("No, 90-98c, 3-60 days", 0.90, 0.98, 3, 60),
                                      ("No, 90-98c, 60-180 days", 0.90, 0.98, 60, 180), ("No, 50-90c, 3-60 days", 0.50, 0.90, 3, 60),
                                      ("No, 50-90c, 20-60 days", 0.50, 0.90, 20, 60)):
-            sig = (ask > lo) & (ask <= hi) & (dte > d0) & (dte <= d1) & single & yn & (side == 1)
+            sig = (ask > lo) & (ask <= hi) & (dte > d0) & (dte <= d1) & single & yn & (side == 1) & tight
             at_ask = candidate_trades(s, Rule(lo, hi, d0, d1), signal=sig)
             at_bid = candidate_trades(s, Rule(lo, hi, d0, d1, entry="maker"), signal=sig)
             bid_or_ask.append({"universe": uni, "rule": rule, "entry": "at the ask", **line(at_ask)})
@@ -134,7 +138,7 @@ def main() -> None:
 
     for frame, name, title in ((pd.DataFrame(groups), "s3_groups.csv", "What was bought"), (pd.DataFrame(grid), "s3_side_by_price.csv", "Every price, each side (stand-alone, 3-60 days)"),
                                (pd.DataFrame(house_rows), "s3_house.csv", '"No" at 50-90c, stand-alone, 3-60 days'),
-                               (pd.DataFrame(bid_or_ask), "s3_bid_or_ask.csv", 'Paying the ask or leaving a bid, stand-alone "No"')):
+                               (pd.DataFrame(bid_or_ask), "s3_bid_or_ask.csv", 'Paying the ask or leaving a bid, stand-alone "No", spread of 3c or less')):
         frame.to_csv(OUT / name, index=False)
         print("\n" + "=" * 110 + f"\n{title}\n" + "=" * 110)
         for uni, g in frame.groupby("universe", sort=False):
