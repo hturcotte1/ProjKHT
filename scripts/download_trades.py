@@ -24,6 +24,10 @@ def subset(meta: pd.DataFrame, name: str) -> pd.DataFrame:
     elif name == "non_sports":
         life = (meta["closed_ts"].fillna(meta["end_ts"]) - meta["start_ts"]) / 86_400
         sel = (meta["category"] != "sports") & (meta["category"] != "crypto") & (life >= 2) & meta["winner"].notna()
+    elif name == "open_non_sports":
+        # still-open markets: needed so that results are not conditioned on
+        # 'the market has already resolved' (censoring)
+        sel = (meta["category"] != "sports") & (meta["category"] != "crypto")
     else:
         raise SystemExit(f"unknown subset {name}")
     return meta.loc[sel]
@@ -39,11 +43,11 @@ def main() -> None:
     ap.add_argument("--max-volume", type=float, default=None, help="skip markets above this share volume")
     args = ap.parse_args()
 
-    meta = subset(load_meta("closed"), args.subset)
+    meta = subset(load_meta("open" if args.subset.startswith("open") else "closed"), args.subset)
     if args.max_volume:
         meta = meta[meta["volume"] <= args.max_volume]
     # newest first: recent markets reflect today's fee and liquidity regime
-    meta = meta.sort_values("closed_ts", ascending=False)
+    meta = meta.sort_values("closed_ts", ascending=False, na_position="first")
     if args.limit:
         meta = meta.head(args.limit)
     log(f"{args.subset}: {len(meta)} markets, total volume {meta['volume'].sum() / 1e9:.2f}B shares")

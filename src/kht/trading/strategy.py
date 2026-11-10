@@ -1,0 +1,217 @@
+"""The trading rule.
+
+Everything the strategy believes is in two small, inspectable objects:
+
+* ``EdgeModel`` — a calibration curve fitted on resolved markets that turns a
+  quoted price into an estimated chance of paying out, by segment;
+* ``StrategyConfig`` — which markets it may touch and how it sizes and exits.
+
+``decide`` is a pure function of the current market snapshot and the account:
+no network, no clock, no hidden state, so the same code runs in tests, in the
+paper trader and live.
+"""
+
+from __future__ import annotations
+
+import json
+import math
+from dataclasses import asdict, dataclass, field
+from pathlib import Path
+from typing import Any
+
+from .fees import taker_fee_per_share
+from .fills import round_to_tick
+from .models import Intent, Order, OrderKind, Side
+from .portfolio import Portfolio
+from .universe import LiveMarket
+
+
+def logit(p: float) -> float:
+    p = min(max(p, 1e-6), 1 - 1e-6)
+    return math.log(p / (1 - p))
+
+
+def sigmoid(x: float) -> float:
+    return 1.0 / (1.0 + math.exp(-x))
+
+
+@dataclass
+class EdgeModel:
+    """``P(outcome pays) = sigmoid(a + b * logit(price))`` per segment.
+
+    ``b > 1`` means prices are compressed toward 50%: a 93c contract pays more
+    often than 93% of the time. Segments fall back to the pooled fit.
+    """
+
+    pooled: tuple[float, float] = (0.0, 1.0)
+    segments: dict[str, tuple[float, float]] = field(default_factory=dict)
+    info: dict[str, Any] = field(default_factory=dict)
+
+    def p_win(self, price: float, segment: str | None = None) -> float:
+        a, b = self.segments.get(segment or "", self.pooled)
+        return sigmoid(a + b * logit(price))
+
+    def to_dict(self) -> dict[str, Any]:
+        return {"pooled": list(self.pooled), "segments": {k: list(v) for k, v in self.segments.items()},
+                "info": self.info}
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> "EdgeModel":
+        return cls(pooled=tuple(d.get("pooled", (0.0, 1.0))),
+                   segments={k: tuple(v) for k, v in d.get("segments", {}).items()}, info=d.get("info", {}))
+
+    @classmethod
+    def load(cls, path: str | Path) -> "EdgeModel":
+        return cls.from_dict(json.loads(Path(path).read_text()))
+
+    def save(self, path: str | Path) -> None:
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+        Path(path).write_text(json.dumps(self.to_dict(), indent=2) + "\n")
+
+
+@dataclass
+class StrategyConfig:
+    # --- which contracts qualify
+    ask_lo: float = 0.90
+    ask_hi: float = 0.97
+    dte_lo: float = 3.0                 # scheduled days to the market's end date
+    dte_hi: float = 60.0
+    categories: tuple[str, ...] = ("politics", "geopolitics", "finance", "economics", "culture", "tech")
+    min_volume: float = 100_000         # shares traded so far (same rule as research)
+    max_spread: float = 0.03
+    min_edge: float = 0.01              # estimated profit per share after the fee
+    # --- how to trade them
+    stake_usd: float = 20.0
+    max_new_per_cycle: int = 5
+    entry: str = "taker"                # "taker" (cross the spread) or "maker" (rest a bid)
+    maker_ttl_hours: float = 12.0
+    exit_dte: float | None = None       # sell this many scheduled days before the end; None = hold to resolution
+    stop_bid: float | None = None       # sell if the bid falls to this level
+    tag: str = "harvest"
+
+    def to_dict(self) -> dict[str, Any]:
+        d = asdict(self)
+        d["categories"] = list(self.categories)
+        return d
+
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> "StrategyConfig":
+        d = dict(d)
+        if "categories" in d:
+            d["categories"] = tuple(d["categories"])
+        return cls(**{k: v for k, v in d.items() if k in cls.__dataclass_fields__})
+
+
+@dataclass
+class Candidate:
+    market: LiveMarket
+    outcome: int
+    ask: float
+    bid: float
+    dte: float
+    p_win: float
+    fee: float
+    edge: float                         # p_win - ask - fee, per share
+    daily_return: float                 # edge / ask / days: capital efficiency
+
+    def describe(self) -> str:
+        name = self.market.info.outcome0 if self.outcome == 0 else self.market.info.outcome1
+        return (f"{self.market.question[:60]} | buy '{name}' at {self.ask:.3f}, est. {self.p_win:.3f}, "
+                f"edge {100 * self.edge:.2f}c, {self.dte:.0f}d")
+
+
+class HarvestStrategy:
+    """Buy contracts the crowd underprices because they are boring: the
+    near-certain side of markets where the other side is a longshot."""
+
+    def __init__(self, config: StrategyConfig, model: EdgeModel):
+        self.cfg = config
+        self.model = model
+
+    # ------------------------------------------------------------ candidates
+    def candidates(self, markets: dict[int, LiveMarket], now: float) -> list[Candidate]:
+        cfg = self.cfg
+        out: list[Candidate] = []
+        for lm in markets.values():
+            info = lm.info
+            if lm.closed or not lm.accepting_orders or lm.volume < cfg.min_volume:
+                continue
+            if info.category not in cfg.categories:
+                continue
+            if not (info.end_ts == info.end_ts):          # NaN end date
+                continue
+            dte = (info.end_ts - now) / 86_400
+            if not (cfg.dte_lo < dte <= cfg.dte_hi):
+                continue
+            for outcome in (0, 1):
+                ask, bid = lm.ask(outcome), lm.bid(outcome)
+                if ask is None or bid is None or not (cfg.ask_lo < ask <= cfg.ask_hi):
+                    continue
+                if ask - bid > cfg.max_spread + 1e-9 or ask - bid < -1e-9:
+                    continue
+                p = self.model.p_win(ask, info.category)
+                fee = taker_fee_per_share(ask, info.fee_rate, info.fee_exponent) if cfg.entry == "taker" else 0.0
+                edge = p - ask - fee
+                if edge < cfg.min_edge:
+                    continue
+                out.append(Candidate(lm, outcome, ask, bid, dte, p, fee, edge, edge / ask / max(dte, 1.0)))
+        out.sort(key=lambda c: c.daily_return, reverse=True)
+        return out
+
+    # ---------------------------------------------------------------- decide
+    def decide(
+        self,
+        markets: dict[int, LiveMarket],
+        portfolio: Portfolio,
+        open_orders: list[Order],
+        now: float,
+    ) -> list[Intent]:
+        cfg = self.cfg
+        intents: list[Intent] = []
+        held_markets = {p.market_id for p in portfolio.positions.values()}
+        working_markets = {o.market_id for o in open_orders}
+
+        # exits first: they free capital and are never blocked by risk limits
+        for token, pos in portfolio.positions.items():
+            lm = markets.get(pos.market_id)
+            if lm is None or lm.closed or pos.tag != cfg.tag:
+                continue
+            outcome = lm.info.outcome_of(token)
+            bid = lm.bid(outcome)
+            if bid is None:
+                continue
+            dte = (lm.info.end_ts - now) / 86_400 if lm.info.end_ts == lm.info.end_ts else float("inf")
+            reason = None
+            if cfg.exit_dte is not None and dte <= cfg.exit_dte:
+                reason = f"time exit: {dte:.1f} days to scheduled end"
+            elif cfg.stop_bid is not None and bid <= cfg.stop_bid:
+                reason = f"stop: bid {bid:.3f} <= {cfg.stop_bid:.3f}"
+            if reason and not any(o.token == token and o.side == Side.SELL for o in open_orders):
+                intents.append(Intent("place", pos.market_id, token, Side.SELL, OrderKind.TAKER,
+                                      round_to_tick(bid, lm.info.tick, Side.SELL), pos.shares,
+                                      reason=reason, tag=cfg.tag))
+
+        # entries
+        placed = 0
+        for c in self.candidates(markets, now):
+            if placed >= cfg.max_new_per_cycle:
+                break
+            info = c.market.info
+            if info.market_id in held_markets or info.market_id in working_markets:
+                continue
+            token = info.token(c.outcome)
+            if cfg.entry == "maker":
+                # join the bid one tick below the ask: earn the spread, pay no fee
+                price = round_to_tick(min(c.ask - info.tick, c.bid + info.tick), info.tick, Side.BUY)
+                kind, expires = OrderKind.MAKER, now + cfg.maker_ttl_hours * 3600
+            else:
+                price = round_to_tick(c.ask, info.tick, Side.SELL)   # limit exactly at the ask
+                kind, expires = OrderKind.TAKER, None
+            size = math.floor(cfg.stake_usd / price * 100) / 100
+            if size < info.min_size:
+                continue
+            intents.append(Intent("place", info.market_id, token, Side.BUY, kind, price, size, expires_ts=expires,
+                                  reason=c.describe(), tag=cfg.tag,
+                                  meta={"edge": c.edge + c.fee, "p_win": c.p_win, "dte": c.dte}))
+            placed += 1
+        return intents

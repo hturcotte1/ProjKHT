@@ -1,0 +1,10 @@
+{
+  "pooled": [
+    0.0,
+    1.15
+  ],
+  "segments": {},
+  "info": {
+    "note": "PROVISIONAL placeholder slope; replaced by the fitted model from scripts/fit_model.py"
+  }
+}
