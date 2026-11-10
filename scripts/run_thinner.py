@@ -32,6 +32,8 @@ tapes were still downloading and before any had been opened:
            |t| >= 3.
     T5-TM  resting bids, exactly as TM in round two.
            Bar: positive with |t| >= 3 and above the ask version, |t| >= 2.
+    T5-H   the house: stand-alone, "No" at 50-90c, 3-60 days.
+           Bar: return per trade positive with |t| >= 3.
 
     python scripts/run_thinner.py
 """
@@ -259,6 +261,46 @@ def third_round(meta: pd.DataFrame, s: pd.DataFrame, kept: dict[str, pd.DataFram
         print(f"\nT5-TM, resting bids: {len(maker):,} filled of {len(taker):,} bought at the ask ({100 * len(maker) / len(taker):.0f}%); "
               f"return per trade {100 * r.mean:+.2f}% (t = {r.t:.2f}); bid minus ask {100 * d:+.2f} points (t = {t_d:.2f})")
         print(f"  bar (positive with |t| >= 3; above the ask version with |t| >= 2)  ->  {'PASSED' if ok else 'NOT PASSED'}")
+
+    # ---- T5-H: "No" as the favourite, below the near-certain band
+    short = (dte > 3) & (dte <= 60) & single & yn
+    house = candidate_trades(s, Rule(0.50, 0.90, 3, 60), signal=(ask > 0.50) & (ask <= 0.90) & short & (side == 1))
+    rows.append({"test": "the house (No at 50-90c, 3-60 days, stand-alone)", "group": "all markets", **line(house)})
+    if len(house) >= 2:
+        r = mean_cluster(house["ret"].to_numpy(), house["cluster"].to_numpy())
+        c = mean_cluster((house["proceeds"] - house["cost"]).to_numpy(), house["cluster"].to_numpy())
+        print(f"\nT5-H, the house: {len(house):,} trades in {house['cluster'].nunique():,} events, {100 * house['won'].mean():.1f}% won at an average cost of "
+              f"{100 * house['cost'].mean():.1f}c; {100 * c.mean:+.2f}c a share (t = {c.t:.2f}); return per trade {100 * r.mean:+.2f}% (t = {r.t:.2f})")
+        print(f"  bar (return per trade positive with |t| >= 3)  ->  {'PASSED' if r.mean > 0 and abs(r.t) >= 3 else 'NOT PASSED'}")
+        print(f"  prediction (at least the thin markets' +6.7c a share)  ->  {'held' if 100 * c.mean >= 6.7 else 'did not hold'}")
+        behind = house[m["end_ts"].reindex(house["market_id"]).to_numpy() <= SCHEDULED_BY]
+        rows.append({"test": "the house (No at 50-90c, 3-60 days, stand-alone)", "group": "scheduled end passed", **line(behind)})
+        for name, g in (("3-20 days left", house[house["dte_at_signal"] <= 20]), ("20-60 days left", house[house["dte_at_signal"] > 20]),
+                        ("paid 50-60c", house[house["entry_px"] <= 0.60]), ("paid 60-70c", house[(house["entry_px"] > 0.60) & (house["entry_px"] <= 0.70)]),
+                        ("paid 70-80c", house[(house["entry_px"] > 0.70) & (house["entry_px"] <= 0.80)]), ("paid 80-90c", house[house["entry_px"] > 0.80])):
+            rows.append({"test": "the house (No at 50-90c, 3-60 days, stand-alone)", "group": name, **line(g)})
+        for c_, g in house.groupby("category"):
+            rows.append({"test": "the house, by category", "group": c_, **line(g)})
+        house = house.assign(half=pd.to_datetime(house["entry_period"], unit="D").dt.year.astype(str)
+                             + np.where(pd.to_datetime(house["entry_period"], unit="D").dt.month <= 6, " H1", " H2"))
+        for h, g in house.groupby("half"):
+            rows.append({"test": "the house, by half-year of entry", "group": h, **line(g)})
+    mirror = candidate_trades(s, Rule(0.10, 0.50, 3, 60), signal=(ask > 0.10) & (ask <= 0.50) & short & (side == 0))
+    rows.append({"test": "the other side of the house (Yes at 10-50c)", "group": "all markets", **line(mirror)})
+
+    # ---- reported without a bar: every price, each side
+    grid = []
+    for lo, hi in ((0.03, 0.10), (0.10, 0.20), (0.20, 0.35), (0.35, 0.50), (0.50, 0.65), (0.65, 0.80), (0.80, 0.90), (0.90, 0.95), (0.95, 0.98)):
+        for sd, sn in ((1, "No"), (0, "Yes")):
+            g = candidate_trades(s, Rule(lo, hi, 3, 60), signal=(ask > lo) & (ask <= hi) & short & (side == sd))
+            if len(g) < 20:
+                continue
+            c = mean_cluster((g["proceeds"] - g["cost"]).to_numpy(), g["cluster"].to_numpy())
+            grid.append({"paid": f"{100 * lo:.0f}-{100 * hi:.0f}c", "side": sn, "trades": len(g), "won %": 100 * float(g["won"].mean()),
+                         "avg cost": float(g["cost"].mean()), "cents a share": 100 * c.mean, "t": c.t})
+    grid = pd.DataFrame(grid)
+    grid.to_csv(OUT / "t5_side_by_price.csv", index=False)
+    print("\nEvery price, each side (stand-alone Yes/No markets, 3-60 days; no bar):\n", grid.round(2).to_string(index=False))
 
     res = pd.DataFrame(rows)
     res.to_csv(OUT / "t5_third_round.csv", index=False)

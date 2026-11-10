@@ -116,6 +116,55 @@ with it). For trades held
 three months it matters more, so the long-dated numbers use only markets
 whose scheduled end is behind us.
 
+### Not only near certainty
+
+The split by side was then run at every price, which no earlier round had
+done: the first round's calibration pooled both sides, and a "Yes" that loses
+six cents beside a "No" that gains five looks like nothing but trading costs.
+Stand-alone Yes/No markets, 3 to 60 days to run, each side bought the first
+time its ask enters the band; cents a share after fees, with t:
+
+| Price paid | Big: "No" | Big: "Yes" | Thin: "No" | Thin: "Yes" |
+|---|---:|---:|---:|---:|
+| 3–10¢ | −2.3 (−1.9) | −2.9 (−5.9) | −0.6 (−0.4) | −4.2 (−10.0) |
+| 10–20¢ | −1.5 (−0.7) | −2.3 (−2.0) | −3.7 (−1.6) | −7.1 (−7.6) |
+| 20–35¢ | +1.4 (0.5) | −2.9 (−1.9) | −1.7 (−0.6) | −11.0 (−6.5) |
+| 35–50¢ | +4.8 (1.9) | −5.8 (−2.7) | −0.6 (−0.2) | −11.4 (−4.2) |
+| 50–65¢ | +3.8 (1.7) | −7.1 (−2.8) | +6.8 (2.5) | −5.0 (−1.5) |
+| 65–80¢ | +1.3 (0.8) | −4.7 (−1.7) | +8.2 (4.4) | −4.0 (−1.2) |
+| 80–90¢ | +0.9 (0.8) | +0.7 (0.4) | +6.4 (6.7) | +2.4 (1.0) |
+| 90–95¢ | +1.8 (2.8) | +1.6 (1.0) | +3.5 (6.0) | −0.3 (−0.1) |
+| 95–98¢ | +1.6 (4.7) | +1.2 (1.1) | +2.1 (6.4) | +0.5 (0.4) |
+
+Buying "Yes" lost money in 13 of the 18 cells, by far more than a spread and
+a fee below 80¢. Buying "No" as the favourite made money in all ten cells
+from 50¢ up. The near-certain band this project has traded since the first
+round is the top of something wider: on a question of the form "will this
+happen?", the crowd pays too much for "Yes" at every price.
+
+"No" bought at 50–90¢, one trade per market:
+
+| | Trades | Events | Won | Average cost | Cents a share (t) | Return per trade (t) |
+|---|---:|---:|---:|---:|---:|---:|
+| Big markets | 1,428 | 937 | 77.1% | 74.5¢ | +2.5 (2.1) | +3.8% (2.1) |
+| Thin markets | 998 | 715 | 82.4% | 75.6¢ | +6.7 (5.7) | +8.8% (5.0) |
+
+In the thin markets it is positive in every category (culture +10.9¢,
+geopolitics +7.0¢, finance +5.8¢, politics +5.0¢), with a fee and without,
+and in every half-year except the last, which is the one the note on
+scheduled ends says to distrust (with markets whose scheduled end has passed
+only: +7.6¢, t = 6.4). It grows with the time left: +3.9¢ with 3–10 days to
+run, +9.7¢ with 20–40. In the big markets it is one category: geopolitics,
+which carries no fee, +5.7¢ (t = 3.8) on 733 trades, and nothing elsewhere
+(−0.8¢). A resting bid does *worse* than paying the ask here (thin: +5.4¢
+against +6.7¢): in the middle of the price range a bid fills when the news is
+going the other way.
+
+This is a different trade from the one the accounts make. A 97¢ contract
+loses one time in fifty; a 75¢ contract loses one time in five or six, and
+each loss is the whole position. The return per trade is four times larger
+and so is the swing.
+
 ### Looked at and dropped
 
 | Idea | What the two universes said |
@@ -167,7 +216,20 @@ the signal day's bid, filled only if a later sale prints strictly below it
 within three days, no fee), on these markets. *Bar:* positive with |t| ≥ 3
 and above the same signals bought at the ask with |t| ≥ 2 on the gap.
 
-Reported without a bar: the also-rans ("No" legs), categories, years, and the
-dollars that traded in range.
+**T5-H, the house.** *Added at 19:53 UTC, after the table "Not only near
+certainty" above and with the tapes still downloading.* Stand-alone Yes/No
+markets; the "No" outcome with an ask above 50¢ and at most 90¢ and 3 to 60
+days to the scheduled end; one trade per market. *Bar:* return per trade
+positive with |t| ≥ 3. *Predictions, not bars:* at least the thin markets'
++6.7¢ a share; more with 20–60 days left than with 3–20; and "Yes" bought at
+10–50¢ in the same markets loses more than a spread and a fee. The bar is on
+every market, which the note on scheduled ends says leans against "No"; the
+version with scheduled ends behind us is reported beside it. *If it passes:*
+a paper account that buys "No" at 50–90¢ in stand-alone news markets under
+100,000 shares, with smaller positions than the others because a loss is the
+whole position one time in five.
 
-That makes 26 tests with a bar fixed in advance across the three rounds.
+Reported without a bar: the also-rans ("No" legs), categories, years, the
+dollars that traded in range, and the full table of side by price.
+
+That makes 27 tests with a bar fixed in advance across the three rounds.
