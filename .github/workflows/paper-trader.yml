@@ -74,12 +74,12 @@ jobs:
       - name: Experimental account (resting-bid entry; unproven)
         if: always() && steps.gate.outputs.due == 'true'
         run: kht cycle --config config/paper_maker.json --state state/paper-maker --report state/paper-maker/STATUS.md
-      - name: Thin-market account (the same idea in markets under 100,000 shares)
+      - name: Thin-market account (the main rule in markets under 100,000 shares; weakly supported)
         if: always() && steps.gate.outputs.due == 'true'
         run: kht cycle --config config/paper_thin.json --state state/paper-thin --report state/paper-thin/STATUS.md
-      - name: Thin-market account that bids first (a resting bid, then the ask after three days)
+      - name: Long-dated account ("No" with 60 to 180 days to run; exploratory)
         if: always() && steps.gate.outputs.due == 'true'
-        run: kht cycle --config config/paper_thin_bid.json --state state/paper-thin-bid --report state/paper-thin-bid/STATUS.md
+        run: kht cycle --config config/paper_long.json --state state/paper-long --report state/paper-long/STATUS.md
       - name: Commit account state
         if: always() && steps.gate.outputs.due == 'true'
         run: |
