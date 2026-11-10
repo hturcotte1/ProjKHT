@@ -7,10 +7,12 @@ outcome itself: research, a tested rule, and a trading system running on paper.
 
 **The idea as first stated does not survive costs.** "Buy at 70 because the
 crowd will be at 80 by Tuesday" was tested as momentum, as reversal, as a
-response to big moves, and in sports as pre-game drift and as public tickets
-versus large money. Day-to-day price changes turned out to be close to
-unpredictable, and a round trip costs about 6% of the stake. Every version
-lost money or did nothing.
+response to big moves, with resting orders instead of paying the spread, by
+following wallets with a good record, and in sports as pre-game drift and as
+public tickets versus large money. Day-to-day price changes turned out to be
+close to unpredictable, and a round trip costs about 6% of the stake. Wallets
+that were right before do stay slightly right, but the price has moved within
+a minute of their trades. Every version lost money or did nothing.
 
 **But the crowd has a standing blind spot, and it is tradable in a small
 way.** People overpay for long shots: a contract bought under 10¢ loses about
