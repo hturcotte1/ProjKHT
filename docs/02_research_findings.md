@@ -515,7 +515,10 @@ A small live test does not need to wait for the thousandth signal: its
 purpose would be to check that real fills match paper fills, which a few
 dozen trades can show, not to prove the edge.
 
-Ideas not tested here: outside signals such as sportsbook lines, and reacting
-to informed wallets within seconds rather than a minute. The second needs a
-different kind of engine from this one and competes with people who do
-nothing else.
+**What was not tested.** Anything during a game, where prices move on the
+score and the edge goes to whoever sees it first. Crypto price markets, left
+out from the start because they carry the platform's highest fee and resolve
+on an outside price that programs watch continuously. Outside signals such as
+sportsbook lines. And reacting to informed wallets within seconds rather than
+a minute. All four need a faster engine than this one and compete with people
+who do nothing else.
