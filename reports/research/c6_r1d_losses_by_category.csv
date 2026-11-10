@@ -1,0 +1,9 @@
+category,trades,losing_trades,avg_ret_pct,loss_rate_pct
+politics,1390,29,0.7,2.09
+geopolitics,1178,20,1.41,1.7
+finance,431,9,0.63,2.09
+culture,319,5,0.97,1.57
+tech,208,3,1.47,1.44
+economics,168,2,1.53,1.19
+other,66,0,2.61,0.0
+weather,50,1,0.73,2.0

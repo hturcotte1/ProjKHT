@@ -1,0 +1,42 @@
+R1d, holdout and newer sample: 3,810 trades, 69 lost (1.81%); exits 2023-11-19 to 2026-11-08
+average cost per share 0.9718, so the rule breaks even at a loss rate of 2.82%
+
+the 69 losing trades came from 65 separate events; the most from any one event is 2
+worst 7-day window: 4 losing trades in 4 separate events, from 2025-03-31, out of 59 trades that ended in it (culture, finance, politics, politics)
+worst 30-day window: 9 losing trades in 8 separate events, from 2025-12-04, out of 488 trades that ended in it (geopolitics, geopolitics, politics, politics, politics, politics, politics, tech, tech)
+
+36 months:
+  no losing trade   14
+  1 or 2             9
+  3 or 4            10
+  5 or more          3
+months in which the average trade lost money: 12 of 36
+longest run of such months in a row: 4
+
+the six worst months by average return per trade:
+         trades  losing_trades  separate_losing_events  loss_rate_pct  avg_ret_pct
+month                                                                             
+2024-08      36              2                       2           5.56        -2.93
+2025-02      57              3                       3           5.26        -2.83
+2025-12     194              9                       8           4.64        -2.17
+2024-12      65              3                       3           4.62        -1.83
+2026-03     102              4                       4           3.92        -1.31
+2024-10      23              1                       1           4.35        -1.26
+
+do losses bunch in time more than chance? 65 losing events, 2,062 events held, 66 at a time on average; 5,000 random draws
+  spread of losing events across months (chi-square): 40.2; by chance 34.2, 95% of draws at or below 56.3; p = 0.29
+  most losing events in any 7 days: 4.0; by chance 4.0, 95% of draws at or below 6.0; p = 0.91
+  most losing events in any 30 days: 8.0; by chance 10.0, 95% of draws at or below 13.0; p = 0.92
+  the 10 busiest exit days hold 30% of all trades and 3 of the 69 losing ones: deadlines are not where the losses are
+
+by category:
+             trades  losing_trades  avg_ret_pct  loss_rate_pct
+category                                                      
+politics       1390             29         0.70           2.09
+geopolitics    1178             20         1.41           1.70
+finance         431              9         0.63           2.09
+culture         319              5         0.97           1.57
+tech            208              3         1.47           1.44
+economics       168              2         1.53           1.19
+other            66              0         2.61           0.00
+weather          50              1         0.73           2.00

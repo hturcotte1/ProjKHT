@@ -292,6 +292,10 @@ python scripts/check_holdout_definition.py  # the same verdicts under the other 
 ```
 
 ```bash
+python scripts/check_loss_bunching.py       # did the rule's losses bunch in time more than chance?
+```
+
+```bash
 python scripts/run_confirmatory_sports.py   # the pre-registered test (sports)
 ```
 

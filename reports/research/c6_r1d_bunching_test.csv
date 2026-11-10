@@ -1,0 +1,4 @@
+measure,observed,median_by_chance,p95_by_chance,p_value
+spread of losing events across months (chi-square),40.24,34.22,56.29,0.2904
+most losing events in any 7 days,4.0,4.0,6.0,0.9064
+most losing events in any 30 days,8.0,10.0,13.0,0.916

@@ -368,6 +368,25 @@ A year is roughly 220–240 trades, of which about four lose (the simulated
 account had nine losers in three years). Expect something like +$60 to +$90 on
 $1,000 in an average year, and a losing year whenever losses bunch.
 
+**How the losses arrived.** In three years the pre-registered rule lost 69
+trades in 65 separate events, never more than two in one event. Its worst week
+held four losing events, in unrelated markets, and its worst thirty days eight.
+That is no more bunching than chance produces. Drawing the same number of loss
+days at random, in proportion to how many events were held each day, gives a
+worst week of four and a worst thirty days of ten at the median (p = 0.91 and
+0.92; spread across calendar months, p = 0.29; `check_loss_bunching.py`,
+`c6_*.csv`). Scattered is not the same as painless: the average trade lost
+money in 12 of the 36 calendar months in which any trade ended, four in a row
+at worst, which is what a 1.8% loss rate looks like when a month holds
+anything from a handful to a few hundred trades.
+
+Deadlines are not where the risk is. The ten busiest exit days hold 30% of all
+trades and three of the 69 losers. A contract that survives to its deadline
+nearly always pays; the losses come when the event happens first. What three
+years cannot show is one shock that flips many near-certain contracts at once.
+The per-story cap in the trading system is there for that case, and the
+history gives no way to size it.
+
 ### How much money it could take
 
 The backtest buys $20 at a time, which says nothing about a larger account.
