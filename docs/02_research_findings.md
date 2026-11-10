@@ -198,8 +198,9 @@ markets, untouched until the test (`c2_rules.csv`).
 | Control: longshots 3–10¢ | 2,378 | 1,448 | 4.5% | −37.0% | −5.77 | Negative, as predicted |
 | Control: coin flips 40–60¢ | 764 | 588 | 45.8% | −7.5% | −2.13 | Negative |
 
-The bar was |t| ≥ 3 with standard errors clustered by event. With eight rules
-tried, a t of 3.62 survives a correction for that (p ≈ 0.0003 × 8). The primary
+The bar was |t| ≥ 3 with standard errors clustered by event. Ten rules were
+tried in all (these eight and the two sports rules in section 3), and a t of
+3.62 survives a correction for that (p ≈ 0.0003 × 10 = 0.003). The primary
 rule did not clear the bar and I am not going to pretend it did: the edge is
 not spread across 90–97¢ as I guessed, it sits at the top.
 
@@ -276,10 +277,10 @@ steps in the chart are month-ends, when many "by the 30th" markets resolve at
 once. The right-hand part of the chart also omits positions in markets that
 have not resolved yet.
 
-**In dollars:** each win is about 65¢ on a $20 position, each loss is $20.
-A year is roughly 220–240 trades, of which four or five lose. Expect something
-like +$60 to +$90 on $1,000 in an average year, and a losing year whenever
-losses bunch.
+**In dollars:** each win is about 70¢ on a $20 position, each loss is $20.
+A year is roughly 220–240 trades, of which about four lose (the simulated
+account had nine losers in three years). Expect something like +$60 to +$90 on
+$1,000 in an average year, and a losing year whenever losses bunch.
 
 ## 8. The model
 
