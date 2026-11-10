@@ -1,7 +1,6 @@
 # raw / bulky data is re-downloadable; never commit it
 /data/
 *.parquet
-!reports/**/*.parquet
 
 # local runtime state and secrets
 .env
