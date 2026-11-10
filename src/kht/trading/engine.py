@@ -91,26 +91,32 @@ class Engine:
         limits: RiskLimits,
         mode: str = "paper",
     ):
-        if mode != "paper":
-            raise NotImplementedError("only paper mode is wired up; see kht.trading.live")
+        if mode not in ("paper", "live"):
+            raise ValueError(f"unknown mode {mode!r}")
         self.pm = pm
         self.store = store
         self.strategy = strategy
         self.limits = limits
         self.mode = mode
         raw = store.load()
-        if raw is None:
-            self.portfolio = Portfolio(cash=limits.bankroll)
-            self.broker: Broker = PaperBroker(pm, self.portfolio)
-            self.risk = RiskManager(limits)
-            self.market_names: dict[str, dict[str, Any]] = {}
-            self.started_ts = time.time()
-        else:
-            self.portfolio = Portfolio.from_dict(raw["portfolio"])
-            self.broker = PaperBroker.from_dict(pm, self.portfolio, raw["broker"])
-            self.risk = RiskManager(limits, RiskState(**raw["risk"]))
-            self.market_names = raw.get("market_names", {})
-            self.started_ts = raw.get("started_ts", time.time())
+        if raw is not None and raw.get("mode", mode) != mode:
+            raise ValueError(f"state in {store.dir} belongs to {raw.get('mode')!r} mode, not {mode!r}: "
+                             "paper and live accounts must not share a state directory")
+        self.portfolio = Portfolio(cash=limits.bankroll) if raw is None else Portfolio.from_dict(raw["portfolio"])
+        self.broker: Broker = self._make_broker(raw)
+        self.risk = RiskManager(limits) if raw is None else RiskManager(limits, RiskState(**raw["risk"]))
+        self.market_names: dict[str, dict[str, Any]] = {} if raw is None else raw.get("market_names", {})
+        self.started_ts = time.time() if raw is None else raw.get("started_ts", time.time())
+
+    def _make_broker(self, raw: dict[str, Any] | None) -> Broker:
+        saved = {} if raw is None else raw.get("broker", {})
+        if self.mode == "paper":
+            return PaperBroker.from_dict(self.pm, self.portfolio, saved)
+        # live: every precondition is checked on every start, not just the first
+        from .live import LiveBroker, connect, preflight
+
+        preflight(self.pm)
+        return LiveBroker.from_dict(connect(), self.portfolio, saved, max_order_usd=self.limits.max_order_usd)
 
     # ----------------------------------------------------------------- cycle
     def run_cycle(self, now: float | None = None) -> CycleReport:

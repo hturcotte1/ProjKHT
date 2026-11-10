@@ -212,18 +212,19 @@ def weighted_mean_cluster(value: np.ndarray, weight: np.ndarray, cluster: np.nda
 
 
 # ------------------------------------------------------- generic trade table
-def _one_tape_full(args: tuple[str, int]) -> pd.DataFrame | None:
-    condition_id, market_id = args
+def _one_tape_full(args: tuple[str, int, bool]) -> pd.DataFrame | None:
+    condition_id, market_id, with_wallet = args
     path = DATA_DIR / "trades" / f"{condition_id}.parquet"
     if not path.exists():
         return None
-    t = pd.read_parquet(path)
+    cols = ["timestamp", "side", "outcome_index", "price", "size"] + (["proxy_wallet"] if with_wallet else [])
+    t = pd.read_parquet(path, columns=cols)
     if t.empty:
         return None
     idx0 = t["outcome_index"].to_numpy() == 0
     buy = t["side"].to_numpy() == "BUY"
     price = t["price"].to_numpy()
-    return pd.DataFrame(
+    out = pd.DataFrame(
         {
             "market_id": np.int64(market_id),
             "ts": t["timestamp"].to_numpy(dtype=np.int64),
@@ -231,12 +232,14 @@ def _one_tape_full(args: tuple[str, int]) -> pd.DataFrame | None:
             "dir0": np.where(idx0 == buy, 1, -1).astype(np.int8),
             "size": t["size"].to_numpy(dtype=np.float32),
             "usd": (price * t["size"].to_numpy()).astype(np.float32),
-            "wallet": t["proxy_wallet"].to_numpy(),
         }
     )
+    if with_wallet:
+        out["wallet"] = t["proxy_wallet"].to_numpy()
+    return out
 
 
-def build_trades_table(meta: pd.DataFrame, workers: int = 4) -> pd.DataFrame:
+def build_trades_table(meta: pd.DataFrame, workers: int = 4, with_wallet: bool = False) -> pd.DataFrame:
     """Every downloaded trade of the given markets, in outcome-0 terms, plus
     ``cum_before``: shares traded in that market *before* the trade.
 
@@ -244,18 +247,23 @@ def build_trades_table(meta: pd.DataFrame, workers: int = 4) -> pd.DataFrame:
     at time t may be used only if the market had already traded enough by t.
     It is computed backward from the market's total volume, so it is correct
     even for tapes that were truncated to their most recent pages.
+
+    Wallet ids are large (tens of millions of strings); they are only loaded
+    when asked for.
     """
     have = {p.stem for p in (DATA_DIR / "trades").glob("*.parquet")}
     sel = meta[meta["condition_id"].isin(have)]
-    jobs = list(zip(sel["condition_id"], sel["market_id"].astype(int)))
+    jobs = [(c, int(m), with_wallet) for c, m in zip(sel["condition_id"], sel["market_id"])]
     parts: list[pd.DataFrame] = []
     with cf.ProcessPoolExecutor(max_workers=workers) as pool:
         for part in pool.map(_one_tape_full, jobs, chunksize=200):
             if part is not None:
                 parts.append(part)
     df = pd.concat(parts, ignore_index=True)
-    codes, _ = pd.factorize(df["wallet"])
-    df["wallet"] = codes.astype(np.int32)
+    del parts
+    if with_wallet:
+        codes, _ = pd.factorize(df["wallet"])
+        df["wallet"] = codes.astype(np.int32)
     df = df.sort_values(["market_id", "ts"], kind="stable").reset_index(drop=True)
     total = meta.set_index("market_id")["volume"].reindex(df["market_id"]).to_numpy()
     size = df["size"].to_numpy(dtype=np.float64)
