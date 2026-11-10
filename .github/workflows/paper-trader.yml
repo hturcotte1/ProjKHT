@@ -34,7 +34,7 @@ env:
 jobs:
   cycle:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -77,6 +77,9 @@ jobs:
       - name: Thin-market account (the same idea in markets under 100,000 shares)
         if: always() && steps.gate.outputs.due == 'true'
         run: kht cycle --config config/paper_thin.json --state state/paper-thin --report state/paper-thin/STATUS.md
+      - name: Thin-market account that bids first (a resting bid, then the ask after three days)
+        if: always() && steps.gate.outputs.due == 'true'
+        run: kht cycle --config config/paper_thin_bid.json --state state/paper-thin-bid --report state/paper-thin-bid/STATUS.md
       - name: Commit account state
         if: always() && steps.gate.outputs.due == 'true'
         run: |
