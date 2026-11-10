@@ -25,6 +25,7 @@ from .strategy import EdgeModel, HarvestStrategy, StrategyConfig
 from .universe import LiveMarket, fetch_markets, scan_open, theme_tags
 
 STATE_VERSION = 1
+SHADOW_RECHECK_SECONDS = 6 * 3600
 
 
 @dataclass
@@ -108,6 +109,8 @@ class Engine:
         self.market_names: dict[str, dict[str, Any]] = {} if raw is None else raw.get("market_names", {})
         # signals already written to the forward-test log (see _log_shadow)
         self.shadow_seen: set[str] = set() if raw is None else {str(x) for x in raw.get("shadow_seen", [])}
+        # signals that were not yet a day old when last checked, and when that was
+        self.shadow_pending: dict[str, float] = {} if raw is None else dict(raw.get("shadow_pending", {}))
         self.started_ts = time.time() if raw is None else raw.get("started_ts", time.time())
 
     def _make_broker(self, raw: dict[str, Any] | None) -> Broker:
@@ -296,8 +299,14 @@ class Engine:
             if key in self.shadow_seen:
                 continue
             lo, hi = bands[band]
-            if cfg.confirm_hours > 0 and not self._was_in_band(c, lo, hi, now):
-                continue
+            if cfg.confirm_hours > 0:
+                # a signal that failed the wait is looked up again only after a few hours
+                if now - self.shadow_pending.get(key, 0.0) < SHADOW_RECHECK_SECONDS:
+                    continue
+                if not self._was_in_band(c, lo, hi, now):
+                    self.shadow_pending[key] = now
+                    continue
+            self.shadow_pending.pop(key, None)
             self.shadow_seen.add(key)
             self.store.append_csv("shadow.csv", {
                 "ts": int(now), "market_id": info.market_id, "band": band, "token": info.token(c.outcome),
@@ -331,6 +340,8 @@ class Engine:
             "limits": self.limits.to_dict(), "strategy": self.strategy.cfg.to_dict(),
             "model": self.strategy.model.to_dict(), "market_names": self.market_names,
             "shadow_seen": sorted(self.shadow_seen),
+            # forget pending checks older than two weeks so the file cannot grow without bound
+            "shadow_pending": {k: v for k, v in self.shadow_pending.items() if time.time() - v < 14 * 86_400},
             "marks": getattr(self, "last_marks", {}),
         })
 

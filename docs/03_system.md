@@ -165,9 +165,9 @@ kht geoblock                    # may this machine place orders?
 ### On a schedule, without a server
 
 `.github/workflows/paper-trader.yml` runs one cycle for each paper account on
-GitHub's servers every two hours and commits the state back to the repository,
-so the accounts keep going after any one session ends. A run takes under a
-minute.
+GitHub's servers every three hours and commits the state back to the repository,
+so the accounts keep going after any one session ends. A run takes one to
+three minutes.
 
 | Account | Config | State | What it is |
 |---|---|---|---|

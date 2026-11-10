@@ -45,7 +45,7 @@ calibrated.
 ## What is running
 
 Two **paper** accounts (no real money, no orders sent) trade against live
-Polymarket prices every two hours through GitHub Actions and commit their
+Polymarket prices every three hours through GitHub Actions and commit their
 state to this repository.
 
 | Account | Rule | Status |

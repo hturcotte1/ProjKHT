@@ -290,3 +290,26 @@ def test_single_only_skips_legs_of_multi_outcome_events_but_still_watches_them()
     markets = {1: leg, 2: live(2, 0.92, 0.93)}
     assert [c.market.info.market_id for c in s.candidates(markets, NOW)] == [2]
     assert sorted(c.market.info.market_id for c in s.watchlist(markets, NOW)) == [1, 2]
+
+
+def test_unconfirmed_signals_are_not_looked_up_again_every_cycle(engine):
+    e, pm, path, limits = engine
+    pm.markets[4] = live(4, 0.975, 0.98, event=14)     # above the traded band: only ever logged
+    calls = []
+    pm.history = {"T1a": 0.80, "T2b": 0.80, "T4a": 0.80}   # none was in its band a day ago
+    real = pm.price_as_of
+
+    def counting(token, ts):
+        calls.append(token)
+        return real(token, ts)
+
+    pm.price_as_of = counting
+    e.run_cycle(NOW)
+    assert sorted(calls) == ["T1a", "T2b", "T4a"]
+    calls.clear()
+    e.run_cycle(NOW + 600)                              # ten minutes later
+    # tradable candidates are re-checked every cycle; the log-only signal is not
+    assert sorted(calls) == ["T1a", "T2b"]
+    calls.clear()
+    e.run_cycle(NOW + 7 * 3600)                         # after the re-check interval it is looked up again
+    assert "T4a" in calls

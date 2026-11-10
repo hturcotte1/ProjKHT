@@ -317,7 +317,7 @@ of anything.
 
 ## 10. What happens next
 
-The paper accounts run every two hours and log every signal they see, in the
+The paper accounts run every three hours and log every signal they see, in the
 traded band and on either side of it, whether or not there is money to take
 it (`kht shadow`). The first cycle alone logged about 250 signals, most of
 which resolve within two months, so the log will say more by January than the
