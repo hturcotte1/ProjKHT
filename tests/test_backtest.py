@@ -167,3 +167,22 @@ def test_theme_cap_in_portfolio_simulation():
     capped = run_portfolio(t, Capital(bankroll=1000, stake=20, max_event=40, max_theme=25))
     free = run_portfolio(t.drop(columns="themes"), Capital(bankroll=1000, stake=20, max_event=40))
     assert capped.trades["stake"].sum() <= 25 + 1e-9 < free.trades["stake"].sum()
+
+
+def test_market_that_flips_keeps_its_first_signal_not_its_first_listed_side():
+    """Outcome 1 qualifies first and then collapses; outcome 0 qualifies later.
+    A live trader would have bought outcome 1 and lost. The backtest must too."""
+    s = panel([
+        # outcome 1 ("No") is the favourite early on...
+        (1, 1, 10, 0.93, 0.92, 0.93, 0.92, 0.0, 40, 25.0, 5),
+        (1, 1, 11, 0.93, 0.92, 0.93, 0.92, 0.0, 40, 24.0, 5),
+        (1, 1, 20, 0.08, 0.07, 0.08, 0.07, 0.0, 40, 15.0, 5),
+        # ...then the market flips and outcome 0 ("Yes") becomes the favourite and wins
+        (1, 0, 10, 0.08, 0.07, 0.08, 0.07, 1.0, 40, 25.0, 5),
+        (1, 0, 20, 0.93, 0.92, 0.93, 0.92, 1.0, 40, 15.0, 5),
+        (1, 0, 21, 0.93, 0.92, 0.93, 0.92, 1.0, 40, 14.0, 5),
+    ])
+    t = candidate_trades(s, Rule())
+    assert len(t) == 1
+    assert t.iloc[0]["side"] == 1 and t.iloc[0]["signal_period"] == 10
+    assert t.iloc[0]["pnl_ps"] < -0.9          # the losing trade is kept

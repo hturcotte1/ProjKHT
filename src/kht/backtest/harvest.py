@@ -116,15 +116,12 @@ def candidate_trades(
 
     start, stop = _series_index(s)
     rows = []
-    taken_markets: set[int] = set()
     market = s["market_id"].to_numpy()
     for a, b in zip(start, stop):
         sig = np.flatnonzero(signal[a:b])
         if len(sig) == 0:
             continue
         mid = int(market[a])
-        if mid in taken_markets:
-            continue
         busy_until = -1                    # row index of the previous trade's exit (re-entry mode)
         for i0 in sig:
             i = a + i0
@@ -198,13 +195,20 @@ def candidate_trades(
             if rule.reentry:
                 busy_until = exit_row if exit_row >= 0 else b
                 continue
-            taken_markets.add(mid)
-            break
+            break                          # this outcome's first trade; see the per-market step below
     cols = ["market_id", "side", "cluster", "category", "signal_period", "entry_period", "exit_period",
             "entry_px", "entry_fee", "proceeds", "exit_reason", "dte_at_signal", "won"]
     t = pd.DataFrame(rows, columns=cols)
     if t.empty:
         return t
+    if not rule.reentry:
+        # One position per market: whichever outcome signalled FIRST in time.
+        # (Each outcome was scanned separately above. Preferring one outcome
+        # over the other regardless of timing would need to know, at the first
+        # signal, that the other side will qualify later: a look-ahead that
+        # quietly drops trades in markets that went on to flip.)
+        t = (t.sort_values(["signal_period", "entry_period", "side"])
+              .drop_duplicates("market_id", keep="first"))
     t["cost"] = t["entry_px"] + t["entry_fee"]              # cash out per share
     t["pnl_ps"] = t["proceeds"] - t["cost"]
     t["ret"] = t["pnl_ps"] / t["cost"]
