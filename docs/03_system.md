@@ -185,6 +185,19 @@ three minutes.
 `STATUS.md` in each state directory is the page to read. To stop the schedule:
 repository → Actions → *paper-trader* → ⋯ → *Disable workflow*.
 
+Three things to know about running it this way:
+
+- GitHub starts scheduled jobs late when it is busy and sometimes skips one.
+  A missed cycle does no harm: positions are held for weeks.
+- GitHub only runs schedules from the repository's default branch, and it
+  pauses them in a public repository after 60 days without activity. Each
+  cycle's state commit counts as activity. If the schedule ever stops, the
+  Actions tab says so and has a button to re-enable it.
+- The repository is public, so the rule, the research and the paper accounts'
+  positions can be read by anyone. Making it private changes nothing in the
+  code; scheduled runs then count against the account's free Actions minutes
+  (a cycle takes one to four minutes, eight times a day).
+
 ## Files the system writes
 
 All under the state directory (default `state/paper/`):
