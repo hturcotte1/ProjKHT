@@ -53,10 +53,13 @@ calibrated.
 ## What is running
 
 Two **paper** accounts (no real money, no orders sent) trade against live
-Polymarket prices about every three hours through GitHub Actions and commit
-their state to this repository. GitHub's scheduler is not dependable, so the
-workflow is woken every 15 minutes and trades when three hours have passed;
-`state/last_cycle_started` shows when it last did.
+Polymarket prices through GitHub Actions and commit their state to this
+repository. They are set to trade about every three hours: the workflow asks
+to be woken every 15 minutes and trades when three hours have passed. As of
+10 November 2026 GitHub's scheduler had not started it once, so every cycle
+so far was started by hand; `state/last_cycle_started` shows when the last
+one ran, and [`docs/03_system.md`](docs/03_system.md#on-a-schedule-without-a-server)
+lists the ways to keep it going.
 
 | Account | Rule | Status |
 |---|---|---|

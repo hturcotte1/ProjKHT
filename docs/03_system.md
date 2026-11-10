@@ -206,22 +206,79 @@ kht geoblock                    # may this machine place orders?
 ### On a schedule, without a server
 
 `.github/workflows/paper-trader.yml` runs one cycle for each paper account on
-GitHub's servers about every three hours and commits the state back to the
-repository, so the accounts keep going after any one session ends. A cycle
-takes one to four minutes.
+GitHub's servers and commits the state back to the repository, so the accounts
+keep going after any one session ends. A cycle takes one to four minutes.
 
-GitHub's scheduler is the weak part. It starts scheduled jobs late and drops
-some altogether, and new repositories fare worst: the first three-hourly slot
-here (09:17 UTC on 10 November) never ran, on a day GitHub reported no
-incident. So the workflow asks to be woken every 15 minutes, and each run first
-checks `state/last_cycle_started`. If a cycle started less than 170 minutes
-ago, the run ends after a few seconds without trading
-(`src/kht/trading/schedule.py`). A dropped slot then costs minutes rather than
-hours, and the accounts still trade at the three-hour pace. The file records
-attempts, not successes, so a cycle that keeps failing is retried every three
-hours, not every 15 minutes. A run started by hand (Actions → *paper-trader* →
-*Run workflow*) always trades, unless its "skip if a cycle started less than
-three hours ago" box is ticked.
+It is meant to run about every three hours. The workflow asks GitHub to wake
+it every 15 minutes, and each run first checks `state/last_cycle_started`. If
+a cycle started less than 170 minutes ago, the run ends after a few seconds
+without trading (`src/kht/trading/schedule.py`). GitHub starts scheduled jobs
+late and drops some, and this way a dropped slot costs minutes rather than
+hours. The file records attempts, not successes, so a cycle that keeps failing
+is retried every three hours, not every 15 minutes. A run started by hand
+(Actions → *paper-trader* → *Run workflow*) always trades, unless its "skip if
+a cycle started less than three hours ago" box is ticked.
+
+**GitHub's scheduler has not started this workflow once.** By 14:40 UTC on 10
+November 2026, seven hours after the schedule was added, it had passed over
+every slot: eighteen for this workflow and fifteen for a second workflow that
+has nothing but a schedule. GitHub reported no incident, and runs started
+through the manual trigger worked every time, which is how all four cycles so
+far were run. Other new repositories have reported the same in 2026.
+
+Two explanations fit, and the second workflow (`scheduler-check.yml`) is there
+to tell them apart:
+
+- *New repositories wait.* GitHub may not have begun scheduling here yet. If
+  so, both workflows start on their own and nothing needs doing.
+- *The schedule belongs to someone without access.* GitHub runs a schedule on
+  behalf of whoever last committed its `cron` line. Commits from the Claude
+  sessions that built this project carry an address that GitHub maps to an
+  account with no access to this repository. At 13:40 UTC the paper trader's
+  `cron` line was therefore committed again as the repository owner, through
+  GitHub's API, and the check workflow's was left as it was. If the paper
+  trader starts and the check never does, this was the cause, and the `cron`
+  line must not be edited from a Claude session again without being
+  committed again the same way. In the first hour neither had started.
+
+Until the scheduler starts, something else has to start the workflow. All of
+these pass through the same three-hour check, so they can overlap safely:
+
+1. **By hand.** Actions → *paper-trader* → *Run workflow*.
+2. **Switching the workflow off and on.** Actions → *paper-trader* → ⋯ →
+   *Disable workflow*, then *Enable workflow*. Only the repository owner can
+   do this. It makes GitHub register the schedule afresh and is worth trying
+   once.
+3. **A scheduler of your own**, calling GitHub every three hours from a
+   machine that is always on or from a hosted cron service. It needs a
+   fine-grained personal access token limited to this repository, with
+   *Actions: read and write* and nothing else, kept in that machine's
+   environment and never in the repository:
+
+   ```bash
+   curl -fsS -X POST \
+     -H "Authorization: Bearer $KHT_DISPATCH_TOKEN" \
+     -H "Accept: application/vnd.github+json" \
+     https://api.github.com/repos/hturcotte1/ProjKHT/actions/workflows/paper-trader.yml/dispatches \
+     -d '{"ref":"claude/polymarket-perception-trading-nnq8h8","inputs":{"respect_interval":"true"}}'
+   ```
+
+4. **A Claude scheduled task** that starts the workflow every three hours.
+   There is nothing to set up beyond asking for it. Each start is a short
+   Claude session and counts against the account's usage.
+5. **The engine on a machine of your own.** Disable the workflow, clone the
+   repository and run the loop there, one process for each account:
+
+   ```bash
+   kht run --interval 10800 --report state/paper/STATUS.md
+   ```
+
+   ```bash
+   kht run --interval 10800 --config config/paper_maker.json --state state/paper-maker --report state/paper-maker/STATUS.md
+   ```
+
+   GitHub is then not involved. Live trading would have to run this way in
+   any case, because GitHub's runners fail Polymarket's location check.
 
 | Account | Config | State | What it is |
 |---|---|---|---|
@@ -233,14 +290,14 @@ repository → Actions → *paper-trader* → ⋯ → *Disable workflow*.
 
 Three things to know about running it this way:
 
-- If GitHub stops waking the workflow, the accounts stop, and nothing says so.
+- If nothing starts the workflow, the accounts stop, and nothing says so.
   The time in `state/last_cycle_started` and the date at the top of
-  `STATUS.md` show when the last cycle ran. A missed cycle or a missed day
-  does no harm to the positions, which are held for weeks; a long gap does
-  cost the forward-test log the signals that came and went in between. To
-  get going again: run the workflow by hand; or have any outside scheduler
-  call the workflow's dispatch endpoint with `respect_interval` set; or run
-  `kht run` on a machine of your own.
+  `STATUS.md` show when the last cycle ran, and `STATUS.md` gives the longest
+  gap between two cycles so far. A missed cycle or a missed day does no harm
+  to the positions, which are held for weeks, and the loss limits and the
+  replay of resting orders are built to cope with a gap of any length. What a
+  long gap costs is the signals that came and went in between, which the
+  forward-test log never sees.
 - GitHub only runs schedules from the repository's default branch, and it
   pauses them in a public repository after 60 days without activity. Each
   cycle's state commit counts as activity. If the schedule is paused, the

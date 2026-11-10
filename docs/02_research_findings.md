@@ -397,10 +397,10 @@ both samples). Buying whatever qualified on a switch-on date, tried on 154
 dates a week apart, made +1.72% (2,046 trades in 1,129 markets, t = 4.7). On
 the holdout alone the two are +1.52% and +1.22%, a gap well inside the noise
 (`check_late_entry.py`, `c7_*.csv`; exploratory). Contracts that had already
-been in the band for three weeks or more lost less often, 3 of 435 against 33
-of 1,836. The pre-registered rule points the same way on the holdout and not
-on the newer sample, so this is a lead to watch in the forward-test log and
-not a result.
+been in the band for twenty days or more lost less often, 3 of 435 against 33
+of 1,836. The pre-registered rule points the same way on the holdout and only
+weakly on the newer sample, so this is a lead to watch in the forward-test log
+and not a result.
 
 One day's purchases are a small sample, though. Of the 76 switch-on dates on
 which ten or more contracts were bought, 56 had no losing trade and made about

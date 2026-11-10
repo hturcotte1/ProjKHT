@@ -1,12 +1,14 @@
-# Temporary. GitHub has not started a single scheduled run of the paper trader,
-# and this finds out whether it starts anything on a schedule in this
-# repository at all, or whether only that one workflow is stuck. It does
-# nothing but say that it ran. Remove once the question is answered.
+# Temporary. GitHub has not started a single scheduled run of the paper trader.
+# This workflow has a schedule and nothing else, and its schedule was committed
+# from a Claude session, like the paper trader's first ones. The paper trader's
+# has since been committed again as the repository owner. Whichever of the two
+# starts first says why neither ran (see "On a schedule" in docs/03_system.md).
+# It does nothing but say that it ran. Delete it once that question is settled.
 name: scheduler-check
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "31 * * * *"
 
 permissions: {}
 
