@@ -322,7 +322,7 @@ tables are in `02_research_findings.md`.
 | H4 "something happens" bias | Yes and No do the same at the same price | Not supported |
 | H5 pre-game drift | Favourites drift *down* 0.1–0.2¢; prices calibrated | Not supported |
 | H6 calendar effects | No stable weekday pattern | Not supported |
-| H7, H8 deadline wording, market age | No reliable difference once price is accounted for | Not supported |
+| H7, H8 deadline wording, market age | Suggestive only: the edge looks larger in "by/before" questions and in markets over a month old; neither difference is significant | Not established |
 | **R1** buy 90–97¢ | +0.88% per trade, t 1.70 | **Not confirmed** |
 | R1a, R1b, R1c | t 1.64, 0.70, 1.90 | Not confirmed |
 | **R1d** buy 95–99¢ | +0.96% per trade, t 3.62 | **Confirmed** |
