@@ -1,0 +1,275 @@
+{
+ "broker": {
+  "last_print_ts": {},
+  "next_id": 6,
+  "orders": {
+   "paper-1": {
+    "created_ts": 1794293840.8135247,
+    "expires_ts": null,
+    "filled": 20.94,
+    "kind": "TAKER",
+    "market_id": 6282802,
+    "order_id": "paper-1",
+    "price": 0.955,
+    "queue_ahead": 0.0,
+    "reason": "US announces end of Iranian blockade by November 15, 2026? | buy 'No' at 0.955, est. 0.971, edge 1.61c, 6d",
+    "side": "BUY",
+    "size": 20.94,
+    "status": "FILLED",
+    "tag": "harvest",
+    "token": "59822649710870591002443082281655284432277286805384619774600638740092677692228"
+   },
+   "paper-2": {
+    "created_ts": 1794293840.8135247,
+    "expires_ts": null,
+    "filled": 20.68,
+    "kind": "TAKER",
+    "market_id": 5339986,
+    "order_id": "paper-2",
+    "price": 0.967,
+    "queue_ahead": 0.0,
+    "reason": "Israel x Iran ceasefire continues through November 15? | buy 'Yes' at 0.967, est. 0.980, edge 1.29c, 6d",
+    "side": "BUY",
+    "size": 20.68,
+    "status": "FILLED",
+    "tag": "harvest",
+    "token": "81002737208387436195452690077971321124621678141221296249970319056583686458028"
+   },
+   "paper-3": {
+    "created_ts": 1794293840.8135247,
+    "expires_ts": null,
+    "filled": 20.61,
+    "kind": "TAKER",
+    "market_id": 6301107,
+    "order_id": "paper-3",
+    "price": 0.97,
+    "queue_ahead": 0.0,
+    "reason": "US imports Russian diesel by November 15? | buy 'No' at 0.970, est. 0.982, edge 1.20c, 6d",
+    "side": "BUY",
+    "size": 20.61,
+    "status": "FILLED",
+    "tag": "harvest",
+    "token": "22628039830780578346368499265973876766546853303978375335844006534289868738365"
+   },
+   "paper-4": {
+    "created_ts": 1794293840.8135247,
+    "expires_ts": null,
+    "filled": 21.97,
+    "kind": "TAKER",
+    "market_id": 6617851,
+    "order_id": "paper-4",
+    "price": 0.91,
+    "queue_ahead": 0.0,
+    "reason": "Israeli airspace closed by November 30, 2026? | buy 'No' at 0.910, est. 0.935, edge 2.47c, 21d",
+    "side": "BUY",
+    "size": 21.97,
+    "status": "FILLED",
+    "tag": "harvest",
+    "token": "42234331617021352957533367746676448160436161779679178875568441203107991456731"
+   },
+   "paper-5": {
+    "created_ts": 1794293840.8135247,
+    "expires_ts": null,
+    "filled": 5.0,
+    "kind": "TAKER",
+    "market_id": 5714365,
+    "order_id": "paper-5",
+    "price": 0.92,
+    "queue_ahead": 0.0,
+    "reason": "US imports Russian diesel by November 30? | buy 'No' at 0.920, est. 0.943, edge 2.31c, 21d",
+    "side": "BUY",
+    "size": 21.73,
+    "status": "CANCELLED",
+    "tag": "harvest",
+    "token": "59273134941764012408045569907046357545104808797292790712334779584918185110546"
+   }
+  }
+ },
+ "limits": {
+  "bankroll": 1000.0,
+  "daily_loss_limit_usd": 50.0,
+  "max_drawdown_usd": 150.0,
+  "max_event_usd": 50.0,
+  "max_open_orders": 60,
+  "max_order_usd": 25.0,
+  "max_position_usd": 25.0,
+  "max_price": 0.97,
+  "max_theme_usd": 75.0,
+  "max_total_exposure_frac": 0.6,
+  "min_price": 0.03
+ },
+ "market_names": {
+  "22628039830780578346368499265973876766546853303978375335844006534289868738365": {
+   "category": "geopolitics",
+   "end_ts": 1794805140.0,
+   "market_id": 6301107,
+   "outcome": "No",
+   "question": "US imports Russian diesel by November 15?",
+   "themes": [
+    "commodities",
+    "diesel",
+    "oil",
+    "russia",
+    "sanctions"
+   ]
+  },
+  "42234331617021352957533367746676448160436161779679178875568441203107991456731": {
+   "category": "geopolitics",
+   "end_ts": 1796101140.0,
+   "market_id": 6617851,
+   "outcome": "No",
+   "question": "Israeli airspace closed by November 30, 2026?",
+   "themes": [
+    "diplomacy-ceasefire",
+    "israel-x-iran"
+   ]
+  },
+  "59273134941764012408045569907046357545104808797292790712334779584918185110546": {
+   "category": "geopolitics",
+   "end_ts": 1796101140.0,
+   "market_id": 5714365,
+   "outcome": "No",
+   "question": "US imports Russian diesel by November 30?",
+   "themes": [
+    "commodities",
+    "diesel",
+    "oil",
+    "russia",
+    "sanctions"
+   ]
+  },
+  "59822649710870591002443082281655284432277286805384619774600638740092677692228": {
+   "category": "geopolitics",
+   "end_ts": 1794805140.0,
+   "market_id": 6282802,
+   "outcome": "No",
+   "question": "US announces end of Iranian blockade by November 15, 2026?",
+   "themes": [
+    "blockade",
+    "diplomacy-ceasefire",
+    "oil",
+    "peace-deal",
+    "shipping",
+    "strait-of-hormuz",
+    "trump-iran"
+   ]
+  },
+  "81002737208387436195452690077971321124621678141221296249970319056583686458028": {
+   "category": "geopolitics",
+   "end_ts": 1794805140.0,
+   "market_id": 5339986,
+   "outcome": "Yes",
+   "question": "Israel x Iran ceasefire continues through November 15?",
+   "themes": [
+    "diplomacy-ceasefire",
+    "israel-election",
+    "israel-x-iran"
+   ]
+  }
+ },
+ "marks": {
+  "22628039830780578346368499265973876766546853303978375335844006534289868738365": 0.964,
+  "42234331617021352957533367746676448160436161779679178875568441203107991456731": 0.9,
+  "59273134941764012408045569907046357545104808797292790712334779584918185110546": 0.9,
+  "59822649710870591002443082281655284432277286805384619774600638740092677692228": 0.953,
+  "81002737208387436195452690077971321124621678141221296249970319056583686458028": 0.962
+ },
+ "mode": "paper",
+ "model": {
+  "info": {
+   "note": "PROVISIONAL placeholder slope; replaced by the fitted model from scripts/fit_model.py"
+  },
+  "pooled": [
+   0.0,
+   1.15
+  ],
+  "segments": {}
+ },
+ "portfolio": {
+  "cash": 915.4203399999999,
+  "fees_paid": 0.0,
+  "n_fills": 5,
+  "positions": {
+   "22628039830780578346368499265973876766546853303978375335844006534289868738365": {
+    "cost": 19.991699999999998,
+    "market_id": 6301107,
+    "opened_ts": 1794293840.8135247,
+    "realized": 0.0,
+    "shares": 20.61,
+    "tag": "harvest",
+    "token": "22628039830780578346368499265973876766546853303978375335844006534289868738365"
+   },
+   "42234331617021352957533367746676448160436161779679178875568441203107991456731": {
+    "cost": 19.9927,
+    "market_id": 6617851,
+    "opened_ts": 1794293840.8135247,
+    "realized": 0.0,
+    "shares": 21.97,
+    "tag": "harvest",
+    "token": "42234331617021352957533367746676448160436161779679178875568441203107991456731"
+   },
+   "59273134941764012408045569907046357545104808797292790712334779584918185110546": {
+    "cost": 4.6000000000000005,
+    "market_id": 5714365,
+    "opened_ts": 1794293840.8135247,
+    "realized": 0.0,
+    "shares": 5.0,
+    "tag": "harvest",
+    "token": "59273134941764012408045569907046357545104808797292790712334779584918185110546"
+   },
+   "59822649710870591002443082281655284432277286805384619774600638740092677692228": {
+    "cost": 19.997700000000002,
+    "market_id": 6282802,
+    "opened_ts": 1794293840.8135247,
+    "realized": 0.0,
+    "shares": 20.94,
+    "tag": "harvest",
+    "token": "59822649710870591002443082281655284432277286805384619774600638740092677692228"
+   },
+   "81002737208387436195452690077971321124621678141221296249970319056583686458028": {
+    "cost": 19.99756,
+    "market_id": 5339986,
+    "opened_ts": 1794293840.8135247,
+    "realized": 0.0,
+    "shares": 20.68,
+    "tag": "harvest",
+    "token": "81002737208387436195452690077971321124621678141221296249970319056583686458028"
+   }
+  },
+  "realized": 0.0
+ },
+ "risk": {
+  "day": 20767,
+  "day_start_equity": 1000.0,
+  "halt_reason": "",
+  "halted": false,
+  "high_water": 1000.0
+ },
+ "saved_ts": 1794293846.019205,
+ "started_ts": 1794293840.8135216,
+ "strategy": {
+  "ask_hi": 0.97,
+  "ask_lo": 0.9,
+  "categories": [
+   "politics",
+   "geopolitics",
+   "finance",
+   "economics",
+   "culture",
+   "tech"
+  ],
+  "dte_hi": 60.0,
+  "dte_lo": 3.0,
+  "entry": "taker",
+  "exit_dte": null,
+  "maker_ttl_hours": 12.0,
+  "max_new_per_cycle": 5,
+  "max_spread": 0.03,
+  "min_edge": 0.01,
+  "min_volume": 100000,
+  "stake_usd": 20.0,
+  "stop_bid": null,
+  "tag": "harvest"
+ },
+ "version": 1
+}
