@@ -101,14 +101,16 @@ def is_operational_tag(tag: str) -> bool:
     return tag in OPERATIONAL_TAGS or tag.startswith(OPERATIONAL_TAG_PREFIXES)
 
 
-def theme_tags(markets: dict[int, LiveMarket], max_share: float = 0.03, min_markets: int = 2) -> dict[int, frozenset[str]]:
-    """Narrow tags per market: the ones that identify a *story* (a conflict, an
-    election, a commodity) rather than a broad category.
+def theme_tags(markets: dict[int, LiveMarket], max_share: float = 0.10, min_markets: int = 2) -> dict[int, frozenset[str]]:
+    """Topic tags per market: the ones that identify a *story* (a conflict, an
+    election, a company) rather than a whole category.
 
     Several markets about one story tend to resolve together, so exposure is
     capped per theme as well as per event. A tag counts as a theme if it is
     shared by at least ``min_markets`` markets but by no more than
-    ``max_share`` of all markets scanned.
+    ``max_share`` of all markets scanned. The share is deliberately generous:
+    when one story (say, a war) is on a twelfth of all markets, that is exactly
+    the concentration the cap exists for.
     """
     counts: dict[str, int] = {}
     for lm in markets.values():

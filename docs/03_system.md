@@ -66,9 +66,9 @@ alike. A buy is refused if any of these would be exceeded:
 | Per order | $25 | No single fat-finger |
 | Per market | $25 | One position, one stake |
 | Per event | $25 | Legs of one event are the same bet |
-| Per theme (narrow topic tag shared by several markets) | $75 | Different events about one story resolve together |
-| Total exposure | 60% of bankroll | Always keep cash |
-| Price window | 3¢–97¢ | Never trade the extreme tails |
+| Per theme (a topic tag shared by 2 or more markets but under 10% of all of them) | $80 | Different events about one story resolve together |
+| Total exposure | 80% of bankroll | Always keep cash |
+| Price window | 3¢–98.5¢ | Never trade the extreme tails |
 | Open orders | 60 | Bounded bookkeeping |
 | Taker edge | must exceed the fee | A taker order that cannot pay its own fee is refused |
 

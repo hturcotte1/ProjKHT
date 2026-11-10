@@ -158,16 +158,16 @@ def robustness(tag: str, slug: str, trades: pd.DataFrame, s: pd.DataFrame, meta:
 
     tag_lists = meta.set_index("market_id")["tags"].fillna("").str.split("|")
     tcounts = tag_lists.explode().value_counts()
-    limit = max(2, 0.03 * len(meta))
+    limit = max(2, 0.10 * len(meta))
     theme_set = {t for t in tcounts[(tcounts >= 2) & (tcounts <= limit)].index if t and not is_operational_tag(t)}
     themes_of = tag_lists.map(lambda tags: tuple(sorted(set(tags) & theme_set)))
     acct = []
     base_trades = h.drop(columns=["year", "half", "dte_bin", "px_bin", "outcome_side"]).copy()
     base_trades["themes"] = base_trades["market_id"].map(themes_of)
-    for stake, max_event, max_theme in ((20, 20, None), (20, 20, 60), (20, 40, None), (50, 50, 150), (100, 100, 300)):
+    for stake, max_event, max_theme in ((20, 20, None), (20, 20, 80), (20, 40, None), (50, 50, 200), (100, 100, 400)):
         r = run_portfolio(base_trades, Capital(bankroll=1000, stake=stake, max_event=max_event, max_theme=max_theme))
         acct.append({"stake": stake, "max_event": max_event, "max_theme": max_theme, **r.stats})
-        if stake == 20 and max_event == 20 and max_theme == 60:
+        if stake == 20 and max_event == 20 and max_theme == 80:
             r.equity.assign(date=pd.to_datetime(r.equity["period"] * 86_400, unit="s")).to_csv(
                 out / f"c4_{slug}_equity_stake20.csv", index=False)
             r.trades.drop(columns=["themes"]).to_csv(out / f"c4_{slug}_account_trades_stake20.csv", index=False)

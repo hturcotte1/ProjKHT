@@ -168,7 +168,7 @@ class Engine:
         self._log_shadow(self.strategy.watchlist(markets, now), now)
         intents = self.strategy.decide(markets, self.portfolio, self.broker.open_orders(), now, confirmed)
         market_event = {mid: lm.info.event_id for mid, lm in markets.items()}
-        themes = theme_tags(markets)
+        themes = theme_tags(markets, max_share=self.limits.theme_max_share)
         # a held market that has dropped out of the scan keeps the themes it was bought under
         for token, pos in self.portfolio.positions.items():
             saved = self.market_names.get(token, {}).get("themes")

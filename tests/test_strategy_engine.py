@@ -200,6 +200,7 @@ def test_theme_tags_keeps_narrow_tags_and_drops_broad_ones():
     th = theme_tags(mk)
     assert th[0] == frozenset({"hormuz"})          # shared by 3 of 100: a story
     assert th[10] == frozenset()                   # 'politics' is on everything: a category
+    assert theme_tags(mk, max_share=0.02)[0] == frozenset()   # a stricter share stops calling it a theme
     assert th[50] == frozenset()                   # a tag on a single market groups nothing
 
 
