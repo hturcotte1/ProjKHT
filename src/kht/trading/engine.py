@@ -350,16 +350,25 @@ class Engine:
         without its tags. Left alone, the per-theme cap would lapse exactly
         when a story grows past the share that defines a theme, or when its
         markets start closing. So every position and resting order keeps the
-        themes it was bought under, and those tags stay themes for any other
-        market that carries them.
+        themes it was bought under, adds any tag that becomes a theme while it
+        is held, and those tags stay themes for any other market that carries
+        them.
         """
         involved = {token: pos.market_id for token, pos in self.portfolio.positions.items()}
         involved.update({o.token: o.market_id for o in self.broker.open_orders()})
         held: set[str] = set()
         for token, market_id in involved.items():
-            saved = frozenset(self.market_names.get(token, {}).get("themes") or ())
+            entry = self.market_names.get(token)
+            saved = frozenset((entry or {}).get("themes") or ())
+            current = themes.get(market_id, frozenset())
+            if entry is not None and not current <= saved:
+                # A tag near the share that defines a theme can drift in and out
+                # of it from one cycle to the next. Once it has counted against
+                # this position it keeps counting.
+                entry["themes"] = sorted(saved | current)
+            saved = saved | current
             if saved:
-                themes[market_id] = themes.get(market_id, frozenset()) | saved
+                themes[market_id] = saved
                 held |= saved
         if held:
             for market_id, lm in markets.items():

@@ -253,6 +253,46 @@ def test_a_story_stays_capped_after_it_outgrows_the_definition_of_a_theme(tmp_pa
     assert last["action"] == "screened" and last["by_limit"] == {"theme 'hormuz'": 1}
 
 
+def test_a_story_that_becomes_a_theme_while_held_stays_capped(tmp_path, monkeypatch):
+    from dataclasses import replace
+    from kht.trading.universe import theme_tags
+
+    def tagged(lm, *tags):
+        return LiveMarket(replace(lm.info, tags=tags), lm.best_bid0, lm.best_ask0, lm.volume, lm.volume_24h,
+                          lm.liquidity, lm.accepting_orders, lm.closed, lm.winner, lm.final0, lm.question)
+
+    # At purchase the tag is on every market: a category, not a theme, so nothing is saved with the position.
+    markets = {i: tagged(live(i, 0.50, 0.52), "politics", "hormuz") for i in range(100, 140)}
+    markets[1] = tagged(live(1, 0.92, 0.93), "politics", "hormuz")
+    pm = FakePM(markets)
+    import kht.trading.engine as eng
+    monkeypatch.setattr(eng, "scan_open", lambda pm_, min_volume: {k: v for k, v in pm_.markets.items() if not v.closed})
+    monkeypatch.setattr(eng, "fetch_markets", lambda pm_, ids: {i: pm_.markets[i] for i in ids})
+    limits = RiskLimits(bankroll=1000, max_position_usd=25, max_event_usd=25, max_theme_usd=30, max_order_usd=25)
+    e = Engine(pm, StateStore(tmp_path), HarvestStrategy(CFG, MODEL), limits)
+    assert e.run_cycle(NOW).placed == 1
+    token = next(iter(e.portfolio.positions))
+    assert e.market_names[token]["themes"] == []
+
+    # The tag narrows to two markets. Now it is a theme, and the position takes note of it.
+    for i in range(100, 140):
+        pm.markets[i] = tagged(live(i, 0.50, 0.52), "politics")
+    pm.markets[2] = tagged(live(2, 0.50, 0.52), "politics", "hormuz")
+    e.run_cycle(NOW + 600)
+    assert e.market_names[token]["themes"] == ["hormuz"]
+    assert json.loads((tmp_path / "state.json").read_text())["market_names"][token]["themes"] == ["hormuz"]
+
+    # It spreads again, past a tenth of all markets, and a new candidate about the same story appears.
+    for i in range(100, 130):
+        pm.markets[i] = tagged(live(i, 0.50, 0.52), "politics", "hormuz")
+    pm.markets[3] = tagged(live(3, 0.92, 0.93), "politics", "hormuz")
+    assert theme_tags(pm.markets)[3] == frozenset()            # by share alone it is not a theme
+    rep = Engine(pm, StateStore(tmp_path), HarvestStrategy(CFG, MODEL), limits).run_cycle(NOW + 1200)   # a fresh process
+    assert rep.placed == 0 and rep.n_positions == 1
+    last = [json.loads(l) for l in (tmp_path / "decisions.jsonl").read_text().splitlines()][-1]
+    assert last["action"] == "screened" and last["by_limit"] == {"theme 'hormuz'": 1}
+
+
 def test_candidates_blocked_by_a_cap_do_not_use_up_the_cycle(tmp_path, monkeypatch):
     from dataclasses import replace
 

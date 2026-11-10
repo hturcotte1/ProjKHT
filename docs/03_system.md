@@ -96,9 +96,10 @@ alike. A buy is refused if any of these would be exceeded:
 | Taker edge | must exceed the fee | A taker order that cannot pay its own fee is refused |
 
 A story stays capped for as long as the account holds anything in it: each
-position remembers the themes it was bought under, so the cap does not lapse
-if the story later spreads past a tenth of all markets or its markets start
-to close.
+position remembers the themes it was bought under and any it has come under
+since, so the cap does not lapse if the story later spreads past a tenth of
+all markets or its markets start to close. This matters now: on 10 November
+the tag `iran` was on 8.6% of the markets scanned, just inside the line.
 
 Two **kill switches** are evaluated every cycle from equity marked at the bid:
 a daily loss limit and a maximum drawdown from the high-water mark. Once
