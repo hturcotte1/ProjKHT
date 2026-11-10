@@ -50,7 +50,7 @@ import numpy as np
 import pandas as pd
 
 from kht.data.download import DATA_DIR, load_meta
-from kht.research.quotes import CURRENT_FEE_RATE
+from kht.research.quotes import CURRENT_FEE_RATE, next_print_after
 from kht.research.stats import mean_cluster
 
 warnings.filterwarnings("ignore")
@@ -62,23 +62,33 @@ FOLLOW_DELAY, FOLLOW_WINDOW = 60, 86_400
 SPLIT_TS = pd.Timestamp("2026-05-01", tz="UTC").timestamp()
 
 
-def _one_tape(args: tuple[str, int]) -> pd.DataFrame | None:
-    condition_id, market_id = args
+def _one_tape(args: tuple[str, int, float]) -> pd.DataFrame | None:
+    """One market's trades after it had traded MIN_CUM shares, as bets on an outcome."""
+    condition_id, market_id, total_volume = args
     path = DATA_DIR / "trades" / f"{condition_id}.parquet"
     if not path.exists():
         return None
     t = pd.read_parquet(path, columns=["timestamp", "side", "outcome_index", "price", "size", "proxy_wallet"])
     if t.empty:
         return None
+    t = t.sort_values("timestamp", kind="stable")
+    size = t["size"].to_numpy(dtype=np.float64)
+    # shares traded before each row, counted back from the market's total (tapes can be truncated at the start)
+    cum_before = np.maximum(total_volume - np.cumsum(size[::-1])[::-1], 0.0)
+    keep = cum_before >= MIN_CUM
+    if not keep.any():
+        return None
+    t = t[keep]
     idx0 = t["outcome_index"].to_numpy() == 0
     buy = t["side"].to_numpy() == "BUY"
     price = t["price"].to_numpy()
+    side = np.where(idx0 == buy, 0, 1).astype(np.int8)          # the outcome the taker ended up long
+    px = np.where(buy, price, 1.0 - price).astype(np.float32)   # what that outcome cost per share
     return pd.DataFrame({
-        "market_id": np.int64(market_id),
+        "market_id": np.int32(market_id),
         "ts": t["timestamp"].to_numpy(dtype=np.int64),
-        "p0": np.where(idx0, price, 1.0 - price).astype(np.float32),
-        "dir0": np.where(idx0 == buy, 1, -1).astype(np.int8),
-        "size": t["size"].to_numpy(dtype=np.float32),
+        "side": side,
+        "px": px,
         # a stable 64-bit hash instead of 42-character strings: 60M of those do not fit in memory
         "wallet": pd.util.hash_array(t["proxy_wallet"].to_numpy(dtype=object)).view(np.int64),
     })
@@ -87,20 +97,13 @@ def _one_tape(args: tuple[str, int]) -> pd.DataFrame | None:
 def load_trades(meta: pd.DataFrame, workers: int = 4) -> pd.DataFrame:
     have = {p.stem for p in (DATA_DIR / "trades").glob("*.parquet")}
     sel = meta[meta["condition_id"].isin(have)]
-    jobs = list(zip(sel["condition_id"], sel["market_id"].astype(int)))
+    jobs = list(zip(sel["condition_id"], sel["market_id"].astype(int), sel["volume"].astype(float)))
     parts = []
     with cf.ProcessPoolExecutor(max_workers=workers) as pool:
         for part in pool.map(_one_tape, jobs, chunksize=200):
             if part is not None:
                 parts.append(part)
-    df = pd.concat(parts, ignore_index=True)
-    del parts
-    df = df.sort_values(["market_id", "ts"], kind="stable").reset_index(drop=True)
-    total = meta.set_index("market_id")["volume"].reindex(df["market_id"]).to_numpy()
-    size = df["size"].to_numpy(dtype=np.float64)
-    rev = pd.Series(size[::-1]).groupby(df["market_id"].to_numpy()[::-1], sort=False).cumsum().to_numpy()[::-1]
-    df["cum_before"] = np.maximum(total - rev, 0.0).astype(np.float32)
-    return df
+    return pd.concat(parts, ignore_index=True)
 
 
 def logit(p: np.ndarray) -> np.ndarray:
@@ -121,95 +124,93 @@ def fit_line(price: np.ndarray, won: np.ndarray, iters: int = 60) -> tuple[float
     return float(beta[0]), float(beta[1])
 
 
-def next_print(series: np.ndarray, ts: np.ndarray, px: np.ndarray, q_series: np.ndarray, q_ts: np.ndarray):
-    """For each query (series, time): price and time of the first print of that
-    series at or after the time. ``series, ts`` must be sorted together."""
-    key = series.astype(np.int64) * (1 << 32) + ts
-    i = np.searchsorted(key, q_series.astype(np.int64) * (1 << 32) + q_ts, side="left")
-    ok = i < len(key)
-    i = np.where(ok, i, 0)
-    ok &= series[i] == q_series
-    return np.where(ok, px[i], np.nan), np.where(ok, ts[i], -1)
-
-
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="reports/research")
     args = ap.parse_args()
     out = Path(args.out)
     t0 = time.time()
+    rng = np.random.default_rng(1)
 
     meta = load_meta("closed")
     life = (meta["closed_ts"].fillna(meta["end_ts"]) - meta["start_ts"]) / 86_400
     resolved = meta["winner"].notna() | (meta["final0"] == 0.5)
-    meta = meta[(~meta["category"].isin(["sports", "crypto"])) & (life >= 2) & resolved].copy()
-    tr = load_trades(meta)
-    tr = tr[tr["cum_before"] >= MIN_CUM].reset_index(drop=True)
+    meta = meta[(~meta["category"].isin(["sports", "crypto"])) & (life >= 2) & resolved & meta["closed_ts"].notna()].copy()
     m = meta.set_index("market_id")
-    win = m["winner"].reindex(tr["market_id"]).to_numpy()
-    final0 = m["final0"].reindex(tr["market_id"]).to_numpy()
-    pay0 = np.where(win == 0, 1.0, np.where(win == 1, 0.0, np.where(final0 == 0.5, 0.5, np.nan)))
-    side = (tr["dir0"].to_numpy() < 0).astype(np.int8)                 # outcome bought: 0 or 1
-    p0 = tr["p0"].to_numpy(dtype=np.float64)
-    tr["side"] = side
-    tr["px"] = np.where(side == 0, p0, 1.0 - p0)
-    tr["pay"] = np.where(side == 0, pay0, 1.0 - pay0)
-    tr["closed_ts"] = m["closed_ts"].reindex(tr["market_id"]).to_numpy()
-    ev = m["event_id"].reindex(tr["market_id"]).to_numpy()
-    tr["cluster"] = np.where(ev >= 0, ev, -tr["market_id"].to_numpy())
-    tr["fee_rate"] = m["category"].reindex(tr["market_id"]).map(CURRENT_FEE_RATE).fillna(0.05).to_numpy()
-    tr["end_ts"] = m["end_ts"].reindex(tr["market_id"]).to_numpy()
-    tr = tr[np.isfinite(tr["pay"]) & np.isfinite(tr["closed_ts"])].reset_index(drop=True)
-    tr["series"] = (tr["market_id"].to_numpy() * 2 + tr["side"].to_numpy()).astype(np.int64)
-    print(f"{len(tr):,} trades by {tr['wallet'].nunique():,} wallets in {tr['market_id'].nunique():,} markets "
-          f"({time.time() - t0:.0f}s)", flush=True)
+    tr = load_trades(meta)
+    tr = tr.sort_values(["market_id", "side", "ts"], kind="stable").reset_index(drop=True)
+    market = tr["market_id"].to_numpy()
+    side = tr["side"].to_numpy()
+    ts = tr["ts"].to_numpy()
+    px = tr["px"].to_numpy(dtype=np.float64)
+    win = m["winner"].reindex(market).to_numpy()
+    final0 = m["final0"].reindex(market).to_numpy()
+    pay0 = np.where(win == 0, 1.0, np.where(win == 1, 0.0, 0.5))
+    pay = np.where(side == 0, pay0, 1.0 - pay0)
+    closed = m["closed_ts"].reindex(market).to_numpy(dtype=np.float64)
+    series = market.astype(np.int64) * 2 + side
+    codes, uniq = pd.factorize(tr["wallet"].to_numpy())
+    del tr
+    print(f"{len(ts):,} trades by {len(uniq):,} wallets in {len(np.unique(market)):,} markets ({time.time() - t0:.0f}s)", flush=True)
 
-    # every print, by outcome and time, for the follower's entry
-    o = np.lexsort((tr["ts"].to_numpy(), tr["series"].to_numpy()))
-    all_series, all_ts, all_px = tr["series"].to_numpy()[o], tr["ts"].to_numpy()[o], tr["px"].to_numpy()[o]
+    mid = (px > PX_LO) & (px < PX_HI)
+    # distinct (wallet, market) pairs among mid-priced trades, for the "at least 10 markets" condition
+    pair = pd.DataFrame({"w": codes[mid], "m": market[mid]}).drop_duplicates()
+    pair_w = pair["w"].to_numpy()
+    pair_closed = m["closed_ts"].reindex(pair["m"]).to_numpy(dtype=np.float64)
+    del pair
 
-    mid = tr[(tr["px"] > PX_LO) & (tr["px"] < PX_HI)]
-    data_end = float(tr["ts"].max())
-    quarters = pd.period_range(pd.Timestamp(tr["ts"].min(), unit="s").to_period("Q") + 2,
-                               pd.Timestamp(data_end, unit="s").to_period("Q"), freq="Q")
-    tests, wallets_ranked, calib = [], [], []
+    quarters = pd.period_range(pd.Timestamp(int(ts.min()), unit="s").to_period("Q") + 2,
+                               pd.Timestamp(int(ts.max()), unit="s").to_period("Q"), freq="Q")
+    K = len(uniq)
+    tests, calib, ranked_n = [], [], []
     for q in quarters:
         q0, q1 = q.start_time.timestamp(), (q + 1).start_time.timestamp()
-        past = mid[mid["closed_ts"] < q0]
+        past = np.flatnonzero(mid & (closed < q0))
         if len(past) < 200_000:
             continue
-        samp = past.sample(min(len(past), 1_500_000), random_state=1)
-        a, b = fit_line(samp["px"].to_numpy(), samp["pay"].to_numpy())
-        calib.append({"quarter": str(q), "a": a, "b": b, "past_trades": len(past)})
-        edge = past["pay"].to_numpy() - 1 / (1 + np.exp(-(a + b * logit(past["px"].to_numpy()))))
-        g = pd.DataFrame({"wallet": past["wallet"].to_numpy(), "e": edge, "e2": edge * edge,
-                          "market_id": past["market_id"].to_numpy()}).groupby("wallet", sort=False)
-        w = g.agg(n=("e", "size"), s=("e", "sum"), s2=("e2", "sum"), markets=("market_id", "nunique"))
-        w = w[(w["n"] >= MIN_TRADES) & (w["markets"] >= MIN_MARKETS)]
-        mean = w["s"] / w["n"]
-        sd = np.sqrt(np.maximum(w["s2"] / w["n"] - mean ** 2, 1e-12))
-        w["score"] = mean / (sd / np.sqrt(w["n"]))
-        w["fifth"] = pd.qcut(w["score"], 5, labels=False, duplicates="drop") + 1
-        wallets_ranked.append(w.assign(quarter=str(q), past_mean_edge=mean)[["quarter", "n", "markets", "past_mean_edge", "score", "fifth"]])
-        fut = mid[(mid["ts"] >= q0) & (mid["ts"] < q1) & mid["wallet"].isin(w.index)].copy()
-        fut["fifth"] = w["fifth"].reindex(fut["wallet"]).to_numpy()
-        fut["day"] = fut["ts"] // 86_400
-        fut = fut.sort_values("ts").drop_duplicates(["wallet", "market_id", "side", "day"], keep="first")
-        fut["calibrated"] = 1 / (1 + np.exp(-(a + b * logit(fut["px"].to_numpy()))))
-        fut["quarter"] = str(q)
-        tests.append(fut)
-        print(f"{q}: calibration a={a:+.3f} b={b:.3f}; {len(w):,} ranked wallets; {len(fut):,} test trades "
+        samp = rng.choice(past, size=min(len(past), 1_500_000), replace=False)
+        a, b = fit_line(px[samp], pay[samp])
+        edge = pay[past] - 1 / (1 + np.exp(-(a + b * logit(px[past]))))
+        n = np.bincount(codes[past], minlength=K)
+        s1 = np.bincount(codes[past], weights=edge, minlength=K)
+        s2 = np.bincount(codes[past], weights=edge * edge, minlength=K)
+        n_markets = np.bincount(pair_w[pair_closed < q0], minlength=K)
+        ok = (n >= MIN_TRADES) & (n_markets >= MIN_MARKETS)
+        mean = s1[ok] / n[ok]
+        sd = np.sqrt(np.maximum(s2[ok] / n[ok] - mean ** 2, 1e-12))
+        score = mean / (sd / np.sqrt(n[ok]))
+        fifth_of = np.zeros(K, dtype=np.int8)                       # 0 = not ranked
+        fifth_of[np.flatnonzero(ok)] = pd.qcut(score, 5, labels=False, duplicates="drop") + 1
+        fut = np.flatnonzero(mid & (ts >= q0) & (ts < q1) & (fifth_of[codes] > 0))
+        f = pd.DataFrame({"i": fut, "wallet": codes[fut], "market_id": market[fut], "side": side[fut],
+                          "day": ts[fut] // 86_400, "ts": ts[fut]})
+        f = f.sort_values("ts", kind="stable").drop_duplicates(["wallet", "market_id", "side", "day"], keep="first")
+        i = f["i"].to_numpy()
+        tests.append(pd.DataFrame({
+            "quarter": str(q), "wallet": codes[i], "fifth": fifth_of[codes[i]], "market_id": market[i], "side": side[i],
+            "ts": ts[i], "px": px[i], "pay": pay[i], "closed_ts": closed[i], "series": series[i],
+            "calibrated": 1 / (1 + np.exp(-(a + b * logit(px[i])))),
+        }))
+        calib.append({"quarter": str(q), "a": a, "b": b, "past_trades": len(past), "ranked_wallets": int(ok.sum()),
+                      "test_trades": len(i)})
+        ranked_n.append((float(np.median(n[ok])), float(np.median(n_markets[ok]))))
+        print(f"{q}: calibration a={a:+.3f} b={b:.3f}; {int(ok.sum()):,} ranked wallets; {len(i):,} test trades "
               f"({time.time() - t0:.0f}s)", flush=True)
 
     t = pd.concat(tests, ignore_index=True)
-    nx_px, nx_ts = next_print(all_series, all_ts, all_px, t["series"].to_numpy(), t["ts"].to_numpy() + FOLLOW_DELAY)
+    # the follower's price: the next print of the same outcome at least a minute later (prints are sorted by series, ts)
+    nx_px, nx_ts = next_print_after(series, ts, px, t["series"].to_numpy(), t["ts"].to_numpy() + FOLLOW_DELAY)
     ok = np.isfinite(nx_px) & (nx_ts - t["ts"].to_numpy() <= FOLLOW_WINDOW) & (nx_ts < t["closed_ts"].to_numpy())
     t["follow_px"] = np.where(ok, nx_px, np.nan)
+    ev = m["event_id"].reindex(t["market_id"]).to_numpy()
+    t["cluster"] = np.where(ev >= 0, ev, -t["market_id"].to_numpy())
+    fee_rate = m["category"].reindex(t["market_id"]).map(CURRENT_FEE_RATE).fillna(0.05).to_numpy()
     t["own_edge"] = t["pay"] - t["px"]
     t["calib_edge"] = t["pay"] - t["calibrated"]
-    cost = t["follow_px"] + t["fee_rate"] * t["follow_px"] * (1 - t["follow_px"])
+    cost = t["follow_px"] + fee_rate * t["follow_px"] * (1 - t["follow_px"])
     t["follow_ret"] = (t["pay"] - cost) / cost
-    t["holdout"] = t["end_ts"] < SPLIT_TS
+    t["holdout"] = m["end_ts"].reindex(t["market_id"]).to_numpy() < SPLIT_TS
 
     def table(d: pd.DataFrame) -> pd.DataFrame:
         rows = []
@@ -228,9 +229,11 @@ def main() -> None:
 
     def top_minus_bottom(d: pd.DataFrame) -> str:
         f = d[d["follow_px"].notna() & d["fifth"].isin([1, 5])]
-        x = np.where(f["fifth"] == 5, 1.0, 0.0)
-        # difference of means with event-clustered errors, via the mean of a signed, re-weighted return
+        x = (f["fifth"] == 5).to_numpy(dtype=float)
         n1, n0 = x.sum(), (1 - x).sum()
+        if n1 < 30 or n0 < 30:
+            return "top fifth minus bottom fifth: too few trades"
+        # difference of the two means as the mean of one re-weighted series, so the event clustering carries over
         z = f["follow_ret"].to_numpy() * (x / n1 - (1 - x) / n0) * len(f)
         r = mean_cluster(z, f["cluster"].to_numpy())
         return f"top fifth minus bottom fifth, follower return: {100 * r.mean:+.2f}% (t = {r.t:.2f})"
@@ -254,8 +257,8 @@ def main() -> None:
     byq = pd.DataFrame(byq)
     byq.to_csv(out / "w_wallet_skill_by_quarter.csv", index=False)
     print("\nby quarter, bottom and top fifth\n", byq.round(2).to_string(index=False))
-    ranked = pd.concat(wallets_ranked)
-    print(f"\nranked wallet-quarters: {len(ranked):,}; median past trades {ranked['n'].median():.0f}, markets {ranked['markets'].median():.0f}")
+    med = np.median(np.array(ranked_n), axis=0)
+    print(f"\na ranked wallet has, at the median quarter, {med[0]:.0f} past trades in {med[1]:.0f} markets")
     print(f"done in {time.time() - t0:.0f}s")
 
 

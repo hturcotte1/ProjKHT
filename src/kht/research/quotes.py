@@ -162,3 +162,24 @@ def tape_mids(q: pd.DataFrame, max_spread: float = 0.10) -> pd.DataFrame:
     ok = spread.between(-0.005, max_spread)
     price = np.where(ok, 0.5 * (q["ask0"] + q["bid0"]), q["last0"])
     return pd.DataFrame({"market_id": q["market_id"].to_numpy(), "ts": q["ts"].to_numpy(), "price": price})
+
+
+def next_print_after(series: np.ndarray, ts: np.ndarray, px: np.ndarray,
+                     q_series: np.ndarray, q_ts: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Price and time of the first print of each queried series at or after the
+    queried time; NaN and -1 where that series never printed again.
+
+    ``series`` is any non-negative integer id below 2**31 (one per market
+    outcome), ``ts`` seconds below 2**32; the three print arrays must be
+    sorted by (series, ts). Used to price a follower's entry: what was the
+    next price actually paid for this outcome after a given moment?
+    """
+    key = series.astype(np.int64) * (1 << 32) + ts.astype(np.int64)
+    if len(key) > 1 and (np.diff(key) < 0).any():
+        raise ValueError("prints must be sorted by (series, ts)")
+    q = q_series.astype(np.int64) * (1 << 32) + q_ts.astype(np.int64)
+    i = np.searchsorted(key, q, side="left")
+    ok = i < len(key)
+    i = np.where(ok, i, 0)
+    ok &= series[i] == q_series
+    return np.where(ok, px[i], np.nan), np.where(ok, ts[i], -1)

@@ -93,3 +93,20 @@ def test_chunked_processing_gives_the_same_panel():
     whole = period_quotes(t, chunk_rows=10**9)
     chunked = period_quotes(t, chunk_rows=97)          # forces many chunks, none splitting a market
     pd.testing.assert_frame_equal(whole, chunked)
+
+
+def test_next_print_after_never_looks_back_or_across_outcomes():
+    from kht.research.quotes import next_print_after
+
+    series = np.array([4, 4, 4, 9, 9])
+    ts = np.array([100, 160, 400, 50, 500])
+    px = np.array([0.40, 0.42, 0.45, 0.70, 0.71])
+    q_series = np.array([4, 4, 4, 4, 9, 9, 7])
+    q_ts = np.array([100, 101, 160, 401, 51, 501, 10])
+    got_px, got_ts = next_print_after(series, ts, px, q_series, q_ts)
+    # at or after the moment asked, never before it; nothing borrowed from the next outcome
+    assert got_ts.tolist() == [100, 160, 160, -1, 500, -1, -1]
+    assert np.allclose(got_px[[0, 1, 2, 4]], [0.40, 0.42, 0.42, 0.71])
+    assert np.isnan(got_px[[3, 5, 6]]).all()
+    with pytest.raises(ValueError):
+        next_print_after(series[::-1], ts[::-1], px[::-1], q_series, q_ts)
