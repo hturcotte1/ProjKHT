@@ -309,3 +309,30 @@ enough".
 
 Control that should do worse: the same rule buying the side that **fell**.
 **Holdout:** games that started before 2026-09-22. Same bar as S1.
+
+## 9. Outcome (added after the tests were run)
+
+Recorded here so that the plan and its result sit in one file. Details and
+tables are in `02_research_findings.md`.
+
+| Fixed in advance | Result on the holdout | Verdict |
+|---|---|---|
+| H1, H2 momentum / reversal | Faint give-back, a few percent of a move; nothing on 3-hour prices | Not tradable |
+| H3 compression toward 50¢ | Calibration slope 1.19 (t 3.5); long shots lose ~60% | **Supported** (non-sports only) |
+| H4 "something happens" bias | Yes and No do the same at the same price | Not supported |
+| H5 pre-game drift | Favourites drift *down* 0.1–0.2¢; prices calibrated | Not supported |
+| H6 calendar effects | No stable weekday pattern | Not supported |
+| H7, H8 deadline wording, market age | No reliable difference once price is accounted for | Not supported |
+| **R1** buy 90–97¢ | +0.88% per trade, t 1.70 | **Not confirmed** |
+| R1a, R1b, R1c | t 1.64, 0.70, 1.90 | Not confirmed |
+| **R1d** buy 95–99¢ | +0.96% per trade, t 3.62 | **Confirmed** |
+| R2, R3 | t 2.19, 1.41 | Not confirmed |
+| R1m resting bid | +1.54% per trade, t 2.68 | Not confirmed (close) |
+| Control: long shots 3–10¢ | −37% per trade, t −5.8 | Negative, as predicted |
+| **S1** sports favourites | −1.7% per trade, t −1.2 | Not confirmed |
+| **S2** follow the pre-game move | +0.04% per trade, t 0.0 | Not confirmed |
+
+The direction chosen in section 7 — "one statistical model of expected price
+drift" — did not survive either: there is no short-term drift worth
+modelling. What survived is the fallback named there, the slow correction of
+the long-shot bias, in a narrower form than I first wrote down.
