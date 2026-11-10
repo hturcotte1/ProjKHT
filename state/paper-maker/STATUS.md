@@ -1,6 +1,6 @@
 # Account status (paper)
 
-As of 2026-11-10 07:41 UTC. Started 2026-11-10 07:39 UTC.
+As of 2026-11-10 07:56 UTC. Started 2026-11-10 07:39 UTC.
 
 | | |
 |---|---|
@@ -23,3 +23,9 @@ As of 2026-11-10 07:41 UTC. Started 2026-11-10 07:39 UTC.
 | Russia x Ukraine ceasefire agreement by November 30, 2026? | BUY No | 0.950 | 21.1 | 0.0 |
 | US-Iran Final Nuclear Deal by November 30, 2026? | BUY No | 0.949 | 21.1 | 0.0 |
 | Strait of Hormuz traffic returns to normal by November 30? | BUY No | 0.957 | 20.9 | 0.0 |
+| Israel x Iran ceasefire continues through November 15? | BUY Yes | 0.974 | 20.5 | 0.0 |
+| US imports Russian diesel by November 15? | BUY No | 0.965 | 20.7 | 0.0 |
+
+## Equity history
+
+2 cycles from 2026-11-10 07:39 UTC to 2026-11-10 07:56 UTC; equity $1,000.00 → $1,000.00.

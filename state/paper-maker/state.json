@@ -4,9 +4,11 @@
    "3491438": 1794296353.5777283,
    "3501951": 1794296353.5777283,
    "4338145": 1794296353.5777283,
-   "6282802": 1794296353.5777283
+   "5339986": 1794297368.1276512,
+   "6282802": 1794296853.0,
+   "6301107": 1794297368.1276512
   },
-  "next_id": 5,
+  "next_id": 7,
   "orders": {
    "paper-1": {
     "created_ts": 1794296353.5777283,
@@ -16,7 +18,7 @@
     "market_id": 6282802,
     "order_id": "paper-1",
     "price": 0.946,
-    "queue_ahead": 1967.96,
+    "queue_ahead": 1907.96,
     "reason": "US announces end of Iranian blockade by November 15, 2026? | buy 'No' at 0.947, est. 0.968, edge 2.08c, 6d",
     "side": "BUY",
     "size": 21.14,
@@ -71,6 +73,38 @@
     "status": "OPEN",
     "tag": "harvest-maker",
     "token": "106375876055695859045413141458606643340242853794519126089005356920987236120368"
+   },
+   "paper-5": {
+    "created_ts": 1794297368.1276512,
+    "expires_ts": 1794556568.1276512,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 5339986,
+    "order_id": "paper-5",
+    "price": 0.974,
+    "queue_ahead": 564.92,
+    "reason": "Israel x Iran ceasefire continues through November 15? | buy 'Yes' at 0.975, est. 0.986, edge 1.06c, 6d",
+    "side": "BUY",
+    "size": 20.53,
+    "status": "OPEN",
+    "tag": "harvest-maker",
+    "token": "81002737208387436195452690077971321124621678141221296249970319056583686458028"
+   },
+   "paper-6": {
+    "created_ts": 1794297368.1276512,
+    "expires_ts": 1794556568.1276512,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 6301107,
+    "order_id": "paper-6",
+    "price": 0.965,
+    "queue_ahead": 197.92,
+    "reason": "US imports Russian diesel by November 15? | buy 'No' at 0.976, est. 0.986, edge 1.03c, 6d",
+    "side": "BUY",
+    "size": 20.72,
+    "status": "OPEN",
+    "tag": "harvest-maker",
+    "token": "22628039830780578346368499265973876766546853303978375335844006534289868738365"
    }
   }
  },
@@ -83,9 +117,10 @@
   "max_order_usd": 25.0,
   "max_position_usd": 25.0,
   "max_price": 0.985,
-  "max_theme_usd": 60.0,
+  "max_theme_usd": 80.0,
   "max_total_exposure_frac": 0.8,
-  "min_price": 0.03
+  "min_price": 0.03,
+  "theme_max_share": 0.1
  },
  "market_names": {
   "106375876055695859045413141458606643340242853794519126089005356920987236120368": {
@@ -113,6 +148,20 @@
     "ukraine-peace-deal",
     "zelensky",
     "zelenskyy"
+   ]
+  },
+  "22628039830780578346368499265973876766546853303978375335844006534289868738365": {
+   "category": "geopolitics",
+   "end_ts": 1794805140.0,
+   "market_id": 6301107,
+   "outcome": "No",
+   "question": "US imports Russian diesel by November 15?",
+   "themes": [
+    "commodities",
+    "diesel",
+    "oil",
+    "russia",
+    "sanctions"
    ]
   },
   "59822649710870591002443082281655284432277286805384619774600638740092677692228": {
@@ -146,13 +195,27 @@
     "trump-iran",
     "us-iran"
    ]
+  },
+  "81002737208387436195452690077971321124621678141221296249970319056583686458028": {
+   "category": "geopolitics",
+   "end_ts": 1794805140.0,
+   "market_id": 5339986,
+   "outcome": "Yes",
+   "question": "Israel x Iran ceasefire continues through November 15?",
+   "themes": [
+    "diplomacy-ceasefire",
+    "iran",
+    "israel",
+    "israel-election",
+    "israel-x-iran"
+   ]
   }
  },
  "marks": {},
  "mode": "paper",
  "model": {
   "info": {
-   "fitted_utc": "2026-11-10 07:30",
+   "fitted_utc": "2026-11-10 07:40",
    "form": "P(pays) = sigmoid(a + b*logit(ask)); per-segment shift of a, shrunk toward the pooled line",
    "prior_strength": 150.0,
    "training": "4886 trades, ask in (0.85, 0.99), 3-60 scheduled days to end, non-sports non-crypto, markets with >=100k shares already traded"
@@ -162,92 +225,88 @@
    1.1845474901643949
   ],
   "segments": {
-   "*|no_single": [
-    -0.13993408344500574,
+   "*|multi": [
+    -0.3715973958075513,
     1.1845474901643949
    ],
-   "*|other": [
-    -0.3784815409208777,
+   "*|single": [
+    -0.19164413378288264,
     1.1845474901643949
    ],
    "culture": [
     -0.1270224830783286,
     1.1845474901643949
    ],
-   "culture|no_single": [
-    -0.20558603677705994,
+   "culture|multi": [
+    -0.18234922154815897,
     1.1845474901643949
    ],
-   "culture|other": [
-    -0.13090528044659533,
+   "culture|single": [
+    -0.12247016000557553,
     1.1845474901643949
    ],
    "economics": [
     0.26197871422392655,
     1.1845474901643949
    ],
-   "economics|other": [
-    0.315183723937338,
+   "economics|multi": [
+    0.3024583915801628,
     1.1845474901643949
    ],
    "finance": [
     -0.4227425292572451,
     1.1845474901643949
    ],
-   "finance|no_single": [
-    -0.3343876636748905,
+   "finance|multi": [
+    -0.4621555850782495,
     1.1845474901643949
    ],
-   "finance|other": [
-    -0.45731923351031517,
+   "finance|single": [
+    -0.34513945743181496,
     1.1845474901643949
    ],
    "geopolitics": [
     -0.13969513827041272,
     1.1845474901643949
    ],
-   "geopolitics|no_single": [
-    -0.011060622477327309,
+   "geopolitics|multi": [
+    -0.4195342901700865,
     1.1845474901643949
    ],
-   "geopolitics|other": [
-    -0.4938336437579349,
+   "geopolitics|single": [
+    -0.1114070221377923,
     1.1845474901643949
    ],
    "other": [
     -0.5713357892145252,
     1.1845474901643949
    ],
-   "other|no_single": [
-    -0.6057235354206318,
-    1.1845474901643949
-   ],
-   "other|other": [
-    -0.2174206973754848,
+   "other|single": [
+    -0.6175203741591679,
     1.1845474901643949
    ],
    "politics": [
     -0.34821686834553656,
     1.1845474901643949
    ],
-   "politics|no_single": [
-    -0.14324049914294656,
+   "politics|multi": [
+    -0.45512372845824545,
     1.1845474901643949
    ],
-   "politics|other": [
-    -0.4266415646769615,
+   "politics|single": [
+    -0.15707021591844691,
     1.1845474901643949
    ],
    "tech": [
     -0.22709476111587773,
     1.1845474901643949
    ],
-   "tech|no_single": [
-    -0.09005171605947712,
+   "tech|multi": [
+    -0.2837522270314315,
     1.1845474901643949
    ],
-   "tech|other": [
-    -0.33437160741954797,
+   "tech|single": [
+    -0.19516637094979689,
     1.1845474901643949
    ],
    "weather": [
@@ -270,7 +329,7 @@
   "halted": false,
   "high_water": 1000.0
  },
- "saved_ts": 1794296469.575929,
+ "saved_ts": 1794297382.6197755,
  "shadow_seen": [
   "1029715:core",
   "1057349:above",
@@ -430,6 +489,7 @@
   "568117:above",
   "5880782:above",
   "5880857:above",
+  "6044504:core",
   "608368:core",
   "616902:core",
   "6172748:above",
@@ -437,6 +497,7 @@
   "6172750:core",
   "6207381:core",
   "6282802:core",
+  "6301107:core",
   "6361257:above",
   "637910:core",
   "653788:core",
@@ -548,6 +609,7 @@
   "max_spread": 0.02,
   "min_edge": 0.0,
   "min_volume": 100000,
+  "single_only": true,
   "stake_usd": 20.0,
   "stop_bid": null,
   "tag": "harvest-maker",
