@@ -1,0 +1,126 @@
+
+====================================================================================================
+The main account's rule: 95-98c, stand-alone markets, lift the ask, hold to resolution
+====================================================================================================
+
+[all]
+                                                            entry  trades  events   win%  avg_cost  avg_ret%  se%  t_event  med_dte  med_days_in_band
+                          first time it qualifies (the backtest)    1836    1252  98.20      0.97      1.64 0.34     4.84    23.00               0.0
+                  of those: 30 days or less to the scheduled end    1164     811  97.77      0.97      1.24 0.47     2.64    13.17               0.0
+                           first time it qualifies 2+ days later    1381     983  98.26      0.97      1.57 0.36     4.33    24.17               2.0
+                           first time it qualifies 5+ days later    1095     807  98.26      0.97      1.48 0.41     3.64    25.50               5.0
+                          first time it qualifies 10+ days later     780     604  98.72      0.97      1.80 0.42     4.29    31.17              10.0
+                          first time it qualifies 20+ days later     435     356  99.31      0.97      2.26 0.41     5.48    32.00              20.0
+                          first time it qualifies 30+ days later     221     198 100.00      0.97      2.79 0.05    54.44    25.00              30.0
+            20+ days later: 30 days or less to the scheduled end     194     173  98.97      0.97      1.86 0.75     2.48    19.50              21.0
+whatever qualifies on a switch-on date (154 dates, a week apart)    2046     830  98.58      0.97      1.72 0.37     4.69    29.00               8.0
+                       of those: first qualified 0-2 days before     524     429  98.28      0.97      1.67 0.59     2.82    27.17               1.0
+                                       of those: 3-9 days before     624     498  98.40      0.97      1.58 0.52     3.04    26.00               6.0
+                                     of those: 10-19 days before     480     352  98.54      0.97      1.56 0.64     2.42    35.50              14.0
+                                of those: 20 days or more before     418     238  99.28      0.97      2.18 0.43     5.06    28.50              26.0
+
+[holdout]
+                                                            entry  trades  events   win%  avg_cost  avg_ret%  se%  t_event  med_dte  med_days_in_band
+                          first time it qualifies (the backtest)    1263    1007  98.10      0.97      1.52 0.41     3.68    24.00               0.0
+                  of those: 30 days or less to the scheduled end     785     641  97.58      0.97      1.02 0.60     1.70    14.00               0.0
+                           first time it qualifies 2+ days later     970     785  98.04      0.97      1.35 0.46     2.95    24.50               2.0
+                           first time it qualifies 5+ days later     780     630  97.95      0.97      1.14 0.52     2.17    26.00               5.0
+                          first time it qualifies 10+ days later     564     472  98.23      0.97      1.27 0.58     2.19    32.75              10.0
+                          first time it qualifies 20+ days later     331     282  99.09      0.97      2.03 0.54     3.76    32.50              20.0
+                          first time it qualifies 30+ days later     171     154 100.00      0.97      2.79 0.06    47.70    25.50              30.0
+            20+ days later: 30 days or less to the scheduled end     144     128  98.61      0.97      1.50 1.01     1.48    20.25              20.5
+whatever qualifies on a switch-on date (154 dates, a week apart)    1488     654  98.12      0.97      1.22 0.50     2.46    30.00               9.0
+                       of those: first qualified 0-2 days before     348     314  97.70      0.97      1.04 0.83     1.25    29.00               1.0
+                                       of those: 3-9 days before     448     388  97.77      0.97      0.94 0.72     1.30    28.50               6.0
+                                     of those: 10-19 days before     365     275  98.08      0.97      1.09 0.85     1.29    36.50              14.0
+                                of those: 20 days or more before     327     186  99.08      0.97      1.94 0.55     3.54    29.00              27.0
+
+[recent]
+                                                            entry  trades  events   win%  avg_cost  avg_ret%  se%  t_event  med_dte  med_days_in_band
+                          first time it qualifies (the backtest)     573     285  98.43      0.97      1.91 0.59     3.23    20.00               0.0
+                  of those: 30 days or less to the scheduled end     379     191  98.15      0.97      1.68 0.72     2.33    12.17               0.0
+                           first time it qualifies 2+ days later     411     227  98.78      0.97      2.08 0.55     3.76    23.77               2.0
+                           first time it qualifies 5+ days later     315     197  99.05      0.97      2.33 0.56     4.17    25.00               5.0
+                          first time it qualifies 10+ days later     216     144 100.00      0.97      3.20 0.06    52.38    28.17              10.0
+                          first time it qualifies 20+ days later     104      79 100.00      0.97      2.99 0.09    34.36    31.17              21.0
+                          first time it qualifies 30+ days later      50      47 100.00      0.97      2.77 0.11    25.44    24.86              31.0
+            20+ days later: 30 days or less to the scheduled end      50      45 100.00      0.97      2.90 0.13    23.07    16.45              21.0
+whatever qualifies on a switch-on date (154 dates, a week apart)     558     199  99.82      0.97      3.05 0.19    16.01    24.17               6.0
+                       of those: first qualified 0-2 days before     176     124  99.43      0.97      2.90 0.59     4.88    23.67               1.0
+                                       of those: 3-9 days before     176     121 100.00      0.97      3.22 0.06    53.65    23.17               5.0
+                                     of those: 10-19 days before     115      82 100.00      0.97      3.04 0.08    40.06    29.00              14.0
+                                of those: 20 days or more before      91      55 100.00      0.97      3.02 0.10    31.46    23.87              25.0
+
+switch-on dates with 10 or more trades: 76 of 139; no losing trade on 56; the day's purchases lost money overall on 19
+  return per trade of a day's purchases: median 3.10%, a tenth of dates below -2.85%, a tenth above 3.40%, worst -10.36%
+  distinct markets across all switch-on dates: 1,129 (the first-time rule trades 1,836)
+
+losing trades of the first-time rule: 33 of 1,836
+  still qualifying  2+ days later: 1,381 contracts, 24 of them lost (1.74%)
+  still qualifying  5+ days later: 1,095 contracts, 19 of them lost (1.74%)
+  still qualifying 10+ days later:   780 contracts, 10 of them lost (1.28%)
+  still qualifying 20+ days later:   435 contracts,  3 of them lost (0.69%)
+  still qualifying 30+ days later:   221 contracts,  0 of them lost (0.00%)
+
+====================================================================================================
+The pre-registered rule R1d: 95-99c, legs of multi-outcome events included
+====================================================================================================
+
+[all]
+                                                            entry  trades  events  win%  avg_cost  avg_ret%  se%  t_event  med_dte  med_days_in_band
+                          first time it qualifies (the backtest)    3810    2062 98.19      0.97      1.05 0.23     4.52    20.50               0.0
+                  of those: 30 days or less to the scheduled end    2489    1440 97.91      0.97      0.79 0.30     2.62    11.50               0.0
+                           first time it qualifies 2+ days later    2787    1649 98.56      0.97      1.31 0.24     5.56    23.50               2.0
+                           first time it qualifies 5+ days later    2291    1409 98.60      0.97      1.20 0.26     4.67    24.58               5.0
+                          first time it qualifies 10+ days later    1751    1144 98.80      0.98      1.23 0.28     4.41    28.50              10.0
+                          first time it qualifies 20+ days later    1080     762 99.07      0.98      1.34 0.30     4.51    31.00              20.0
+                          first time it qualifies 30+ days later     714     531 99.44      0.98      1.46 0.28     5.17    26.50              30.0
+            20+ days later: 30 days or less to the scheduled end     512     410 98.63      0.98      0.80 0.53     1.51    17.00              20.0
+whatever qualifies on a switch-on date (155 dates, a week apart)    5691    1480 99.03      0.98      1.43 0.20     7.08    24.17              10.0
+                       of those: first qualified 0-2 days before    1212     861 98.68      0.97      1.42 0.34     4.20    24.33               1.0
+                                       of those: 3-9 days before    1503    1020 98.94      0.98      1.46 0.27     5.35    24.17               6.0
+                                     of those: 10-19 days before    1242     776 98.87      0.98      1.20 0.37     3.26    28.56              14.0
+                                of those: 20 days or more before    1734     585 99.48      0.98      1.58 0.21     7.40    23.77              29.0
+
+[holdout]
+                                                            entry  trades  events  win%  avg_cost  avg_ret%  se%  t_event  med_dte  med_days_in_band
+                          first time it qualifies (the backtest)    2822    1652 98.16      0.97      0.96 0.27     3.62    20.00               0.0
+                  of those: 30 days or less to the scheduled end    1871    1149 97.86      0.97      0.68 0.35     1.97    11.17               0.0
+                           first time it qualifies 2+ days later    2033    1312 98.43      0.97      1.17 0.29     4.01    23.50               2.0
+                           first time it qualifies 5+ days later    1665    1107 98.44      0.97      1.02 0.32     3.17    24.50               5.0
+                          first time it qualifies 10+ days later    1268     889 98.58      0.98      0.99 0.36     2.74    29.25              10.0
+                          first time it qualifies 20+ days later     783     584 99.11      0.98      1.41 0.35     4.05    31.21              20.0
+                          first time it qualifies 30+ days later     522     406 99.81      0.98      1.85 0.20     9.10    26.50              30.0
+            20+ days later: 30 days or less to the scheduled end     365     296 98.36      0.98      0.57 0.68     0.83    16.50              20.0
+whatever qualifies on a switch-on date (155 dates, a week apart)    4192    1185 98.97      0.98      1.34 0.24     5.50    24.17              11.0
+                       of those: first qualified 0-2 days before     877     668 98.40      0.97      1.10 0.44     2.51    24.50               1.0
+                                       of those: 3-9 days before    1091     794 98.90      0.98      1.42 0.33     4.34    23.50               6.0
+                                     of those: 10-19 days before     909     601 98.68      0.98      1.00 0.47     2.11    29.50              14.0
+                                of those: 20 days or more before    1315     459 99.62      0.98      1.68 0.21     7.94    24.00              29.0
+
+[recent]
+                                                            entry  trades  events  win%  avg_cost  avg_ret%  se%  t_event  med_dte  med_days_in_band
+                          first time it qualifies (the backtest)     988     461 98.28      0.97      1.28 0.47     2.74    21.17               0.0
+                  of those: 30 days or less to the scheduled end     618     319 98.06      0.97      1.12 0.62     1.82    12.17               0.0
+                           first time it qualifies 2+ days later     754     378 98.94      0.97      1.70 0.38     4.48    24.17               2.0
+                           first time it qualifies 5+ days later     626     335 99.04      0.97      1.68 0.39     4.27    25.08               5.0
+                          first time it qualifies 10+ days later     483     280 99.38      0.98      1.87 0.37     5.07    28.17              10.0
+                          first time it qualifies 20+ days later     297     193 98.99      0.98      1.16 0.57     2.04    31.00              20.0
+                          first time it qualifies 30+ days later     192     130 98.44      0.98      0.42 0.85     0.49    27.00              30.0
+            20+ days later: 30 days or less to the scheduled end     147     118 99.32      0.98      1.37 0.70     1.95    17.17              20.0
+whatever qualifies on a switch-on date (155 dates, a week apart)    1499     336 99.20      0.98      1.67 0.35     4.77    24.21              10.0
+                       of those: first qualified 0-2 days before     335     205 99.40      0.97      2.25 0.43     5.22    24.17               1.0
+                                       of those: 3-9 days before     412     248 99.03      0.97      1.58 0.49     3.20    26.00               6.0
+                                     of those: 10-19 days before     333     187 99.40      0.98      1.73 0.44     3.94    27.17              14.0
+                                of those: 20 days or more before     419     133 99.05      0.98      1.26 0.57     2.21    23.77              29.0
+
+switch-on dates with 10 or more trades: 115 of 149; no losing trade on 71; the day's purchases lost money overall on 23
+  return per trade of a day's purchases: median 2.31%, a tenth of dates below -0.88%, a tenth above 2.69%, worst -10.08%
+  distinct markets across all switch-on dates: 2,456 (the first-time rule trades 3,810)
+
+losing trades of the first-time rule: 69 of 3,810
+  still qualifying  2+ days later: 2,787 contracts, 40 of them lost (1.44%)
+  still qualifying  5+ days later: 2,291 contracts, 32 of them lost (1.40%)
+  still qualifying 10+ days later: 1,751 contracts, 21 of them lost (1.20%)
+  still qualifying 20+ days later: 1,080 contracts, 10 of them lost (0.93%)
+  still qualifying 30+ days later:   714 contracts,  4 of them lost (0.56%)

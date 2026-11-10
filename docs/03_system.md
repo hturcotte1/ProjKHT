@@ -304,6 +304,10 @@ python scripts/check_loss_bunching.py       # did the rule's losses bunch in tim
 ```
 
 ```bash
+python scripts/check_late_entry.py          # does buying a contract late do as well as buying it first?
+```
+
+```bash
 python scripts/run_confirmatory_sports.py   # the pre-registered test (sports)
 ```
 

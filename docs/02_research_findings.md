@@ -387,6 +387,27 @@ years cannot show is one shock that flips many near-certain contracts at once.
 The per-story cap in the trading system is there for that case, and the
 history gives no way to size it.
 
+**Buying late.** The backtest buys a contract the first time it qualifies. An
+account that is switched on today, or comes back after days without a cycle,
+finds contracts that have been sitting in the band for days or weeks and buys
+those. The paper account's first purchases are of that kind, and so is most of
+the forward-test log so far. On the same data, buying late did no worse.
+Buying the first time a contract qualifies made +1.64% a trade (1,836 trades,
+both samples). Buying whatever qualified on a switch-on date, tried on 154
+dates a week apart, made +1.72% (2,046 trades in 1,129 markets, t = 4.7). On
+the holdout alone the two are +1.52% and +1.22%, a gap well inside the noise
+(`check_late_entry.py`, `c7_*.csv`; exploratory). Contracts that had already
+been in the band for three weeks or more lost less often, 3 of 435 against 33
+of 1,836. The pre-registered rule points the same way on the holdout and not
+on the newer sample, so this is a lead to watch in the forward-test log and
+not a result.
+
+One day's purchases are a small sample, though. Of the 76 switch-on dates on
+which ten or more contracts were bought, 56 had no losing trade and made about
+3% a trade. On 19 the day's purchases lost money overall, because one loser
+among twenty cancels the rest. The paper account's first positions are one
+such day.
+
 ### How much money it could take
 
 The backtest buys $20 at a time, which says nothing about a larger account.
@@ -508,11 +529,16 @@ of anything.
 
 ## 10. What happens next
 
-The paper accounts run every three hours and log every signal they see, in the
-traded band and on either side of it, whether or not there is money to take
-it (`kht shadow`). The first cycle alone logged about 250 signals, 99 of them
-the kind the account trades, most of which resolve within two months, so the
-log will say more by January than the paper account can in a year.
+The paper accounts are set to run about every three hours and log every signal
+they see, in the traded band and on either side of it, whether or not there is
+money to take it (`kht shadow`). The first cycle alone logged 246 signals, 97
+of them the kind the account trades, most of which resolve within two months,
+so the log will say more by January than the paper account can in a year.
+Nearly all of those first signals were contracts already sitting in their
+band when the log began, which the backtest would have bought earlier. That
+did not change the result in the history (see "Buying late" above), but it
+means the log's first months are a test of the rule on a standing stock of
+contracts, and only later a repeat of the backtest.
 
 It will still not say much, and it is worth knowing why before reading it. A
 signal in the traded band has to win 96.6% of the time to break even, and won

@@ -9,6 +9,7 @@ carries.
 | `c1_` … `c4_` | `run_confirmatory.py` | The pre-registered rules on the holdout and the newer sample; robustness, account simulation and tail for R1 and R1d | **The evidence** |
 | `c5_` | `check_holdout_definition.py` | Every pre-registered rule under the holdout as run (scheduled end) and as first written (close date) | A check on the evidence |
 | `c6_` | `check_loss_bunching.py` | How the losing trades of the rule that passed were spread over events, weeks and months, against what chance would produce | Exploratory description of the evidence |
+| `c7_` | `check_late_entry.py` | The same rules entered late: days or weeks after a contract first qualified, and on "switch-on" dates a week apart | Exploratory check on how the paper accounts and the forward-test log start |
 | `s1_`, `s2_` | `run_confirmatory_sports.py` | The pre-registered sports rules | **The evidence** (negative) |
 | `x_a…` | `run_exploratory.py --part A` | Momentum, reversal, round-trip trades, Yes vs No, resting-bid entry, breakdowns (non-sports) | Exploratory |
 | `x_a3c_` | `run_exploratory_resting.py` | The round-trip trades entered with a resting bid instead of at the ask | Exploratory |
