@@ -54,6 +54,16 @@ def subset(meta: pd.DataFrame, name: str) -> pd.DataFrame:
         life = (meta["closed_ts"].fillna(meta["end_ts"]) - meta["start_ts"]) / 86_400
         resolved = meta["winner"].notna() | (meta["final0"] == 0.5)
         sel = (meta["category"] != "sports") & (meta["category"] != "crypto") & (life >= 2) & resolved
+    elif name in ("short_lived", "short_lived_thin", "short_lived_thinner"):
+        # News markets that resolved within two days of opening although they
+        # were scheduled to run for more than three. Every earlier subset left
+        # them out with its "life of two days or more" filter, and a market's
+        # life is not known in advance: these are mostly questions where the
+        # thing happened at once (docs/05_third_round.md, section 3).
+        life = (meta["closed_ts"].fillna(meta["end_ts"]) - meta["start_ts"]) / 86_400
+        scheduled = (meta["end_ts"] - meta["start_ts"]) / 86_400
+        resolved = meta["winner"].notna() | (meta["final0"] == 0.5)
+        sel = (meta["category"] != "sports") & (meta["category"] != "crypto") & (life < 2) & (scheduled > 3) & resolved
     elif name == "open_non_sports":
         # still-open markets: needed so that results are not conditioned on
         # 'the market has already resolved' (censoring)

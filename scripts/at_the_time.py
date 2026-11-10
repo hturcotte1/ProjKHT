@@ -37,11 +37,22 @@ CEILING = {"big": float("inf"), "thin": 100_000, "thinner": 20_000}     # every 
 
 
 def news_meta(name: str) -> pd.DataFrame:
-    """Resolved markets outside sports and crypto with a life of two days or more, as in every round."""
+    """Resolved markets outside sports and crypto.
+
+    Earlier rounds also required "a life of two days or more", to drop daily
+    markets. A market's life is not known in advance, and the markets that
+    resolve within two days of opening although scheduled to run longer are
+    mostly ones where the thing happened at once: losses for anyone who had
+    bought "No". They are kept here. What is still dropped (a life under two
+    days AND a schedule of three days or less) could not have been traded by
+    any rule in this project, since all of them need more than three days to
+    the scheduled end.
+    """
     meta = load_meta(SETS[name])
     life = (meta["closed_ts"].fillna(meta["end_ts"]) - meta["start_ts"]) / 86_400
+    scheduled = (meta["end_ts"] - meta["start_ts"]) / 86_400
     resolved = meta["winner"].notna() | (meta["final0"] == 0.5)
-    meta = meta[(~meta["category"].isin(["sports", "crypto"])) & (life >= 2) & resolved].copy()
+    meta = meta[(~meta["category"].isin(["sports", "crypto"])) & ((life >= 2) | (scheduled > 3)) & resolved].copy()
     meta["closed_ts"] = meta["closed_ts"].fillna(meta["end_ts"])
     return meta[meta["closed_ts"].notna()]
 
@@ -52,7 +63,7 @@ def all_meta() -> pd.DataFrame:
 
 def _part(name: str, ranges: list[tuple[int, int]]) -> dict[tuple[int, int], pd.DataFrame]:
     """The trades of one set of markets made while the market's volume so far was in each range (cached)."""
-    paths = {r: CACHE / f"tr_{name}_{r[0]}_{r[1]}.parquet" for r in ranges}
+    paths = {r: CACHE / f"tr2_{name}_{r[0]}_{r[1]}.parquet" for r in ranges}
     todo = [r for r in ranges if not paths[r].exists()]
     if todo:
         tr = build_trades_table(news_meta(name))
@@ -82,7 +93,7 @@ def trades(lo: int, hi: int, only: tuple[str, ...] | None = None) -> pd.DataFram
 def panel(lo: int, hi: int, only: tuple[str, ...] | None = None) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """(metadata, trades, by-side daily panel) of the markets while they had traded ``lo`` to ``hi`` shares."""
     tag = "all" if only is None else "-".join(only)
-    path = CACHE / f"panel_at_{lo}_{hi}_{tag}.parquet"
+    path = CACHE / f"panel2_at_{lo}_{hi}_{tag}.parquet"
     meta = all_meta() if only is None else pd.concat([news_meta(n) for n in only], ignore_index=True).drop_duplicates("market_id")
     tr = trades(lo, hi, only)
     if path.exists():

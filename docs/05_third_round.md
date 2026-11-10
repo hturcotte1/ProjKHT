@@ -271,11 +271,26 @@ pass, and resting bids do not pass. The corrected numbers above come from
 exploration code; section 4 will give them from a committed script, with
 everything in round two that depended on them.
 
+**A second filter with hindsight in it** *(20:05 UTC, same state: nothing
+opened).* Every universe so far also required "a life of two days or more",
+to leave out daily markets. A market's life is not known in advance either.
+On the three lists, 786 news markets resolved within two days of opening
+although they were scheduled to run for more than three, and "Yes" won in
+about half of them against a quarter of the rest. They are mostly questions
+where the thing happened at once ("US strikes Iran by January 24?", "Paris
+curfew by October 24?"), and a rule that buys "No" could have been caught in
+some. They were never downloaded. They are being downloaded now and go back
+into every universe: the filter becomes "a life of two days or more, *or*
+scheduled to run more than three", which leaves out only markets no rule
+here could have traded, since every rule needs more than three days to the
+scheduled end. This one reaches the first round too, and section 4 will say
+what it does to those numbers.
+
 **What changes in the tests above.** The universe fixed for T5 has the same
 flaw (markets that *ended* at 5,000 to 20,000 shares). Every test in this
 section is therefore judged on the corrected universe: **news markets while
 the shares they had traded so far were at least 5,000 and fewer than 20,000,
-whatever they went on to trade.** That is the newly downloaded markets plus
+whatever they went on to trade, with the short-lived markets put back.** That is the newly downloaded markets plus
 the early life of every market already on disk, and nobody has looked at any
 of them in that range. The universe as first fixed is reported beside it, as
 a second measure of the flaw. The bars do not change. Where a test pools with
