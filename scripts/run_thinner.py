@@ -17,6 +17,22 @@ a return at least as large as in the 20,000-100,000 markets. Reported with
 it: how many dollars traded in range, because below some size there is
 nothing to buy.
 
+Four more tests were fixed in docs/05_third_round.md, section 3, while the
+tapes were still downloading and before any had been opened:
+
+    T5-Y   the leader: T5's own trades that bought the "Yes" side of a leg.
+           Bar: positive with |t| >= 3 and fewer losses than the price
+           implies, exact binomial p < 0.01.
+    T5-L   long-dated "No": stand-alone, 90-98c, more than 60 and at most 180
+           days to a scheduled end on or before 27 October 2026.
+           Bar: positive with |t| >= 3 (150 trades or more).
+    T5-N   which side: the thin band split by side. Prediction: "No" returns
+           more than "Yes". Decision: drop the "Yes" side only if the sign
+           holds here and the gap pooled with the two earlier universes has
+           |t| >= 3.
+    T5-TM  resting bids, exactly as TM in round two.
+           Bar: positive with |t| >= 3 and above the ask version, |t| >= 2.
+
     python scripts/run_thinner.py
 """
 
@@ -30,6 +46,8 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import run_quiet_favourites as rq  # noqa: E402
+import run_quiet_replication as rr  # noqa: E402
 import run_thin_markets as tm  # noqa: E402
 
 from kht.backtest.harvest import Rule, candidate_trades, prepare  # noqa: E402
@@ -37,12 +55,16 @@ from kht.data.download import load_meta  # noqa: E402
 from kht.research.quotes import add_taker_buy_pnl, by_side, period_quotes  # noqa: E402
 from kht.research.sports import build_trades_table  # noqa: E402
 from kht.research.stats import mean_cluster  # noqa: E402
+from scipy import stats as sps  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 250)
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "reports" / "research"
 MIN_CUM = 5_000
+SCHEDULED_BY = pd.Timestamp("2026-10-27").timestamp()     # T5-L: only markets whose scheduled end is behind us
+BIG_PANEL = ROOT / "data" / "cache" / "panel_non_sports.parquet"
+THIN_PANEL = ROOT / "data" / "cache" / "panel_thin.parquet"
 # the same rules on the 20,000-100,000 markets, from qt_quiet_replication.csv and t_thin_trades.csv
 THIN = {"R1d: 95-99c, legs included": (1.69, 9.01, 3135), "main rule: 95-98c, stand-alone": (1.96, 5.96, 1393),
         "thin band: 90-98c, stand-alone": (2.40, 5.47, 1744)}
@@ -110,6 +132,140 @@ def main() -> None:
         print(f"\n{name} by year of entry:")
         print(t.groupby("year").agg(trades=("won", "size"), lost=("won", lambda w: int((w == 0).sum())),
                                     avg_ret_pct=("ret", lambda x: 100 * x.mean())).round(2).to_string())
+    third_round(meta, s, kept)
+
+
+def line(t: pd.DataFrame) -> dict:
+    if len(t) < 2:
+        return {"trades": len(t)}
+    r = mean_cluster(t["ret"].to_numpy(), t["cluster"].to_numpy())
+    return {"trades": len(t), "events": int(t["cluster"].nunique()), "lost": int((t["won"] == 0).sum()),
+            "lost %": 100 * float((t["won"] == 0).mean()), "avg cost": float(t["cost"].mean()),
+            "return a trade %": 100 * r.mean, "t_event": r.t, "median hold, days": float(t["hold"].median())}
+
+
+def yes_no(meta: pd.DataFrame) -> pd.Series:
+    """Markets whose two outcomes are named Yes and No, by market id."""
+    m = meta.set_index("market_id")
+    return (m["outcome0"].str.strip().str.lower() == "yes") & (m["outcome1"].str.strip().str.lower() == "no")
+
+
+def side_split(panel: pd.DataFrame, meta: pd.DataFrame, tag: str) -> pd.DataFrame:
+    """The thin band's stand-alone trades in Yes/No markets of one universe, for the pooled T5-N gap."""
+    yn = yes_no(meta).reindex(panel["market_id"]).fillna(False).to_numpy(dtype=bool)
+    single = ~panel["neg_risk"].fillna(False).to_numpy(dtype=bool)
+    ask, dte = panel["ask"].to_numpy(), panel["days_to_end"].to_numpy()
+    t = candidate_trades(panel, Rule(0.90, 0.98, 3, 60), signal=(ask > 0.90) & (ask <= 0.98) & (dte > 3) & (dte <= 60) & single & yn)
+    t["cluster"] = tag + t["cluster"].astype(str)          # event ids must not collide across universes
+    t["universe"] = tag
+    return t
+
+
+def earlier_panel(path: Path, meta: pd.DataFrame, min_cum: float) -> pd.DataFrame:
+    """The by-side panel of a universe read in an earlier round: from the cache if it is there, else rebuilt from the tapes."""
+    if path.exists():
+        p = pd.read_parquet(path)
+    else:
+        p = add_taker_buy_pnl(by_side(period_quotes(build_trades_table(meta), min_cum=min_cum), meta))
+        path.parent.mkdir(parents=True, exist_ok=True)
+        p.to_parquet(path, index=False)
+    p = prepare(p)
+    p = p[p["won"].notna()].reset_index(drop=True)
+    p["series"] = p.groupby(["market_id", "side"], sort=False).ngroup()
+    return p
+
+
+def third_round(meta: pd.DataFrame, s: pd.DataFrame, kept: dict[str, pd.DataFrame]) -> None:
+    """The four tests fixed in docs/05_third_round.md, section 3."""
+    m = meta.set_index("market_id")
+    yn_of = yes_no(meta)
+    leg_of = m["neg_risk"].fillna(False).astype(bool)
+    yn = yn_of.reindex(s["market_id"]).fillna(False).to_numpy(dtype=bool)
+    single = ~leg_of.reindex(s["market_id"]).fillna(False).to_numpy(dtype=bool)
+    ask, dte, side = s["ask"].to_numpy(), s["days_to_end"].to_numpy(), s["side"].to_numpy()
+    rows = []
+    print("\n" + "#" * 110 + "\nThird round (docs/05_third_round.md, section 3)\n" + "#" * 110)
+
+    # ---- T5-Y and the other three kinds of trade inside R1d
+    r1d = kept["R1d: 95-99c, legs included"].copy()
+    r1d = r1d[yn_of.reindex(r1d["market_id"]).fillna(False).to_numpy(dtype=bool)]
+    r1d["leg"] = leg_of.reindex(r1d["market_id"]).fillna(False).to_numpy(dtype=bool)
+    kinds = {"stand-alone, No": r1d[~r1d["leg"] & (r1d["side"] == 1)], "stand-alone, Yes": r1d[~r1d["leg"] & (r1d["side"] == 0)],
+             "leg, Yes (the leader)": r1d[r1d["leg"] & (r1d["side"] == 0)], "leg, No (an also-ran)": r1d[r1d["leg"] & (r1d["side"] == 1)]}
+    for name, t in kinds.items():
+        rows.append({"test": "inside R1d (95-99c, 3-60 days)", "group": name, **line(t)})
+    lead = kinds["leg, Yes (the leader)"]
+    if len(lead) >= 2:
+        r = mean_cluster(lead["ret"].to_numpy(), lead["cluster"].to_numpy())
+        k, n, be = int((lead["won"] == 0).sum()), len(lead), float(1 - lead["cost"].mean())
+        p = float(sps.binom.cdf(k, n, be))
+        ok = r.mean > 0 and abs(r.t) >= 3 and p < 0.01
+        print(f"T5-Y, the leader: {n:,} trades in {lead['cluster'].nunique():,} events, {k} lost; return per trade {100 * r.mean:+.2f}% (t = {r.t:.2f})")
+        print(f"  the price paid implies {100 * be:.2f}% lose; chance of {k} or fewer in {n:,} if that were true: {p:.5f}")
+        print(f"  bar (positive with |t| >= 3, and that chance below 0.01)  ->  {'PASSED' if ok else 'NOT PASSED'}")
+    else:
+        print("T5-Y, the leader: no trades")
+
+    # ---- T5-L: long-dated "No"
+    sched = s["end_ts"].to_numpy() <= SCHEDULED_BY
+    far = (dte > 60) & (dte <= 180)
+    band = (ask > 0.90) & (ask <= 0.98)
+    long_no = candidate_trades(s, Rule(0.90, 0.98, 60, 180), signal=band & far & single & yn & sched & (side == 1))
+    long_yes = candidate_trades(s, Rule(0.90, 0.98, 60, 180), signal=band & far & single & yn & sched & (side == 0))
+    for name, t in (("No", long_no), ("Yes", long_yes)):
+        row = line(t)
+        if len(t) >= 2:
+            row["per 30 days held %"] = 100 * float(t["ret"].sum()) / max(float(t["hold"].clip(lower=1).sum()), 1.0) * 30
+        rows.append({"test": "long-dated (90-98c, 60-180 days, stand-alone)", "group": name, **row})
+    if len(long_no) >= 2:
+        r = mean_cluster(long_no["ret"].to_numpy(), long_no["cluster"].to_numpy())
+        verdict = "CANNOT SETTLE IT (fewer than 150 trades)" if len(long_no) < 150 else ("PASSED" if r.mean > 0 and abs(r.t) >= 3 else "NOT PASSED")
+        print(f"\nT5-L, long-dated No: {len(long_no):,} trades in {long_no['cluster'].nunique():,} events, {int((long_no['won'] == 0).sum())} lost; "
+              f"return per trade {100 * r.mean:+.2f}% (t = {r.t:.2f}), median hold {long_no['hold'].median():.0f} days")
+        print(f"  bar (positive with |t| >= 3, on 150 trades or more)  ->  {verdict}")
+    else:
+        print("\nT5-L, long-dated No: no trades")
+
+    # ---- T5-N: which side, here and pooled with the two universes already read
+    here = side_split(s, meta, "t5:")
+    for name, t in (("No", here[here["side"] == 1]), ("Yes", here[here["side"] == 0])):
+        rows.append({"test": "thin band (90-98c, 3-60 days, stand-alone)", "group": name, **line(t)})
+    print("\nT5-N, which side (thin band, stand-alone, Yes/No markets):")
+    sign_ok = False
+    if (here["side"] == 0).sum() >= 2 and (here["side"] == 1).sum() >= 2:
+        d, t_d = rq.gap(here[here["side"] == 1], here[here["side"] == 0])
+        sign_ok = d > 0
+        print(f"  in these markets: No minus Yes {100 * d:+.2f} points (t = {t_d:.2f}); predicted sign {'held' if sign_ok else 'did not hold'}")
+    big_meta, thin_meta = tm.big_meta(), rr.thin_meta()
+    allt = pd.concat([here, side_split(earlier_panel(BIG_PANEL, big_meta, 100_000), big_meta, "big:"),
+                      side_split(earlier_panel(THIN_PANEL, thin_meta, 20_000), thin_meta, "thin:")], ignore_index=True)
+    d, t_d = rq.gap(allt[allt["side"] == 1], allt[allt["side"] == 0])
+    print(f"  pooled over the three universes ({int((allt['side'] == 1).sum()):,} No and {int((allt['side'] == 0).sum()):,} Yes trades): "
+          f"No minus Yes {100 * d:+.2f} points (t = {t_d:.2f})")
+    print(f"  decision rule (sign holds here and pooled |t| >= 3)  ->  {'DROP THE YES SIDE' if sign_ok and d > 0 and abs(t_d) >= 3 else 'LEAVE THE ACCOUNTS ALONE'}")
+
+    # ---- T5-TM: resting bids on the thin account's signals
+    rng14, seasoned14 = rq.trailing_range(s, 14)
+    calm = ~(seasoned14 & (rng14 > 0.15))
+    sig = (ask > 0.90) & (ask <= 0.98) & (dte > 3) & (dte <= 60) & single & calm
+    taker = candidate_trades(s, Rule(0.90, 0.98, 3, 60, entry="taker"), signal=sig)
+    maker = candidate_trades(s, Rule(0.90, 0.98, 3, 60, entry="maker"), signal=sig)
+    rows.append({"test": "thin account's signals (90-98c, calm)", "group": "at the ask", **line(taker)})
+    rows.append({"test": "thin account's signals (90-98c, calm)", "group": "resting bid", **line(maker)})
+    if len(maker) >= 2 and len(taker) >= 2:
+        r = mean_cluster(maker["ret"].to_numpy(), maker["cluster"].to_numpy())
+        d, t_d = rq.gap(maker, taker)
+        ok = r.mean > 0 and abs(r.t) >= 3 and d > 0 and abs(t_d) >= 2
+        print(f"\nT5-TM, resting bids: {len(maker):,} filled of {len(taker):,} bought at the ask ({100 * len(maker) / len(taker):.0f}%); "
+              f"return per trade {100 * r.mean:+.2f}% (t = {r.t:.2f}); bid minus ask {100 * d:+.2f} points (t = {t_d:.2f})")
+        print(f"  bar (positive with |t| >= 3; above the ask version with |t| >= 2)  ->  {'PASSED' if ok else 'NOT PASSED'}")
+
+    res = pd.DataFrame(rows)
+    res.to_csv(OUT / "t5_third_round.csv", index=False)
+    print("\n", res.round(2).to_string(index=False))
+    # reported without a bar: categories inside R1d
+    cats = pd.DataFrame([{"category": c, **line(g)} for c, g in kept["R1d: 95-99c, legs included"].groupby("category")])
+    print("\nR1d by category (no bar):\n", cats.round(2).to_string(index=False))
 
 
 class Tee:

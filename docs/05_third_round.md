@@ -1,0 +1,173 @@
+# 05 — Third round: which side of the bet
+
+*10 November 2026. Continues [04_second_round.md](04_second_round.md).*
+
+## 1. Where the second round left things
+
+One rule survives every test so far: buy the near-certain side of a news
+market and hold it. It repeats in markets a fifth the size of the ones it was
+found in, and it is larger there. Everything that tried to predict *which*
+favourites lose (quietness, a volatility yardstick, stop-losses) failed its
+test or added nothing.
+
+The account, though, is still mostly idle. With one position per event and
+positions of 2–4%, two-thirds of the money sits in cash. So the questions for
+this round are about breadth and about what exactly is being bought:
+
+1. Does the rule keep working in markets smaller still? (T5, fixed in round
+   two and not yet read.)
+2. Is it the same bet whichever side it is on? A 96¢ "Yes" and a 96¢ "No" are
+   the same price. They may not be the same mistake.
+3. Does it work further from the deadline, where the money is idle anyway?
+
+## 2. What the markets already read say
+
+Everything in this section was computed on the two universes that have been
+read many times (news markets with 100,000 shares or more, and with 20,000 to
+100,000). It is exploration. It chose the tests in section 3, which are run
+on markets nobody has looked at.
+
+### The same price on different sides
+
+The first round's rule, 95–99¢ with 3 to 60 days to run, split by what kind
+of contract was bought. A *stand-alone* market is a single yes/no question. A
+*leg* is one outcome of an event with several ("Who wins?", "How many?"),
+where at most one leg can pay.
+
+| Bought | Big markets: trades | lost | return (t) | Thin markets: trades | lost | return (t) |
+|---|---:|---:|---:|---:|---:|---:|
+| Stand-alone, "No" | 1,941 | 30 | +1.52% (4.9) | 1,622 | 17 | +1.71% (6.2) |
+| Stand-alone, "Yes" | 251 | 5 | +0.78% (0.7) | 207 | 4 | +0.75% (0.8) |
+| Leg, "Yes": the leader of its event | 260 | 1 | +2.84% (7.1) | 366 | 3 | +2.15% (4.4) |
+| Leg, "No": one of the also-rans | 1,358 | 33 | +0.07% (0.2) | 940 | 7 | +1.70% (5.9) |
+
+Three things stand out, each in both universes.
+
+**The stand-alone edge is on the "No" side.** Seven trades in eight are "No"
+and they carry the result. The "Yes" side has never been distinguishable from
+zero: six cells across two universes and three price bands, none with a t
+above 1.1. The gap itself is not established (pooled, "No" minus "Yes" is
++2.2 points in the 90–98¢ band, t = 2.1, and +1.0 in 95–98¢, t = 1.1). The
+first round tested "No only" as rule R2 on the holdout and it fell short at
+t = 2.2.
+
+Reading the questions explains it. A stand-alone "No" at 96¢ is almost always
+*"will something happen by a date?"* priced at 4¢ that it will. A stand-alone
+"Yes" at 96¢ is mostly the reverse: *something is expected to happen* (a rate
+cut by a date, a model released by a date, a ceasefire announced) and the
+market is nearly sure of it. The losers are things that were about to happen
+and did not: "Iran closes its airspace by May 31?", "Will Amazon beat
+quarterly earnings?". The crowd is too sure that things will happen, on both
+sides of 50¢.
+
+**The leader of a multi-way event is underpriced.** A 95–99¢ "Yes" in an
+event with several outcomes lost 1 time in 260 and 3 times in 366, against
+the 3% that its price implies (chance of so few losses if the price were
+fair: 0.002 and 0.006). These are safe seats ("Will a Republican win
+Wyoming?"), runaway front-runners, and the "nothing happens" bracket of a
+count ("Will Israel strike Yemen 0 times by October 31?"). The paper accounts
+have never traded them: they skip every leg.
+
+**The also-rans are fairly priced where professionals are.** Betting against
+one of several long shots earned nothing in the big markets and 1.7% in the
+thin ones. In a multi-way event the legs can be converted into one another,
+so arbitrage keeps the field's prices consistent in markets worth
+arbitraging. No test is fixed on these; they are reported.
+
+One way to say all three: what is underpriced is the outcome in which
+*nothing surprising happens*, whichever label it carries. The stand-alone
+"No", the leader, and the zero bracket are that outcome. The stand-alone
+"Yes" at 96¢ is a forecast that something *will* happen, and it is not
+underpriced.
+
+### Further from the deadline
+
+Every test so far bought with 3 to 60 days to run. The same contracts exist
+months out, and nobody has looked at them. Stand-alone markets, 90–98¢,
+bought with more than 60 and up to 180 days to the scheduled end, in markets
+whose scheduled end had passed by 27 October 2026 (see the note below):
+
+| | Big: trades | lost | return (t) | per 30 days held | Thin: trades | lost | return (t) | per 30 days held |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Both sides | 630 | 16 | +4.02% (6.2) | 1.23% | 271 | 6 | +4.06% (4.2) | 1.36% |
+| "No" side | 522 | 7 | +5.40% (9.9) | 1.48% | 231 | 4 | +4.62% (4.9) | 1.38% |
+| "Yes" side | 108 | 9 | −2.65% (−1.0) | | 40 | 2 | +0.84% (0.2) | |
+| *For comparison: 3–60 days, both sides* | 2,115 | 83 | +1.82% (4.0) | 1.96% | 1,679 | 50 | +2.47% (5.6) | 3.29% |
+
+A long-dated "No" earns four to five percent a trade and takes three months
+to do it. Per day of money tied up that is less than the short rule earns,
+and more than cash earns. Both sides together, it was positive in each year
+(big markets: +2.0%, +4.8%, +3.6% for entries in 2024, 2025, 2026), at 60–120
+days and at 120–180, and at 90–95¢ and 95–98¢. The "Yes" side is again where
+the losses are.
+
+This was a first look: three combinations of price and horizon were tried,
+the first of them the thin account's band at the next horizon out, and that
+is the one reported and tested below.
+
+*The note on scheduled ends.* The research universes are markets that have
+closed. A market scheduled to end next January is in them only if it closed
+early, and a "by January" question closes early when the thing happened.
+Recent entries are therefore tilted towards "No" bets that lost and "Yes"
+bets that won. For 3-to-60-day trades this touches the last two months of
+the sample and was small (the table's comparison row, with and without the
+filter: +1.74% and +1.82% in big, +2.40% and +2.47% in thin, without it and
+with it). For trades held
+three months it matters more, so the long-dated numbers use only markets
+whose scheduled end is behind us.
+
+### Looked at and dropped
+
+| Idea | What the two universes said |
+|---|---|
+| Questions settled by a number (finance, economics, weather) against questions settled by a story | No consistent difference: +0.9% against +1.1% in big markets, +1.1% against +1.9% in thin; finance is the weakest category at 3–60 days and among the best at 60–180 |
+| The time of year | November entries were the best month in big markets (3 losses in 520) and among the worst in thin ones |
+| Crowded months, when many contracts qualify at once | No relation to the return in either |
+
+## 3. Tests fixed before the 5,000–20,000 markets were read
+
+*Written at 19:49 UTC on 10 November 2026. The tapes of these markets were
+still downloading and none had been opened.*
+
+The universe is the one fixed for T5 in round two: resolved news markets
+(outside sports and crypto, a life of two days or more) that traded at least
+5,000 and fewer than 20,000 shares, each used once it has traded 5,000.
+Entries at the next taker-buy print within three days, today's fee, held to
+the result, standard errors clustered by event. "Yes" and "No" mean markets
+whose two outcomes carry those names.
+
+**T5** (unchanged from round two). R1d: 95–99¢, legs included, 3–60 days.
+*Bar:* positive with |t| ≥ 3.
+
+**T5-Y, the leader.** Among T5's own trades, those that bought the "Yes"
+side of a leg. *Bar:* positive with |t| ≥ 3, and fewer losses than the price
+paid implies with an exact binomial p below 0.01 (a t-statistic cannot judge
+a group that almost never loses; that was the lesson of A1). *If it passes:*
+the accounts may buy the leader of a multi-way event at 95–99¢, one position
+per event as now.
+
+**T5-L, long-dated "No".** Stand-alone markets scheduled to end on or before
+27 October 2026; the "No" outcome with an ask above 90¢ and at most 98¢ and
+more than 60 and at most 180 days to the scheduled end; one trade per market.
+*Bar:* positive with |t| ≥ 3. With fewer than 150 trades the test cannot
+settle anything and will be reported as such. *If it passes:* a paper account
+of its own for long-dated positions.
+
+**T5-N, which side.** The thin account's band (90–98¢, stand-alone, 3–60
+days), split by the side bought. *Prediction:* "No" returns more than "Yes".
+*Decision rule:* the accounts stop buying the stand-alone "Yes" side if the
+gap has the predicted sign in T5 **and** the gap pooled over the three
+universes has |t| ≥ 3. It stands at t = 2.1 before T5. Otherwise the
+accounts are left alone and the forward test, which logs both sides, goes on
+collecting.
+
+**T5-TM, resting bids.** TM exactly as in round two (the thin account's
+signals, skipping outcomes that ranged more than 15¢ in two weeks; a bid at
+the signal day's bid, filled only if a later sale prints strictly below it
+within three days, no fee), on these markets. *Bar:* positive with |t| ≥ 3
+and above the same signals bought at the ask with |t| ≥ 2 on the gap.
+
+Reported without a bar: the also-rans ("No" legs), categories, years, and the
+dollars that traded in range.
+
+That makes 26 tests with a bar fixed in advance across the three rounds.
