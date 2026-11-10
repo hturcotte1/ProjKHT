@@ -229,9 +229,39 @@ def test_a_story_stays_capped_after_it_outgrows_the_definition_of_a_theme(tmp_pa
     from kht.trading.universe import theme_tags
     assert theme_tags(pm.markets)[3] == frozenset()            # by share alone it is no longer a theme
     rep = e.run_cycle(NOW + 600)
-    assert rep.placed == 0 and rep.rejected == 1               # but the account is exposed to it, so the cap holds
-    blocked = [json.loads(l) for l in (tmp_path / "decisions.jsonl").read_text().splitlines()][-1]
-    assert blocked["action"] == "blocked" and "theme 'hormuz'" in blocked["why"]
+    assert rep.placed == 0 and rep.n_positions == 1            # but the account is exposed to it, so the cap holds
+    last = [json.loads(l) for l in (tmp_path / "decisions.jsonl").read_text().splitlines()][-1]
+    assert last["action"] == "screened" and last["by_limit"] == {"theme 'hormuz'": 1}
+
+
+def test_candidates_blocked_by_a_cap_do_not_use_up_the_cycle(tmp_path, monkeypatch):
+    from dataclasses import replace
+
+    def tagged(lm, *tags):
+        return LiveMarket(replace(lm.info, tags=tags), lm.best_bid0, lm.best_ask0, lm.volume, lm.volume_24h,
+                          lm.liquidity, lm.accepting_orders, lm.closed, lm.winner, lm.final0, lm.question)
+
+    # quiet background, three markets about one story that rank first (they end soonest), one unrelated market
+    markets = {i: tagged(live(i, 0.50, 0.52), "politics") for i in range(100, 140)}
+    for i in (1, 2, 3):
+        markets[i] = tagged(live(i, 0.92, 0.93, dte=5), "politics", "hormuz")
+    markets[4] = tagged(live(4, 0.92, 0.93, dte=40), "politics")
+    pm = FakePM(markets)
+    import kht.trading.engine as eng
+    monkeypatch.setattr(eng, "scan_open", lambda pm_, min_volume: {k: v for k, v in pm_.markets.items() if not v.closed})
+    monkeypatch.setattr(eng, "fetch_markets", lambda pm_, ids: {i: pm_.markets[i] for i in ids})
+    limits = RiskLimits(bankroll=1000, max_position_usd=25, max_event_usd=25, max_theme_usd=30, max_order_usd=25)
+    cfg = replace(CFG, max_new_per_cycle=1)
+    e = Engine(pm, StateStore(tmp_path), HarvestStrategy(cfg, MODEL), limits)
+    assert e.run_cycle(NOW).placed == 1                     # one order per cycle: the best of the story
+    held = {p.market_id for p in e.portfolio.positions.values()}
+    assert held <= {1, 2, 3}
+    # the story is now at its cap. The next cycle must move on to market 4, not spend itself on the story again
+    rep = e.run_cycle(NOW + 600)
+    assert rep.placed == 1
+    assert {p.market_id for p in e.portfolio.positions.values()} == held | {4}
+    # and the cap still held: nothing else about the story was bought
+    assert e.run_cycle(NOW + 1200).placed == 0
 
 
 def test_segment_lookup_prefers_the_most_specific_key():

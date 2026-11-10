@@ -163,17 +163,45 @@ class Engine:
 
         # 5. strategy -> risk -> broker
         candidates = self.strategy.candidates(markets, now)
-        held = {p.market_id for p in self.portfolio.positions.values()}
-        # only the best-ranked few can be bought this cycle, so only they need a history lookup
-        shortlist = [c for c in candidates if c.market.info.market_id not in held]
-        shortlist = shortlist[: 6 * self.strategy.cfg.max_new_per_cycle]
-        confirmed = self._confirmed(shortlist, now)
-        self._log_shadow(self.strategy.watchlist(markets, now), now)
-        intents = self.strategy.decide(markets, self.portfolio, self.broker.open_orders(), now, confirmed)
         market_event = {mid: lm.info.event_id for mid, lm in markets.items()}
         themes = self._sticky_themes(markets, theme_tags(markets, max_share=self.limits.theme_max_share))
-        placed = rejected = 0
+        max_new = self.strategy.cfg.max_new_per_cycle
+        # Only the best-ranked few can be bought this cycle, so only they need a
+        # history lookup; and only candidates the limits would accept are worth
+        # one. Without that screen, a story that is already at its cap can fill
+        # the whole shortlist every cycle and the account never reaches the
+        # next valid candidate.
+        busy = {p.market_id for p in self.portfolio.positions.values()} | {o.market_id for o in self.broker.open_orders()}
+        shortlist = []
+        screened: dict[str, int] = {}
+        for c in candidates:
+            if len(shortlist) >= 6 * max_new:
+                break
+            if c.market.info.market_id in busy:
+                continue
+            probe = self.strategy.entry_intent(c, now)
+            if probe is None:
+                continue
+            ok, why = self.risk.check(probe, c.market.info, self.portfolio, self.broker.open_orders(),
+                                      market_event, themes)
+            if ok:
+                shortlist.append(c)
+            else:
+                key = why.split(" exposure")[0].split(":")[0]       # "theme 'iran'", "event", "halted", ...
+                screened[key] = screened.get(key, 0) + 1
+        if screened:
+            # one line per cycle rather than one per candidate: the same few dozen would repeat every three hours
+            self.store.append_jsonl("decisions.jsonl", {"ts": now, "action": "screened", "count": sum(screened.values()),
+                                                        "by_limit": screened})
+        confirmed = self._confirmed(shortlist, now)
+        self._log_shadow(self.strategy.watchlist(markets, now), now)
+        intents = self.strategy.decide(markets, self.portfolio, self.broker.open_orders(), now, confirmed,
+                                       max_new=len(shortlist))
+        placed = rejected = opened = 0
         for it in intents:
+            entry = it.action == "place" and it.side.value == "BUY"
+            if entry and opened >= max_new:
+                continue                     # the per-cycle budget counts orders placed, not orders proposed
             info = infos[it.market_id]
             ok, why = self.risk.check(it, info, self.portfolio, self.broker.open_orders(), market_event, themes)
             if not ok:
@@ -199,6 +227,7 @@ class Engine:
                 "size": it.size, "filled": order.filled, "reason": it.reason, **{k: v for k, v in it.meta.items()}})
             if order.status != OrderStatus.REJECTED:
                 placed += 1
+                opened += int(entry)
             for f in new_fills:
                 self._log_fill(f, markets)
             fills.extend(new_fills)

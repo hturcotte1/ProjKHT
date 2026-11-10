@@ -215,10 +215,13 @@ class HarvestStrategy:
         open_orders: list[Order],
         now: float,
         confirmed: set[tuple[int, int]] | None = None,
+        max_new: int | None = None,
     ) -> list[Intent]:
         """Orders the strategy wants. ``confirmed`` is the set of (market id,
         outcome) that were also in the band ``confirm_hours`` ago; when given,
-        nothing else is bought. Exits never need confirmation."""
+        nothing else is bought. Exits never need confirmation. ``max_new``
+        overrides the per-cycle number of entries proposed (the engine asks for
+        more than it will place, because the risk limits may refuse some)."""
         cfg = self.cfg
         intents: list[Intent] = []
         held_markets = {p.market_id for p in portfolio.positions.values()}
@@ -245,28 +248,38 @@ class HarvestStrategy:
                                       reason=reason, tag=cfg.tag))
 
         # entries
+        limit = cfg.max_new_per_cycle if max_new is None else max_new
         placed = 0
         for c in self.candidates(markets, now):
-            if placed >= cfg.max_new_per_cycle:
+            if placed >= limit:
                 break
             info = c.market.info
             if info.market_id in held_markets or info.market_id in working_markets:
                 continue
             if confirmed is not None and (info.market_id, c.outcome) not in confirmed:
                 continue
-            token = info.token(c.outcome)
-            if cfg.entry == "maker":
-                # join the best bid, as in the backtest: earn the spread, pay no fee
-                price = round_to_tick(c.bid, info.tick, Side.BUY)
-                kind, expires = OrderKind.MAKER, now + cfg.maker_ttl_hours * 3600
-            else:
-                price = round_to_tick(c.ask, info.tick, Side.SELL)   # limit exactly at the ask
-                kind, expires = OrderKind.TAKER, None
-            size = math.floor(cfg.stake_usd / price * 100) / 100
-            if size < info.min_size:
+            intent = self.entry_intent(c, now)
+            if intent is None:
                 continue
-            intents.append(Intent("place", info.market_id, token, Side.BUY, kind, price, size, expires_ts=expires,
-                                  reason=c.describe(), tag=cfg.tag,
-                                  meta={"edge": c.edge + c.fee, "p_win": c.p_win, "dte": c.dte}))
+            intents.append(intent)
             placed += 1
         return intents
+
+    def entry_intent(self, c: Candidate, now: float) -> Intent | None:
+        """The order that would open a position in this candidate, or None if
+        the stake buys less than the market's minimum size."""
+        cfg = self.cfg
+        info = c.market.info
+        if cfg.entry == "maker":
+            # join the best bid, as in the backtest: earn the spread, pay no fee
+            price = round_to_tick(c.bid, info.tick, Side.BUY)
+            kind, expires = OrderKind.MAKER, now + cfg.maker_ttl_hours * 3600
+        else:
+            price = round_to_tick(c.ask, info.tick, Side.SELL)   # limit exactly at the ask
+            kind, expires = OrderKind.TAKER, None
+        size = math.floor(cfg.stake_usd / price * 100) / 100
+        if size < info.min_size:
+            return None
+        return Intent("place", info.market_id, info.token(c.outcome), Side.BUY, kind, price, size, expires_ts=expires,
+                      reason=c.describe(), tag=cfg.tag,
+                      meta={"edge": c.edge + c.fee, "p_win": c.p_win, "dte": c.dte})

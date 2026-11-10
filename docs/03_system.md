@@ -217,7 +217,7 @@ All under the state directory (default `state/paper/`):
 | `equity.csv` | One row per cycle: equity, cash, exposure |
 | `fills.csv` | Every fill |
 | `settlements.csv` | Every resolved position and its profit |
-| `decisions.jsonl` | Every order placed and every order a limit blocked, with the reason |
+| `decisions.jsonl` | Every order placed, every order a limit blocked with the reason, and each cycle's count of candidates the limits screened out before they were proposed |
 | `shadow.csv` | The forward-test log: every signal seen, traded or not |
 
 ## Reproducing the research
