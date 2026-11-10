@@ -168,3 +168,90 @@ For the rule that is already confirmed, the account simulation is repeated at
 position sizes from 2% to 10% of the bankroll, with and without the per-story
 cap, to show what larger positions would have earned and what they would have
 risked. This chooses nothing; position size is the account owner's decision.
+
+## 5. Track A: what happened, and what is fixed next
+
+*Written at 18:20 UTC on 10 November, after track A was run on the first
+round's panel and before any tape of a sports or crypto market had been read.*
+
+**A1 as written.** 45 trades in 41 events, none lost, +5.88% a trade; the
+control (the same band, not quiet) made +1.75% on 1,485 trades with 82 losers;
+the gap is 4.1 points (t = 6.2). That meets the bar as I wrote it, and the bar
+was badly written: with no losing trade the t-statistic measures only how much
+the prices paid varied, so a t of 36 means nothing. The honest test of 45
+trades with no loser is a count. If quiet favourites lost as often as the
+others in the band (5.5%), 41 separate events would all win about one time in
+ten. **A1 on its own is not established.**
+
+**What the wider cuts show** (listed in advance as "reported alongside", so
+they are evidence but not the test):
+
+| Cut | Markets | Lost | Return a trade |
+|---|---:|---:|---:|
+| 90–95¢, range of 3¢ or less over **7** days, bought at the next print | 171 trades | 0 | +6.2% |
+| 90–95¢, the same, every such signal bought at that day's own price, first day per market | 196 | 1 | +5.7% (t 10.4) |
+| 90–95¢, everything else in the band, same way | 1,560 | 90 (5.8%) | +1.5% (t 2.3) |
+| 95–98¢, range of 3¢ or less over 14 days, same way | 415 | 3 (0.7%) | +2.2% (t 5.1) |
+| 95–98¢, everything else in the band, same way | 1,818 | 37 (2.0%) | +1.5% (t 4.1) |
+
+One loser in 196 markets, against a rate of 5.8% for the rest of the band,
+would happen by chance less than once in a thousand tries even if only half
+of those markets were truly separate bets. Counting every day a contract
+spends in the band, the loss rate rises steadily with how much the price has
+moved in the last two weeks, in both bands; in the 95–98¢ band the contracts
+that moved more than 15¢ in two weeks earn nothing (+0.7%, t 0.9). Most of the
+first round's edge sits in contracts that have gone quiet.
+
+The second row matters because of a flaw the first round found in its own
+method: a backtest that waits for a later print never buys a contract whose
+price collapses in between. Buying at the signal day's own price removes that
+help, and the result stands.
+
+This is still a pattern found by looking, in data that has been looked at
+before. It becomes a finding only if it repeats where nothing has been
+looked at.
+
+### The rule to be replicated, fixed now
+
+An outcome is **quiet** if the highest and lowest prices it traded at over
+the last 7 days are 3¢ or less apart, and its market was already in the panel
+7 days ago.
+
+> **Q.** When an outcome's ask is above 90¢ and at most 98¢, its scheduled end
+> is more than 3 and at most 60 days away, and it is quiet, buy it at the first
+> taker-buy print on a later day, within 3 days, if that print is above 90¢
+> and at most 98.5¢. Pay today's fee for the category. Hold to resolution. One
+> trade per market, on the first day it qualifies.
+
+The control is the same band, horizon and entry on the first day an outcome
+is in the band and not quiet.
+
+### Where it is replicated
+
+Two universes whose tapes have never been read.
+
+**QS: sports markets that are not single games.** Season-long, tournament and
+similar questions: resolved, 100,000 shares or more, a life of 14 days or
+more, no game start time. 3,182 markets, most of them legs of "who will win"
+events, so legs and stand-alone markets are both traded and reported
+separately. Sports fee rate 0.05. Clustered by event.
+
+**QC: crypto price markets.** As defined for track C, excluding legs of
+multi-outcome events. Fee rate 0.07, clustered by the week of the scheduled
+end. Run on the discovery set now and on the holdout when it is opened. Daily
+"above" markets live only a week and cannot meet the 7-day condition, so this
+is in practice a test on the monthly and longer markets.
+
+**Bar, for each universe.** Q earns a positive return per trade with |t| ≥ 3;
+it beats its control with |t| ≥ 2 on the difference; and, because a
+t-statistic fails when almost nothing loses, the number of separate clusters
+with a losing Q trade is below what the control's loss rate would produce,
+with a one-sided exact binomial p under 0.01.
+
+Also reported, fixed now: the same rule with the scheduled end more than 60
+and at most 365 days away (**Q-long**), in both universes. The first round's
+panel suggests the effect continues there with a lower loss rate and a longer
+wait.
+
+If Q fails in both universes it is not traded with real money on the strength
+of the first round's panel alone. A paper account can still test it forward.

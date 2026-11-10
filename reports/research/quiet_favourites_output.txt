@@ -1,0 +1,71 @@
+==============================================================================================================
+THE PRE-REGISTERED TEST
+A1: 45 trades in 41 events, 0 lost; return per trade +5.88% (t = 35.84)
+control: 1,485 trades, 82 lost; return per trade +1.75% (t = 2.69)
+A1 minus control: +4.14 points (t = 6.22)
+bar: A1 positive with |t| >= 3 and above its control with |t| >= 2  ->  PASSED
+==============================================================================================================
+                                               rule              sample  trades  events   win%  lost  avg_cost  avg_ret%  se%  t_event  med_dte  med_hold_d
+                     A1: quiet, 90-95c, stand-alone                 all      45    41.0 100.00   0.0      0.94      5.88 0.16    35.84    47.50        47.0
+                     A1: quiet, 90-95c, stand-alone first-round holdout      39    35.0 100.00   0.0      0.94      5.95 0.18    32.56    48.50        49.0
+                     A1: quiet, 90-95c, stand-alone        newer sample       6     NaN    NaN   NaN       NaN       NaN  NaN      NaN      NaN         NaN
+            control: not quiet, 90-95c, stand-alone                 all    1485   994.0  94.48  82.0      0.93      1.75 0.65     2.69    22.00        20.0
+            control: not quiet, 90-95c, stand-alone first-round holdout    1007   791.0  94.04  60.0      0.93      1.25 0.84     1.49    23.00        21.0
+            control: not quiet, 90-95c, stand-alone        newer sample     478   230.0  95.40  22.0      0.93      2.80 1.00     2.80    19.17        18.0
+A2: quiet, 95-98c, stand-alone (partly seen before)                 all     389   322.0  99.23   3.0      0.97      2.11 0.46     4.58    44.50        45.0
+A2: quiet, 95-98c, stand-alone (partly seen before) first-round holdout     295   257.0  98.98   3.0      0.97      1.89 0.61     3.12    44.96        46.0
+A2: quiet, 95-98c, stand-alone (partly seen before)        newer sample      94    70.0 100.00   0.0      0.97      2.78 0.08    33.71    43.17        43.0
+                     not quiet, 95-98c, stand-alone                 all    1758  1194.0  98.18  32.0      0.97      1.64 0.35     4.71    21.50        19.0
+                     not quiet, 95-98c, stand-alone first-round holdout    1202   956.0  98.09  23.0      0.97      1.53 0.43     3.59    22.50        20.0
+                     not quiet, 95-98c, stand-alone        newer sample     556   276.0  98.38   9.0      0.97      1.89 0.61     3.10    18.58        17.0
+    A3: quiet, 90-95c, legs of multi-outcome events                 all      60    40.0  98.33   1.0      0.94      4.92 1.82     2.70    44.50        46.5
+    A3: quiet, 90-95c, legs of multi-outcome events first-round holdout      47    30.0  97.87   1.0      0.94      4.46 2.34     1.91    46.50        51.0
+    A3: quiet, 90-95c, legs of multi-outcome events        newer sample      13     NaN    NaN   NaN       NaN       NaN  NaN      NaN      NaN         NaN
+                            not quiet, 90-95c, legs                 all     992   472.0  92.74  72.0      0.93     -0.41 0.99    -0.41    16.50        15.5
+                            not quiet, 90-95c, legs first-round holdout     762   351.0  93.04  53.0      0.93     -0.09 1.08    -0.09    15.25        14.0
+                            not quiet, 90-95c, legs        newer sample     230   121.0  91.74  19.0      0.93     -1.45 2.31    -0.63    21.83        20.0
+                  A4: A1 entered with a resting bid                 all      29    27.0 100.00   0.0      0.94      6.70 0.22    30.07    51.50        53.0
+                  A4: A1 entered with a resting bid first-round holdout      24    22.0 100.00   0.0      0.94      6.78 0.26    25.77    54.50        55.0
+                  A4: A1 entered with a resting bid        newer sample       5     NaN    NaN   NaN       NaN       NaN  NaN      NaN      NaN         NaN
+                 control entered with a resting bid                 all    1373   925.0  93.66  87.0      0.91      2.45 0.74     3.31    21.50        19.0
+                 control entered with a resting bid first-round holdout     928   736.0  93.21  63.0      0.91      1.98 0.94     2.10    22.50        20.0
+                 control entered with a resting bid        newer sample     445   214.0  94.61  24.0      0.91      3.44 1.12     3.06    19.00        17.0
+   quiet, 90-98c, stand-alone (both bands together)                 all     417   341.0  99.28   3.0      0.97      2.47 0.43     5.68    44.50        46.0
+   quiet, 90-98c, stand-alone (both bands together) first-round holdout     320   275.0  99.06   3.0      0.97      2.33 0.57     4.13    45.50        46.0
+   quiet, 90-98c, stand-alone (both bands together)        newer sample      97    72.0 100.00   0.0      0.97      2.92 0.12    25.28    43.17        43.0
+                     not quiet, 90-98c, stand-alone                 all    2094  1376.0  95.89  86.0      0.94      1.75 0.47     3.71    23.50        21.0
+                     not quiet, 90-98c, stand-alone first-round holdout    1436  1114.0  95.68  62.0      0.94      1.47 0.59     2.50    24.50        22.0
+                     not quiet, 90-98c, stand-alone        newer sample     658   306.0  96.35  24.0      0.94      2.37 0.79     2.99    21.17        19.0
+      sensitivity: range <= 2c over 14 days, 90-95c                 all      17     NaN    NaN   NaN       NaN       NaN  NaN      NaN      NaN         NaN
+      sensitivity: range <= 5c over 14 days, 90-95c                 all     140   123.0  97.86   3.0      0.94      3.90 1.32     2.96    48.50        49.0
+       sensitivity: range <= 3c over 7 days, 90-95c                 all     171   153.0 100.00   0.0      0.94      6.24 0.10    61.65    47.00        46.0
+      sensitivity: range <= 3c over 28 days, 90-95c                 all       6     NaN    NaN   NaN       NaN       NaN  NaN      NaN      NaN         NaN
+                            control with range 3-6c                 all     183   163.0  95.08   9.0      0.93      1.70 1.71     0.99    31.50        28.0
+                           control with range 6-12c                 all     251   227.0  96.81   8.0      0.93      4.24 1.21     3.51    27.17        26.0
+                       control with range above 12c                 all     910   651.0  93.52  59.0      0.93      0.96 0.89     1.08    19.00        16.0
+               control without two weeks of history                 all     141   131.0  95.74   6.0      0.93      2.46 1.79     1.37    25.00        23.0
+
+A1 by year of entry:
+  2024: {'trades': 9}
+  2025: {'trades': 28, 'events': 24, 'win%': 100.0, 'lost': 0, 'avg_cost': 0.9420207615137064, 'avg_ret%': 6.170634892580604, 'se%': 0.24043873487355344, 't_event': 25.66406322103523, 'med_dte': 45.0, 'med_hold_d': 48.0}
+  2026: {'trades': 8}
+
+A1 by category:
+  culture      {'trades': 3}
+  economics    {'trades': 1}
+  finance      {'trades': 3}
+  geopolitics  {'trades': 12}
+  other        {'trades': 4}
+  politics     {'trades': 20, 'events': 17, 'win%': 100.0, 'lost': 0, 'avg_cost': 0.9459033592094315, 'avg_ret%': 5.725913076723174, 'se%': 0.181277938221971, 't_event': 31.58637577680255, 'med_dte': 51.5, 'med_hold_d': 48.0}
+  tech         {'trades': 2}
+
+A1 without its 20 largest events (by number of trades):
+   {'trades': 21, 'events': 21, 'win%': 100.0, 'lost': 0, 'avg_cost': 0.9471020664031615, 'avg_ret%': 5.590697090480031, 'se%': 0.17040072279937016, 't_event': 32.80911605675827, 'med_dte': 51.16597222222222, 'med_hold_d': 54.0}
+
+A1, one trade per event (the first):
+   {'trades': 41, 'events': 41, 'win%': 100.0, 'lost': 0, 'avg_cost': 0.9446190427620033, 'avg_ret%': 5.875318739851034, 'se%': 0.18379922391363793, 't_event': 31.9659605451418, 'med_dte': 48.5, 'med_hold_d': 49.0}
+
+A1 losing trades:
+Empty DataFrame
+Columns: [market_id, category, entry_px, dte_at_signal, range14, entry_date, question]
+Index: []
