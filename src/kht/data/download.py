@@ -155,11 +155,25 @@ def download_trades(pm: Polymarket, condition_id: str, max_pages: int | None = 3
     return df
 
 
+def _download_one(pm: Polymarket, condition_id: str, max_pages: int | None) -> int:
+    """Fetch one tape unless it is already on disk; return only a row count.
+
+    Returning the frame itself would keep every tape alive in the futures map
+    of ``download_trades_many`` (gigabytes on a large run).
+    """
+    if (DATA_DIR / "trades" / f"{condition_id}.parquet").exists():
+        return -1
+    return len(download_trades(pm, condition_id, max_pages))
+
+
 def download_trades_many(pm: Polymarket, condition_ids: list[str], workers: int = 8, max_pages: int | None = 300) -> None:
+    have = {p.stem for p in (DATA_DIR / "trades").glob("*.parquet")}
+    todo = [c for c in condition_ids if c not in have]
+    log(f"trades: {len(condition_ids) - len(todo)} already on disk, {len(todo)} to fetch")
     t0 = time.time()
     done = 0
     with cf.ThreadPoolExecutor(max_workers=workers) as pool:
-        futs = {pool.submit(download_trades, pm, c, max_pages): c for c in condition_ids}
+        futs = {pool.submit(_download_one, pm, c, max_pages): c for c in todo}
         for fut in cf.as_completed(futs):
             done += 1
             try:
@@ -167,5 +181,6 @@ def download_trades_many(pm: Polymarket, condition_ids: list[str], workers: int 
             except Exception as exc:  # noqa: BLE001
                 log(f"trades: {futs[fut]} failed: {exc!r}"[:200])
             if done % 200 == 0:
-                log(f"trades: {done}/{len(condition_ids)} ({done / (time.time() - t0):.1f}/s)")
+                rate = done / (time.time() - t0)
+                log(f"trades: {done}/{len(todo)} ({rate:.1f}/s, eta {(len(todo) - done) / max(rate, 1e-9) / 60:.0f} min)")
     log(f"trades: finished {done} markets in {time.time() - t0:.0f}s")
