@@ -225,7 +225,7 @@ def accounts() -> None:
     for name, keys in combos.items():
         for bankroll in (1_000, 5_000, 25_000):
             for frac in (0.02, 0.04):
-                rows.append({"account": name, **tm.account([lists[k] for k in keys], bankroll, frac)})
+                rows.append({"account": name, **att.account([lists[k] for k in keys], bankroll, frac)[0]})
     acc = pd.DataFrame(rows)
     acc.to_csv(OUT / "cor_accounts.csv", index=False)
     print(f"\naccounts: positions at most {tm.PARTICIPATION:.0%} of the in-range flow, priced at the 3-day average, one position per event, "

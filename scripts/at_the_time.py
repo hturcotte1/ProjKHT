@@ -105,6 +105,45 @@ def panel(lo: int, hi: int, only: tuple[str, ...] | None = None) -> tuple[pd.Dat
     return meta, tr, p
 
 
+def account(lists: list[pd.DataFrame], bankroll: float, frac: float, exposure: float = 0.8, participation: float = 0.10):
+    """One account trading several trade lists, each market bought once: at its EARLIEST entry.
+
+    Trade lists from different universes or horizons can hold the same market
+    twice (bought with four months to run, and again inside the last sixty
+    days; or while thin, and again once it had grown). An account buys it the
+    first time and then holds it. Keeping instead the entry from the list one
+    happens to prefer would drop the early purchases of exactly those markets
+    that went on to qualify again, and keep the ones that never did: the
+    markets that fell out of the band or resolved against the position.
+    Ties on the day go to the earlier list.
+
+    Positions are at most ``participation`` of the dollars takers bought in
+    range over the entry window and are priced at that window's average; one
+    position per event, four per story. Returns (summary row, equity curve).
+    """
+    from kht.backtest.harvest import Capital, run_portfolio
+
+    t = pd.concat([lst.assign(prio=i) for i, lst in enumerate(lists)], ignore_index=True)
+    t = t.sort_values(["entry_period", "prio", "market_id"]).drop_duplicates("market_id", keep="first")
+    t["cost"] = t["cost_vwap"]
+    t["pnl_ps"] = t["proceeds"] - t["cost"]
+    t["ret"] = t["pnl_ps"] / t["cost"]
+    t["max_stake"] = participation * t["usd_window"]
+    t = t.sort_values(["entry_period", "prio", "market_id"]).reset_index(drop=True)
+    stake = bankroll * frac
+    r = run_portfolio(t, Capital(bankroll=bankroll, stake=stake, max_event=stake, max_theme=4 * stake, max_exposure_frac=exposure,
+                                 min_stake=min(5.0, 0.25 * stake)))
+    tk, eq = r.trades, r.equity
+    month = pd.to_datetime(eq["period"], unit="D").dt.to_period("M")
+    monthly = eq.groupby(month)["equity"].last().pct_change().dropna()
+    row = {"bankroll": bankroll, "stake": f"{100 * frac:g}%", "taken": r.stats["trades"], "average position $": float(tk["stake"].mean()),
+           "cut by flow %": 100 * float((tk["stake"] < 0.98 * stake).mean()), "losers": int((tk["pnl"] < -0.5 * tk["stake"]).sum()),
+           "per year %": 100 * r.stats["cagr"], "profit a year $": bankroll * r.stats["total_return"] / r.stats["years"],
+           "worst drawdown %": 100 * r.stats["max_drawdown"], "money in use %": 100 * r.stats["avg_utilisation"],
+           "worst month %": 100 * float(monthly.min()), "losing months %": 100 * float((monthly < 0).mean())}
+    return row, eq
+
+
 if __name__ == "__main__":
     # build the cached pieces: python scripts/at_the_time.py big thin [thinner]
     import sys

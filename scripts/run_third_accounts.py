@@ -28,14 +28,13 @@ import sys
 import warnings
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import at_the_time as att  # noqa: E402
 import run_thin_markets as tm  # noqa: E402
 
-from kht.backtest.harvest import Capital, Rule, candidate_trades, prepare, run_portfolio  # noqa: E402
+from kht.backtest.harvest import Rule, candidate_trades, prepare  # noqa: E402
 from kht.research.stats import mean_cluster  # noqa: E402
 from kht.trading.universe import is_operational_tag  # noqa: E402
 
@@ -77,35 +76,6 @@ def lists_for(label: str, lo_cum: int, hi_cum: int, only: tuple[str, ...] | None
     return lists
 
 
-def account(lists: list[pd.DataFrame], bankroll: float, frac: float, exposure: float = 0.8) -> tuple[dict, pd.DataFrame]:
-    """As run_thin_markets.account, returning the equity curve as well."""
-    seen: set[int] = set()
-    parts = []
-    for i, t in enumerate(lists):
-        t = t[~t["market_id"].isin(seen)].assign(prio=i)
-        seen |= set(t["market_id"])
-        parts.append(t)
-    t = pd.concat(parts, ignore_index=True)
-    t["cost"] = t["cost_vwap"]
-    t["pnl_ps"] = t["proceeds"] - t["cost"]
-    t["ret"] = t["pnl_ps"] / t["cost"]
-    t["max_stake"] = tm.PARTICIPATION * t["usd_window"]
-    t = t.sort_values(["entry_period", "prio", "market_id"]).reset_index(drop=True)
-    stake = bankroll * frac
-    r = run_portfolio(t, Capital(bankroll=bankroll, stake=stake, max_event=stake, max_theme=4 * stake, max_exposure_frac=exposure,
-                                 min_stake=min(5.0, 0.25 * stake)))
-    tk, eq = r.trades, r.equity
-    # the account's worst calendar month and its share of losing months, from the equity curve
-    month = pd.to_datetime(eq["period"], unit="D").dt.to_period("M")
-    monthly = eq.groupby(month)["equity"].last().pct_change().dropna()
-    row = {"bankroll": bankroll, "stake": f"{100 * frac:g}%", "taken": r.stats["trades"], "average position $": float(tk["stake"].mean()),
-           "cut by flow %": 100 * float((tk["stake"] < 0.98 * stake).mean()), "losers": int((tk["pnl"] < -0.5 * tk["stake"]).sum()),
-           "per year %": 100 * r.stats["cagr"], "profit a year $": bankroll * r.stats["total_return"] / r.stats["years"],
-           "worst drawdown %": 100 * r.stats["max_drawdown"], "money in use %": 100 * r.stats["avg_utilisation"],
-           "worst month %": 100 * float(monthly.min()), "losing months %": 100 * float((monthly < 0).mean())}
-    return row, eq
-
-
 def main() -> None:
     lists = lists_for("big", 100_000, att.TOP, ("big",))
     lists.update(lists_for("thin", 20_000, 100_000, None))
@@ -126,7 +96,7 @@ def main() -> None:
     for name, keys in combos.items():
         for bankroll in (1_000, 5_000, 25_000):
             for frac in (0.02, 0.03, 0.04, 0.05):
-                row, eq = account([lists[k] for k in keys], bankroll, frac)
+                row, eq = att.account([lists[k] for k in keys], bankroll, frac)
                 rows.append({"account": name, **row})
                 if bankroll == 1_000 and frac == 0.03:
                     curves[name] = eq.set_index("period")["equity"]
@@ -152,7 +122,6 @@ def main() -> None:
     print("\nlong-dated No (20,000 shares or more), by quarter of entry:\n", spread.round(2).to_string())
     r = mean_cluster(long_all["ret"].to_numpy(), long_all["cluster"].to_numpy())
     print(f"all: {len(long_all):,} trades, {int((long_all['won'] == 0).sum())} lost, {100 * r.mean:+.2f}% a trade (t = {r.t:.2f}), median hold {long_all['hold'].median():.0f} days")
-    np.random.seed(0)
 
 
 class Tee:
