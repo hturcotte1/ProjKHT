@@ -191,3 +191,22 @@ def test_theme_tags_keeps_narrow_tags_and_drops_broad_ones():
     assert th[0] == frozenset({"hormuz"})          # shared by 3 of 100: a story
     assert th[10] == frozenset()                   # 'politics' is on everything: a category
     assert th[50] == frozenset()                   # a tag on a single market groups nothing
+
+
+def test_forward_test_log_records_each_signal_once_and_scores_resolutions(engine):
+    import csv
+    from kht.trading.report import score_shadow
+    e, pm, path, limits = engine
+    e.run_cycle(NOW)
+    e.run_cycle(NOW + 600)                                    # same candidates again
+    rows = list(csv.DictReader((path / "shadow.csv").open()))
+    assert sorted(int(r["market_id"]) for r in rows) == [1, 2]   # both signals logged, although only one was bought
+    # market 1 resolves Yes (we logged buying Yes -> win); market 2 resolves Yes (we logged buying No -> loss)
+    resolved = {1: live(1, None, None, event=10, closed=True, final0=1.0, accepting=False),
+                2: live(2, None, None, event=10, closed=True, final0=1.0, accepting=False)}
+    res = score_shadow(path, resolved)
+    assert res["signals"] == 2 and res["resolved"] == 2 and res["win_rate"] == 0.5
+    rets = sorted(x["ret"] for x in res["rows"])
+    assert rets[0] == pytest.approx(-1.0) and rets[1] > 0
+    assert res["events"] == 1                                  # one event: no standard error is claimed
+    assert "t" not in res

@@ -4,6 +4,7 @@
     kht cycle        run one trading cycle
     kht run          run cycles in a loop
     kht report       write the account status as Markdown
+    kht shadow       score every signal ever seen against how it resolved
     kht geoblock     is this machine allowed to place orders?
 """
 
@@ -78,6 +79,37 @@ def cmd_report(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_shadow(args: argparse.Namespace) -> int:
+    """Score every logged signal whose market has resolved."""
+    import csv
+
+    from .trading.report import score_shadow
+    from .trading.universe import fetch_markets
+
+    path = Path(args.state) / "shadow.csv"
+    if not path.exists():
+        print("no forward-test log yet")
+        return 0
+    with path.open() as fh:
+        rows = list(csv.DictReader(fh))
+    now = time.time()
+    # only markets past their scheduled end can have resolved; saves requests
+    due = sorted({int(r["market_id"]) for r in rows if float(r["end_ts"]) < now + 86_400 * args.lookahead_days})
+    markets = fetch_markets(Polymarket(), due)
+    res = score_shadow(args.state, markets)
+    print(f"signals logged: {res['signals']}   resolved: {res['resolved']}   still open: {res['open']}")
+    if res["resolved"]:
+        print(f"won {100 * res['win_rate']:.1f}% at an average cost of {100 * res['avg_cost']:.1f}c "
+              f"(model expected {100 * res['avg_p_model']:.1f}%)")
+        line = f"average return per signal: {100 * res['avg_ret']:+.2f}%"
+        if "t" in res:
+            line += f"   (t = {res['t']:.2f} across {res['events']} events)"
+        print(line)
+        for x in sorted(res["rows"], key=lambda r: r["ret"])[:5]:
+            print(f"   worst: {100 * x['ret']:+7.1f}%  {x['question'][:80]}")
+    return 0
+
+
 def cmd_geoblock(args: argparse.Namespace) -> int:
     info = Polymarket().geoblock()
     print(info)
@@ -116,6 +148,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--state", default=DEFAULT_STATE)
     p.add_argument("--out", default=None)
     p.set_defaults(fn=cmd_report)
+
+    p = sub.add_parser("shadow", help="score the forward-test log of all signals")
+    p.add_argument("--state", default=DEFAULT_STATE)
+    p.add_argument("--lookahead-days", type=float, default=0.0,
+                   help="also check markets ending within this many days (they may resolve early)")
+    p.set_defaults(fn=cmd_shadow)
 
     p = sub.add_parser("geoblock", help="check whether this machine may trade")
     p.set_defaults(fn=cmd_geoblock)

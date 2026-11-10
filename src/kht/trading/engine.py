@@ -106,6 +106,8 @@ class Engine:
         self.broker: Broker = self._make_broker(raw)
         self.risk = RiskManager(limits) if raw is None else RiskManager(limits, RiskState(**raw["risk"]))
         self.market_names: dict[str, dict[str, Any]] = {} if raw is None else raw.get("market_names", {})
+        # markets already written to the forward-test log (see _log_shadow)
+        self.shadow_seen: set[int] = set() if raw is None else set(raw.get("shadow_seen", []))
         self.started_ts = time.time() if raw is None else raw.get("started_ts", time.time())
 
     def _make_broker(self, raw: dict[str, Any] | None) -> Broker:
@@ -158,6 +160,7 @@ class Engine:
 
         # 5. strategy -> risk -> broker
         candidates = self.strategy.candidates(markets, now)
+        self._log_shadow(candidates, now)
         intents = self.strategy.decide(markets, self.portfolio, self.broker.open_orders(), now)
         market_event = {mid: lm.info.event_id for mid, lm in markets.items()}
         themes = theme_tags(markets)
@@ -233,6 +236,28 @@ class Engine:
                 "shares": round(pos.shares, 4), "cost": round(pos.cost, 4), "payoff": payoff, "pnl": round(pnl, 4)})
         return n
 
+    def _log_shadow(self, candidates: list[Any], now: float) -> None:
+        """Forward-test log: every signal the first time it appears, whether or
+        not there is capital to trade it.
+
+        The account can only hold a few dozen positions, so on its own it would
+        take a long time to say anything statistically. Scoring *all* signals
+        once their markets resolve (``kht shadow``) tests the rule on live,
+        never-before-seen data many times faster.
+        """
+        for c in candidates:
+            mid = c.market.info.market_id
+            if mid in self.shadow_seen:
+                continue
+            self.shadow_seen.add(mid)
+            info = c.market.info
+            self.store.append_csv("shadow.csv", {
+                "ts": int(now), "market_id": mid, "token": info.token(c.outcome), "outcome": c.outcome,
+                "outcome_name": info.outcome0 if c.outcome == 0 else info.outcome1,
+                "question": c.market.question[:140], "category": info.category, "event_id": info.event_id,
+                "ask": round(c.ask, 4), "bid": round(c.bid, 4), "fee_ps": round(c.fee, 5), "p_model": round(c.p_win, 4),
+                "edge": round(c.edge, 4), "dte": round(c.dte, 2), "end_ts": int(info.end_ts)})
+
     def _remember(self, lm: LiveMarket, token: str, themes: frozenset[str] = frozenset()) -> None:
         outcome = lm.info.outcome_of(token)
         self.market_names[token] = {
@@ -254,6 +279,7 @@ class Engine:
             "broker": self.broker.to_dict(), "risk": self.risk.state.to_dict(),
             "limits": self.limits.to_dict(), "strategy": self.strategy.cfg.to_dict(),
             "model": self.strategy.model.to_dict(), "market_names": self.market_names,
+            "shadow_seen": sorted(self.shadow_seen),
             "marks": getattr(self, "last_marks", {}),
         })
 

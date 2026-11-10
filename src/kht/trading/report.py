@@ -107,3 +107,42 @@ def build_report(state_dir: str | Path) -> str:
                   f"{len(equity_rows)} cycles from {_when(float(first['ts']))} to {_when(float(last['ts']))}; "
                   f"equity ${float(first['equity']):,.2f} → ${float(last['equity']):,.2f}."]
     return "\n".join(lines) + "\n"
+
+
+def score_shadow(state_dir: str | Path, markets: dict[int, Any]) -> dict[str, Any]:
+    """Score the forward-test log against resolutions.
+
+    ``markets`` maps market id to a ``LiveMarket`` (closed ones carry
+    ``final0``). Returns counts and the realised return per dollar of every
+    resolved signal, bought at the logged ask plus fee.
+    """
+    rows = _read_csv(Path(state_dir) / "shadow.csv")
+    resolved = []
+    for r in rows:
+        lm = markets.get(int(r["market_id"]))
+        if lm is None or not lm.closed or lm.final0 not in (0.0, 1.0, 0.5):
+            continue
+        payoff = lm.final0 if int(r["outcome"]) == 0 else 1.0 - lm.final0
+        cost = float(r["ask"]) + float(r["fee_ps"])
+        resolved.append({"market_id": int(r["market_id"]), "event_id": int(r["event_id"]), "question": r["question"],
+                         "cost": cost, "payoff": payoff, "ret": (payoff - cost) / cost, "p_model": float(r["p_model"])})
+    n = len(resolved)
+    out: dict[str, Any] = {"signals": len(rows), "resolved": n, "open": len(rows) - n, "rows": resolved}
+    if n:
+        rets = [x["ret"] for x in resolved]
+        out["win_rate"] = sum(1 for x in resolved if x["payoff"] > x["cost"]) / n
+        out["avg_ret"] = sum(rets) / n
+        out["avg_cost"] = sum(x["cost"] for x in resolved) / n
+        out["avg_p_model"] = sum(x["p_model"] for x in resolved) / n
+        # event-clustered standard error: signals in one event are one bet
+        by_event: dict[int, list[float]] = {}
+        for x in resolved:
+            by_event.setdefault(x["event_id"] if x["event_id"] >= 0 else -x["market_id"], []).append(x["ret"])
+        g = len(by_event)
+        mean = out["avg_ret"]
+        if g > 1:
+            ss = sum((sum(v) - mean * len(v)) ** 2 for v in by_event.values())
+            out["se"] = (g / (g - 1) * ss) ** 0.5 / n
+            out["t"] = mean / out["se"] if out["se"] > 0 else float("nan")
+        out["events"] = g
+    return out
