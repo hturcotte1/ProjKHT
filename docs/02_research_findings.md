@@ -211,6 +211,18 @@ not spread across 90–97¢ as I guessed, it sits at the top.
 On the newer sample that shaped the rules, R1d returned +1.28% (t = 2.74,
 988 trades) and R1 +1.45% (t = 1.74).
 
+**One departure from the plan as written.** The pre-registration describes the
+holdout as "markets that closed before 2026-06-08". The test script, committed
+six minutes later and forty minutes before the holdout was opened, splits on
+the *scheduled* end date instead (before May 2026), because a split on the
+realised close date conditions on the outcome: a "by December" market that
+closes in May is one where the thing happened. Every verdict is the same under
+the wording as written, with a thinner margin for the rule that passed: R1d
++0.84%, t = 3.10 (3,041 trades); R1 +0.85%, t = 1.70; long-shot control
+−33.5%, t = −5.1 (`c5_holdout_definitions.csv`). No R1d holdout trade, and at
+most two trades of any other rule, come from a market in the slice examined
+beforehand.
+
 ## 6. Checks on the rule that passed
 
 All on the holdout (`c3_r1d_*`, `c4_r1d_*`).
@@ -225,6 +237,7 @@ All on the holdout (`c3_r1d_*`, `c4_r1d_*`).
 | By category | geopolitics +1.6% (t 3.2), politics +0.6%, economics +1.3%, culture +1.0%, finance +0.3% |
 | Stand-alone market vs leg of a multi-outcome event | **+1.36% (t 3.9)** vs +0.50% (t 1.2) |
 | Losses | 52 of 2,822 trades lost everything (1.84%); never more than 2 in one event or 4 in one week |
+| Markets left out for lack of a result | 6 of 16,555 closed markets (2021 price-range markets and one superseded duplicate). Asked directly on 10 November 2026, Polymarket lists one market of this size scheduled to end before May 2026 as still open, a five-minute crypto market outside the universe, so nothing unresolved is hiding in the holdout |
 
 **One check cut the other way.** The backtest buys at the first trade print on
 the days *after* the signal, and only if the price is still in range. Buying

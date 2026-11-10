@@ -218,6 +218,10 @@ python scripts/run_confirmatory.py          # the pre-registered test (non-sport
 ```
 
 ```bash
+python scripts/check_holdout_definition.py  # the same verdicts under the other holdout definition
+```
+
+```bash
 python scripts/run_confirmatory_sports.py   # the pre-registered test (sports)
 ```
 

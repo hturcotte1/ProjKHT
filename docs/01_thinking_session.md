@@ -332,6 +332,11 @@ tables are in `02_research_findings.md`.
 | **S1** sports favourites | −1.7% per trade, t −1.2 | Not confirmed |
 | **S2** follow the pre-game move | +0.04% per trade, t 0.0 | Not confirmed |
 
+The test split the data on the *scheduled* end date (before May 2026) rather
+than on the close date written in section 8, for the reason given in
+`02_research_findings.md`, section 5. Under the wording of section 8 the
+verdicts are identical; R1d is +0.84% per trade, t 3.10.
+
 The direction chosen in section 7 — "one statistical model of expected price
 drift" — did not survive either: there is no short-term drift worth
 modelling. What survived is the fallback named there, the slow correction of

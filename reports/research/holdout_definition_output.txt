@@ -1,0 +1,41 @@
+    rule                                     holdout  trades  events  won %  ret %     t
+      R1     as run: scheduled end before 2026-05-01    2319  1415.0  94.78   0.88  1.70
+      R1        as written: closed before 2026-06-08    2522  1505.0  94.77   0.85  1.70
+      R1                             both conditions    2318  1414.0  94.78   0.87  1.69
+      R1 in the holdout as run, but already examined       1     NaN    NaN    NaN   NaN
+     R1a     as run: scheduled end before 2026-05-01    1799  1193.0  94.83   0.97  1.64
+     R1a        as written: closed before 2026-06-08    1946  1262.0  94.86   1.00  1.74
+     R1a                             both conditions    1798  1192.0  94.83   0.96  1.63
+     R1a in the holdout as run, but already examined       1     NaN    NaN    NaN   NaN
+     R1b     as run: scheduled end before 2026-05-01    1799  1193.0  86.88   0.34  0.70
+     R1b        as written: closed before 2026-06-08    1946  1262.0  86.64   0.35  0.75
+     R1b                             both conditions    1798  1192.0  86.87   0.34  0.70
+     R1b in the holdout as run, but already examined       1     NaN    NaN    NaN   NaN
+     R1c     as run: scheduled end before 2026-05-01    2876  1645.0  91.10   1.20  1.90
+     R1c        as written: closed before 2026-06-08    3127  1745.0  91.14   1.24  2.06
+     R1c                             both conditions    2874  1643.0  91.09   1.19  1.88
+     R1c in the holdout as run, but already examined       2     NaN    NaN    NaN   NaN
+     R1d     as run: scheduled end before 2026-05-01    2822  1652.0  98.16   0.96  3.62
+     R1d        as written: closed before 2026-06-08    3041  1745.0  98.03   0.84  3.10
+     R1d                             both conditions    2822  1652.0  98.16   0.96  3.62
+     R1d in the holdout as run, but already examined       0     NaN    NaN    NaN   NaN
+      R2     as run: scheduled end before 2026-05-01    1122   887.0  95.28   1.57  2.19
+      R2        as written: closed before 2026-06-08    1219   931.0  95.41   1.74  2.53
+      R2                             both conditions    1121   886.0  95.27   1.56  2.18
+      R2 in the holdout as run, but already examined       1     NaN    NaN    NaN   NaN
+      R3     as run: scheduled end before 2026-05-01     693   543.0  94.81   1.38  1.41
+      R3        as written: closed before 2026-06-08     774   581.0  94.96   1.58  1.70
+      R3                             both conditions     692   542.0  94.80   1.37  1.40
+      R3 in the holdout as run, but already examined       1     NaN    NaN    NaN   NaN
+     R1m     as run: scheduled end before 2026-05-01    2186  1340.0  94.19   1.54  2.68
+     R1m        as written: closed before 2026-06-08    2380  1428.0  94.16   1.49  2.68
+     R1m                             both conditions    2185  1339.0  94.19   1.53  2.68
+     R1m in the holdout as run, but already examined       1     NaN    NaN    NaN   NaN
+longshot     as run: scheduled end before 2026-05-01    2378  1448.0   4.50 -36.96 -5.77
+longshot        as written: closed before 2026-06-08    2581  1538.0   4.61 -33.50 -5.13
+longshot                             both conditions    2377  1448.0   4.50 -36.93 -5.77
+longshot in the holdout as run, but already examined       1     NaN    NaN    NaN   NaN
+     mid     as run: scheduled end before 2026-05-01     764   588.0  45.81  -7.45 -2.13
+     mid        as written: closed before 2026-06-08     812   618.0  45.44  -8.12 -2.38
+     mid                             both conditions     764   588.0  45.81  -7.45 -2.13
+     mid in the holdout as run, but already examined       0     NaN    NaN    NaN   NaN
