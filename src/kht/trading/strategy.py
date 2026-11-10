@@ -130,6 +130,10 @@ class StrategyConfig:
     max_new_per_cycle: int = 5
     entry: str = "taker"                # "taker" (cross the spread) or "maker" (rest a bid)
     maker_ttl_hours: float = 12.0
+    # With entry "maker": once a market's bids have gone unfilled for this long,
+    # pay the ask instead (0 = never). In the thinner markets the bids that never
+    # fill are the contracts that never dipped, and those were worth having.
+    maker_fallback_hours: float = 0.0
     exit_dte: float | None = None       # sell this many scheduled days before the end; None = hold to resolution
     stop_bid: float | None = None       # sell if the bid falls to this level
     tag: str = "harvest"
@@ -230,12 +234,15 @@ class HarvestStrategy:
         now: float,
         confirmed: set[tuple[int, int]] | None = None,
         max_new: int | None = None,
+        cross: set[int] | None = None,
     ) -> list[Intent]:
         """Orders the strategy wants. ``confirmed`` is the set of (market id,
         outcome) that were also in the band ``confirm_hours`` ago; when given,
         nothing else is bought. Exits never need confirmation. ``max_new``
         overrides the per-cycle number of entries proposed (the engine asks for
-        more than it will place, because the risk limits may refuse some)."""
+        more than it will place, because the risk limits may refuse some).
+        ``cross`` names markets in which a maker strategy has waited long
+        enough and should pay the ask this time."""
         cfg = self.cfg
         intents: list[Intent] = []
         held_markets = {p.market_id for p in portfolio.positions.values()}
@@ -272,19 +279,20 @@ class HarvestStrategy:
                 continue
             if confirmed is not None and (info.market_id, c.outcome) not in confirmed:
                 continue
-            intent = self.entry_intent(c, now)
+            intent = self.entry_intent(c, now, cross=bool(cross) and info.market_id in cross)
             if intent is None:
                 continue
             intents.append(intent)
             placed += 1
         return intents
 
-    def entry_intent(self, c: Candidate, now: float) -> Intent | None:
+    def entry_intent(self, c: Candidate, now: float, cross: bool = False) -> Intent | None:
         """The order that would open a position in this candidate, or None if
-        the stake buys less than the market's minimum size."""
+        the stake buys less than the market's minimum size. ``cross`` makes a
+        maker strategy pay the ask for once."""
         cfg = self.cfg
         info = c.market.info
-        if cfg.entry == "maker":
+        if cfg.entry == "maker" and not cross:
             # join the best bid, as in the backtest: earn the spread, pay no fee
             price = round_to_tick(c.bid, info.tick, Side.BUY)
             kind, expires = OrderKind.MAKER, now + cfg.maker_ttl_hours * 3600

@@ -622,3 +622,42 @@ def test_upper_volume_limit_keeps_an_account_to_thin_markets():
     mk = {1: live(1, 0.92, 0.93, volume=50_000), 2: live(2, 0.92, 0.93, volume=500_000), 3: live(3, 0.92, 0.93, volume=5_000)}
     assert [i.market_id for i in s.decide(mk, Portfolio(1000), [], NOW)] == [1]
     assert [c.market.info.market_id for c in s.watchlist(mk, NOW)] == [1]      # the forward-test log follows the same limits
+
+
+# ------------------------------------------------- bid first, then pay the ask
+def test_an_unfilled_bid_gives_way_to_the_ask_after_the_wait(tmp_path, monkeypatch):
+    markets = {1: live(1, 0.92, 0.94)}
+    e, pm = quiet_engine(tmp_path, monkeypatch, markets, {}, entry="maker", maker_ttl_hours=72.0, maker_fallback_hours=72.0,
+                         confirm_hours=0.0)
+    e.run_cycle(NOW)
+    assert not e.portfolio.positions and [o.price for o in e.broker.open_orders()] == [pytest.approx(0.92)]
+    e.run_cycle(NOW + 24 * 3600)                                   # still resting, still waiting
+    assert not e.portfolio.positions and len(e.broker.open_orders()) == 1
+    later = Engine(pm, StateStore(tmp_path), e.strategy, e.limits)
+    later.run_cycle(NOW + 73 * 3600)                               # the bid has expired unfilled: pay the ask
+    [pos] = later.portfolio.positions.values()
+    assert pos.market_id == 1 and pos.cost / pos.shares == pytest.approx(0.94, abs=0.003)     # the ask plus the taker fee
+    assert not later.broker.open_orders()
+    later.run_cycle(NOW + 76 * 3600)
+    assert later.bid_since == {}                                   # nothing left to wait for once it is held
+
+
+def test_without_a_fallback_a_maker_account_keeps_bidding(tmp_path, monkeypatch):
+    markets = {1: live(1, 0.92, 0.94)}
+    e, pm = quiet_engine(tmp_path, monkeypatch, markets, {}, entry="maker", maker_ttl_hours=72.0, confirm_hours=0.0)
+    e.run_cycle(NOW)
+    e.run_cycle(NOW + 73 * 3600)
+    assert not e.portfolio.positions and [o.price for o in e.broker.open_orders()] == [pytest.approx(0.92)]
+
+
+def test_a_later_bid_in_the_same_market_does_not_restart_the_wait(tmp_path, monkeypatch):
+    markets = {1: live(1, 0.92, 0.94)}
+    e, pm = quiet_engine(tmp_path, monkeypatch, markets, {}, entry="maker", maker_ttl_hours=24.0, maker_fallback_hours=72.0,
+                         confirm_hours=0.0)
+    e.run_cycle(NOW)                                               # first bid
+    e.run_cycle(NOW + 25 * 3600)                                   # it expired; a second bid goes in
+    assert e.bid_since == {"1": NOW} and len(e.broker.open_orders()) == 1
+    e.run_cycle(NOW + 50 * 3600)                                   # third bid
+    assert not e.portfolio.positions
+    e.run_cycle(NOW + 75 * 3600)                                   # 72 hours after the FIRST bid: cross
+    assert len(e.portfolio.positions) == 1

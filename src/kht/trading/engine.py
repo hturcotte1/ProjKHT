@@ -125,6 +125,8 @@ class Engine:
         self.quiet_seen: dict[str, list[Any]] = {} if raw is None else dict(raw.get("quiet_seen", {}))
         self._quiet_budget = QUIET_LOOKUPS_PER_CYCLE
         self.started_ts = time.time() if raw is None else raw.get("started_ts", time.time())
+        # market id -> when this account first left a bid there that has not filled; see maker_fallback_hours
+        self.bid_since: dict[str, float] = {} if raw is None else dict(raw.get("bid_since", {}))
 
     def _make_broker(self, raw: dict[str, Any] | None) -> Broker:
         saved = {} if raw is None else raw.get("broker", {})
@@ -219,7 +221,7 @@ class Engine:
         self._log_shadow(self.strategy.watchlist(markets, now), now)
         self._record_shadow_quiet(markets)
         intents = self.strategy.decide(markets, self.portfolio, self.broker.open_orders(), now, confirmed,
-                                       max_new=len(shortlist))
+                                       max_new=len(shortlist), cross=self._waited_long_enough(now))
         placed = rejected = opened = 0
         for it in intents:
             entry = it.action == "place" and it.side.value == "BUY"
@@ -251,6 +253,8 @@ class Engine:
             if order.status != OrderStatus.REJECTED:
                 placed += 1
                 opened += int(entry)
+            if entry and order.status == OrderStatus.OPEN:
+                self.bid_since.setdefault(str(it.market_id), now)       # the clock starts at the first bid, not the latest
             for f in new_fills:
                 self._log_fill(f, markets)
             fills.extend(new_fills)
@@ -364,6 +368,20 @@ class Engine:
                 "tradable": int(band == "core" and c.edge >= cfg.min_edge
                                 and not (cfg.single_only and info.neg_risk)),
                 "dte": round(c.dte, 2), "end_ts": int(info.end_ts)})
+
+    def _waited_long_enough(self, now: float) -> set[int]:
+        """Markets where a maker strategy's bids have gone unfilled for ``maker_fallback_hours``.
+
+        A market leaves the list once the account holds something in it. A
+        bid counts from the first one placed: later bids in the same market,
+        after earlier ones expired, do not restart the clock.
+        """
+        held = {str(p.market_id) for p in self.portfolio.positions.values()}
+        self.bid_since = {m: t for m, t in self.bid_since.items() if m not in held and now - t < 30 * 86_400}
+        hours = self.strategy.cfg.maker_fallback_hours
+        if self.strategy.cfg.entry != "maker" or hours <= 0:
+            return set()
+        return {int(m) for m, t in self.bid_since.items() if now - t >= hours * 3600}
 
     # ------------------------------------------------------------- quietness
     def _traded_range(self, info: MarketInfo, outcome: int, as_of: float, days: float) -> Quietness | None:
@@ -509,6 +527,7 @@ class Engine:
             "model": self.strategy.model.to_dict(), "market_names": self.market_names,
             "shadow_seen": sorted(self.shadow_seen),
             "shadow_quiet_done": sorted(self.shadow_quiet_done),
+            "bid_since": self.bid_since,
             # answers older than two days are of no use to _is_quiet
             "quiet_seen": {k: v for k, v in self.quiet_seen.items() if time.time() - v[0] < 2 * 86_400},
             # forget pending checks older than two weeks so the file cannot grow without bound
