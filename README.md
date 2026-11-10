@@ -26,8 +26,8 @@ their money sits locked up.
 | Its pre-registered variant: buy 95–99¢, hold | 2,822 | 98.2% | +0.96% | 3.6 — **passed** |
 | Control: buy 3–10¢ long shots | 2,378 | 4.5% | −37% | −5.8 — as predicted |
 
-**What the paper account trades:** 95–98¢ contracts in stand-alone yes/no
-markets, bought a day after first being seen in that range, held to
+**What the main paper account trades:** the "No" side of stand-alone yes/no
+markets at 95–98¢, bought a day after first being seen in that range, held to
 resolution. About 98 trades in 100 gain 3–4%; about 2 in 100 lose the whole
 stake. As a $1,000 account at $20 a position the backtest made roughly 7–9% a
 year with a third of the money in use. That is a real edge and a thin one.
@@ -44,8 +44,7 @@ calibrated.
 ### The second round
 
 A second round on the same day went looking for something better than a thin
-edge. Its own new ideas failed. One of its checks is the strongest result in
-the project.
+edge. Its own new ideas failed, and the one result it was proud of was wrong.
 
 | Tried | Result |
 |---|---|
@@ -53,18 +52,46 @@ the project.
 | Price crypto markets from the coin's price and volatility, and buy where Polymarket disagrees | No. Where they disagree, Polymarket's price is right |
 | The confirmed rule on crypto price markets | Not repeated: same return, but the losses all come in the same weeks |
 | The confirmed rule on sports season-long markets | No edge at all |
-| **The confirmed rule on 25,283 thinner news markets that were never in the data** | **Repeated: 95–99¢, +1.69% a trade, t = 9.0 on 3,135 trades** |
+| The confirmed rule on thinner news markets | **Reported as t = 9.0 and "larger than in big markets". Withdrawn in round three**: see below |
 | Stop-losses | Lower the return at every level |
 
-The rule works where it was found, and works better in markets too small to
-be worth a professional's time: those that trade 20,000 to 100,000 shares in
-their whole life. Two more paper accounts now trade them, one paying the ask
-and one bidding first, which tested better there. With positions kept
-to a tenth of what actually traded, adding those markets took a simulated
-$1,000 account from about 7% a year to about 10% at 2% a position, and to
-about 14–16% at 4%, up to roughly $25,000. What history cannot show is
-whether small orders fill in markets that thin at the prices a backtest
-assumes. The new account's fills are against the real order book, so it can.
+### The third round, and a correction
+
+Round two chose its "thin" markets by how much they had traded *by the end*.
+Nobody knows that when placing a trade, and it is not neutral: a market
+where the surprise happens draws a burst of trading and leaves the thin
+group, taking its losses with it. Round three caught this before reading its
+own data, rebuilt every universe from what a market had traded *at the
+time*, and reran everything.
+
+| | As reported in round two | Measured without hindsight |
+|---|---:|---:|
+| The first round's test in big markets | +0.96% a trade, t = 3.6 | +0.97%, t = 3.6: **unchanged** |
+| The rule in markets at 20,000–100,000 shares | +1.69%, t = 9.0 | +0.33%, t = 1.7 |
+| Its 95–98¢ stand-alone form there | +1.96%, t = 6.0 | +1.10%, t = 3.4 |
+| The wider 90–98¢ band there | +2.40%, t = 5.5 | +0.70%, t = 1.5 |
+| Resting bids there | +3.57%, t = 5.6: "passed" | +1.42%, t = 2.3: not passed |
+| The rule in markets at 5,000–20,000 shares | would have shown +1.58%, t = 8.1 | −0.26%, t = −1.3 |
+
+The edge does not grow as markets get smaller. It shrinks, and below 20,000
+shares it is gone. It belongs to the markets people are watching.
+
+What round three found, on markets nobody had looked at and with the tests
+fixed first:
+
+| Tried | Result |
+|---|---|
+| **At the same near-certain price, buy "No" and not "Yes"** | **Passed.** "No" earned 4.9 points a trade more than "Yes" (t = 3.9); 3.6 points pooled over three sizes of market (t = 4.4) |
+| "Yes" against "No" at every price from 3¢ to 98¢ | "Yes" lost money in 23 of 27 cells, at every price in the untouched markets. Asked "will this happen?", the crowd pays too much for "Yes" |
+| "No" at 90–98¢ with 60–180 days to run instead of 3–60 | +5.4% a trade in big markets (t = 9.9) and +4.1% in thin ones (t = 6.4), where it was explored; +2.5% (t = 2.7) where it was tested. Not passed; now in a paper account |
+| "No" at 50–90¢ | Positive in all three sizes of market, not significant where tested. Not passed |
+| The leader of a multi-way event | 1 loss in 265 in big markets, ordinary elsewhere. Not passed |
+
+Every account now buys the "No" side only. As accounts, the main rule and the
+long-dated one each earn roughly 7–12% and 6–8% a year on $1,000 in the
+backtests; they do not add up inside one account, because they compete for
+the same events. The whole story is in
+[`docs/05_third_round.md`](docs/05_third_round.md).
 
 ## Where to read what
 
@@ -74,7 +101,8 @@ assumes. The new account's fills are against the real order book, so it can.
 | What the data said, with numbers, figures and what could still be wrong | [`docs/02_research_findings.md`](docs/02_research_findings.md) |
 | How the trading system works and how to operate it | [`docs/03_system.md`](docs/03_system.md) |
 | The second round: what was tried next, fixed in advance, and what happened | [`docs/04_second_round.md`](docs/04_second_round.md) |
-| What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-thin-bid/STATUS.md` (from its first cycle) |
+| The third round: which side of the bet carries the edge, and the correction of round two | [`docs/05_third_round.md`](docs/05_third_round.md) |
+| What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-long/STATUS.md` (from its first cycle) |
 
 ## What is running
 
@@ -89,10 +117,10 @@ lists the ways to keep it going.
 
 | Account | Rule | Status |
 |---|---|---|
-| Main, `state/paper/` | 95–98¢, stand-alone markets, buy at the ask | The rule that passed |
-| Experimental, `state/paper-maker/` | 90–98¢, stand-alone markets, resting bid | Better in the backtest, fell just short of the bar; unproven |
-| Thin markets, `state/paper-thin/` | 90–98¢, stand-alone markets with 20,000 to 100,000 shares, buy at the ask | The second round's finding; the test of whether it can actually be bought |
-| Thin markets, bid first, `state/paper-thin-bid/` | The same signals, with a resting bid for three days and then the ask | Resting bids passed their test in these markets: +3.57% a trade against +2.52% |
+| Main, `state/paper/` | "No" at 95–98¢, stand-alone markets with 100,000 shares or more, buy at the ask | The rule that passed, on the side that carries it |
+| Experimental, `state/paper-maker/` | "No" at 90–98¢, same markets, resting bid | Better in the backtest, fell just short of the bar; unproven |
+| Thin markets, `state/paper-thin/` | "No" at 95–98¢, markets with 20,000 to 100,000 shares so far | Weakly supported (+1.1% a trade, t = 3.4). It traded 90–98¢ until round three showed that band rested on a flawed sample |
+| Long-dated, `state/paper-long/` | "No" at 90–98¢ with 60 to 180 days to run, 20,000 shares or more | Exploratory: strong where explored, short of its bar where tested |
 
 Each cycle also logs *every* signal it sees, traded or not, so the rule can be
 scored on new data far faster than a small account allows.

@@ -63,16 +63,18 @@ Survivors are ranked by estimated return per day of capital tied up, and at
 most `max_new_per_cycle` are bought, one position per market. Positions are
 held to resolution.
 
-All of that is configuration (`config/paper.json`), not code. Three more
-settings came out of the second round of research
-(`04_second_round.md`):
+All of that is configuration (`config/paper.json`), not code. More settings
+came out of the second and third rounds of research (`04_second_round.md`,
+`05_third_round.md`):
 
 | Setting | What it does | Used by |
 |---|---|---|
 | `max_volume` | Skips markets that have traded this many shares or more, so an account can be kept to thin markets | The thin-market account (20,000 to 100,000 shares) |
 | `busy_days`, `busy_range` | Skips an outcome whose traded price has ranged more than `busy_range` over the last `busy_days` days, in a market older than that | The thin-market account (14 days, 15¢) |
 | `quiet_days`, `quiet_range` | Buys only outcomes whose traded price has stayed within `quiet_range` over the last `quiet_days` days | No account: the rule it serves did not pass its tests |
-| `maker_fallback_hours` | With `entry: maker`, pays the ask once this account's bids in a market have gone unfilled this long, counted from the first bid | The bid-first thin-market account (72 hours) |
+| `maker_fallback_hours` | With `entry: maker`, pays the ask once this account's bids in a market have gone unfilled this long, counted from the first bid | No account: the result it served did not survive the corrected universe |
+| `no_side_only` | Buys only the outcome named "No" of a Yes/No question; the other side is still logged | Every account, by decision of the third round's test T5-N |
+| `dte_lo`, `dte_hi` | Scheduled days to the end between which a contract qualifies | 3 to 60 everywhere except the long-dated account (60 to 180) |
 
 The range is the highest minus the lowest price at which the outcome traded,
 with trades in the other outcome counted at one minus their price: the
@@ -87,8 +89,9 @@ per price band: the traded band, and the bands just below and above it that
 did not pass the historical test. A signal is logged when it meets the same
 18-hour confirmation as a real trade, whether or not the account has money or
 room under its caps to take it. `kht shadow` scores the log against how the
-markets resolved, in four groups: the rule as traded (stand-alone markets in
-the traded band), legs of multi-outcome events in that band, and the bands
+markets resolved, in groups: stand-alone markets in the traded band, the
+same split into the "No" side (what the accounts buy) and the "Yes" side
+(logged only), legs of multi-outcome events in that band, and the bands
 below and above. Only signals whose scheduled end has passed are scored.
 Counting early resolutions as they happen would bias the result downward: a
 "by December" market that closes in November is one where the thing happened. This is how the rule gets tested on genuinely new data at a
@@ -308,16 +311,17 @@ these pass through the same three-hour check, so they can overlap safely:
 
 | Account | Config | State | What it is |
 |---|---|---|---|
-| Main | `config/paper.json` | `state/paper/` | The rule that passed its test: 95–98¢, markets with 100,000 shares or more |
+| Main | `config/paper.json` | `state/paper/` | The rule that passed its test, on the side that carries it: "No" at 95–98¢, markets with 100,000 shares or more |
 | Experimental | `config/paper_maker.json` | `state/paper-maker/` | Resting-bid entry on a wider band; unproven |
-| Thin markets | `config/paper_thin.json` | `state/paper-thin/` | 90–98¢ in markets with 20,000 to 100,000 shares, bought at the ask. The second round found the first round's edge repeating there, and larger. Started 10 November 2026 |
-| Thin markets, bid first | `config/paper_thin_bid.json` | `state/paper-thin-bid/` | The same signals entered with a resting bid for up to three days, then at the ask. Resting bids passed their test in these markets (+3.57% a trade against +2.52%) |
+| Thin markets | `config/paper_thin.json` | `state/paper-thin/` | "No" at 95–98¢ in markets with 20,000 to 100,000 shares so far. Weakly supported: +1.1% a trade (t = 3.4) measured without hindsight. Started 10 November 2026 on a 90–98¢ band that the third round withdrew; what it bought then is held to resolution |
+| Long-dated | `config/paper_long.json` | `state/paper-long/` | "No" at 90–98¢ with 60 to 180 days to run, 20,000 shares or more. Exploratory: +4–5% a trade where it was explored (t = 6 to 10), +2.5% (t = 2.7) where it was tested. Started 10 November 2026 |
 
-The two thin-market accounts are the ones to watch first. History can show
-that contracts in those markets were underpriced and cannot show whether a
-$20 order fills at the price a backtest assumed, or how often a resting bid
-is hit. Their fills come from the real order book and the real trade feed,
-so a few weeks of them answer both.
+The forward log is the thing to watch. It scores the "No" and the "Yes" side
+of every signal apart, which is the one claim that passed a test in the third
+round, and it is the only clean test the long-dated account will get. A
+bid-first thin-market account existed for a few hours on 10 November and was
+withdrawn before its first cycle, when the result behind it turned out to
+rest on a sample chosen with hindsight.
 
 `STATUS.md` in each state directory is the page to read. To stop the schedule:
 repository → Actions → *paper-trader* → ⋯ → *Disable workflow*.
@@ -427,6 +431,24 @@ python scripts/run_thin_markets.py                        # what those markets c
 
 ```bash
 python scripts/run_position_size.py && python scripts/check_stops_and_paths.py
+```
+
+The third round (`05_third_round.md`). The first three lines fetch what the
+earlier rounds left out; every universe is then built by
+`scripts/at_the_time.py` from what a market had traded at the time:
+
+```bash
+python scripts/download_research_data.py meta --thinner   # markets that ended at 5,000 to 20,000 shares
+python scripts/download_trades.py non_sports_thinner --shard 0/3 --max-pages 100   # and 1/3, 2/3
+python scripts/download_trades.py short_lived && python scripts/download_trades.py short_lived_thin && python scripts/download_trades.py short_lived_thinner
+```
+
+```bash
+python scripts/at_the_time.py big thin thinner   # the cached pieces every script below reads
+python scripts/run_corrections.py                # the earlier rounds without the two hindsight filters
+python scripts/run_sides.py                      # which side of the bet, on the two larger universes
+python scripts/run_thinner.py                    # the six tests fixed in advance, on the smallest
+python scripts/run_third_accounts.py             # the strategy as accounts
 ```
 
 ```bash

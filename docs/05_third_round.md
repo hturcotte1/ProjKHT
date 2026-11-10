@@ -27,6 +27,13 @@ read many times (news markets with 100,000 shares or more, and with 20,000 to
 100,000). It is exploration. It chose the tests in section 3, which are run
 on markets nobody has looked at.
 
+> **Read the "thin" columns of this section with section 3's last part in
+> mind.** They were written before the flaw described there was found, on
+> round two's thin universe, which was chosen with hindsight and flatters
+> every rule. The section is left as it was written because it is the record
+> of what led to the tests. Section 6 gives the same tables on the corrected
+> universes.
+
 ### The same price on different sides
 
 The first round's rule, 95–99¢ with 3 to 60 days to run, split by what kind
@@ -251,6 +258,12 @@ problem (a market is used from the moment it has traded 100,000 shares, with
 no upper limit), and the paper accounts do not have it either (they look at
 the volume a market has today).
 
+The first round had caught this same mistake in its first hour: its
+opening pass used markets chosen by total volume, found a result, and threw
+it out ([findings, section 2](02_research_findings.md#2-the-sample-that-lied)).
+Round two walked into it again through a different door, because an upper
+limit on volume looks like a harmless way to say "small".
+
 The measure of it: the same rules on the part of each bigger market's life
 when it had traded 20,000 to 100,000 shares, which round two never looked at,
 and on both together, which is what "thin" means to somebody trading.
@@ -298,3 +311,247 @@ a second measure of the flaw. The bars do not change. Where a test pools with
 quoted as predictions (+1.69% for R1d, +6.7¢ for the house) are overstated
 for the reason above and are not the standard any more: the standard is the
 bar.
+
+## 4. What the two filters did to the earlier results
+
+`scripts/run_corrections.py` reruns everything that depended on either
+filter, old universe beside corrected (`cor_*.csv`, `corrections_output.txt`).
+
+**The first round stands.** Its universe had no upper limit on volume, so
+only the two-day filter touches it. Putting the 127 short-lived big markets
+back adds seven trades to R1d and loses none of them.
+
+| First round, big markets | As it was | Short-lived markets put back |
+|---|---:|---:|
+| R1d on the holdout, the confirmed test | +0.96% (t 3.62), 2,822 trades | +0.97% (t 3.64), 2,829 trades |
+| Main rule on the holdout | +1.52% (t 3.68) | +1.52% (t 3.69) |
+| Main rule, all three years | +1.64% (t 4.84) | +1.64% (t 4.86) |
+
+**Round two's thin-market results do not.** "Thin at the time" is every news
+market while it had traded 20,000 to 100,000 shares, whatever it traded
+later, short-lived markets included.
+
+| Rule | As round two had it | The thin part of markets that ended bigger | Thin at the time |
+|---|---:|---:|---:|
+| R1d, 95–99¢, legs included | +1.69% (t 9.0), 31 lost of 3,135 | −0.95% (t −2.9), 121 of 3,358 | **+0.33% (t 1.7)**, 152 of 6,502 |
+| Main rule, 95–98¢, stand-alone | +1.96% (t 6.0), 18 of 1,393 | −0.20% (t −0.3), 33 of 933 | **+1.10% (t 3.4)**, 51 of 2,332 |
+| 90–98¢, stand-alone | +2.40% (t 5.5), 53 of 1,744 | −1.41% (t −1.7), 97 of 1,415 | **+0.70% (t 1.5)**, 150 of 3,168 |
+| 90–95¢, stand-alone | +3.24% (t 5.2), 41 of 1,073 | −2.42% (t −2.2), 88 of 962 | **+0.57% (t 0.9)**, 129 of 2,037 |
+| The thin account's rule (90–98¢, calm) | +2.52% (t 5.8) | −1.26% (t −1.5) | **+0.83% (t 1.7)** |
+| The same with a resting bid (TM) | +3.57% (t 5.6) | −0.97% (t −1.0) | **+1.42% (t 2.3)** |
+
+What this takes back from [round two](04_second_round.md):
+
+- *"The first round's rule repeats in thinner markets, and is larger there."*
+  It repeats in the 95–98¢ band at about two-thirds of its size in big
+  markets (+1.10% against +1.64%), and not in any wider form. Priced at the
+  three-day average a larger order would pay, it is +0.84% (t 2.6).
+- *"The 90–95¢ band, which failed in big markets, earns 3% in thin ones."* It
+  earns nothing there either.
+- *TM, "resting bids pass".* The bar was positive with |t| ≥ 3 and above the
+  ask version with |t| ≥ 2. Thin at the time: +1.42% (t 2.3), 0.59 points
+  above the ask (t 2.1). **Not passed.** Bid-first-then-ask earns 0.91% per
+  first signal against 0.71% for the ask alone, where round two reported 2.63
+  against 2.14.
+- *"Adding the thinner markets lifts a 2% account from 6.7% to 9.6% a year."*
+  Adding their 95–98¢ band lifts it to 8.9% (and to 12.4% from 12.1% at 4% a
+  position). Adding the 90–98¢ band, which is what the thin paper account
+  was trading, cuts it to about 2% a year and more than doubles the worst
+  drawdown, to −10% at 2% a position and −20% at 4%.
+
+A third thing was wrong in the same family, in the account simulation this
+time. Lists of trades were combined by a fixed preference ("the big-market
+trade if there is one"), which drops the early purchase of any market that
+qualified again later and keeps the purchases of markets that never did.
+Accounts now take each market at its earliest entry (`at_the_time.account`).
+With universes that did not share markets, as in rounds one and two, the old
+rule did no harm; with universes defined at the time it would have.
+
+## 5. The tests
+
+Run at 20:16 UTC on 10 November, on the corrected universe: 110,040 markets
+while they had traded 5,000 to 20,000 shares (`thinner_output.txt`,
+`t5_*.csv`). The universe as first fixed is in the last column to show what
+the flaw is worth: every one of these numbers would have been reported in
+good faith an hour earlier.
+
+| Test | Bar | Result on the corrected universe | Verdict | On markets that *ended* at 5,000–20,000 |
+|---|---|---|---|---|
+| **T5** R1d, 95–99¢, legs included | positive, \|t\| ≥ 3 | −0.26% (t −1.3), 201 lost of 7,306 | **Not passed** | +1.58% (t 8.1), 19 of 2,410 |
+| **T5-Y** the leader | positive, \|t\| ≥ 3, exact p < 0.01 | +1.07% (t 1.9), 9 lost of 536, p = 0.08 | **Not passed** | +1.31% (t 1.9) |
+| **T5-L** long-dated "No" | positive, \|t\| ≥ 3 | +2.51% (t 2.7), 24 lost of 696 | **Not passed** | +4.47% (t 3.8), 92 trades |
+| **T5-N** which side | sign here, pooled \|t\| ≥ 3 | "No" minus "Yes": +4.86 points (t 3.9); pooled over three universes +3.63 (t 4.4) | **Decision rule met: drop the "Yes" side** | +2.68 (t 1.9) |
+| **T5-TM** resting bids | positive, \|t\| ≥ 3, above the ask with \|t\| ≥ 2 | +0.82% (t 1.2); 0.49 above the ask (t 1.1) | **Not passed** | +4.64% (t 3.6) |
+| **T5-H** "No" at 50–90¢ | positive, \|t\| ≥ 3 | +1.96% (t 1.8), +1.65¢ a share (t 2.2), 3,846 trades | **Not passed** | +6.63% (t 3.2) |
+
+Of the predictions written with T5-H, two held: more with 20–60 days left
+(+3.68%, t 2.6) than with 3–20 (+0.02%), and "Yes" at 10–50¢ losing far more
+than a spread and a fee (−18.6% a trade, t −6.1). The main rule in these
+markets earns +0.64% (t 1.8), and +0.45% (t 1.3) at the three-day average.
+
+Five bars missed and one decision rule met. The count of tests with a bar
+across the three rounds is 27; two have passed cleanly (R1d in the first
+round and the side comparison here), one met its bar on paper and was set
+aside (A1), and one passed on a universe that turned out to be chosen with
+hindsight and does not pass on the corrected one (TM).
+
+## 6. Three sizes of market, measured the same way
+
+The corrected universes side by side (`scripts/run_sides.py`, `s3_*.csv`, and
+the T5 output). Big and thin had been read before; thinner is the out-of-
+sample column. Return per trade with event-clustered t, then losses.
+
+| Bought, 3–60 days to run unless stated | Big: 100,000 or more | Thin: 20,000–100,000 | Thinner: 5,000–20,000 |
+|---|---:|---:|---:|
+| R1d: 95–99¢, legs included | +1.05% (4.5) | +0.33% (1.7) | −0.26% (−1.3) |
+| Main rule: 95–98¢, stand-alone | +1.64% (4.9) | +1.10% (3.4) | +0.64% (1.8) |
+| Stand-alone "No", 95–99¢ | +1.52% (4.9), 30 of 1,944 | +1.06% (3.8), 46 of 2,589 | +0.67% (2.1), 50 of 2,576 |
+| Stand-alone "Yes", 95–99¢ | +0.79% (0.7), 5 of 252 | −0.51% (−0.5), 12 of 369 | −1.23% (−1.3), 17 of 450 |
+| Stand-alone "No", 90–98¢ | +1.94% (3.9) | +1.19% (2.4) | +1.28% (2.9) |
+| Stand-alone "Yes", 90–98¢ | +1.08% (0.9) | −2.10% (−1.5) | −3.58% (−3.1) |
+| The leader (leg, "Yes"), 95–99¢ | +2.85% (7.2), 1 of 265 | +1.04% (1.6), 10 of 510 | +1.07% (1.9), 9 of 536 |
+| An also-ran (leg, "No"), 95–99¢ | +0.07% (0.2) | −0.31% (−1.1) | −1.00% (−3.5) |
+| Long-dated "No": 90–98¢, 60–180 days | +5.41% (9.9), 7 of 524 | +4.11% (6.4), 16 of 691 | +2.51% (2.7), 24 of 696 |
+| "No" at 50–90¢ | +3.77% (2.1) | +4.65% (3.7) | +1.96% (1.8) |
+| "No" at 50–90¢ with 20–60 days left | +5.54% (2.5) | +6.78% (4.0) | +3.68% (2.6) |
+| "Yes" at 10–50¢ | −21.0% (−4.2) | −22.4% (−6.2) | −18.6% (−6.1) |
+
+**Every row that works fades as the markets get smaller.** Round two said
+the opposite and had it backwards. The mistake this project trades is the
+crowd's, and it is largest where the crowd is: in the markets people are
+watching, with many small buyers of the long shot and a deep book to sell
+them from. In a market that has traded 8,000 shares there is no crowd, the
+spread is wider than the edge, and the last price may be days old.
+
+**The stand-alone "Yes" never works.** Three universes, two bands, six
+cells: four negative, none above t = 0.9.
+
+**The long-dated "No" is the strongest thing found since the first round,
+and it is not confirmed.** It was not tested in the two universes where it is
+strong, only explored there, and where it was tested it fell short of its
+bar. What it has going for it: the one out-of-sample number is positive at
+t = 2.7 in the universe where nothing else reaches 2.1; the big-market
+figure rests on seven losses in 524 trades, positive in each year (+4.9%,
++5.2%, +6.2%), at 60–120 days (+5.6%, t 12.8) and at 120–180 (+5.0%, t 5.2);
+and the reason is ordinary. Nobody on Polymarket wants to lock up 94¢ for
+three months to make 6¢, so the 6¢ is still there.
+
+### Every price, each side
+
+Cents a share after fees, stand-alone Yes/No markets, 3–60 days to run, each
+side bought the first time its ask enters the band:
+
+| Price paid | Big: "No" | Big: "Yes" | Thin: "No" | Thin: "Yes" | Thinner: "No" | Thinner: "Yes" |
+|---|---:|---:|---:|---:|---:|---:|
+| 3–10¢ | −2.3 | −2.9 | +1.0 | −2.4 | +1.9 | −2.2 |
+| 10–20¢ | −1.7 | −2.2 | +2.8 | −3.6 | +2.9 | −3.8 |
+| 20–35¢ | +1.6 | −2.9 | +4.3 | −4.5 | +4.8 | −4.7 |
+| 35–50¢ | +4.9 | −5.9 | +4.7 | −6.7 | +4.1 | −3.7 |
+| 50–65¢ | +3.9 | −7.1 | +3.6 | −8.9 | −0.1 | −7.8 |
+| 65–80¢ | +1.3 | −5.0 | +2.3 | −7.6 | +2.2 | −7.8 |
+| 80–90¢ | +0.9 | +0.9 | +2.1 | −4.6 | +1.8 | −3.9 |
+| 90–95¢ | +1.8 | +1.6 | +1.1 | −2.7 | +1.8 | −4.5 |
+| 95–98¢ | +1.6 | +1.2 | +1.2 | 0.0 | +1.0 | −1.7 |
+
+"Yes" lost money in 23 of the 27 cells, at every price in the out-of-sample
+column, and most of those with a t beyond −2.5. "No" made money in 24 of 27.
+At 50–65¢ in the thin markets "No" won 62% of the time and "Yes" 50%, bought
+at the same price. This is the plainest statement of what the crowd gets
+wrong, and it is the thesis of the project turned over: the crowd's shifts
+cannot be predicted, but its lean can. Asked "will this happen?", it pays
+too much for "Yes".
+
+It is not, so far, a second strategy. A "No" buyer has to pay the ask and the
+fee out of that lean, and what is left is one to five cents a share with a t
+near 2 in any one band. The test fixed for it (T5-H) did not pass. The part
+that keeps appearing, "No" at 50–90¢ with three weeks or more to run, is
+positive in all three universes (+5.5%, +6.8%, +3.7%); it is the first thing
+to test on new data, and the forward log now records what is needed to do
+that (section 8).
+
+## 7. As accounts
+
+`scripts/run_third_accounts.py` (`a3_*.csv`): $1,000, positions capped at a
+tenth of what takers bought in range and priced at the three-day average, one
+position per event, four per story, at most 80% invested, each market taken
+at its earliest entry.
+
+| Account | 2% a position | 3% | 4% | 5% | Worst drawdown (2%–5%) |
+|---|---:|---:|---:|---:|---:|
+| The main account as it was: big, 95–98¢, either side | 6.7% a year | 9.7% | 12.1% | 12.6% | −4.5% to −9.0% |
+| "No" only | 6.7% | 9.4% | 10.2% | 11.1% | −3.7% to −8.1% |
+| Long-dated "No" alone, 20,000 shares or more | 7.0% | 6.5% | 7.2% | 8.4% | −3.0% to −6.8% |
+| "No" only plus long-dated "No", one account | 7.1% | 6.7% | 9.4% | 9.7% | −3.0% to −6.6% |
+| The same plus thin 95–98¢ "No" | 5.9% | 6.9% | 6.6% | 7.3% | −4.2% to −8.7% |
+
+Three things to take from it.
+
+*Dropping the "Yes" side costs nothing and gains nothing in big markets*,
+where "Yes" was the smaller part (197 of 1,838 trades) and roughly broke
+even. The case for dropping it is the other two universes.
+
+*The long-dated sleeve is a second income of about the same size, not an
+addition to the first inside one account.* On its own it earns 6.5–8.4% a
+year with half the money in use. Put into the main account it competes for
+the same events and the same stories, holds each slot five times as long,
+and the total barely moves. It pays as a separate pot of money: the main
+rule leaves two-thirds of an account idle at 2% a position, and a second
+$1,000 in long-dated positions earns its $70–90 a year where the first
+$1,000 could not have used it.
+
+*These are small numbers.* The honest range for the whole strategy is 7–12%
+a year on a small account, with the losses of three particular years. The
+per-trade statistics are strong; the money is limited by how many separate
+events there are to bet on, not by how good each bet is.
+
+## 8. What changed in the system
+
+- **Every account buys the "No" side only** (`no_side_only`, on by decision
+  of T5-N). The "Yes" side is still logged, and `kht shadow` now scores the
+  two sides apart, so the comparison runs forward on live prices.
+- **The thin-market account trades 95–98¢** instead of 90–98¢. The wider band
+  rested on round two's universe. Positions it already holds are kept to
+  resolution.
+- **The bid-first thin account is withdrawn.** TM did not pass on the
+  corrected universe. It had not yet run a cycle.
+- **A long-dated account is added** (`config/paper_long.json`,
+  `state/paper-long/`): "No" at 90–98¢ with 60 to 180 days to run, in
+  markets with 20,000 shares or more. It is there because a forward test is
+  the only clean test left for it, and a paper account costs nothing. On its
+  first dry run against live books it found twelve contracts to buy ("US
+  recession by end of 2026?", "9.0 or above earthquake before 2027?",
+  "Friedrich Merz out as Chancellor before March 31, 2027?").
+- `scripts/at_the_time.py` is now the only way a research universe is built.
+
+## 9. Verdict on the third round
+
+| Idea | Result |
+|---|---|
+| The rule in markets thinner still | No. It fades with size and is gone below 20,000 shares |
+| Round two's "larger in thin markets" | Withdrawn: produced by choosing markets on their final volume |
+| Resting bids in thin markets (TM) | Withdrawn: not passed on the corrected universe |
+| **Buy "No", not "Yes"** | **Confirmed** on untouched markets (t 3.9) and pooled (t 4.4) |
+| The leader of a multi-way event | Strong in big markets (1 loss in 265), not elsewhere; not passed |
+| Long-dated "No" | t = 9.9 and 6.4 where explored, 2.7 where tested; not passed; in forward test |
+| "No" at 50–90¢ | Positive everywhere, significant nowhere it was tested; not passed |
+| The first round | Stands unchanged |
+
+The strategy at the end of the third round: **in news markets that people
+are watching, buy "No" on a stand-alone question when it is nearly certain,
+and hold it.** Two ways to do that are running on paper, with 3–60 days to
+go (confirmed) and with 60–180 (exploratory). It is a bet against the
+crowd's belief that things will happen, which is a statement about
+psychology and has now been found at every price, in three sizes of market,
+on both sides of a pre-registered test.
+
+What the round cost is the comfortable idea that a small account has a
+private hunting ground in tiny markets. What it bought is a strategy that is
+described correctly, and three specific ways the same mistake was made
+(markets chosen on final volume; markets chosen on how long they lived;
+trades chosen on what the market did later) with a tool that prevents the
+first two. All three were found by distrusting a result that looked too
+good, and two of them before the data they would have spoiled was read.
+
+What would change the estimate fastest: the forward log. It records every
+signal on both sides in four accounts, and on each cycle it adds live
+evidence on the one claim that has passed a test this round.

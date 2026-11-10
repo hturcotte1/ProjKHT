@@ -4,6 +4,20 @@
 before any of the tests in section 4 was run; the commit time is the evidence.
 Results are added from section 5 on.*
 
+> **Correction, 10 November 2026, 20:30 UTC.** Sections 9, 10, 12 and 14 of
+> this document are wrong about the thinner markets, and are left as written
+> so the record shows what was claimed. They chose "thin" markets by the
+> volume a market reached *by the end*, which nobody knows when placing a
+> trade and which sheds losers: a market where the surprise happens draws a
+> burst of trading and leaves the group. Measured by volume at the time, the
+> rule in those markets earns +0.33% a trade (t = 1.7), not +1.69% (t = 9.0);
+> only its 95–98¢ stand-alone form holds (+1.10%, t = 3.4); the 90–98¢ band
+> and resting bids (TM) do not pass; and the edge shrinks as markets get
+> thinner instead of growing. Everything else here (quiet favourites, crypto,
+> sports, stop-losses, position size in big markets) used universes without
+> that flaw. The corrected numbers, and how the flaw was found, are in
+> [05_third_round.md](05_third_round.md), sections 3 and 4.
+
 ## 1. Where the first round left things
 
 One rule passed: buy near-certain contracts and hold them. It is real on three
@@ -432,6 +446,8 @@ line for ranking candidates, whatever happens to the 3¢ rule.
 
 ## 9. The thinner markets: the quiet rule does not pass, and the first round's rule passes again
 
+> *Withdrawn in part: the sample was chosen with hindsight. The first round's rule does not "pass again" here except in its 95–98¢ stand-alone form. See the correction at the top and [05_third_round.md](05_third_round.md), section 4.*
+
 *`run_quiet_replication.py non_sports_thin`, `qt_*.csv`. 26,537 resolved news
 markets that traded 20,000 to 100,000 shares, none of them in any earlier
 analysis; 25,283 have trades after their first 20,000 shares.*
@@ -507,6 +523,8 @@ What is and is not established by this table:
   are thin by definition. Section 10 looks at that.
 
 ## 10. What the thinner markets can take, and what it is worth
+
+> *Withdrawn: the capacity figures and every account in this section rest on the flawed sample. Corrected accounts are in [05_third_round.md](05_third_round.md), sections 4 and 7.*
 
 *`run_thin_markets.py`, `t_*.csv`. Exploratory: it rests on the first round's
 assumption that a tenth of what others bought at in-range prices could have
@@ -606,6 +624,8 @@ could not find anywhere is here, and it is the same edge seen from the side.
 
 ## 12. Verdict on the second round
 
+> *The row on thinner markets and the two closing paragraphs are withdrawn; see the correction at the top. The verdict that replaces this one is [05_third_round.md](05_third_round.md), section 9.*
+
 | Idea | Result |
 |---|---|
 | Quiet favourites as a rule of their own | Not passed. They lose a third to a half as often and cost more; the advantage is half a point a trade and not significant. Kept as information |
@@ -679,6 +699,8 @@ version of this in big markets fell just short (t = 2.7). If it passes here,
 the experimental account's method moves to the thin markets.
 
 ## 14. TM: resting bids in the thinner markets pass
+
+> *Withdrawn: on the corrected universe TM does not pass (+1.42% a trade, t = 2.3; 0.59 points above the ask, t = 2.1). The bid-first account was removed before its first cycle.*
 
 *`run_thin_maker.py`, `tm_*.csv`. The 20,000–100,000 markets of section 9.*
 

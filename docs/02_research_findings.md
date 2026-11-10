@@ -4,12 +4,17 @@
 run. Every number here comes from a table in `reports/research/`; the script
 that produced each one is named alongside it.*
 
-*A second round followed the same day and is written up in
-`04_second_round.md`. It leaves everything below standing and adds three
-things: the rule that passed here repeated on 25,283 thinner markets that
-were not in this data (t = 9.0); it did not repeat in crypto price markets or
-in sports season-long markets; and crypto price markets, listed at the end as
-not tested, now have been.*
+*A second and a third round followed the same day (`04_second_round.md`,
+`05_third_round.md`). They leave everything below standing: the third round
+reran this document's tests with two filters that needed hindsight removed,
+and the confirmed test moved from +0.96% (t = 3.62) to +0.97% (t = 3.64).
+They add that the rule did not repeat in crypto price markets or in sports
+season-long markets; that it fades as markets get thinner and is gone below
+20,000 shares (round two first reported the opposite, from a sample chosen
+with hindsight, and that is withdrawn); and that the edge sits on the "No"
+side: at the same near-certain price "No" beat "Yes" by 3.6 points a trade
+across three sizes of market (t = 4.4). The paper accounts buy "No" only
+since then.*
 
 ## The short version
 
