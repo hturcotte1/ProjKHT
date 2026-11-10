@@ -39,6 +39,7 @@ Code: `src/kht/trading/engine.py` (`Engine.run_cycle`).
 | Fill rules | `trading/fills.py` | How orders fill; shared by the backtester and the paper broker |
 | Ledger | `trading/portfolio.py` | Cash, positions, realised profit |
 | Record | `trading/engine.py` (`StateStore`), `trading/report.py` | State on disk and the readable status page |
+| Schedule gate | `trading/schedule.py` | Whether a scheduled run is due to trade or should end at once |
 
 ## What the strategy does
 
@@ -196,9 +197,22 @@ kht geoblock                    # may this machine place orders?
 ### On a schedule, without a server
 
 `.github/workflows/paper-trader.yml` runs one cycle for each paper account on
-GitHub's servers every three hours and commits the state back to the repository,
-so the accounts keep going after any one session ends. A run takes one to
-three minutes.
+GitHub's servers about every three hours and commits the state back to the
+repository, so the accounts keep going after any one session ends. A cycle
+takes one to four minutes.
+
+GitHub's scheduler is the weak part. It starts scheduled jobs late and drops
+some altogether, and new repositories fare worst: the first three-hourly slot
+here (09:17 UTC on 10 November) never ran, on a day GitHub reported no
+incident. So the workflow asks to be woken every 15 minutes, and each run first
+checks `state/last_cycle_started`. If a cycle started less than 170 minutes
+ago, the run ends after a few seconds without trading
+(`src/kht/trading/schedule.py`). A dropped slot then costs minutes rather than
+hours, and the accounts still trade at the three-hour pace. The file records
+attempts, not successes, so a cycle that keeps failing is retried every three
+hours, not every 15 minutes. A run started by hand (Actions → *paper-trader* →
+*Run workflow*) always trades, unless its "skip if a cycle started less than
+three hours ago" box is ticked.
 
 | Account | Config | State | What it is |
 |---|---|---|---|
@@ -210,16 +224,24 @@ repository → Actions → *paper-trader* → ⋯ → *Disable workflow*.
 
 Three things to know about running it this way:
 
-- GitHub starts scheduled jobs late when it is busy and sometimes skips one.
-  A missed cycle does no harm: positions are held for weeks.
+- If GitHub stops waking the workflow, the accounts stop, and nothing says so.
+  The time in `state/last_cycle_started` and the date at the top of
+  `STATUS.md` show when the last cycle ran. A missed cycle or a missed day
+  does no harm to the positions, which are held for weeks; a long gap does
+  cost the forward-test log the signals that came and went in between. To
+  get going again: run the workflow by hand; or have any outside scheduler
+  call the workflow's dispatch endpoint with `respect_interval` set; or run
+  `kht run` on a machine of your own.
 - GitHub only runs schedules from the repository's default branch, and it
   pauses them in a public repository after 60 days without activity. Each
-  cycle's state commit counts as activity. If the schedule ever stops, the
+  cycle's state commit counts as activity. If the schedule is paused, the
   Actions tab says so and has a button to re-enable it.
 - The repository is public, so the rule, the research and the paper accounts'
   positions can be read by anyone. Making it private changes nothing in the
-  code; scheduled runs then count against the account's free Actions minutes
-  (a cycle takes one to four minutes, eight times a day).
+  code, but every run is then billed as at least a minute of the account's
+  free Actions allowance, including the runs that find no cycle due. Change
+  the schedule line to `17 */3 * * *` first: eight runs a day instead of
+  ninety-six.
 
 ## Files the system writes
 
@@ -234,6 +256,9 @@ All under the state directory (default `state/paper/`):
 | `settlements.csv` | Every resolved position and its profit |
 | `decisions.jsonl` | Every order placed, every order a limit blocked with the reason, and each cycle's count of candidates the limits screened out before they were proposed |
 | `shadow.csv` | The forward-test log: every signal seen, traded or not |
+
+One file sits beside the account directories: `state/last_cycle_started`, the
+time the scheduled workflow last began a cycle.
 
 ## Reproducing the research
 

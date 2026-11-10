@@ -1,12 +1,24 @@
 # Runs one paper-trading cycle for each paper account and commits the state.
 # Paper mode reads public market data only: no credentials, no orders.
+#
+# GitHub starts scheduled jobs late and drops some of them, so this wakes every
+# 15 minutes and trades only when about three hours have passed since the last
+# cycle started. A run that is not due ends after a few seconds.
+#
 # To stop it: Actions tab -> "paper-trader" -> "..." -> "Disable workflow".
+# In a private repository every run, even one that is not due, is billed as a
+# whole minute: use a sparser schedule there (see docs/03_system.md).
 name: paper-trader
 
 on:
   schedule:
-    - cron: "17 */3 * * *"     # every three hours; positions are held for weeks, so that is plenty
-  workflow_dispatch: {}
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+    inputs:
+      respect_interval:
+        description: "Skip if a cycle started less than three hours ago, as scheduled runs do"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -15,28 +27,59 @@ concurrency:
   group: paper-trader
   cancel-in-progress: false
 
+env:
+  # Three hours, less the few minutes a slot can start late.
+  MIN_MINUTES_BETWEEN_CYCLES: "170"
+
 jobs:
   cycle:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The branch as it is when the job starts. The default is the commit
+          # that was newest when the run was queued, which is out of date if an
+          # earlier run has committed state in the meantime.
+          ref: ${{ github.ref }}
+      - name: Is a cycle due?
+        id: gate
+        env:
+          EVENT: ${{ github.event_name }}
+          RESPECT_INTERVAL: ${{ inputs.respect_interval }}
+        run: |
+          min=0   # a run started by hand trades now
+          if [ "$EVENT" = "schedule" ] || [ "$RESPECT_INTERVAL" = "true" ]; then
+            min="$MIN_MINUTES_BETWEEN_CYCLES"
+          fi
+          rc=0
+          why=$(PYTHONPATH=src python3 -m kht.trading.schedule state/last_cycle_started --min-minutes "$min" --mark) || rc=$?
+          echo "$why"
+          echo "$why" >> "$GITHUB_STEP_SUMMARY"
+          case "$rc" in
+            0) echo "due=true" >> "$GITHUB_OUTPUT" ;;
+            3) echo "due=false" >> "$GITHUB_OUTPUT" ;;
+            *) echo "the check itself failed (exit $rc)"; exit "$rc" ;;
+          esac
       - uses: actions/setup-python@v5
+        if: steps.gate.outputs.due == 'true'
         with:
           python-version: "3.12"
       - name: Install (engine only, no research stack)
+        if: steps.gate.outputs.due == 'true'
         run: pip install -e .
       - name: Main account (the rule that passed its test)
+        if: steps.gate.outputs.due == 'true'
         run: kht cycle --config config/paper.json --state state/paper --report state/paper/STATUS.md
       - name: Experimental account (resting-bid entry; unproven)
-        if: always()
+        if: always() && steps.gate.outputs.due == 'true'
         run: kht cycle --config config/paper_maker.json --state state/paper-maker --report state/paper-maker/STATUS.md
       - name: Commit account state
-        if: always()
+        if: always() && steps.gate.outputs.due == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add state/paper state/paper-maker
+          git add state
           if git diff --cached --quiet; then
             echo "nothing changed"
           else
