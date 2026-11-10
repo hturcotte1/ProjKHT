@@ -99,17 +99,20 @@ def cmd_shadow(args: argparse.Namespace) -> int:
     # Only signals whose scheduled end has passed are scored. Counting early
     # resolutions as they happen would bias the result downward: a "by
     # December" market that closes in November is one where the thing happened.
-    groups = [("core", False, None, "the rule as traded: stand-alone markets in the traded band"),
-              ("core", True, None, "legs of multi-outcome events in the traded band (logged only)"),
-              ("below", None, None, "below the traded band (logged only)"),
-              ("above", None, None, "above the traded band (logged only)"),
+    groups = [("core", False, None, None, "stand-alone markets in the traded band, either side"),
+              # the third round's finding, checked on new data: the same prices on each side
+              ("core", False, None, "no", "traded band, stand-alone, the NO side (what the accounts buy)"),
+              ("core", False, None, "yes", "traded band, stand-alone, the YES side (logged only since the third round)"),
+              ("core", True, None, None, "legs of multi-outcome events in the traded band (logged only)"),
+              ("below", None, None, None, "below the traded band (logged only)"),
+              ("above", None, None, None, "above the traded band (logged only)"),
               # the second round's finding, checked on new data: quiet against not quiet at the same prices
-              ("core", False, True, "traded band, stand-alone, QUIET when logged (3c or less traded range over 7 days)"),
-              ("core", False, False, "traded band, stand-alone, not quiet when logged"),
-              ("below", False, True, "below the traded band, stand-alone, QUIET when logged"),
-              ("below", False, False, "below the traded band, stand-alone, not quiet when logged")]
-    for band, legs, quiet, label in groups:
-        res = score_shadow(args.state, markets, band, legs, quiet)
+              ("core", False, True, None, "traded band, stand-alone, QUIET when logged (3c or less traded range over 7 days)"),
+              ("core", False, False, None, "traded band, stand-alone, not quiet when logged"),
+              ("below", False, True, None, "below the traded band, stand-alone, QUIET when logged"),
+              ("below", False, False, None, "below the traded band, stand-alone, not quiet when logged")]
+    for band, legs, quiet, side, label in groups:
+        res = score_shadow(args.state, markets, band, legs, quiet, side)
         if not res["signals"]:
             continue
         print(f"\n{label}: {res['signals']} signals logged, {res['resolved']} resolved, {res['open']} still open")

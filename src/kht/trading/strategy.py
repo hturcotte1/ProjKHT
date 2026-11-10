@@ -105,6 +105,11 @@ class StrategyConfig:
     max_spread: float = 0.03
     min_edge: float = 0.01              # estimated profit per share after the fee
     single_only: bool = False           # skip legs of multi-outcome events (they are still logged)
+    # Buy only the outcome named "No" of a Yes/No question (the other side is
+    # still logged). At the same near-certain price "No" earned 3.6 points a
+    # trade more than "Yes" across three universes (t = 4.4): the crowd is too
+    # sure that things will happen. See docs/05_third_round.md.
+    no_side_only: bool = False
     # Only buy outcomes whose traded price has stayed within quiet_range over
     # the last quiet_days days, in a market older than that (0 = no such
     # filter). See trading/quiet.py and docs/04_second_round.md.
@@ -151,6 +156,11 @@ class StrategyConfig:
         return cls(**{k: v for k, v in d.items() if k in cls.__dataclass_fields__})
 
 
+def is_no_side(info: Any, outcome: int) -> bool:
+    """True for the outcome named "No" of a market whose outcomes are named Yes and No."""
+    return (outcome == 1 and str(info.outcome0).strip().lower() == "yes" and str(info.outcome1).strip().lower() == "no")
+
+
 @dataclass
 class Candidate:
     market: LiveMarket
@@ -180,7 +190,8 @@ class HarvestStrategy:
     # ------------------------------------------------------------ candidates
     def candidates(self, markets: dict[int, LiveMarket], now: float) -> list[Candidate]:
         """Contracts the rule may buy: in the trading band with enough estimated edge."""
-        return self.scan(markets, now, self.cfg.ask_lo, self.cfg.ask_hi, self.cfg.min_edge, self.cfg.single_only)
+        return self.scan(markets, now, self.cfg.ask_lo, self.cfg.ask_hi, self.cfg.min_edge, self.cfg.single_only,
+                         self.cfg.no_side_only)
 
     def watchlist(self, markets: dict[int, LiveMarket], now: float) -> list[Candidate]:
         """Everything in the wider logged band, whatever the model thinks of it."""
@@ -192,7 +203,7 @@ class HarvestStrategy:
         return "core" if ask <= self.cfg.ask_hi else "above"
 
     def scan(self, markets: dict[int, LiveMarket], now: float, lo: float, hi: float,
-             min_edge: float | None, single_only: bool = False) -> list[Candidate]:
+             min_edge: float | None, single_only: bool = False, no_only: bool = False) -> list[Candidate]:
         cfg = self.cfg
         out: list[Candidate] = []
         for lm in markets.values():
@@ -211,6 +222,8 @@ class HarvestStrategy:
             if not (cfg.dte_lo < dte <= cfg.dte_hi):
                 continue
             for outcome in (0, 1):
+                if no_only and not is_no_side(info, outcome):
+                    continue
                 ask, bid = lm.ask(outcome), lm.bid(outcome)
                 if ask is None or bid is None or not (lo < ask <= hi):
                     continue

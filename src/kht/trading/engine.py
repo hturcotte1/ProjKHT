@@ -22,7 +22,7 @@ from .models import Fill, MarketInfo, OrderStatus
 from .portfolio import Portfolio
 from .quiet import Quietness, traded_range
 from .risk import RiskLimits, RiskManager, RiskState
-from .strategy import EdgeModel, HarvestStrategy, StrategyConfig
+from .strategy import EdgeModel, HarvestStrategy, StrategyConfig, is_no_side
 from .universe import LiveMarket, fetch_markets, scan_open, theme_tags
 
 STATE_VERSION = 1
@@ -366,7 +366,8 @@ class Engine:
                 "neg_risk": int(info.neg_risk), "ask": round(c.ask, 4), "bid": round(c.bid, 4),
                 "fee_ps": round(c.fee, 5), "p_model": round(c.p_win, 4), "edge": round(c.edge, 4),
                 "tradable": int(band == "core" and c.edge >= cfg.min_edge
-                                and not (cfg.single_only and info.neg_risk)),
+                                and not (cfg.single_only and info.neg_risk)
+                                and not (cfg.no_side_only and not is_no_side(info, c.outcome))),
                 "dte": round(c.dte, 2), "end_ts": int(info.end_ts)})
 
     def _waited_long_enough(self, now: float) -> set[int]:

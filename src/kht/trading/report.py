@@ -155,7 +155,7 @@ def shadow_quiet(state_dir: str | Path, max_range: float = 0.03) -> dict[str, bo
 
 
 def score_shadow(state_dir: str | Path, markets: dict[int, Any], band: str | None = None,
-                 legs: bool | None = None, quiet: bool | None = None) -> dict[str, Any]:
+                 legs: bool | None = None, quiet: bool | None = None, side: str | None = None) -> dict[str, Any]:
     """Score the forward-test log against resolutions.
 
     ``markets`` maps market id to a ``LiveMarket``. Returns counts and the
@@ -166,9 +166,12 @@ def score_shadow(state_dir: str | Path, markets: dict[int, Any], band: str | Non
     column, which records the configuration in force on the day and so goes
     stale when the rule is changed. ``quiet`` keeps the signals that were
     quiet when logged (True) or were not (False); signals whose traded range
-    was never recorded belong to neither.
+    was never recorded belong to neither. ``side`` keeps the signals on the
+    outcome named "No" (``"no"``) or "Yes" (``"yes"``).
     """
     rows = _read_csv(Path(state_dir) / "shadow.csv")
+    if side is not None:
+        rows = [r for r in rows if str(r.get("outcome_name", "")).strip().lower() == side]
     if band is not None:
         rows = [r for r in rows if r.get("band", "core") == band]
     if legs is not None:

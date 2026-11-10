@@ -482,6 +482,59 @@ def test_single_only_skips_legs_of_multi_outcome_events_but_still_watches_them()
     assert sorted(c.market.info.market_id for c in s.watchlist(markets, NOW)) == [1, 2]
 
 
+def test_no_side_only_buys_no_and_still_watches_yes():
+    from dataclasses import replace
+    cfg = StrategyConfig(**{**CFG.to_dict(), "no_side_only": True})
+    s = HarvestStrategy(cfg, MODEL)
+    yes_fav = live(1, 0.92, 0.93)                      # "Yes" at 93c
+    no_fav = live(2, 0.07, 0.08)                       # "No" at 93c
+    named = live(3, 0.07, 0.08)                        # the same price on an outcome that is not called "No"
+    named = LiveMarket(replace(named.info, outcome0="Up", outcome1="Down"), named.best_bid0, named.best_ask0, named.volume,
+                       named.volume_24h, named.liquidity, named.accepting_orders, named.closed, named.winner, named.final0,
+                       named.question)
+    markets = {1: yes_fav, 2: no_fav, 3: named}
+    assert [(c.market.info.market_id, c.outcome) for c in s.candidates(markets, NOW)] == [(2, 1)]
+    assert sorted(c.market.info.market_id for c in s.watchlist(markets, NOW)) == [1, 2, 3]
+    # without the option both sides trade, as before
+    both = HarvestStrategy(CFG, MODEL).candidates(markets, NOW)
+    assert sorted((c.market.info.market_id, c.outcome) for c in both) == [(1, 0), (2, 1), (3, 1)]
+
+
+def test_no_side_only_marks_the_yes_side_as_logged_only(engine):
+    import csv
+    from dataclasses import replace
+    e, pm, path, limits = engine
+    e.strategy.cfg = replace(e.strategy.cfg, no_side_only=True)        # a copy: the fixture's config is shared
+    pm.markets = {1: live(1, 0.93, 0.94, event=11), 2: live(2, 0.05, 0.06, event=12)}   # Yes at 94c; No at 95c
+    pm.history = {"T1a": 0.94, "T2b": 0.95}
+    e.run_cycle(NOW)
+    rows = {int(r["market_id"]): r for r in csv.DictReader((path / "shadow.csv").open())}
+    assert (rows[1]["outcome_name"], rows[1]["tradable"]) == ("Yes", "0")
+    assert (rows[2]["outcome_name"], rows[2]["tradable"]) == ("No", "1")
+    assert {p.market_id for p in e.portfolio.positions.values()} == {2}
+
+
+def test_forward_test_can_be_scored_by_side(tmp_path):
+    import csv
+    from kht.trading.report import score_shadow
+    cols = ["ts", "market_id", "band", "outcome", "outcome_name", "question", "event_id", "neg_risk", "ask", "fee_ps",
+            "p_model", "tradable", "end_ts"]
+    with (tmp_path / "shadow.csv").open("w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=cols)
+        w.writeheader()
+        for mid, outcome, name in ((1, 1, "No"), (2, 1, "No"), (3, 0, "Yes")):
+            w.writerow({"ts": int(NOW), "market_id": mid, "band": "core", "outcome": outcome, "outcome_name": name,
+                        "question": f"Q{mid}", "event_id": mid, "neg_risk": 0, "ask": 0.96, "fee_ps": 0.0,
+                        "p_model": 0.97, "tradable": 1, "end_ts": int(NOW)})
+    markets = {1: live(1, None, None, closed=True, final0=0.0, accepting=False),     # "No" won
+               2: live(2, None, None, closed=True, final0=0.0, accepting=False),     # "No" won
+               3: live(3, None, None, closed=True, final0=0.0, accepting=False)}     # "Yes" lost
+    no, yes = score_shadow(tmp_path, markets, "core", side="no"), score_shadow(tmp_path, markets, "core", side="yes")
+    assert (no["signals"], no["resolved"], no["win_rate"]) == (2, 2, 1.0)
+    assert (yes["signals"], yes["resolved"], yes["win_rate"]) == (1, 1, 0.0)
+    assert score_shadow(tmp_path, markets, "core")["signals"] == 3
+
+
 def test_unconfirmed_signals_are_not_looked_up_again_every_cycle(engine):
     e, pm, path, limits = engine
     pm.markets[4] = live(4, 0.975, 0.98, event=14)     # above the traded band: only ever logged

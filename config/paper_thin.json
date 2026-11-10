@@ -2,7 +2,7 @@
   "mode": "paper",
   "model": "model.json",
   "strategy": {
-    "ask_lo": 0.9,
+    "ask_lo": 0.95,
     "ask_hi": 0.98,
     "dte_lo": 3.0,
     "dte_hi": 60.0,
@@ -30,7 +30,8 @@
     "tag": "harvest-thin",
     "single_only": true,
     "busy_days": 14.0,
-    "busy_range": 0.15
+    "busy_range": 0.15,
+    "no_side_only": true
   },
   "risk": {
     "bankroll": 1000.0,
