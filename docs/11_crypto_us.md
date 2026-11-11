@@ -481,6 +481,18 @@ levels sure to lose there are offers at 1¢: resting orders that gain when
 somebody trades against them. The daily ladders are the other way round,
 which is what section 4 found.
 
+**An illustration, not a reading of the test.** The books of section 4,
+as they stood at 16:50 UTC, judged as if they had been read later with the
+index where it was then:
+
+| As if read | L1-recent: markets, contracts, premium | L1-strict |
+|---|---|---|
+| 15 minutes before the end, index 5 minutes old | 44 markets, 28,794 contracts, $263 | none |
+| 2 minutes before the end, index 3 minutes old | 79 markets, 48,437 contracts, $443 | 40 markets, 19,805 contracts, $182 |
+
+Nine tenths of it is Bitcoin. An account with $10,000 would be full either
+way, at about $91. The evening's own books will differ.
+
 ## 10. The same bids elsewhere on the exchange
 
 The recorder of `state/us/` reads the books of every reward market outside
