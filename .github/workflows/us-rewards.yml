@@ -1,0 +1,83 @@
+# Follows Polymarket US games through the six hours before they start and
+# works out what small resting orders would have been paid by the exchange's
+# published reward formula, and how often they would have been traded
+# against (docs/09_sports_rewards.md).
+# A simulation: it reads public market data only. No credentials, no orders.
+#
+# One run lasts about five hours and then starts the next, so that games are
+# followed without gaps. It stops by itself on 18 November 2026.
+# To stop it sooner: add an empty file state/us-rewards/STOP, or
+# Actions tab -> "us-rewards" -> "..." -> "Disable workflow".
+name: us-rewards
+
+on:
+  workflow_dispatch:
+  schedule:
+    # A safety net only. If a run ends without starting its successor, this
+    # starts one within a few hours. While a run is going, it just waits.
+    - cron: "41 */2 * * *"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: us-rewards
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The branch as it is when the job starts, not as it was when the
+          # run was queued: other runs commit state in the meantime.
+          ref: ${{ github.ref }}
+      - name: Still wanted?
+        id: gate
+        run: |
+          if [ -f state/us-rewards/STOP ]; then
+            echo "stopped by the file state/us-rewards/STOP" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          elif [ "$(date -u +%Y%m%d)" -ge 20261118 ]; then
+            echo "past the end date of the test" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.go == 'true'
+        with:
+          python-version: "3.12"
+      - name: Install (engine only, no research stack)
+        if: steps.gate.outputs.go == 'true'
+        run: pip install -e .
+      - name: Follow the games before they start (read-only)
+        id: record
+        if: steps.gate.outputs.go == 'true'
+        timeout-minutes: 320
+        run: kht us-rewards --state state/us-rewards --minutes 300
+      - name: Commit what was recorded
+        if: always() && steps.gate.outputs.go == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/us-rewards
+          if git diff --cached --quiet; then
+            echo "nothing recorded"
+          else
+            git commit -m "Paper orders before games: run ending $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+            for i in 1 2 3 4; do
+              if git pull --rebase --autostash && git push; then break; fi
+              sleep $((i * 10))
+            done
+          fi
+      - name: Start the next run
+        # Only after a run that worked. A run that failed must not start
+        # another at once, or a fault would loop; the schedule retries it.
+        if: steps.gate.outputs.go == 'true' && steps.record.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run us-rewards.yml --ref "${GITHUB_REF_NAME}"
