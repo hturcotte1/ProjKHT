@@ -37,9 +37,9 @@ its fee schedule.
 | History | Sports from November 2025; everything else from spring 2026; the midterm elections of 3 November 2026 are four-fifths of the politics | three years |
 | Shape of a market | Almost every market is one answer to a question with several answers: a candidate in a race, a temperature bracket, a price rung, a team. Stand-alone "will this happen by a date?" questions are rare | the confirmed rule lives on stand-alone "by a date" questions |
 | Taker fee | 0.095 × price × (1 − price) a contract for an account under $10,000 of monthly volume: 0.36¢ at 96¢, 2.4¢ at 50¢ | 0 to 0.07 × price × (1 − price): at most 0.15¢ at 96¢ in politics, nothing in geopolitics |
-| Maker fee | none (and no rebate below $10 million a month) | none |
+| Maker fee | none (and no rebate below $10 million a month); resting orders can also be paid rewards, found later and described in `docs/08_rewards.md` | none |
 | Tick, smallest order | 1¢ (0.5¢ and 0.1¢ on some); 0.01 of a contract | 1¢ or 0.1¢; 5 shares |
-| Public data | every market's settlement; the order book's best prices on both sides, minute by minute, for any past day; one point a day for a market's whole life; total shares traded | every trade ever made |
+| Public data | every market's settlement; the order book's best prices on both sides, minute by minute, for any past day; one point a day for a market's whole life; total shares traded. (Section 7 found that these "best prices" are the last trade wherever a side of the book is empty) | every trade ever made |
 | Not public | individual trades | |
 
 Three consequences.
