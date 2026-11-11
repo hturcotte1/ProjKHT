@@ -560,6 +560,16 @@ Nothing has been tested there. It would need the published figure from
 outside the exchange, where the crypto index comes from the exchange
 itself.
 
+One look at that ladder says the trade is already taken there. On
+11 November its seventeen levels were decided by 06:30 UTC, eight and a
+half hours before the market closed, and the stored quotes did not change
+again. On the levels that had lost, the two stored prices sit together
+with no spread, which is what the history shows when one side of the book
+is empty. And the two furthest levels had traded 3,266 and 4,046
+contracts, where a far level of the crypto ladder has usually traded
+none. Somebody sells to those bids. In crypto, so far, almost nobody
+does.
+
 ## 11. If it holds: what a real version would need
 
 Nothing here is built, and nothing will be sent without the owner's
