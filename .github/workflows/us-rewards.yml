@@ -5,9 +5,12 @@
 # A simulation: it reads public market data only. No credentials, no orders.
 #
 # One run lasts about five hours and then starts the next, so that games are
-# followed without gaps. It stops by itself on 18 November 2026.
+# followed without gaps. What it has recorded is pushed once an hour, so a
+# machine that is lost costs an hour at most. It stops by itself on
+# 18 November 2026.
 # To stop it sooner: add an empty file state/us-rewards/STOP, or
-# Actions tab -> "us-rewards" -> "..." -> "Disable workflow".
+# Actions tab -> "us-rewards" -> "..." -> "Disable workflow" (and the same
+# for "us-rewards-watchdog", which restarts it).
 name: us-rewards
 
 on:
@@ -71,6 +74,20 @@ jobs:
             if [ "$end" -ge "$from" ] && [ "$end" -le "$to" ]; then mins=$(( (from - 120 - now) / 60 )); fi
           done
           echo "this run: $mins minutes"
+          # Push what has been recorded once an hour, and a few minutes after
+          # the daily crypto settlement at 22:00 UTC. The programs below are
+          # not touched by it: it works in a second checkout.
+          (
+            last=$(date -u +%s)
+            while sleep 60; do
+              t=$(date -u +%s); hm=$((10#$(date -u +%H%M)))
+              if [ $((t - last)) -ge 3600 ] || { [ "$hm" -ge 2203 ] && [ "$hm" -le 2212 ] && [ $((t - last)) -ge 900 ]; }; then
+                bash scripts/ci_save_state.sh "Paper orders before games: so far, $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]" || true
+                last=$(date -u +%s)
+              fi
+            done
+          ) &
+          saver=$!
           # Alongside the judged test: the order-placing system itself, on
           # paper and under its own limits (docs/10_us_quoter.md). It sends
           # nothing anywhere. If it fails, the judged test is not affected.
@@ -86,29 +103,16 @@ jobs:
             if pgrep -f "kht $name" > /dev/null; then echo "$name is running"; else echo "$name is NOT running:"; cat "$name.log" || true; fi
           done
           kht us-rewards --state state/us-rewards --minutes "$mins"
+          kill "$saver" 2>/dev/null || true
           wait
           tail -n 4 us-quote.log || true
           tail -n 2 us-lasttick.log || true
       - name: Commit what was recorded
         if: always() && steps.gate.outputs.go == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add state/us-rewards
-          if [ -d state/us-quoter ]; then git add state/us-quoter; fi
-          if [ -d state/us-lasttick ]; then git add state/us-lasttick; fi
-          if git diff --cached --quiet; then
-            echo "nothing recorded"
-          else
-            git commit -m "Paper orders before games: run ending $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
-            for i in 1 2 3 4; do
-              if git pull --rebase --autostash && git push; then break; fi
-              sleep $((i * 10))
-            done
-          fi
+        run: bash scripts/ci_save_state.sh "Paper orders before games: run ending $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
       - name: Start the next run
         # Only after a run that worked. A run that failed must not start
-        # another at once, or a fault would loop; the schedule retries it.
+        # another at once, or a fault would loop; the watchdog retries it.
         if: steps.gate.outputs.go == 'true' && steps.record.outcome == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
