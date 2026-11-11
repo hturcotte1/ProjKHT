@@ -2,6 +2,8 @@
 # works out what small resting orders would have been paid by the exchange's
 # published reward formula, and how often they would have been traded
 # against (docs/09_sports_rewards.md).
+# Beside that it carries two recorders of crypto order books for two other
+# paper tests (docs/11_crypto_us.md, sections 5 and 12).
 # A simulation: it reads public market data only. No credentials, no orders.
 #
 # One run lasts about five hours and then starts the next, so that games are
@@ -96,17 +98,22 @@ jobs:
           # minutes (docs/11_crypto_us.md). Read-only as well, and as
           # harmless to the judged test if it fails.
           (timeout $((mins + 2))m kht us-lasttick --state state/us-lasttick --minutes $((mins - 2)) > us-lasttick.log 2>&1 || true) &
+          # A second copy of that recorder, for the test of section 12 of
+          # the same document: the brackets only, from five and a half hours
+          # before they settle, every two minutes, into its own directory.
+          (timeout $((mins + 2))m kht us-lasttick --state state/us-ladder --kinds range --follow 19800 --sweep 120 --budget 3 --minutes $((mins - 2)) > us-ladder.log 2>&1 || true) &
           # Their output is only shown when the run ends. Say now whether
           # each is up, so that a fault shows in the log the same evening.
           sleep 15
-          for name in us-quote us-lasttick; do
-            if pgrep -f "kht $name" > /dev/null; then echo "$name is running"; else echo "$name is NOT running:"; cat "$name.log" || true; fi
+          for name in us-quote us-lasttick us-ladder; do
+            if pgrep -f "state/$name" > /dev/null; then echo "$name is running"; else echo "$name is NOT running:"; cat "$name.log" || true; fi
           done
           kht us-rewards --state state/us-rewards --minutes "$mins"
           kill "$saver" 2>/dev/null || true
           wait
           tail -n 4 us-quote.log || true
           tail -n 2 us-lasttick.log || true
+          tail -n 2 us-ladder.log || true
       - name: Commit what was recorded
         if: always() && steps.gate.outputs.go == 'true'
         run: |
