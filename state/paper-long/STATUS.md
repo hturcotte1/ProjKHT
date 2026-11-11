@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-11 06:20 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-11 09:11 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $998.78 |
+| Equity (positions marked at the bid) | $998.99 |
 | Starting bankroll | $1,000.00 |
-| Change | $-1.22 (-0.12%) |
+| Change | $-1.01 (-0.10%) |
 | Cash | $980.01 |
 | In positions (cost) | $19.99 |
 | Realised profit | $+0.00 |
@@ -19,7 +19,7 @@ As of 2026-11-11 06:20 UTC. Started 2026-11-10 20:50 UTC.
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.910 | $-1.22 | 110 |
+| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.920 | $-1.01 | 110 |
 
 ## Resting orders
 
@@ -44,4 +44,4 @@ As of 2026-11-11 06:20 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-3 cycles from 2026-11-10 20:50 UTC to 2026-11-11 06:20 UTC; equity $1,000.00 → $998.78. The longest gap between two cycles was 5.4 hours.
+4 cycles from 2026-11-10 20:50 UTC to 2026-11-11 09:10 UTC; equity $1,000.00 → $998.99. The longest gap between two cycles was 5.4 hours.

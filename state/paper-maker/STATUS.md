@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-11 06:19 UTC. Started 2026-11-10 07:39 UTC.
+As of 2026-11-11 09:10 UTC. Started 2026-11-10 07:39 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $1,001.33 |
+| Equity (positions marked at the bid) | $1,002.09 |
 | Starting bankroll | $1,000.00 |
-| Change | $+1.33 (+0.13%) |
+| Change | $+2.09 (+0.21%) |
 | Cash | $760.05 |
 | In positions (cost) | $239.95 |
 | Realised profit | $+0.00 |
@@ -20,13 +20,13 @@ As of 2026-11-11 06:19 UTC. Started 2026-11-10 07:39 UTC.
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
 | US imports Russian diesel by November 15? | No | 20.7 | 0.965 | 0.985 | $+0.41 | 5 |
-| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.968 | $+0.47 | 5 |
+| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.971 | $+0.53 | 5 |
 | Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.974 | $+0.00 | 5 |
-| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.971 | $+0.42 | 15 |
+| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.981 | $+0.63 | 15 |
 | Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.950 | $+0.00 | 20 |
 | US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.956 | $+0.15 | 20 |
-| NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.955 | $-0.10 | 20 |
-| Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.910 | $+0.22 | 51 |
+| NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.957 | $-0.06 | 20 |
+| Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.930 | $+0.67 | 51 |
 | Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.900 | $-0.00 | 51 |
 | US strike on Cuba by December 31? | No | 21.7 | 0.920 | 0.920 | $+0.00 | 51 |
 | Will Gavin Newsom announce a Presidential run before 2027? | No | 21.7 | 0.920 | 0.910 | $-0.22 | 51 |
@@ -85,4 +85,4 @@ As of 2026-11-11 06:19 UTC. Started 2026-11-10 07:39 UTC.
 
 ## Equity history
 
-9 cycles from 2026-11-10 07:39 UTC to 2026-11-11 06:18 UTC; equity $1,000.00 → $1,001.33. The longest gap between two cycles was 5.4 hours.
+10 cycles from 2026-11-10 07:39 UTC to 2026-11-11 09:09 UTC; equity $1,000.00 → $1,002.09. The longest gap between two cycles was 5.4 hours.
