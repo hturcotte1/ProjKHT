@@ -44,7 +44,8 @@ SETTLE_AFTER = 3 * 3600     # a paper position is looked up for settlement this 
 BUY_YES, SELL_NO = "ORDER_INTENT_BUY_LONG", "ORDER_INTENT_SELL_SHORT"       # both buy the instrument: they rest on the bid
 SELL_YES, BUY_NO = "ORDER_INTENT_SELL_LONG", "ORDER_INTENT_BUY_SHORT"       # both sell it: they rest on the offer
 ACTION_FIELDS = ["ts", "action", "slug", "side", "intent", "price", "qty", "expires", "id", "why"]
-CYCLE_FIELDS = ["ts", "mode", "candidates", "games", "orders", "placed", "cancelled", "filled_games", "at_risk", "equity", "reward_formula", "errors"]
+CYCLE_FIELDS = ["ts", "mode", "candidates", "games", "orders", "placed", "cancelled", "renewed", "filled_games", "at_risk", "equity", "reward_formula", "errors"]
+LOG_EVERY = 10              # a line goes to cycles.csv every this many cycles, and whenever something was filled
 SETTLED_FIELDS = ["ts", "slug", "bought", "sold", "cost", "proceeds", "settle", "pnl"]
 
 
@@ -335,6 +336,7 @@ class Engine:
     read_at: float = -1e18
     scanned_at: float = -1e18
     errors: int = 0
+    cycles: int = 0
 
     def __post_init__(self) -> None:
         self.state.mkdir(parents=True, exist_ok=True)
@@ -502,10 +504,13 @@ class Engine:
             ask = [(w.price, w.qty) for w in wants if w.slug == slug and w.side == "ask"]
             self.resting[slug] = Resting(t, b, (bid[0][0], sum(q for _, q in bid)) if bid else None, (ask[0][0], sum(q for _, q in ask)) if ask else None)
 
-        # 5. write it down
+        # 5. write it down. An order sent again unchanged, only to push its expiry out, is counted and not listed.
+        same = lambda o, w: (o.slug, o.side, o.intent) == (w.slug, w.side, w.intent) and abs(o.price - w.price) < 1e-9 and abs(o.qty - w.qty) < 1e-6
+        renewed_orders = [o for o in cancel if any(same(o, w) for w in send)]
+        renewed_wants = [w for w in send if any(same(o, w) for o in cancel)]
         rows = [{"ts": int(t), "action": "fill", **f} for f in fills]
-        rows += [{"ts": int(t), "action": "cancel", **asdict(o), "expires": int(o.expires)} for o in cancel]
-        rows += [{"ts": int(t), "action": "place", "id": i, **asdict(w), "expires": int(w.expires)} for i, w in zip(ids, send)]
+        rows += [{"ts": int(t), "action": "cancel", **asdict(o), "expires": int(o.expires)} for o in cancel if o not in renewed_orders]
+        rows += [{"ts": int(t), "action": "place", "id": i, **asdict(w), "expires": int(w.expires)} for i, w in zip(ids, send) if w not in renewed_wants]
         _append(self.state / "actions.csv", ACTION_FIELDS, rows)
         _append(self.state / "settled.csv", SETTLED_FIELDS, settled)
         (self.state / "accrued.json").write_text(json.dumps(self.accrued, sort_keys=True))
@@ -516,9 +521,11 @@ class Engine:
         if isinstance(self.broker, PaperBroker):
             self.broker.save(self.state / "paper.json")
         line = {"ts": int(t), "mode": self.mode, "candidates": len(games), "games": len(self.resting), "orders": len(open_orders) - len(cancel) + len(send),
-                "placed": len(send), "cancelled": len(cancel), "filled_games": len(filled), "at_risk": round(at_risk, 2),
+                "placed": len(send), "cancelled": len(cancel), "renewed": len(renewed_wants), "filled_games": len(filled), "at_risk": round(at_risk, 2),
                 "equity": "" if equity is None else round(equity, 2), "reward_formula": round(self.reward(), 4), "errors": self.errors}
-        _append(self.state / "cycles.csv", CYCLE_FIELDS, [line])
+        if self.cycles % LOG_EVERY == 0 or fills or settled:
+            _append(self.state / "cycles.csv", CYCLE_FIELDS, [line])
+        self.cycles += 1
         return line
 
     def reward(self, minimum: float = 0.0) -> float:

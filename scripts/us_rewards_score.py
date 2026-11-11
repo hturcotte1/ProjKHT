@@ -14,6 +14,7 @@ usr_by_day_all.csv, usr_by_day_thin.csv and usr_fills.csv.
 from __future__ import annotations
 
 import argparse
+import json
 import time
 from pathlib import Path
 
@@ -181,9 +182,34 @@ def table_by(per: pd.DataFrame, key: str) -> pd.DataFrame:
     return t.reset_index()
 
 
+def rehearsal(state: Path) -> list[str]:
+    """The order-placing system itself, run on paper under its own limits (docs/10_us_quoter.md). Described, not judged."""
+    if not (state / "accrued.json").exists():
+        return []
+    acc = json.loads((state / "accrued.json").read_text())
+    days = pd.Series({(slug, date): v for slug, by in acc.items() for date, v in by.items()}, dtype=float)
+    settled = pd.read_csv(state / "settled.csv") if (state / "settled.csv").exists() else pd.DataFrame(columns=["pnl"])
+    paper = json.loads((state / "paper.json").read_text()) if (state / "paper.json").exists() else {}
+    cycles = pd.read_csv(state / "cycles.csv") if (state / "cycles.csv").exists() else pd.DataFrame()
+    actions = pd.read_csv(state / "actions.csv") if (state / "actions.csv").exists() else pd.DataFrame(columns=["action"])
+    fills = actions[actions["action"] == "fill"]
+    out = ["", "THE REHEARSAL: the order-placing system on paper, under its own limits (config/us_quoter.json). Described, not judged."]
+    if len(cycles):
+        hours = (cycles["ts"].max() - cycles["ts"].min()) / 3600.0
+        out.append(f"from {pd.to_datetime(cycles['ts'].min(), unit='s', utc=True):%d %b %H:%M} to {pd.to_datetime(cycles['ts'].max(), unit='s', utc=True):%d %b %H:%M} UTC ({hours:,.1f} hours); "
+                   f"games rested in at once: median {cycles['games'].median():.0f}; most at risk in positions: ${cycles['at_risk'].max():,.2f}")
+    out += [f"markets rested in: {days.index.get_level_values(0).nunique() if len(days) else 0:,}; reward by the formula: ${days.sum():,.2f}; "
+            f"counting only a market and date that reached $1: ${days[days >= MINIMUM].sum():,.2f}",
+            f"fills: {len(fills):,} ({fills['qty'].astype(float).sum() if len(fills) else 0:,.0f} contracts); positions settled: {len(settled):,}, for ${settled['pnl'].sum():,.2f}; "
+            f"still open: {len(paper.get('positions') or {}):,}",
+            f"net so far, reward after the minimum plus settled positions: ${days[days >= MINIMUM].sum() + settled['pnl'].sum():,.2f}"]
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--state", default=str(ROOT / "state" / "us-rewards"))
+    ap.add_argument("--quoter", default=str(ROOT / "state" / "us-quoter"), help="the state folder of kht us-quote, if it has been run")
     ap.add_argument("--settle", action="store_true", help="look up how finished games settled (public data)")
     ap.add_argument("--out", default=str(OUT), help="where the tables are written")
     args = ap.parse_args()
@@ -259,6 +285,7 @@ def main() -> None:
     t = table_by(everything, "program").sort_values("games", ascending=False)
     lines += ["", f"all games recorded so far, settled or not, {PRIMARY} contracts a side: reward by the formula and how often an order was traded against",
               t[["program", "games", "hours_quoted", "share_of_score", "reward_formula", "reward_paid", "games_filled", "contracts_filled", "fills_at_last_mid"]].round(3).to_string(index=False)]
+    lines += rehearsal(Path(args.quoter))
     text = "\n".join(lines) + "\n"
     (out / "usr_summary.txt").write_text(text)
     print(text)

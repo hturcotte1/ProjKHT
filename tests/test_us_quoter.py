@@ -229,8 +229,10 @@ def test_engine_rests_in_a_game_credits_the_formula_and_renews_its_orders(tmp_pa
     line = e.step()
     assert line["placed"] == 2 and line["cancelled"] == 2                                    # under ninety seconds of life left: sent again
     assert {o.expires for o in e.broker.open_orders([A])} == {clock["t"] + 180}
+    assert line["renewed"] == 2
     actions = list(csv.DictReader((tmp_path / "actions.csv").open()))
-    assert [a["action"] for a in actions] == ["place", "place", "cancel", "cancel", "place", "place"]
+    assert [a["action"] for a in actions] == ["place", "place"]                              # sending an order again unchanged is counted, not listed
+    assert len(list(csv.DictReader((tmp_path / "cycles.csv").open()))) == 1                  # and a line is kept for one cycle in ten
     assert json.loads((tmp_path / "accrued.json").read_text())[A]["2026-11-12"] == pytest.approx(e.reward())
 
 

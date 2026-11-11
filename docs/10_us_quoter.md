@@ -88,8 +88,8 @@ their game settled at, three hours after its start.
 
 | File under the state folder | Contents |
 |---|---|
-| `actions.csv` | Every order placed, cancelled and filled, and every stop with its reason |
-| `cycles.csv` | One line a cycle: games, orders, what is at risk, the account's value, the reward by the formula so far |
+| `actions.csv` | Every order placed, moved, cancelled and filled, and every stop with its reason. An order sent again unchanged, to push its expiry out, is not listed |
+| `cycles.csv` | A line every ten cycles and whenever something is filled: games, orders, what is at risk, the account's value, the reward by the formula so far |
 | `accrued.json` | Reward by the formula for each market and US date |
 | `settled.csv` | Paper positions closed at settlement, with their result |
 | `paper.json` | The paper positions, kept between runs |
