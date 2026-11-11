@@ -1,38 +1,38 @@
 Stage 2: the stage 1 survivors on Polymarket US, every settled market, fee 0.095 x p x (1 - p)
-rules carried over: 32; with 100 trades or more there: 8; with any: 32
-threshold: the best z among them in 95% of 500 placebo worlds is below 2.53
+rules carried over: 32; with 100 trades or more there: 6; with any: 32
+threshold: the best z among them in 95% of 500 placebo worlds is below 2.61
 confirmed (100+ trades and z by day of settlement at or above the threshold): 0
 
                                         rule  n_v  cost_v  ret_v  z_week_v  lost_v  confirmed
-   all|alone|no|90-99c|10-60d|spread 2c|none  342    0.97   1.94      1.93       5      False
- all|alone|no|90-99c|60-180d|spread any|none   77    0.97  -3.13     -0.85       5      False
- all|alone|no|90-98c|60-180d|spread any|none   77    0.97  -3.13     -0.85       5      False
-  all|alone|no|95-99c|3-60d|spread any|quiet  159    0.98   2.37      1.94       0      False
- all|alone|no|90-95c|60-180d|spread any|none   41    0.94   1.22      0.27       2      False
-   all|alone|no|90-99c|3-60d|spread 2c|quiet  159    0.97   2.69      1.85       1      False
- all|alone|no|90-99c|60-180d|spread 2c|quiet   24    0.96   3.95      0.97       0      False
- all|alone|no|90-98c|60-180d|spread 2c|quiet   24    0.96   3.95      0.97       0      False
- all|alone|no|80-95c|60-180d|spread 2c|quiet   12    0.93   8.06      0.98       0      False
+   all|alone|no|90-99c|10-60d|spread 2c|none  306    0.97   2.12      1.98       4      False
+ all|alone|no|90-99c|60-180d|spread any|none   52    0.96  -0.13     -0.05       2      False
+ all|alone|no|90-98c|60-180d|spread any|none   52    0.96  -0.13     -0.05       2      False
+  all|alone|no|95-99c|3-60d|spread any|quiet  153    0.98   2.42      1.92       0      False
+ all|alone|no|90-95c|60-180d|spread any|none   34    0.94   3.45      0.79       1      False
+   all|alone|no|90-99c|3-60d|spread 2c|quiet  160    0.97   2.93      1.96       1      False
+ all|alone|no|90-99c|60-180d|spread 2c|quiet   29    0.96   4.31      1.12       0      False
+ all|alone|no|90-98c|60-180d|spread 2c|quiet   29    0.96   4.31      1.12       0      False
+ all|alone|no|80-95c|60-180d|spread 2c|quiet   16    0.93   7.89      1.12       0      False
   all|alone|no|90-99c|60-180d|spread 2c|none   34    0.95   5.26      1.34       0      False
-  all|alone|no|90-99c|60-180d|spread 5c|none   37    0.96   3.95      1.21       0      False
-  all|alone|no|90-98c|60-180d|spread 5c|none   37    0.96   3.95      1.21       0      False
+  all|alone|no|90-99c|60-180d|spread 5c|none   36    0.96   4.01      1.20       0      False
+  all|alone|no|90-98c|60-180d|spread 5c|none   36    0.96   4.01      1.20       0      False
   all|alone|no|90-98c|60-180d|spread 2c|none   34    0.95   5.26      1.34       0      False
- all|alone|no|90-99c|60-180d|spread 5c|quiet   25    0.96   3.93      0.99       0      False
-all|alone|no|80-95c|60-180d|spread any|quiet   17    0.93   7.53      1.13       0      False
-all|alone|no|90-99c|60-180d|spread any|quiet   31    0.96   0.50      0.12       1      False
- all|alone|no|80-95c|60-180d|spread 5c|quiet   14    0.93   7.91      1.05       0      False
+ all|alone|no|90-99c|60-180d|spread 5c|quiet   29    0.96   3.89      1.06       0      False
+all|alone|no|80-95c|60-180d|spread any|quiet   24    0.93   7.96      1.38       0      False
+all|alone|no|90-99c|60-180d|spread any|quiet   36    0.97   0.63      0.17       1      False
+ all|alone|no|80-95c|60-180d|spread 5c|quiet   18    0.93   7.72      1.18       0      False
   all|alone|no|90-95c|60-180d|spread 2c|none   22    0.93   7.27      1.26       0      False
   all|alone|no|90-95c|60-180d|spread 5c|none   23    0.94   6.89      1.26       0      False
- all|alone|no|90-98c|60-180d|spread 5c|quiet   25    0.96   3.93      0.99       0      False
-all|alone|no|90-98c|60-180d|spread any|quiet   31    0.96   0.50      0.12       1      False
-   all|alone|no|90-99c|30-60d|spread 2c|none  107    0.96   1.05      0.49       3      False
-   all|alone|no|95-99c|3-60d|spread 5c|quiet  136    0.98   2.44      1.82       0      False
-   all|alone|no|90-95c|10-60d|spread 2c|none  127    0.94   4.89      2.15       2      False
- all|alone|no|90-95c|60-180d|spread 2c|quiet   10    0.94   6.43      0.80       0      False
-   all|alone|no|95-99c|3-60d|spread 2c|quiet  131    0.98   2.42      1.78       0      False
-   all|alone|no|90-98c|30-60d|spread 2c|none  107    0.96   1.05      0.49       3      False
-  all|alone|no|95-99c|60-180d|spread 5c|none   30    0.98   2.36      0.84       0      False
-  all|alone|no|95-98c|60-180d|spread 5c|none   30    0.98   2.36      0.84       0      False
-all|alone|no|90-95c|60-180d|spread any|quiet   14    0.94   5.94      0.91       0      False
- all|alone|no|95-99c|30-60d|spread any|quiet   40    0.98   2.52      1.00       0      False
- all|alone|no|90-95c|60-180d|spread 5c|quiet   11    0.94   5.99      0.81       0      False
+ all|alone|no|90-98c|60-180d|spread 5c|quiet   29    0.96   3.89      1.06       0      False
+all|alone|no|90-98c|60-180d|spread any|quiet   36    0.97   0.63      0.17       1      False
+   all|alone|no|90-99c|30-60d|spread 2c|none   99    0.96   1.95      0.97       2      False
+   all|alone|no|95-99c|3-60d|spread 5c|quiet  132    0.98   2.46      1.80       0      False
+   all|alone|no|90-95c|10-60d|spread 2c|none  120    0.94   4.83      2.06       2      False
+ all|alone|no|90-95c|60-180d|spread 2c|quiet   14    0.94   6.70      0.97       0      False
+   all|alone|no|95-99c|3-60d|spread 2c|quiet  124    0.98   2.45      1.74       0      False
+   all|alone|no|90-98c|30-60d|spread 2c|none   99    0.96   1.95      0.97       2      False
+  all|alone|no|95-99c|60-180d|spread 5c|none   29    0.98   2.41      0.84       0      False
+  all|alone|no|95-98c|60-180d|spread 5c|none   29    0.98   2.41      0.84       0      False
+all|alone|no|90-95c|60-180d|spread any|quiet   19    0.94   6.07      1.07       0      False
+ all|alone|no|95-99c|30-60d|spread any|quiet   46    0.98   2.49      1.07       0      False
+ all|alone|no|90-95c|60-180d|spread 5c|quiet   15    0.94   6.36      0.98       0      False

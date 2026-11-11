@@ -3,6 +3,8 @@
     python scripts/download_us.py meta                 # every market and event -> data/us/markets.parquet, events.parquet
     python scripts/download_us.py history [--shard i/n] [--only closed|open|all] [--categories politics,culture]
     python scripts/download_us.py volume  [--categories ...]   # shares traded and open interest, one request a market
+    python scripts/download_us.py --dir us_sports meta --categories sports --tag sports --market-types moneyline,spreads,totals \
+        --closed-only --no-events                      # settled main lines of games -> data/us_sports/
 
 History is the daily series the gateway keeps for a market's whole life: the
 ask of "Yes" and the ask of "No" as read from the order book at midnight UTC.
@@ -49,7 +51,7 @@ def market_row(m: dict) -> dict:
         "yes_settle": yes_settlement(m), "tick": m.get("orderPriceMinTickSize"), "min_qty": m.get("minimumTradeQty"),
         "fee_theta": m.get("feeCoefficient"), "combo": bool(m.get("comboEnabled")),
         "tags": "|".join(str(t.get("slug") or t.get("label") or t.get("id")) for t in tags if isinstance(t, dict)),
-        "asset": terms.get("asset"), "asset_market_type": terms.get("marketType"),
+        "asset": terms.get("asset"), "asset_market_type": terms.get("marketType"), "outcomes": m.get("outcomes"),
         "best_bid": float((m.get("bestBidQuote") or {}).get("value") or "nan"),
         "best_ask": float((m.get("bestAskQuote") or {}).get("value") or "nan"),
     }
@@ -61,21 +63,31 @@ def cmd_meta(args: argparse.Namespace) -> None:
     rows: dict[int, dict] = {}
     cats = args.categories.split(",") if args.categories else CATEGORIES
     # Listed in order of id so that markets created while the listing runs land at the end, not in the middle.
+    types = args.market_types.split(",") if args.market_types else [None]
     for cat in cats:
+        for kind in types:
+            n = 0
+            for m in pm.iter_markets(closed=True, categories=cat, marketTypes=kind, orderBy="id", orderDirection="asc"):
+                rows[int(m["id"])] = market_row(m)
+                n += 1
+                if n % 20000 == 0:
+                    log(f"   closed, {cat}{' ' + kind if kind else ''}: {n} ...")
+            log(f"closed, {cat}{' ' + kind if kind else ''}: {n}")
+    if not args.closed_only:
         n = 0
-        for m in pm.iter_markets(closed=True, categories=cat, orderBy="id", orderDirection="asc"):
-            rows[int(m["id"])] = market_row(m)
-            n += 1
-            if n % 20000 == 0:
-                log(f"   closed, {cat}: {n} ...")
-        log(f"closed, {cat}: {n}")
-    n = 0
-    for m in pm.iter_markets(closed=False, orderBy="id", orderDirection="asc"):
-        if m.get("category") in cats:
-            rows[int(m["id"])] = market_row(m)
-            n += 1
-    log(f"open: {n}")
+        for m in pm.iter_markets(closed=False, orderBy="id", orderDirection="asc"):
+            if m.get("category") in cats and (not args.market_types or m.get("marketType") in types):
+                rows[int(m["id"])] = market_row(m)
+                n += 1
+        log(f"open: {n}")
     markets = pd.DataFrame(list(rows.values()))
+    tag = "" if not args.categories else "_" + args.tag
+    if args.no_events:                       # sports: a game is read from the market's slug, and the event list is enormous
+        markets["event_id"] = float("nan")
+        markets.to_parquet(OUT / f"markets{tag}.parquet", index=False)
+        log(f"{len(markets):,} markets ({int(markets['closed'].sum()):,} closed, {int(markets['yes_settle'].notna().sum()):,} settled); events not listed")
+        print(markets.groupby(["market_type", "closed"]).size().unstack(fill_value=0).to_string())
+        return
     # events say which markets belong together (one race, one game, one question with several answers)
     ev_rows, link = [], []
     for closed, cat in ((c, k) for c in (True, False) for k in cats):
@@ -90,7 +102,6 @@ def cmd_meta(args: argparse.Namespace) -> None:
     events = pd.DataFrame(ev_rows).drop_duplicates("event_id")
     links = pd.DataFrame(link, columns=["market_id", "event_id"]).drop_duplicates("market_id")
     markets = markets.merge(links, on="market_id", how="left")
-    tag = "" if not args.categories else "_" + args.tag
     markets.to_parquet(OUT / f"markets{tag}.parquet", index=False)
     events.to_parquet(OUT / f"events{tag}.parquet", index=False)
     log(f"{len(markets):,} markets ({int(markets['closed'].sum()):,} closed, {int(markets['yes_settle'].notna().sum()):,} settled), "
@@ -198,10 +209,14 @@ def cmd_volume(args: argparse.Namespace) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--dir", default=None, help="write under data/<dir> instead of data/us (sports are kept in data/us_sports)")
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("meta")
     p.add_argument("--categories", default=None, help="comma-separated; default is everything except crypto")
     p.add_argument("--tag", default="part", help="with --categories: write markets_<tag>.parquet and events_<tag>.parquet")
+    p.add_argument("--market-types", default=None, help="comma-separated marketTypes to list, e.g. moneyline,spreads,totals")
+    p.add_argument("--closed-only", action="store_true")
+    p.add_argument("--no-events", action="store_true")
     p.set_defaults(fn=cmd_meta)
     for name, fn in (("history", cmd_history), ("volume", cmd_volume)):
         p = sub.add_parser(name)
@@ -211,6 +226,9 @@ def main() -> None:
         p.add_argument("--workers", type=int, default=8)
         p.set_defaults(fn=fn)
     args = ap.parse_args()
+    if args.dir:
+        global OUT
+        OUT = ROOT / "data" / args.dir
     args.fn(args)
 
 

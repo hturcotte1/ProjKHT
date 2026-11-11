@@ -1,10 +1,10 @@
 Stage 2b: Polymarket US settled markets
-rules in the grid: 53,760; with 30 trades or more: 11,346
+rules in the grid: 53,760; with 30 trades or more: 9,530
 candidates (discovery: 150+ trades, +0.5% or more, z >= 3 by event): 0
 threshold: the best validation z among those candidates in 95% of 500 placebo worlds is below inf
 survivors (validation: 100+ trades and z by week at or above the threshold): 0
 z: the variance of a rule's mean return is never taken below what the prices it paid imply
-whole funnel in 20 worlds where every price is right: candidates mean 0.2 (max 2), past the threshold mean 0.00 (max 0; worlds with any: 0 of 20)
+whole funnel in 20 worlds where every price is right: candidates mean 0.0 (max 0), past the threshold mean 0.00 (max 0; worlds with any: 0 of 20)
 
 candidates, best validation z first (survivors marked)
 Empty DataFrame

@@ -5,6 +5,7 @@
     kht run          run cycles in a loop
     kht report       write the account status as Markdown
     kht shadow       score every signal ever seen against how it resolved
+    kht us-record    write down the Polymarket US order books and their polymarket.com twins (read-only)
     kht geoblock     is this machine allowed to place orders?
 """
 
@@ -131,6 +132,17 @@ def cmd_shadow(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_us_record(args: argparse.Namespace) -> int:
+    """Write down the Polymarket US order books (and their polymarket.com twins). Reads public data only."""
+    from .trading.us_recorder import record
+
+    line = record(Path(args.state), with_twins=not args.no_twins, max_books=args.max_books)
+    print(f"[{_stamp()}] Polymarket US recorder: {line['books_read']} books ({line['two_sided']} two-sided), {line['twins']} with a twin on "
+          f"polymarket.com, {line['us_cheaper_yes'] + line['us_cheaper_no']} where the US price is cheaper by more than the fee; "
+          f"{line['seconds']:.0f}s, {line['errors']} errors")
+    return 0
+
+
 def cmd_geoblock(args: argparse.Namespace) -> int:
     info = Polymarket().geoblock()
     print(info)
@@ -175,6 +187,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--lookahead-days", type=float, default=0.0,
                    help="also check markets ending within this many days (they may resolve early)")
     p.set_defaults(fn=cmd_shadow)
+
+    p = sub.add_parser("us-record", help="record Polymarket US order books and their polymarket.com twins (read-only)")
+    p.add_argument("--state", default="state/us")
+    p.add_argument("--no-twins", action="store_true", help="skip polymarket.com")
+    p.add_argument("--max-books", type=int, default=None, help="read at most this many books (for a quick trial)")
+    p.set_defaults(fn=cmd_us_record)
 
     p = sub.add_parser("geoblock", help="check whether this machine may trade")
     p.set_defaults(fn=cmd_geoblock)

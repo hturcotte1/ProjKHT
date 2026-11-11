@@ -184,20 +184,26 @@ def build_us(args: argparse.Namespace) -> None:
     h = h.sort_values(["market_id", "ts"]).drop_duplicates(["market_id", "period"], keep="last")
     h["shape"] = us_shape(meta_all, h).reindex(h["market_id"]).to_numpy()
     spread = h["yes_ask"] + h["no_ask"] - 1.0
-    # The feed shows 99c (or 1c) for a side of the book that is EMPTY, and the same for a side really
-    # quoted there, and the two cannot be told apart afterwards. Live books read on 11 November showed
-    # "No at 99c" with no bid at all behind it on every losing weather bracket, while professionals
-    # offered the "Yes" at 1c in hundreds of thousands. So a price at either end is treated as no price:
-    # a side can be bought only between 2c and 98c, and the spread is known only when both sides are.
+    # What the feed records was checked against 400 live books on 11 November. With orders on both
+    # sides, "Yes" is the best ask and "No" is one minus the best bid (98% of 328 books). When a side
+    # of the book is EMPTY, the feed fills it in with the LAST TRADE: nothing can be bought there.
+    # A losing weather bracket last traded at 1c, so its history says "No at 99c" with no bid behind it.
+    # A filled-in price cannot always be told from a real one afterwards, so a day is used only if
+    #   - both prices are between 2c and 98c (most filled-in prices sit at the ends),
+    #   - they are at least one tick apart (a real book cannot have a spread of zero; a filled-in side
+    #     whose last trade was at the other side's quote shows exactly that), and
+    #   - at most 20c apart.
+    # What is left still contains filled-in prices a tick or more away from the quote, which nothing
+    # in the history can identify. docs/06, section 7, has the count from live books.
     lo, hi = 0.015, 0.985
-    yes_real, no_real = (h["yes_ask"] >= lo) & (h["yes_ask"] <= hi), (h["no_ask"] >= lo) & (h["no_ask"] <= hi)
-    both = yes_real & no_real & (spread >= -1e-9) & (spread <= 0.20)
-    log(f"{len(h):,} market-days of quotes in {h['market_id'].nunique():,} settled markets; {int((yes_real | no_real).sum()):,} with a real price "
-        f"on at least one side, {int(both.sum()):,} on both")
-    h = h[yes_real | no_real].copy()
-    h["yes_ask"] = h["yes_ask"].where(yes_real)
-    h["no_ask"] = h["no_ask"].where(no_real)
-    spread = (h["yes_ask"] + h["no_ask"] - 1.0).where(both)
+    tick = meta_all.set_index("market_id")["tick"].reindex(h["market_id"]).fillna(0.01).to_numpy()
+    inside = (h["yes_ask"] >= lo) & (h["yes_ask"] <= hi) & (h["no_ask"] >= lo) & (h["no_ask"] <= hi)
+    zero = inside & (spread < tick - 1e-9) & (spread > -1e-9)
+    real = inside & (spread >= tick - 1e-9) & (spread <= 0.20)
+    log(f"{len(h):,} market-days of quotes in {h['market_id'].nunique():,} settled markets; both prices between 2c and 98c on {int(inside.sum()):,}; "
+        f"of those, no spread at all on {int(zero.sum()):,} and a real book (one tick to 20c apart) on {int(real.sum()):,}")
+    h = h[real].copy()
+    spread = spread[real]
     m = meta.set_index("market_id")
     shape = h["shape"].to_numpy()
     end = m["end_ts"].reindex(h["market_id"]).to_numpy()
@@ -205,9 +211,8 @@ def build_us(args: argparse.Namespace) -> None:
     event = m["event_id"].reindex(h["market_id"]).to_numpy()
     settle = m["yes_settle"].reindex(h["market_id"]).to_numpy()
     cat = m["category"].reindex(h["market_id"]).map(CATEGORY).fillna("other").to_numpy()
-    # a fair chance of "Yes" for the placebo worlds: the middle of the book, or the one real price there is
-    ya, na = h["yes_ask"].to_numpy(), h["no_ask"].to_numpy()
-    mid = np.where(np.isfinite(ya) & np.isfinite(na), (ya + 1.0 - na) / 2.0, np.where(np.isfinite(ya), ya, 1.0 - na))
+    # a fair chance of "Yes" for the placebo worlds: the middle of the book
+    mid = (h["yes_ask"].to_numpy() + 1.0 - h["no_ask"].to_numpy()) / 2.0
     parts = []
     for side, ask, fair, won in ((0, h["yes_ask"].to_numpy(), mid, settle), (1, h["no_ask"].to_numpy(), 1.0 - mid, 1.0 - settle)):
         parts.append(pd.DataFrame({
