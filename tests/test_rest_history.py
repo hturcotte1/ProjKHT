@@ -60,3 +60,39 @@ def test_no_stored_prices_means_nothing_rested():
     assert out["quoted"] == 0 and np.isnan(out["mid_last"])
     old = np.array([START - rh.WINDOW - 4000.0])                              # one price, far too old to use
     assert rh.simulate(old, np.array([0.47]), np.array([0.55]), START, 0.01)["readings"] == 0
+
+
+def test_the_whole_run_on_made_up_games(tmp_path, monkeypatch, capsys):
+    import argparse
+
+    import pandas as pd
+
+    sp, out = tmp_path / "us_sports", tmp_path / "reports"
+    (sp / "paths").mkdir(parents=True)
+    out.mkdir()
+    day = 86_400.0
+    starts = {"aec-itfme-a-b-2026-10-01": START - 30 * day, "aec-itfme-c-d-2026-10-02": START - 29 * day, "aec-utr-e-f-2026-10-03": START - 28 * day}
+    settle = {"aec-itfme-a-b-2026-10-01": 0.0, "aec-itfme-c-d-2026-10-02": 1.0, "aec-utr-e-f-2026-10-03": 1.0}
+    pd.DataFrame([{"market_id": i, "slug": s, "market_type": "moneyline", "game_start_ts": starts[s], "yes_settle": settle[s], "tick": 0.01}
+                  for i, s in enumerate(starts)]).to_parquet(sp / "markets_sports.parquet", index=False)
+    rows = []
+    for slug, start in starts.items():
+        minutes = np.arange(start - rh.WINDOW - 300, start + 1, 60.0)
+        yes, no = np.full(len(minutes), 0.47), np.full(len(minutes), 0.55)
+        if slug.startswith("aec-itfme-a"):                    # the market falls through the bid an hour before, and "Yes" then loses
+            late = minutes >= start - 3600
+            yes[late], no[late] = 0.43, 1.0 - 0.41
+        rows.append({"slug": slug, "ts": minutes.astype(np.int64), "yes": yes.astype(np.float32), "no": no.astype(np.float32)})
+    pd.DataFrame(rows).to_parquet(sp / "paths" / "p_0of1_0_0.parquet", index=False)
+    monkeypatch.setattr(rh, "SP", sp)
+    monkeypatch.setattr(rh, "OUT", out)
+    monkeypatch.setattr(rh, "LAST", START)
+    rh.cmd_run(argparse.Namespace())
+    t = pd.read_csv(out / "rh_by_programme.csv").set_index("programme")
+    assert t.loc["all", "games"] == 3 and t.loc["ITF", "games"] == 2 and t.loc["UTR", "games"] == 1
+    assert t.loc["ITF", "games_filled_pct"] == pytest.approx(50.0)
+    assert t.loc["ITF", "dollars_a_game"] == pytest.approx(-45.0 / 2)             # 100 contracts bought at 45c that paid nothing, over two games
+    assert t.loc["ITF", "cents_a_filled_contract"] == pytest.approx(-45.0)
+    assert t.loc["ITF", "dollars_a_game_at_last_mid"] == pytest.approx(100 * (0.42 - 0.45) / 2)
+    assert t.loc["UTR", "dollars_a_game"] == 0.0
+    assert "hours before the start" in (out / "rest_history_output.txt").read_text()
