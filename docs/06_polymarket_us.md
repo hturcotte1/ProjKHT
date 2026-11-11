@@ -467,10 +467,19 @@ price for "No" for less than $50; in a tenth, for more than $312 and
 $17,000.
 
 Any rule in the grid can later be scored against what was really on offer,
-and at what size. Rules about near-certain contracts will take months to
-say anything, as section 7 explains. The same recorder also captures
-something that can be judged much sooner, which is the subject of
-`docs/07_two_venues.md`.
+and at what size. One rule is named now, so that it cannot be chosen later:
+
+**F2, the rule that carries over.** The first time a market that is a
+stand-alone question (a single question, a dated rung of one, or one of
+several separate questions under a heading) shows "No" on offer at 90¢ to
+98¢, in a book at most 5¢ wide, with 3 to 60 days to its end date: buy "No"
+at the next snapshot if it is still in that range, for what is on offer at
+the best price up to $50, pay the fee, hold to settlement. It is confirmed
+if its mean return is positive with z ≥ 2.58, each event one bet, on at
+least 300 purchases. At the pace of section 7 that is most of a year away.
+
+The same recorder also captures something that could be judged much sooner,
+which is the subject of `docs/07_two_venues.md`.
 
 ## 9. Sports, fixed before the quotes are read
 

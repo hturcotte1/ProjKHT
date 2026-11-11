@@ -73,7 +73,9 @@ def moneylines() -> pd.DataFrame:
 
 # ------------------------------------------------------------------ quotes
 def cmd_quotes(args: argparse.Namespace) -> None:
-    pm = PolymarketUS()
+    from kht.api.http import Http
+
+    pm = PolymarketUS(Http(rate_per_host={"gateway.polymarket.us": args.rate}))      # the published public limit is 20 a second
     m = moneylines().sort_values("market_id")
     if args.shard:
         i, n = (int(x) for x in args.shard.split("/"))
@@ -110,7 +112,7 @@ def cmd_quotes(args: argparse.Namespace) -> None:
             n += 1
             if row is not None:
                 buf.append(row)
-            if len(buf) >= 10_000:
+            if len(buf) >= 2_000:
                 pd.DataFrame(buf).to_parquet(dest / f"q_{tag}_{int(time.time())}_{part}.parquet", index=False)
                 part, buf = part + 1, []
             if n % 5000 == 0:
@@ -286,7 +288,8 @@ def main() -> None:
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("quotes")
     p.add_argument("--shard", default=None)
-    p.add_argument("--workers", type=int, default=8)
+    p.add_argument("--workers", type=int, default=10)
+    p.add_argument("--rate", type=float, default=16.0, help="requests a second")
     p.set_defaults(fn=cmd_quotes)
     sub.add_parser("build").set_defaults(fn=cmd_build)
     p = sub.add_parser("run")

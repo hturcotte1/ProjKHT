@@ -3,6 +3,20 @@
 Trading how the crowd *perceives* an outcome on Polymarket, rather than the
 outcome itself: research, a tested rule, and a trading system running on paper.
 
+## Where this stands (11 November 2026)
+
+**The one rule that passed its tests lives on polymarket.com, which a US
+resident cannot use. On Polymarket US, the exchange the account will be on,
+nothing is confirmed.** Polymarket US is a separate exchange with its own
+markets, crowd, fees and data. A fourth round went looking for what carries
+over. Its answers are below, under "The fourth round"; in one line each:
+
+- the rule's kind of question barely exists on Polymarket US, and what
+  history there is leans the same way without proving it;
+- Polymarket US's price history cannot be trusted for a backtest, so its
+  live order books are now recorded every cycle instead;
+- two new ideas were tested with the rules fixed first, and both failed.
+
 ## What came out of it
 
 **The idea as first stated does not survive costs.** "Buy at 70 because the
@@ -95,6 +109,31 @@ backtests; they do not add up inside one account, because they compete for
 the same events. The whole story is in
 [`docs/05_third_round.md`](docs/05_third_round.md).
 
+### The fourth round: Polymarket US
+
+The owner's proposal was to backtest and paper trade thousands of strategies
+and keep the best. Done carelessly that finds winners in pure noise, so the
+judge was fixed first: a search half and an untouched half, a bar set by
+rerunning everything in worlds where every price is right, and nothing
+counted as found unless it clears what the luckiest worthless rule reaches.
+
+| Tried | Result |
+|---|---|
+| 53,760 rules on three years of polymarket.com | 32 survive, against 0.1 expected from luck. All 32 are one idea, the one already known: "No" on a stand-alone question. 23 of them are the long-dated form |
+| Those 32 rules on Polymarket US | **None confirmed.** It lists too few such questions: the best rule scores 2.06 against a bar of 2.61. The lean is the same: +2.1% a trade on 392 trades |
+| The same search on Polymarket US alone | **Nothing.** A first run found 18 winners. They were prices at which nothing could be bought |
+| What Polymarket US's price history is | Where one side of an order book is empty it shows the last trade as if it were a quote. Checked against more than 600 live books. A backtest on it buys from nobody |
+| **Two exchanges, one question:** buy on Polymarket US whatever is cheaper there than on polymarket.com | **Failed**, on rules fixed beforehand: −19.8% on 505 purchases. The two exchanges are equally accurate, and for most shared questions polymarket.com is the smaller market |
+| Sports on Polymarket US (most of that exchange) | Test fixed in writing; see [`docs/06_polymarket_us.md`](docs/06_polymarket_us.md), section 9 |
+
+What exists now that did not: a recorder that writes down the real order
+books of Polymarket US, with sizes, every cycle, and the polymarket.com
+quote for the same question where there is one. It is the only evidence
+about that exchange worth having, and it took three wrong write-ups to
+learn that. The story is in
+[`docs/06_polymarket_us.md`](docs/06_polymarket_us.md) and
+[`docs/07_two_venues.md`](docs/07_two_venues.md).
+
 ## Where to read what
 
 | If you want | Read |
@@ -104,6 +143,9 @@ the same events. The whole story is in
 | How the trading system works and how to operate it | [`docs/03_system.md`](docs/03_system.md) |
 | The second round: what was tried next, fixed in advance, and what happened | [`docs/04_second_round.md`](docs/04_second_round.md) |
 | The third round: which side of the bet carries the edge, and the correction of round two | [`docs/05_third_round.md`](docs/05_third_round.md) |
+| The fourth round: Polymarket US, a wide search with a judge fixed first, and what its price feed really records | [`docs/06_polymarket_us.md`](docs/06_polymarket_us.md) |
+| Two exchanges quoting the same question: the idea, the test, and why it failed | [`docs/07_two_venues.md`](docs/07_two_venues.md) |
+| What Polymarket US's order books showed at the last cycle | [`state/us/STATUS.md`](state/us/STATUS.md) |
 | What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-long/STATUS.md` (from its first cycle) |
 
 ## What is running
@@ -130,6 +172,12 @@ the ways to keep it going if the scheduler stops.
 Each cycle also logs *every* signal it sees, traded or not, so the rule can be
 scored on new data far faster than a small account allows.
 
+All four trade polymarket.com prices. They are the forward test of the rule
+itself, not of anything a US resident can do with it.
+
+The same job also runs the **Polymarket US recorder** (`kht us-record`,
+`state/us/`): no account, no trades, only the order books written down.
+
 ```bash
 kht report            # the paper account
 ```
@@ -147,11 +195,11 @@ Live trading is built but switched off, and has never touched a real account.
 Three things are yours to settle first.
 
 1. **Which Polymarket.** The live code targets polymarket.com's API through
-   the official SDK. Polymarket US is a separate exchange with its own
-   accounts, markets, fees and API (it publishes a Python SDK, so an adapter
-   is possible). None of this research used its data, and about half of the
-   rule's trades were in geopolitics markets, which I could not confirm it
-   lists. If the account is there, the rule has to be re-tested there first.
+   the official SDK, and the owner of this project lives in the United
+   States, where only Polymarket US is open. Nothing has passed a test on
+   Polymarket US (the fourth round, above), so there is nothing to trade
+   there yet, and no adapter for placing orders on it has been written. The
+   read-only client is `src/kht/api/polymarket_us.py`.
 2. **Where it runs.** Polymarket only accepts orders from permitted locations
    and publishes a check for it. The cloud machine this was built on, and
    GitHub's runners, fail that check (United States). The code refuses to

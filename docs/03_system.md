@@ -41,6 +41,7 @@ Code: `src/kht/trading/engine.py` (`Engine.run_cycle`).
 | Record | `trading/engine.py` (`StateStore`), `trading/report.py` | State on disk and the readable status page |
 | Schedule gate | `trading/schedule.py` | Whether a scheduled run is due to trade or should end at once |
 | Traded range | `trading/quiet.py` | How far an outcome's price has ranged over the last few days, read from the public trade feed |
+| Polymarket US recorder | `api/polymarket_us.py`, `trading/us_recorder.py`, `trading/twins.py` | Not part of any account: writes down the order books of Polymarket US, and the polymarket.com quote for the same question. See "The Polymarket US recorder" below |
 
 ## What the strategy does
 
@@ -374,6 +375,38 @@ All under the state directory (default `state/paper/`):
 
 One file sits beside the account directories: `state/last_cycle_started`, the
 time the scheduled workflow last began a cycle.
+
+## The Polymarket US recorder
+
+Polymarket US is the exchange open to US residents. It is separate from
+polymarket.com in every way that matters: its own markets, order books, fees
+and API. It publishes no trades, and its price history shows the last trade
+wherever one side of an order book is empty, so nothing can be backtested on
+it honestly (`docs/06_polymarket_us.md`, section 7). What can be done is to
+write down its order books as they are.
+
+```bash
+kht us-record --state state/us
+```
+
+One run reads every open market outside sports and crypto that shows a
+quote (about 2,600 order books, five minutes), pairs each with the same
+question on polymarket.com where the titles and answers match exactly, and
+reads that order book too. It uses public endpoints only, places no orders
+and needs no key. The scheduled workflow runs it after the paper accounts;
+if it fails, the accounts' state is still committed.
+
+| File under `state/us/` | Contents |
+|---|---|
+| `snapshots/YYYY-MM-DD/HHMMSS.csv.gz` | One row per market: the three best prices and sizes on each side, the last trade, contracts traded, open interest, and the polymarket.com bid and ask of its twin |
+| `markets.csv` | What each market is. Rows are added, never rewritten |
+| `twins.csv` | Its twin on polymarket.com, if it has one. Rows are added, never rewritten |
+| `log.csv` | One line per run |
+| `STATUS.md` | The latest run in words |
+
+The snapshots grow by about half a megabyte a day. They are the data for the
+forward tests fixed in `docs/06_polymarket_us.md`, section 8, and
+`docs/07_two_venues.md`, section 3.
 
 ## Reproducing the research
 

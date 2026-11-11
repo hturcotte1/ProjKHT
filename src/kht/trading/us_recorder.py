@@ -243,7 +243,7 @@ def record(state: Path, us: PolymarketUS | None = None, intl: Polymarket | None 
 def status_text(stamp: datetime, line: dict[str, Any], cheap: list[tuple[str, float, float, float, dict[str, Any]]],
                 markets: dict[str, tuple[dict[str, Any], dict[str, Any] | None]]) -> str:
     out = [f"# Polymarket US recorder: {stamp.strftime('%Y-%m-%d %H:%M')} UTC", "",
-           "Read-only. No orders are placed and no key is used. What this is for: docs/06_polymarket_us.md.", "",
+           "Read-only. No orders are placed and no key is used. What this is for: docs/06_polymarket_us.md, section 8.", "",
            f"- open markets outside sports and crypto: {line['markets_open']:,}; showing any quote: {line['markets_quoted']:,}",
            f"- order books recorded: {line['books_read']:,}, of which {line['two_sided']:,} have orders on both sides",
            f"- recorded markets with a twin on polymarket.com: {line['twins']:,}; with a two-sided book there too: {line['twins_both_books']:,}",
@@ -254,7 +254,8 @@ def status_text(stamp: datetime, line: dict[str, Any], cheap: list[tuple[str, fl
         cost = sum(px * qty for _, _, px, qty, _ in cheap if qty)
         worth = sum(gap * qty for _, gap, _, qty, _ in cheap if qty)
         out += [f"Taking every one of these at the best US price would cost ${cost:,.0f}, and the gaps add up to ${worth:,.2f}. "
-                "A gap is not a profit: it pays only if the polymarket.com price is the better forecast, which is what is being tested.", "",
+                "A gap is not a profit. On the history that exists, taking gaps like these lost money (docs/07_two_venues.md, section 4); "
+                "they are recorded for the forward test fixed there.", "",
                 "The 25 largest by what the gap is worth at the size on offer:", "",
                 "| Buy on US | at | contracts there | polymarket.com bid / ask | gap after fee | gap x size | market |",
                 "|---|---:|---:|---:|---:|---:|---|"]
