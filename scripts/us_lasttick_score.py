@@ -217,6 +217,9 @@ def main() -> None:
             lines.append(f"   trades {len(t):,} ({int((t['side'] == 'sell').sum()):,} sales, {int((t['side'] == 'buy').sum()):,} purchases); contracts {t['qty'].sum():,.0f}; "
                          f"premium after the fee ${t['premium'].sum():,.2f}; most locked at one settlement ${t.groupby('end')['locked'].sum().max():,.0f}")
             lines.append(f"   settled {len(done):,} of {len(t):,}; lost {int(done['lost'].sum()):,}; result ${done['pnl'].sum():,.2f}")
+            far = t["gap"] / t["reach"]
+            lines.append("   how far out of reach, by premium: " + "; ".join(
+                f"more than {k:g} times the reach ${t.loc[far > k, 'premium'].sum():,.2f} ({t.loc[far > k, 'qty'].sum():,.0f} contracts)" for k in (1.5, 2.0)))
             lines.append("   by day of settlement (UTC):")
             lines.append("   " + by(t, "day").round(2).to_string(index=False).replace("\n", "\n   "))
         everything.to_csv(out / f"lt_trades_{tag}.csv", index=False)
