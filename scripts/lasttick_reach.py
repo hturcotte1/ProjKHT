@@ -9,6 +9,7 @@ docs/11_crypto_us.md, section 5, "Out of reach", item 3:
     exceeded. The reach for that coin and horizon is the largest of those
     yearly figures, and never less than 1%.
 
+    python scripts/lasttick_reach.py fetch      # one-minute prices of four coins since 2020 -> data/crypto/minute_<coin>.parquet
     python scripts/lasttick_reach.py            # -> config/lasttick_reach.json, reports/research/ltr_*
 
 That table is the yardstick of L1-strict. The same section, "A second
@@ -23,6 +24,8 @@ from Binance's public data mirror. This uses no Polymarket data at all.
 from __future__ import annotations
 
 import json
+import sys
+import time
 from pathlib import Path
 
 import numpy as np
@@ -44,6 +47,47 @@ BRAKE_HOUR = 12                         # five-minute changes looked at before a
 CHECK_ONE_IN = 1_000                    # the second yardstick fails if any year went beyond it more often than this
 pd.set_option("display.width", 250)
 pd.set_option("display.max_rows", 400)
+
+
+SYMBOLS = {"btc": "BTCUSDT", "eth": "ETHUSDT", "sol": "SOLUSDT", "xrp": "XRPUSDT"}
+
+
+def fetch(coins: tuple[str, ...] = COINS) -> None:
+    """One-minute candles from Binance's public market-data mirror. About 3.6 million rows a coin; twenty minutes each."""
+    import requests
+
+    session = requests.Session()
+    PRICES.mkdir(parents=True, exist_ok=True)
+    for coin in coins:
+        path = PRICES / f"minute_{coin}.parquet"
+        if path.exists():
+            print(f"{coin}: already there", flush=True)
+            continue
+        rows, cur, end = [], int(pd.Timestamp(FIRST, tz="UTC").timestamp() * 1000), int(pd.Timestamp(LAST, tz="UTC").timestamp() * 1000)
+        while cur < end:
+            for attempt in range(6):
+                try:
+                    r = session.get("https://data-api.binance.vision/api/v3/klines", headers={"User-Agent": "research-client"}, timeout=30,
+                                    params={"symbol": SYMBOLS[coin], "interval": "1m", "startTime": cur, "endTime": end, "limit": 1000})
+                    if r.status_code == 429 or r.status_code >= 500:
+                        time.sleep(5 * (attempt + 1))
+                        continue
+                    r.raise_for_status()
+                    batch = r.json()
+                    break
+                except requests.RequestException:
+                    time.sleep(3 * (attempt + 1))
+            else:
+                raise RuntimeError(f"{coin}: the price source did not answer")
+            if not batch:
+                break
+            rows += [(b[0] // 1000, float(b[1]), float(b[2]), float(b[3]), float(b[4])) for b in batch]
+            cur = batch[-1][0] + 60_000
+            if len(rows) % 300_000 == 0:
+                print(f"{coin}: {pd.Timestamp(cur, unit='ms'):%Y-%m-%d}", flush=True)
+            time.sleep(0.12)
+        pd.DataFrame(rows, columns=["t", "open", "high", "low", "close"]).drop_duplicates("t").to_parquet(path, index=False)
+        print(f"{coin}: {len(rows):,} minutes", flush=True)
 
 
 def minutes(coin: str) -> pd.DataFrame:
@@ -225,4 +269,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    if sys.argv[1:2] == ["fetch"]:
+        fetch()
+    else:
+        main()

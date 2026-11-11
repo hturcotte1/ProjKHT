@@ -70,6 +70,9 @@ def cmd_fetch(args: argparse.Namespace) -> None:
         done |= set(pd.read_parquet(p, columns=["slug"])["slug"])
     u = universe()
     todo = u[~u["slug"].isin(done)]
+    if args.shard:
+        i, n = (int(x) for x in args.shard.split("/"))
+        todo = todo.iloc[i::n]
     log(f"fetch: {len(u):,} settled markets in scope, {len(todo):,} to fetch")
 
     def one(r) -> dict | None:
@@ -90,19 +93,20 @@ def cmd_fetch(args: argparse.Namespace) -> None:
 
     buf: list[dict] = []
     part, t0, n = 0, time.time(), 0
+    tag = (args.shard or "0/1").replace("/", "of")
     with cf.ThreadPoolExecutor(max_workers=args.workers) as pool:
         for row in pool.map(one, list(todo.itertuples())):
             n += 1
             if row is not None:
                 buf.append(row)
             if len(buf) >= 1_000:
-                pd.DataFrame(buf).to_parquet(dest / f"lt_{int(time.time())}_{part}.parquet", index=False)
+                pd.DataFrame(buf).to_parquet(dest / f"lt_{tag}_{int(time.time())}_{part}.parquet", index=False)
                 part, buf = part + 1, []
             if n % 1000 == 0:
                 rate = n / (time.time() - t0)
                 log(f"fetch: {n:,}/{len(todo):,} ({rate:.1f}/s, about {(len(todo) - n) / rate / 60:.0f} minutes left)")
     if buf:
-        pd.DataFrame(buf).to_parquet(dest / f"lt_{int(time.time())}_{part}.parquet", index=False)
+        pd.DataFrame(buf).to_parquet(dest / f"lt_{tag}_{int(time.time())}_{part}.parquet", index=False)
     log(f"fetch: finished {n:,} in {time.time() - t0:.0f}s")
 
 
@@ -296,6 +300,7 @@ def main() -> None:
         p = sub.add_parser(name)
         p.add_argument("--workers", type=int, default=8)
         p.add_argument("--rate", type=float, default=8.0, help="requests a second")
+        p.add_argument("--shard", default=None, help="i/n: fetch every n-th market starting at the i-th, to run several at once")
         p.set_defaults(fn=fn)
     sub.add_parser("run").set_defaults(fn=cmd_run)
     args = ap.parse_args()
