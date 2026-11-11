@@ -13,6 +13,8 @@ B2. Events with a single market in their reward programme: 145 markets, followed
    of the ten that would pay most at the first snapshot, 0 now have three times the size resting on their thinner side
    (if the generous reading were right, others should pile in here; if the size stays small, the pool is probably shared by the whole programme)
 
+B3. Fields of the reward schedule: not recorded yet
+
 C. F1, two exchanges forward: purchases so far 22 in 17 events; $288 spent at $50 or the size on offer; average gap 10.8c
    after 1 day(s), sold on Polymarket US: 0 purchases marked so far
    after 1 day(s), at the polymarket.com middle: 0 purchases marked so far

@@ -232,3 +232,14 @@ small reading. It is cheap to settle with a real account: 100 contracts on
 each side of one such market, about $100, for a few days, and the earnings
 record will show either cents or tens of dollars. That is the owner's
 decision.
+
+**And the rules themselves change on 18 November.** The exchange's filing
+of the programme's terms with its regulator, found later the same day,
+does not settle this question either: it speaks of a reward "for a
+Contract and Time Period" and of parameters set "for each set of
+Contracts". What it does say is that from 18 November 2026 the exchange
+may cap any reward at a percentage of what the account itself traded in
+that market. That applies to these programmes as much as to sports, and
+where it is used, orders that only rest earn nothing. It is set out in
+`docs/09_sports_rewards.md`, section 9.
+

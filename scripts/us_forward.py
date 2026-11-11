@@ -115,6 +115,26 @@ def section_single(snaps: pd.DataFrame, markets: pd.DataFrame) -> tuple[list[str
     return out, t
 
 
+def section_fields(state: Path) -> list[str]:
+    """Has the reward schedule grown a field since 11 November 2026? (docs/09_sports_rewards.md, section 9)"""
+    path = state / "schedule_fields.csv"
+    if not path.exists():
+        return ["B3. Fields of the reward schedule: not recorded yet"]
+    f = pd.read_csv(path)
+    last = f[f["ts"] == f["ts"].max()]
+    new = f[f["known"] == 0]
+    when = pd.to_datetime(f["ts"].max(), unit="s")
+    if new.empty:
+        return [f"B3. Fields of the reward schedule: {len(last)} at the last cycle ({when:%d %b %H:%M} UTC), none that was not there on 11 November. "
+                "No reward cap and no minimum volume has been published."]
+    first = pd.to_datetime(new["ts"].min(), unit="s")
+    out = [f"B3. THE REWARD SCHEDULE HAS NEW FIELDS, first seen {first:%d %b %H:%M} UTC. The exchange's amended rules (in force 18 November 2026) allow a reward",
+           "   to be capped at a share of what the account itself trades. Read docs/09_sports_rewards.md, section 9, and say what has changed:"]
+    latest = new.sort_values("ts").groupby("field").tail(1)
+    out += [f"   - {r.field}: on {int(r.periods):,} time periods; for example {r.examples}" for r in latest.itertuples()]
+    return out
+
+
 def first_gaps(snaps: pd.DataFrame, gap: float = GAP) -> pd.DataFrame:
     """F1 purchases: the first snapshot at which a market's US quote is beyond a tradable polymarket.com quote by ``gap`` after the fee."""
     s = snaps[snaps["intl_bid"].notna() & snaps["intl_ask"].notna() & ((snaps["intl_ask"] - snaps["intl_bid"]) <= MAX_INTL_SPREAD + 1e-9)].copy()
@@ -250,6 +270,7 @@ def main() -> None:
     lines += rw_lines + [""]
     one_lines, one = section_single(snaps, markets)
     lines += one_lines + [""]
+    lines += section_fields(Path(args.state)) + [""]
     f1_lines, f1 = section_f1(snaps, markets, args.settle)
     lines += f1_lines + [""]
     f2_lines, f2 = section_f2(snaps, markets, args.settle)
