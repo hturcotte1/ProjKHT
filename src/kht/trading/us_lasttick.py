@@ -34,7 +34,7 @@ from .us_rewards import _when, _write, _write_gz
 FOLLOW = 17 * 60          # a market's book is read from this long before its end
 AFTER = 45                # until this long after it
 LIST_QUIET = 300          # seconds between two listings when nothing ends soon
-LIST_BUSY = 100           # and when something does: the index level has to stay fresh
+LIST_BUSY = 50            # and when something does: the index level has to stay fresh
 SWEEP = 40.0              # seconds between two readings of one book, at least (the public book changes every 30)
 SKIP = frozenset({"5m", "15m", "hourly"})     # horizons that are not followed: thousands a day, and no orders of the kind L1 trades
 INDEX_FROM = frozenset({"5m", "15m", "1h", "1d"})   # up-or-down horizons whose price to beat is an index level
