@@ -559,8 +559,10 @@ what has been recorded once an hour, and once more just after 22:00 UTC,
 with `scripts/ci_save_state.sh`. That script works in a second checkout,
 so the programs that are still recording are not disturbed, and it copies
 only the files the job itself has written. A second job,
-`us-rewards-watchdog`, looks every quarter of an hour and starts the
-recording job if no run of it is going. Both stop by themselves on
+`us-rewards-watchdog`, is set to look every quarter of an hour and starts
+the recording job if no run of it is going. GitHub starts scheduled jobs
+less often than they ask to be started, sometimes much less, so it is a
+net with wide meshes and not a guarantee. Both stop by themselves on
 18 November 2026.
 
 ## Reproducing the research

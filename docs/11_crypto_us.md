@@ -614,8 +614,11 @@ What was changed the same evening, between 22:28 and 22:35 UTC:
   now costs an hour at most.
 - The recorder writes to disk as soon as the markets it follows have
   ended. Before, it wrote every ten minutes.
-- A second small job, `us-rewards-watchdog`, looks every quarter of an
-  hour and starts the recording job if no run of it is going.
+- A second small job, `us-rewards-watchdog`, is set to look every
+  quarter of an hour and starts the recording job if no run of it is
+  going. By 23:19 UTC GitHub had not yet started it on its schedule once,
+  only when I started it by hand. GitHub starts scheduled jobs less often
+  than they ask, so this is a net with wide meshes.
 - The job was started again by hand.
 
 One mistake of mine on the way: the first version of the changed job file
