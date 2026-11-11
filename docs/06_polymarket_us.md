@@ -146,3 +146,95 @@ round in which nothing survives is a result and will be written up as one.
 points; nothing is adjusted after stage 1. And it is not a prediction of
 profit: with five months of US history, stage 2 can confirm that a mistake
 exists there, not what it will be worth.
+
+### The judge, corrected on its first run (11 November, 04:40 UTC)
+
+The judge above was run once on polymarket.com as written and had to be
+changed, before any Polymarket US data was looked at. What happened is part
+of the record.
+
+*As written* it passed 351 candidates and 285 survivors. It also passed 1.6
+survivors on average in placebo worlds, with at least one in half of them,
+which is far more than a 10% false-discovery rate allows. The cause was the
+one round two met as test A1: a rule that buys at 98¢ and happens not to lose
+in the sample has returns that hardly vary, so its t-statistic is enormous
+(the top survivor scored 99.97) whether or not there is anything there.
+
+*A first repair* floored the variance at what fair prices would imply, with
+every bet in one event assumed to win or lose together. That let nothing
+through, the first round's confirmed rule included, and was too strict: it
+is only true of some events.
+
+*The judge as it now stands,* and as it will be applied to Polymarket US:
+
+- **The score.** z = mean return ÷ standard error, where the variance of the
+  mean is the larger of the sample's clustered variance and the variance the
+  prices paid would imply if they were fair (a purchase at cost c has a
+  return of variance (1 − c)/c). A rule cannot score well by not having
+  lost yet.
+- **Candidates,** as before: in discovery, 150 trades or more, +0.5% a trade
+  or more, z of 3.0 or more by event.
+- **Survivors.** The candidates' purchases are fixed. Their outcomes in the
+  validation half are redrawn 500 times in a world where every price is
+  right, one draw per *event*, so that markets in one event win and lose
+  together as much as their prices allow. In each world the best validation
+  z among the candidates is recorded. A candidate survives if its real
+  validation z, on 100 trades or more, is above the 95th percentile of those
+  best scores. This asks one plain question: did it beat the luckiest of
+  that many worthless rules?
+- **Discoveries from nothing,** as before: the whole funnel run in placebo
+  worlds, counting what gets through.
+
+Every change makes the judge stricter than the one first written. Nothing
+that failed the first version passes this one.
+
+## 5. Stage 1: 53,760 rules on polymarket.com
+
+`scripts/factory.py run-intl` (`f_intl_*.csv`, `factory_intl_output.txt`).
+The table is every news market with tapes on disk from the moment it had
+traded 5,000 shares: 110,986 markets, 2.6 million outcome-days, split almost
+evenly between markets scheduled to end before 2026 (discovery) and in 2026
+(validation). The fast engine was first checked against the backtest used in
+every earlier round and bought exactly the same contracts on four rules.
+
+| | Real data | Worlds with no edge |
+|---|---:|---:|
+| Rules in the grid | 53,760 | |
+| With 30 trades or more | 28,382 | |
+| Candidates | **76** | 6.7 on average, 30 at most |
+| Score a candidate must beat in validation | z ≥ 3.21 | (median best score 1.87) |
+| Survivors | **32** | 0.1 on average; one world in twenty had any |
+
+The search was wide and what it found is narrow. **All 76 candidates, and so
+all 32 survivors, are the same thing: "No" on a stand-alone question.** Not
+one rule on the "Yes" side, not one on a leg of a multi-way event, not one in
+the middle of the price range, in any category, made it through the first
+half of the data. The survivors come in two kinds, both already known:
+
+| Rule (one of each kind; the rest are neighbours) | Discovery: trades | return | z | Validation: trades | return | z | lost |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| "No" at 90–99¢, 10–60 days left, spread 2¢ or less | 2,208 | +1.51% | 3.1 | 2,274 | +2.42% | 4.2 | 61 |
+| "No" at 95–99¢, 3–60 days, quiet for a week | 1,532 | +1.23% | 3.0 | 1,120 | +1.78% | 4.0 | 5 |
+| "No" at 90–98¢, 60–180 days left | 912 | +2.92% | 3.4 | 470 | +4.94% | 4.0 | 9 |
+| "No" at 90–95¢, 60–180 days left | 744 | +3.62% | 3.6 | 413 | +5.44% | 4.0 | 9 |
+| "No" at 80–95¢, 60–180 days, quiet, spread 2¢ or less | 493 | +4.96% | 3.5 | 219 | +7.91% | 3.8 | 3 |
+
+Two things this settles and one it does not.
+
+*The long-dated "No" is now confirmed on polymarket.com.* Round three found
+it by looking and could only test it in the thinnest markets, where it fell
+short. Here it was found in the pre-2026 half by a blind search and held in
+the 2026 half against a family-wise bar. Twenty of the 32 survivors are
+versions of it.
+
+*A tight spread matters.* The plain first-round rule ("No" at 95–98¢, 3–60
+days, any spread) is not a candidate in this pooled universe, which includes
+the thin markets where round three found it weak: +0.74% in discovery, z of
+1.2. With a spread of 2¢ or less and ten days or more to run it is. Round
+three's after-the-fact note about spreads was right.
+
+*Nothing new was found.* Thousands of rules were tried so that something
+unexpected could show up, and nothing did. That is worth knowing: the one
+mistake this crowd makes that survives costs is believing things will
+happen.
+
