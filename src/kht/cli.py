@@ -7,6 +7,8 @@
     kht shadow       score every signal ever seen against how it resolved
     kht us-record    write down the Polymarket US order books and their polymarket.com twins (read-only)
     kht us-rewards   paper orders before games on Polymarket US: what the reward formula would pay them (read-only)
+    kht us-quote     rest orders before games on Polymarket US: on paper unless live trading is switched on
+    kht us-earnings  what the exchange says it paid in rewards, beside what the formula said (needs the account's key)
     kht geoblock     is this machine allowed to place orders?
 """
 
@@ -154,6 +156,50 @@ def cmd_us_rewards(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_us_quote(args: argparse.Namespace) -> int:
+    """Rest orders before games on Polymarket US. On paper unless --live or --preview is given and the environment allows it."""
+    from .api.http import Http
+    from .api.polymarket_us import PolymarketUS
+    from .trading.us_quoter import Engine, PaperBroker, QuoterConfig
+
+    cfg = QuoterConfig.load(Path(args.config))
+    state = Path(args.state)
+    state.mkdir(parents=True, exist_ok=True)
+    if args.live or args.preview:
+        from .trading.us_live import LiveUSBroker
+
+        broker, mode = LiveUSBroker.from_env(preview=args.preview), ("preview" if args.preview else "live")
+    else:
+        broker, mode = PaperBroker.load(state / "paper.json"), "paper"
+    us = PolymarketUS(Http(rate_per_host={"gateway.polymarket.us": 6.0}))
+    engine = Engine(state, cfg, broker, us, mode=mode)
+    print(f"[{_stamp()}] Polymarket US orders before games: {mode}, {cfg.size:g} contracts a side, up to {cfg.max_games} games, "
+          f"at most ${cfg.max_at_risk:,.0f} at risk")
+    line = engine.run(args.minutes)
+    print(f"[{_stamp()}] ended: {line}")
+    print(f"[{_stamp()}] reward by the published formula so far: ${engine.reward():,.2f} (${engine.reward(1.0):,.2f} counting only a market and date at $1 or more)")
+    return 0
+
+
+def cmd_us_earnings(args: argparse.Namespace) -> int:
+    """Set what the exchange credited beside what the formula said. This is the comparison the whole idea waits on."""
+    import json
+
+    from .trading.us_live import LiveUSBroker
+
+    formula = json.loads((Path(args.state) / "accrued.json").read_text()) if (Path(args.state) / "accrued.json").exists() else {}
+    paid = {(r.get("marketSlug"), r.get("date")): r for r in LiveUSBroker.from_env(preview=True).earnings(args.since)}
+    keys = sorted(set(paid) | {(s, d) for s, by in formula.items() for d in by if args.since is None or d >= args.since}, key=lambda k: (k[1], k[0]))
+    print(f"{'date':10}  {'market':56}  {'formula':>8}  {'credited':>8}  status")
+    total_f = total_p = 0.0
+    for slug, date in keys:
+        f, r = formula.get(slug, {}).get(date, 0.0), paid.get((slug, date), {})
+        total_f, total_p = total_f + f, total_p + float(r.get("reward") or 0.0)
+        print(f"{date:10}  {slug[:56]:56}  {f:8.2f}  {float(r.get('reward') or 0.0):8.2f}  {r.get('status', '-')}")
+    print(f"{'':10}  {'total':56}  {total_f:8.2f}  {total_p:8.2f}")
+    return 0
+
+
 def cmd_geoblock(args: argparse.Namespace) -> int:
     info = Polymarket().geoblock()
     print(info)
@@ -210,6 +256,19 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--minutes", type=float, default=300.0, help="how long to follow the order books")
     p.add_argument("--interval", type=float, default=120.0, help="seconds between readings of one book")
     p.set_defaults(fn=cmd_us_rewards)
+
+    p = sub.add_parser("us-quote", help="rest orders before games on Polymarket US (on paper unless switched on)")
+    p.add_argument("--config", default="config/us_quoter.json")
+    p.add_argument("--state", default="state/us-quoter")
+    p.add_argument("--minutes", type=float, default=60.0, help="how long to run; the orders are pulled when it ends")
+    p.add_argument("--live", action="store_true", help="send real orders (also needs the environment switch and the account's key)")
+    p.add_argument("--preview", action="store_true", help="read the real account and send every order to the exchange's preview only")
+    p.set_defaults(fn=cmd_us_quote)
+
+    p = sub.add_parser("us-earnings", help="rewards the exchange credited, beside what the formula said")
+    p.add_argument("--state", default="state/us-quoter")
+    p.add_argument("--since", default=None, help="first date, YYYY-MM-DD")
+    p.set_defaults(fn=cmd_us_earnings)
 
     p = sub.add_parser("geoblock", help="check whether this machine may trade")
     p.set_defaults(fn=cmd_geoblock)

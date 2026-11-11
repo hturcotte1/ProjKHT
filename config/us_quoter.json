@@ -1,0 +1,15 @@
+{
+  "_comment": "Orders before games on Polymarket US (docs/10_us_quoter.md). On paper unless live trading is switched on in the environment. Sizes are contracts, money is dollars, times are seconds.",
+  "size": 100,
+  "programmes": ["itf_moneyline", "doubles_moneyline", "utr_moneyline", "darts_moneyline", "astra_cup_women_moneyline"],
+  "max_games": 20,
+  "max_at_risk": 1200,
+  "max_day_loss": 150,
+  "min_reward": 1.2,
+  "min_lead": 1800,
+  "max_filled_games": 5,
+  "refresh": 30,
+  "scan": 300,
+  "expire": 180,
+  "renew": 90
+}

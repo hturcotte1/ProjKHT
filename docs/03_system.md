@@ -43,6 +43,7 @@ Code: `src/kht/trading/engine.py` (`Engine.run_cycle`).
 | Traded range | `trading/quiet.py` | How far an outcome's price has ranged over the last few days, read from the public trade feed |
 | Polymarket US recorder | `api/polymarket_us.py`, `trading/us_recorder.py`, `trading/twins.py` | Not part of any account: writes down the order books of Polymarket US, and the polymarket.com quote for the same question. See "The Polymarket US recorder" below |
 | Paper orders before games | `trading/us_rewards.py` | Not part of any account: a simulation of small resting orders on Polymarket US, paid by the exchange's published reward formula. See "Paper orders before games on Polymarket US" below |
+| Orders before games, for real or on paper | `trading/us_quoter.py`, `trading/us_live.py` | The system that would rest those orders with a real account: choice of games, limits, orders that may only rest and that expire by themselves. On paper by default; the live connection has never been run. `docs/10_us_quoter.md` |
 
 ## What the strategy does
 
@@ -453,6 +454,12 @@ To add the runs up and apply the judge:
 ```bash
 python scripts/us_rewards_score.py --settle
 ```
+
+The system that would place such orders for real is `kht us-quote`
+(`src/kht/trading/us_quoter.py`, `src/kht/trading/us_live.py`). It runs on
+paper by default and has never been run against the exchange. What it
+does, its limits and the steps before any real order are in
+`docs/10_us_quoter.md`.
 
 ## Reproducing the research
 

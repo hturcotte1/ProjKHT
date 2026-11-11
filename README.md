@@ -157,6 +157,7 @@ learn that. The story is in
 | Rewards for resting orders on Polymarket US: what is public, what is unknown, and the small test that would settle it | [`docs/08_rewards.md`](docs/08_rewards.md) |
 | Rewards in sports games: what the order books show, and the paper test of small resting orders, fixed in advance | [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md) |
 | What the paper orders before games did in the latest run | `state/us-rewards/STATUS.md` (from its first run) |
+| The system that would rest those orders for real: what it does, its limits, and the steps before any real order | [`docs/10_us_quoter.md`](docs/10_us_quoter.md) |
 | What Polymarket US's order books showed at the last cycle | [`state/us/STATUS.md`](state/us/STATUS.md) |
 | What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-long/STATUS.md` (from its first cycle) |
 
