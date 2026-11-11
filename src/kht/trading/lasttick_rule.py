@@ -23,12 +23,52 @@ MAX_AGE = 10 * 60        # an index level older than this is not used
 CAP = 2_000.0            # contracts a market, at most
 SELL_AT_MOST = 0.05      # a sale above this, or a purchase below BUY_AT_LEAST, is refused: the book disagrees with the rule
 BUY_AT_LEAST = 0.95
+BRAKE_WINDOW = 3_600     # the brake of the second yardstick looks at the index levels of the hour before a reading
+BRAKE_STEP = 300         # which the exchange publishes every five minutes
+BRAKE_MIN = 6            # and needs at least this many five-minute changes to say anything
+
+
+PRODUCT = {"btc": "cpc", "eth": "cpceth", "sol": "cpcsol", "xrp": "cpcxrp"}       # the exchange's product code in front of each coin's markets
+
+
+def updown_slug(coin: str, horizon: str, start: float) -> str:
+    """The up-or-down market of ``coin`` over ``horizon`` ("5m", "15m") that starts at ``start``. Its price to beat is the index then."""
+    from datetime import datetime, timezone
+
+    return f"{PRODUCT[coin]}-{coin}-updown-{horizon}-{datetime.fromtimestamp(start, timezone.utc).strftime('%Y-%m-%d-%H%M')}z"
 
 
 def load_reach(path: Path) -> dict[str, dict[int, float]]:
     """The reach table written by scripts/lasttick_reach.py: {coin: {minutes: largest move counted as possible}}."""
     raw = json.loads(Path(path).read_text())["reach"]
     return {coin: {int(h): float(v) for h, v in row.items()} for coin, row in raw.items()}
+
+
+def load_recent(path: Path) -> tuple[dict[str, dict[int, float]], dict[str, float]]:
+    """The second yardstick (docs/11, "A second yardstick"): the reach from recent years, and each coin's brake."""
+    raw = json.loads(Path(path).read_text())["recent"]
+    return {coin: {int(h): float(v) for h, v in row.items()} for coin, row in raw["reach"].items()}, {c: float(v) for c, v in raw["brake"].items()}
+
+
+def brake_state(history: list[tuple[float, float]] | None, ts: float, limit: float | None) -> str:
+    """What the brake says at a reading: "clear", "fast" (a five-minute move over the limit in the hour before) or "unknown".
+
+    ``history`` is the index levels of one coin as (moment, level). Two
+    levels five minutes apart make one change. A gap in the levels is
+    checked as one change too, and does not count towards the six needed.
+    """
+    if limit is None or not history:
+        return "unknown"
+    seen = sorted((at, lv) for at, lv in history if ts - BRAKE_WINDOW - BRAKE_STEP <= at <= ts and lv and lv > 0)
+    changes = 0
+    for (a0, l0), (a1, l1) in zip(seen, seen[1:]):
+        if a1 - a0 < 1.0:
+            continue
+        if abs(l1 / l0 - 1.0) > limit:
+            return "fast"
+        if a1 - a0 <= BRAKE_STEP * 1.1:
+            changes += 1
+    return "clear" if changes >= BRAKE_MIN else "unknown"
 
 
 def reach_for(reach: dict[str, dict[int, float]], coin: str, minutes: float) -> float | None:
@@ -76,10 +116,14 @@ def gap(market: dict[str, Any], level: float) -> tuple[float, str] | None:
 
 
 def decide(market: dict[str, Any], book: dict[str, Any], ts: float, level: float | None, level_at: float | None,
-           reach: dict[str, dict[int, float]]) -> tuple[dict[str, Any] | None, str]:
+           reach: dict[str, dict[int, float]], brake: dict[str, float] | None = None,
+           history: list[tuple[float, float]] | None = None) -> tuple[dict[str, Any] | None, str]:
     """The trade the rule makes on one reading of one book, or None, and in a word why.
 
     ``book`` is a row of the recorder: bid1, bid_qty1, ask1, ask_qty1.
+    With ``brake`` (the second yardstick) a result that is out of reach is
+    still not traded if the coin's index has moved fast in the hour before,
+    or if too few of its levels are known to tell.
     """
     left = float(market["end"]) - ts
     if not LAST <= left <= FIRST:
@@ -97,6 +141,12 @@ def decide(market: dict[str, Any], book: dict[str, Any], ts: float, level: float
         return None, "no reach for this coin and horizon"
     if distance <= r:
         return None, "within reach"
+    if brake is not None:
+        state = brake_state(history, ts, brake.get(market.get("coin", "")))
+        if state == "fast":
+            return None, "out of reach, but the index has been moving fast"
+        if state == "unknown":
+            return None, "out of reach, too little index history"
     if result == "no":
         price, shown = _f(book.get("bid1")), _f(book.get("bid_qty1"))
         if price is None or not shown or shown <= 0:

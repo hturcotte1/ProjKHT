@@ -31,7 +31,8 @@ from kht.trading import lasttick_rule as rule  # noqa: E402
 
 pd.set_option("display.width", 250)
 pd.set_option("display.max_rows", 400)
-ORDER = ["trade", "out of reach, but the book disagrees", "out of reach, nobody bidding", "out of reach, nobody offering", "within reach",
+ORDER = ["trade", "out of reach, but the book disagrees", "out of reach, nobody bidding", "out of reach, nobody offering",
+         "out of reach, but the index has been moving fast", "out of reach, too little index history", "within reach",
          "no fresh index level", "cannot be read", "no reach for this coin and horizon", "outside the time window"]
 MIN_DAYS, MIN_A_DAY = 5, 50.0            # what docs/11 asks of the small account before a real test is worth discussing
 
@@ -65,7 +66,51 @@ class Levels:
         return (None, None) if k < 0 else (float(a[k, 1]), float(a[k, 2]))
 
 
-def apply(books: pd.DataFrame, markets: pd.DataFrame, index: pd.DataFrame, reach: dict) -> tuple[list[dict], pd.DataFrame]:
+def known_levels(state: Path, index: pd.DataFrame, markets: pd.DataFrame, look_up: bool) -> dict[str, list[tuple[float, float]]]:
+    """Each coin's index levels as (moment, level): those the recorder saw, and those looked up since for the brake.
+
+    The brake needs the hour before every reading. The recorder only has
+    the levels published while it ran, so with ``look_up`` the missing
+    five-minute marks are asked for (public, no key) and remembered in
+    <state>/levels.csv. A level looked up later is used for the brake
+    only, never as "where the price is" at a reading.
+    """
+    path = state / "levels.csv"
+    cached = pd.read_csv(path) if path.exists() else pd.DataFrame(columns=["coin", "at", "level"])
+    have = {(c, float(a)): float(v) for c, a, v in cached.dropna(subset=["level"]).itertuples(index=False)}
+    if len(index):
+        have.update({(c, float(a)): float(v) for c, a, v in index[["coin", "at", "level"]].itertuples(index=False)})
+    if look_up and len(markets):
+        from kht.api.http import Http
+        from kht.api.polymarket_us import PolymarketUS
+        from kht.trading.us_recorder import _amount
+
+        tried = {(c, float(a)) for c, a in cached[["coin", "at"]].itertuples(index=False)}
+        want = set()
+        for coin, end in markets[["coin", "end"]].drop_duplicates().itertuples(index=False):
+            first = (int(end) - rule.FIRST - rule.BRAKE_WINDOW - rule.BRAKE_STEP) // rule.BRAKE_STEP * rule.BRAKE_STEP
+            want |= {(coin, float(m)) for m in range(first, int(end) - rule.LAST + 1, rule.BRAKE_STEP) if coin in rule.PRODUCT}
+        missing = sorted(want - set(have) - tried)
+        if missing:
+            us = PolymarketUS(Http(rate_per_host={"gateway.polymarket.us": 6.0}))
+            rows = []
+            for coin, at in missing:
+                try:
+                    level = _amount((us.market(rule.updown_slug(coin, "5m", at)).get("assetPriceTerms") or {}).get("priceToBeat"))
+                except Exception:
+                    level = None
+                rows.append({"coin": coin, "at": at, "level": level})
+                if level is not None:
+                    have[(coin, at)] = level
+            pd.concat([cached, pd.DataFrame(rows)], ignore_index=True).to_csv(path, index=False)
+    out: dict[str, list[tuple[float, float]]] = {}
+    for (coin, at), level in sorted(have.items()):
+        out.setdefault(coin, []).append((at, level))
+    return out
+
+
+def apply(books: pd.DataFrame, markets: pd.DataFrame, index: pd.DataFrame, reach: dict, brake: dict | None = None,
+          history: dict[str, list[tuple[float, float]]] | None = None) -> tuple[list[dict], pd.DataFrame]:
     """The rule on every followed market: its trade, if any, and for every market what became of it."""
     levels = Levels(index)
     terms = {m["slug"]: m for m in markets.to_dict("records")}
@@ -77,7 +122,7 @@ def apply(books: pd.DataFrame, markets: pd.DataFrame, index: pd.DataFrame, reach
         got, best, seen = None, "outside the time window", 0
         for b in g.to_dict("records"):
             level, level_at = levels.at(m["coin"], b["ts"])
-            t, why = rule.decide(m, b, float(b["ts"]), level, level_at, reach)
+            t, why = rule.decide(m, b, float(b["ts"]), level, level_at, reach, brake, (history or {}).get(m["coin"]))
             if why != "outside the time window":
                 seen += 1
                 best = why                                   # for a market never traded: how its last reading in the window was judged
@@ -132,7 +177,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--state", default="state/us-lasttick")
     ap.add_argument("--reach", default=str(ROOT / "config" / "lasttick_reach.json"))
-    ap.add_argument("--settle", action="store_true")
+    ap.add_argument("--settle", action="store_true", help="ask the exchange for settlements and for index levels the recorder did not see")
     ap.add_argument("--out", default=str(ROOT / "reports" / "research"))
     args = ap.parse_args()
     state, out = Path(args.state), Path(args.out)
@@ -142,47 +187,52 @@ def main() -> None:
         lines.append("Nothing has been recorded yet.")
         print("\n".join(lines))
         return
-    reach = rule.load_reach(Path(args.reach))
-    trades, fate = apply(books, markets, index, reach)
-    settle = settlements(state, [t["slug"] for t in trades], args.settle)
-    everything = account(trades, settle)
-    small = account(rule.small_account(trades), settle)
+    strict = rule.load_reach(Path(args.reach))
+    recent, brake = rule.load_recent(Path(args.reach))
+    history = known_levels(state, index, markets, args.settle)
+    runs = {"L1-recent": apply(books, markets, index, recent, brake, history), "L1-strict": apply(books, markets, index, strict)}
+    settle = settlements(state, sorted({t["slug"] for trades, _ in runs.values() for t in trades}), args.settle)
+    fate = runs["L1-recent"][1]
     ends = fate.groupby("end").size()
-    daily_ends = fate[fate["horizon"].isin(["daily", "weekly", "monthly", "1d"])]["end"].nunique()
+    daily = set(pd.to_datetime(fate.loc[fate["horizon"].isin(["daily", "1d"]), "end"], unit="s").dt.strftime("%Y-%m-%d"))
     first, last = pd.Timestamp(books["ts"].min(), unit="s"), pd.Timestamp(books["ts"].max(), unit="s")
     lines += [f"recorded: {first:%d %B %H:%M} to {last:%d %B %H:%M} UTC; {len(books):,} readings of {len(fate):,} markets ending at {len(ends):,} different times, "
-              f"{daily_ends} of them the time of a daily settlement", "",
-              "what became of each market followed (a market is counted once, by how the rule judged it)"]
-    counts = fate["fate"].value_counts()
-    lines += [f"   {k:<42} {int(counts.get(k, 0)):>6,}" for k in ORDER if counts.get(k, 0)]
-    fate.to_csv(out / "lt_fate.csv", index=False)
-    for name, t in (("L1-all (every trade the rule finds, 2,000 contracts a market at most)", everything), ("L1-10k ($10,000 to lock at each settlement time)", small)):
-        lines += ["", name]
-        if not len(t):
-            lines.append("   no trade")
-            continue
-        done = t[t["settle"].notna()]
-        lines.append(f"   trades {len(t):,} ({int((t['side'] == 'sell').sum()):,} sales, {int((t['side'] == 'buy').sum()):,} purchases); contracts {t['qty'].sum():,.0f}; "
-                     f"premium after the fee ${t['premium'].sum():,.2f}; most locked at one settlement ${t.groupby('end')['locked'].sum().max():,.0f}")
-        lines.append(f"   settled {len(done):,} of {len(t):,}; lost {int(done['lost'].sum()):,}; result ${done['pnl'].sum():,.2f}")
-        d = by(t, "day")
-        lines.append("   by day of settlement (UTC):")
-        lines.append("   " + d.round(2).to_string(index=False).replace("\n", "\n   "))
-    everything.to_csv(out / "lt_trades.csv", index=False)
-    by(everything, "end_utc").to_csv(out / "lt_by_end.csv", index=False)
-    small.to_csv(out / "lt_trades_10k.csv", index=False)
-    if len(small):
-        d = by(small, "day")
-        with_daily = set(pd.to_datetime(fate.loc[fate["horizon"].isin(["daily", "1d"]), "end"], unit="s").dt.strftime("%Y-%m-%d"))
-        d = d[d["day"].isin(with_daily)]
-        lost = int(everything["lost"].sum())
-        lines += ["", f"what docs/11 asks before a real test is worth discussing: {MIN_DAYS} daily settlements recorded (so far {len(with_daily)}), "
-                      f"L1-10k collecting ${MIN_A_DAY:.0f} a day on average (so far ${d['premium'].mean() if len(d) else 0.0:,.2f} over {len(d)} days), "
-                      f"and no result that was out of reach coming in (so far {lost} lost)."]
-    refused = fate[fate["fate"] == "out of reach, but the book disagrees"]
-    if len(refused):
-        lines += ["", f"{len(refused)} markets were out of reach by the rule while their book said otherwise. They were not traded. Each is a fact to check:",
-                  "   " + refused[["slug", "end"]].assign(end=pd.to_datetime(refused["end"], unit="s")).to_string(index=False).replace("\n", "\n   ")]
+              f"{len(daily)} of them a daily settlement"]
+    for name, (trades, f) in runs.items():
+        tag = name.split("-")[1]
+        counts = f["fate"].value_counts()
+        lines += ["", f"===== {name}: " + ("the reach of 2023 to 2026, with the brake" if tag == "recent" else "the reach of the worst year since 2020, as first written") + " =====",
+                  "what became of each market followed (a market is counted once, by how the rule judged it)"]
+        lines += [f"   {k:<50} {int(counts.get(k, 0)):>6,}" for k in ORDER if counts.get(k, 0)]
+        f.to_csv(out / f"lt_fate_{tag}.csv", index=False)
+        everything = account(trades, settle)
+        small = account(rule.small_account(trades), settle)
+        for label, t in ((f"{name}-all (every trade the rule finds, 2,000 contracts a market at most)", everything),
+                         (f"{name}-10k ($10,000 to lock at each settlement time)", small)):
+            lines += ["", label]
+            if not len(t):
+                lines.append("   no trade")
+                continue
+            done = t[t["settle"].notna()]
+            lines.append(f"   trades {len(t):,} ({int((t['side'] == 'sell').sum()):,} sales, {int((t['side'] == 'buy').sum()):,} purchases); contracts {t['qty'].sum():,.0f}; "
+                         f"premium after the fee ${t['premium'].sum():,.2f}; most locked at one settlement ${t.groupby('end')['locked'].sum().max():,.0f}")
+            lines.append(f"   settled {len(done):,} of {len(t):,}; lost {int(done['lost'].sum()):,}; result ${done['pnl'].sum():,.2f}")
+            lines.append("   by day of settlement (UTC):")
+            lines.append("   " + by(t, "day").round(2).to_string(index=False).replace("\n", "\n   "))
+        everything.to_csv(out / f"lt_trades_{tag}.csv", index=False)
+        small.to_csv(out / f"lt_trades_{tag}_10k.csv", index=False)
+        by(everything, "end_utc").to_csv(out / f"lt_by_end_{tag}.csv", index=False)
+        if tag == "recent":
+            d = by(small, "day") if len(small) else pd.DataFrame(columns=["day", "premium"])
+            d = d[d["day"].isin(daily)]
+            lost = int(everything["lost"].sum()) if len(everything) else 0
+            lines += ["", f"what docs/11 asks before a real test is worth discussing: {MIN_DAYS} daily settlements recorded (so far {len(daily)}); "
+                          f"L1-recent-10k collecting ${MIN_A_DAY:.0f} a day on average (so far ${d['premium'].sum() / max(1, len(daily)):,.2f} over {len(daily)} days); "
+                          f"and no result that was out of reach coming in (so far {lost} lost)."]
+        refused = f[f["fate"] == "out of reach, but the book disagrees"]
+        if len(refused):
+            lines += ["", f"{len(refused)} markets were out of reach by this yardstick while their book said otherwise. They were not traded. Each is a fact to check:",
+                      "   " + refused[["slug", "end"]].assign(end=pd.to_datetime(refused["end"], unit="s")).to_string(index=False).replace("\n", "\n   ")]
     text = "\n".join(lines) + "\n"
     (out / "lt_summary.txt").write_text(text)
     print(text)

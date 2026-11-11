@@ -167,12 +167,24 @@ def stored_book(points: list, ts: float) -> dict | None:
     return None
 
 
-def cmd_run(args: argparse.Namespace) -> None:
+def brake_history(closes: dict[str, pd.Series], coin: str, ts: float) -> list[tuple[float, float]]:
+    """Five-minute levels of the hour before ``ts`` for the brake, from outside minute prices (the exchange's own are not kept that far back).
+
+    The level at a mark is the close of the minute that ends there.
+    """
+    c = closes.get(coin)
+    if c is None:
+        return []
+    last = int(ts) // 300 * 300
+    marks = np.arange(last - 3900, last + 1, 300)
+    v = c.reindex(marks - 60)
+    return [(float(m), float(x)) for m, x in zip(marks, v.to_numpy()) if np.isfinite(x)]
+
+
+def score(f: pd.DataFrame, idx: pd.Series, reach: dict, brake: dict | None, closes: dict[str, pd.Series]) -> pd.DataFrame:
+    """One yardstick on every fetched market, at one reading a quarter of an hour before its end."""
     from kht.trading import lasttick_rule as rule
 
-    reach = rule.load_reach(ROOT / "config" / "lasttick_reach.json")
-    f = fetched()
-    idx = pd.read_parquet(DATA / "lasttick_index.parquet").dropna(subset=["level"]).set_index(["coin", "at"])["level"]
     rows = []
     for m in f.to_dict("records"):
         end = float(m["end"])
@@ -182,15 +194,18 @@ def cmd_run(args: argparse.Namespace) -> None:
             rows.append({**row, "fate": "settled before its last quarter of an hour"})      # a "hit" market that was hit
             continue
         level = idx.get((m["coin"], end - AT))
+        level = float(level) if level is not None and np.isfinite(level) else None
         points = json.loads(m["quotes"]) if m.get("quotes") else []
         ts = end - AT
-        g = rule.gap(m, float(level)) if level is not None and np.isfinite(level) else None
+        history = brake_history(closes, m["coin"], ts) if brake is not None else None
+        g = rule.gap(m, level) if level is not None else None
         r = rule.reach_for(reach, m["coin"], AT / 60.0 + 1.0)
-        if g is not None and r is not None and g[0] > r:
-            # out of reach: did the result hold, whatever the book showed?
+        clear = brake is None or rule.brake_state(history, ts, brake.get(m["coin"])) == "clear"
+        if g is not None and r is not None and g[0] > r and clear:
+            # out of reach and not braked: did the result hold, whatever the book showed?
             row.update(out_of_reach=True, held=(m["yes_settle"] == (1.0 if g[1] == "yes" else 0.0)), as_things_stood=g[1], gap=g[0], reach=r)
         book = stored_book(points, ts)
-        trade, why = rule.decide(m, book or {}, ts, None if level is None else float(level), ts, reach)
+        trade, why = rule.decide(m, book or {}, ts, level, ts, reach, brake, history)
         if why.startswith("out of reach, nobody") and book is None and points:
             why = "out of reach, no real book stored"
         elif why.startswith("out of reach, nobody") and not points:
@@ -204,19 +219,26 @@ def cmd_run(args: argparse.Namespace) -> None:
                 row[f"still_{later // 60}m"] = bool(b2 and b2.get(key) is not None and abs(b2[key] - trade["price"]) < 1e-9)
         rows.append(row)
     res = pd.DataFrame(rows)
-    res.to_parquet(DATA / "lasttick_history_result.parquet", index=False)
+    for col in ("out_of_reach", "held", "gap", "reach", "side", "price", "premium", "pnl", "still_10m", "still_5m", "still_2m"):
+        if col not in res:
+            res[col] = np.nan
     res["group"] = res["kind"].str.replace("_", " ") + " (" + res["horizon"] + ")"
-    lines = ["Test L1 on the history of settled crypto markets (docs/11, section 5, item 3): one reading a market, a quarter of an hour before its end",
-             f"markets fetched: {len(f):,}; ends: {f[['coin', 'end']].drop_duplicates().shape[0]:,}; ends with an index level a quarter of an hour before: "
-             f"{int(pd.MultiIndex.from_frame(f[['coin', 'end']].drop_duplicates().assign(at=lambda d: d['end'] - AT)[['coin', 'at']]).isin(idx.index).sum()):,}",
-             "the history has no sizes: every trade here is one contract", ""]
+    return res
+
+
+def describe(name: str, res: pd.DataFrame) -> list[str]:
+    lines = [f"===== {name} ====="]
     fates = res.groupby(["group", "fate"]).size().unstack(fill_value=0)
     lines += ["what became of each market, by kind", fates.T.to_string(), ""]
     oor = res[res["out_of_reach"] == True]  # noqa: E712
-    lines.append(f"results that were out of reach by the rule, whatever the book showed: {len(oor):,}; of these the result changed in {int((~oor['held'].astype(bool)).sum()):,}")
+    lines.append(f"results that were out of reach by the rule, whatever the book showed: {len(oor):,}; of these the result changed in "
+                 f"{int((~oor['held'].astype(bool)).sum()) if len(oor) else 0:,}")
     if len(oor):
-        lines += [oor.groupby("group").agg(out_of_reach=("slug", "size"), changed=("held", lambda s: int((~s.astype(bool)).sum())), median_gap=("gap", "median"),
-                                           reach=("reach", "median")).round(4).to_string(), ""]
+        lines += [oor.groupby("group").agg(out_of_reach=("slug", "size"), ends=("end", "nunique"), changed=("held", lambda s: int((~s.astype(bool)).sum())),
+                                           median_gap=("gap", "median"), reach=("reach", "median")).round(4).to_string(), ""]
+        changed = oor[~oor["held"].astype(bool)]
+        if len(changed):
+            lines += ["the results that changed", changed[["slug", "as_things_stood", "gap", "reach", "yes_settle"]].to_string(index=False), ""]
     tr = res[res["fate"] == "trade"]
     lines.append(f"trades (an order to trade against was stored at that moment): {len(tr):,}; lost {int((tr['pnl'] < 0).sum()):,}; "
                  f"premium a contract {100 * tr['premium'].mean() if len(tr) else 0:.3f} cents; result a contract {100 * tr['pnl'].mean() if len(tr) else 0:.3f} cents")
@@ -226,15 +248,42 @@ def cmd_run(args: argparse.Namespace) -> None:
                                               result_cents=("pnl", lambda s: 100 * s.mean()), never_traded=("traded", lambda s: float((s.fillna(0) == 0).mean())),
                                               still_10m=("still_10m", "mean"), still_5m=("still_5m", "mean"), still_2m=("still_2m", "mean")).round(3)
         lines += [g.to_string(), ""]
-        day = tr[tr["horizon"].isin(["daily", "weekly", "monthly", "1d"])].assign(day=lambda d: pd.to_datetime(d["end"], unit="s").dt.strftime("%Y-%m-%d"))
-        per_day = day.groupby("day").agg(levels=("slug", "size"), lost=("pnl", lambda s: int((s < 0).sum())))
-        lines += [f"daily, weekly and monthly settlements: levels with an order to trade against, by day (days: {len(per_day)}; median {per_day['levels'].median():.0f} a day)",
-                  per_day.T.to_string(), ""]
-        tr.to_csv(OUT / "lth_trades.csv", index=False)
-    lost = res[(res["fate"] == "trade") & (res["pnl"] < 0)]
+        day = tr[tr["horizon"].isin(["daily", "weekly", "monthly", "1d"])].assign(day=lambda d: pd.to_datetime(d["end"], unit="s").dt.strftime("%m-%d"))
+        if len(day):
+            per_day = day.groupby("day").agg(levels=("slug", "size"), lost=("pnl", lambda s: int((s < 0).sum())))
+            lines += [f"daily, weekly and monthly settlements: levels with an order to trade against, by day (days: {len(per_day)}; median {per_day['levels'].median():.0f} a day)",
+                      per_day.T.to_string(), ""]
+    lost = tr[tr["pnl"] < 0]
     if len(lost):
         lines += ["the trades that lost", lost[["slug", "side", "price", "gap", "reach", "pnl"]].to_string(index=False), ""]
-    fates.to_csv(OUT / "lth_fates.csv")
+    return lines
+
+
+def cmd_run(args: argparse.Namespace) -> None:
+    from kht.trading import lasttick_rule as rule
+
+    config = ROOT / "config" / "lasttick_reach.json"
+    strict = rule.load_reach(config)
+    recent, brake = rule.load_recent(config)
+    f = fetched()
+    idx = pd.read_parquet(DATA / "lasttick_index.parquet").dropna(subset=["level"]).set_index(["coin", "at"])["level"]
+    closes = {}
+    for coin in sorted(f["coin"].unique()):
+        path = ROOT / "data" / "crypto" / f"minute_{coin}.parquet"
+        if path.exists():
+            closes[coin] = pd.read_parquet(path, columns=["t", "close"]).drop_duplicates("t").set_index("t")["close"]
+    ends = f[["coin", "end"]].drop_duplicates()
+    with_level = int(pd.MultiIndex.from_arrays([ends["coin"], ends["end"] - AT]).isin(idx.index).sum())
+    lines = ["Test L1 on the history of settled crypto markets (docs/11, section 5, item 3): one reading a market, a quarter of an hour before its end",
+             f"markets fetched: {len(f):,}; ends: {len(ends):,}; ends with an index level a quarter of an hour before: {with_level:,}",
+             "the history has no sizes: every trade here is one contract", ""]
+    for name, tag, reach, brk in (("L1-recent: the reach of 2023 to 2026, with the brake", "recent", recent, brake),
+                                  ("L1-strict: the reach of the worst year since 2020, as first written", "strict", strict, None)):
+        res = score(f, idx, reach, brk, closes)
+        res.to_parquet(DATA / f"lasttick_history_{tag}.parquet", index=False)
+        res[res["fate"] == "trade"].to_csv(OUT / f"lth_trades_{tag}.csv", index=False)
+        res.groupby(["group", "fate"]).size().unstack(fill_value=0).to_csv(OUT / f"lth_fates_{tag}.csv")
+        lines += describe(name, res) + [""]
     text = "\n".join(lines) + "\n"
     (OUT / "lasttick_history_output.txt").write_text(text)
     print(text)

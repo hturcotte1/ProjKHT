@@ -106,3 +106,47 @@ def test_the_reach_table_is_read_from_its_file(tmp_path):
     path = tmp_path / "reach.json"
     path.write_text(json.dumps({"one_in": 5000, "reach": {"btc": {"1": 0.011, "16": 0.031}}}))
     assert rule.load_reach(path) == {"btc": {1: 0.011, 16: 0.031}}
+
+
+def levels(ts, changes, start=74_000.0, step=300):
+    """Index levels ending at ``ts``, one every five minutes, each ``changes[i]`` away from the one before."""
+    out, lv = [], start
+    n = len(changes)
+    out.append((ts - step * n, lv))
+    for i, c in enumerate(changes):
+        lv *= 1.0 + c
+        out.append((ts - step * (n - 1 - i), lv))
+    return out
+
+
+def test_the_brake_stops_a_trade_when_the_index_has_been_moving_fast_or_is_not_known():
+    ts = END - 300
+    calm = levels(ts, [0.001, -0.002, 0.0015, 0.0, -0.001, 0.002, 0.001, -0.0005, 0.001, 0.0, 0.001, -0.001])
+    assert rule.brake_state(calm, ts, 0.0105) == "clear"
+    storm = levels(ts, [0.001] * 5 + [-0.012] + [0.001] * 6)
+    assert rule.brake_state(storm, ts, 0.0105) == "fast"
+    old = levels(ts - 3_600, [0.001] * 5 + [-0.012] + [0.001] * 6)                # the fast move was more than an hour ago...
+    assert rule.brake_state(old + levels(ts, [0.001] * 12, start=old[-1][1])[1:], ts, 0.0105) == "clear"   # ...and the last hour is known and calm
+    assert rule.brake_state(levels(ts, [0.001] * 5), ts, 0.0105) == "unknown"       # five changes are not enough
+    assert rule.brake_state(levels(ts, [0.001] * 6), ts, 0.0105) == "clear"
+    gappy = [x for i, x in enumerate(levels(ts, [0.001] * 12)) if i % 2 == 0]       # every other level missing: no five-minute change is known
+    assert rule.brake_state(gappy, ts, 0.0105) == "unknown"
+    assert rule.brake_state([(ts - 600, 74_000.0), (ts, 73_000.0)], ts, 0.0105) == "fast"     # but a big move across a gap still counts
+    assert rule.brake_state(None, ts, 0.0105) == "unknown" and rule.brake_state(calm, ts, None) == "unknown"
+    assert rule.brake_state([(ts + 60, 80_000.0)] + calm, ts, 0.0105) == "clear"    # a level published after the reading is not looked at
+
+    m, b = above(78_000), book(bid=0.01, bid_qty=1500)
+    brake = {"btc": 0.0105}
+    assert rule.decide(m, b, ts, 74_000.0, ts - 60, REACH, brake, calm)[1] == "trade"
+    assert rule.decide(m, b, ts, 74_000.0, ts - 60, REACH, brake, storm)[1] == "out of reach, but the index has been moving fast"
+    assert rule.decide(m, b, ts, 74_000.0, ts - 60, REACH, brake, [])[1] == "out of reach, too little index history"
+    assert rule.decide(m, b, ts, 74_000.0, ts - 60, REACH, {"eth": 0.02}, calm)[1] == "out of reach, too little index history"
+    assert rule.decide(above(74_500), b, ts, 74_000.0, ts - 60, REACH, brake, storm)[1] == "within reach"    # the brake is only asked about a result out of reach
+    assert rule.decide(m, b, ts, 74_000.0, ts - 60, REACH)[1] == "trade"            # the first yardstick has no brake
+
+
+def test_the_second_yardstick_is_read_from_the_same_file(tmp_path):
+    path = tmp_path / "reach.json"
+    path.write_text(json.dumps({"reach": {"btc": {"16": 0.107}}, "recent": {"years": [2023, 2026], "reach": {"btc": {"16": 0.048}}, "brake": {"btc": 0.0105}}}))
+    assert rule.load_reach(path) == {"btc": {16: 0.107}}
+    assert rule.load_recent(path) == ({"btc": {16: 0.048}}, {"btc": 0.0105})

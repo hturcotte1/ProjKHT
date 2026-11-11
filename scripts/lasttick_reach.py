@@ -11,6 +11,11 @@ docs/11_crypto_us.md, section 5, "Out of reach", item 3:
 
     python scripts/lasttick_reach.py            # -> config/lasttick_reach.json, reports/research/ltr_*
 
+That table is the yardstick of L1-strict. The same section, "A second
+yardstick", defines L1-recent: the reach from 2023 to 2026 only, and a
+brake on five-minute moves in the hour before. Its check is run here too:
+the yardstick with its brake applied to every minute since 2020.
+
 Prices: data/crypto/minute_<coin>.parquet, one-minute candles against USDT
 from Binance's public data mirror. This uses no Polymarket data at all.
 """
@@ -33,6 +38,10 @@ ONE_IN = 5_000
 FLOOR = 0.01
 FIRST, LAST = "2020-01-01", "2026-11-11"            # prices from the first day up to, not including, the last
 SHOWN = (3, 6, 10, 16, 22, 30)
+RECENT = (2023, 2024, 2025, 2026)       # the years the second yardstick is made from
+BRAKE_ONE_IN = 1_000                    # the five-minute change that one interval in this many exceeded, in those years
+BRAKE_HOUR = 12                         # five-minute changes looked at before a reading: an hour of them
+CHECK_ONE_IN = 1_000                    # the second yardstick fails if any year went beyond it more often than this
 pd.set_option("display.width", 250)
 pd.set_option("display.max_rows", 400)
 
@@ -96,9 +105,54 @@ def exceed(d: pd.DataFrame, reach: dict[int, float], years: list[int]) -> pd.Dat
     return pd.DataFrame(rows)
 
 
+def five_minute_changes(d: pd.DataFrame) -> pd.Series:
+    """The change from one five-minute mark to the next, as a share of the earlier level, indexed by the later mark."""
+    marks = d.loc[d.index % 300 == 0, "close"]
+    return (marks / marks.shift(1) - 1.0).abs().dropna()
+
+
+def brake_limit(d: pd.DataFrame) -> float:
+    """The five-minute change that one interval in BRAKE_ONE_IN exceeded in the RECENT years."""
+    ch = five_minute_changes(d)
+    year = pd.to_datetime(ch.index.to_numpy(), unit="s").year
+    return float(np.quantile(ch[np.isin(year, RECENT)].to_numpy(), 1.0 - 1.0 / BRAKE_ONE_IN))
+
+
+def braked(d: pd.DataFrame, limit: float) -> np.ndarray:
+    """For every minute: was any of the last BRAKE_HOUR five-minute changes, up to the mark at or before it, over ``limit``?"""
+    ch = five_minute_changes(d)
+    worst = ch.rolling(BRAKE_HOUR, min_periods=BRAKE_HOUR // 2).max()        # fewer than six changes known: no trade, so counted as braked below
+    at_mark = (worst > limit) | worst.isna()
+    flags = at_mark.reindex(d.index).ffill()                                  # a minute takes the flag of the last mark at or before it
+    return flags.fillna(True).to_numpy(dtype=bool)
+
+
+def check_recent(d: pd.DataFrame, reach: dict[int, float], limit: float) -> pd.DataFrame:
+    """The second yardstick on every minute: of the starts the brake lets through, how many went beyond the reach, year by year."""
+    year = pd.to_datetime(d.index.to_numpy(), unit="s").year.to_numpy()
+    stop = braked(d, limit)
+    rows = []
+    for h in SHOWN:
+        mv = moves(d, h)
+        ok = np.isfinite(mv)
+        for y in np.unique(year):
+            sel = ok & (year == y)
+            free = sel & ~stop
+            over = free & (mv > reach[h])
+            idx = np.flatnonzero(over)
+            rows.append({"year": int(y), "h": h, "reach": reach[h], "starts": int(sel.sum()), "braked_share": float((sel & stop).sum() / max(1, sel.sum())),
+                         "traded_starts": int(free.sum()), "over": int(over.sum()), "one_in": (free.sum() / over.sum()) if over.sum() else np.inf,
+                         "occasions": int(1 + (np.diff(idx) > 60).sum()) if len(idx) else 0,
+                         "over_without_brake": int((sel & (mv > reach[h])).sum())})
+    return pd.DataFrame(rows)
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     table: dict[str, dict[str, float]] = {}
+    recent_table: dict[str, dict[str, float]] = {}
+    brakes: dict[str, float] = {}
+    all_checks = []
     lines = [f"The reach table of test L1 (docs/11, section 5): the move that one start in {ONE_IN:,} exceeded, in the worst year, never under {100 * FLOOR:g}%",
              f"prices: one-minute candles against USDT, {FIRST} to {LAST} (not included)", ""]
     all_years, all_oos, all_full = [], [], []
@@ -127,6 +181,14 @@ def main() -> None:
             oos = exceed(d, reach_from(by_year, early), late)
             oos.insert(0, "coin", coin)
             all_oos.append(oos)
+        # the second yardstick: 2023 to 2026 only, with its brake, checked on every year since 2020
+        recent = reach_from(by_year, list(RECENT))
+        recent_table[coin] = {str(h): round(v, 5) for h, v in recent.items()}
+        brakes[coin] = round(brake_limit(d), 5)
+        chk = check_recent(d, {h: recent_table[coin][str(h)] for h in SHOWN}, brakes[coin])
+        chk.insert(0, "coin", coin)
+        all_checks.append(chk)
+        lines.append("   second yardstick:  " + "  ".join(f"{100 * recent[h]:5.2f}%" for h in SHOWN) + f"   brake at a five-minute change of {100 * brakes[coin]:.2f}%")
     by_year = pd.concat(all_years, ignore_index=True)
     by_year.to_csv(OUT / "ltr_by_year.csv", index=False)
     full = pd.concat(all_full, ignore_index=True)
@@ -141,9 +203,22 @@ def main() -> None:
         worst = oos.loc[oos["one_in"].idxmin()]
         lines += ["", f"the worst case out of sample: {worst['coin'].upper()} in {int(worst['year'])} at {int(worst['h'])} minutes, one start in {worst['one_in']:,.0f} "
                       f"(the table allows one in {ONE_IN:,})"]
+    checks = pd.concat(all_checks, ignore_index=True)
+    checks.to_csv(OUT / "ltr_recent_check.csv", index=False)
+    worst = checks.loc[checks["one_in"].idxmin()]
+    passed = bool(worst["one_in"] >= CHECK_ONE_IN)
+    show = checks.assign(reach=(100 * checks["reach"]).round(2), braked_share=(100 * checks["braked_share"]).round(2)).round({"one_in": 0})
+    lines += ["", f"the second yardstick (reach from {RECENT[0]}-{RECENT[-1]}, brake on five-minute moves in the hour before) on every minute since 2020",
+              "'braked_share' is the percentage of starts the brake stops; 'over' counts the starts it lets through that went beyond the reach",
+              show.to_string(index=False), "",
+              f"its test (docs/11): no coin, year and horizon may go beyond the reach more often than one start in {CHECK_ONE_IN:,}",
+              f"the worst: {worst['coin'].upper()} in {int(worst['year'])} at {int(worst['h'])} minutes, one start in {worst['one_in']:,.0f}: "
+              + ("PASSED" if passed else "FAILED")]
     CONFIG.write_text(json.dumps({"what": "test L1 (docs/11_crypto_us.md, section 5): a result is out of reach if its gap is larger than reach[coin][minutes]",
                                   "made_by": "scripts/lasttick_reach.py", "prices": f"one-minute candles against USDT, {FIRST} to {LAST}", "one_in": ONE_IN,
-                                  "floor": FLOOR, "reach": table}, indent=1) + "\n")
+                                  "floor": FLOOR, "reach": table,
+                                  "recent": {"years": list(RECENT), "reach": recent_table, "brake": brakes, "brake_one_in": BRAKE_ONE_IN,
+                                             "check_one_in": CHECK_ONE_IN, "check_passed": passed}}, indent=1) + "\n")
     text = "\n".join(lines) + "\n"
     (OUT / "lasttick_reach_output.txt").write_text(text)
     print(text)

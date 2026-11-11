@@ -96,3 +96,27 @@ def test_settlements_are_remembered_and_only_asked_for_when_told_to(tmp_path):
     (tmp_path / "settlements.csv").write_text("slug,settle,checked\nfar,0.0,1\npending,,1\n")
     s = score.settlements(tmp_path, ["far", "pending", "new"], look_up=False)
     assert s.to_dict() == {"far": 0.0}
+
+
+def test_the_second_yardstick_needs_an_hour_of_index_levels(tmp_path):
+    # the recorder saw only two levels; ten more were looked up afterwards and are in levels.csv
+    index = [{"run": "r1", "ts": END - 1000, "coin": "btc", "level": 74_000.0, "at": END - 1200, "slug": "five-a"},
+             {"run": "r1", "ts": END - 880, "coin": "btc", "level": 74_010.0, "at": END - 900, "slug": "five-b"}]
+    write_run(tmp_path, "r1", [book_row("far", 800, bid=0.01, bid_qty=1500)], [market_row("far", 78_000)], index)
+    b, m, i = score.load(tmp_path)
+    brake = {"btc": 0.0105}
+    history = score.known_levels(tmp_path, i, m, look_up=False)
+    assert history == {"btc": [(END - 1200, 74_000.0), (END - 900, 74_010.0)]}
+    trades, fate = score.apply(b, m, i, REACH, brake, history)
+    assert trades == [] and fate.loc[0, "fate"] == "out of reach, too little index history"
+    with (tmp_path / "levels.csv").open("w") as fh:
+        fh.write("coin,at,level\n" + "".join(f"btc,{END - 1200 - 300 * k},{74_000.0 - 5 * k}\n" for k in range(1, 11)) + f"btc,{END - 600},\n")
+    history = score.known_levels(tmp_path, i, m, look_up=False)
+    assert len(history["btc"]) == 12 and history["btc"][0] == (END - 4200, 73_950.0)          # a mark that could not be looked up is left out
+    trades, fate = score.apply(b, m, i, REACH, brake, history)
+    assert fate.loc[0, "fate"] == "trade" and trades[0]["level"] == 74_010.0                  # where the price is still comes from what the recorder saw
+    with (tmp_path / "levels.csv").open("a") as fh:
+        fh.write(f"btc,{END - 4500},75000.0\n")                                               # 1.4% in five minutes, fifty minutes before the reading
+    trades, fate = score.apply(b, m, i, REACH, brake, score.known_levels(tmp_path, i, m, look_up=False))
+    assert trades == [] and fate.loc[0, "fate"] == "out of reach, but the index has been moving fast"
+    assert score.apply(b, m, i, REACH)[1].loc[0, "fate"] == "trade"                            # the first yardstick does not ask
