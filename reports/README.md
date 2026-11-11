@@ -25,6 +25,7 @@ carries.
 | `tv_`, `two_venues_output` | `two_venues.py` | Fourth round: Polymarket US against polymarket.com on the same questions, tests fixed in `docs/07_two_venues.md` before they ran | **The evidence** (failed) |
 | `sp_`, `sports_us_output` | `sports_us.py` | Fourth round: moneylines on Polymarket US, 3,360 rules, the judge of `docs/06`, section 9 | **The evidence** |
 | `usf_`, `us_forward_output` | `us_forward.py` | The forward tests on Polymarket US, scored from the recorder's snapshots: F1 (two exchanges), F2 (stand-alone "No"), the reward programmes over time. Rules fixed in `docs/06` section 8 and `docs/07` section 3 before any snapshot existed | **Forward evidence**; grows with every cycle |
+| `usr_` | `us_rewards_score.py` | Paper orders before games on Polymarket US: reward by the published formula, simulated fills, and the judge of `docs/09`, section 5. Rules fixed before the first run | **Forward evidence** from a simulation; grows with every run |
 | `ps_` | `run_position_size.py` | The account simulation at larger position sizes, for the main rule, the quiet rule and both | Analysis; chooses nothing |
 | `cp_` | `run_crypto_price.py` | Second round, track C: the confirmed rule and the quiet rule on crypto price markets, discovery set | A replication on untouched data (not repeated) |
 | `cy_` | `run_crypto_yardstick.py` | Second round, track C: an outside fair value for crypto price markets from the coin's price and volatility; includes one table marked as an artefact | Exploratory on the discovery set (negative) |

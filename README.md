@@ -18,9 +18,12 @@ over. Its answers are below, under "The fourth round"; in one line each:
 - three new things were tested on Polymarket US with the rules fixed
   first, and all three failed: a search over thousands of rules, buying
   whatever is cheaper there than on polymarket.com, and sports;
-- one lead is open: the exchange pays for resting orders, and parts of that
-  money are going unclaimed (`docs/08_rewards.md`). It needs a small test
-  with a real account, which is the owner's call.
+- one lead is open: the exchange pays a published reward for orders left
+  resting in its markets, and before most sports games very little is
+  resting where it counts. A paper account now tests this on live order
+  books with its rules fixed in advance (`docs/09_sports_rewards.md`).
+  Whether the exchange pays what its formula says can only be learned with
+  a real account, which is the owner's call.
 
 ## What came out of it
 
@@ -130,7 +133,7 @@ counted as found unless it clears what the luckiest worthless rule reaches.
 | What Polymarket US's price history is | Where one side of an order book is empty it shows the last trade as if it were a quote. Checked against more than 600 live books. A backtest on it buys from nobody |
 | **Two exchanges, one question:** buy on Polymarket US whatever is cheaper there than on polymarket.com | **Failed**, on rules fixed beforehand: −19.8% on 505 purchases. The two exchanges are equally accurate, and for most shared questions polymarket.com is the smaller market |
 | Sports on Polymarket US (most of that exchange): 3,360 rules on a year of games, fixed in writing first | **Nothing.** Not one rule passed even the first step, on 118,339 games. An hour before a game the middle of the order book is a fair price; a buyer loses the spread and the fee ([`docs/06_polymarket_us.md`](docs/06_polymarket_us.md), section 10) |
-| **Being paid to leave orders.** Polymarket US pays rewards for resting orders and publishes the schedule | **A lead, not a result.** Some pools are paid to nobody today. Whether a small account would earn cents or dollars depends on a rule that only a real account can reveal: [`docs/08_rewards.md`](docs/08_rewards.md) |
+| **Being paid to leave orders.** Polymarket US pays rewards for resting orders and publishes the schedule | **A lead, not a result.** Outside sports some pools are paid to nobody today ([`docs/08_rewards.md`](docs/08_rewards.md)). In sports every game has its own pool, and by the published formula 100 contracts resting on each side before a lower-tour tennis match would be paid about $1.60 for six hours. A paper test of exactly that is running, rules fixed first: [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md) |
 
 What exists now that did not: a recorder that writes down the real order
 books of Polymarket US, with sizes, every cycle, and the polymarket.com
@@ -152,6 +155,8 @@ learn that. The story is in
 | The fourth round: Polymarket US, a wide search with a judge fixed first, and what its price feed really records | [`docs/06_polymarket_us.md`](docs/06_polymarket_us.md) |
 | Two exchanges quoting the same question: the idea, the test, and why it failed | [`docs/07_two_venues.md`](docs/07_two_venues.md) |
 | Rewards for resting orders on Polymarket US: what is public, what is unknown, and the small test that would settle it | [`docs/08_rewards.md`](docs/08_rewards.md) |
+| Rewards in sports games: what the order books show, and the paper test of small resting orders, fixed in advance | [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md) |
+| What the paper orders before games did in the latest run | `state/us-rewards/STATUS.md` (from its first run) |
 | What Polymarket US's order books showed at the last cycle | [`state/us/STATUS.md`](state/us/STATUS.md) |
 | What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-long/STATUS.md` (from its first cycle) |
 
@@ -185,6 +190,20 @@ itself, not of anything a US resident can do with it.
 The same job also runs the **Polymarket US recorder** (`kht us-record`,
 `state/us/`): no account, no trades, only the order books written down.
 
+A second job, *us-rewards*, runs the **paper orders before games**
+(`kht us-rewards`, `state/us-rewards/`). It follows every game in the
+exchange's reward programmes on who wins through the six hours before its
+start, reading each order book about every two minutes, and works out what
+orders of a fixed size would have been paid by the published formula and
+how often they would have been traded against. It is a simulation: no
+account, no orders, no key. Each run lasts five hours and starts the next,
+and it stops by itself on 18 November 2026. The rules it follows are fixed
+in [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md), section 5.
+
+```bash
+python scripts/us_rewards_score.py --settle   # add the runs up and apply the judge
+```
+
 ```bash
 kht report            # the paper account
 ```
@@ -194,7 +213,8 @@ kht shadow            # every signal seen so far, scored against how it resolved
 ```
 
 To stop the schedule: repository → Actions → *paper-trader* → ⋯ → *Disable
-workflow*.
+workflow*. The same for *us-rewards*, or add an empty file
+`state/us-rewards/STOP`.
 
 ## Before any real money
 

@@ -2,7 +2,9 @@
 
 *11 November 2026. This is a lead, not a result. Nothing here has been
 tested with money, and one thing that decides its value cannot be learned
-without an account.*
+without an account. Section 10, added later the same day, says what the
+sports programmes show about that one thing; the sports side of this is in
+`docs/09_sports_rewards.md`.*
 
 ## 1. What was found
 
@@ -133,10 +135,10 @@ arrives. The low column is between nothing and 30% a year on money that
 mostly just sits there. The high column is far more than any trade found in
 this project. Which column is real is the unknown of section 4.
 
-Either way the whole thing is small. Everything outside sports and crypto
-adds up to between $1,700 a day and perhaps ten times that, to be shared by
+Either way this part is small. Everything outside sports and crypto adds
+up to between $1,700 a day and perhaps ten times that, to be shared by
 everyone doing it. It suits an account of hundreds or a few thousand
-dollars and nothing larger.
+dollars and nothing larger. (Sports is a different size: section 10.)
 
 ## 7. Why it fits what the earlier rounds found
 
@@ -182,3 +184,34 @@ almost nothing to rest.
    Polymarket US API: choose markets from the schedule, rest the target
    size, pull before news, and treat a fill as the "No" trade. Nothing of
    that kind exists in this repository yet.
+
+## 10. Added later on 11 November: what sports says about the first unknown
+
+Section 4 could not tell whether a daily pool was one for a whole programme
+or one for each event in it. The sports programmes, which section 3 only
+counted, answer most of that.
+
+- In sports a programme's periods are counted from each game's start
+  (before the day, the six hours before the start, during play), so a pool
+  there can only be one game's. The exchange's definitions say as much: a
+  time period is "a window during the event lifecycle ... with its own
+  reward pool".
+- The table in section 3 adds each sports programme's pool once. If every
+  game has its own, the true sums are far larger: for the games listed for
+  one day, about $11,000 for the six hours before the start and $39,000
+  during play, in the programmes on who wins alone.
+- On nearly every game somebody rests thousands of contracts at 1¢ and 99¢,
+  which score nothing and only make the side reach its target size. That
+  is worth doing in a thousand games a day only if each game pays.
+- The exchange's API reports what an account earned by market and by date.
+
+So the high column of section 6 is much the more likely one for the daily
+programmes too: $40 a day for each culture event, not $40 a day in all.
+That is still evidence and not proof, and the second unknown stands: how an
+event's pool is divided between its several markets.
+
+In sports that second unknown can be avoided, because many programmes have
+exactly one market in each game. `docs/09_sports_rewards.md` takes it from
+there: what the order books of those games show, what a small resting order
+would be paid by the published formula, and a paper test with its rules
+fixed in advance.

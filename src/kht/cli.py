@@ -6,6 +6,7 @@
     kht report       write the account status as Markdown
     kht shadow       score every signal ever seen against how it resolved
     kht us-record    write down the Polymarket US order books and their polymarket.com twins (read-only)
+    kht us-rewards   paper orders before games on Polymarket US: what the reward formula would pay them (read-only)
     kht geoblock     is this machine allowed to place orders?
 """
 
@@ -143,6 +144,16 @@ def cmd_us_record(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_us_rewards(args: argparse.Namespace) -> int:
+    """Follow games on Polymarket US before they start and score paper orders by the reward formula. Reads public data only."""
+    from .trading.us_rewards import run
+
+    line = run(Path(args.state), minutes=args.minutes, interval=args.interval)
+    print(f"[{_stamp()}] Polymarket US paper orders: {line['minutes']:.0f} minutes, {line['games']} games followed ({line['games_quoted']} quoted), "
+          f"{line['books']} books read, {line['hits']} times traded against, {line['errors']} errors")
+    return 0
+
+
 def cmd_geoblock(args: argparse.Namespace) -> int:
     info = Polymarket().geoblock()
     print(info)
@@ -193,6 +204,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--no-twins", action="store_true", help="skip polymarket.com")
     p.add_argument("--max-books", type=int, default=None, help="read at most this many books (for a quick trial)")
     p.set_defaults(fn=cmd_us_record)
+
+    p = sub.add_parser("us-rewards", help="paper orders before games on Polymarket US, scored by the reward formula (read-only)")
+    p.add_argument("--state", default="state/us-rewards")
+    p.add_argument("--minutes", type=float, default=300.0, help="how long to follow the order books")
+    p.add_argument("--interval", type=float, default=120.0, help="seconds between readings of one book")
+    p.set_defaults(fn=cmd_us_rewards)
 
     p = sub.add_parser("geoblock", help="check whether this machine may trade")
     p.set_defaults(fn=cmd_geoblock)

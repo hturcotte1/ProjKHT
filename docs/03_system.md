@@ -42,6 +42,7 @@ Code: `src/kht/trading/engine.py` (`Engine.run_cycle`).
 | Schedule gate | `trading/schedule.py` | Whether a scheduled run is due to trade or should end at once |
 | Traded range | `trading/quiet.py` | How far an outcome's price has ranged over the last few days, read from the public trade feed |
 | Polymarket US recorder | `api/polymarket_us.py`, `trading/us_recorder.py`, `trading/twins.py` | Not part of any account: writes down the order books of Polymarket US, and the polymarket.com quote for the same question. See "The Polymarket US recorder" below |
+| Paper orders before games | `trading/us_rewards.py` | Not part of any account: a simulation of small resting orders on Polymarket US, paid by the exchange's published reward formula. See "Paper orders before games on Polymarket US" below |
 
 ## What the strategy does
 
@@ -411,6 +412,46 @@ forward tests fixed in `docs/06_polymarket_us.md`, section 8, and
 
 ```bash
 python scripts/us_forward.py --settle
+```
+
+## Paper orders before games on Polymarket US
+
+Polymarket US pays a published reward to orders left resting in its
+markets, and each sports game has its own pool
+(`docs/09_sports_rewards.md`). This is a paper account that rests small
+orders before games and is paid by the published formula. It is a
+simulation: it reads the public reward schedule and the public order books,
+places no orders and needs no key.
+
+```bash
+kht us-rewards --state state/us-rewards --minutes 300
+```
+
+One run follows every game in a "day-of" reward programme on who wins,
+from six hours before its start until ten minutes before, reading its order
+book about every two minutes. For each reading it works out where the
+paper orders would rest, what share of each side's score they would hold,
+and whether the trading since the last reading would have gone through
+them. The rules are in `docs/09_sports_rewards.md`, section 5, and in
+`src/kht/trading/us_rewards.py`; they are fixed for the length of the test.
+
+It runs in its own workflow, `.github/workflows/us-rewards.yml`. A run
+lasts five hours, commits what it recorded and starts the next one. It
+stops by itself on 18 November 2026, or at once if a file
+`state/us-rewards/STOP` exists.
+
+| File under `state/us-rewards/` | Contents |
+|---|---|
+| `runs/<run>/games.csv.gz` | One row per game per US date: seconds watched and quoted, and for each order size the share of the score it held, in share-seconds |
+| `runs/<run>/hits.csv` | One row each time a resting order would have been traded against: the side, the price, how much traded |
+| `settlements.csv` | How finished games settled (written by the scoring script) |
+| `log.csv` | One line per run |
+| `STATUS.md` | The latest run in words |
+
+To add the runs up and apply the judge:
+
+```bash
+python scripts/us_rewards_score.py --settle
 ```
 
 ## Reproducing the research
