@@ -45,6 +45,7 @@ Code: `src/kht/trading/engine.py` (`Engine.run_cycle`).
 | Paper orders before games | `trading/us_rewards.py` | Not part of any account: a simulation of small resting orders on Polymarket US, paid by the exchange's published reward formula. See "Paper orders before games on Polymarket US" below |
 | Orders before games, for real or on paper | `trading/us_quoter.py`, `trading/us_live.py` | The system that would rest those orders with a real account: choice of games, limits, orders that may only rest and that expire by themselves. On paper by default; the live connection has never been run. `docs/10_us_quoter.md` |
 | Crypto markets in their last minutes | `trading/us_lasttick.py`, `trading/lasttick_rule.py` | Not part of any account: a recorder of the order books of Polymarket US crypto markets in the quarter of an hour before they settle, and the rule of test L1 that is applied to them afterwards. See "Crypto markets in their last minutes" below |
+| Whole crypto ladders | `trading/us_lasttick.py` (a second copy), `trading/ladder_rule.py` | Not part of any account: the same recorder reading every bracket of the daily and weekly ladders through their last five and a half hours, and the rule of test L2 that is applied afterwards. See "Whole ladders" below |
 
 ## What the strategy does
 
@@ -519,6 +520,48 @@ python scripts/lasttick_history.py index
 ```bash
 python scripts/lasttick_history.py run
 ```
+
+### Whole ladders
+
+A ladder of brackets pays $1 on exactly one bracket. Test L2 asks what
+selling every bracket of a ladder at once would lock in, at the sizes that
+are really bid (`docs/11_crypto_us.md`, section 12). It needs the books of
+all the brackets together, for hours and not minutes, so the same recorder
+runs a second time with other settings and writes to its own directory:
+
+```bash
+kht us-lasttick --state state/us-ladder --kinds range --follow 19800 --sweep 120 --budget 3 --minutes 300
+```
+
+That reads every daily and weekly bracket of the four coins from five and
+a half hours before it settles, about every two minutes. The files under
+`state/us-ladder/` are laid out as those under `state/us-lasttick/`. The
+first copy is started exactly as before, and with the three settings left
+alone the recorder reads what it always read.
+
+The rule is in `src/kht/trading/ladder_rule.py`: a sale of one size in
+every bracket that has a bid, what it brings in, the fee on each fill,
+what it locks whichever bracket pays, and when the paper account takes
+it. To score what has been recorded:
+
+```bash
+python scripts/us_ladder_score.py --settle
+```
+
+It keeps one paper account of $10,000 and also describes each ladder's
+day, reading by reading. It writes `reports/research/ld_summary.txt` and
+the `ld_` tables beside it.
+
+### Keeping the recordings
+
+The job on GitHub that runs these recorders lasts five hours. It pushes
+what has been recorded once an hour, and once more just after 22:00 UTC,
+with `scripts/ci_save_state.sh`. That script works in a second checkout,
+so the programs that are still recording are not disturbed, and it copies
+only the files the job itself has written. A second job,
+`us-rewards-watchdog`, looks every quarter of an hour and starts the
+recording job if no run of it is going. Both stop by themselves on
+18 November 2026.
 
 ## Reproducing the research
 

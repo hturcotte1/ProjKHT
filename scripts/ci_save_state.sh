@@ -21,7 +21,7 @@ set -uo pipefail
 msg="${1:?a commit message is needed}"
 branch="${GITHUB_REF_NAME:-$(git rev-parse --abbrev-ref HEAD)}"
 snap="${SNAP_DIR:-$(cd .. && pwd)/kht-save}"
-dirs=(state/us-rewards state/us-quoter state/us-lasttick)
+dirs=(state/us-rewards state/us-quoter state/us-lasttick state/us-ladder)
 
 # one save at a time: an hourly save still running must not meet the one at the end of the run
 exec 9>"$snap.lock"

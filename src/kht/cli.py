@@ -159,9 +159,11 @@ def cmd_us_rewards(args: argparse.Namespace) -> int:
 
 def cmd_us_lasttick(args: argparse.Namespace) -> int:
     """Record the books of crypto markets on Polymarket US in their last minutes. Reads public data only."""
-    from .trading.us_lasttick import FOLLOW, run
+    from .trading.us_lasttick import FOLLOW, SWEEP, run
 
-    line = run(Path(args.state), minutes=args.minutes, budget=args.budget, follow=args.follow if args.follow else FOLLOW)
+    kinds = frozenset(k.strip() for k in args.kinds.split(",") if k.strip()) if args.kinds else None
+    line = run(Path(args.state), minutes=args.minutes, budget=args.budget, follow=args.follow if args.follow else FOLLOW,
+               sweep=args.sweep if args.sweep else SWEEP, kinds=kinds)
     print(f"[{_stamp()}] Polymarket US last minutes: {line['minutes']:.0f} minutes, {line['listings']} listings, {line['books']} readings of "
           f"{line['markets']} markets ending at {line['ends']} times, {line['errors']} errors")
     return 0
@@ -272,7 +274,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--state", default="state/us-lasttick")
     p.add_argument("--minutes", type=float, default=300.0, help="how long to record")
     p.add_argument("--budget", type=float, default=5.0, help="requests a second, at most")
-    p.add_argument("--follow", type=float, default=None, help="seconds before a market's end at which its book is first read (for trials only)")
+    p.add_argument("--follow", type=float, default=None, help="seconds before a market's end at which its book is first read (test L1: leave it alone)")
+    p.add_argument("--sweep", type=float, default=None, help="seconds between two readings of one book, at least (test L1: leave it alone)")
+    p.add_argument("--kinds", default=None, help="only these kinds of market, comma-separated: range, above_below, one_touch, up_down (test L1: leave it alone)")
     p.set_defaults(fn=cmd_us_lasttick)
 
     p = sub.add_parser("us-quote", help="rest orders before games on Polymarket US (on paper unless switched on)")

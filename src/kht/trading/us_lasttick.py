@@ -11,6 +11,12 @@ Nothing is decided here. The rule of L1 is applied afterwards, by
 scripts/us_lasttick_score.py, to what this wrote down. So the recorder can
 stay the same while the test runs.
 
+A second copy of it runs beside the first for test L2 (docs/11, section
+12): only the brackets ("range" markets), from five and a half hours
+before their end, every two minutes, into ``state/us-ladder``. It is the
+same program with other settings. With the settings left alone it records
+exactly what it did before they existed.
+
 Files, under ``state/us-lasttick/runs/<run>/``:
 
     books.csv.gz   every reading of a followed book: three levels a side with sizes
@@ -82,9 +88,13 @@ def index_levels(markets: dict[str, dict[str, Any]], now: float) -> dict[str, di
     return out
 
 
-def followed(markets: dict[str, dict[str, Any]], now: float, lead: float = FOLLOW) -> list[str]:
-    """The markets whose book is read now: those ending within ``lead`` seconds, until a little after their end."""
-    return sorted(s for s, m in markets.items() if m["horizon"] not in SKIP and m["end"] - lead <= now <= m["end"] + AFTER)
+def followed(markets: dict[str, dict[str, Any]], now: float, lead: float = FOLLOW, kinds: frozenset[str] | None = None) -> list[str]:
+    """The markets whose book is read now: those ending within ``lead`` seconds, until a little after their end.
+
+    ``kinds`` narrows it to some kinds of market ("range", "above_below", "one_touch", "up_down"); None is all of them.
+    """
+    return sorted(s for s, m in markets.items()
+                  if m["horizon"] not in SKIP and (kinds is None or m["kind"] in kinds) and m["end"] - lead <= now <= m["end"] + AFTER)
 
 
 def book_row(run_id: str, ts: float, market: dict[str, Any], book: dict[str, Any]) -> dict[str, Any]:
@@ -94,11 +104,15 @@ def book_row(run_id: str, ts: float, market: dict[str, Any], book: dict[str, Any
 
 
 def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: float = 5.0, workers: int = 8, follow: float = FOLLOW,
-        now: Callable[[], float] = time.time, sleep: Callable[[float], None] = time.sleep, max_cycles: int | None = None) -> dict[str, Any]:
+        now: Callable[[], float] = time.time, sleep: Callable[[float], None] = time.sleep, max_cycles: int | None = None,
+        sweep: float = SWEEP, kinds: frozenset[str] | None = None) -> dict[str, Any]:
     """Record for ``minutes``: the books of crypto markets about to end, and the index levels published meanwhile.
 
-    ``follow`` is how long before its end a market starts to be read. The
-    test uses the default; a longer one is for trying the recorder out.
+    ``follow`` is how long before its end a market starts to be read,
+    ``sweep`` the least time between two readings of one book, and
+    ``kinds`` the kinds of market that are read (None: all). Test L1 uses
+    the defaults. The copy that records whole ladders for test L2 follows
+    longer, reads less often and reads brackets only.
     """
     if us is None:
         from ..api.http import Http
@@ -129,7 +143,8 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
 
     while now() - started < minutes * 60.0 and (max_cycles is None or cycles < max_cycles):
         t = now()
-        soon = any(m["horizon"] not in SKIP and m["end"] - follow - LIST_QUIET <= t <= m["end"] + AFTER for m in markets.values())
+        soon = any(m["horizon"] not in SKIP and (kinds is None or m["kind"] in kinds) and m["end"] - follow - LIST_QUIET <= t <= m["end"] + AFTER
+                   for m in markets.values())
         if t - listed_at >= (LIST_BUSY if soon else LIST_QUIET):
             try:
                 fresh = {}
@@ -146,7 +161,7 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
                         index_rows.append({"run": run_id, "ts": round(t, 1), "coin": coin, **lv})
             except Exception:
                 errors += 1
-        active = followed(markets, t, follow)
+        active = followed(markets, t, follow, kinds)
         for slug in active:
             if slug not in seen:
                 seen[slug] = {**markets[slug], "first_seen": round(t, 1)}
@@ -169,7 +184,7 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
             flush()
             flushed = now()
         was_active = bool(active)
-        pause = (max(SWEEP, len(active) / budget) if active else 20.0) - (now() - t)
+        pause = (max(sweep, len(active) / budget) if active else 20.0) - (now() - t)
         if pause > 0 and now() - started + pause < minutes * 60.0:
             sleep(pause)
         elif pause > 0:
@@ -179,12 +194,19 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
     line = {"run": run_id, "started": int(started), "ended": int(ended), "minutes": round((ended - started) / 60.0, 1), "cycles": cycles, "listings": listings,
             "books": len(books), "errors": errors, "markets": len(seen), "ends": len({m["end"] for m in seen.values()})}
     _append(state / "log.csv", LOG_FIELDS, [line])
-    (state / "STATUS.md").write_text(status_text(line, seen, books, levels))
+    plain = kinds is None and follow == FOLLOW
+    (state / "STATUS.md").write_text(status_text(line, seen, books, levels, None if plain else
+                                                 f"only {', '.join(sorted(kinds)) if kinds else 'every kind of'} markets, "
+                                                 f"from {follow / 60:.0f} minutes before their end"))
     return line
 
 
-def status_text(line: dict[str, Any], seen: dict[str, dict[str, Any]], books: list[dict[str, Any]], levels: dict[str, dict[str, Any]]) -> str:
-    """A plain summary of one run. It describes what was read; it scores nothing."""
+def status_text(line: dict[str, Any], seen: dict[str, dict[str, Any]], books: list[dict[str, Any]], levels: dict[str, dict[str, Any]],
+                settings: str | None = None) -> str:
+    """A plain summary of one run. It describes what was read; it scores nothing.
+
+    ``settings`` says what a copy run with other settings than L1's was reading.
+    """
     stamp = datetime.fromtimestamp(line["ended"], timezone.utc).strftime("%d %B %Y, %H:%M UTC")
     kinds = Counter(f"{m['coin']} {m['kind'].replace('_', ' ')} ({m['horizon']})" for m in seen.values())
     last: dict[str, dict[str, Any]] = {}
@@ -193,9 +215,13 @@ def status_text(line: dict[str, Any], seen: dict[str, dict[str, Any]], books: li
             last[b["slug"]] = b
     low = [b for b in last.values() if b.get("bid1") is not None and b["bid1"] <= 0.011]
     high = [b for b in last.values() if b.get("ask1") is not None and b["ask1"] >= 0.989]
-    lines = ["# Crypto markets in their last minutes", "",
+    head = (["# Crypto markets in their last minutes", "",
              f"*Written by `kht us-lasttick` at the end of a run: {stamp}. It lists what was read. The rule of `docs/11_crypto_us.md` is applied by "
-             "`scripts/us_lasttick_score.py`, not here.*", "",
+             "`scripts/us_lasttick_score.py`, not here.*", ""] if settings is None else
+            ["# Crypto ladders before they settle", "",
+             f"*Written by `kht us-lasttick` at the end of a run: {stamp}. This copy of the recorder read {settings}. It lists what was read. "
+             "The rule of `docs/11_crypto_us.md`, section 12, is applied by `scripts/us_ladder_score.py`, not here.*", ""])
+    lines = head + [
              f"- Run `{line['run']}`: {line['minutes']:.0f} minutes, {line['listings']} listings, {line['books']:,} readings of {line['markets']:,} markets "
              f"ending at {line['ends']} different times, {line['errors']} errors.",
              f"- At the last reading before their end, {len(low):,} markets had a best bid of 1¢ ({sum(b['bid_qty1'] or 0 for b in low):,.0f} contracts) "

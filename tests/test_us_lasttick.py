@@ -171,3 +171,35 @@ def test_what_was_read_is_written_as_soon_as_the_markets_have_ended(tmp_path):
     line = lt.run(tmp_path, minutes=9, us=us, now=clock.now, sleep=sleep)     # ends four minutes after the settlement
     assert on_disk["at"] < 150 and on_disk["rows"] >= 7                       # written within two minutes of the end
     assert on_disk["rows"] == line["books"]
+
+
+def test_the_second_copy_reads_brackets_only_from_hours_before_and_less_often(tmp_path):
+    clock = Clock(T0 - 6 * 3600)
+    ms = [market("cpc-btc-range-day-2026-11-11-74000", "RANGE", "daily", T0, lower=74000, upper=74249.99),
+          market("cpc-btc-range-day-2026-11-11-above-81500", "RANGE", "daily", T0, lower=81500),
+          market("cpc-btc-range-wk-2026-11-13-74000", "RANGE", "weekly", T0 + 2 * 86400, lower=74000, upper=74999.99),
+          market("cpc-btc-above-day-2026-11-11-78000", "ABOVE_BELOW", "daily", T0, strike=78000),
+          market("cpc-btc-updown-1d-x", "UP_DOWN", "1d", T0, start=T0 - 86400, ptb=73755.82),
+          market("cpc-btc-range-hr-2026-11-11-1800z-74000", "RANGE", "hourly", T0, lower=74000, upper=74099.99)]
+    us = FakeUS(clock, lambda t: ms if t <= T0 else [])
+    line = lt.run(tmp_path, minutes=6 * 60 + 2, us=us, now=clock.now, sleep=clock.sleep, follow=19_800, sweep=120.0, kinds=frozenset({"range"}))
+    with gzip.open(tmp_path / "runs" / line["run"] / "books.csv.gz", "rt", newline="") as fh:
+        books = list(csv.DictReader(fh))
+    assert {b["slug"] for b in books} == {"cpc-btc-range-day-2026-11-11-74000", "cpc-btc-range-day-2026-11-11-above-81500"}   # daily brackets, nothing else
+    lefts = sorted(float(b["left"]) for b in books if b["slug"].endswith("-74000"))
+    assert 19_800 - 130 < lefts[-1] <= 19_800                                    # from five and a half hours before the end
+    gaps = [a - b for a, b in zip(lefts[1:], lefts[:-1])]
+    assert min(gaps) >= 120 - 1e-6 and max(gaps) <= 121                          # every two minutes
+    status = (tmp_path / "STATUS.md").read_text()
+    assert status.startswith("# Crypto ladders before they settle") and "only range markets, from 330 minutes before their end" in status
+    assert "us_ladder_score.py" in status and "btc range (daily) | 2" in status
+
+
+def test_with_the_settings_left_alone_every_kind_is_followed_as_before():
+    ms = [market("a-range", "RANGE", "daily", T0, lower=1, upper=2), market("b-above", "ABOVE_BELOW", "daily", T0, strike=78000),
+          market("c-hit", "ONE_TOUCH", "weekly", T0, start=T0 - 7 * 86400, strike=85000, direction="UP")]
+    markets = {m["slug"]: m for m in map(lt.terms, ms)}
+    assert lt.followed(markets, T0 - 60) == ["a-range", "b-above", "c-hit"]
+    assert lt.followed(markets, T0 - 60, lt.FOLLOW, None) == ["a-range", "b-above", "c-hit"]
+    assert lt.followed(markets, T0 - 60, lt.FOLLOW, frozenset({"range"})) == ["a-range"]
+    assert lt.followed(markets, T0 - 3600, 19_800, frozenset({"range"})) == ["a-range"] and lt.followed(markets, T0 - 3600) == []

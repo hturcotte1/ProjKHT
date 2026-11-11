@@ -65,23 +65,25 @@ def test_saves_what_the_job_wrote_and_nothing_else(repos):
     write(runner / "state/us-rewards/runs/r1/games.csv.gz", "games v1\n")
     write(runner / "state/us-quoter/cycles.csv", "cycle 1\n")
     write(runner / "state/us-lasttick/runs/x/books.csv.gz", "books v1\n")
+    write(runner / "state/us-ladder/runs/x/books.csv.gz", "ladder books v1\n")
     write(runner / "notes-of-the-job.txt", "not state\n")
     # meanwhile somebody else pushes a newer settlements file and a document
     write(other / "state/us-rewards/settlements.csv", "slug,settle\na,1.0\nb,0.0\n")
     write(other / "docs/notes.md", "notes\nmore\n")
     git(other, "commit", "-q", "-am", "scores")
     git(other, "push", "-q", "origin", "work")
-    assert save(runner, tmp_path, "save 1") == "save: pushed 3 files"
+    assert save(runner, tmp_path, "save 1") == "save: pushed 4 files"
     seen = on_branch(origin, tmp_path)
     assert (seen / "state/us-rewards/runs/r1/games.csv.gz").read_text() == "games v1\n"
     assert (seen / "state/us-lasttick/runs/x/books.csv.gz").read_text() == "books v1\n"
+    assert (seen / "state/us-ladder/runs/x/books.csv.gz").read_text() == "ladder books v1\n"
     assert (seen / "state/us-rewards/settlements.csv").read_text().endswith("b,0.0\n")       # the other person's newer file is not put back
     assert (seen / "docs/notes.md").read_text() == "notes\nmore\n" and not (seen / "notes-of-the-job.txt").exists()
     # the job goes on; the files grow; the log gets its line at the end of the run
     write(runner / "state/us-rewards/runs/r1/games.csv.gz", "games v2\n")
     with (runner / "state/us-rewards/log.csv").open("a") as fh:
         fh.write("r1,2\n")
-    assert save(runner, tmp_path, "save 2") == "save: pushed 4 files"
+    assert save(runner, tmp_path, "save 2") == "save: pushed 5 files"
     assert save(runner, tmp_path, "save 3") == "save: nothing new since the last save"
     seen = on_branch(origin, tmp_path)
     assert (seen / "state/us-rewards/runs/r1/games.csv.gz").read_text() == "games v2\n"

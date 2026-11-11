@@ -41,7 +41,8 @@ over. Its answers are below, under "The fourth round"; in one line each:
 - **a second lead, of another kind, found on 11 November in the crypto
   markets.** To collect those rewards somebody keeps 1¢ bids on price
   levels the price can no longer reach, right up to the end of the
-  market, and nobody sells to them. Selling there in the last minutes
+  market, and until 11 November almost nobody sold to them. Selling
+  there in the last minutes
   keeps about 0.9¢ for each 99¢ locked for a quarter of an hour. On
   11,885 settled markets of the kinds it trades, a rule fixed beforehand
   called 4,208 results out of reach and none came in; in 734 of them an
@@ -57,6 +58,16 @@ over. Its answers are below, under "The fourth round"; in one line each:
   writes down those order books every evening, with sizes (test L1,
   `docs/11_crypto_us.md`). Whether a real order would fill, and what the
   other side does once somebody starts, takes a real account.
+
+  On 11 November somebody did start: 10,000 contracts were sold in equal
+  lots across the daily Bitcoin ladder, a minute after its far brackets
+  were first quoted. The lots show a second way to take the same bids.
+  A ladder of brackets pays $1 on exactly one bracket, so whoever sells
+  every bracket at once knows the most they can owe, and keeps whatever
+  the bids add up to beyond that. It needs no view of how far the price
+  can move. It is also small: that evening's sale kept about $13 on
+  $10,000. A second paper test (L2, same document, section 12) records
+  whole ladders with sizes to see what is really there.
 
 ## What came out of it
 
@@ -168,6 +179,7 @@ counted as found unless it clears what the luckiest worthless rule reaches.
 | Sports on Polymarket US (most of that exchange): 3,360 rules on a year of games, fixed in writing first | **Nothing.** Not one rule passed even the first step, on 118,339 games. An hour before a game the middle of the order book is a fair price; a buyer loses the spread and the fee ([`docs/06_polymarket_us.md`](docs/06_polymarket_us.md), section 10) |
 | **Being paid to leave orders.** Polymarket US pays rewards for resting orders and publishes the schedule | **A lead, not a result.** Outside sports some pools are paid to nobody today ([`docs/08_rewards.md`](docs/08_rewards.md)). In sports every game has its own pool. By the published formula 100 contracts resting on each side before a lower-tour tennis match would be paid about 27¢ an hour, and on 29,647 past matches being run over cost 18¢ to 21¢ an hour: the reward is about one and a half times the cost. Doubles and darts fail that check. A paper test on live order books is running, rules fixed first. **From 18 November 2026 the exchange's filed rules let it cap a reward at a share of the account's own trading, which would end this where it is applied:** [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md), section 9 |
 | **Crypto on Polymarket US** (11 November): the last tick | **A second lead, not a result.** Whoever works the reward pools on the daily and weekly price ladders bids 1¢, for the size the programme asks, on levels the price cannot reach, and leaves the bid until the end. Almost nobody sells to it: two thirds of those markets never traded a contract. Test L1 sells there in the last quarter of an hour, with "cannot reach" defined from minute prices since 2020 before any market was looked at. History: 4,208 such results, none came in, 734 with an order to sell to. On the 2,506 evenings since 2020 the price passed the limit on five, for one coin each. The history has no sizes; a recorder now collects them ([`docs/11_crypto_us.md`](docs/11_crypto_us.md)) |
+| **Crypto on Polymarket US** (11 November): the whole ladder | **A paper test, just begun.** The same evening somebody sold 10,000 contracts in equal lots across the daily Bitcoin ladder. A ladder pays $1 on exactly one bracket (checked on all 2,814 settled ladders), so selling every bracket at once keeps whatever the bids add up to beyond $1 and the fees, with no view of the price. With the real books of that evening it is small: about $13 on $10,000. Test L2 records whole ladders with sizes and sells on paper when a sale locks enough ([`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 12) |
 
 What exists now that did not: a recorder that writes down the real order
 books of Polymarket US, with sizes, every cycle, and the polymarket.com
@@ -194,6 +206,7 @@ learn that. The story is in
 | The system that would rest those orders for real: what it does, its limits, and the steps before any real order | [`docs/10_us_quoter.md`](docs/10_us_quoter.md) |
 | Crypto on Polymarket US: what is there, the 1¢ bids nobody sells to, and test L1 of selling to them in the last minutes | [`docs/11_crypto_us.md`](docs/11_crypto_us.md) |
 | What the crypto order books showed in their last minutes at the latest run | `state/us-lasttick/STATUS.md` (from its first run) |
+| Test L2, selling a whole ladder of brackets at once: the rule and the bar | [`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 12 |
 | What Polymarket US's order books showed at the last cycle | [`state/us/STATUS.md`](state/us/STATUS.md) |
 | What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-long/STATUS.md` (from its first cycle) |
 
@@ -247,7 +260,12 @@ And a **recorder for test L1** (`kht us-lasttick`, `state/us-lasttick/`):
 the order books of crypto markets in the quarter of an hour before they
 settle, with sizes. It decides nothing and sends nothing; the rule of
 [`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 5, is applied to
-what it wrote down.
+what it wrote down. A second copy of it (`state/us-ladder/`) reads every
+bracket of the daily and weekly ladders through their last five and a
+half hours, for test L2 (section 12 of the same document).
+
+The job pushes what it has recorded once an hour. A small second job,
+*us-rewards-watchdog*, starts it again if it has stopped.
 
 ```bash
 python scripts/us_rewards_score.py --settle   # add the runs up and apply the judge
@@ -255,6 +273,10 @@ python scripts/us_rewards_score.py --settle   # add the runs up and apply the ju
 
 ```bash
 python scripts/us_lasttick_score.py --settle  # test L1 on what has been recorded
+```
+
+```bash
+python scripts/us_ladder_score.py --settle    # test L2 on what has been recorded
 ```
 
 ```bash
@@ -266,8 +288,9 @@ kht shadow            # every signal seen so far, scored against how it resolved
 ```
 
 To stop the schedule: repository → Actions → *paper-trader* → ⋯ → *Disable
-workflow*. The same for *us-rewards*, or add an empty file
-`state/us-rewards/STOP`.
+workflow*. The same for *us-rewards* and for *us-rewards-watchdog*, which
+would otherwise start it again; or add an empty file
+`state/us-rewards/STOP`, which stops both.
 
 ## Before any real money
 
