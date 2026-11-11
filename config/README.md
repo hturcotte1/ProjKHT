@@ -7,6 +7,7 @@
 | `paper_thin.json` | **Weakly supported.** The main rule in markets that have traded 20,000 to 100,000 shares so far. Measured without hindsight it earns about what it does in big markets (+1.1% a trade, t = 3.4), and less at the prices a larger order would pay. |
 | `paper_long.json` | **Exploratory.** "No" at 90–98¢ with 60 to 180 days to run, in markets with 20,000 shares or more, entered with a resting bid for three days and then at the ask. It earned 4–5% a trade in the two larger universes (t = 6 and 10), which were explored, not tested; in the thinnest markets, where it was tested, it fell short (t = 2.7). |
 | `us_quoter.json` | **Polymarket US, orders before games.** The settings of `kht us-quote` (`docs/10_us_quoter.md`): lower-tour tennis only, 100 contracts a side, up to 20 games, at most $1,200 at risk, stop at $150 lost in a day. On paper unless live trading is switched on in the environment. |
+| `lasttick_reach.json` | **Polymarket US, test L1.** How far each of four coins has moved within 1 to 30 minutes: the move one start in 5,000 exceeded in its worst year since 2020, the same from 2023 to 2026 only, and the five-minute change at which the second yardstick's brake stops trading. Written by `scripts/lasttick_reach.py` from minute prices; it uses no Polymarket data. `docs/11_crypto_us.md`, section 5. |
 | `model.json` | The fitted calibration line and per-segment shifts, written by `scripts/fit_model.py`. Used to rank candidates and to drop segments with no estimated edge. |
 
 Since the third round every account buys the "No" side only

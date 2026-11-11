@@ -44,6 +44,7 @@ Code: `src/kht/trading/engine.py` (`Engine.run_cycle`).
 | Polymarket US recorder | `api/polymarket_us.py`, `trading/us_recorder.py`, `trading/twins.py` | Not part of any account: writes down the order books of Polymarket US, and the polymarket.com quote for the same question. See "The Polymarket US recorder" below |
 | Paper orders before games | `trading/us_rewards.py` | Not part of any account: a simulation of small resting orders on Polymarket US, paid by the exchange's published reward formula. See "Paper orders before games on Polymarket US" below |
 | Orders before games, for real or on paper | `trading/us_quoter.py`, `trading/us_live.py` | The system that would rest those orders with a real account: choice of games, limits, orders that may only rest and that expire by themselves. On paper by default; the live connection has never been run. `docs/10_us_quoter.md` |
+| Crypto markets in their last minutes | `trading/us_lasttick.py`, `trading/lasttick_rule.py` | Not part of any account: a recorder of the order books of Polymarket US crypto markets in the quarter of an hour before they settle, and the rule of test L1 that is applied to them afterwards. See "Crypto markets in their last minutes" below |
 
 ## What the strategy does
 
@@ -461,6 +462,63 @@ The system that would place such orders for real is `kht us-quote`
 paper by default and has never been run against the exchange. What it
 does, its limits and the steps before any real order are in
 `docs/10_us_quoter.md`.
+
+## Crypto markets in their last minutes
+
+Whoever collects the exchange's rewards on the crypto price ladders keeps
+a 1¢ bid, for the size the programme asks, on levels the price can no
+longer reach, until the market ends. Test L1 asks what selling to those
+bids in the last minutes would collect and what it would risk
+(`docs/11_crypto_us.md`, section 5). Nothing is traded: a recorder writes
+the order books down, and a script applies the rule to them afterwards.
+
+```bash
+kht us-lasttick --state state/us-lasttick --minutes 300
+```
+
+The recorder lists the open crypto markets every few minutes, keeps the
+index level the exchange publishes (the "price to beat" of each
+five-minute up-or-down market), and reads the book of every market that
+ends within 17 minutes, about every 40 seconds, three price levels a side
+with their sizes. It skips the 5- and 15-minute markets and the hourly
+ladders. It reads public data only and needs no key. It runs beside the
+paper orders before games, in the same job, so a run of that job ends
+before 21:35 UTC or after 22:03, never across the daily settlement at
+22:00.
+
+| File under `state/us-lasttick/` | Contents |
+|---|---|
+| `runs/<run>/books.csv.gz` | Every reading of a followed book: time, seconds to the end, three levels a side with sizes, contracts traded so far |
+| `runs/<run>/markets.csv` | What each followed market asks: its kind, coin, level or bracket, price to beat, end |
+| `runs/<run>/index.csv` | The index level of each coin each time a newer one was published |
+| `levels.csv` | Index levels looked up afterwards by the scoring script, for the brake of the second yardstick |
+| `settlements.csv` | What the traded markets settled at (written by the scoring script) |
+| `log.csv`, `STATUS.md` | One line per run; the latest run in words |
+
+The rule is in one place, `src/kht/trading/lasttick_rule.py`: how far a
+result is from the index, whether that is out of reach, and what is traded
+against. "Out of reach" is read from `config/lasttick_reach.json`, a table
+of how far each coin has moved within 1 to 30 minutes, made from minute
+prices since 2020 by `scripts/lasttick_reach.py`. To score what has been
+recorded:
+
+```bash
+python scripts/us_lasttick_score.py --settle
+```
+
+The same rule on the history of settled markets, which has no sizes:
+
+```bash
+python scripts/lasttick_history.py fetch
+```
+
+```bash
+python scripts/lasttick_history.py index
+```
+
+```bash
+python scripts/lasttick_history.py run
+```
 
 ## Reproducing the research
 
