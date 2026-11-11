@@ -3,6 +3,7 @@
     python scripts/sports_us.py quotes [--shard i/n]   # pre-game quotes of every settled moneyline -> data/us_sports/quotes/
     python scripts/sports_us.py build                  # the decision table -> data/cache/sports_us.parquet
     python scripts/sports_us.py run [--placebo 20]     # the grid and the judge -> reports/research/sp_*
+    python scripts/sports_us.py table                  # asking price against what was paid out, by family
 
 A game's market is read three times before its recorded start: 180, 60 and 5
 minutes ahead. A rule looks at the quote 60 minutes ahead, may condition on
@@ -263,8 +264,9 @@ def cmd_run(args: argparse.Namespace) -> None:
     lines = ["Sports on Polymarket US: settled moneylines, bought 5 minutes before the recorded start on a signal 60 minutes before",
              f"rules in the grid: {len(specs):,}; with 30 trades or more: {len(res):,}",
              f"candidates (before 1 September: 150+ trades, +0.5% or more, z >= 3 by game): {len(cand):,}",
-             f"threshold: the best validation z among those candidates in 95% of {args.worlds} placebo worlds is below {thr:.2f}"
-             + (f" (median best {np.nanmedian(maxima):.2f}, largest {np.nanmax(maxima):.2f})" if len(maxima) else ""),
+             (f"threshold: the best validation z among those candidates in 95% of {args.worlds} placebo worlds is below {thr:.2f}"
+              f" (median best {np.nanmedian(maxima):.2f}, largest {np.nanmax(maxima):.2f})" if len(maxima)
+              else "threshold: not needed, there is no candidate to judge"),
              f"survivors (from 1 September: 100+ trades and z by day at or above the threshold): {int(res['survivor'].sum()):,}"]
     if counts:
         c = np.array(counts)
@@ -283,6 +285,30 @@ def cmd_run(args: argparse.Namespace) -> None:
     print(out.head(50).round(3).to_string(index=False))
 
 
+def cmd_table(args: argparse.Namespace) -> None:
+    """The plain table section 9 promises: asking price against how often that side won, by family."""
+    f = pd.read_parquet(CACHE / "sports_us.parquet")
+    f["cost"] = f["next_ask"] + THETA * f["next_ask"] * (1.0 - f["next_ask"])
+    rows = []
+    for fam in FAMILIES:
+        g = f if fam == "all" else f[f["family"] == fam]
+        for lo, hi in fx.BANDS[:11]:                       # the eleven bands that do not overlap
+            a = g[(g["ask"] > lo) & (g["ask"] <= hi)]
+            b = a[a["next_ask"].notna() & (a["next_ask"] > lo) & (a["next_ask"] <= hi + fx.ENTRY_SLACK)]
+            row = {"family": fam, "band": f"{100 * lo:g}-{100 * hi:g}c", "quotes": len(a), "ask": a["ask"].mean(), "fair": a["fair"].mean(), "paid_out": a["won"].mean(),
+                   "bought": len(b)}
+            if len(b) >= 2:
+                ret = ((b["won"] - b["cost"]) / b["cost"]).to_numpy()
+                mean, z = fx.floored(ret, b["cost"].to_numpy(), b["day"].to_numpy())
+                row.update({"cost": b["cost"].mean(), "bought_paid_out": b["won"].mean(), "ret_pct": 100 * mean, "z_day": z})
+            rows.append(row)
+    t = pd.DataFrame(rows)
+    t.to_csv(OUT / "sp_calibration.csv", index=False)
+    with open(OUT / "sports_us_output.txt", "a") as fh:
+        fh.write("\nasking price 60 minutes ahead against what that side paid out, by family (both sides pooled)\n" + t.round(4).to_string(index=False) + "\n")
+    print(t.round(4).to_string(index=False))
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -296,6 +322,7 @@ def main() -> None:
     p.add_argument("--placebo", type=int, default=0)
     p.add_argument("--worlds", type=int, default=500)
     p.set_defaults(fn=cmd_run)
+    sub.add_parser("table").set_defaults(fn=cmd_table)
     args = ap.parse_args()
     args.fn(args)
 

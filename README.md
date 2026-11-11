@@ -15,7 +15,9 @@ over. Its answers are below, under "The fourth round"; in one line each:
   history there is leans the same way without proving it;
 - Polymarket US's price history cannot be trusted for a backtest, so its
   live order books are now recorded every cycle instead;
-- two new ideas were tested with the rules fixed first, and both failed;
+- three new things were tested on Polymarket US with the rules fixed
+  first, and all three failed: a search over thousands of rules, buying
+  whatever is cheaper there than on polymarket.com, and sports;
 - one lead is open: the exchange pays for resting orders, and parts of that
   money are going unclaimed (`docs/08_rewards.md`). It needs a small test
   with a real account, which is the owner's call.
@@ -127,7 +129,7 @@ counted as found unless it clears what the luckiest worthless rule reaches.
 | The same search on Polymarket US alone | **Nothing.** A first run found 18 winners. They were prices at which nothing could be bought |
 | What Polymarket US's price history is | Where one side of an order book is empty it shows the last trade as if it were a quote. Checked against more than 600 live books. A backtest on it buys from nobody |
 | **Two exchanges, one question:** buy on Polymarket US whatever is cheaper there than on polymarket.com | **Failed**, on rules fixed beforehand: −19.8% on 505 purchases. The two exchanges are equally accurate, and for most shared questions polymarket.com is the smaller market |
-| Sports on Polymarket US (most of that exchange) | Test fixed in writing; see [`docs/06_polymarket_us.md`](docs/06_polymarket_us.md), section 9 |
+| Sports on Polymarket US (most of that exchange): 3,360 rules on a year of games, fixed in writing first | **Nothing.** Not one rule passed even the first step, on 118,339 games. An hour before a game the middle of the order book is a fair price; a buyer loses the spread and the fee ([`docs/06_polymarket_us.md`](docs/06_polymarket_us.md), section 10) |
 | **Being paid to leave orders.** Polymarket US pays rewards for resting orders and publishes the schedule | **A lead, not a result.** Some pools are paid to nobody today. Whether a small account would earn cents or dollars depends on a rule that only a real account can reveal: [`docs/08_rewards.md`](docs/08_rewards.md) |
 
 What exists now that did not: a recorder that writes down the real order

@@ -558,3 +558,120 @@ game already under way. That puts no hindsight into a rule's return, since
 the purchase is still made at a price quoted at that moment. It does change
 what the rule means. The share of markets whose price moved 30¢ or more
 between the two quotes is reported for each family as a measure of it.
+
+## 10. Sports: nothing
+
+*Run on 11 November 2026 at 09:10 UTC, after the quotes of every settled
+moneyline had been downloaded. Nothing in section 9 was changed.*
+
+**No rule passed the first step.** Of 3,360 rules, 2,217 made 30 trades or
+more and 1,173 made the 150 trades in discovery that a candidate needs. Not
+one of them reached z = 3 there. The best reached 1.74. With no candidate
+there is nothing to judge in validation and no threshold to compute. The
+same funnel run on 20 worlds in which every price is right also produced no
+candidate, every time.
+
+### The counts
+
+| Step | Games |
+|---|---:|
+| Settled moneylines listed | 149,959 |
+| Settled, with a recorded start before 11 November | 149,597 |
+| A real book 60 minutes ahead | 118,339 |
+| and 5 minutes ahead | 112,607 |
+| and 180 minutes ahead | 108,317 |
+| In the table: before 1 September / from then | 56,301 / 62,038 |
+
+The games run from 31 October 2025 to 10 November 2026, over 372 days. In
+three quarters of the books the spread 60 minutes ahead was one cent or
+less.
+
+Of the rules with 150 trades in discovery, 148 had a positive mean return
+there and 1,025 a negative one. The average rule lost 7.4% a trade in
+discovery and 7.0% in validation. That is the fee and the spread, and it is
+the same in both halves.
+
+The fifteen rules closest to the bar in discovery were nearly all one idea:
+the heavy favourite at 90¢ to 99¢. Eleven of the fifteen then lost money in
+validation.
+
+### Asking price against what the side paid
+
+All families together, both sides of every game. "Paid" is the average
+payout of the side: 1 if it won, 0 if it lost, and whatever the exchange
+settled at when a game was called off (below). The last two columns are for
+the purchases a rule would make 5 minutes ahead, after the fee.
+
+| Ask 60 minutes ahead | Quotes | Average ask | Middle of the book | Paid | Bought | Return after fee | z by day |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 2–5¢ | 1,178 | 4.3¢ | 3.7¢ | 2.9¢ | 830 | −33.0% | −2.0 |
+| 5–10¢ | 5,085 | 8.0¢ | 7.3¢ | 6.3¢ | 3,756 | −29.2% | −5.4 |
+| 10–20¢ | 12,772 | 15.8¢ | 14.8¢ | 14.4¢ | 10,264 | −17.1% | −7.7 |
+| 20–35¢ | 34,205 | 28.9¢ | 27.9¢ | 27.9¢ | 29,050 | −10.1% | −10.4 |
+| 35–50¢ | 62,148 | 43.5¢ | 42.6¢ | 42.9¢ | 52,726 | −6.1% | −11.3 |
+| 50–65¢ | 65,023 | 57.5¢ | 56.4¢ | 56.2¢ | 55,259 | −6.2% | −16.8 |
+| 65–80¢ | 35,455 | 72.1¢ | 71.1¢ | 71.0¢ | 30,086 | −4.2% | −10.7 |
+| 80–90¢ | 13,176 | 85.2¢ | 84.1¢ | 84.6¢ | 10,491 | −1.6% | −3.9 |
+| 90–95¢ | 5,684 | 93.0¢ | 91.7¢ | 92.6¢ | 4,165 | −0.7% | −1.6 |
+| 95–98¢ | 1,940 | 96.8¢ | 95.1¢ | 95.8¢ | 1,361 | −0.9% | −1.7 |
+
+Two things can be read off it.
+
+- **The middle of the book is right.** Between 20¢ and 80¢ the middle of
+  the book an hour before a game and what the side went on to pay differ by
+  less than half a cent, on tens of thousands of games in each row. A buyer
+  pays that price plus half the spread plus the fee, and loses exactly that.
+- **The ends lean the way everything else in this project leans.** Long
+  shots pay less than the middle of their book (3.7¢ against 2.9¢, 7.3¢
+  against 6.3¢) and heavy favourites pay more (91.7¢ against 92.6¢). The
+  lean is smaller than the spread and the fee together, so a buyer of the
+  favourite still loses.
+
+By family (`reports/research/sp_calibration.csv`) the picture is the same.
+Among cells with a hundred purchases or more, the only ones with a positive
+return after the fee are heavy favourites at 90¢ to 98¢ in the main tennis
+tours (+0.9% and +1.7%, z of 0.8 and 1.3) and in the US leagues (+2.0% and
++1.1%, z of 1.8 and 1.1), and table tennis at 80¢ to 90¢ (+0.9%, z of 0.8).
+None is distinguishable from nothing, none was a candidate, and five cells
+picked from about sixty after the fact are not evidence.
+
+### Two checks on the data
+
+**The recorded start.** Section 9 warned that a recorded start can be later
+than the real one, so that a "pre-game" quote comes from a game under way.
+The share of games whose price moved 30¢ or more between the quotes 60 and
+5 minutes ahead:
+
+| Family | Share |
+|---|---:|
+| US leagues | 0.03% |
+| Tennis, main tours | 0.12% |
+| Table tennis | 0.20% |
+| Tennis, lower tours | 0.34% |
+| Everything else | 0.47% |
+| E-sports | 0.72% |
+
+It is rare everywhere. The quotes are pre-game quotes.
+
+**Games called off.** Of the 149,597 moneylines, 3,408 settled at exactly
+50¢ and 1,314 at some other price between 0 and 1, such as 44¢. Twelve of
+the second kind and six of the first were looked up at the exchange's
+settlement endpoint, and all eighteen agreed with the list. They are mostly tennis and e-sports: a match
+abandoned or a walkover, settled at a price rather than for a winner. The
+test pays a purchase what the exchange paid.
+
+### What it means
+
+For somebody who buys at the asking price, sports on Polymarket US is
+closed. That was expected, and it is now measured on a year of games rather
+than assumed: 118,339 games, no rule out of 3,360 near the bar, and a
+price-against-result table that leaves a buyer nothing but the cost.
+
+It says something else for somebody who rests orders instead. A resting
+order pays no fee and is filled at its own price, not across the spread.
+The table says the middle of the book is a fair price before a game, and
+that where it is not fair it errs in favour of whoever sells the long shot.
+Whether resting orders before games make or lose money depends on who fills
+them and when, which this table cannot show. The exchange also pays
+rewards for resting orders in every one of these games. That is taken up in
+`docs/08_rewards.md`.
