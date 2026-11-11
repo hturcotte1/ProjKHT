@@ -114,6 +114,7 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
     books: list[dict[str, Any]] = []
     index_rows: list[dict[str, Any]] = []
     listed_at, listings, cycles, errors, flushed = -1e18, 0, 0, 0, started
+    was_active = False
 
     def flush() -> None:
         _write_gz(out / "books.csv.gz", BOOK_FIELDS, books)
@@ -162,9 +163,12 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
                     except Exception:                    # one odd book must not end the run
                         errors += 1
         cycles += 1
-        if now() - flushed >= 600:
+        # written every ten minutes, and at once when the markets being followed have all ended:
+        # a settlement that has been read should not wait in memory for the machine to last
+        if now() - flushed >= 600 or (was_active and not active):
             flush()
             flushed = now()
+        was_active = bool(active)
         pause = (max(SWEEP, len(active) / budget) if active else 20.0) - (now() - t)
         if pause > 0 and now() - started + pause < minutes * 60.0:
             sleep(pause)

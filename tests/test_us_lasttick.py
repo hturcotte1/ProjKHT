@@ -151,3 +151,23 @@ def test_a_listing_that_fails_does_not_stop_the_readings(tmp_path):
     us = FakeUS(clock, listing)
     line = lt.run(tmp_path, minutes=8, us=us, now=clock.now, sleep=clock.sleep)
     assert line["errors"] == 1 and line["listings"] >= 2 and line["books"] >= 8
+
+
+def test_what_was_read_is_written_as_soon_as_the_markets_have_ended(tmp_path):
+    clock = Clock(T0 - 5 * 60)                                                # the ten-minute writing would come five minutes after the end
+    on_disk = {}
+
+    def sleep(seconds):
+        if clock.t > T0 + lt.AFTER and "rows" not in on_disk:                # the first pause that begins after the last reading: what is on disk?
+            path = next((tmp_path / "runs").glob("*/books.csv.gz"), None)
+            on_disk["at"] = clock.t - T0
+            on_disk["rows"] = 0
+            if path is not None:
+                with gzip.open(path, "rt", newline="") as fh:
+                    on_disk["rows"] = len(list(csv.DictReader(fh)))
+        clock.sleep(seconds)
+
+    us = FakeUS(clock, lambda t: [market("cpc-btc-above-day-2026-11-11-78000", "ABOVE_BELOW", "daily", T0, strike=78000)] if t <= T0 else [])
+    line = lt.run(tmp_path, minutes=9, us=us, now=clock.now, sleep=sleep)     # ends four minutes after the settlement
+    assert on_disk["at"] < 150 and on_disk["rows"] >= 7                       # written within two minutes of the end
+    assert on_disk["rows"] == line["books"]
