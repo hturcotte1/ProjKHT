@@ -481,7 +481,9 @@ the job saves what it has recorded once an hour
 set to look every quarter of an hour and starts a run if none is going
 (by 23:19 UTC GitHub had started it only when asked by hand, not yet on
 its schedule); and the crypto recorder beside this test writes to disk as
-soon as its markets have ended. On the way I pushed a version of the job file that did not
+soon as its markets have ended. From 23:21 UTC a run that ends badly
+after more than ten minutes also starts its successor at once, from a
+fresh machine, without waiting for a schedule. On the way I pushed a version of the job file that did not
 parse, and for about a minute GitHub would not start it. The run of 22:28
 was stopped on purpose at 22:35, before it had written anything, so that
 the next one would use the new file. That one is going. Rules 1 to 8 of

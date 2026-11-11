@@ -264,8 +264,9 @@ what it wrote down. A second copy of it (`state/us-ladder/`) reads every
 bracket of the daily and weekly ladders through their last five and a
 half hours, for test L2 (section 12 of the same document).
 
-The job pushes what it has recorded once an hour. A small second job,
-*us-rewards-watchdog*, starts it again if it has stopped.
+The job pushes what it has recorded once an hour. If its machine is
+lost, the next run starts at once from a fresh one. A small second job,
+*us-rewards-watchdog*, is a further net under that.
 
 ```bash
 python scripts/us_rewards_score.py --settle   # add the runs up and apply the judge

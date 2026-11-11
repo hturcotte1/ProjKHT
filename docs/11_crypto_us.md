@@ -620,6 +620,10 @@ What was changed the same evening, between 22:28 and 22:35 UTC:
   only when I started it by hand. GitHub starts scheduled jobs less often
   than they ask, so this is a net with wide meshes.
 - The job was started again by hand.
+- Added at 23:21 UTC: if a run ends badly after more than ten minutes,
+  a second job in the same workflow starts the next run at once from a
+  fresh machine. This does not wait for GitHub's schedule. Had it been
+  there tonight, the recorder would have been back by about 21:43.
 
 One mistake of mine on the way: the first version of the changed job file
 did not parse, and for about a minute GitHub would not start the job. The

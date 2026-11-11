@@ -558,7 +558,11 @@ The job on GitHub that runs these recorders lasts five hours. It pushes
 what has been recorded once an hour, and once more just after 22:00 UTC,
 with `scripts/ci_save_state.sh`. That script works in a second checkout,
 so the programs that are still recording are not disturbed, and it copies
-only the files the job itself has written. A second job,
+only the files the job itself has written. If a run ends badly after more
+than ten minutes, which is what a lost machine looks like, a second job
+in the same workflow starts the next run at once from a fresh machine. A
+run that fails sooner is a fault, and is not restarted that way, so that
+a fault cannot loop. A separate job,
 `us-rewards-watchdog`, is set to look every quarter of an hour and starts
 the recording job if no run of it is going. GitHub starts scheduled jobs
 less often than they ask to be started, sometimes much less, so it is a
