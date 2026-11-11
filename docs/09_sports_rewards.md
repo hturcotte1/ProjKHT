@@ -450,6 +450,13 @@ itself at 14:48 UTC, and with it the rehearsal of the order system
 (`docs/10_us_quoter.md`). The scoring script was run on the real output for
 the first time and works.
 
+*Still to check, once a run has spanned it:* the exchange restarts each
+market's running totals of trading once a day, at 17:00 Eastern (22:00
+UTC). Rule 6 reads fills off those totals. If the restart itself shows up
+as a burst of fills at that minute, they are not real fills, and that would
+be a fault in the measuring to be fixed and dated here. The first run
+ended before that hour.
+
 ## 9. The rules as filed, and a change on 18 November
 
 *Found on 11 November at about 11:05 UTC, after everything above. It
