@@ -190,3 +190,104 @@ It is confirmed if the first score, at 7 days, is positive with z ≥ 2.58
 clustered by event on at least 100 purchases. The recorder also counts how
 many dollars of new gaps appear each day, which is the capacity of the
 whole idea.
+
+## 4. Result: it fails
+
+`scripts/two_venues.py` (`reports/research/tv_tests.csv`,
+`tv_trades_3c.csv`, `two_venues_output.txt`). Run on 11 November at
+06:24 UTC, seven minutes after section 3 was committed.
+
+**Buying the side that looked cheap on Polymarket US lost money. On this
+history the polymarket.com price was not the better forecast.**
+
+### The sample
+
+| | |
+|---|---:|
+| Settled US markets paired with a polymarket.com twin | 2,462, in 1,074 events |
+| Both contracts settled at 0 or 1 | 1,920 |
+| Paid the same side | 1,917 (99.84%) |
+| US market-days with a real book | 60,258, in 2,235 markets |
+| Of those, with a polymarket.com price 1 to 24 hours older | 20,316, in 1,534 markets and 804 events |
+
+The pairing is sound. The three pairs that paid different sides were events
+with the same title from another year or season, whose price series do not
+overlap and so produce no observations. The sample is politics: 1,472
+markets, against 48 in culture and 14 in economics.
+
+The two prices differ by 3¢ or more on 15% of days and by 10¢ or more on
+3.5%. On average they are the same to a tenth of a cent.
+
+### T6-B: the main test
+
+| Gap after the fee | Trades | Events | Return of the cheap side | z by event | z by day | Return of the other side |
+|---|---:|---:|---:|---:|---:|---:|
+| 1¢ or more | 943 | 569 | −20.0% | −2.5 | −2.0 | −40.1% |
+| 2¢ or more | 618 | 344 | −20.4% | −2.1 | −1.2 | −26.9% |
+| **3¢ or more** | **505** | **279** | **−19.8%** | **−1.8** | **−1.1** | −21.8% |
+| 5¢ or more | 363 | 209 | −15.2% | −1.1 | −0.6 | −23.0% |
+| 10¢ or more | 214 | 127 | +19.9% | 0.9 | 0.5 | −32.1% |
+
+| Condition fixed in section 3 | Result | |
+|---|---|---|
+| 1. Positive at 3¢ with z ≥ 2.58 both ways | −19.8%, z −1.8 and −1.1 | **fails** |
+| 2. The other side loses | −21.8% | holds, but the cheap side loses as much |
+| 3. Survives a day's delay | −46.9% on 124 trades (z −1.8) | **fails** |
+| 4. Positive between 3¢ and 10¢ | −42.8% on 352 trades (z −3.4) | **fails** |
+| 5. Positive without 3 to 5 November | +67.1% on 95 trades (z 1.8) | holds |
+
+Per contract, the purchases cost 43.7¢. polymarket.com said they were worth
+54.8¢. They paid 43.0¢. The US price was the right one.
+
+### T6-A and T6-C
+
+- **Which price was closer.** On the first day the two were 3¢ apart,
+  polymarket.com was the closer one in 63% of 790 markets, but the
+  difference in squared error is small (0.009; t 2.0 by event, 1.1 by
+  settlement day). Over all paired markets the two exchanges are equally
+  accurate: mean squared error 0.0356 for Polymarket US and 0.0360 for
+  polymarket.com, on 1,497 markets taken once each with at least three days
+  left. (That last comparison was made after the tests and was not fixed in
+  advance.)
+- **Who moves.** Each day the US price closes 16% of the gap (z 3.5) and
+  the polymarket.com price closes 18% of it (z 4.3). They move towards each
+  other at the same pace. Neither leads.
+
+### Why it failed
+
+Two things, read off the losing trades after the fact.
+
+**For most of these questions polymarket.com is the smaller market.** The
+idea rested on its being the larger crowd. Half of the twins traded in T6-B
+had done under $8,000 of business on polymarket.com in their whole life,
+and a tenth under $700. A recorded "price" of 38¢ on a contract that has
+traded $63 is the middle of an empty book, while Polymarket US was quoting
+the same thing at 4¢ against 98¢ and was right. Of the 505 purchases, 124
+were long shots that cost under 10¢ on US: polymarket.com had them at 18¢
+on average, and 1.6% of them paid.
+
+**Where polymarket.com was large, it was wrong on the night.** In the 84
+trades whose twin had traded $100,000 or more, the rule mostly bought
+Republicans, because polymarket.com priced them higher than Polymarket US
+did: 24 Republican "Yes" purchases, of which 7 won, and 31 Democrat "No"
+purchases, of which 10 won. The two crowds leaned different ways on the
+midterms and the US one was nearer. That is one election, and would prove
+nothing about the next. It is also the only evidence there is.
+
+Splitting by the size of the polymarket.com market, as section 3 said would
+be reported, does not rescue the rule: under $10,000 it returned −8.3%, and
+at $10,000 or more −33.2% (z −2.8).
+
+### What is left
+
+The forward test F1 stays as fixed. It uses quotes that could really be
+traded on both exchanges at the same moment, and it requires a
+polymarket.com book no wider than 10¢, which removes the empty-book prices
+that did the most damage here. The recorder collects what it needs at no
+cost. But the reason for expecting it to pass has gone: the larger exchange
+was not the better forecaster, and the two prices drift towards each other
+rather than one towards the other. If F1 does pass its own bar it will be
+reported as a surprise that needs explaining, not as a confirmation.
+
+The gaps seen live in section 2 are real quotes. What this test says is
+that taking them is not known to pay.

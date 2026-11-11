@@ -1,0 +1,29 @@
+The tests of docs/07_two_venues.md, section 3
+observations: 20,316 market-days in 1,534 markets, 804 events
+T6-B: 'ret' is the mean return in percent; T6-A: mean difference of squared errors (positive: polymarket.com closer); T6-C: slope
+
+                                                            test                                                              sample     n  events  days     ret  z_event  z_day   win  avg_cost
+                                         T6-B buy the cheap side                                                           gap >= 1c   943     569  16.0 -20.005   -2.506 -2.019 0.558     0.556
+                                             T6-B the other side                                                           gap >= 1c   943     569  16.0 -40.111   -5.123 -4.828 0.442     0.485
+                                         T6-B buy the cheap side                                                           gap >= 2c   618     344  15.0 -20.361   -2.116 -1.248 0.476     0.482
+                                             T6-B the other side                                                           gap >= 2c   618     344  15.0 -26.877   -3.928 -3.928 0.524     0.565
+                                         T6-B buy the cheap side                                                           gap >= 3c   505     279  15.0 -19.847   -1.804 -1.052 0.430     0.437
+                                             T6-B the other side                                                           gap >= 3c   505     279  15.0 -21.773   -3.511 -3.511 0.570     0.612
+                                         T6-B buy the cheap side                                                           gap >= 5c   363     209  13.0 -15.238   -1.100 -0.628 0.391     0.376
+                                             T6-B the other side                                                           gap >= 5c   363     209  13.0 -22.979   -4.221 -4.221 0.609     0.677
+                                         T6-B buy the cheap side                                                          gap >= 10c   214     127  11.0  19.883    0.908  0.473 0.416     0.330
+                                             T6-B the other side                                                          gap >= 10c   214     127  11.0 -32.137   -5.601 -5.601 0.584     0.727
+                                         T6-B buy the cheap side                                                       gap 3c to 10c   352     219  15.0 -42.759   -3.404 -3.404 0.415     0.483
+                                         T6-B buy the cheap side                             gap >= 3c, bought one observation later   124      80   6.0 -46.873   -1.824 -1.824 0.371     0.366
+                                         T6-B buy the cheap side                     gap >= 3c, without markets settled 3-5 November    95      41  13.0  67.137    1.789  1.268 0.526     0.427
+                                         T6-B buy the cheap side                                    gap >= 3c, the cheap side is yes   266     207  11.0 -57.721   -3.070 -3.070 0.259     0.313
+                                         T6-B buy the cheap side                                     gap >= 3c, the cheap side is no   239     195  14.0  22.305    1.377  0.794 0.619     0.576
+                                         T6-B buy the cheap side                                                  gap >= 3c, culture    38      11   5.0 187.284    3.046  3.028 0.737     0.427
+                                         T6-B buy the cheap side                                                    gap >= 3c, macro     9       5   4.0 -37.980   -0.878 -0.878 0.444     0.620
+                                         T6-B buy the cheap side                                                 gap >= 3c, politics   458     263   9.0 -36.677   -3.102 -3.102 0.404     0.435
+                                         T6-B buy the cheap side             gap >= 3c, polymarket.com market traded $10,000 or more   234     136  12.0 -33.203   -2.755 -2.755 0.415     0.512
+                                         T6-B buy the cheap side                        gap >= 3c, polymarket.com market traded less   271     165   8.0  -8.315   -0.471 -0.245 0.443     0.372
+T6-A squared error of the US middle minus that of polymarket.com                                          first day 3c or more apart   790     427  15.0   0.009    2.042  1.118 0.627       NaN
+T6-A squared error of the US middle minus that of polymarket.com                      the same, without markets settled 3-5 November   110      44  13.0   0.069    3.122  2.036 0.627       NaN
+                                                  T6-C who moves next day's change in the US middle on today's (polymarket.com - US) 17510     754   NaN   0.162    3.537    NaN   NaN       NaN
+                                                  T6-C who moves                     next day's change in polymarket.com on the same 17510     754   NaN  -0.181   -4.267    NaN   NaN       NaN
