@@ -8,8 +8,8 @@
 #
 # One run lasts about five hours and then starts the next, so that games are
 # followed without gaps. What it has recorded is pushed once an hour, so a
-# machine that is lost costs an hour at most. It stops by itself on
-# 18 November 2026.
+# machine that is lost costs an hour at most, and a second job below then
+# starts the next run at once. It stops by itself on 18 November 2026.
 # To stop it sooner: add an empty file state/us-rewards/STOP, or
 # Actions tab -> "us-rewards" -> "..." -> "Disable workflow" (and the same
 # for "us-rewards-watchdog", which restarts it).
@@ -125,3 +125,33 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run us-rewards.yml --ref "${GITHUB_REF_NAME}"
+
+  # If the job above ended badly after it had been going for a while, its
+  # machine was most likely lost (it happened on 11 November, twenty minutes
+  # before the daily crypto settlement). This starts the next run at once,
+  # from a fresh machine, without waiting for a schedule. A run that fails
+  # within ten minutes is a fault and not a lost machine: that is left to the
+  # schedule and the watchdog, so that a fault cannot restart itself in a loop.
+  # A run that somebody cancelled is not restarted.
+  restart:
+    needs: record
+    if: ${{ !cancelled() && needs.record.result != 'success' && needs.record.result != 'skipped' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Start the next run if this one was lost
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "$(date -u +%Y%m%d)" -ge 20261118 ]; then
+            echo "past the end date of the test"
+            exit 0
+          fi
+          started=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" --jq .run_started_at)
+          age=$(( $(date -u +%s) - $(date -u -d "$started" +%s) ))
+          echo "this run started at $started, $age seconds ago"
+          if [ "$age" -lt 600 ]; then
+            echo "it failed within ten minutes: a fault, left to the schedule"
+            exit 0
+          fi
+          gh workflow run us-rewards.yml --repo "${GITHUB_REPOSITORY}" --ref "${GITHUB_REF_NAME}"
