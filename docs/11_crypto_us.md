@@ -285,7 +285,69 @@ is, is item 2.
   coins tend to move together. One bad settlement would cost a few days of
   the premium, not one trade's worth.
 
-## 6. The up-or-down markets
+## 6. The two yardsticks, computed
+
+`scripts/lasttick_reach.py`, from 3.6 million one-minute prices a coin
+(3.3 million for Solana, listed in August 2020). Committed at 17:31 UTC,
+before the history of any market was read
+(`config/lasttick_reach.json`, `reports/research/ltr_*`).
+
+How far a result must be from the index to count as out of reach:
+
+| | 6 minutes | 10 minutes | 16 minutes | 22 minutes | Brake: a five-minute change of |
+|---|---:|---:|---:|---:|---:|
+| Bitcoin, L1-strict | 6.4% | 8.2% | 10.7% | 12.4% | |
+| Bitcoin, L1-recent | 3.0% | 3.6% | 4.8% | 5.4% | 1.05% |
+| Ether, L1-strict | 7.5% | 9.7% | 12.7% | 15.2% | |
+| Ether, L1-recent | 4.1% | 5.1% | 6.5% | 8.5% | 1.41% |
+| Solana, L1-strict | 10.6% | 14.5% | 18.0% | 19.9% | |
+| Solana, L1-recent | 6.5% | 8.1% | 11.1% | 11.9% | 1.92% |
+| XRP, L1-strict | 11.1% | 14.3% | 17.6% | 21.0% | |
+| XRP, L1-recent | 6.3% | 8.6% | 11.4% | 13.9% | 2.07% |
+
+The minutes are the time left, plus the age of the index value, plus one.
+
+**L1-strict.** Every figure is set by 2020 or 2021. Its out-of-sample
+check holds: the table made from 2020 to 2024 was exceeded in 2025 and
+2026 at most once in 11,945 starts (XRP in 2025), against the one in 5,000
+it allows.
+
+**L1-recent passed the check fixed for it.** Applied with its brake to
+every minute since 2020, the worst it did was Bitcoin in 2020 at 22
+minutes: the price went beyond the reach once in 1,643 starts. The bar was
+once in 1,000. For the other coins the worst year gave once in 3,200 to
+3,700.
+
+What the brake does, for Bitcoin at 16 minutes:
+
+| Year | Minutes the brake stops | Beyond the reach without the brake | With it | Separate occasions that got through |
+|---|---:|---:|---:|---:|
+| 2020 | 3.7% | once in 650 starts | once in 2,014 | 24 |
+| 2021 | 7.4% | once in 857 | once in 2,233 | 20 |
+| 2022 | 3.4% | once in 2,872 | once in 4,929 | 13 |
+| 2023 | 1.1% | once in 6,570 | once in 6,934 | 7 |
+| 2024 | 1.3% | once in 4,972 | once in 12,100 | 5 |
+| 2025 | 0.7% | once in 12,223 | once in 30,694 | 4 |
+| 2026 | 0.7% | never | never | 0 |
+
+Two things to read off it.
+
+- **The brake does what it was added for, and not more.** It removes two
+  thirds of the bad starts of 2020 and 2021. It cannot see a jump that
+  comes out of a quiet hour, and a few of those happen every year.
+- **What the loss costs.** A trade keeps about 0.9¢ and can lose 99¢. At
+  once in 1,643, the worst year, the losses cost 0.06¢ a contract. At the
+  rate of 2023 to 2025 they cost about 0.01¢. Against a premium of 0.9¢
+  either is small. **This is the whole of the evidence that the trade is
+  sound, and it is evidence about coin prices, not about this exchange.**
+
+What the tables leave to trade, with Bitcoin at $74,200 and the daily
+ladder's top level at $81,500: by L1-strict, nothing until the very last
+readings, and then only the top few levels. By L1-recent, levels above
+about $78,000 a quarter of an hour before the end, and above about
+$76,500 two minutes before it.
+
+## 7. The up-or-down markets
 
 38,600 have settled. A search over rules that buy one side at its asking
 price, like the one run on sports, is planned and is not registered here.
