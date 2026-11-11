@@ -12,9 +12,9 @@ orders resting, looked at the programmes outside sports, and could not tell
 whether a pool was for a whole programme or for each event in it. That one
 question decided whether the idea was worth cents or dollars.
 
-Sports answers it. Seven-eighths of the exchange is sports, nearly all of
-the reward money is there, and in sports a pool can only belong to one
-game, because its periods are counted from that game's start:
+In sports it has an answer. Seven-eighths of the exchange is sports, nearly
+all of the reward money is there, and in sports a pool can only belong to
+one game, because its periods are counted from that game's start:
 
 - **early**: from listing until six hours before the start;
 - **day-of**: the six hours before the start;
@@ -34,6 +34,16 @@ Three things say a pool is one game's.
    earned by market and by date.
 
 This is evidence, not proof. Only an account's own earnings record is proof.
+And it is evidence about sports only: for the daily programmes outside
+sports the question is still open (`docs/08_rewards.md`, section 10).
+
+There is also a check that does not depend on the wording. If each game
+has its own pool, the accounts already resting orders should be risking
+about as much as the pool is worth, no more. Before a lower-tour tennis
+match they rest several hundred contracts a side for a $12 pool, and
+section 4 puts what being run over costs at that size at a few dollars. Those are the
+same order of size. If the $12 were shared by every match in the
+programme, nobody would rest that much for it.
 
 ## 2. What is on offer before games
 

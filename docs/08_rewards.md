@@ -185,33 +185,50 @@ almost nothing to rest.
    size, pull before news, and treat a fill as the "No" trade. Nothing of
    that kind exists in this repository yet.
 
-## 10. Added later on 11 November: what sports says about the first unknown
+## 10. Added later on 11 November: what sports says about the first unknown, and what it does not
 
 Section 4 could not tell whether a daily pool was one for a whole programme
 or one for each event in it. The sports programmes, which section 3 only
-counted, answer most of that.
+counted, settle it for sports and leave it open here.
 
-- In sports a programme's periods are counted from each game's start
-  (before the day, the six hours before the start, during play), so a pool
-  there can only be one game's. The exchange's definitions say as much: a
-  time period is "a window during the event lifecycle ... with its own
-  reward pool".
-- The table in section 3 adds each sports programme's pool once. If every
-  game has its own, the true sums are far larger: for the games listed for
-  one day, about $11,000 for the six hours before the start and $39,000
-  during play, in the programmes on who wins alone.
-- On nearly every game somebody rests thousands of contracts at 1¢ and 99¢,
-  which score nothing and only make the side reach its target size. That
-  is worth doing in a thousand games a day only if each game pays.
-- The exchange's API reports what an account earned by market and by date.
+**In sports a pool is one game's.** A sports programme's periods are
+counted from each game's start (before the day, the six hours before the
+start, during play), so there is no single period that a programme-wide
+pool could belong to. The exchange's definitions say as much: a time period
+is "a window during the event lifecycle ... with its own reward pool". The
+table in section 3 adds each sports programme's pool once, which is
+therefore far too low: for the games listed for one day, the pools come to
+about $11,000 for the six hours before the start and $39,000 during play,
+in the programmes on who wins alone. `docs/09_sports_rewards.md` takes
+sports from there.
 
-So the high column of section 6 is much the more likely one for the daily
-programmes too: $40 a day for each culture event, not $40 a day in all.
-That is still evidence and not proof, and the second unknown stands: how an
-event's pool is divided between its several markets.
+**Outside sports it is still not known, and what people do argues for the
+small reading.** The daily programmes are labelled "Daily (per event)",
+which reads like one pool for each event. But look at the events that have
+a single market, where nothing has to be assumed about how an event's pool
+is divided. On 11 November there were 30 of them with a book to rest in.
+If each really had its programme's whole pool to itself, 100 contracts
+resting on each side would be paid, by the formula:
 
-In sports that second unknown can be avoided, because many programmes have
-exactly one market in each game. `docs/09_sports_rewards.md` takes it from
-there: what the order books of those games show, what a small resting order
-would be paid by the published formula, and a paper test with its rules
-fixed in advance.
+| Market | Programme pool | Score on the bid, on the offer | 100 contracts a side would be paid, a day |
+|---|---:|---:|---:|
+| Will Congress impeach and remove Hegseth by March 2027 | $75 | 237, 151 | $26 |
+| Hegseth out by 31 December | $75 | 111, 3,120 | $19 |
+| Jensen Huang out as Nvidia's chief by 31 December | $50 | 299, 145 | $16 |
+| Will Congress impeach Hegseth in 2026 | $75 | 872, 386 | $12 |
+
+That is $26 a day on $99 of resting orders. The accounts collecting the
+reward in those books are easy to see: exactly 5,000 contracts at 2¢ and
+4,999.99 at 99¢ to reach the target of 5,000, and 150 to 250 contracts at
+the real price to hold the score. If $75 a day were at stake in that one
+market, whoever does this would rest far more than 250 contracts there, and
+others would have joined, in the seven weeks some of these programmes have
+run. Under the small reading, a pool shared by all of a programme's
+markets, the same books pay between 10% and 90% a year on the money
+resting, which is about what one would expect people to settle at.
+
+So for these programmes the first unknown stands, and my guess is now the
+small reading. It is cheap to settle with a real account: 100 contracts on
+each side of one such market, about $100, for a few days, and the earnings
+record will show either cents or tens of dollars. That is the owner's
+decision.
