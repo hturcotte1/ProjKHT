@@ -462,6 +462,57 @@ asking price against how often that side won, by minutes left. A survivor
 would not be a result until it had been seen in live books with sizes,
 and a book seen twice a minute may not be able to show it.
 
+### What it found: nothing
+
+`scripts/crypto_updown.py` (`reports/research/crypto_updown_output.txt`,
+`ud_*`), run at 18:59 UTC on 11 November.
+
+| | Count |
+|---|---:|
+| Markets in scope, all with prices fetched | 37,388 |
+| With a real book at one purchase time or more | 36,289 |
+| Rules in the grid | 32,400 |
+| Rules with 150 purchases or more before 3 November | 11,578 |
+| Of those, rules that made anything after the fee | 2,460 |
+| Best score among them (the bar is 3.0) | 2.62 |
+| **Candidates** | **0** |
+| Candidates in worlds where every price is right, 20 runs | 0.7 on average, 4 at most; none past the second step |
+
+Not one rule passed the first step. A search this size turns up a
+candidate or four by luck in some worlds where there is nothing to find.
+Here it turned up none.
+
+What a buyer got, in the 5-minute markets with one minute left, both
+sides together:
+
+| Asking price | Quotes | Average ask | Won | Return after the fee |
+|---|---:|---:|---:|---:|
+| 2–5¢ | 2,813 | 4.0¢ | 1.8% | −58% |
+| 5–10¢ | 2,765 | 7.7¢ | 4.2% | −48% |
+| 10–20¢ | 1,672 | 14.5¢ | 12.6% | −21% |
+| 20–35¢ | 1,296 | 27.5¢ | 27.5% | −6% |
+| 35–50¢ | 921 | 42.8¢ | 38.5% | −15% |
+| 50–65¢ | 832 | 58.2¢ | 58.4% | −3% |
+| 65–80¢ | 1,196 | 73.5¢ | 70.1% | −7% |
+| 80–90¢ | 1,262 | 86.0¢ | 84.0% | −4% |
+| 90–95¢ | 1,171 | 93.4¢ | 91.5% | −3% |
+| 95–98¢ | 2,504 | 97.3¢ | 95.9% | −1.7% |
+| 98–99.5¢ | 3,814 | 99.0¢ | 98.8% | −0.3% |
+
+The buyer loses in every row. The long shots lose most: a side offered at
+4¢ with a minute to go wins less than half as often as its price says.
+That is the same lean as everywhere else in this project, and here too it
+belongs to whoever is selling the long shot with a resting order and no
+fee, in a market that reprices every second. The full table, for every
+length and minute, is in `ud_calibration.csv`. A few of its 198 rows are
+above zero, most of them favourites at 80¢ and more in the one-hour
+markets, by 1% to 2% on a few hundred quotes each. None comes near the
+bar, and in a table that size some rows are above zero by luck.
+
+That the rows lose is also a check on section 3. Had a stored price
+belonged to the start of its minute and not its end, "one minute left"
+would have been the finished result, and every row would have won.
+
 ## 8. L1 on the history of the settled markets
 
 `scripts/lasttick_history.py` (`reports/research/lasttick_history_output.txt`,

@@ -15,9 +15,10 @@ over. Its answers are below, under "The fourth round"; in one line each:
   history there is leans the same way without proving it;
 - Polymarket US's price history cannot be trusted for a backtest, so its
   live order books are now recorded every cycle instead;
-- three new things were tested on Polymarket US with the rules fixed
-  first, and all three failed: a search over thousands of rules, buying
-  whatever is cheaper there than on polymarket.com, and sports;
+- four new things were tested on Polymarket US with the rules fixed
+  first, and all four failed: a search over thousands of rules, buying
+  whatever is cheaper there than on polymarket.com, sports, and the fast
+  crypto markets;
 - two leads are open. The first: the exchange pays a published reward
   for orders left resting in its markets, and before most sports games
   very little is resting where it counts. The risk is being traded
