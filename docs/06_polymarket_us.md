@@ -471,3 +471,81 @@ and at what size. Rules about near-certain contracts will take months to
 say anything, as section 7 explains. The same recorder also captures
 something that can be judged much sooner, which is the subject of
 `docs/07_two_venues.md`.
+
+## 9. Sports, fixed before the quotes are read
+
+Sports are seven-eighths of what Polymarket US lists, and the only part of
+it with a deep history: 754,742 settled main-line markets since November
+2025 (149,959 on who wins, 244,152 point spreads, 276,702 totals, 83,929
+three-way). At the time of writing no sports result has been tabulated.
+While checking that pre-game quotes exist, about thirty markets were
+printed with their quotes and results side by side; nothing was counted.
+
+What is expected: nothing. The earlier rounds found no edge in sports on
+polymarket.com, sports prices are anchored by professional bookmakers, and
+the US fee is 2.4¢ a contract at 50¢. It is tested because it is most of
+the exchange, and because a year of games is the one place where
+Polymarket US has enough independent results to say something firmly.
+
+### What is tested
+
+**Moneylines only**: the 149,959 settled markets on who wins a game or
+match. Spreads and totals are bets close to 50¢ by construction, where the
+fee alone is 4.75% of the stake. A rule that pays the ask there would need a
+mistake larger than any this project has found anywhere, so they are left
+out. That is a decision not to look, not a finding.
+
+**The data.** For each market, the stored observations of its order book
+over the three hours before its recorded start. Three quotes are taken: 180,
+60 and 5 minutes ahead, each the last observation at or before that moment
+and unused if more than 30 minutes old. A quote is used only if it passes
+the filter of section 7 (real prices on both sides).
+
+**A rule:**
+
+> In family F, buy side S when its ask 60 minutes ahead is in band B, the
+> spread is at most W, and over the two hours before that the price did C.
+> Buy 5 minutes ahead, at that moment's ask, if it is still in the band. Pay
+> the fee. Hold to settlement. A market closed at 50¢ pays 50¢.
+
+| Part | Values | Count |
+|---|---|---:|
+| Family | all; tennis, main tours; tennis, lower tours; table tennis; e-sports; the US leagues (NBA, MLB, NHL, NFL, college football and basketball, WNBA); everything else | 7 |
+| Side | the first-named side; the second-named. In US team sports the first-named is the visiting team | 2 |
+| Price band | the twenty bands of section 3 | 20 |
+| Spread | at most 1¢; at most 3¢; any real book | 3 |
+| What the price did | no condition; quiet (moved under 1¢); rose 3¢ or more; fell 3¢ or more | 4 |
+
+That is 3,360 rules (`scripts/sports_us.py`).
+
+### The judge
+
+The judge of section 4 as corrected, unchanged in form:
+
+- discovery is games starting before 1 September 2026 (70,182 moneylines),
+  validation from then to 10 November (79,777);
+- a candidate has, in discovery, at least 150 trades, a mean return after
+  the fee of at least +0.5%, and z ≥ 3 with each game as one bet;
+- a survivor has, in validation, at least 100 trades and a z by day of the
+  game at or above the 95th percentile of the best validation z among the
+  candidates over 500 worlds in which every price is right (one draw a
+  game, so its two sides cannot both win);
+- the whole funnel is also run on 20 such worlds.
+
+A survivor is not a result until its sizes have been read off live order
+books (section 7, rule 3) and it has been scored on games played after
+today.
+
+### What will be reported whatever happens
+
+The counts at each step, the placebo counts, and for each family the plain
+table of asking price against how often that side won.
+
+### One thing that cannot be fixed
+
+The recorded start is sometimes the scheduled time and sometimes later than
+the real one. A quote "60 minutes ahead" of a late start may come from a
+game already under way. That puts no hindsight into a rule's return, since
+the purchase is still made at a price quoted at that moment. It does change
+what the rule means. The share of markets whose price moved 30¢ or more
+between the two quotes is reported for each family as a measure of it.
