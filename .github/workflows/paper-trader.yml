@@ -1,5 +1,6 @@
-# Runs one paper-trading cycle for each paper account and commits the state.
-# Paper mode reads public market data only: no credentials, no orders.
+# Runs one paper-trading cycle for each paper account, writes down the
+# Polymarket US order books, and commits the state.
+# Everything here reads public market data only: no credentials, no orders.
 #
 # GitHub starts scheduled jobs late and drops some of them, so this wakes every
 # 15 minutes and trades only when about three hours have passed since the last
@@ -34,7 +35,7 @@ env:
 jobs:
   cycle:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
@@ -80,6 +81,12 @@ jobs:
       - name: Long-dated account ("No" with 60 to 180 days to run; exploratory)
         if: always() && steps.gate.outputs.due == 'true'
         run: kht cycle --config config/paper_long.json --state state/paper-long --report state/paper-long/STATUS.md
+      - name: Polymarket US order books, and the polymarket.com price of the same questions (read-only record)
+        if: always() && steps.gate.outputs.due == 'true'
+        # A failure here must not stop the accounts' state from being committed.
+        continue-on-error: true
+        timeout-minutes: 20
+        run: kht us-record --state state/us
       - name: Commit account state
         if: always() && steps.gate.outputs.due == 'true'
         run: |
