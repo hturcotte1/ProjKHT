@@ -15,7 +15,10 @@ over. Its answers are below, under "The fourth round"; in one line each:
   history there is leans the same way without proving it;
 - Polymarket US's price history cannot be trusted for a backtest, so its
   live order books are now recorded every cycle instead;
-- two new ideas were tested with the rules fixed first, and both failed.
+- two new ideas were tested with the rules fixed first, and both failed;
+- one lead is open: the exchange pays for resting orders, and parts of that
+  money are going unclaimed (`docs/08_rewards.md`). It needs a small test
+  with a real account, which is the owner's call.
 
 ## What came out of it
 
@@ -125,6 +128,7 @@ counted as found unless it clears what the luckiest worthless rule reaches.
 | What Polymarket US's price history is | Where one side of an order book is empty it shows the last trade as if it were a quote. Checked against more than 600 live books. A backtest on it buys from nobody |
 | **Two exchanges, one question:** buy on Polymarket US whatever is cheaper there than on polymarket.com | **Failed**, on rules fixed beforehand: −19.8% on 505 purchases. The two exchanges are equally accurate, and for most shared questions polymarket.com is the smaller market |
 | Sports on Polymarket US (most of that exchange) | Test fixed in writing; see [`docs/06_polymarket_us.md`](docs/06_polymarket_us.md), section 9 |
+| **Being paid to leave orders.** Polymarket US pays rewards for resting orders and publishes the schedule | **A lead, not a result.** Some pools are paid to nobody today. Whether a small account would earn cents or dollars depends on a rule that only a real account can reveal: [`docs/08_rewards.md`](docs/08_rewards.md) |
 
 What exists now that did not: a recorder that writes down the real order
 books of Polymarket US, with sizes, every cycle, and the polymarket.com
@@ -145,6 +149,7 @@ learn that. The story is in
 | The third round: which side of the bet carries the edge, and the correction of round two | [`docs/05_third_round.md`](docs/05_third_round.md) |
 | The fourth round: Polymarket US, a wide search with a judge fixed first, and what its price feed really records | [`docs/06_polymarket_us.md`](docs/06_polymarket_us.md) |
 | Two exchanges quoting the same question: the idea, the test, and why it failed | [`docs/07_two_venues.md`](docs/07_two_venues.md) |
+| Rewards for resting orders on Polymarket US: what is public, what is unknown, and the small test that would settle it | [`docs/08_rewards.md`](docs/08_rewards.md) |
 | What Polymarket US's order books showed at the last cycle | [`state/us/STATUS.md`](state/us/STATUS.md) |
 | What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-long/STATUS.md` (from its first cycle) |
 

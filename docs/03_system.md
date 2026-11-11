@@ -401,6 +401,7 @@ if it fails, the accounts' state is still committed.
 | `snapshots/YYYY-MM-DD/HHMMSS.csv.gz` | One row per market: the three best prices and sizes on each side, the last trade, contracts traded, open interest, and the polymarket.com bid and ask of its twin |
 | `markets.csv` | What each market is. Rows are added, never rewritten |
 | `twins.csv` | Its twin on polymarket.com, if it has one. Rows are added, never rewritten |
+| `rewards.csv` | One line per reward programme per run: how many of its books would have been paid that second (`docs/08_rewards.md`) |
 | `log.csv` | One line per run |
 | `STATUS.md` | The latest run in words |
 

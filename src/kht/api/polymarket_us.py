@@ -60,6 +60,28 @@ class PolymarketUS:
     def iter_events(self, max_pages: int | None = None, **filters: Any) -> Iterator[dict[str, Any]]:
         return self._paged("/v1/events", "events", max_pages, filters)
 
+    def iter_incentives(self, statuses: str | None = "active", max_pages: int = 1000) -> Iterator[dict[str, Any]]:
+        """The public schedule of reward programmes, one entry per market with its time periods.
+
+        Each time period carries the programme's id, its reward pool, the
+        discount factor, the target size and (for some) a maximum spread. A
+        pool belongs to the programme, shared across its markets: the same
+        number is repeated on every market, and must never be added up.
+        """
+        token: str | None = None
+        for _ in range(max_pages):
+            params: dict[str, Any] = {"page_size": PAGE}
+            if statuses:
+                params["statuses"] = statuses
+            if token:
+                params["page_token"] = token
+            data = self.http.get(GATEWAY + "/v1/incentives", params=params) or {}
+            rows = data.get("programs") or []
+            yield from rows
+            token = data.get("nextPageToken")
+            if not token or not rows:
+                return
+
     def market(self, slug: str) -> dict[str, Any]:
         return (self.http.get(f"{GATEWAY}/v1/market/slug/{slug}") or {}).get("market") or {}
 

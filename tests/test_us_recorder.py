@@ -5,7 +5,7 @@ import json
 import pytest
 
 from kht.trading.twins import norm, pair_all, pair_event
-from kht.trading.us_recorder import SNAPSHOT_FIELDS, gaps, parse_book, record
+from kht.trading.us_recorder import SNAPSHOT_FIELDS, gaps, parse_book, record, reward_state, reward_walk
 
 
 def intl_market(mid, label, question="", outcomes=("Yes", "No")):
@@ -100,6 +100,34 @@ def test_gaps_are_measured_after_the_fee_and_need_the_quote_on_the_right_side():
     assert gaps({"ask1": None, "bid1": 0.06, "intl_bid": None, "intl_ask": 0.007}) == (None, pytest.approx(0.06 - 0.007 - 0.095 * 0.06 * 0.94))
 
 
+# ------------------------------------------------------------------ rewards
+def test_the_walk_scores_orders_up_to_the_target_size_and_nothing_beyond_it():
+    bids = [(0.30, 1000.0), (0.29, 1000.0), (0.28, 1000.0), (0.27, 1000.0)]
+    at, score = reward_walk(bids, target=2500, discount=0.30)
+    assert at == 0.28                                         # the target is reached inside the third level
+    assert score == pytest.approx(1000 + 300 + 90)            # the exchange's own example; the fourth level scores nothing
+    assert reward_walk(bids, target=5000, discount=0.30)[0] is None      # a side smaller than the target is not paid
+    assert reward_walk([], 500, 0.3) == (None, 0.0)
+
+
+def test_a_far_order_makes_the_side_reach_the_target_but_earns_almost_none_of_it():
+    asks = [(0.07, 20.0), (0.99, 500.0)]
+    at, score = reward_walk(asks, target=500, discount=0.25)
+    assert at == 0.99 and score == pytest.approx(20.0, abs=1e-6)
+
+
+def test_with_a_maximum_spread_both_sides_must_reach_the_target_close_together():
+    book = lambda bid, ask: {"bids": [{"px": {"value": str(bid)}, "qty": "500"}], "offers": [{"px": {"value": str(ask)}, "qty": "500"}]}  # noqa: E731
+    prog = {"program": "p", "pool": 40.0, "target": 500, "discount": 0.25, "max_spread": 0.06}
+    assert (reward_state(book(0.81, 0.93), prog)["rw_bid_ok"], reward_state(book(0.81, 0.93), prog)["rw_ask_ok"]) == (1, 1)    # exactly 12c apart still pays
+    assert (reward_state(book(0.01, 0.99), prog)["rw_bid_ok"], reward_state(book(0.01, 0.99), prog)["rw_ask_ok"]) == (0, 0)
+    one_sided = {"bids": [{"px": {"value": "0.95"}, "qty": "600"}], "offers": []}
+    assert reward_state(one_sided, prog)["rw_bid_ok"] == 0                                   # nobody is paid, the full side included
+    free = dict(prog, max_spread=None)
+    assert (reward_state(one_sided, free)["rw_bid_ok"], reward_state(one_sided, free)["rw_ask_ok"]) == (1, 0)
+    assert reward_state(book(0.01, 0.99), free)["rw_bid_at"] == 0.01
+
+
 # ------------------------------------------------------------------ a cycle
 class FakeUS:
     def __init__(self):
@@ -118,6 +146,13 @@ class FakeUS:
 
     def iter_markets(self, **f):
         return iter(())
+
+    def iter_incentives(self, **f):
+        period = {"programId": "politics_mid", "programType": "liquidityProgram", "status": "active", "period": "daily_event", "rewardPool": 75,
+                  "discountFactor": 0.2, "targetSize": 100}
+        return iter([{"marketSlug": "mn-dem", "category": "POL", "timePeriods": [period]}, {"marketSlug": "mn-rep", "category": "POL", "timePeriods": [period]},
+                     {"marketSlug": "mn-oth", "category": "POL", "timePeriods": [period]},
+                     {"marketSlug": "a-game", "category": "SPR", "timePeriods": [dict(period, programId="nba_live")]}])
 
     def book(self, slug):
         self.asked.append(slug)
@@ -151,10 +186,19 @@ def test_a_cycle_writes_the_books_the_twins_and_a_status_and_only_appends_to_the
     assert rows["mn-rep"]["ask1"] == "" and rows["mn-rep"]["intl_bid"] == "" and rows["mn-rep"]["intl_ask"] == "0.13"
     status = (tmp_path / "STATUS.md").read_text()
     assert "Democratic Party" in status and "No orders are placed" in status
+    # rewards: the programme wants 100 contracts a side; only the Republican bid (103) has them
+    assert (rows["mn-dem"]["rw_program"], rows["mn-dem"]["rw_bid_ok"], rows["mn-dem"]["rw_ask_ok"]) == ("politics_mid", "0", "0")
+    assert (rows["mn-rep"]["rw_bid_ok"], rows["mn-rep"]["rw_ask_ok"], rows["mn-rep"]["rw_bid_at"]) == ("1", "0", "0.19")
+    prog = list(csv.DictReader((tmp_path / "rewards.csv").open()))
+    assert len(prog) == 1                                             # the sports programme is not followed
+    assert (prog[0]["program"], prog[0]["markets"], prog[0]["books"], prog[0]["bid_sides_paid"], prog[0]["ask_sides_paid"]) == ("politics_mid", "3", "2", "1", "0")
+    assert (prog[0]["events"], prog[0]["events_with_none"]) == ("1", "0")
+    assert "politics_mid" in status
     record(tmp_path, us=FakeUS(), intl=FakeIntl(), now=1_794_300_000 + 14_400)
     assert len(list(csv.DictReader((tmp_path / "markets.csv").open()))) == 2      # the same two markets, written once
     assert len(list(csv.DictReader((tmp_path / "twins.csv").open()))) == 2
     assert len(list(csv.DictReader((tmp_path / "log.csv").open()))) == 2
+    assert len(list(csv.DictReader((tmp_path / "rewards.csv").open()))) == 2
     assert len(list((tmp_path / "snapshots").glob("*/*.csv.gz"))) == 2
 
 

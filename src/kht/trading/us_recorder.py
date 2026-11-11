@@ -20,8 +20,13 @@ Files, under the state directory:
     snapshots/YYYY-MM-DD/HHMMSS.csv.gz   one row per market per cycle
     markets.csv                          what each US market is (appended to, never rewritten)
     twins.csv                            its twin on polymarket.com, if any (appended to)
+    rewards.csv                          one line per reward programme per cycle: how many books would be paid
     log.csv                              one line per cycle
     STATUS.md                            the latest cycle in words
+
+It also reads the exchange's public schedule of rewards for resting orders
+and notes, for each book, whether it would be paid that second and how much
+score there is to share (docs/08_rewards.md).
 
 Only the standard library and ``requests`` are used.
 """
@@ -44,10 +49,14 @@ from .twins import Twin, pair_all
 CATEGORIES = ("politics", "culture", "macro", "technology", "climate", "finance", "geopolitics", "science")
 LEVELS = 3
 
+REWARD_CATEGORIES = {"POL", "CUL", "MAC", "TECH", "CLI", "FIN", "GEO", "SCI"}       # as the reward schedule names them
+REWARD_FIELDS = ["rw_program", "rw_pool", "rw_target", "rw_bid_at", "rw_ask_at", "rw_bid_score", "rw_ask_score", "rw_bid_ok", "rw_ask_ok"]
 SNAPSHOT_FIELDS = (["ts", "slug"]
                    + [f"{side}{part}{i}" for side in ("bid", "ask") for i in range(1, LEVELS + 1) for part in ("", "_qty")]
                    + ["bid_levels", "ask_levels", "bid_total", "ask_total", "last", "last_qty", "last_ts", "traded", "open_interest", "state",
-                      "intl_id", "intl_bid", "intl_bid_qty", "intl_ask", "intl_ask_qty", "intl_last"])
+                      "intl_id", "intl_bid", "intl_bid_qty", "intl_ask", "intl_ask_qty", "intl_last"] + REWARD_FIELDS)
+PROGRAMME_FIELDS = ["ts", "program", "period", "pool", "target", "discount", "max_spread", "markets", "books", "bid_sides_paid", "ask_sides_paid",
+                    "markets_paid_both", "events", "events_with_none"]
 MARKET_FIELDS = ["slug", "market_id", "category", "subcategory", "market_type", "event_id", "event_title", "label", "question", "end_date",
                  "tick", "fee_theta", "first_seen"]
 TWIN_FIELDS = ["slug", "intl_id", "token_yes", "condition", "rule", "intl_event_id", "intl_label", "intl_question", "neg_risk", "first_seen"]
@@ -69,8 +78,8 @@ def _num(x: Any) -> float | None:
         return None
 
 
-def parse_book(book: dict[str, Any]) -> dict[str, Any]:
-    """The top of one Polymarket US book as a flat row (prices of "Yes"; sizes in contracts)."""
+def book_sides(book: dict[str, Any]) -> tuple[list[tuple[float, float]], list[tuple[float, float]]]:
+    """(price, size) levels of one book, best first: bids, then offers. Empty levels are dropped."""
     def side(key: str, best_first_desc: bool) -> list[tuple[float, float]]:
         out = []
         for lvl in book.get(key) or []:
@@ -79,7 +88,68 @@ def parse_book(book: dict[str, Any]) -> dict[str, Any]:
                 out.append((px, qty))
         return sorted(out, reverse=best_first_desc)
 
-    bids, asks = side("bids", True), side("offers", False)
+    return side("bids", True), side("offers", False)
+
+
+def reward_walk(levels: list[tuple[float, float]], target: float, discount: float, tick: float = 0.01) -> tuple[float | None, float]:
+    """One side of a book as the liquidity programme scores it (docs.polymarket.us/incentives/liquidity).
+
+    The exchange walks from the best price outwards, adding up resting size
+    until the target size is reached. Every order inside that range scores
+    discount ** (ticks from the best price) * size; orders beyond it score
+    nothing. Returns the price at which the target was reached (None if the
+    whole side is smaller than the target, in which case it is not paid)
+    and the side's total score.
+    """
+    if not levels:
+        return None, 0.0
+    best, cum, score = levels[0][0], 0.0, 0.0
+    for px, qty in levels:
+        score += discount ** round(abs(px - best) / tick) * qty
+        cum += qty
+        if cum >= target - 1e-9:
+            return px, score
+    return None, score
+
+
+def reward_state(book: dict[str, Any], prog: dict[str, Any], tick: float = 0.01) -> dict[str, Any]:
+    """Whether each side of this book would be paid this second, and how much score there is to share.
+
+    A programme with a maximum spread pays a second only if both sides reach
+    the target and the two prices at which they reach it are no further
+    apart than twice that spread. A programme without one pays each side on
+    its own.
+    """
+    bids, asks = book_sides(book)
+    target, discount, max_spread = float(prog["target"]), float(prog["discount"]), prog.get("max_spread")
+    bid_at, bid_score = reward_walk(bids, target, discount, tick)
+    ask_at, ask_score = reward_walk(asks, target, discount, tick)
+    if max_spread is not None:
+        ok = bid_at is not None and ask_at is not None and (ask_at - bid_at) <= 2.0 * float(max_spread) + 1e-9
+        bid_ok = ask_ok = ok
+    else:
+        bid_ok, ask_ok = bid_at is not None, ask_at is not None
+    return {"rw_program": prog["program"], "rw_pool": prog["pool"], "rw_target": target, "rw_bid_at": bid_at, "rw_ask_at": ask_at,
+            "rw_bid_score": round(bid_score, 2), "rw_ask_score": round(ask_score, 2), "rw_bid_ok": int(bid_ok), "rw_ask_ok": int(ask_ok)}
+
+
+def reward_schedule(us: PolymarketUS) -> dict[str, dict[str, Any]]:
+    """The active liquidity programme of each market outside sports and crypto, by market slug."""
+    out: dict[str, dict[str, Any]] = {}
+    for p in us.iter_incentives():
+        if p.get("category") not in REWARD_CATEGORIES or not p.get("marketSlug"):
+            continue
+        for tp in p.get("timePeriods") or []:
+            if tp.get("status") == "active" and tp.get("programType") == "liquidityProgram" and tp.get("targetSize") and tp.get("discountFactor") is not None:
+                out[p["marketSlug"]] = {"program": tp.get("programId"), "period": tp.get("period"), "pool": _num(tp.get("rewardPool")) or 0.0,
+                                        "target": float(tp["targetSize"]), "discount": float(tp["discountFactor"]), "max_spread": _num(tp.get("maxSpread"))}
+                break
+    return out
+
+
+def parse_book(book: dict[str, Any]) -> dict[str, Any]:
+    """The top of one Polymarket US book as a flat row (prices of "Yes"; sizes in contracts)."""
+    bids, asks = book_sides(book)
     stats = book.get("stats") or {}
     row: dict[str, Any] = {"bid_levels": len(bids), "ask_levels": len(asks),
                            "bid_total": round(sum(q for _, q in bids), 2), "ask_total": round(sum(q for _, q in asks), 2)}
@@ -153,10 +223,22 @@ def record(state: Path, us: PolymarketUS | None = None, intl: Polymarket | None 
     if max_books is not None:
         quoted = quoted[:max_books]
 
+    # ---- which of them carry a reward for resting orders
+    schedule: dict[str, dict[str, Any]] = {}
+    try:
+        schedule = reward_schedule(us)
+    except Exception:                                       # the schedule is extra; the books are the point
+        errors += 1
+
     # ---- their order books
     def one(slug: str) -> tuple[str, dict[str, Any] | None]:
         try:
-            return slug, parse_book(us.book(slug))
+            book = us.book(slug)
+            row = parse_book(book)
+            prog = schedule.get(slug)
+            if prog is not None:
+                row.update(reward_state(book, prog, _num(markets[slug][0].get("orderPriceMinTickSize")) or 0.01))
+            return slug, row
         except Exception:                                   # a market that closed in the meantime; counted, not fatal
             return slug, None
 
@@ -236,8 +318,53 @@ def record(state: Path, us: PolymarketUS | None = None, intl: Polymarket | None 
             "us_cheaper_yes": sum(1 for c in cheap if c[0] == "Yes"), "us_cheaper_no": sum(1 for c in cheap if c[0] == "No"),
             "seconds": round(time.time() - t0, 1), "errors": errors}
     _append(state / "log.csv", LOG_FIELDS, [line])
-    (state / "STATUS.md").write_text(status_text(stamp, line, cheap, markets))
+    programmes = programme_rows(int(now), schedule, rows, markets)
+    _append(state / "rewards.csv", PROGRAMME_FIELDS, programmes)
+    (state / "STATUS.md").write_text(status_text(stamp, line, cheap, markets) + rewards_text(programmes))
     return line
+
+
+def programme_rows(ts: int, schedule: dict[str, dict[str, Any]], rows: dict[str, dict[str, Any]],
+                   markets: dict[str, tuple[dict[str, Any], dict[str, Any] | None]]) -> list[dict[str, Any]]:
+    """One line per reward programme: how many of its markets' books would be paid this second."""
+    by: dict[str, dict[str, Any]] = {}
+    for slug, prog in schedule.items():
+        g = by.setdefault(prog["program"], {"ts": ts, "program": prog["program"], "period": prog["period"], "pool": prog["pool"], "target": prog["target"],
+                                            "discount": prog["discount"], "max_spread": prog["max_spread"], "markets": 0, "books": 0, "bid_sides_paid": 0,
+                                            "ask_sides_paid": 0, "markets_paid_both": 0, "_events": {}})
+        g["markets"] += 1
+        # a market the event listing did not return is grouped with its neighbours by the slug without its last part (the answer)
+        event = str((markets.get(slug, (None, None))[1] or {}).get("id") or slug.rsplit("-", 1)[0])
+        paid = g["_events"].setdefault(event, 0)
+        r = rows.get(slug)
+        if r is not None and "rw_bid_ok" in r:
+            g["books"] += 1
+            g["bid_sides_paid"] += r["rw_bid_ok"]
+            g["ask_sides_paid"] += r["rw_ask_ok"]
+            g["markets_paid_both"] += int(r["rw_bid_ok"] and r["rw_ask_ok"])
+            g["_events"][event] = paid + r["rw_bid_ok"] + r["rw_ask_ok"]
+    out = []
+    for g in by.values():
+        events = g.pop("_events")
+        g["events"], g["events_with_none"] = len(events), sum(1 for v in events.values() if v == 0)
+        out.append(g)
+    return sorted(out, key=lambda g: -g["pool"])
+
+
+def rewards_text(programmes: list[dict[str, Any]]) -> str:
+    if not programmes:
+        return ""
+    out = ["", "## Rewards for resting orders", "",
+           "Polymarket US pays people to leave orders near the best price (docs/08_rewards.md). A programme's pool is shared across all its "
+           "markets. A side of a book is paid only while it holds the target size, and in programmes with a maximum spread only while both sides do, "
+           "close together. This is how many would have been paid at the moment of this cycle.", "",
+           "| Programme | Pool | Target size | Max spread | Markets | Bid sides paid | Ask sides paid | Events with nobody paid |",
+           "|---|---:|---:|---:|---:|---:|---:|---:|"]
+    for g in programmes:
+        spread = "none" if g["max_spread"] is None else f"{100 * g['max_spread']:g}c"
+        out.append(f"| {g['program']} ({g['period']}) | ${g['pool']:,.0f} | {g['target']:,.0f} | {spread} | {g['markets']:,} | {g['bid_sides_paid']:,} "
+                   f"| {g['ask_sides_paid']:,} | {g['events_with_none']:,} of {g['events']:,} |")
+    return "\n".join(out) + "\n"
 
 
 def status_text(stamp: datetime, line: dict[str, Any], cheap: list[tuple[str, float, float, float, dict[str, Any]]],
