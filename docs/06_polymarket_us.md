@@ -224,8 +224,8 @@ Two things this settles and one it does not.
 *The long-dated "No" is now confirmed on polymarket.com.* Round three found
 it by looking and could only test it in the thinnest markets, where it fell
 short. Here it was found in the pre-2026 half by a blind search and held in
-the 2026 half against a family-wise bar. Twenty of the 32 survivors are
-versions of it.
+the 2026 half against a family-wise bar. Twenty-three of the 32 survivors
+are versions of it.
 
 *A tight spread matters.* The plain first-round rule ("No" at 95–98¢, 3–60
 days, any spread) is not a candidate in this pooled universe, which includes
