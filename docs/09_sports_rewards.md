@@ -441,6 +441,15 @@ and the code were committed (commit `c73d2a6`, 09:49 UTC; the workflow in
 report yet: a game is judged only once it started more than 12 hours ago
 and has settled.
 
+**11 November, 14:48 UTC.** The first run ended as it should: 299 minutes,
+150 rounds of readings, 49,788 order books read, no errors. It followed 594
+games, 518 of which had a price to rest at, and found 564 moments in 213
+games at which a resting order would have been traded against. No game is
+old enough to judge, and five hours say nothing. The second run started by
+itself at 14:48 UTC, and with it the rehearsal of the order system
+(`docs/10_us_quoter.md`). The scoring script was run on the real output for
+the first time and works.
+
 ## 9. The rules as filed, and a change on 18 November
 
 *Found on 11 November at about 11:05 UTC, after everything above. It

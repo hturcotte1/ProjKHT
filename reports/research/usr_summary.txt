@@ -1,0 +1,24 @@
+Paper orders before games on Polymarket US (docs/09_sports_rewards.md). A simulation: no order was placed, and no reward was paid to anyone.
+runs: 1; hours recorded: 5.0; games followed: 571; first reading 11 Nov 09:50 UTC, last 11 Nov 14:48 UTC
+games that started more than 12 hours ago: 0; of them with a settlement on file: 0
+
+JUDGED ACCOUNT R1-all: every such programme. 100 contracts on each side.
+games judged (started more than 12 hours ago, settlement known): 0 over 0 US dates and 0 date-programme groups; games still waiting for a settlement: 0
+
+JUDGED ACCOUNT R1-thin: the programmes named in advance as thinly quoted (itf_moneyline, doubles_moneyline, utr_moneyline, darts_moneyline, astra_cup_women_moneyline). 100 contracts on each side.
+games judged (started more than 12 hours ago, settlement known): 0 over 0 US dates and 0 date-programme groups; games still waiting for a settlement: 0
+
+JUDGED ACCOUNT R1-core: lower-tour tennis only (itf_moneyline, utr_moneyline). 100 contracts on each side.
+games judged (started more than 12 hours ago, settlement known): 0 over 0 US dates and 0 date-programme groups; games still waiting for a settlement: 0
+
+all games recorded so far, settled or not, 100 contracts a side: reward by the formula and how often an order was traded against
+                                  program  games  hours_quoted  share_of_score  reward_formula  reward_paid  games_filled  contracts_filled  fills_at_last_mid
+   table_tennis_moneyline_day_of_20261018    230       330.677           0.424          41.859        1.503            82           3899.31            -27.698
+             itf_moneyline_dayof_20261018    155       429.063           0.120          85.127       29.666            68           4462.43            -22.649
+      esports_moneyline_pre_game_20261008     39       107.150           0.107          16.485       12.863            19           1768.41            -29.976
+            utr_moneyline_day_of_20261008     38        68.918           0.327          36.296       27.707             7            115.60            -10.409
+        doubles_moneyline_day_of_20261018     31        84.132           0.205          25.377       16.859             7            514.29            -10.530
+        atp_wta_moneyline_day_of_20261018     30       104.951           0.016           6.647        0.000            24           3075.85             12.571
+          darts_moneyline_day_of_20260924     21        21.875           0.417           6.596        0.000             4            306.28             -0.043
+   bskt_cup_3x3_moneyline_day_of_20261014     14         3.045           0.197           0.600        0.000             0              0.00              0.000
+astra_cup_women_moneyline_day_of_20261014     13        16.513           0.679          11.209        9.345             2             12.69              0.063
