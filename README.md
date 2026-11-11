@@ -45,9 +45,12 @@ over. Its answers are below, under "The fourth round"; in one line each:
   11,885 settled markets of the kinds it trades, a rule fixed beforehand
   called 4,208 results out of reach and none came in; in 734 of them an
   order stood there to trade against. The risk is a price jump that takes
-  back a hundred trades at once: counted on every minute since 2020, that
-  happened at worst once in 1,643 chances (Bitcoin in 2020), against a
-  break-even of once in 110. This is not about what
+  back a hundred trades at once. Counted at the settlement time itself on
+  the 2,506 evenings since 2020, the price passed the limit on five
+  evenings, each for one coin, the last of them three days before this
+  was written, and ended beyond it on one. The trade breaks even at one
+  loss in 110, so the margin is real, and a level only just out of reach
+  is still not safe. This is not about what
   the crowd believes. It is money a reward scheme leaves on the table,
   and it lasts as long as somebody keeps leaving it. A recorder now
   writes down those order books every evening, with sizes (test L1,
@@ -163,7 +166,7 @@ counted as found unless it clears what the luckiest worthless rule reaches.
 | **Two exchanges, one question:** buy on Polymarket US whatever is cheaper there than on polymarket.com | **Failed**, on rules fixed beforehand: −19.8% on 505 purchases. The two exchanges are equally accurate, and for most shared questions polymarket.com is the smaller market |
 | Sports on Polymarket US (most of that exchange): 3,360 rules on a year of games, fixed in writing first | **Nothing.** Not one rule passed even the first step, on 118,339 games. An hour before a game the middle of the order book is a fair price; a buyer loses the spread and the fee ([`docs/06_polymarket_us.md`](docs/06_polymarket_us.md), section 10) |
 | **Being paid to leave orders.** Polymarket US pays rewards for resting orders and publishes the schedule | **A lead, not a result.** Outside sports some pools are paid to nobody today ([`docs/08_rewards.md`](docs/08_rewards.md)). In sports every game has its own pool. By the published formula 100 contracts resting on each side before a lower-tour tennis match would be paid about 27¢ an hour, and on 29,647 past matches being run over cost 18¢ to 21¢ an hour: the reward is about one and a half times the cost. Doubles and darts fail that check. A paper test on live order books is running, rules fixed first. **From 18 November 2026 the exchange's filed rules let it cap a reward at a share of the account's own trading, which would end this where it is applied:** [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md), section 9 |
-| **Crypto on Polymarket US** (11 November): the last tick | **A second lead, not a result.** Whoever works the reward pools on the daily and weekly price ladders bids 1¢, for the size the programme asks, on levels the price cannot reach, and leaves the bid until the end. Almost nobody sells to it: two thirds of those markets never traded a contract. Test L1 sells there in the last quarter of an hour, with "cannot reach" defined from minute prices since 2020 before any market was looked at. History: 4,208 such results, none came in, 734 with an order to sell to. The history has no sizes; a recorder now collects them ([`docs/11_crypto_us.md`](docs/11_crypto_us.md)) |
+| **Crypto on Polymarket US** (11 November): the last tick | **A second lead, not a result.** Whoever works the reward pools on the daily and weekly price ladders bids 1¢, for the size the programme asks, on levels the price cannot reach, and leaves the bid until the end. Almost nobody sells to it: two thirds of those markets never traded a contract. Test L1 sells there in the last quarter of an hour, with "cannot reach" defined from minute prices since 2020 before any market was looked at. History: 4,208 such results, none came in, 734 with an order to sell to. On the 2,506 evenings since 2020 the price passed the limit on five, for one coin each. The history has no sizes; a recorder now collects them ([`docs/11_crypto_us.md`](docs/11_crypto_us.md)) |
 
 What exists now that did not: a recorder that writes down the real order
 books of Polymarket US, with sizes, every cycle, and the polymarket.com
