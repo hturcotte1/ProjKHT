@@ -98,6 +98,26 @@ def test_clustered_z_counts_a_group_once():
     assert np.isnan(score.clustered_z(values, np.array(["a"] * 8))[1])                   # one group says nothing about its own spread
 
 
+def test_the_filed_wording_gives_the_same_when_both_sides_are_always_paid_and_more_when_they_are_not():
+    full = game_row("a")
+    for col in ("paid_bid_s", "paid_ask_s", "paid_bid_alone_s", "paid_ask_alone_s"):
+        full[col] = FULL                                                                 # both sides paid for every second watched
+    half = game_row("b")
+    for col in ("paid_bid_s", "paid_bid_alone_s"):
+        half[col] = FULL                                                                 # the bid always, the offer never
+    half.update({f"acc_ask_{x}": 0.0 for x in GRID})
+    spread = dict(game_row("c"), max_spread=0.07)                                        # with a maximum spread the two readings are one
+    for col in ("paid_bid_s", "paid_ask_s"):
+        spread[col] = FULL / 2
+    g = pd.DataFrame([full, half, spread])
+    per, _ = score.account(score.per_game_day(g), score.game_facts(g), pd.DataFrame(), pd.Series({"a": 1.0, "b": 0.0, "c": 1.0}), 100, NOW)
+    per = per.set_index("slug")
+    assert per.loc["a", "reward_rule"] == pytest.approx(per.loc["a", "reward_formula"])
+    assert per.loc["b", "reward_formula"] == pytest.approx(12.0 * 0.5 / 2 * PART)        # a fixed slice a second: half of one side's half
+    assert per.loc["b", "reward_rule"] == pytest.approx(12.0 * 0.5 * PART)               # the whole pool goes to the side that is paid
+    assert per.loc["c", "reward_rule"] == pytest.approx(per.loc["c", "reward_formula"])
+
+
 def test_seconds_watched_twice_are_not_counted_twice():
     g = pd.DataFrame([game_row("a", run="r1"), game_row("a", run="r2")])                 # two runs that somehow watched the same six hours
     d = score.per_game_day(g)

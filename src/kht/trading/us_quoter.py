@@ -337,6 +337,7 @@ class Engine:
     scanned_at: float = -1e18
     errors: int = 0
     cycles: int = 0
+    capped: set[str] = field(default_factory=set)                         # markets whose reward now depends on trading: left alone
 
     def __post_init__(self) -> None:
         self.state.mkdir(parents=True, exist_ok=True)
@@ -352,12 +353,13 @@ class Engine:
         """The games that may be rested in now: the configured programmes, a pool of their own, inside their six hours."""
         if t - self.read_at >= rw.REFRESH:
             try:
-                self.schedule = rw.games(list(self.us.iter_incentives(statuses="active")))
-                self.read_at = t
+                entries = list(self.us.iter_incentives(statuses="active"))
+                self.schedule, self.capped, self.read_at = rw.games(entries), capped_markets(entries), t
             except Exception:
                 self.errors += 1
         return {s: g for s, g in self.schedule.items()
-                if g["program"].startswith(self.cfg.programmes) and g["markets_in_event"] == 1 and g["start"] - rw.WINDOW <= t < g["start"] - rw.PULL}
+                if g["program"].startswith(self.cfg.programmes) and g["markets_in_event"] == 1 and s not in self.capped
+                and g["start"] - rw.WINDOW <= t < g["start"] - rw.PULL}
 
     def read(self, slugs: list[str], games: dict[str, dict[str, Any]], mine: dict[tuple[str, str, float], float]) -> dict[str, dict[str, Any]]:
         """Read these books now, as other people's orders alone.
@@ -566,11 +568,33 @@ class Engine:
         lines = [f"# Orders before games on Polymarket US ({self.mode}): {stamp(t)}", "",
                  "On paper: nothing is sent to the exchange." if self.mode == "paper" else "LIVE: these are real orders.", "",
                  f"- reward accrued by the published formula: ${self.reward():,.2f}; counting only a market and date that reached $1: ${self.reward(1.0):,.2f}",
-                 f"- games with a position: {len(positions)}; at risk in them: ${sum(p.at_risk() for p in positions.values()):,.2f}"]
+                 f"- games with a position: {len(positions)}; at risk in them: ${sum(p.at_risk() for p in positions.values()):,.2f}",
+                 f"- markets left alone because their reward is now tied to the account's own trading: {len(self.capped):,}"]
         if isinstance(self.broker, PaperBroker):
             lines.append(f"- settled so far: ${self.broker.cash:,.2f}")
         lines += ["", "The reward is what the formula gives for the orders that rested. It is not money anyone has been paid.", ""]
         return "\n".join(lines)
+
+
+def capped_markets(entries: list[dict[str, Any]]) -> set[str]:
+    """Markets whose reward for resting orders is tied to the account's own trading.
+
+    From 18 November 2026 the exchange may cap a reward at a percentage of
+    what the account itself traded in that market, or require a minimum of
+    trading (docs/09_sports_rewards.md, section 9). Where it does, an order
+    that rests and is never traded against earns nothing, and this program
+    has no business there. How the schedule will spell those parameters is
+    not yet known, so any field on a time period whose name speaks of a cap
+    or of volume, and that is set, counts.
+    """
+    out = set()
+    for m in entries:
+        for tp in m.get("timePeriods") or []:
+            if tp.get("programType", "liquidityProgram") != "liquidityProgram":
+                continue
+            if any(("cap" in k.lower() or "volume" in k.lower()) and v not in (None, "", False, 0, 0.0) for k, v in tp.items()):
+                out.add(m.get("marketSlug"))
+    return out
 
 
 def _without(levels: list[tuple[float, float]], slug: str, side: str, mine: dict[tuple[str, str, float], float]) -> list[tuple[float, float]]:

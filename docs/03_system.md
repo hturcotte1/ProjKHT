@@ -404,6 +404,7 @@ if it fails, the accounts' state is still committed.
 | `markets.csv` | What each market is. Rows are added, never rewritten |
 | `twins.csv` | Its twin on polymarket.com, if it has one. Rows are added, never rewritten |
 | `rewards.csv` | One line per reward programme per run: how many of its books would have been paid that second (`docs/08_rewards.md`) |
+| `schedule_fields.csv` | Every field the reward schedule carries, per run. A field that was not there on 11 November 2026 means the reward rules have changed (`docs/09_sports_rewards.md`, section 9), and `STATUS.md` then says so |
 | `log.csv` | One line per run |
 | `STATUS.md` | The latest run in words |
 

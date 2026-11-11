@@ -149,11 +149,20 @@ def account(d: pd.DataFrame, facts: pd.DataFrame, h: pd.DataFrame, settle: pd.Se
     called_off = d["settle"].notna() & (d["settle"] > 1e-9) & (d["settle"] < 1 - 1e-9)
     d.loc[called_off, "reward_formula"] = 0.0                      # rule 7: no reward for a game that was called off
     d["reward_paid"] = np.where(d["reward_formula"] >= MINIMUM, d["reward_formula"], 0.0)   # rule 5: by market and date
+    # seconds in which each side would be paid: without us, or with our order where that makes the difference
+    d["q_s"] = np.maximum(d["paid_bid_alone_s"], d["paid_bid_s"]) + np.maximum(d["paid_ask_alone_s"], d["paid_ask_s"])
     per = d.groupby("slug").agg(program=("program", "first"), start=("start", "max"), slice=("slice", "first"), markets_in_event=("markets_in_event", "first"),
-                                obs_s=("obs_s", "sum"), quote_s=("quote_s", "sum"), cap_s=("cap_s", "sum"),
+                                obs_s=("obs_s", "sum"), quote_s=("quote_s", "sum"), cap_s=("cap_s", "sum"), q_s=("q_s", "sum"), max_spread=("max_spread", "first"),
                                 share_s=(f"acc_bid_{x}", "sum"), share_s2=(f"acc_ask_{x}", "sum"),
                                 reward_formula=("reward_formula", "sum"), reward_paid=("reward_paid", "sum"), settle=("settle", "first"))
     per["called_off"] = per["settle"].notna() & (per["settle"] > 1e-9) & (per["settle"] < 1 - 1e-9)
+    # The same reward as the exchange's filed rules word it (docs/09, section 9): a share of the whole pool, by score summed over
+    # the period, so that seconds in which a side is not paid give their money to the seconds in which it is. Where a programme has
+    # a maximum spread the two readings are the same. Described beside the judged figure, never in place of it.
+    rate = (per["q_s"] / per["obs_s"].where(per["obs_s"] > 0)).where(lambda r: r > 0)
+    rule = np.minimum(per["slice"] * (per["share_s"] + per["share_s2"]) / (rate * WINDOW), per["slice"])
+    per["reward_rule"] = np.where(per["max_spread"].notna(), per["reward_formula"], rule.fillna(0.0))
+    per.loc[per["called_off"], "reward_rule"] = 0.0
     per = per.join(facts[["mid_pull"]])
     if len(f):
         f = f.join(per[["settle", "mid_pull"]], on="slug")
@@ -248,6 +257,7 @@ def main() -> None:
             continue
         cap = PRIMARY * judged["cap_s"].sum() / max(judged["quote_s"].sum(), 1.0)
         lines += [f"reward by the published formula: ${judged['reward_formula'].sum():,.2f}; after the $1 minimum by market and date: ${judged['reward_paid'].sum():,.2f}",
+                  f"   (as the filed rules word the split, described only: ${judged['reward_rule'].sum():,.2f}; of it in games that reach $1: ${judged.loc[judged['reward_rule'] >= MINIMUM, 'reward_rule'].sum():,.2f})",
                   f"games in which an order was traded against: {int((judged['filled'] > 1e-9).sum()):,} ({100 * (judged['filled'] > 1e-9).mean():.1f}%); contracts: {judged['filled'].sum():,.0f}",
                   f"what those fills made, held to settlement: ${judged['pnl_settle'].sum():,.2f}; valued at the last middle of the book before the start: ${judged['pnl_mid'].sum():,.2f}",
                   f"net: ${judged['net'].sum():,.2f}; a game: ${mean:,.3f}; z with each date-programme group as one observation: {z:.2f}",

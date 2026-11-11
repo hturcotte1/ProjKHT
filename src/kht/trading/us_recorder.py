@@ -21,6 +21,7 @@ Files, under the state directory:
     markets.csv                          what each US market is (appended to, never rewritten)
     twins.csv                            its twin on polymarket.com, if any (appended to)
     rewards.csv                          one line per reward programme per cycle: how many books would be paid
+    schedule_fields.csv                  every field the reward schedule carries, per cycle: a new one means the rules have changed
     log.csv                              one line per cycle
     STATUS.md                            the latest cycle in words
 
@@ -133,10 +134,41 @@ def reward_state(book: dict[str, Any], prog: dict[str, Any], tick: float = 0.01)
             "rw_bid_score": round(bid_score, 2), "rw_ask_score": round(ask_score, 2), "rw_bid_ok": int(bid_ok), "rw_ask_ok": int(ask_ok)}
 
 
-def reward_schedule(us: PolymarketUS) -> dict[str, dict[str, Any]]:
-    """The active liquidity programme of each market outside sports and crypto, by market slug."""
+KNOWN_PERIOD_FIELDS = {"programId", "programType", "start", "end", "rewardPool", "status", "discountFactor", "targetSize", "period", "createdAt",
+                       "maxSpread", "minTakerNotional"}
+FIELD_FIELDS = ["ts", "field", "periods", "known", "examples"]
+
+
+def schedule_fields(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Every field the reward schedule carries on a time period, how often, and whether it was there on 11 November 2026.
+
+    The exchange has filed amended rules, in force from 18 November 2026,
+    under which a reward may be capped at a share of what the account itself
+    trades, or need a minimum of trading (docs/09_sports_rewards.md,
+    section 9). When such a parameter is published it will appear as a
+    field not seen before, and this is where it will be noticed.
+    """
+    count: dict[str, int] = {}
+    examples: dict[str, list[str]] = {}
+    for p in entries:
+        for tp in p.get("timePeriods") or []:
+            for key, value in tp.items():
+                count[key] = count.get(key, 0) + 1
+                if key not in KNOWN_PERIOD_FIELDS and len(examples.setdefault(key, [])) < 5:
+                    examples[key].append(f"{tp.get('programId')}={value}")
+    return [{"field": k, "periods": n, "known": int(k in KNOWN_PERIOD_FIELDS), "examples": "; ".join(examples.get(k, []))} for k, n in sorted(count.items())]
+
+
+def reward_schedule(us: PolymarketUS, fields: list[dict[str, Any]] | None = None) -> dict[str, dict[str, Any]]:
+    """The active liquidity programme of each market outside sports and crypto, by market slug.
+
+    If ``fields`` is given, the summary of ``schedule_fields`` is added to it.
+    """
     out: dict[str, dict[str, Any]] = {}
-    for p in us.iter_incentives():
+    entries = list(us.iter_incentives())
+    if fields is not None:
+        fields.extend(schedule_fields(entries))
+    for p in entries:
         if p.get("category") not in REWARD_CATEGORIES or not p.get("marketSlug"):
             continue
         for tp in p.get("timePeriods") or []:
@@ -225,8 +257,9 @@ def record(state: Path, us: PolymarketUS | None = None, intl: Polymarket | None 
 
     # ---- which of them carry a reward for resting orders
     schedule: dict[str, dict[str, Any]] = {}
+    fields: list[dict[str, Any]] = []
     try:
-        schedule = reward_schedule(us)
+        schedule = reward_schedule(us, fields)
     except Exception:                                       # the schedule is extra; the books are the point
         errors += 1
 
@@ -320,7 +353,15 @@ def record(state: Path, us: PolymarketUS | None = None, intl: Polymarket | None 
     _append(state / "log.csv", LOG_FIELDS, [line])
     programmes = programme_rows(int(now), schedule, rows, markets)
     _append(state / "rewards.csv", PROGRAMME_FIELDS, programmes)
-    (state / "STATUS.md").write_text(status_text(stamp, line, cheap, markets) + rewards_text(programmes))
+    _append(state / "schedule_fields.csv", FIELD_FIELDS, [{"ts": int(now), **f} for f in fields])
+    new = [f for f in fields if not f["known"]]
+    notice = ""
+    if new:
+        notice = ("\n## The reward schedule carries fields that were not there on 11 November 2026\n\n"
+                  "The exchange's amended rules, in force from 18 November 2026, allow a reward to be capped at a share of what an account itself "
+                  "trades (docs/09_sports_rewards.md, section 9). Look at these before trusting any reward figure:\n\n"
+                  + "\n".join(f"- `{f['field']}` on {f['periods']:,} time periods, for example {f['examples']}" for f in new) + "\n")
+    (state / "STATUS.md").write_text(status_text(stamp, line, cheap, markets) + rewards_text(programmes) + notice)
     return line
 
 

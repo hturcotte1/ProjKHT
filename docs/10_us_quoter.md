@@ -5,6 +5,10 @@ account, no key and no order has been involved in writing it. It exists so
 that if the paper test of `docs/09_sports_rewards.md` passes, and the owner
 decides to try it with money, nothing has to be built first.*
 
+*The exchange's rules change on 18 November 2026 in a way that may end
+what this program is for: `docs/09_sports_rewards.md`, section 9. Read
+that before anything here.*
+
 ## 1. What it does
 
 `kht us-quote` rests one order on each side of a few chosen games on
@@ -70,6 +74,10 @@ selling what was bought, or buying back what was sold.
 - **It never cancels "everything".** The exchange's cancel-all takes a list
   of markets, and an empty list means the whole account. The code refuses
   to send an empty list.
+- **It stays out of markets where resting alone is not paid.** From
+  18 November 2026 the exchange may cap a reward at a share of what the
+  account itself trades (`docs/09_sports_rewards.md`, section 9). Any
+  market whose schedule carries such a field is left alone.
 - **Limits are in the code as well as the settings.** No order above 500
   contracts or outside 1¢ to 99¢ can leave, and an order of the wrong kind
   for its side is refused before anything is sent.

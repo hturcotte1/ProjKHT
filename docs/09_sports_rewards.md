@@ -5,6 +5,11 @@ tested with money, and nobody has been paid anything. Sections 1 to 4 are
 what was looked at; section 5 fixes a test before any of its data exist;
 results will be added from section 8 on.*
 
+**Read section 9 first.** The exchange has filed amended rules that take
+effect on 18 November 2026. Under them it may cap a reward at a share of
+what the account itself trades. Where it does, resting orders that are not
+traded against earn nothing, and this lead ends.
+
 ## 1. What this adds to docs/08
 
 `docs/08_rewards.md` found that Polymarket US pays people for leaving
@@ -435,3 +440,101 @@ and the code were committed (commit `c73d2a6`, 09:49 UTC; the workflow in
 `5f23e6c`). Each run lasts five hours and starts the next. Nothing to
 report yet: a game is judged only once it started more than 12 hours ago
 and has settled.
+
+## 9. The rules as filed, and a change on 18 November
+
+*Found on 11 November at about 11:05 UTC, after everything above. It
+matters more than anything above.*
+
+The exchange files the terms of its programmes with its regulator, the
+CFTC, and the filings are public. The one for this programme is the
+"Amended Market Liquidity Incentive Program" (PMX-2026-70,
+`cftc.gov/filings/orgrules/rules11032642173.pdf`), filed on 3 November
+2026. It takes effect ten business days later, which is **18 November
+2026**, and says itself that it then runs to 18 November 2027. Everything
+above was built from the exchange's help pages. This is the rule text.
+
+### What it confirms
+
+- The scoring: snapshots once a second, the walk to the target size, the
+  discount for each tick from the best price, each side normalised, the
+  maximum-spread test on the book as a whole. As modelled.
+- The $1 threshold: a reward under $1 for one participant, one contract and
+  one time period is not paid. The paper test's rule (one market, one US
+  date) is the same or stricter.
+- Anyone in good standing is in, automatically.
+- It names what the exchange will treat as gaming, and "placing quotes with
+  no bona fide intent to trade" is on the list. The orders of thousands at
+  1¢ and 99¢ are that. Orders at the market's own price are not.
+
+### What it corrects in my reading
+
+I had each second worth a fixed slice of the pool, lost if a side did not
+qualify. The rule divides the pool differently: a participant's share is
+its score summed over the whole period, divided by everybody's score
+summed over the whole period. So where a programme has no maximum spread,
+the whole pool is paid out among the seconds that do qualify. Where it has
+one, the pool is first scaled by the share of seconds that pass.
+
+Where both sides of a book always qualify the two readings are the same.
+Where they do not, mine pays less. So the paper test's accounting errs on
+the low side, by about a tenth in ITF. The scoring script now reports the
+rule's own version beside the judged figure, and does not judge by it.
+
+### What changes on 18 November
+
+Two new parameters, each optional, set by the exchange for a contract and
+a time period and published with the others:
+
+> **Reward Cap Percentage**: "limits a Participant's reward for a Contract
+> and Time Period to that percentage of the Participant's Executed Notional
+> Volume in that Contract during that Time Period."
+
+> **Minimum Volume Requirement**: a participant is paid only if its
+> executed volume in the contract in that period is at least 0.01% of the
+> contract's.
+
+Rewards withheld under either are not passed to anyone else.
+
+**Where the exchange sets a cap, an order that rests and is never traded
+against earns nothing.** That is the whole of the idea in this document.
+With a cap, the paper account would be paid only in the games where it was
+filled, about 15% of them on the history of section 4. That is about 25¢ a
+game of reward against 58¢ of cost from those same fills. It loses.
+
+The filing's own illustration shows caps of between 10% and 100% of
+executed volume on five example contracts, and no cap on the sixth.
+
+### What is not known
+
+Whether the exchange will set a cap on the tennis programmes, and at what
+percentage. It must publish each contract's parameters at least 48 hours
+before a time period, on its rewards page. On 11 November neither that
+page nor the public schedule carried any such field: the schedule's time
+periods have eleven fields, and none is a cap.
+
+Why file it at all? Presumably because a great deal of what rests in these
+books today is there to be paid and not to trade. The exchange has given
+itself the tool to stop paying for that, and I expect it to use it.
+
+### What was done about it
+
+- **The recorder watches for it.** Every cycle `kht us-record` writes down
+  every field the schedule carries (`state/us/schedule_fields.csv`) and
+  says so at the foot of `state/us/STATUS.md` when one appears that was not
+  there on 11 November.
+- **The order system refuses it.** `kht us-quote` leaves alone any market
+  whose time period carries a field that speaks of a cap or of volume.
+- **The paper test runs to its end as fixed.** Its last games are on
+  17 November, under the rules as they are now. What it measures stays
+  true of those rules. Whether it says anything about the week after
+  depends on what the exchange publishes.
+
+### What this does to the lead
+
+It puts a date on it. Until 18 November the formula pays for resting
+alone, and section 4 says that in lower-tour tennis it has paid about one
+and a half times what resting costs. From 18 November that holds only
+where no cap is set. A real test begun now would test the old rules and be
+paid, if it is paid, about a week later. That is the owner's decision, and
+it is a smaller decision than it looked this morning.

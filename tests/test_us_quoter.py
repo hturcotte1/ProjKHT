@@ -345,3 +345,20 @@ def test_with_a_real_account_the_engine_does_not_anchor_on_its_own_order(tmp_pat
     clock["t"] += 30
     e.step()
     assert e.reward() - before == pytest.approx(12.0 * (0.25 + 0.25) * 30 / (2 * rw.WINDOW))
+
+
+def test_a_market_whose_reward_is_tied_to_trading_is_left_alone(tmp_path):
+    capped = entry(B, program="utr_moneyline_day_of_1")
+    capped["timePeriods"][0]["rewardCapPercentage"] = 0.5
+    free = entry(A)
+    free["timePeriods"][0]["rewardCapPercentage"] = None            # the field is there but not set: no cap
+    assert uq.capped_markets([capped, free]) == {B}
+    us = FakeUS([capped, free], {A: QUIET, B: QUIET})
+    e, _ = engine(tmp_path, us)
+    assert e.step()["games"] == 1 and B not in us.asked and {o.slug for o in e.broker.open_orders([A, B])} == {A}
+    needs_volume = entry(A)
+    needs_volume["timePeriods"][0]["minimumVolumeRequirement"] = True
+    assert uq.capped_markets([needs_volume]) == {A}
+    volume_programme = entry(A)                                      # a programme that pays for trading, not resting, is not ours to judge
+    volume_programme["timePeriods"][0].update({"programType": "volumeProgram", "minTakerNotional": 100})
+    assert uq.capped_markets([volume_programme]) == set()

@@ -209,3 +209,27 @@ def test_the_us_books_are_kept_when_polymarket_com_cannot_be_reached(tmp_path):
 
     line = record(tmp_path, us=FakeUS(), intl=Down(), now=1_794_300_000)
     assert (line["books_read"], line["twins"], line["errors"]) == (2, 0, 1)
+
+
+def test_a_new_field_in_the_reward_schedule_is_written_down_and_flagged(tmp_path):
+    from kht.trading.us_recorder import schedule_fields
+
+    us = FakeUS()
+    record(tmp_path, us=us, intl=FakeIntl(), now=1_794_300_000)
+    seen = {r["field"]: r for r in csv.DictReader((tmp_path / "schedule_fields.csv").open())}
+    assert seen["rewardPool"]["periods"] == "4" and seen["rewardPool"]["known"] == "1"      # every period, sports included
+    assert all(r["known"] == "1" for r in seen.values())
+    assert "were not there on 11 November" not in (tmp_path / "STATUS.md").read_text()
+
+    class Capped(FakeUS):                       # the exchange starts publishing a cap on one programme
+        def iter_incentives(self, **f):
+            entries = list(super().iter_incentives(**f))
+            entries[0]["timePeriods"] = [dict(entries[0]["timePeriods"][0], rewardCapPercentage=0.5)]
+            return iter(entries)
+
+    record(tmp_path, us=Capped(), intl=FakeIntl(), now=1_794_300_000 + 14_400)
+    rows = [r for r in csv.DictReader((tmp_path / "schedule_fields.csv").open()) if r["field"] == "rewardCapPercentage"]
+    assert len(rows) == 1 and rows[0]["known"] == "0" and rows[0]["periods"] == "1" and rows[0]["examples"] == "politics_mid=0.5"
+    status = (tmp_path / "STATUS.md").read_text()
+    assert "were not there on 11 November" in status and "rewardCapPercentage" in status
+    assert [f["field"] for f in schedule_fields([{"timePeriods": [{"programId": "p", "somethingNew": 1}]}]) if not f["known"]] == ["somethingNew"]
