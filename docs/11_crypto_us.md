@@ -342,10 +342,11 @@ Two things to read off it.
   sound, and it is evidence about coin prices, not about this exchange.**
 
 What the tables leave to trade, with Bitcoin at $74,200 and the daily
-ladder's top level at $81,500: by L1-strict, nothing until the very last
-readings, and then only the top few levels. By L1-recent, levels above
-about $78,000 a quarter of an hour before the end, and above about
-$76,500 two minutes before it.
+ladder's top level at $81,500: by L1-strict, nothing a quarter of an hour
+before the end, and in the last few minutes, if the index value is fresh,
+levels above about $79,000. By L1-recent, levels above about $78,000 a
+quarter of an hour before the end, and above about $76,500 two minutes
+before it.
 
 ## 7. The up-or-down markets
 
