@@ -407,7 +407,11 @@ if it fails, the accounts' state is still committed.
 
 The snapshots grow by about half a megabyte a day. They are the data for the
 forward tests fixed in `docs/06_polymarket_us.md`, section 8, and
-`docs/07_two_venues.md`, section 3.
+`docs/07_two_venues.md`, section 3. To score them:
+
+```bash
+python scripts/us_forward.py --settle
+```
 
 ## Reproducing the research
 
