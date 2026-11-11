@@ -220,6 +220,84 @@ would clear something between nothing and 50¢ a game. The one-hour look
 above says the cost is well under a dollar. They cannot both be right, and
 the six-hour measure can contradict either.
 
+### What the six-hour measure found
+
+*Run on 11 November at 10:58 UTC, on all 52,103 games, as fixed above
+(`reports/research/rest_history_output.txt`, `rh_by_programme.csv`,
+`rh_by_month.csv`).*
+
+Of the 52,103 games, 49,592 had stored prices and 34,125 had a book that
+could be rested in at some reading. In those the orders rested for 3.2
+hours a game on average, not six: for the rest of the time the stored
+prices do not show a real two-sided book 10¢ wide or less.
+
+| Programme | Games rested in | Hours rested, a game | Games with a fill | What the fills made, a game | z by day | The same at the last middle price | Reward by the formula, a game (section 3) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| ITF | 29,647 | 3.3 | 15.5% | −$0.58 | −6.1 | −$0.68 | $1.62 |
+| UTR | 2,393 | 3.2 | 11.8% | −$0.69 | −2.9 | −$0.52 | $2.15 |
+| Doubles | 915 | 3.2 | 20.7% | −$2.48 | −4.2 | −$1.50 | $1.89 |
+| Darts | 1,063 | 3.2 | 25.5% | −$1.21 | −2.5 | −$1.76 | $1.24 |
+| Beach volleyball | 107 | 1.6 | 1.9% | −$1.32 | −1.4 | −$0.46 | $1.63 |
+
+**By the bars fixed beforehand:**
+
+- **ITF: the lead stands.** Being run over cost 58¢ a game, under the
+  dollar that was the bar.
+- **UTR: stands.** 69¢ a game against $2.15.
+- **Doubles: dead.** $2.48 a game against a reward of $1.89.
+- **Darts: dead in practice.** By the letter it survives by three cents
+  ($1.21 against $1.24). On the steadier measure, the last middle price,
+  it costs $1.76. I treat it as dead.
+- **Beach volleyball: cannot be said.** Two fills in 107 games.
+
+**The fair comparison is by the hour, and it is tighter than the table
+looks.** The reward in the last column is for six hours of resting. The
+cost is for the 3.2 hours that could be measured. Per hour of 100 contracts
+resting on each side:
+
+| Programme | Being run over costs, an hour | The formula pays, an hour |
+|---|---:|---:|
+| ITF | 18¢ held to settlement, 21¢ at the last middle | 27¢ |
+| ITF, since its programme began on 18 October (4,863 games) | 10¢ and 18¢ | 27¢ |
+| UTR | 22¢ and 16¢ | 36¢, when the book passes its maximum spread, which half do |
+| Doubles | 77¢ and 47¢ | 32¢ |
+| Darts | 38¢ and 55¢ | 21¢ |
+
+So in lower-tour tennis the formula pays about one and a half times what
+being run over costs. That is a margin, and a thin one: about 6¢ to 9¢ an
+hour for each game, or 35¢ to 50¢ over a whole six hours, for 100 contracts
+a side. It is not the 1.7% in six hours that section 3's one look seemed
+to offer before any cost was counted.
+
+**Which guess was right.** Both, in a way that is worth seeing. The first
+said "well under a dollar a game", and 58¢ is. But only because the orders
+could rest for half of the six hours. At 18¢ to 21¢ an hour, a full six
+hours would cost $1.05 to $1.22, which is what the second guess said
+($1.00 to $1.40), and the second guess came only from the sizes other
+people rest. That agreement matters more than either number. It says the
+accounts already there size their orders as if each game's pool were
+really theirs to share, and as if being run over cost what this measure
+says it costs. The reading of the rules in section 1 and the measure of
+the risk here were made separately and they fit.
+
+**Also seen, and not part of the measure.** A fill cost about the same
+whenever it came, $3 to $4.50 for 100 contracts at the last middle price.
+But a third of the fills came in the last hour before the start. Pulling
+the orders an hour before the game, not ten minutes, would have saved about
+a third of the cost and given up a seventh of the time. The paper test's rules
+are fixed and are not changed for this.
+
+**What changes.**
+
+- The settings of the order system (`config/us_quoter.json`, the rehearsal
+  of `docs/10_us_quoter.md`) now name ITF and UTR only. Doubles, darts and
+  beach volleyball are out.
+- The paper test is not touched: R1-all and R1-thin are judged as they were
+  named. A third account is named now, at 11:00 UTC on 11 November, before
+  any reading of the paper test has been looked at (its first run has not
+  ended): **R1-core, ITF and UTR only**, with the same judge. It is what
+  this history says the test should have been.
+
 ## 5. The paper test, fixed before its data exist
 
 **R1.** A paper account rests small orders on both sides of every game in
@@ -278,8 +356,8 @@ The rules, which are also the code, and which do not change while it runs:
    recorded with its pool split in three, which is an assumption, and is
    reported apart.
 
-**Two accounts are judged**, both named now so that neither can be chosen
-later.
+**Three accounts are judged**, each named before any reading of the test
+had been looked at, so that none can be chosen later.
 
 - **R1-all**: every programme that rule 8 allows.
 - **R1-thin**: only the programmes in which, in the one look of section 3,
@@ -287,6 +365,10 @@ later.
   darts and beach volleyball. In the main tennis tours and in e-sports the
   same order held a fiftieth, so there the reward is next to nothing while
   the trading against it is not.
+- **R1-core**, added at 11:00 UTC on 11 November, after the history of
+  section 4 had been read and before any reading of this test had been:
+  ITF and UTR only. Section 4 found that in doubles and darts being run
+  over costs more than the formula pays.
 
 **The judge.** A game is judged once it started more than 12 hours ago and
 its settlement is on file. For each account, when at least 2,000 of its

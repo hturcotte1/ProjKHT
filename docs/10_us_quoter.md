@@ -37,7 +37,7 @@ Code: `src/kht/trading/us_quoter.py` (the decisions and the paper broker),
 | Setting | Default | What it does |
 |---|---:|---|
 | `size` | 100 | Contracts on each side of a game. The code refuses more than 500 whatever the file says |
-| `programmes` | the five of R1-thin | Only games in these reward programmes, and only where the market on who wins has the pool to itself |
+| `programmes` | ITF and UTR tennis | Only games in these reward programmes, and only where the market on who wins has the pool to itself. Doubles and darts were dropped on 11 November: there, being run over has cost more than the formula pays (`docs/09`, section 4) |
 | `max_games` | 20 | Games rested in at once |
 | `max_at_risk` | $1,200 | What open positions can still lose, plus what the worse side of every game could lose if it were filled. A game that does not fit gets no opening orders |
 | `max_day_loss` | $150 | Lost since midnight UTC at which every order is pulled and the program stops |

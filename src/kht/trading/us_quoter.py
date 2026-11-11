@@ -52,7 +52,7 @@ SETTLED_FIELDS = ["ts", "slug", "bought", "sold", "cost", "proceeds", "settle", 
 @dataclass(frozen=True)
 class QuoterConfig:
     size: float = 100.0                 # contracts on each side of a game
-    programmes: tuple[str, ...] = ("itf_moneyline", "doubles_moneyline", "utr_moneyline", "darts_moneyline", "astra_cup_women_moneyline")
+    programmes: tuple[str, ...] = ("itf_moneyline", "utr_moneyline")     # lower-tour tennis: where resting has cost less than it is paid (docs/09, section 4)
     max_games: int = 20                 # games rested in at once
     max_at_risk: float = 1200.0         # dollars: what positions can still lose, plus what every resting order could lose if filled
     max_day_loss: float = 150.0         # dollars lost since midnight UTC at which everything is pulled and the program stops

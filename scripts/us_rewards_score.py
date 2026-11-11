@@ -8,7 +8,7 @@ finished game settled (public, no key) and keeps the answers in
 <state>/settlements.csv. Nothing here places an order.
 
 Writes reports/research/usr_summary.txt, usr_by_programme.csv, usr_by_size.csv,
-usr_by_day_all.csv, usr_by_day_thin.csv and usr_fills.csv.
+usr_by_day_all.csv, usr_by_day_thin.csv, usr_by_day_core.csv and usr_fills.csv.
 """
 
 from __future__ import annotations
@@ -31,6 +31,8 @@ MIN_GAMES, MIN_DATES, BAR = 2000, 5, 3.0
 # The second judged account: programmes in which, in the one look taken before the test (docs/09, section 3),
 # an order of 100 contracts held a tenth or more of a side's score. Matched by the start of the programme's name.
 THIN = ("itf_moneyline", "doubles_moneyline", "utr_moneyline", "darts_moneyline", "astra_cup_women_moneyline")
+# The third: named on 11 November after the history of past games (docs/09, section 4) and before any reading of the test.
+CORE = ("itf_moneyline", "utr_moneyline")
 pd.set_option("display.width", 250)
 pd.set_option("display.max_rows", 200)
 pd.set_option("display.max_colwidth", 60)
@@ -229,12 +231,13 @@ def main() -> None:
                  f"first reading {pd.to_datetime(g['first_ts'].min(), unit='s', utc=True):%d %b %H:%M} UTC, last {pd.to_datetime(g['last_ts'].max(), unit='s', utc=True):%d %b %H:%M} UTC")
     lines.append(f"games that started more than 12 hours ago: {len(finished):,}; of them with a settlement on file: {int(pd.Index(finished).isin(settle.index).sum()):,}")
 
-    # ---- the two judged accounts: 100 contracts a side, programmes where the market on who wins has the pool to itself
+    # ---- the three judged accounts: 100 contracts a side, programmes where the market on who wins has the pool to itself
     per, f = account(d, facts, h, settle, PRIMARY, now)
     own = per[(per["markets_in_event"] == 1)]
     show = ["games", "hours_quoted", "share_of_score", "reward_formula", "reward_paid", "games_filled", "contracts_filled", "fills_at_settlement", "fills_at_last_mid", "net", "net_a_game"]
     for tag, title, pick in (("all", "R1-all: every such programme", own),
-                             ("thin", "R1-thin: the programmes named in advance as thinly quoted (" + ", ".join(THIN) + ")", own[own["program"].str.startswith(THIN)])):
+                             ("thin", "R1-thin: the programmes named in advance as thinly quoted (" + ", ".join(THIN) + ")", own[own["program"].str.startswith(THIN)]),
+                             ("core", "R1-core: lower-tour tennis only (" + ", ".join(CORE) + ")", own[own["program"].str.startswith(CORE)])):
         judged = pick[pick["over"] & pick["settle"].notna()]           # a game is judged once its settlement is known, filled or not
         mean, z, k = clustered_z(judged["net"].to_numpy(), (judged["day"] + "|" + judged["program"]).to_numpy())
         dates = judged["day"].nunique()

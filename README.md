@@ -20,10 +20,16 @@ over. Its answers are below, under "The fourth round"; in one line each:
   whatever is cheaper there than on polymarket.com, and sports;
 - one lead is open: the exchange pays a published reward for orders left
   resting in its markets, and before most sports games very little is
-  resting where it counts. A paper account now tests this on live order
-  books with its rules fixed in advance (`docs/09_sports_rewards.md`).
-  Whether the exchange pays what its formula says can only be learned with
-  a real account, which is the owner's call.
+  resting where it counts. The risk is being traded against just before a
+  price moves. On 29,647 past lower-tour tennis matches that cost 18¢ to
+  21¢ for each hour that 100 contracts rested on each side, and the
+  formula pays about 27¢ an hour: a real margin and a thin one. In doubles
+  and darts the cost was the larger. A paper account now tests this on
+  live order books with its rules fixed in advance
+  (`docs/09_sports_rewards.md`), and the program that would place the
+  orders is written and rehearsing on paper (`docs/10_us_quoter.md`).
+  Whether the exchange pays what its formula says can only be learned
+  with a real account, which is the owner's call.
 
 ## What came out of it
 
@@ -133,7 +139,7 @@ counted as found unless it clears what the luckiest worthless rule reaches.
 | What Polymarket US's price history is | Where one side of an order book is empty it shows the last trade as if it were a quote. Checked against more than 600 live books. A backtest on it buys from nobody |
 | **Two exchanges, one question:** buy on Polymarket US whatever is cheaper there than on polymarket.com | **Failed**, on rules fixed beforehand: −19.8% on 505 purchases. The two exchanges are equally accurate, and for most shared questions polymarket.com is the smaller market |
 | Sports on Polymarket US (most of that exchange): 3,360 rules on a year of games, fixed in writing first | **Nothing.** Not one rule passed even the first step, on 118,339 games. An hour before a game the middle of the order book is a fair price; a buyer loses the spread and the fee ([`docs/06_polymarket_us.md`](docs/06_polymarket_us.md), section 10) |
-| **Being paid to leave orders.** Polymarket US pays rewards for resting orders and publishes the schedule | **A lead, not a result.** Outside sports some pools are paid to nobody today ([`docs/08_rewards.md`](docs/08_rewards.md)). In sports every game has its own pool, and by the published formula 100 contracts resting on each side before a lower-tour tennis match would be paid about $1.60 for six hours. A paper test of exactly that is running, rules fixed first: [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md) |
+| **Being paid to leave orders.** Polymarket US pays rewards for resting orders and publishes the schedule | **A lead, not a result.** Outside sports some pools are paid to nobody today ([`docs/08_rewards.md`](docs/08_rewards.md)). In sports every game has its own pool. By the published formula 100 contracts resting on each side before a lower-tour tennis match would be paid about 27¢ an hour, and on 29,647 past matches being run over cost 18¢ to 21¢ an hour: the reward is about one and a half times the cost. Doubles and darts fail that check. A paper test on live order books is running, rules fixed first: [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md) |
 
 What exists now that did not: a recorder that writes down the real order
 books of Polymarket US, with sizes, every cycle, and the polymarket.com
