@@ -113,10 +113,12 @@ Polymarket prices through GitHub Actions and commit their state to this
 repository. They are set to trade about every three hours: the workflow asks
 to be woken every 15 minutes and trades when three hours have passed.
 GitHub's scheduler passed over it for the first thirteen hours, so the cycles
-of 10 November 2026 were started by hand; it started its first run on its own
-at 20:39 UTC that day. `state/last_cycle_started` shows when the last cycle
-ran, and [`docs/03_system.md`](docs/03_system.md#on-a-schedule-without-a-server)
-lists the ways to keep it going if the scheduler stops.
+of 10 November 2026 were started by hand. Since 00:56 UTC on 11 November it
+has been running them unattended, about every four hours: GitHub starts the
+workflow far less often than it is asked to. `state/last_cycle_started` shows
+when the last cycle ran, and
+[`docs/03_system.md`](docs/03_system.md#on-a-schedule-without-a-server) lists
+the ways to keep it going if the scheduler stops.
 
 | Account | Rule | Status |
 |---|---|---|

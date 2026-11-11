@@ -249,45 +249,44 @@ is retried every three hours, not every 15 minutes. A run started by hand
 (Actions → *paper-trader* → *Run workflow*) always trades, unless its "skip if
 a cycle started less than three hours ago" box is ticked.
 
-**GitHub's scheduler has not started this workflow once.** By 14:40 UTC on 10
-November 2026, seven hours after the schedule was added, it had passed over
-every slot: eighteen for this workflow and fifteen for a second workflow that
-has nothing but a schedule. GitHub reported no incident, and runs started
-through the manual trigger worked every time, which is how all four cycles so
-far were run. Other new repositories have reported the same in 2026.
+**GitHub's scheduler took thirteen hours to begin here, and runs this
+workflow about every four hours.** What happened, in UTC:
 
-*Update, 20:50 UTC on 10 November.* The scheduler started its first run of
-this workflow at 20:39 UTC, thirteen hours after the schedule was added and
-sixteen minutes after the workflow file was next committed as the repository
-owner (20:23 UTC, to add the long-dated account). That run came between
-cycles and did not trade; seven cycles had been started by hand by then. The
-check workflow had not run. Whether scheduled runs now trade on their own,
-and which of the two explanations below was right, will show within a few
-hours, and this section will be rewritten to say so.
+- *10 November 2026, about 07:40.* The schedule was added. For the next
+  thirteen hours GitHub passed over every slot, on a day it reported no
+  incident. Runs started through the manual trigger worked every time, and
+  the seven cycles of that day were started that way.
+- *20:39.* The first scheduled run. It came between cycles and did not trade.
+- *11 November, 00:56.* The first cycle nobody started: a scheduled run found
+  a cycle due, traded all four accounts and committed their state.
 
-Two explanations fit, and the second workflow (`scheduler-check.yml`) is there
-to tell them apart:
+Two explanations had fitted the silence: that GitHub does not begin
+scheduling a new repository at once, or that a schedule belongs to whoever
+committed its `cron` line and the commits from the Claude sessions that built
+this project map to a GitHub account with no access here. To tell them apart
+the paper trader's `cron` line was committed again as the repository owner
+through GitHub's API, and a second workflow with nothing but a schedule was
+left as a Claude session had committed it. Both began within an hour of each
+other (20:39 and 21:23), so the first explanation was the right one, and
+who commits the workflow file does not matter. The second workflow has been
+deleted.
 
-- *New repositories wait.* GitHub may not have begun scheduling here yet. If
-  so, both workflows start on their own and nothing needs doing.
-- *The schedule belongs to someone without access.* GitHub runs a schedule on
-  behalf of whoever last committed its `cron` line. Commits from the Claude
-  sessions that built this project carry an address that GitHub maps to an
-  account with no access to this repository. At 13:40 UTC the paper trader's
-  `cron` line was therefore committed again as the repository owner, through
-  GitHub's API, and the check workflow's was left as it was. If the paper
-  trader starts and the check never does, this was the cause, and the `cron`
-  line must not be edited from a Claude session again without being
-  committed again the same way. In the first hour neither had started.
+The scheduler is not doing what the `cron` line asks. In its first five hours
+it started this workflow twice out of some twenty quarter-hour slots, and the
+check workflow twice out of five hourly ones, each about four hours apart and
+up to 54 minutes late. With the 170-minute check that means a cycle roughly
+every four hours for now, which is enough for accounts that hold positions
+for weeks. `state/last_cycle_started` shows when the last one began.
 
-Until the scheduler starts, something else has to start the workflow. All of
-these pass through the same three-hour check, so they can overlap safely:
+If the scheduler stops, or a cycle every four hours is too slow, something
+else can start the workflow. All of these pass through the same three-hour
+check, so they can overlap safely with the schedule and with each other:
 
 1. **By hand.** Actions → *paper-trader* → *Run workflow*.
 2. **Switching the workflow off and on.** Actions → *paper-trader* → ⋯ →
    *Disable workflow*, then *Enable workflow*. Only the repository owner can
-   do this. It makes GitHub register the schedule afresh and is worth trying
-   once.
+   do this. It makes GitHub register the schedule afresh, and is the first
+   thing to try if scheduled runs stop.
 3. **A scheduler of your own**, calling GitHub every three hours from a
    machine that is always on or from a hosted cron service. It needs a
    fine-grained personal access token limited to this repository, with
