@@ -121,7 +121,8 @@ class Table:
         next_ask (the ask at the next observation, NaN if there was none in time),
         next_period, fee_theta (fee = theta * p * (1 - p) a share),
         won (what the outcome paid), fair (a fair chance of this outcome at the row, for placebo runs),
-        cluster (event), split (0 discovery, 1 validation, -1 unused).
+        cluster (event), split (0 discovery, 1 validation, -1 unused), and optionally
+        time_cluster (what the validation score clusters by; default the week of entry).
     """
 
     def __init__(self, f: pd.DataFrame):
@@ -143,7 +144,9 @@ class Table:
         self.fair = f["fair"].to_numpy(dtype=np.float64)
         self.cluster = f["cluster"].to_numpy()
         self.split = f["split"].to_numpy()
-        self.week = np.floor(self.next_period / 7.0)
+        # what counts as "the same time" for the validation score: the week of entry, unless the
+        # frame names something else (on Polymarket US, the day of settlement)
+        self.week = f["time_cluster"].to_numpy() if "time_cluster" in f else np.floor(self.next_period / 7.0)
         cat = f["category"].to_numpy()
         self.masks_cat = {c: (np.ones(self.n, bool) if c == "all" else cat == c) for c in CATEGORIES}
         leg = f["leg"].to_numpy(dtype=bool)
