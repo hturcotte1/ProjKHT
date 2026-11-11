@@ -146,6 +146,48 @@ large seller. And it assumes the order is always filled when run over,
 though the books say hardly anybody trades. The paper test below measures
 this properly.
 
+### The same over all six hours, fixed before its data are read
+
+*Written on 11 November at 09:55 UTC, before the download below was
+started.* The paper test will take a week to see a few thousand games. The
+exchange's stored prices can show the costly kind of fill on tens of
+thousands of past games now, so that is measured too
+(`scripts/rest_history.py`).
+
+- **Games.** Every settled market on who wins in the leagues of the five
+  programmes that section 5 calls thin: ITF (four league codes), UTR,
+  doubles, darts (the Modus league) and beach volleyball. 52,103 games.
+- **Data.** The stored best price on each side, minute by minute, for the
+  six hours before the recorded start. There are no sizes and no trades in
+  it.
+- **The orders.** As the paper account's, as far as this data allows: 100
+  contracts at the best bid and 100 at the best offer, moved every two
+  minutes, from six hours to ten minutes before the start. They rest only
+  in a book with real prices on both sides (the filter of docs/06,
+  section 7) that is at most 10¢ wide.
+- **A fill.** If, at the next reading, the offer side has come down to our
+  bid or below it, the bid is filled at its price. Likewise the offer. Each
+  side is filled once at most in a game. If the next reading is not a real
+  two-sided book, nothing is counted for that step, and how often that
+  happens is reported.
+- **Worth.** Held to settlement, no fee.
+
+What is reported: for each programme, the share of games with a fill and
+the average result of the fills per game, in dollars, with a z by day; the
+same valued at the middle of the book when the orders were pulled; by
+month; and when in the six hours the fills came.
+
+What it is for: the one look of section 3 put the reward by the formula at
+$1.62 a game in ITF, $2.15 in UTR, $1.89 in doubles, $1.24 in darts.
+**If being run over costs more than that per game, the lead is dead in
+that programme whatever the paper test finds. If it costs under a dollar a
+game in ITF, the lead stands for now.** My expectation, from the one-hour
+look, is well under a dollar.
+
+What it cannot show: fills from a single large order that did not move the
+whole market, which the paper test does see; and the good fills, where
+somebody simply takes the price and the market stays where it was.
+
 ## 5. The paper test, fixed before its data exist
 
 **R1.** A paper account rests small orders on both sides of every game in
