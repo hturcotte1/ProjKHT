@@ -1,0 +1,47 @@
+# Restarts the us-rewards job if it has stopped.
+#
+# That job runs for five hours and starts its own successor when it ends. On
+# 11 November 2026 the machine it ran on was lost in mid-run, so nothing
+# started the next one. This looks every quarter of an hour and starts a run
+# only when none is in progress or waiting. It touches nothing else: no
+# market data, no credentials, no orders.
+#
+# It switches itself off once the test is over (18 November 2026).
+# To stop it sooner: Actions tab -> "us-rewards-watchdog" -> "..." ->
+# "Disable workflow".
+name: us-rewards-watchdog
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "9,24,39,54 * * * *"
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: us-rewards-watchdog
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Start a run of us-rewards if none is going
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if [ "$(date -u +%Y%m%d)" -ge 20261118 ]; then
+            echo "the test is over; switching this watchdog off"
+            gh workflow disable us-rewards-watchdog.yml || true
+            exit 0
+          fi
+          going=$(gh run list --workflow us-rewards.yml --limit 20 --json status --jq '[.[] | select(.status != "completed")] | length')
+          echo "runs of us-rewards in progress or waiting: $going"
+          if [ "$going" = "0" ]; then
+            gh workflow run us-rewards.yml --ref "${GITHUB_REF_NAME}"
+            echo "none was going: started one" | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
