@@ -857,3 +857,18 @@ is not worth a program and a key, whatever the certainty.
 - **Company.** One seller was there tonight, within a minute of the
   quotes appearing. There is room for a second only as long as the bids
   are bigger than the first one's lots.
+
+### Notes while the test runs
+
+**11 November, 23:18 UTC.** The rule above was committed at 23:03 UTC
+(`cb32873`), the code that applies it at 23:11 (`a3fcaa0`), and the job
+file that starts the second recorder at 23:15 (`ead6050`). The run of the
+job that was going then keeps its old file, so the second recorder starts
+with the next run, at about 03:35 UTC on 12 November, well before that
+day's ladders come into its five and a half hours at 16:30. It was tried
+first for two and a half minutes in a scratch directory with a longer
+lead, so that it had something to read: 126 daily brackets of 12 November,
+three readings of each, no errors. The scoring script was run on
+tonight's real books of 16:50 UTC laid out as a recording, and on made-up
+recordings in its tests. No evening has been recorded yet.
+
