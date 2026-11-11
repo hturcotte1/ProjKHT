@@ -268,3 +268,14 @@ a few dozen games for a few days, at a size of a few hundred dollars, and
 then the earnings record set beside what this paper account says those
 same games should have paid. No order has been placed and none will be
 without instruction.
+
+## 8. What the runs show so far
+
+*Dated notes are added here as runs come in. The rules of section 5 are not
+touched.*
+
+**11 November, 09:49 UTC.** The first run started, after the rules above
+and the code were committed (commit `c73d2a6`, 09:49 UTC; the workflow in
+`5f23e6c`). Each run lasts five hours and starts the next. Nothing to
+report yet: a game is judged only once it started more than 12 hours ago
+and has settled.
