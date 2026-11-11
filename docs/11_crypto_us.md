@@ -202,7 +202,8 @@ By that definition the reach comes from 2020. The move within 16 minutes
 that one start in 5,000 exceeded was 10.7% in 2020, 9.6% in 2021, 5.5% in
 2022, and 4.3%, 4.8%, 3.8% and 3.2% in the four years since. So a quarter
 of an hour before the end, a level has to be about 11% from the price to
-count as out of reach. The daily Bitcoin ladder ends 11% above the price.
+count as out of reach. The daily Bitcoin ladder ends about 10% above the
+price.
 **The rule as written will trade almost nothing.** It stays in the test
 exactly as written, under the name **L1-strict**, and will be reported
 whatever it shows.
