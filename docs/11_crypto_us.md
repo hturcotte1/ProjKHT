@@ -505,3 +505,31 @@ settled on a figure that is published hours before the market closes.
 Nothing has been tested there. It would need the published figure from
 outside the exchange, where the crypto index comes from the exchange
 itself.
+
+## 11. If it holds: what a real version would need
+
+Nothing here is built, and nothing will be sent without the owner's
+instruction. It is written down so that the decision, if it comes, is a
+small one.
+
+1. **One contract by hand.** In the exchange's app, a few minutes before
+   5 pm New York time, on a Bitcoin level far above the price: buy one
+   "No" at 99¢, which is the same thing as selling one "Yes" at 1¢. It
+   risks 99¢. It answers in one evening what no paper test can: whether
+   the order fills, what the account shows, and when the 99¢ comes back.
+2. **A key, kept as in `docs/10_us_quoter.md`, section 5:** in the
+   environment of the machine that runs the program and nowhere else.
+3. **A program that does only this.** The recorder's loop, the rule of
+   `src/kht/trading/lasttick_rule.py`, and one kind of order: a limit
+   order at the bid's own price that is filled at once or cancelled, never
+   an order "at the market". The exchange's API has such an order, and
+   the signing and the limits of the existing order system
+   (`src/kht/trading/us_live.py`) would be reused. Limits of its own: a
+   fixed sum that may be locked at one settlement time, a cap a level,
+   Bitcoin only to begin with, and a full stop for the day at the first
+   loss, since a loss means the rule or its facts were wrong.
+4. **Small first.** $500 locked for a week of evenings keeps about $4.50
+   an evening if every order fills. That is not the point of it. The point
+   is to learn whether the bids are still there the evening after somebody
+   has sold to them.
+
