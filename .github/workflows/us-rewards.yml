@@ -59,13 +59,30 @@ jobs:
         if: steps.gate.outputs.go == 'true'
         timeout-minutes: 320
         run: |
+          # A run lasts five hours. If that would end it between 21:35 and
+          # 22:03 UTC, it ends at 21:33 instead: the daily crypto markets
+          # settle at 22:00 and the third program below has to see their
+          # last quarter of an hour whole.
+          now=$(date -u +%s); mins=300
+          day=$((now - now % 86400))
+          for d in 0 86400; do
+            from=$((day + d + 77700)); to=$((day + d + 79380))
+            end=$((now + mins * 60))
+            if [ "$end" -ge "$from" ] && [ "$end" -le "$to" ]; then mins=$(( (from - 120 - now) / 60 )); fi
+          done
+          echo "this run: $mins minutes"
           # Alongside the judged test: the order-placing system itself, on
           # paper and under its own limits (docs/10_us_quoter.md). It sends
           # nothing anywhere. If it fails, the judged test is not affected.
-          (timeout 302m kht us-quote --config config/us_quoter.json --state state/us-quoter --minutes 298 > us-quote.log 2>&1 || true) &
-          kht us-rewards --state state/us-rewards --minutes 300
+          (timeout $((mins + 2))m kht us-quote --config config/us_quoter.json --state state/us-quoter --minutes $((mins - 2)) > us-quote.log 2>&1 || true) &
+          # And a recorder for another test: crypto markets in their last
+          # minutes (docs/11_crypto_us.md). Read-only as well, and as
+          # harmless to the judged test if it fails.
+          (timeout $((mins + 2))m kht us-lasttick --state state/us-lasttick --minutes $((mins - 2)) > us-lasttick.log 2>&1 || true) &
+          kht us-rewards --state state/us-rewards --minutes "$mins"
           wait
           tail -n 4 us-quote.log || true
+          tail -n 2 us-lasttick.log || true
       - name: Commit what was recorded
         if: always() && steps.gate.outputs.go == 'true'
         run: |
@@ -73,6 +90,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state/us-rewards
           if [ -d state/us-quoter ]; then git add state/us-quoter; fi
+          if [ -d state/us-lasttick ]; then git add state/us-lasttick; fi
           if git diff --cached --quiet; then
             echo "nothing recorded"
           else
