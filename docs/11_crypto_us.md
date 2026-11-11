@@ -586,4 +586,13 @@ small one.
    an evening if every order fills. That is not the point of it. The point
    is to learn whether the bids are still there the evening after somebody
    has sold to them.
+5. **Further out than the test asks.** The test sells at anything beyond
+   the reach, because that is the rule that was fixed. A real version need
+   not. On the five evenings of section 6 the price went at most 1.48
+   times as far as the reach. In the history, 57% of the trades were on
+   results more than 1.5 times the reach away (36% on the daily ladders),
+   and 34% more than twice. Staying beyond 1.5 or 2 times the reach gives
+   up half or two thirds of the trades and would have kept clear of every
+   one of those evenings. That figure was read off after the fact, so it
+   is a reason to keep a wide margin and not a tested rule.
 
