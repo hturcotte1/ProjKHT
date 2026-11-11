@@ -29,6 +29,8 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install with the research and test dependencies
-        run: pip install -e ".[research,dev]"
+        # live-us adds the signing library the Polymarket US connector needs.
+        # Its tests talk to a stand-in, never to the exchange.
+        run: pip install -e ".[research,dev,live-us]"
       - name: Tests
         run: pytest -q
