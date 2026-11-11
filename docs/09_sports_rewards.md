@@ -198,6 +198,28 @@ What it cannot show: fills from a single large order that did not move the
 whole market, which the paper test does see; and the good fills, where
 somebody simply takes the price and the market stays where it was.
 
+### A second guess, from what is already resting
+
+*Written at 10:10 UTC, while the download was running and before anything
+from it had been read.* The accounts already resting orders before these
+matches have every reason to size them well, and their sizes say what they
+think resting costs.
+
+Take two accounts sharing one side's half of a $12 pool, $6. Each gains
+less from every contract it adds, because its share grows more slowly the
+more it already has, while each contract costs the same to rest. Each stops
+adding where the two meet. For two alike accounts that point is a combined
+size of $6 ÷ (2 × the cost of resting one contract). The median score on a
+side was 577. That puts the cost of resting one contract on one side for
+the six hours at about half a cent. With three accounts the same sum gives
+0.7¢.
+
+So this guess says 100 contracts a side cost $1.00 to $1.40 a game to rest
+in ITF, and that a newcomer's 100 contracts, paid $1.62 by the formula,
+would clear something between nothing and 50¢ a game. The one-hour look
+above says the cost is well under a dollar. They cannot both be right, and
+the six-hour measure can contradict either.
+
 ## 5. The paper test, fixed before its data exist
 
 **R1.** A paper account rests small orders on both sides of every game in
