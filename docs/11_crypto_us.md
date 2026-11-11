@@ -865,6 +865,33 @@ is not worth a program and a key, whatever the certainty.
   quotes appearing. There is room for a second only as long as the bids
   are bigger than the first one's lots.
 
+### The same arithmetic elsewhere: one look, and a warning
+
+One look, on 11 November at 23:23 UTC, at the books the general recorder
+wrote down at 22:23 UTC (`state/us/`, every reward market outside sports
+and crypto). No test and no rule.
+
+Of 231 events with three or more markets, 89 have best bids that add up
+to more than $1. Almost none of them is this trade, because in almost
+none of them does exactly one market pay:
+
+- Lists of nominees, where five or more are named.
+- Levels such as "above $3.91", where each level includes the ones
+  beyond it.
+- Events that read like one winner and are not. TIME's Person of the Year
+  has 26 candidates whose bids add up to $1.45, in real size. Its rules
+  say that if several are named each of them pays, and that a person
+  pictured on the cover of a group pays too. Selling all 26 there is a
+  bet, not a certainty.
+
+The two plain one-winner sets in the list, the Federal Reserve's decision
+in December and the top artist of the year, have bids adding up to $1.01:
+nothing after fees.
+
+So the rule stays where exactly one result pays by arithmetic, the
+brackets of a number, and where that was checked on every settled ladder.
+Anywhere else the rules of the event have to be read first.
+
 ### Notes while the test runs
 
 **11 November, 23:18 UTC.** The rule above was committed at 23:03 UTC
