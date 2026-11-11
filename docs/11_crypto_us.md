@@ -172,9 +172,16 @@ more than 2026 does, and the next bad year is not announced.
   the market's end.
 - **What:** if the result is out of reach, trade against the best price on
   the losing side of the book: the best bid if "Yes" will pay nothing, the
-  best offer if it will pay $1. Whatever that price is. Take the size
-  shown there, up to 2,000 contracts. One trade a market, at the first
-  reading that qualifies.
+  best offer if it will pay $1. Take the size shown there, up to 2,000
+  contracts. One trade a market, at the first reading that qualifies.
+- **Unless the book disagrees.** A sale is made only at 5¢ or less and a
+  purchase only at 95¢ or more. A bid of 40¢ on a result this rule calls
+  out of reach does not mean somebody is giving money away. It means the
+  rule has a fact wrong: a stale index, a level misread. Such readings are
+  counted and reported, and not traded. *(Added at 17:11 UTC on
+  11 November, before the reach table existed and before any history or
+  live reading was scored. The rule as first committed said "whatever
+  that price is".)*
 - **Cost:** the taker fee of 0.095 × price × (1 − price) a contract.
 - **Result:** what the market settled at.
 
