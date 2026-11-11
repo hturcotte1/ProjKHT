@@ -2819,3 +2819,103 @@ vtc-usgubto-wi-2026-11-03-gt3pt2m,471032,politics,USSTATE,futures,86785,Wisconsi
 vtc-usseto-me-2026-11-03-gt900k,470378,politics,USCONGRESS,futures,86571,Maine Senate Election: Turnout,Above 900K,Maine Senate Election: Turnout,2027-01-15T00:00:00Z,0.01,0.095,1794410316
 vtc-usseto-nj-2026-11-03-gt3pt4m,470668,politics,USCONGRESS,futures,86684,New Jersey Senate Election: Turnout,Above 3.4M,New Jersey Senate Election: Turnout,2027-01-15T00:00:00Z,0.01,0.095,1794410316
 vtc-usseto-ri-2026-11-03-gt400k,470606,politics,USCONGRESS,futures,86671,Rhode Island Senate Election: Turnout,Above 400K,Rhode Island Senate Election: Turnout,2027-01-15T00:00:00Z,0.01,0.095,1794410316
+aaagaspc-usgas-highm-2026-11-30-gt4pt2000,2049737,macro,COMMODITY,futures,217407,How High Will US Gas Prices Get This Month?,Above $4.2000,How High Will US Gas Prices Get This Month?,2026-12-08T04:59:00Z,0.01,0.095,1794435778
+aimrc-company1-wk-2026-11-16-google,1911481,technology,AI,futures,202207,Top AI Company this week,Google,Top AI Company this week,2026-11-30T17:00:00Z,0.01,0.095,1794435778
+ccrc-ntflx-1movus-2026-11-17-gosche,2407733,culture,MOVIES,futures,255346,Top US Netflix Movie This Week?,The Gospel of Christmas,Top US Netflix Movie This Week?,2026-12-02T04:00:00Z,0.01,0.095,1794435778
+ccrc-ntflx-1shwglbl-2026-11-17-power1,2407741,culture,TV,futures,255347,Top Global Netflix Show This Week?,Power: Season 1,Top Global Netflix Show This Week?,2026-12-02T04:00:00Z,0.01,0.095,1794435778
+ccrc-ntflx-1shwus-2026-11-17-raw1109,2407742,culture,TV,futures,255348,Top US Netflix Show This Week?,"Raw: 2026 - November 9, 2026",Top US Netflix Show This Week?,2026-12-02T04:00:00Z,0.01,0.095,1794435778
+cmovcuss-usseclose-me-tx-2026-11-03-me,1152166,politics,USCONGRESS,futures,135896,Closer Senate Race: Maine or Texas?,Maine,Closer Senate Race: Maine or Texas?,2027-04-01T03:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-mom-2026-12-10-gt0pt0pct,2434191,macro,INFLATION,futures,258011,CPI MoM in November,Above 0.0%,CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-mom-2026-12-10-gt0pt1pct,2434195,macro,INFLATION,futures,258011,CPI MoM in November,Above 0.1%,CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-mom-2026-12-10-gt0pt2pct,2434194,macro,INFLATION,futures,258011,CPI MoM in November,Above 0.2%,CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-mom-2026-12-10-gt0pt3pct,2434196,macro,INFLATION,futures,258011,CPI MoM in November,Above 0.3%,CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-mom-2026-12-10-gt0pt4pct,2434197,macro,INFLATION,futures,258011,CPI MoM in November,Above 0.4%,CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-mom-2026-12-10-gt0pt5pct,2434198,macro,INFLATION,futures,258011,CPI MoM in November,Above 0.5%,CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-mom-2026-12-10-gt0pt6pct,2434199,macro,INFLATION,futures,258011,CPI MoM in November,Above 0.6%,CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-mom-2026-12-10-gtneg0pt2pct,2434193,macro,INFLATION,futures,258011,CPI MoM in November,Above -0.2%,CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-yoy-2026-12-10-gt3pt4pct,2434241,macro,INFLATION,futures,258023,CPI YoY in November,Above 3.4%,CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-yoy-2026-12-10-gt3pt5pct,2434240,macro,INFLATION,futures,258023,CPI YoY in November,Above 3.5%,CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-yoy-2026-12-10-gt3pt6pct,2434238,macro,INFLATION,futures,258023,CPI YoY in November,Above 3.6%,CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-yoy-2026-12-10-gt3pt7pct,2434237,macro,INFLATION,futures,258023,CPI YoY in November,Above 3.7%,CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-yoy-2026-12-10-gt3pt8pct,2434239,macro,INFLATION,futures,258023,CPI YoY in November,Above 3.8%,CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-yoy-2026-12-10-gt3pt9pct,2434243,macro,INFLATION,futures,258023,CPI YoY in November,Above 3.9%,CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-yoy-2026-12-10-gt4pt0pct,2434242,macro,INFLATION,futures,258023,CPI YoY in November,Above 4.0%,CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-yoy-2026-12-10-gt4pt1pct,2434244,macro,INFLATION,futures,258023,CPI YoY in November,Above 4.1%,CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-yoy-2026-12-10-gt4pt2pct,2434245,macro,INFLATION,futures,258023,CPI YoY in November,Above 4.2%,CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-yoy-2026-12-10-gt4pt3pct,2434246,macro,INFLATION,futures,258023,CPI YoY in November,Above 4.3%,CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-nov-yoy-2026-12-10-gt4pt4pct,2434247,macro,INFLATION,futures,258023,CPI YoY in November,Above 4.4%,CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpi-october-yoy-2026-11-10-gt3pt8pct,1499280,macro,INFLATION,futures,165138,CPI YoY in October,Above 3.8%,CPI YoY in October,2027-02-11T04:59:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-mom-2026-12-10-gt0pt0pct,2434216,macro,INFLATION,futures,258017,Core CPI MoM in November,Above 0.0%,Core CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-mom-2026-12-10-gt0pt1pct,2434214,macro,INFLATION,futures,258017,Core CPI MoM in November,Above 0.1%,Core CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-mom-2026-12-10-gt0pt2pct,2434215,macro,INFLATION,futures,258017,Core CPI MoM in November,Above 0.2%,Core CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-mom-2026-12-10-gt0pt3pct,2434217,macro,INFLATION,futures,258017,Core CPI MoM in November,Above 0.3%,Core CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-mom-2026-12-10-gt0pt4pct,2434219,macro,INFLATION,futures,258017,Core CPI MoM in November,Above 0.4%,Core CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-mom-2026-12-10-gt0pt5pct,2434222,macro,INFLATION,futures,258017,Core CPI MoM in November,Above 0.5%,Core CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-mom-2026-12-10-gt0pt6pct,2434212,macro,INFLATION,futures,258017,Core CPI MoM in November,Above 0.6%,Core CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-mom-2026-12-10-gtneg0pt1pct,2434211,macro,INFLATION,futures,258017,Core CPI MoM in November,Above -0.1%,Core CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-mom-2026-12-10-gtneg0pt2pct,2434220,macro,INFLATION,futures,258017,Core CPI MoM in November,Above -0.2%,Core CPI MoM in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-yoy-2026-12-10-gt2pt3pct,2434285,macro,INFLATION,futures,258047,Core CPI YoY in November,Above 2.3%,Core CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-yoy-2026-12-10-gt2pt4pct,2434286,macro,INFLATION,futures,258047,Core CPI YoY in November,Above 2.4%,Core CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-yoy-2026-12-10-gt2pt5pct,2434283,macro,INFLATION,futures,258047,Core CPI YoY in November,Above 2.5%,Core CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-yoy-2026-12-10-gt2pt6pct,2434279,macro,INFLATION,futures,258047,Core CPI YoY in November,Above 2.6%,Core CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-yoy-2026-12-10-gt2pt7pct,2434282,macro,INFLATION,futures,258047,Core CPI YoY in November,Above 2.7%,Core CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-yoy-2026-12-10-gt2pt8pct,2434284,macro,INFLATION,futures,258047,Core CPI YoY in November,Above 2.8%,Core CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-yoy-2026-12-10-gt2pt9pct,2434281,macro,INFLATION,futures,258047,Core CPI YoY in November,Above 2.9%,Core CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-yoy-2026-12-10-gt3pt0pct,2434278,macro,INFLATION,futures,258047,Core CPI YoY in November,Above 3.0%,Core CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-yoy-2026-12-10-gt3pt1pct,2434280,macro,INFLATION,futures,258047,Core CPI YoY in November,Above 3.1%,Core CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-yoy-2026-12-10-gt3pt2pct,2434287,macro,INFLATION,futures,258047,Core CPI YoY in November,Above 3.2%,Core CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+cpic-uscpicore-nov-yoy-2026-12-10-gt3pt3pct,2434288,macro,INFLATION,futures,258047,Core CPI YoY in November,Above 3.3%,Core CPI YoY in November,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+kpic-nvda-q3eps-2026-11-17-above-2pt53,2435171,finance,EARNINGS,futures,258267,Will NVIDIA (NVDA) beat Q3 FY2027 quarterly earnings?,Non-GAAP EPS Above $2.53,Will NVIDIA (NVDA) beat Q3 FY2027 quarterly earnings?,2026-12-02T04:00:00Z,0.01,0.095,1794435778
+raincli-rain-daily-2026-11-11-kmdw,2354021,climate,WEATHER,futures,249370,Where will it rain on Nov 11?,Chicago,Where will it rain on Nov 11?,2026-11-26T04:59:59Z,0.01,0.095,1794435778
+rtc-dwts-s35-3-2026-11-24-ambgle,2433410,culture,TV,futures,257874,Dancing With The Stars S35 Third Place,Amber Glenn,Dancing With The Stars S35 Third Place,2026-12-09T04:00:00Z,0.01,0.095,1794435778
+rtc-dwts-s35-3-2026-11-24-conwoo,2433409,culture,TV,futures,257874,Dancing With The Stars S35 Third Place,Connor Wood,Dancing With The Stars S35 Third Place,2026-12-09T04:00:00Z,0.01,0.095,1794435778
+rtc-dwts-s35-3-2026-11-24-ezrfre,2433408,culture,TV,futures,257874,Dancing With The Stars S35 Third Place,Ezra Frech,Dancing With The Stars S35 Third Place,2026-12-09T04:00:00Z,0.01,0.095,1794435778
+rtc-dwts-s35-3-2026-11-24-harshu,2433407,culture,TV,futures,257874,Dancing With The Stars S35 Third Place,Harry Shum Jr.,Dancing With The Stars S35 Third Place,2026-12-09T04:00:00Z,0.01,0.095,1794435778
+rtc-dwts-s35-3-2026-11-24-mauhig,2433411,culture,TV,futures,257874,Dancing With The Stars S35 Third Place,Maura Higgins,Dancing With The Stars S35 Third Place,2026-12-09T04:00:00Z,0.01,0.095,1794435778
+rtc-dwts-s35-3-2026-11-24-tatali,2433412,culture,TV,futures,257874,Dancing With The Stars S35 Third Place,Tatyana Ali,Dancing With The Stars S35 Third Place,2026-12-09T04:00:00Z,0.01,0.095,1794435778
+rtc-dwts-s35-elim-2026-11-17-tatali,2417181,culture,TV,futures,256211,Dancing With The Stars S35: Week 10 Elimination,Tatyana Ali,Dancing With The Stars S35: Week 10 Elimination,2026-12-02T04:00:00Z,0.01,0.095,1794435778
+tac-grammys-bcca-2027-02-07-bantri,1465672,culture,AWD,futures,162189,Grammy Winner: Best Contemporary Country Album,Banks of the Trinity - Cody Johnson,Grammy Winner: Best Contemporary Country Album,2027-02-22T04:00:00Z,0.01,0.095,1794435778
+tac-grammys-bpsp-2027-02-07-homewr,1464589,culture,AWD,futures,162136,Grammy Winner: Best Pop Solo Performance,Homewrecker - sombr,Grammy Winner: Best Pop Solo Performance,2027-02-22T04:00:00Z,0.01,0.095,1794435778
+tac-grammys-bpsp-2027-02-07-risit,1464584,culture,AWD,futures,162136,Grammy Winner: Best Pop Solo Performance,Risk It All - Bruno Mars,Grammy Winner: Best Pop Solo Performance,2027-02-22T04:00:00Z,0.01,0.095,1794435778
+tac-grammys-nom-bna-2026-11-16-bigxth,1464471,culture,AWD,futures,162118,Grammy Nominees: Best New Artist,BigXthaPlug,Grammy Nominees: Best New Artist,2026-12-01T04:00:00Z,0.01,0.095,1794435778
+tac-grammys-nom-bna-2026-11-16-dijon,1464482,culture,AWD,futures,162118,Grammy Nominees: Best New Artist,Dijon,Grammy Nominees: Best New Artist,2026-12-01T04:00:00Z,0.01,0.095,1794435778
+tac-grammys-nom-bna-2026-11-16-jesmur,1464468,culture,AWD,futures,162118,Grammy Nominees: Best New Artist,Jessie Murph,Grammy Nominees: Best New Artist,2026-12-01T04:00:00Z,0.01,0.095,1794435778
+tac-grammys-nom-bna-2026-11-16-renrap,1464470,culture,AWD,futures,162118,Grammy Nominees: Best New Artist,Renee Rapp,Grammy Nominees: Best New Artist,2026-12-01T04:00:00Z,0.01,0.095,1794435778
+tac-tga-goty-2026-12-10-gta6,2370450,culture,AWD,futures,251376,The Game Awards Winner: Game of the Year,Grand Theft Auto VI,The Game Awards Winner: Game of the Year,2026-12-25T04:00:00Z,0.01,0.095,1794435778
+tc-temp-laxhigh-2026-11-12-lt80f,2387345,climate,WEATHER,futures,253293,Highest temperature in Los Angeles on November 12?,79 or below,Highest temperature in Los Angeles on November 12?,2026-11-13T13:00:00Z,0.01,0.095,1794435778
+tc-temp-miahigh-2026-11-13-gte79lt80f,2425276,climate,WEATHER,futures,257121,Highest temperature in Miami on November 13?,79 to 80,Highest temperature in Miami on November 13?,2026-11-14T10:00:00Z,0.01,0.095,1794435778
+tc-temp-nychigh-2026-11-12-lt56f,2387310,climate,WEATHER,futures,253283,Highest temperature in NYC on November 12?,55 or below,Highest temperature in NYC on November 12?,2026-11-13T10:00:00Z,0.01,0.095,1794435778
+tc-temp-nychigh-2026-11-13-lt48f,2425261,climate,WEATHER,futures,257119,Highest temperature in NYC on November 13?,47 or below,Highest temperature in NYC on November 13?,2026-11-14T10:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-ca-17-2026-11-03-d30-35,655866,politics,USCONGRESS,futures,101210,CA-17 House Election Margin of Victory,Democrat 30-35%,CA-17 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-ca-45-2026-11-03-d20-25,656375,politics,USCONGRESS,futures,101252,CA-45 House Election Margin of Victory,Democrat 20-25%,CA-45 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-co-02-2026-11-03-d55-60,529037,politics,USCONGRESS,futures,93287,CO-02 House Election Margin of Victory,Democrat 55-60%,CO-02 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-fl-08-2026-11-03-r5-10,529283,politics,USCONGRESS,futures,93310,FL-08 House Election Margin of Victory,Republican 5-10%,FL-08 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-fl-14-2026-11-03-d6-9,662179,politics,USCONGRESS,futures,101590,FL-14 House Election Margin of Victory,Democrat 6-9%,FL-14 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-fl-17-2026-11-03-r20-25,529296,politics,USCONGRESS,futures,93309,FL-17 House Election Margin of Victory,Republican 20-25%,FL-17 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-fl-18-2026-11-03-r15-20,529345,politics,USCONGRESS,futures,93315,FL-18 House Election Margin of Victory,Republican 15-20%,FL-18 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-ga-03-2026-11-03-r25-30,529410,politics,USCONGRESS,futures,93321,GA-03 House Election Margin of Victory (First Round),Republican 25-30%,GA-03 House Election Margin of Victory (First Round),2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-hi-01-2026-11-03-d30-35,529561,politics,USCONGRESS,futures,93340,HI-01 House Election Margin of Victory,Democrat 30-35%,HI-01 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-ia-04-2026-11-03-r15-20,529562,politics,USCONGRESS,futures,93337,IA-04 House Election Margin of Victory,Republican 15-20%,IA-04 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-id-02-2026-11-03-r10-15,529622,politics,USCONGRESS,futures,93345,ID-02 House Election Margin of Victory,Republican 10-15%,ID-02 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-in-09-2026-11-03-r0-10,529886,politics,USCONGRESS,futures,93371,IN-09 House Election Margin of Victory,Republican 0-10%,IN-09 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-ma-04-2026-11-03-d35-40,530020,politics,USCONGRESS,futures,93380,MA-04 House Election Margin of Victory,Democrat 35-40%,MA-04 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-ma-09-2026-11-03-d10-15,530042,politics,USCONGRESS,futures,93382,MA-09 House Election Margin of Victory,Democrat 10-15%,MA-09 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-md-07-2026-11-03-d70-75,530123,politics,USCONGRESS,futures,93391,MD-07 House Election Margin of Victory,Democrat 70-75%,MD-07 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-mi-12-2026-11-03-d55-60,530325,politics,USCONGRESS,futures,93406,MI-12 House Election Margin of Victory,Democrat 55-60%,MI-12 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-mn-07-2026-11-03-r25-30,530425,politics,USCONGRESS,futures,93418,MN-07 House Election Margin of Victory,Republican 25-30%,MN-07 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-nd-al-2026-11-03-r15-20,530856,politics,USCONGRESS,futures,93510,ND-AL House Election Margin of Victory,Republican 15-20%,ND-AL House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-nj-01-2026-11-03-d35-40,539105,politics,USCONGRESS,futures,94313,NJ-01 House Election Margin of Victory,Democrat 35-40%,NJ-01 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-nj-05-2026-11-03-d0-5,539242,politics,USCONGRESS,futures,94322,NJ-05 House Election Margin of Victory,Democrat 0-5%,NJ-05 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-nj-06-2026-11-03-d30-35,539280,politics,USCONGRESS,futures,94320,NJ-06 House Election Margin of Victory,Democrat 30-35%,NJ-06 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-nv-01-2026-11-03-d0-5,539363,politics,USCONGRESS,futures,94326,NV-01 House Election Margin of Victory,Democrat 0-5%,NV-01 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-nv-04-2026-11-03-dgte25,539479,politics,USCONGRESS,futures,94337,NV-04 House Election Margin of Victory,Democrat 25%+,NV-04 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-ny-08-2026-11-03-d30-40,539549,politics,USCONGRESS,futures,94344,NY-08 House Election Margin of Victory,Democrat 30-40%,NY-08 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-ny-11-2026-11-03-rgte30,539588,politics,USCONGRESS,futures,94341,NY-11 House Election Margin of Victory,Republican 30%+,NY-11 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-oh-11-2026-11-03-d70-75,539904,politics,USCONGRESS,futures,94383,OH-11 House Election Margin of Victory,Democrat 70-75%,OH-11 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-sc-06-2026-11-03-d35-40,540327,politics,USCONGRESS,futures,94429,SC-06 House Election Margin of Victory,Democrat 35-40%,SC-06 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-tx-27-2026-11-03-r20-25,540684,politics,USCONGRESS,futures,94466,TX-27 House Election Margin of Victory,Republican 20-25%,TX-27 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-tx-36-2026-11-03-rgte30,540787,politics,USCONGRESS,futures,94480,TX-36 House Election Margin of Victory,Republican 30%+,TX-36 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ushrmov-va-07-2026-11-03-d10-15,540843,politics,USCONGRESS,futures,94488,VA-07 House Election Margin of Victory,Democrat 10-15%,VA-07 House Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ussemov-me-2026-11-03-d3-6,470796,politics,USCONGRESS,futures,86727,Maine Senate Election Margin of Victory (First Round),Democrat 3-6%,Maine Senate Election Margin of Victory (First Round),2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vmc-ussemov-nc-2026-11-03-dgte18,470927,politics,USCONGRESS,futures,86758,North Carolina Senate Election Margin of Victory,Democrat 18%+,North Carolina Senate Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794435778
+vtc-usseto-ok-2026-11-03-gt1pt1m,470620,politics,USCONGRESS,futures,86675,Oklahoma Senate Election: Turnout,Above 1.1M,Oklahoma Senate Election: Turnout,2027-01-15T00:00:00Z,0.01,0.095,1794435778
