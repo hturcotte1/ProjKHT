@@ -7,6 +7,7 @@
     kht shadow       score every signal ever seen against how it resolved
     kht us-record    write down the Polymarket US order books and their polymarket.com twins (read-only)
     kht us-rewards   paper orders before games on Polymarket US: what the reward formula would pay them (read-only)
+    kht us-lasttick  crypto markets on Polymarket US in their last minutes: the books with sizes (read-only)
     kht us-quote     rest orders before games on Polymarket US: on paper unless live trading is switched on
     kht us-earnings  what the exchange says it paid in rewards, beside what the formula said (needs the account's key)
     kht geoblock     is this machine allowed to place orders?
@@ -156,6 +157,16 @@ def cmd_us_rewards(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_us_lasttick(args: argparse.Namespace) -> int:
+    """Record the books of crypto markets on Polymarket US in their last minutes. Reads public data only."""
+    from .trading.us_lasttick import FOLLOW, run
+
+    line = run(Path(args.state), minutes=args.minutes, budget=args.budget, follow=args.follow if args.follow else FOLLOW)
+    print(f"[{_stamp()}] Polymarket US last minutes: {line['minutes']:.0f} minutes, {line['listings']} listings, {line['books']} readings of "
+          f"{line['markets']} markets ending at {line['ends']} times, {line['errors']} errors")
+    return 0
+
+
 def cmd_us_quote(args: argparse.Namespace) -> int:
     """Rest orders before games on Polymarket US. On paper unless --live or --preview is given and the environment allows it."""
     from .api.http import Http
@@ -256,6 +267,13 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--minutes", type=float, default=300.0, help="how long to follow the order books")
     p.add_argument("--interval", type=float, default=120.0, help="seconds between readings of one book")
     p.set_defaults(fn=cmd_us_rewards)
+
+    p = sub.add_parser("us-lasttick", help="record crypto markets on Polymarket US in their last minutes, with sizes (read-only)")
+    p.add_argument("--state", default="state/us-lasttick")
+    p.add_argument("--minutes", type=float, default=300.0, help="how long to record")
+    p.add_argument("--budget", type=float, default=5.0, help="requests a second, at most")
+    p.add_argument("--follow", type=float, default=None, help="seconds before a market's end at which its book is first read (for trials only)")
+    p.set_defaults(fn=cmd_us_lasttick)
 
     p = sub.add_parser("us-quote", help="rest orders before games on Polymarket US (on paper unless switched on)")
     p.add_argument("--config", default="config/us_quoter.json")
