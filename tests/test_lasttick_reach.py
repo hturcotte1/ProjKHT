@@ -103,3 +103,29 @@ def test_the_second_yardstick_is_checked_only_on_what_the_brake_lets_through(mon
     assert chk.loc[2021, "over"] == 3 and chk.loc[2021, "occasions"] == 1          # only the jump out of nothing gets through
     assert chk.loc[2021, "one_in"] == pytest.approx(chk.loc[2021, "traded_starts"] / 3)
     assert 0 < chk.loc[2021, "braked_share"] < 0.001
+
+
+def test_the_yardstick_at_the_settlement_itself(monkeypatch):
+    monkeypatch.setattr(lr, "SHOWN", (6,))
+    start = int(pd.Timestamp("2026-11-06 00:00").timestamp())                    # three evenings; 5 pm New York is 22:00 UTC in November
+    n = 3 * 1440
+    t = start + 60 * np.arange(n)
+    close = np.full(n, 100.0)
+    high, low = close.copy(), close.copy()
+    def minute(day, hh, mm):
+        return (day * 1440) + hh * 60 + mm
+    low[minute(0, 21, 57)] = 94.0                                                # evening one: a dip of 6% three minutes before, and back
+    close[minute(1, 21, 56):minute(1, 22, 30)] = 95.5                            # evening two: down 4.5% and still there at 22:00
+    low[minute(1, 21, 56):minute(1, 22, 30)] = 95.5
+    high[minute(1, 21, 56):minute(1, 22, 30)] = 95.5
+    d = pd.DataFrame({"close": close, "high": high, "low": low}, index=t)
+    counts, events = lr.evenings(d, {6: 0.05}, None)
+    c = counts.iloc[0]
+    assert c["evenings"] == 3 and c["furthest_over"] == 1 and c["ended_over"] == 0          # the dip went beyond 5% and did not last
+    assert c["furthest_over_half"] == 2 and c["ended_over_half"] == 1                       # the second evening ended 4.5% away
+    assert sorted(events["date"]) == ["2026-11-06", "2026-11-07"]
+    e = events.set_index("date")
+    assert e.loc["2026-11-06", "furthest"] == pytest.approx(0.06) and e.loc["2026-11-06", "ended"] == pytest.approx(0.0)
+    assert e.loc["2026-11-07", "ended"] == pytest.approx(0.045)
+    counts, _ = lr.evenings(d, {6: 0.05}, 0.01)                                             # with a brake: the fall of evening two is not seen coming either
+    assert counts.iloc[0]["braked"] == 0 and counts.iloc[0]["furthest_over_half"] == 2

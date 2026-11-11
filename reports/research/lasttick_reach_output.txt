@@ -420,3 +420,70 @@ coin  year  h  reach  starts  braked_share  traded_starts  over   one_in  occasi
 
 its test (docs/11): no coin, year and horizon may go beyond the reach more often than one start in 1,000
 the worst: BTC in 2020 at 22 minutes, one start in 1,643: PASSED
+
+the same yardsticks at the daily settlement itself: the last h minutes before 5 pm New York, every evening since 2020 (added after the history was read)
+'furthest' is the furthest the price went on the way; 'ended' is where it was at 5 pm against where it had been, which is what a ladder settles on
+yardstick coin  h  reach  evenings  braked  furthest_over  ended_over  furthest_over_half  ended_over_half
+   recent  btc  3   2.11      2506      84              0           0                   2                0
+   recent  btc  6   2.96      2506      81              0           0                   6                1
+   recent  btc 10   3.60      2506      80              0           0                   6                3
+   recent  btc 16   4.79      2506      79              1           0                  11                5
+   recent  btc 22   5.42      2506      78              1           0                  11                4
+   recent  btc 30   6.74      2506      80              1           0                   6                2
+   strict  btc  3   4.88      2506       0              0           0                   1                0
+   strict  btc  6   6.42      2506       0              0           0                   1                0
+   strict  btc 10   8.18      2506       0              0           0                   0                0
+   strict  btc 16  10.66      2506       0              0           0                   1                0
+   strict  btc 22  12.40      2506       0              0           0                   0                0
+   strict  btc 30  14.94      2506       0              0           0                   0                0
+   recent  eth  3   3.03      2506      69              0           0                   0                0
+   recent  eth  6   4.08      2506      66              1           0                   2                2
+   recent  eth 10   5.07      2506      64              2           0                   6                6
+   recent  eth 16   6.46      2506      64              1           0                   6                4
+   recent  eth 22   8.51      2506      66              0           0                   3                2
+   recent  eth 30  10.96      2506      60              0           0                   4                0
+   strict  eth  3   5.62      2506       0              0           0                   1                0
+   strict  eth  6   7.52      2506       0              0           0                   2                0
+   strict  eth 10   9.67      2506       0              0           0                   2                0
+   strict  eth 16  12.70      2506       0              0           0                   1                0
+   strict  eth 22  15.20      2506       0              0           0                   0                0
+   strict  eth 30  18.16      2506       0              0           0                   0                0
+   recent  sol  3   4.50      2283      71              0           0                   2                1
+   recent  sol  6   6.46      2283      72              0           0                   2                0
+   recent  sol 10   8.14      2283      74              0           0                   2                1
+   recent  sol 16  11.13      2283      76              0           0                   2                0
+   recent  sol 22  11.93      2283      76              0           0                   2                0
+   recent  sol 30  14.26      2283      77              0           0                   0                0
+   strict  sol  3   7.38      2283       0              0           0                   1                0
+   strict  sol  6  10.63      2283       0              0           0                   0                0
+   strict  sol 10  14.53      2283       0              0           0                   0                0
+   strict  sol 16  18.05      2283       0              0           0                   0                0
+   strict  sol 22  19.93      2283       0              0           0                   0                0
+   strict  sol 30  24.31      2283       0              0           0                   0                0
+   recent  xrp  3   4.57      2506      47              1           0                   3                1
+   recent  xrp  6   6.26      2506      45              2           1                   5                2
+   recent  xrp 10   8.57      2506      44              2           1                   3                3
+   recent  xrp 16  11.35      2506      46              0           0                   3                2
+   recent  xrp 22  13.86      2506      47              0           0                   2                2
+   recent  xrp 30  17.48      2506      49              0           0                   2                1
+   strict  xrp  3   7.88      2506       0              0           0                   2                0
+   strict  xrp  6  11.10      2506       0              0           0                   2                2
+   strict  xrp 10  14.27      2506       0              0           0                   2                2
+   strict  xrp 16  17.57      2506       0              0           0                   2                1
+   strict  xrp 22  20.97      2506       0              0           0                   0                0
+   strict  xrp 30  23.92      2506       0              0           0                   0                0
+
+the evenings on which the price went beyond the reach (percent)
+yardstick coin       date  h  reach  furthest  ended
+   recent  btc 2020-02-19 16   4.79      5.77   3.09
+   recent  btc 2020-02-19 22   5.42      5.74   3.06
+   recent  btc 2020-02-19 30   6.74      7.15   4.51
+   recent  xrp 2022-05-11  6   6.26      9.29   8.15
+   recent  xrp 2022-05-11 10   8.57     10.57   9.45
+   recent  xrp 2025-10-10  3   4.57      6.43   3.17
+   recent  xrp 2025-10-10  6   6.26      8.88   5.70
+   recent  xrp 2025-10-10 10   8.57     10.57   7.45
+   recent  eth 2026-08-19 10   5.07      5.26   4.16
+   recent  eth 2026-11-08  6   4.08      5.62   2.53
+   recent  eth 2026-11-08 10   5.07      6.94   3.90
+   recent  eth 2026-11-08 16   6.46      7.31   4.28

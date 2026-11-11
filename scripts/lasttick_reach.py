@@ -191,12 +191,42 @@ def check_recent(d: pd.DataFrame, reach: dict[int, float], limit: float) -> pd.D
     return pd.DataFrame(rows)
 
 
+def evenings(d: pd.DataFrame, reach: dict[int, float], limit: float | None) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """The yardstick at the daily settlement itself: every evening's last h minutes before 5 pm New York.
+
+    Two measures of the move. "furthest": the furthest the price went on the
+    way, from each minute's high and low, which is what the reach is made
+    from and what a "hit" market is exposed to. "ended": where the price
+    was at 5 pm against where it had been, which is what a ladder settles
+    on. Returns the counts, and the evenings on which either went beyond
+    half the reach.
+    """
+    ny = pd.to_datetime(d.index.to_numpy(), unit="s", utc=True).tz_convert("America/New_York")
+    stop = braked(d, limit) if limit is not None else np.zeros(len(d), bool)
+    close = d["close"]
+    counts, events = [], []
+    for h in SHOWN:
+        if h > 59:
+            continue
+        furthest = moves(d, h)
+        ended = (close.shift(-h) / close - 1.0).abs().to_numpy()
+        at = np.asarray((ny.hour == 16) & (ny.minute == 59 - h)) & np.isfinite(furthest)      # the h minutes that end with the minute closing at 17:00
+        free = at & ~stop
+        counts.append({"h": h, "reach": reach[h], "evenings": int(at.sum()), "braked": int((at & stop).sum()),
+                       "furthest_over": int((free & (furthest > reach[h])).sum()), "ended_over": int((free & (ended > reach[h])).sum()),
+                       "furthest_over_half": int((free & (furthest > reach[h] / 2)).sum()), "ended_over_half": int((free & (ended > reach[h] / 2)).sum())})
+        for i in np.flatnonzero(free & (furthest > reach[h] / 2)):
+            events.append({"date": pd.Timestamp(d.index[i], unit="s").strftime("%Y-%m-%d"), "h": h, "reach": reach[h], "furthest": float(furthest[i]), "ended": float(ended[i])})
+    return pd.DataFrame(counts), pd.DataFrame(events)
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     table: dict[str, dict[str, float]] = {}
     recent_table: dict[str, dict[str, float]] = {}
     brakes: dict[str, float] = {}
     all_checks = []
+    all_evenings, all_events = [], []
     lines = [f"The reach table of test L1 (docs/11, section 5): the move that one start in {ONE_IN:,} exceeded, in the worst year, never under {100 * FLOOR:g}%",
              f"prices: one-minute candles against USDT, {FIRST} to {LAST} (not included)", ""]
     all_years, all_oos, all_full = [], [], []
@@ -233,6 +263,12 @@ def main() -> None:
         chk.insert(0, "coin", coin)
         all_checks.append(chk)
         lines.append("   second yardstick:  " + "  ".join(f"{100 * recent[h]:5.2f}%" for h in SHOWN) + f"   brake at a five-minute change of {100 * brakes[coin]:.2f}%")
+        # both yardsticks at the settlement itself: the minutes before 5 pm New York on every evening
+        for name, table_, limit in (("recent", {h: recent_table[coin][str(h)] for h in SHOWN}, brakes[coin]), ("strict", {h: table[coin][str(h)] for h in SHOWN}, None)):
+            c, ev = evenings(d, table_, limit)
+            all_evenings.append(c.assign(coin=coin, yardstick=name))
+            if len(ev):
+                all_events.append(ev.assign(coin=coin, yardstick=name))
     by_year = pd.concat(all_years, ignore_index=True)
     by_year.to_csv(OUT / "ltr_by_year.csv", index=False)
     full = pd.concat(all_full, ignore_index=True)
@@ -258,6 +294,18 @@ def main() -> None:
               f"its test (docs/11): no coin, year and horizon may go beyond the reach more often than one start in {CHECK_ONE_IN:,}",
               f"the worst: {worst['coin'].upper()} in {int(worst['year'])} at {int(worst['h'])} minutes, one start in {worst['one_in']:,.0f}: "
               + ("PASSED" if passed else "FAILED")]
+    ev_counts = pd.concat(all_evenings, ignore_index=True)[["yardstick", "coin", "h", "reach", "evenings", "braked", "furthest_over", "ended_over",
+                                                            "furthest_over_half", "ended_over_half"]]
+    ev_counts.to_csv(OUT / "ltr_evenings.csv", index=False)
+    ev_list = pd.concat(all_events, ignore_index=True)[["yardstick", "coin", "date", "h", "reach", "furthest", "ended"]] if all_events else pd.DataFrame()
+    lines += ["", "the same yardsticks at the daily settlement itself: the last h minutes before 5 pm New York, every evening since 2020 (added after the history was read)",
+              "'furthest' is the furthest the price went on the way; 'ended' is where it was at 5 pm against where it had been, which is what a ladder settles on",
+              ev_counts.assign(reach=(100 * ev_counts["reach"]).round(2)).to_string(index=False)]
+    if len(ev_list):
+        over = ev_list[(ev_list["furthest"] > ev_list["reach"]) | (ev_list["ended"] > ev_list["reach"])].sort_values(["yardstick", "date", "coin", "h"])
+        ev_list.sort_values(["yardstick", "date", "coin", "h"]).to_csv(OUT / "ltr_evenings_near.csv", index=False)
+        lines += ["", "the evenings on which the price went beyond the reach (percent)",
+                  over.assign(reach=(100 * over["reach"]).round(2), furthest=(100 * over["furthest"]).round(2), ended=(100 * over["ended"]).round(2)).to_string(index=False)]
     CONFIG.write_text(json.dumps({"what": "test L1 (docs/11_crypto_us.md, section 5): a result is out of reach if its gap is larger than reach[coin][minutes]",
                                   "made_by": "scripts/lasttick_reach.py", "prices": f"one-minute candles against USDT, {FIRST} to {LAST}", "one_in": ONE_IN,
                                   "floor": FLOOR, "reach": table,

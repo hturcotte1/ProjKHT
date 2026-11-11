@@ -341,6 +341,60 @@ Two things to read off it.
   either is small. **This is the whole of the evidence that the trade is
   sound, and it is evidence about coin prices, not about this exchange.**
 
+### The same yardsticks at the settlement itself
+
+*Added at 18:31 UTC on 11 November, after the history of section 8 had been
+read. It uses coin prices only. Nothing in the rule was changed by it.*
+
+The figures above take every minute of the year as a moment to trade. The
+test trades at one moment a day, the minutes before 5 pm New York time,
+and that is not an average moment: large moves are about twice as common
+in the American afternoon as over the whole day. So the yardsticks
+were also run on that moment alone: the last 3 to 30 minutes before 5 pm
+New York on each of the 2,506 evenings since 1 January 2020
+(`reports/research/ltr_evenings.csv`, `ltr_evenings_near.csv`).
+
+**L1-strict was never crossed,** for any coin, on any evening.
+
+**L1-recent was crossed on five evenings, each time for one coin:**
+
+| Evening | Coin | Minutes before 5 pm | Reach | Furthest the price went | Where it ended |
+|---|---|---:|---:|---:|---:|
+| 19 February 2020 | Bitcoin | 16 | 4.8% | 5.8% | 3.1% |
+| 11 May 2022 | XRP | 6 | 6.3% | 9.3% | 8.2% |
+| 10 October 2025 | XRP | 6 | 6.3% | 8.9% | 5.7% |
+| 19 August 2026 | Ether | 10 | 5.1% | 5.3% | 4.2% |
+| **8 November 2026** | Ether | 6 | 4.1% | 5.6% | 2.5% |
+
+The last of them was three days before this was written, and inside the
+five weeks of section 8. At 21:54 UTC, out of an hour in which neither had
+moved by more than 0.2% in five minutes, Bitcoin fell by nearly 2% and
+Ether by more than 3% in about three minutes. Over that last quarter of an
+hour the index fell 2.0% for Bitcoin and 4.4% for Ether. The brake cannot
+see that coming.
+
+Two measures are shown because they answer for different markets. A "hit"
+market pays if the price touches its level, so it is exposed to the
+furthest the price went. A ladder pays on where the index is at 5 pm, so
+it is exposed to where the price ended. By where it ended, L1-recent was
+crossed on one evening in 2,506, for XRP in the crash of May 2022. By
+the furthest it went, on the five above.
+
+What this changes in how to read L1-recent:
+
+- **Its bad evening is not a rarity of the 2020 kind.** Two of the five
+  were in 2026. A level only just out of reach is not safe. It is a level
+  the price has passed on the way about once in 1,250 to 2,500 evenings
+  for a coin, and has ended beyond once in 2,506 evenings for one coin
+  and never for the other three. The trade breaks even at once in 110.
+- **The loss falls on the nearest levels.** The orders in section 4 run
+  from just beyond the reach to several times it. On 8 November the
+  history holds 20 Ether results that the rule called out of reach a
+  quarter of an hour before, one of them with an order to trade against.
+  All held, the nearest with a gap of 1.6 times the move.
+- **Bitcoin carries nine tenths of the orders and was crossed once, in
+  2020,** by the furthest the price went and not by where it ended.
+
 What the tables leave to trade, with Bitcoin at $74,200 and the daily
 ladder's top level at $81,500: by L1-strict, nothing a quarter of an hour
 before the end, and in the last few minutes, if the index value is fresh,
