@@ -184,12 +184,20 @@ def build_us(args: argparse.Namespace) -> None:
     h = h.sort_values(["market_id", "ts"]).drop_duplicates(["market_id", "period"], keep="last")
     h["shape"] = us_shape(meta_all, h).reindex(h["market_id"]).to_numpy()
     spread = h["yes_ask"] + h["no_ask"] - 1.0
-    # An empty side of the book shows up as a default price. Keep a row only when both asks are real
-    # prices and the book is not crossed or absurdly wide; rules that accept "any" spread get no more than this.
-    real = (h["yes_ask"] > 0) & (h["yes_ask"] < 1) & (h["no_ask"] > 0) & (h["no_ask"] < 1) & (spread >= -1e-9) & (spread <= 0.20)
-    log(f"{len(h):,} market-days of quotes in {h['market_id'].nunique():,} settled markets; {int(real.sum()):,} with a real two-sided book")
-    h = h[real]
-    spread = spread[real]
+    # The feed shows 99c (or 1c) for a side of the book that is EMPTY, and the same for a side really
+    # quoted there, and the two cannot be told apart afterwards. Live books read on 11 November showed
+    # "No at 99c" with no bid at all behind it on every losing weather bracket, while professionals
+    # offered the "Yes" at 1c in hundreds of thousands. So a price at either end is treated as no price:
+    # a side can be bought only between 2c and 98c, and the spread is known only when both sides are.
+    lo, hi = 0.015, 0.985
+    yes_real, no_real = (h["yes_ask"] >= lo) & (h["yes_ask"] <= hi), (h["no_ask"] >= lo) & (h["no_ask"] <= hi)
+    both = yes_real & no_real & (spread >= -1e-9) & (spread <= 0.20)
+    log(f"{len(h):,} market-days of quotes in {h['market_id'].nunique():,} settled markets; {int((yes_real | no_real).sum()):,} with a real price "
+        f"on at least one side, {int(both.sum()):,} on both")
+    h = h[yes_real | no_real].copy()
+    h["yes_ask"] = h["yes_ask"].where(yes_real)
+    h["no_ask"] = h["no_ask"].where(no_real)
+    spread = (h["yes_ask"] + h["no_ask"] - 1.0).where(both)
     m = meta.set_index("market_id")
     shape = h["shape"].to_numpy()
     end = m["end_ts"].reindex(h["market_id"]).to_numpy()
@@ -197,7 +205,9 @@ def build_us(args: argparse.Namespace) -> None:
     event = m["event_id"].reindex(h["market_id"]).to_numpy()
     settle = m["yes_settle"].reindex(h["market_id"]).to_numpy()
     cat = m["category"].reindex(h["market_id"]).map(CATEGORY).fillna("other").to_numpy()
-    mid = (h["yes_ask"].to_numpy() + 1.0 - h["no_ask"].to_numpy()) / 2.0
+    # a fair chance of "Yes" for the placebo worlds: the middle of the book, or the one real price there is
+    ya, na = h["yes_ask"].to_numpy(), h["no_ask"].to_numpy()
+    mid = np.where(np.isfinite(ya) & np.isfinite(na), (ya + 1.0 - na) / 2.0, np.where(np.isfinite(ya), ya, 1.0 - na))
     parts = []
     for side, ask, fair, won in ((0, h["yes_ask"].to_numpy(), mid, settle), (1, h["no_ask"].to_numpy(), 1.0 - mid, 1.0 - settle)):
         parts.append(pd.DataFrame({

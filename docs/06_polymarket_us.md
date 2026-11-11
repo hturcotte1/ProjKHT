@@ -257,9 +257,12 @@ happen.
 ## 6. Stage 2: the survivors on Polymarket US
 
 `scripts/factory.py build-us` and `confirm-us` (`f_us_confirmation*.csv`).
-The US table is every settled non-sports market with a real two-sided book on
-at least one day: 11,970 markets in 2,648 events, one row per outcome per
-day, bought at the next day's ask with the US fee.
+The US table is every settled non-sports market that showed a real price on
+at least one side on at least one day: 11,967 markets in 2,633 events,
+settled on 195 days from 12 April to 10 November 2026, one row per outcome
+per day, bought at the next day's ask with the US fee. 9,334 of those
+markets showed a real book on both sides on some day. What "real" means was
+learned the hard way and is in section 7.
 
 **None of the 32 rules is confirmed. The honest reading is that Polymarket
 US cannot say either way.**
@@ -268,40 +271,46 @@ Carrying a rule over needs the US equivalent of "a stand-alone question",
 and the gateway has no flag for it, so each market's shape is read from what
 is known without the result (`us_shape`):
 
-| Shape | Settled markets | What they are |
-|---|---:|---|
-| a single question, or a dated rung of one | 120 with a real book | "Putin meets with Zelenskyy? By September 30", "GPT-6 released?", a referendum |
-| separate questions under one heading | about 2,300 | thresholds ("gas above $4.07"), "who will be announced out", but also races the prices could not identify |
-| one answer of several, only one of which can be right | about 8,400 | temperature brackets, chart positions, candidates |
-| too thinly quoted to tell | about 970 | |
+| Shape | Settled markets | With a two-sided book on some day | What they are |
+|---|---:|---:|---|
+| a single question, or a dated rung of one | 209 | 160 | "Putin meets with Zelenskyy? By September 30", "GPT-6 released?", a referendum |
+| separate questions under one heading | 2,556 | 1,767 | thresholds ("gas above $4.07"), "who will be announced out", but also races the prices could not identify |
+| one answer of several, only one of which can be right | 8,208 | 6,597 | temperature brackets, chart positions, candidates |
+| too thinly quoted to tell | 994 | 810 | |
 
-| Mapping of "stand-alone" | Rules with 100 trades | Bar | Best score | Confirmed |
+| Version of the US table | Rules with 100 trades | Bar | Best score | Confirmed |
 |---|---:|---:|---:|---:|
-| As first coded: any market whose event's prices did not add to one that day | 19 of 32 | z ≥ 2.79 | 1.41 | 0 |
-| Corrected: the first two rows above plus the second | 8 of 32 | z ≥ 2.59 | 2.10 | 0 |
-| Strict: the first row only | none; the most any rule gets is 42 | | | cannot be judged |
+| As first coded: "stand-alone" is any market whose event's prices did not add to one that day | 19 of 32 | z ≥ 2.79 | 1.41 | 0 |
+| Shapes corrected: "stand-alone" is the first two rows above | 8 of 32 | z ≥ 2.59 | 2.10 | 0 |
+| Shapes corrected, and prices at the two ends of the range treated as no price (section 7) | 8 of 32 | z ≥ 2.53 | 2.15 | 0 |
+| Strict: the first row only | none; the most any rule gets is 37 | | | cannot be judged |
 
-The first mapping was wrong in a way the losing trades made obvious: it
+The first version was wrong in a way the losing trades made obvious: it
 counted candidates and contestants as stand-alone questions ("Big Brother
 2nd place: Taylor Brown"), which is the one family stage 1 found nothing in.
-It was corrected after its result had been seen, and both are reported for
-that reason. Under the corrected mapping the rules earn +1.5% a trade on
-average and the best has z of 2.1 on 125 trades. Under the strict one, the
-39 trades of "No at 95–99¢, quiet" include no loss. That is the right
-direction and nowhere near a test.
+The third fixes an error in the prices themselves. Both corrections were made
+after a result had been seen, and all the versions are reported for that
+reason. None of them confirms anything.
+
+On the final table 30 of the 32 rules made money, the average is +2.4% a
+trade, and the best has z of 2.15 on 127 trades with two losses. Under the
+strict mapping no rule has more than 37 trades, and not one of those trades
+lost. That is the right direction and nowhere near a test.
 
 Two things about the venue came out of the losing trades.
 
 - **Markets can be closed early at 50¢.** 78 settled markets paid something
   between 0 and 1. Fifty-three of them were the "2028 vice-presidential
   nominee" markets, listed on 22 September, closed on 20 October and paid
-  50¢ to both sides. Anyone who had bought a long shot's "No" at 99¢ lost
+  50¢ to both sides. Anyone who had bought a long shot's "No" at 98¢ lost
   half of it. polymarket.com has nothing like this in three years of data.
   It is a risk that falls hardest on exactly the contracts this project
   buys.
 - **The tick is a cent.** Most US markets cannot be quoted between 99¢ and
-  $1, so near-certain contracts pile up at 98¢ and 99¢: 803 of 1,361 trades
-  of one rule were at 99¢, where a win pays 0.9% after the fee.
+  $1, so near-certain contracts pile up at 98¢ and 99¢. Of the 342
+  purchases of the most active rule carried over, 158 were at 98¢, where a
+  win pays 1.8% after the fee. None could be made at 99¢, for the reason in
+  section 7.
 
 ## 7. Stage 2b: the search on Polymarket US alone
 
@@ -309,47 +318,114 @@ Two things about the venue came out of the losing trades.
 Discovery is markets ending before 16 September 2026, validation from then
 to 10 November.
 
-| | Real data | Worlds with no edge |
-|---|---:|---:|
-| Rules with 30 trades or more | 11,355 | |
-| Candidates | **18** | 0.1 on average |
-| Score to beat | z ≥ 2.44 | |
-| Survivors | **18** | none in twenty worlds |
+**Nothing passes. The first run said eighteen rules did. They were an
+artefact of the price feed, and this section replaces the one that reported
+them.**
 
-All eighteen are one rule with small variations: **buy "No" at about 99¢ on
-one answer of several, with one to three days left.** Mostly temperature
+| | First run | With prices at the ends treated as no price | Worlds with no edge |
+|---|---:|---:|---:|
+| Rules with 30 trades or more | 11,355 | 11,346 | |
+| Candidates | 18 | **0** | 0.2 on average |
+| Survivors | 18 | **0** | none in twenty worlds |
+
+### The eighteen that were not there
+
+All eighteen were one rule with small variations: buy "No" at about 99¢ on
+one answer of several, with one to three days left. Mostly temperature
 brackets. Discovery: 3,245 trades, 4 lost, +0.90% a trade (z 5.1).
-Validation: 2,333 trades, 4 lost, +1.18% (z 4.9).
+Validation: 2,333 trades, 4 lost, +1.18% (z 4.9). It passed the judge of
+section 4 cleanly.
 
-It passed the judge and it is worth cents. The price history has no sizes,
-so the order books of 60 open weather markets were read on 11 November:
+The price history has no sizes, so before believing it the live order books
+of all 146 open weather markets were read on 11 November. In the
+highest-temperature markets of three cities, five to seven hours before
+settlement, when the answer is known:
 
-- where there was a bid of 1¢ for a bracket (the other side of "No" at 99¢),
-  it was for one contract at the median and ten at the most;
-- a bracket had traded between nothing and 101 contracts in its life;
-- in 3 cases of 11, the history's "No at 99¢" had no bid behind it at all:
-  it is what the gateway displays for an empty book.
+| | Bids for "Yes" | Offers of "Yes" |
+|---|---|---|
+| A bracket that has lost (15 of them) | none | 1¢, for 20,000 to 730,000 contracts |
+| The bracket that has won (3) | 99¢, for 21,000 to 197,000 contracts | none |
 
-Somebody leaves one-contract bids at the lowest price on every bracket, and
-the rule sells into them. It is real, it replicates, and a full day of it
-would make less than a dollar. **Everything measured on Polymarket US from
-here on is checked for size before it is called a result,** which the
-judge of section 4 did not do and now has to.
+Buying "No" on a losing bracket means selling its "Yes" to somebody, and
+nobody is bidding. The history shows "No at 99¢" for it all the same,
+because that is what the feed displays for an empty side of a book. **The
+rule was buying from nobody.**
 
-The rest of the US grid is too thin to pass anything, but it leans the same
-way as polymarket.com (validation half, all categories, 3–60 days):
+What is really there is the opposite of an opportunity. Professionals
+already do this trade, with resting orders, in a size no small account can
+get in front of: they offer every loser at 1¢ and bid 99¢ for the winner,
+hundreds of thousands of contracts deep, pay no fee, and are filled only
+when somebody makes a mistake.
 
-| Bought | Trades | Lost | Return | z |
-|---|---:|---:|---:|---:|
-| "No" on a stand-alone question at 90–95¢ | 136 | 4 | +3.4% | 1.6 |
-| "Yes" on a stand-alone question at 95–98¢ | 95 | 10 | −8.3% | −1.7 |
-| The leader of a multi-way event ("Yes") at 95–98¢ | 410 | 2 | +2.1% | 2.6 |
-| The leader at 90–95¢ | 348 | 7 | +4.2% | 2.7 |
-| An also-ran ("No") at 95–98¢ | 656 | 5 | +0.9% | 0.6 |
+Two rules follow, and they apply to everything after this point.
 
-"No" on a stand-alone question makes money, "Yes" loses it, the also-rans
-have nothing. The leader stands out, as it did in polymarket.com's biggest
-markets in round three, but nearly all of these are favourites in the
-midterm elections of 3 November, and one election night is one observation
-however many seats it fills.
+1. **On Polymarket US a price of 1¢ or 99¢ in the history is no price.** A
+   real quote there cannot be told from an empty book. A side can be bought
+   only between 2¢ and 98¢, and a spread is known only when both sides are.
+   The table was rebuilt and both stages rerun; the first run's files are
+   kept as `*_with_end_prices.*`.
+2. **Nothing measured on Polymarket US is called a result until it has been
+   checked against the sizes in a live book.** The judge of section 4 did
+   not ask for that and now does.
 
+The version of this section that was committed first explained the eighteen
+differently: as one-contract bids left at 1¢, in brackets that "had traded
+between nothing and 101 contracts". That was read off markets two days from
+settlement, where the books are still nearly empty, and it was wrong about
+the rest. The median settled weather bracket traded 5,592 contracts.
+
+### What the US history does say
+
+Days with a price on one side only are worthless as evidence. Where one
+side alone was quoted between 95¢ and 98¢, that side went on to pay 80% of
+the time: it is an offer somebody left in an empty book, not the market's
+opinion. Rules with no spread condition pick these up and lose badly on
+them ("Yes" at 95–98¢ on stand-alone questions: 310 purchases, 121 lost).
+Everything below uses only days with both sides quoted at most 5¢ apart.
+
+Every outcome on every such day, by its asking price:
+
+| Ask | Outcome-days | Average ask | Share that paid |
+|---|---:|---:|---:|
+| up to 10¢ | 41,596 | 5.4¢ | 1.5% |
+| 10–50¢ | 33,263 | 27.5¢ | 23.7% |
+| 50–90¢ | 31,661 | 74.2¢ | 76.8% |
+| 90–95¢ | 15,562 | 93.4¢ | 97.5% |
+| 95–98¢ | 26,478 | 97.3¢ | 98.9% |
+
+Long shots pay less often than their price says and favourites more often,
+in every row. It is the shape found on polymarket.com.
+
+The same thing as rules (whole history, one purchase a market, after the
+fee, 3 to 60 days left unless stated):
+
+| Bought | Trades | Events | Settlement days | Lost | Return | z |
+|---|---:|---:|---:|---:|---:|---:|
+| "No" on a stand-alone question at 90–95¢ | 181 | 84 | 42 | 4 | +4.1% | 2.2 |
+| "No" on a stand-alone question at 95–98¢ | 380 | 117 | 60 | 7 | +0.6% | 0.7 |
+| "Yes" on a stand-alone question at 95–98¢ | 131 | 57 | 39 | 21 | −14.0% | −1.8 |
+| The leader of several answers at 90–95¢ | 371 | 370 | 28 | 6 | +4.8% | 3.1 |
+| The leader at 95–98¢ | 428 | 427 | 32 | 3, and 1 closed at 50¢ | +2.0% | 2.4 |
+| An also-ran ("No") at 95–98¢ | 785 | 535 | 48 | 6, and 11 closed at 50¢ | +1.1% | 0.9 |
+| An also-ran ("No") at 90–98¢ with 1 to 3 days left | 523 | 429 | 122 | 4 | +2.4% | 3.1 |
+
+"No" on a stand-alone question makes money and "Yes" loses it, as on
+polymarket.com. Favourites and the "No" of also-rans make money too. **None
+of this is a result,** for three reasons.
+
+- **It is mostly one night.** 86% of the leader's trades are House, Senate
+  and governor races settled on 3 to 5 November. The score treats each race
+  as a separate bet. They are not: one bad night for the polls would have
+  sunk dozens together, and this night was a good one for favourites.
+- **The rows were chosen after looking.** The judge fixed in advance passed
+  none of them: before 16 September there were too few trades to make any
+  of them a candidate.
+- **There are no sizes.** A real price on both sides says somebody was
+  there. It does not say for how many contracts, and the books read live on
+  11 November held between one and a few hundred contracts at the best
+  price in weather markets a day from settlement.
+
+The last row is the one worth following. It is spread over 122 settlement
+days instead of one, about half of it is weather and awards, and it settles
+within three days, so new evidence on it arrives daily. It goes into the
+forward test of section 8 with the sizes recorded.

@@ -1,28 +1,12 @@
 Stage 2b: Polymarket US settled markets
-rules in the grid: 53,760; with 30 trades or more: 11,355
-candidates (discovery: 150+ trades, +0.5% or more, z >= 3 by event): 18
-threshold: the best validation z among those candidates in 95% of 500 placebo worlds is below 2.44 (median best -0.12, largest 3.13)
-survivors (validation: 100+ trades and z by week at or above the threshold): 18
+rules in the grid: 53,760; with 30 trades or more: 11,346
+candidates (discovery: 150+ trades, +0.5% or more, z >= 3 by event): 0
+threshold: the best validation z among those candidates in 95% of 500 placebo worlds is below inf
+survivors (validation: 100+ trades and z by week at or above the threshold): 0
 z: the variance of a rule's mean return is never taken below what the prices it paid imply
-whole funnel in 20 worlds where every price is right: candidates mean 0.1 (max 1), past the threshold mean 0.00 (max 0; worlds with any: 0 of 20)
+whole funnel in 20 worlds where every price is right: candidates mean 0.2 (max 2), past the threshold mean 0.00 (max 0; worlds with any: 0 of 20)
 
 candidates, best validation z first (survivors marked)
-                                        rule  n_d  cost_d  ret_d  z_event_d  lost_d  n_v  cost_v  ret_v  z_week_v  lost_v  survivor
-      all|leg|no|90-99c|1-3d|spread any|none 3245    0.99   0.90       5.06     4.0 2333    0.99   1.18      4.89     4.0      True
-       all|leg|no|90-99c|1-3d|spread 5c|none 3189    0.99   0.88       4.95     4.0 2212    0.99   1.15      4.60     4.0      True
-       all|leg|no|90-99c|1-3d|spread 2c|none 3108    0.99   0.90       5.03     3.0 2016    0.99   1.14      4.33     3.0      True
-      all|leg|no|95-99c|1-3d|spread any|none 3152    0.99   0.85       4.83     4.0 2073    0.99   0.95      4.13     3.0      True
-       all|leg|no|95-99c|1-3d|spread 5c|none 3111    0.99   0.85       4.77     4.0 1981    0.99   0.94      4.01     3.0      True
-       all|leg|no|95-99c|1-3d|spread 2c|none 3041    0.99   0.87       4.88     3.0 1834    0.99   0.97      3.99     2.0      True
-    all|leg|no|98-99.5c|1-3d|spread any|none 2856    0.99   0.88       4.91     1.0 1631    0.99   0.91      3.86     0.0      True
-     all|leg|no|98-99.5c|1-3d|spread 5c|none 2835    0.99   0.88       4.89     1.0 1566    0.99   0.91      3.78     0.0      True
-     all|leg|no|98-99.5c|1-3d|spread 2c|none 2792    0.99   0.88       4.85     1.0 1482    0.99   0.91      3.68     0.0      True
-  weather|leg|no|90-99c|1-3d|spread any|none 2954    0.99   0.97       5.25     1.0 1287    0.99   0.93      3.20     2.0      True
-   weather|leg|no|90-99c|1-3d|spread 5c|none 2906    0.99   0.95       5.17     1.0 1201    0.99   0.89      3.00     2.0      True
-weather|leg|no|98-99.5c|1-3d|spread any|none 2641    0.99   0.91       4.91     0.0  967    0.99   0.91      2.97     0.0      True
-   weather|leg|no|90-99c|1-3d|spread 2c|none 2832    0.99   0.94       5.08     1.0 1048    0.99   0.90      2.91     1.0      True
- weather|leg|no|98-99.5c|1-3d|spread 5c|none 2621    0.99   0.91       4.90     0.0  922    0.99   0.91      2.90     0.0      True
- weather|leg|no|98-99.5c|1-3d|spread 2c|none 2580    0.99   0.91       4.86     0.0  858    0.99   0.91      2.80     0.0      True
-  weather|leg|no|95-99c|1-3d|spread any|none 2874    0.99   0.93       5.08     1.0 1165    0.99   0.81      2.79     2.0      True
-   weather|leg|no|95-99c|1-3d|spread 2c|none 2774    0.99   0.92       4.97     1.0  981    0.99   0.85      2.72     1.0      True
-   weather|leg|no|95-99c|1-3d|spread 5c|none 2837    0.99   0.93       5.03     1.0 1098    0.99   0.80      2.67     2.0      True
+Empty DataFrame
+Columns: [rule, n_d, cost_d, ret_d, z_event_d, lost_d, n_v, cost_v, ret_v, z_week_v, lost_v, survivor]
+Index: []
