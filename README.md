@@ -201,6 +201,12 @@ account, no orders, no key. Each run lasts five hours and starts the next,
 and it stops by itself on 18 November 2026. The rules it follows are fixed
 in [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md), section 5.
 
+The same job runs a **rehearsal** beside it (`kht us-quote`,
+`state/us-quoter/`): the program that would place such orders for real,
+on paper, choosing 20 games at a time under its own limits
+([`docs/10_us_quoter.md`](docs/10_us_quoter.md)). It sends nothing
+anywhere. Its connection to the exchange has never been run.
+
 ```bash
 python scripts/us_rewards_score.py --settle   # add the runs up and apply the judge
 ```

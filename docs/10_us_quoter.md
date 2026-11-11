@@ -95,6 +95,14 @@ their game settled at, three hours after its start.
 | `paper.json` | The paper positions, kept between runs |
 | `STATUS.md` | A summary when a run ends |
 
+**A rehearsal is running.** From its second run on 11 November, the
+*us-rewards* job on GitHub also runs this program on paper, with the
+settings in `config/us_quoter.json`, and commits `state/us-quoter/`. It is
+the system as it would really be used: 20 games at a time instead of all
+of them, with its limits on. `scripts/us_rewards_score.py` describes what
+it did under the judged accounts. It is not one of them, because it
+chooses its games, and a test must not.
+
 ## 5. Before any real order
 
 This is the owner's decision. No order has been placed and none will be
