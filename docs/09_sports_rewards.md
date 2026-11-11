@@ -461,6 +461,35 @@ beside this one and without touching it. To keep that recording whole, a
 run that would have ended between 21:35 and 22:03 UTC now ends at 21:33.
 That changes when a run of this test ends and nothing it measures.
 
+**11 November, 23:02 UTC. Two hours of recording were lost.** The second
+run ended as it should at 19:47 UTC: 298 minutes, 448 games followed, 545
+moments at which a resting order would have been traded against. The run
+after it lost its machine at 21:40 UTC. GitHub ended the job in the middle
+of a step and nothing it had recorded was saved, because a run saved only
+at its end. It also could not start its successor, so nothing was
+recording from 21:40 until I started a run by hand at 22:28. The test has
+a hole from 19:47 to 22:35 UTC. Games whose six hours fall partly in it
+were watched for less time than they should have been, so they are
+counted with less reward and with fewer fills than a whole watch would
+give. Which way that tilts the result is not known. When the games are
+judged, the result will also be given without the games that touch the
+hole.
+
+Three things were changed so that this costs an hour at most next time:
+the job saves what it has recorded once an hour
+(`scripts/ci_save_state.sh`); a second job, `us-rewards-watchdog`, looks
+every quarter of an hour and starts a run if none is going; and the
+crypto recorder beside this test writes to disk as soon as its markets
+have ended. On the way I pushed a version of the job file that did not
+parse, and for about a minute GitHub would not start it. The run of 22:28
+was stopped on purpose at 22:35, before it had written anything, so that
+the next one would use the new file. That one is going. Rules 1 to 8 of
+section 5 and the program that applies them are untouched.
+
+From the next run the job carries one more recorder for the crypto tests
+(`docs/11_crypto_us.md`, section 12). It reads other markets and shares
+only the machine with this test.
+
 *Still to check, once a run has spanned it:* the exchange restarts each
 market's running totals of trading once a day, at 17:00 Eastern (22:00
 UTC). Rule 6 reads fills off those totals. If the restart itself shows up

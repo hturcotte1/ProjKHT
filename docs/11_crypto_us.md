@@ -598,6 +598,69 @@ index where it was then:
 Nine tenths of it is Bitcoin. An account with $10,000 would be full either
 way, at about $91. The evening's own books will differ.
 
+**11 November, 23:02 UTC. The first evening was not recorded.** The job
+on GitHub that carries the recorder lost its machine at 21:40 UTC, twenty
+minutes before the daily settlement. A run saved what it had recorded only
+at its end, so everything since 19:47 went with the machine. A second copy
+of the recorder had been left running in this session as a backup, and it
+stopped at about 19:00, when the session went idle. Nothing with sizes
+exists for tonight's settlement. The test has not started. Six evenings
+are left before 18 November, 12 to 17 November, and the bar asks for five.
+
+What was changed the same evening, between 22:28 and 22:35 UTC:
+
+- The job now saves what it has recorded once an hour, and once more a
+  few minutes after 22:00 UTC (`scripts/ci_save_state.sh`). A lost machine
+  now costs an hour at most.
+- The recorder writes to disk as soon as the markets it follows have
+  ended. Before, it wrote every ten minutes.
+- A second small job, `us-rewards-watchdog`, looks every quarter of an
+  hour and starts the recording job if no run of it is going.
+- The job was started again by hand.
+
+One mistake of mine on the way: the first version of the changed job file
+did not parse, and for about a minute GitHub would not start the job. The
+rule of the test and what the recorder writes down are as they were.
+
+**What the stored quotes say about tonight.** These are prices without
+sizes, one reading 15 minutes before the end: one more evening of the
+history of section 8, not a live reading. 276 markets settled at 22:00
+UTC. The Bitcoin index was $74,411.93 at 21:45 and the markets settled on
+$74,309.75. By L1-recent 136 results were out of reach, none of them
+changed, and 55 had an order to trade against. All 55 held and all were
+still there two minutes before the end. By L1-strict: 22 out of reach,
+none changed, 6 with an order.
+
+**Somebody sold the Bitcoin ladder tonight, and that is new.** Section 4
+says of these 1¢ bids that nobody takes them. On earlier days that is what
+the figures show: of the Bitcoin brackets out of reach, 34 of 36 had
+traded nothing all day on 10 November, and 36 of 38 on 9 November. Tonight
+59 of the 64 daily Bitcoin brackets traded 169.49 contracts or more. On 15
+of them 169.49 contracts is the whole day's trading. The exchange's own
+figures for those 15 show a single sale at 1¢ on 13, and on the other two
+a sale of 169.49 that took half a contract at 2¢ on its way to 1¢. The
+stored quotes of those two put it between 17:04 and 17:05 UTC, a minute
+after the far brackets were first quoted. 59 lots of 169.49 are 10,000
+contracts. Somebody sold 10,000 contracts in equal lots across the ladder
+in one go.
+
+That the brackets near the price were part of it is an inference. They
+trade all day, so one lot cannot be picked out there. But every one of
+them traded at least 169.49 more after 16:50, and equal lots come to a
+round 10,000 only if those brackets are counted in.
+
+Who it was cannot be told from public data. It can hardly have been
+somebody who had read this repository, which is public: this document was
+first pushed at 17:02 UTC, two minutes earlier. What the lots say is
+which trade it was, and it is not L1. It is taken up in section 12.
+
+For L1 it means two things. The bids were still there afterwards, since a
+sale of 169 leaves most of a bid for 1,000. And from 21:00 UTC the stored
+quotes show no two-sided book on the 18 furthest Bitcoin brackets, which
+is part of why only 55 of the 136 results out of reach had an order in
+the last quarter of an hour. Whether that hour is always like this is
+something L1's recorder cannot say: it reads the last 17 minutes.
+
 ## 10. The same bids elsewhere on the exchange
 
 The recorder of `state/us/` reads the books of every reward market outside
@@ -657,3 +720,140 @@ small one.
    one of those evenings. That figure was read off after the fact, so it
    is a reason to keep a wide margin and not a tested rule.
 
+## 12. L2: the whole ladder at once, fixed at 23:02 UTC on 11 November
+
+### What tonight's sale points at
+
+A ladder of brackets is a set of results of which exactly one happens.
+Tonight's daily Bitcoin ladder had 64: below $66,000, 62 brackets of
+$250, and $81,500 or above. Whoever has sold one "Yes" contract in every
+bracket pays out exactly $1, whatever the price does. So if the bids of
+all the brackets add up to more than $1 and the fees, selling the lot
+keeps the difference with no view on the price at all.
+
+Usually they cannot add up to more than $1: that is what a price is. Here
+they can, because of section 4. Fifty brackets far from the price still
+carry a 1¢ bid each, put there to collect the reward. That is 50¢ on top
+of the bids near the price.
+
+The check that a ladder is what it looks like was run on every settled one
+(settlements only, no prices): 2,814 ladders, 101 of them daily, 17 weekly
+and 2,696 hourly. Every one has both open ends, and in every one exactly
+one bracket paid.
+
+L1 sells the far brackets alone and needs a yardstick to say which are
+far enough. This needs none. It pays for that by also selling the brackets
+near the price at their bids, which are below what those brackets are
+worth.
+
+### What was looked at before the rule was fixed
+
+Tonight's ladder only, 11 November.
+
+- **The stored quotes, best bids without sizes.** From 17:30 to 20:30 UTC
+  the best bids of the Bitcoin brackets added up to $1.42 to $1.46, with
+  50 to 58 of them at 1¢. After fees and the $1, that would leave about
+  30¢ to 34¢ for every contract sold in each bracket.
+- **The real books at 16:50 UTC, with sizes.** They say the stored figure
+  is too kind. Near the price the best bid is often for a fraction of a
+  contract, and the bids of real size sit one to five cents lower. At
+  16:50 only 26 brackets had a 1¢ bid, and selling ten contracts of every
+  bracket would have lost 84¢. The other far brackets were first quoted at
+  17:03.
+- **Tonight's seller.** With the 16:50 books for the ten brackets near the
+  price and 1¢ for the other 49, the sale of 169.49 a bracket brought in
+  about $200, cost about $18 in fees, and had $169.49 to pay: about $13
+  kept, on about $9,800 locked for five hours. The 59 lots add up to
+  $10,000 of contracts, which is what an account of $10,000 can sell if
+  every contract sold locks its own dollar.
+
+So it is real, it is small, and it turns on sizes that only a recording
+of the books can give. No other evening has been looked at.
+
+### The recorder
+
+The same program as L1's, run a second time beside it with other
+settings, so that L1's recording is not touched:
+`kht us-lasttick --state state/us-ladder --kinds range --follow 19800 --sweep 120 --budget 3`.
+It reads the book of every daily and weekly bracket of the four coins,
+three bid and three offer levels with sizes, about every two minutes, from
+five and a half hours before the ladder ends. The hourly ladders are left
+out, as in L1: their books are nearly empty. It was added to the job on
+GitHub the same night and records from that job's next run.
+
+### The rule
+
+1. **A ladder** is the brackets of one coin with the same length and the
+   same end, open ends included.
+2. **A reading of a ladder** is taken every two minutes, counted back from
+   its end: 2 minutes before it, 4 minutes, and so on to 330 minutes. At a
+   reading, each bracket's book is the last one recorded for it, if that
+   is at most four minutes old. A bracket with nothing that fresh has no
+   bids at that reading.
+3. **A sale of size Q** sells up to Q contracts of "Yes" in every bracket
+   that has a bid: into its recorded bids from the best down, each level
+   one fill, and no further than the three recorded levels go. No bracket
+   is sold more than Q.
+4. **What a sale locks** is the money received, less the fee on every
+   fill, less Q. That much is kept whichever bracket pays. If the bracket
+   that pays was sold less than Q, more is kept.
+5. **The fee** on a fill is 0.095 × contracts × price × (1 − price),
+   rounded to the cent, halves to the even cent, as the exchange
+   publishes it.
+6. **The money** is $10,000 for each settlement time, shared by the
+   ladders that end then: first come, first served, and at the same
+   reading in the order Bitcoin, Ether, Solana, XRP, daily before weekly.
+   A contract sold locks $1 less its price until the ladder settles.
+   Nothing is assumed about the exchange asking less for a set of
+   brackets of which only one can pay.
+7. **The trade.** At the first reading of a ladder at which some size
+   locks at least $25: sell, at the size that locks the most. From 30
+   minutes before the end, $10 is enough. The sizes tried are those at
+   which some bracket's recorded bids run out, and the largest the money
+   allows, to a hundredth of a contract. Of two sizes that lock the same,
+   the smaller. The reason for two thresholds: there is one sale a
+   ladder, so an early sale for a little gives up a later one for more,
+   and near the end there is nothing left to wait for.
+8. **Once.** A ladder is sold once. At later readings a bracket that had
+   no bid at the sale and has one now is sold then, up to the same Q, if
+   money is left: that adds money and cannot add to what is paid. No
+   bracket is ever sold twice. A paper account that sold again and again
+   to the same resting bid would be counting money nobody offered.
+9. **The result** of a ladder is the money received, less fees, less the
+   number of contracts sold in the bracket that paid.
+
+Beside the judged account the script describes the day: at every reading,
+how many brackets had a bid, how many of those at 1¢, and what sizes of
+10, 100 and the best size would have locked. That is described, not
+judged.
+
+### The bar
+
+By 18 November, when L1 and R1 are also read: at least five evenings
+recorded; a sale on at least four of them; at least $20 kept an evening on
+average, an evening without a sale counting as nothing; and no ladder
+with a loss. An evening counts as recorded if at least 120 of the 165
+readings of the daily Bitcoin ladder found fresh books. By its
+construction the rule cannot lose on a ladder in which exactly one
+bracket pays, so a loss would mean the ladder or the recording is not
+what it is taken for.
+
+$20 an evening on $10,000 is a fifth of one percent a day. Below that it
+is not worth a program and a key, whatever the certainty.
+
+### What paper cannot show
+
+- **The fills.** A real sale is sixty orders against a book that is shown
+  up to 30 seconds late. Orders that find their bid gone are cancelled,
+  and that is harmless on a far bracket. On the brackets near the price
+  it is not: if those fail and the rest fill, what is left is 10,000
+  contracts sold with nothing certain about them. A real version would
+  sell the brackets near the price first and the rest only up to what
+  those filled.
+- **The margin.** If the exchange locks less for a set of brackets of
+  which one can pay, the same money goes several times as far. Not known.
+- **The other side.** The bids exist to collect a reward. Somebody who is
+  sold 1¢ contracts every evening may bid for fewer, or stop.
+- **Company.** One seller was there tonight, within a minute of the
+  quotes appearing. There is room for a second only as long as the bids
+  are bigger than the first one's lots.
