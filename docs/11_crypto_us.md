@@ -442,7 +442,7 @@ Four things this adds to what was known.
   traded 1,000 or more.
 - **They are there most days, in small number.** 30 of the 32 daily
   settlement times had at least one, with 5 or 6 levels in a typical one
-  and 11 on average. The weekly settlements on Fridays had 30 to 130. This
+  and 11 on average. The weekly settlements on Fridays had 30 to 136. This
   is a count a quarter of an hour ahead. Nearer the end the reach is
   shorter and more levels qualify, which only the live recorder can count.
 - **The brake was used once.** On 29 October it stopped Bitcoin and
@@ -458,10 +458,11 @@ And four reasons it is not more than it is.
   filled in where the book was empty (`docs/06_polymarket_us.md`,
   section 7). The same filling-in at 2¢ to 5¢ would pass as a real bid, so
   some of the 108 trades away from the last tick may not have been there.
-- **Five weeks is one kind of weather.** Bitcoin fell by a quarter in
-  these weeks and no quarter of an hour came near the reach. That says the
-  period had no day like 12 March 2020. It does not say what such a day
-  would do. Section 6 is what speaks to that.
+- **Five weeks is one kind of weather.** Bitcoin fell by a seventh in
+  these weeks, from $85,800 to $73,800, and no last quarter of an hour
+  crossed the reach. That says the period had no day like 12 March 2020.
+  It does not say what such a day would do. Section 6 is what speaks to
+  that.
 - **Zero losses is what this trade shows right up to the day it does
   not.** It is recorded here as a condition met, as section 5 said it
   would be.
