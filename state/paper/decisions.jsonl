@@ -75,3 +75,4 @@
 {"action": "blocked", "market_id": 2299986, "reason": "Will OpenAI's valuation hit (HIGH) $2.0T by December 31? | buy 'No' at 0.970, est. 0.978, edge 0.64c, 55d", "ts": 1794377914.551376, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 676779, "reason": "Ripple Labs IPO before 2027? | buy 'No' at 0.978, est. 0.984, edge 0.56c, 51d", "ts": 1794377914.551376, "why": "total exposure cap"}
 {"action": "screened", "by_limit": {"event": 6, "theme 'foreign-policy'": 2, "theme 'iran'": 9, "theme 'israel'": 4, "theme 'middle-east'": 1, "theme 'oil'": 1, "theme 'ukraine'": 7, "theme 'venezuela'": 1, "total": 30}, "count": 61, "ts": 1794388175.5674534}
+{"action": "screened", "by_limit": {"event": 6, "theme 'iran'": 8, "theme 'israel'": 1, "theme 'middle-east'": 6, "theme 'ukraine'": 9, "theme 'venezuela'": 2, "total": 34}, "count": 66, "ts": 1794410199.526203}

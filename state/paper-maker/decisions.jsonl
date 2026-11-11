@@ -73,3 +73,4 @@
 {"action": "blocked", "market_id": 687642, "reason": "China x Japan military clash before 2027? | buy 'No' at 0.978, est. 0.988, edge 0.97c, 51d", "ts": 1794377933.6964474, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 2370273, "reason": "JD Vance out as VP by December 31? | buy 'No' at 0.977, est. 0.986, edge 0.94c, 51d", "ts": 1794377933.6964474, "why": "total exposure cap"}
 {"action": "screened", "by_limit": {"event": 6, "theme 'iran'": 26, "theme 'israel'": 6, "theme 'middle-east'": 14, "theme 'russia'": 1, "theme 'tech'": 17, "theme 'ukraine'": 11, "theme 'venezuela'": 4, "total": 40}, "count": 125, "ts": 1794388187.9877007}
+{"action": "screened", "by_limit": {"event": 7, "theme 'iran'": 14, "theme 'israel'": 21, "theme 'middle-east'": 6, "theme 'oil'": 6, "theme 'russia'": 3, "theme 'tech'": 17, "theme 'ukraine'": 10, "theme 'venezuela'": 4, "total": 42}, "count": 130, "ts": 1794410218.4468687}
