@@ -1,0 +1,9 @@
+group,no fresh index level,"out of reach, but the book disagrees","out of reach, but the index has been moving fast","out of reach, no quote stored at all","out of reach, no real book stored",settled before its last quarter of an hour,trade,within reach
+above below (daily),0,8,43,23,927,0,249,1879
+above below (weekly),0,4,0,0,443,0,318,246
+one touch (monthly),0,1,0,0,10,9,4,1
+one touch (weekly),0,11,0,0,209,8,27,24
+range (daily),0,12,43,45,1080,0,70,1980
+range (weekly),0,5,0,0,695,0,65,263
+up down (1d),0,0,0,0,1,0,1,116
+up down (1h),34,0,0,0,0,4,0,3027

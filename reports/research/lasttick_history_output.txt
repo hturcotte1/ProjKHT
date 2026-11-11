@@ -1,0 +1,110 @@
+Test L1 on the history of settled crypto markets (docs/11, section 5, item 3): one reading a market, a quarter of an hour before its end
+markets fetched: 11,885; ends: 3,070; ends with an index level a quarter of an hour before: 3,031
+the history has no sizes: every trade here is one contract
+
+===== L1-recent: the reach of 2023 to 2026, with the brake =====
+what became of each market, by kind
+group                                             above below (daily)  above below (weekly)  one touch (monthly)  one touch (weekly)  range (daily)  range (weekly)  up down (1d)  up down (1h)
+fate                                                                                                                                                                                           
+no fresh index level                                                0                     0                    0                   0              0               0             0            34
+out of reach, but the book disagrees                                8                     4                    1                  11             12               5             0             0
+out of reach, but the index has been moving fast                   43                     0                    0                   0             43               0             0             0
+out of reach, no quote stored at all                               23                     0                    0                   0             45               0             0             0
+out of reach, no real book stored                                 927                   443                   10                 209           1080             695             1             0
+settled before its last quarter of an hour                          0                     0                    9                   8              0               0             0             4
+trade                                                             249                   318                    4                  27             70              65             1             0
+within reach                                                     1879                   246                    1                  24           1980             263           116          3027
+
+results that were out of reach by the rule, whatever the book showed: 4,208; of these the result changed in 0
+                      out_of_reach  ends  changed  median_gap   reach
+group                                                                
+above below (daily)           1207    31        0      0.0874  0.0479
+above below (weekly)           765     5        0      0.1886  0.0646
+one touch (monthly)             15     1        0      0.2227  0.0479
+one touch (weekly)             247     5        0      0.2495  0.0646
+range (daily)                 1207    31        0      0.0874  0.0479
+range (weekly)                 765     5        0      0.1886  0.0646
+up down (1d)                     2     1        0      0.0702  0.0562
+
+trades (an order to trade against was stored at that moment): 734; lost 0; premium a contract 1.207 cents; result a contract 1.207 cents
+                           trades  sales  ends  price  premium_cents  lost  result_cents  never_traded still_10m  still_5m  still_2m
+group                coin                                                                                                           
+above below (daily)  btc       97     51    22  0.480          1.478     0         1.478         0.691  0.979381  0.958763  0.958763
+                     eth       79     20    18  0.745          1.159     0         1.159         0.456  0.949367  0.924051  0.949367
+                     sol       49      4    15  0.909          1.277     0         1.277         0.347  0.979592  0.979592  0.979592
+                     xrp       24      3    12  0.869          1.058     0         1.058         0.375       1.0       1.0       1.0
+above below (weekly) btc      121     85     5  0.303          1.041     0         1.041         0.967       1.0       1.0       1.0
+                     eth       96     34     4  0.643          0.906     0         0.906         0.667       1.0       1.0       1.0
+                     sol       81     27     4  0.664          0.940     0         0.940         0.630       1.0       1.0       1.0
+                     xrp       20      7     4  0.647          0.906     0         0.906         0.750       1.0      0.95      0.95
+one touch (monthly)  btc        4      4     1  0.015          1.360     0         1.360         0.750       1.0       1.0       1.0
+one touch (weekly)   btc        4      4     3  0.010          0.906     0         0.906         0.750       1.0       1.0       1.0
+                     eth       13     13     3  0.014          1.256     0         1.256         0.846       1.0       1.0       1.0
+                     sol        7      7     3  0.021          1.947     0         1.947         0.714       1.0       1.0       1.0
+                     xrp        3      3     2  0.010          0.906     0         0.906         1.000       1.0       1.0       1.0
+range (daily)        btc       25     25    13  0.020          1.815     0         1.815         0.520      0.96      0.96      0.96
+                     eth       39     39    13  0.021          1.862     0         1.862         0.462       1.0       1.0       1.0
+                     sol        3      3     3  0.033          3.030     0         3.030         0.333       1.0       1.0       1.0
+                     xrp        3      3     2  0.050          4.549     0         4.549         0.000       1.0       1.0       1.0
+range (weekly)       btc       30     30     5  0.012          1.118     0         1.118         0.933  0.966667  0.966667  0.966667
+                     eth       24     24     3  0.010          0.944     0         0.944         1.000       1.0       1.0       1.0
+                     sol        6      6     3  0.015          1.361     0         1.361         0.833       1.0       1.0       1.0
+                     xrp        5      5     3  0.018          1.635     0         1.635         0.800       1.0       1.0       1.0
+up down (1d)         eth        1      1     1  0.010          0.906     0         0.906         0.000       0.0       0.0       0.0
+
+daily, weekly and monthly settlements: levels with an order to trade against, by day (days: 35; median 7 a day)
+day     10-06  10-07  10-08  10-09  10-10  10-11  10-12  10-13  10-14  10-15  10-16  10-17  10-18  10-19  10-20  10-21  10-22  10-23  10-25  10-26  10-27  10-28  10-29  10-30  10-31  11-01  11-02  11-03  11-04  11-05  11-06  11-07  11-08  11-09  11-10
+levels      1      6      4     31      1      1      2      3      4      5     48      5      1     27      7     18     18    136     16     30     29     17      1    127      1      9      6     13     44     20     68      2      2      7     24
+lost        0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0
+
+
+===== L1-strict: the reach of the worst year since 2020, as first written =====
+what became of each market, by kind
+group                                       above below (daily)  above below (weekly)  one touch (monthly)  one touch (weekly)  range (daily)  range (weekly)  up down (1d)  up down (1h)
+fate                                                                                                                                                                                     
+no fresh index level                                          0                     0                    0                   0              0               0             0            34
+out of reach, but the book disagrees                          0                     2                    1                   5              2               2             0             0
+out of reach, no quote stored at all                          0                     0                    0                   0              1               0             0             0
+out of reach, no real book stored                           157                   356                    8                 184            176             539             0             0
+settled before its last quarter of an hour                    0                     0                    9                   8              0               0             0             4
+trade                                                        30                   191                    4                  16              8               8             0             0
+within reach                                               2942                   462                    3                  66           3043             479           118          3027
+
+results that were out of reach by the rule, whatever the book showed: 1,690; of these the result changed in 0
+                      out_of_reach  ends  changed  median_gap   reach
+group                                                                
+above below (daily)            187    17        0      0.1430  0.1270
+above below (weekly)           549     5        0      0.2271  0.1270
+one touch (monthly)             13     1        0      0.2278  0.1066
+one touch (weekly)             205     5        0      0.2771  0.1270
+range (daily)                  187    17        0      0.1430  0.1270
+range (weekly)                 549     5        0      0.2271  0.1270
+
+trades (an order to trade against was stored at that moment): 257; lost 0; premium a contract 1.076 cents; result a contract 1.076 cents
+                           trades  sales  ends  price  premium_cents  lost  result_cents  never_traded still_10m  still_5m still_2m
+group                coin                                                                                                          
+above below (daily)  btc        7      3     2  0.567          1.165     0         1.165         1.000       1.0       1.0      1.0
+                     eth       18      6     6  0.665          1.057     0         1.057         0.778       1.0  0.944444      1.0
+                     sol        2      0     2  0.990          0.906     0         0.906         0.500       1.0       1.0      1.0
+                     xrp        3      0     2  0.990          0.906     0         0.906         0.333       1.0       1.0      1.0
+above below (weekly) btc       80     66     5  0.182          0.997     0         0.997         1.000       1.0       1.0      1.0
+                     eth       60     18     3  0.696          0.906     0         0.906         0.617       1.0       1.0      1.0
+                     sol       41      7     3  0.823          0.906     0         0.906         0.463       1.0       1.0      1.0
+                     xrp       10      3     3  0.696          0.906     0         0.906         0.700       1.0       0.9      0.9
+one touch (monthly)  btc        4      4     1  0.015          1.360     0         1.360         0.750       1.0       1.0      1.0
+one touch (weekly)   btc        3      3     3  0.010          0.906     0         0.906         1.000       1.0       1.0      1.0
+                     eth        9      9     3  0.012          1.108     0         1.108         0.889       1.0       1.0      1.0
+                     sol        4      4     3  0.030          2.727     0         2.727         0.500       1.0       1.0      1.0
+range (daily)        eth        7      7     7  0.027          2.465     0         2.465         0.286       1.0       1.0      1.0
+                     xrp        1      1     1  0.050          4.549     0         4.549         0.000       1.0       1.0      1.0
+range (weekly)       btc        1      1     1  0.010          0.906     0         0.906         1.000       1.0       1.0      1.0
+                     eth        4      4     2  0.010          0.906     0         0.906         1.000       1.0       1.0      1.0
+                     sol        1      1     1  0.040          3.635     0         3.635         0.000       1.0       1.0      1.0
+                     xrp        2      2     2  0.030          2.727     0         2.727         0.500       1.0       1.0      1.0
+
+daily, weekly and monthly settlements: levels with an order to trade against, by day (days: 17; median 4 a day)
+day     10-09  10-16  10-18  10-19  10-20  10-23  10-25  10-26  10-27  10-28  10-30  11-01  11-04  11-05  11-06  11-09  11-10
+levels     17     12      1      5      1     69      1      2      1      2     80      4     15      8     37      1      1
+lost        0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0
+
+
