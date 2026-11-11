@@ -348,11 +348,62 @@ levels above about $79,000. By L1-recent, levels above about $78,000 a
 quarter of an hour before the end, and above about $76,500 two minutes
 before it.
 
-## 7. The up-or-down markets
+## 7. The up-or-down markets: a search, fixed at 17:37 UTC
 
-38,600 have settled. A search over rules that buy one side at its asking
-price, like the one run on sports, is planned and is not registered here.
-Two things lower what to expect from it. The fee at even odds is 2.4¢ a
-contract, and these markets are priced by programs that read the index
-every second, where this project sees the book twice a minute. It will be
-fixed in writing before its prices are joined to its results.
+*Fixed before any price of a settled up-or-down market was fetched. The
+only price paths seen so far are those of a few Bitcoin markets on
+11 November (section 3), and that day is left out.*
+
+38,600 of these markets have settled. This is the same kind of search as
+the one run on sports (`docs/06_polymarket_us.md`, section 9): thousands of
+rules of one form, and a judge that asks whether any beats the luckiest of
+that many worthless rules. Two things lower what to expect. The fee at
+even odds is 2.4¢ a contract. And these markets are priced by programs
+that read the index every second, where this project sees the book twice a
+minute.
+
+**Markets.** Every 5-minute, 15-minute and 1-hour up-or-down market of
+the four coins whose window ended by 10 November 2026, 23:59 UTC, and that
+settled at 0 or 1. The 122 daily ones are too few and are left out.
+
+**Quotes.** The stored minute prices, each read as the book at the end of
+its minute (section 3). A quote counts only if both sides have an asking
+price between 1¢ and 99¢ and the two are 1¢ to 10¢ apart.
+
+**A rule:**
+
+> In markets of length L, for coins C, with M minutes left, if the asking
+> price of side S is in band B, the spread is at most W and condition K
+> holds, buy S at that asking price. Pay the fee. Hold to settlement.
+
+| Part | Values |
+|---|---|
+| L and M | 5 minutes: 4, 3, 2 or 1 minutes left. 15 minutes: 12, 8, 5, 3, 2, 1. One hour: 45, 30, 15, 10, 5, 3, 2, 1 |
+| C | all four coins; Bitcoin; the other three |
+| S | "Up"; "Down" |
+| B | the twenty price bands of the earlier searches, from 2–5¢ to 98–99.5¢ |
+| W | 1¢; 3¢; any real book |
+| K | none; the previous window of the same coin and length ended the same way as S; it ended the other way; S has been the dearer side at every stored minute of this window so far; it has not |
+
+That is 32,400 rules. One purchase a market for each rule, of one
+contract, since the history has no sizes.
+
+**The judge** is that of `docs/06`, section 4, as corrected there.
+
+- Discovery: windows ending before 3 November 2026. Validation: 3 to
+  10 November.
+- A rule is a candidate if in discovery it has 150 purchases or more, a
+  mean return after the fee of +0.5% or more, and z of 3.0 or more, with
+  the variance floored at what fair prices would give and every hour of
+  every day counted as one bet.
+- A candidate survives if its validation z, on 100 purchases or more, is
+  above what the best of the candidates reaches in 95% of 500 worlds where
+  every price is right. In those worlds the four coins' results in one
+  window are drawn together.
+- The whole funnel is also run in 20 such worlds, to count what gets
+  through from nothing.
+
+**Whatever happens** the counts will be reported, with a plain table of
+asking price against how often that side won, by minutes left. A survivor
+would not be a result until it had been seen in live books with sizes,
+and a book seen twice a minute may not be able to show it.
