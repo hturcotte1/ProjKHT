@@ -200,7 +200,7 @@ somebody simply takes the price and the market stays where it was.
 
 ### A second guess, from what is already resting
 
-*Written at 10:10 UTC, while the download was running and before anything
+*Written at 10:04 UTC, while the download was running and before anything
 from it had been read.* The accounts already resting orders before these
 matches have every reason to size them well, and their sizes say what they
 think resting costs.
