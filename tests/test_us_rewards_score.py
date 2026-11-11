@@ -82,6 +82,18 @@ def test_fills_are_capped_valued_at_settlement_and_cost_the_side_its_reward():
     assert per.loc["a", "net"] == pytest.approx(1.5 * PART + 60.8)
 
 
+def test_under_a_cap_a_game_with_no_fill_is_paid_nothing():
+    g = pd.DataFrame([game_row("quiet"), game_row("traded"), game_row("barely")])
+    h = pd.DataFrame([hit_row("traded", "ask", 0.50, 40.0, START - 4000), hit_row("barely", "ask", 0.50, 4.0, START - 4000)])
+    per, _ = score.account(score.per_game_day(g), score.game_facts(g), h, pd.Series({"quiet": 1.0, "traded": 0.0, "barely": 0.0}), 100, NOW)
+    per = per.set_index("slug")
+    assert per.loc["quiet", "reward_paid"] == pytest.approx(4.5 * PART) and per.loc["quiet", "reward_cap_100"] == 0.0     # never traded against: nothing
+    assert per.loc["traded", "notional"] == pytest.approx(20.0)
+    assert per.loc["traded", "reward_cap_100"] == pytest.approx(4.5 * PART)                                             # $20 traded covers it
+    assert per.loc["traded", "reward_cap_10"] == pytest.approx(2.0)                                                     # a tenth of $20
+    assert per.loc["barely", "reward_cap_100"] == pytest.approx(2.0) and per.loc["barely", "reward_cap_10"] == 0.0      # 20 cents is under the dollar
+
+
 def test_a_fill_without_a_settlement_leaves_the_game_unjudged():
     g = pd.DataFrame([game_row("a")])
     h = pd.DataFrame([hit_row("a", "bid", 0.40, 60.0, START - 5000)])

@@ -529,6 +529,26 @@ itself the tool to stop paying for that, and I expect it to use it.
   17 November, under the rules as they are now. What it measures stays
   true of those rules. Whether it says anything about the week after
   depends on what the exchange publishes.
+- **The scoring also answers the question the new rules ask.** The paper
+  account's fills are recorded, so what it traded in each game is known.
+  Beside the judged figures the scoring now reports what the same orders
+  would have been paid under a cap of 100%, 50% and 10% of that. These are
+  described, not judged.
+
+### What might still be paid under a cap, and why I would not build on it
+
+Under a cap an account is paid, at most, in proportion to what it trades.
+So an account that rests orders could also buy a few contracts in each
+game to have something executed. With a cap of 100%, about $1.60 of
+trading would release $1.60 of reward, and taking that much costs about a
+dime in spread and fee. With a cap of 10% it would take $16 of trading and
+cost about a dollar, which is the whole margin.
+
+I would not build on this. The filing lists what the exchange will treat
+as gaming, ends the list with "any other conduct that undermines market
+integrity or the Program's objectives", and reserves to itself, finally,
+whether a reward is paid at all. Trading for no reason but to release a
+reward is what that sentence is for.
 
 ### What this does to the lead
 

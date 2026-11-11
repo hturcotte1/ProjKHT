@@ -33,6 +33,7 @@ MIN_GAMES, MIN_DATES, BAR = 2000, 5, 3.0
 THIN = ("itf_moneyline", "doubles_moneyline", "utr_moneyline", "darts_moneyline", "astra_cup_women_moneyline")
 # The third: named on 11 November after the history of past games (docs/09, section 4) and before any reading of the test.
 CORE = ("itf_moneyline", "utr_moneyline")
+CAPS = (100, 50, 10)               # reward caps, as percentages of the account's own executed volume, shown for description
 pd.set_option("display.width", 250)
 pd.set_option("display.max_rows", 200)
 pd.set_option("display.max_colwidth", 60)
@@ -169,12 +170,20 @@ def account(d: pd.DataFrame, facts: pd.DataFrame, h: pd.DataFrame, settle: pd.Se
         sign = np.where(f["side"] == "bid", 1.0, -1.0)
         f["pnl_settle"] = sign * (f["settle"] - f["px"]) * f["qty"]
         f["pnl_mid"] = sign * (f["mid_pull"] - f["px"]) * f["qty"]
-        agg = f.groupby("slug").agg(filled=("qty", "sum"), pnl_settle=("pnl_settle", lambda s: s.sum(min_count=len(s))), pnl_mid=("pnl_mid", lambda s: s.sum(min_count=len(s))))
+        f["notional"] = f["px"] * f["qty"]
+        agg = f.groupby("slug").agg(filled=("qty", "sum"), notional=("notional", "sum"), pnl_settle=("pnl_settle", lambda s: s.sum(min_count=len(s))),
+                                    pnl_mid=("pnl_mid", lambda s: s.sum(min_count=len(s))))
         per = per.join(agg)
-    for col in ("filled", "pnl_settle", "pnl_mid"):
+    for col in ("filled", "notional", "pnl_settle", "pnl_mid"):
         if col not in per:
             per[col] = np.nan
     per["filled"] = per["filled"].fillna(0.0)
+    per["notional"] = per["notional"].fillna(0.0)
+    # From 18 November 2026 the exchange may cap a reward at a percentage of what the account itself traded in that market in that
+    # period (docs/09, section 9). What the same orders would be paid under such a cap: nothing in a game where they were never filled.
+    for pct in CAPS:
+        capped = np.minimum(per["reward_formula"], pct / 100.0 * per["notional"])
+        per[f"reward_cap_{pct}"] = np.where(capped >= MINIMUM, capped, 0.0)
     no_fill = per["filled"] <= 1e-9
     per.loc[no_fill, ["pnl_settle", "pnl_mid"]] = 0.0
     per["day"] = pd.to_datetime(per["start"], unit="s", utc=True).dt.tz_convert("America/New_York").dt.strftime("%Y-%m-%d")
@@ -258,6 +267,8 @@ def main() -> None:
         cap = PRIMARY * judged["cap_s"].sum() / max(judged["quote_s"].sum(), 1.0)
         lines += [f"reward by the published formula: ${judged['reward_formula'].sum():,.2f}; after the $1 minimum by market and date: ${judged['reward_paid'].sum():,.2f}",
                   f"   (as the filed rules word the split, described only: ${judged['reward_rule'].sum():,.2f}; of it in games that reach $1: ${judged.loc[judged['reward_rule'] >= MINIMUM, 'reward_rule'].sum():,.2f})",
+                  "   under the rules in force from 18 November, IF the exchange capped these rewards at a share of the account's own executed volume: "
+                  + "; ".join(f"cap {pct}%: ${judged[f'reward_cap_{pct}'].sum():,.2f}" for pct in CAPS) + " (described only)",
                   f"games in which an order was traded against: {int((judged['filled'] > 1e-9).sum()):,} ({100 * (judged['filled'] > 1e-9).mean():.1f}%); contracts: {judged['filled'].sum():,.0f}",
                   f"what those fills made, held to settlement: ${judged['pnl_settle'].sum():,.2f}; valued at the last middle of the book before the start: ${judged['pnl_mid'].sum():,.2f}",
                   f"net: ${judged['net'].sum():,.2f}; a game: ${mean:,.3f}; z with each date-programme group as one observation: {z:.2f}",
