@@ -192,6 +192,49 @@ more than 2026 does, and the next bad year is not announced.
   in the order they are found until it is used up. It is what a small
   account would see.
 
+### A second yardstick, added at 17:21 UTC, before anything was scored
+
+*What had been seen when this was added: the reach table for Bitcoin by
+the definition above, from minute prices. No book, quote or result of any
+market had been scored under any rule.*
+
+By that definition the reach comes from 2020. The move within 16 minutes
+that one start in 5,000 exceeded was 10.7% in 2020, 9.6% in 2021, 5.5% in
+2022, and 4.3%, 4.8%, 3.8% and 3.2% in the four years since. So a quarter
+of an hour before the end, a level has to be about 11% from the price to
+count as out of reach. The daily Bitcoin ladder ends 11% above the price.
+**The rule as written will trade almost nothing.** It stays in the test
+exactly as written, under the name **L1-strict**, and will be reported
+whatever it shows.
+
+The table also shows what is blunt about that yardstick. The 2020 figure
+is set by two days, 12 and 13 March. One number for every evening treats
+each of them like those two. And on those two days nobody needed a table
+to know: the price had been falling by whole percents every few minutes
+for hours.
+
+**L1-recent** is the same rule with a yardstick in two parts.
+
+1. **The reach comes from 2023 to 2026 only,** computed the same way.
+2. **A brake.** Take the index levels published in the hour before the
+   reading, one every five minutes. If any two in a row differ by more
+   than a set amount, nothing is traded in that coin at that reading. The
+   amount is the five-minute change that one interval in 1,000 exceeded
+   in 2023 to 2026. If fewer than six such changes are known, nothing is
+   traded.
+
+Its test is fixed here too. The yardstick, brake included, is applied to
+every minute from 2020 to 2026 as if it were a reading, at horizons of 3,
+6, 10, 16, 22 and 30 minutes. **In no year, at no horizon and for no coin
+may the price have gone beyond the reach more often than one start in
+1,000.** That would cost about a tenth of the premium. The years 2020 to
+2022 took no part in setting the table and are the hard ones. If this
+fails, L1-recent is not a yardstick and nothing scored under it counts.
+
+So there are four accounts: L1-strict and L1-recent, each as "all" and as
+"10k". The bar below is read for L1-recent, with this check in place of
+the one written there for 2025 and 2026, and L1-strict is shown beside it.
+
 ### What will count as evidence, and what will not
 
 The profit of this trade is a premium that can be read off the book, less a
