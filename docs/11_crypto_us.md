@@ -407,3 +407,88 @@ contract, since the history has no sizes.
 asking price against how often that side won, by minutes left. A survivor
 would not be a result until it had been seen in live books with sizes,
 and a book seen twice a minute may not be able to show it.
+
+## 8. L1 on the history of the settled markets
+
+`scripts/lasttick_history.py` (`reports/research/lasttick_history_output.txt`,
+`lth_*`). Run at 18:14 UTC on 11 November, after the tables of section 6
+were committed. 11,885 settled markets: every daily and weekly ladder,
+"hit" market and hourly or daily up-or-down market that ended by
+10 November. Each is read once, a quarter of an hour before its end. The
+index then is known for 3,031 of the 3,070 settlement times.
+
+**No result that the rule called out of reach came in. Under L1-recent
+that is 4,208 results at 37 settlement times; under L1-strict, 1,690.**
+
+| | L1-recent | L1-strict |
+|---|---:|---:|
+| Results out of reach a quarter of an hour before the end | 4,208 | 1,690 |
+| Of those, results that changed | 0 | 0 |
+| With an order stored to trade against | 734 | 257 |
+| Trades that lost | 0 | 0 |
+| Settlement times with a trade | 36 | 17 |
+| The traded market had never traded a contract | 494 of 734 | 190 of 257 |
+
+What the 734 were: 299 sales at 1¢ and 327 purchases at 99¢, and 108 at
+2¢ to 5¢ or 95¢ to 98¢. 281 in Bitcoin, 252 in Ether, 146 in Solana, 55 in
+XRP. A contract kept 1.2¢ on average after the fee.
+
+Four things this adds to what was known.
+
+- **The orders stay.** Of the 734, 98% showed the same price two minutes
+  before the end.
+- **Nobody takes them.** Two thirds of those markets never traded a
+  contract in their whole life, and all but 45 traded under 100. Six
+  traded 1,000 or more.
+- **They are there most days, in small number.** 30 of the 32 daily
+  settlement times had at least one, with 5 or 6 levels in a typical one
+  and 11 on average. The weekly settlements on Fridays had 30 to 130. This
+  is a count a quarter of an hour ahead. Nearer the end the reach is
+  shorter and more levels qualify, which only the live recorder can count.
+- **The brake was used once.** On 29 October it stopped Bitcoin and
+  Ether, 86 markets. Their results held too.
+
+And four reasons it is not more than it is.
+
+- **It has no sizes.** A stored price says an order was there, not for how
+  many contracts.
+- **Some of these prices were never in a book.** In 41 markets the stored
+  bid was far above what an out-of-reach result is worth, and the rule
+  refused them. In 39 of the 41 that "bid" was the market's last trade,
+  filled in where the book was empty (`docs/06_polymarket_us.md`,
+  section 7). The same filling-in at 2¢ to 5¢ would pass as a real bid, so
+  some of the 108 trades away from the last tick may not have been there.
+- **Five weeks is one kind of weather.** Bitcoin fell by a quarter in
+  these weeks and no quarter of an hour came near the reach. That says the
+  period had no day like 12 March 2020. It does not say what such a day
+  would do. Section 6 is what speaks to that.
+- **Zero losses is what this trade shows right up to the day it does
+  not.** It is recorded here as a condition met, as section 5 said it
+  would be.
+
+## 9. Notes while the test runs
+
+**11 November, 18:15 UTC.** The recorder `kht us-lasttick` was added to the
+*us-rewards* job at 17:08 UTC and will run from that job's next run, due
+about 19:50 UTC, so the first daily settlement it sees is tonight's at
+22:00 UTC. A two-hour trial of it in this session followed the hourly
+up-or-down markets through 18:00 UTC and the scoring script ran on what
+it wrote. One look was taken at the hourly ladders five minutes before
+18:00, since the recorder leaves them out: 536 books. They hold no orders
+of the kind L1 trades. On levels sure to win there are bids at 99¢, and on
+levels sure to lose there are offers at 1¢: resting orders that gain when
+somebody trades against them. The daily ladders are the other way round,
+which is what section 4 found.
+
+## 10. The same bids elsewhere on the exchange
+
+The recorder of `state/us/` reads the books of every reward market outside
+sports and crypto. At 15:18 UTC on 11 November, 486 of those 2,737 books
+had a best bid of 1¢ for 100 contracts or more. Most are long-dated
+political long shots, where selling ties money up for months. Some are
+ladders that settle soon. The daily ladder on the national average price
+of petrol is one: fifteen levels with 1¢ bids of about 900 contracts each,
+settled on a figure that is published hours before the market closes.
+Nothing has been tested there. It would need the published figure from
+outside the exchange, where the crypto index comes from the exchange
+itself.
