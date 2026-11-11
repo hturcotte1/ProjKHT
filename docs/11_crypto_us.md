@@ -875,7 +875,7 @@ Of 231 events with three or more markets, 89 have best bids that add up
 to more than $1. Almost none of them is this trade, because in almost
 none of them does exactly one market pay:
 
-- Lists of nominees, where five or more are named.
+- Lists of nominees, where several are named.
 - Levels such as "above $3.91", where each level includes the ones
   beyond it.
 - Events that read like one winner and are not. TIME's Person of the Year
