@@ -58,13 +58,21 @@ jobs:
         id: record
         if: steps.gate.outputs.go == 'true'
         timeout-minutes: 320
-        run: kht us-rewards --state state/us-rewards --minutes 300
+        run: |
+          # Alongside the judged test: the order-placing system itself, on
+          # paper and under its own limits (docs/10_us_quoter.md). It sends
+          # nothing anywhere. If it fails, the judged test is not affected.
+          (timeout 302m kht us-quote --config config/us_quoter.json --state state/us-quoter --minutes 298 > us-quote.log 2>&1 || true) &
+          kht us-rewards --state state/us-rewards --minutes 300
+          wait
+          tail -n 4 us-quote.log || true
       - name: Commit what was recorded
         if: always() && steps.gate.outputs.go == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state/us-rewards
+          if [ -d state/us-quoter ]; then git add state/us-quoter; fi
           if git diff --cached --quiet; then
             echo "nothing recorded"
           else
