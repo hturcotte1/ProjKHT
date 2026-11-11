@@ -170,6 +170,8 @@ learn that. The story is in
 | Rewards in sports games: what the order books show, and the paper test of small resting orders, fixed in advance | [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md) |
 | What the paper orders before games did in the latest run | `state/us-rewards/STATUS.md` (from its first run) |
 | The system that would rest those orders for real: what it does, its limits, and the steps before any real order | [`docs/10_us_quoter.md`](docs/10_us_quoter.md) |
+| Crypto on Polymarket US: what is there, the 1¢ bids nobody sells to, and test L1 of selling to them in the last minutes | [`docs/11_crypto_us.md`](docs/11_crypto_us.md) |
+| What the crypto order books showed in their last minutes at the latest run | `state/us-lasttick/STATUS.md` (from its first run) |
 | What Polymarket US's order books showed at the last cycle | [`state/us/STATUS.md`](state/us/STATUS.md) |
 | What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-long/STATUS.md` (from its first cycle) |
 
@@ -219,8 +221,18 @@ on paper, choosing 20 games at a time under its own limits
 ([`docs/10_us_quoter.md`](docs/10_us_quoter.md)). It sends nothing
 anywhere. Its connection to the exchange has never been run.
 
+And a **recorder for test L1** (`kht us-lasttick`, `state/us-lasttick/`):
+the order books of crypto markets in the quarter of an hour before they
+settle, with sizes. It decides nothing and sends nothing; the rule of
+[`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 5, is applied to
+what it wrote down.
+
 ```bash
 python scripts/us_rewards_score.py --settle   # add the runs up and apply the judge
+```
+
+```bash
+python scripts/us_lasttick_score.py --settle  # test L1 on what has been recorded
 ```
 
 ```bash
