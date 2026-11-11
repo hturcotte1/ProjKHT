@@ -1,20 +1,30 @@
 {
  "bid_since": {
+  "1058997": 1794358723.8322337,
+  "1073738": 1794358723.8322337,
+  "1087312": 1794358723.8322337,
+  "1088912": 1794358723.8322337,
   "2054224": 1794343844.9612584,
   "2371046": 1794343844.9612584,
   "5324614": 1794343844.9612584,
   "609655": 1794343844.9612584,
+  "680601": 1794358723.8322337,
   "897843": 1794343844.9612584
  },
  "broker": {
   "last_print_ts": {
+   "1058997": 1794358723.8322337,
+   "1073738": 1794358723.8322337,
+   "1087312": 1794358723.8322337,
+   "1088912": 1794358723.8322337,
    "2054224": 1794343844.9612584,
    "2371046": 1794343844.9612584,
    "5324614": 1794343844.9612584,
-   "609655": 1794343844.9612584,
+   "609655": 1794352717.0,
+   "680601": 1794358723.8322337,
    "897843": 1794343844.9612584
   },
-  "next_id": 6,
+  "next_id": 11,
   "orders": {
    "paper-1": {
     "created_ts": 1794343844.9612584,
@@ -24,13 +34,29 @@
     "market_id": 609655,
     "order_id": "paper-1",
     "price": 0.959,
-    "queue_ahead": 2328.02,
+    "queue_ahead": 1777.94,
     "reason": "US recession by end of 2026? | buy 'No' at 0.961, est. 0.974, edge 1.25c, 81d",
     "side": "BUY",
     "size": 20.85,
     "status": "OPEN",
     "tag": "harvest-long",
     "token": "113732820231608904682346496304917888352004831436510840986547065248348999143469"
+   },
+   "paper-10": {
+    "created_ts": 1794358723.8322337,
+    "expires_ts": 1794617923.8322337,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 1058997,
+    "order_id": "paper-10",
+    "price": 0.969,
+    "queue_ahead": 20.0,
+    "reason": "Natural Disaster in 2026? | buy 'No' at 0.978, est. 0.987, edge 0.87c, 110d",
+    "side": "BUY",
+    "size": 20.63,
+    "status": "OPEN",
+    "tag": "harvest-long",
+    "token": "3029562585062734671915107793115526294897334591050692289098351457189383153489"
    },
    "paper-2": {
     "created_ts": 1794343844.9612584,
@@ -95,6 +121,70 @@
     "status": "OPEN",
     "tag": "harvest-long",
     "token": "48034741162414911677683690294521484296674889000564444056948845787306275984919"
+   },
+   "paper-6": {
+    "created_ts": 1794358723.8322337,
+    "expires_ts": 1794617923.8322337,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 1087312,
+    "order_id": "paper-6",
+    "price": 0.962,
+    "queue_ahead": 54.75,
+    "reason": "Will US unemployment reach at least 7.0% in 2026? | buy 'No' at 0.974, est. 0.984, edge 0.97c, 82d",
+    "side": "BUY",
+    "size": 20.79,
+    "status": "OPEN",
+    "tag": "harvest-long",
+    "token": "90730065346491050423466890731523173031297529748126652187514109911538674088578"
+   },
+   "paper-7": {
+    "created_ts": 1794358723.8322337,
+    "expires_ts": 1794617923.8322337,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 680601,
+    "order_id": "paper-7",
+    "price": 0.964,
+    "queue_ahead": 25.98,
+    "reason": "Negative GDP growth in 2026? | buy 'No' at 0.980, est. 0.988, edge 0.81c, 79d",
+    "side": "BUY",
+    "size": 20.74,
+    "status": "OPEN",
+    "tag": "harvest-long",
+    "token": "63147276005126770880954125047261230986291997315680909701649556277988435329355"
+   },
+   "paper-8": {
+    "created_ts": 1794358723.8322337,
+    "expires_ts": 1794617923.8322337,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 1073738,
+    "order_id": "paper-8",
+    "price": 0.967,
+    "queue_ahead": 495.0,
+    "reason": "Major meteor strike (10kt+) in 2026? | buy 'No' at 0.973, est. 0.983, edge 1.00c, 110d",
+    "side": "BUY",
+    "size": 20.68,
+    "status": "OPEN",
+    "tag": "harvest-long",
+    "token": "108818021198185124723069411021397722136577696653894071789416255025867153135950"
+   },
+   "paper-9": {
+    "created_ts": 1794358723.8322337,
+    "expires_ts": 1794617923.8322337,
+    "filled": 0.0,
+    "kind": "MAKER",
+    "market_id": 1088912,
+    "order_id": "paper-9",
+    "price": 0.965,
+    "queue_ahead": 527.31,
+    "reason": "1 megaton meteor strike in 2026? | buy 'No' at 0.976, est. 0.985, edge 0.92c, 110d",
+    "side": "BUY",
+    "size": 20.72,
+    "status": "OPEN",
+    "tag": "harvest-long",
+    "token": "48937955459899245588878847504767254056087888943528913020343267748014169195310"
    }
   }
  },
@@ -113,6 +203,21 @@
   "theme_max_share": 0.1
  },
  "market_names": {
+  "108818021198185124723069411021397722136577696653894071789416255025867153135950": {
+   "category": "weather",
+   "end_ts": 1803877140.0,
+   "market_id": 1073738,
+   "outcome": "No",
+   "question": "Major meteor strike (10kt+) in 2026?",
+   "themes": [
+    "astroid",
+    "climate-science",
+    "nasa",
+    "natural-disaster",
+    "space",
+    "weather"
+   ]
+  },
   "11090044591710453693735594187294975309870309948326622960022716802993276946142": {
    "category": "politics",
    "end_ts": 1806551940.0,
@@ -135,6 +240,26 @@
     "economic-policy",
     "economy",
     "macro-graph"
+   ]
+  },
+  "3029562585062734671915107793115526294897334591050692289098351457189383153489": {
+   "category": "weather",
+   "end_ts": 1803877140.0,
+   "market_id": 1058997,
+   "outcome": "No",
+   "question": "Natural Disaster in 2026?",
+   "themes": [
+    "astroid",
+    "climate",
+    "climate-science",
+    "earthquake",
+    "hurricane",
+    "nasa",
+    "natural-disaster",
+    "natural-disasters",
+    "parlays",
+    "space",
+    "weather"
    ]
   },
   "34166537544584980835945387048987899679455576969076155852420765507546755821151": {
@@ -163,6 +288,30 @@
     "weather"
    ]
   },
+  "48937955459899245588878847504767254056087888943528913020343267748014169195310": {
+   "category": "weather",
+   "end_ts": 1803877140.0,
+   "market_id": 1088912,
+   "outcome": "No",
+   "question": "1 megaton meteor strike in 2026?",
+   "themes": [
+    "climate-science",
+    "space",
+    "weather"
+   ]
+  },
+  "63147276005126770880954125047261230986291997315680909701649556277988435329355": {
+   "category": "economics",
+   "end_ts": 1801180800.0,
+   "market_id": 680601,
+   "outcome": "No",
+   "question": "Negative GDP growth in 2026?",
+   "themes": [
+    "economy",
+    "gdp",
+    "macro-indicators"
+   ]
+  },
   "72021097927534289022361341011450053983269008762704582663082298122723324133671": {
    "category": "politics",
    "end_ts": 1808107140.0,
@@ -175,6 +324,21 @@
     "french-elections",
     "international-election-props",
     "macron"
+   ]
+  },
+  "90730065346491050423466890731523173031297529748126652187514109911538674088578": {
+   "category": "economics",
+   "end_ts": 1801457940.0,
+   "market_id": 1087312,
+   "outcome": "No",
+   "question": "Will US unemployment reach at least 7.0% in 2026?",
+   "themes": [
+    "bls",
+    "economy",
+    "macro-indicators",
+    "nfp",
+    "nonfarm-payroll",
+    "unemployment"
    ]
   }
  },
@@ -291,18 +455,21 @@
  },
  "quiet_seen": {},
  "risk": {
-  "day": 20767,
+  "day": 20768,
   "day_start_equity": 1000.0,
   "halt_reason": "",
   "halted": false,
   "high_water": 1000.0,
   "last_equity": 1000.0
  },
- "saved_ts": 1794343883.6136415,
+ "saved_ts": 1794358734.1692157,
  "shadow_pending": {
   "1132823:above": 1794343844.9612584,
   "1353091:above": 1794343844.9612584,
+  "2589859:core": 1794358723.8322337,
   "3251452:core": 1794343844.9612584,
+  "3683443:above": 1794358723.8322337,
+  "3751878:core": 1794358723.8322337,
   "5151695:above": 1794343844.9612584
  },
  "shadow_quiet_done": [
@@ -311,9 +478,11 @@
   "1073738:core",
   "1087309:core",
   "1087310:above",
+  "1087312:core",
   "1087313:above",
   "1088912:core",
   "1132796:core",
+  "1132823:core",
   "1192820:core",
   "1192821:above",
   "1215429:core",
@@ -339,6 +508,7 @@
   "2977658:core",
   "3145010:core",
   "3145012:core",
+  "3215014:above",
   "3251057:core",
   "3683442:core",
   "3683443:core",
@@ -348,8 +518,10 @@
   "5324614:core",
   "5621941:core",
   "609655:core",
+  "6404284:core",
   "678686:core",
   "678687:core",
+  "679019:above",
   "679019:core",
   "679021:core",
   "679027:above",
@@ -370,9 +542,11 @@
   "1073738:core",
   "1087309:core",
   "1087310:above",
+  "1087312:core",
   "1087313:above",
   "1088912:core",
   "1132796:core",
+  "1132823:core",
   "1192820:core",
   "1192821:above",
   "1215429:core",
@@ -398,6 +572,7 @@
   "2977658:core",
   "3145010:core",
   "3145012:core",
+  "3215014:above",
   "3251057:core",
   "3683442:core",
   "3683443:core",
@@ -407,8 +582,10 @@
   "5324614:core",
   "5621941:core",
   "609655:core",
+  "6404284:core",
   "678686:core",
   "678687:core",
+  "679019:above",
   "679019:core",
   "679021:core",
   "679027:above",
