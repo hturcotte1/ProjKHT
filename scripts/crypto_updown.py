@@ -59,7 +59,7 @@ def markets() -> pd.DataFrame:
     m = m[got[0].notna()].copy()
     got = got.loc[m.index]
     m["coin"], m["length"] = got[0], got[1]
-    m["w0"] = (pd.to_datetime(got[2] + " " + got[3] + ":" + got[4]).astype("int64") // 10**9).astype(float)
+    m["w0"] = (pd.to_datetime(got[2] + " " + got[3] + ":" + got[4]) - pd.Timestamp(0)).dt.total_seconds()
     m["w1"] = m["w0"] + m["length"].map(LENGTH)
     m = m[m["w1"] < LAST]
     return m[["slug", "coin", "length", "w0", "w1", "yes_settle"]].sort_values(["length", "coin", "w0"]).reset_index(drop=True)

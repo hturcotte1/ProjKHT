@@ -95,3 +95,19 @@ def test_placebo_results_follow_the_prices_and_coins_in_one_window_move_together
     assert abs(won.mean() - 0.945) < 0.01
     slot = pd.Series(won).groupby(t.slot).nunique()
     assert slot.max() == 1                                                       # the two coins of a window always share its draw at equal prices
+
+
+def test_markets_in_scope_and_their_windows(tmp_path, monkeypatch):
+    rows = [("cpc-btc-updown-5m-2026-11-02-2355z", 1.0), ("cpceth-eth-updown-15m-2026-11-10-2330z", 0.0), ("cpc-btc-updown-1h-2026-11-10-2200z", 1.0),
+            ("cpc-btc-updown-1h-2026-11-10-2300z", 1.0),              # ends at midnight: not "by 23:59 on 10 November"
+            ("cpc-btc-updown-5m-2026-11-05-0000z", None),             # not settled
+            ("cpc-btc-updown-1d-2026-11-05-2200z", 1.0), ("cpc-btc-above-day-2026-11-05-70000", 1.0), ("cpc-btc-updown-5m-2026-11-05-0005z", 0.5)]
+    pd.DataFrame(rows, columns=["slug", "yes_settle"]).to_parquet(tmp_path / "markets_crypto.parquet", index=False)
+    monkeypatch.setattr(ud, "DATA", tmp_path)
+    m = ud.markets().set_index("slug")
+    assert set(m.index) == {"cpc-btc-updown-5m-2026-11-02-2355z", "cpceth-eth-updown-15m-2026-11-10-2330z", "cpc-btc-updown-1h-2026-11-10-2200z"}
+    five = m.loc["cpc-btc-updown-5m-2026-11-02-2355z"]
+    assert five["w0"] == pd.Timestamp("2026-11-02 23:55").timestamp() and five["w1"] == ud.SPLIT and five["coin"] == "btc" and five["length"] == "5m"
+    quarter = m.loc["cpceth-eth-updown-15m-2026-11-10-2330z"]
+    assert quarter["w1"] == pd.Timestamp("2026-11-10 23:45").timestamp() and quarter["coin"] == "eth"
+    assert m.loc["cpc-btc-updown-1h-2026-11-10-2200z", "w1"] - m.loc["cpc-btc-updown-1h-2026-11-10-2200z", "w0"] == 3600
