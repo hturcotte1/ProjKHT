@@ -79,6 +79,12 @@ jobs:
           # minutes (docs/11_crypto_us.md). Read-only as well, and as
           # harmless to the judged test if it fails.
           (timeout $((mins + 2))m kht us-lasttick --state state/us-lasttick --minutes $((mins - 2)) > us-lasttick.log 2>&1 || true) &
+          # Their output is only shown when the run ends. Say now whether
+          # each is up, so that a fault shows in the log the same evening.
+          sleep 15
+          for name in us-quote us-lasttick; do
+            if pgrep -f "kht $name" > /dev/null; then echo "$name is running"; else echo "$name is NOT running:"; cat "$name.log" || true; fi
+          done
           kht us-rewards --state state/us-rewards --minutes "$mins"
           wait
           tail -n 4 us-quote.log || true
