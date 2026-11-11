@@ -78,27 +78,28 @@ def cmd_meta(args: argparse.Namespace) -> None:
     markets = pd.DataFrame(list(rows.values()))
     # events say which markets belong together (one race, one game, one question with several answers)
     ev_rows, link = [], []
-    for closed in (True, False):
-        for e in pm.iter_events(closed=closed, orderBy="id", orderDirection="asc"):
+    for closed, cat in ((c, k) for c in (True, False) for k in cats):
+        for e in pm.iter_events(closed=closed, categories=cat, orderBy="id", orderDirection="asc"):
             ev_rows.append({"event_id": int(e["id"]), "event_slug": e.get("slug"), "event_title": e.get("title"), "event_category": e.get("category"),
                             "series": e.get("seriesSlug"), "event_start_ts": ts(e.get("startDate")), "event_end_ts": ts(e.get("endDate")),
                             "event_closed": bool(e.get("closed")), "n_markets": len(e.get("markets") or []),
                             "event_tags": "|".join(str(t.get("slug") or t.get("label")) for t in (e.get("tags") or []) if isinstance(t, dict))})
             for m in e.get("markets") or []:
                 link.append((int(m["id"]), int(e["id"])))
-        log(f"events, closed={closed}: {len(ev_rows)} so far")
+        log(f"events, closed={closed}, {cat}: {len(ev_rows)} so far")
     events = pd.DataFrame(ev_rows).drop_duplicates("event_id")
     links = pd.DataFrame(link, columns=["market_id", "event_id"]).drop_duplicates("market_id")
     markets = markets.merge(links, on="market_id", how="left")
-    markets.to_parquet(OUT / "markets.parquet", index=False)
-    events.to_parquet(OUT / "events.parquet", index=False)
+    tag = "" if not args.categories else "_" + args.tag
+    markets.to_parquet(OUT / f"markets{tag}.parquet", index=False)
+    events.to_parquet(OUT / f"events{tag}.parquet", index=False)
     log(f"{len(markets):,} markets ({int(markets['closed'].sum()):,} closed, {int(markets['yes_settle'].notna().sum()):,} settled), "
         f"{len(events):,} events; {int(markets['event_id'].isna().sum()):,} markets without an event")
     print(markets.groupby(["category", "closed"]).size().unstack(fill_value=0).to_string())
 
 
 def pick(args: argparse.Namespace) -> pd.DataFrame:
-    m = pd.read_parquet(OUT / "markets.parquet")
+    m = pd.concat([pd.read_parquet(p) for p in sorted(OUT.glob("markets*.parquet"))], ignore_index=True).drop_duplicates("market_id")
     if args.only == "closed":
         m = m[m["closed"]]
     elif args.only == "open":
@@ -200,6 +201,7 @@ def main() -> None:
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("meta")
     p.add_argument("--categories", default=None, help="comma-separated; default is everything except crypto")
+    p.add_argument("--tag", default="part", help="with --categories: write markets_<tag>.parquet and events_<tag>.parquet")
     p.set_defaults(fn=cmd_meta)
     for name, fn in (("history", cmd_history), ("volume", cmd_volume)):
         p = sub.add_parser(name)

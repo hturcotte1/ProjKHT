@@ -1,0 +1,86 @@
+Stage 1: polymarket.com news markets, 5,000 shares or more at the time
+rules in the grid: 53,760; with 30 trades or more: 28,382
+candidates (discovery: 150+ trades, +0.5% or more, z >= 3 by event): 76
+threshold: the best validation z among those candidates in 95% of 500 placebo worlds is below 3.21 (median best 1.87, largest 4.85)
+survivors (validation: 100+ trades and z by week at or above the threshold): 32
+z: the variance of a rule's mean return is never taken below what the prices it paid imply
+whole funnel in 20 worlds where every price is right: candidates mean 6.7 (max 30), past the threshold mean 0.10 (max 2; worlds with any: 1 of 20)
+
+candidates, best validation z first (survivors marked)
+                                                rule  n_d  cost_d  ret_d  z_event_d  lost_d  n_v  cost_v  ret_v  z_week_v  lost_v  survivor
+           all|alone|no|90-99c|10-60d|spread 2c|none 2208    0.95   1.51       3.07    74.0 2274    0.95   2.42      4.16      61      True
+         all|alone|no|90-99c|60-180d|spread any|none  942    0.94   2.83       3.41    32.0  481    0.94   4.83      4.04       9      True
+         all|alone|no|90-98c|60-180d|spread any|none  912    0.94   2.92       3.41    32.0  470    0.93   4.94      4.04       9      True
+          all|alone|no|95-99c|3-60d|spread any|quiet 1532    0.98   1.23       3.04    19.0 1120    0.98   1.78      3.98       5      True
+         all|alone|no|90-95c|60-180d|spread any|none  744    0.93   3.62       3.56    28.0  413    0.93   5.44      3.96       9      True
+           all|alone|no|90-99c|3-60d|spread 2c|quiet 1436    0.97   1.49       3.20    22.0 1025    0.97   2.00      3.89       7      True
+         all|alone|no|90-99c|60-180d|spread 2c|quiet  597    0.95   3.79       3.86    11.0  278    0.95   5.44      3.89       0      True
+         all|alone|no|90-98c|60-180d|spread 2c|quiet  581    0.94   4.06       4.03    10.0  255    0.95   5.83      3.86       0      True
+         all|alone|no|80-95c|60-180d|spread 2c|quiet  493    0.91   4.96       3.47    22.0  219    0.91   7.91      3.80       3      True
+          all|alone|no|90-99c|60-180d|spread 2c|none  823    0.94   3.02       3.42    26.0  436    0.94   4.69      3.79       8      True
+          all|alone|no|90-99c|60-180d|spread 5c|none  862    0.94   2.91       3.34    29.0  453    0.94   4.62      3.78       9      True
+          all|alone|no|90-98c|60-180d|spread 5c|none  839    0.94   2.98       3.33    29.0  439    0.94   4.77      3.78       9      True
+          all|alone|no|90-98c|60-180d|spread 2c|none  800    0.94   3.10       3.42    26.0  421    0.94   4.83      3.77       8      True
+         all|alone|no|90-99c|60-180d|spread 5c|quiet  611    0.95   3.72       3.81    12.0  286    0.95   5.13      3.69       1      True
+        all|alone|no|80-95c|60-180d|spread any|quiet  599    0.91   4.80       3.65    29.0  258    0.91   7.24      3.69       6      True
+        all|alone|no|90-99c|60-180d|spread any|quiet  702    0.95   3.25       3.56    17.0  309    0.95   5.00      3.68       2      True
+         all|alone|no|80-95c|60-180d|spread 5c|quiet  507    0.91   4.81       3.38    24.0  226    0.91   7.56      3.67       4      True
+          all|alone|no|90-95c|60-180d|spread 2c|none  641    0.93   3.59       3.29    24.0  369    0.93   5.27      3.67       8      True
+          all|alone|no|90-95c|60-180d|spread 5c|none  680    0.93   3.41       3.21    27.0  385    0.93   5.19      3.67       9      True
+         all|alone|no|90-98c|60-180d|spread 5c|quiet  595    0.94   3.98       3.98    11.0  263    0.94   5.48      3.66       1      True
+        all|alone|no|90-98c|60-180d|spread any|quiet  674    0.94   3.51       3.70    16.0  284    0.94   5.33      3.64       2      True
+           all|alone|no|90-99c|30-60d|spread 2c|none 1215    0.95   1.97       3.14    32.0  856    0.95   2.83      3.63      19      True
+           all|alone|no|95-99c|3-60d|spread 5c|quiet 1389    0.98   1.34       3.20    15.0  978    0.98   1.71      3.58       5      True
+           all|alone|no|90-95c|10-60d|spread 2c|none 1244    0.93   2.31       3.01    58.0 1337    0.93   3.14      3.55      54      True
+         all|alone|no|90-95c|60-180d|spread 2c|quiet  392    0.93   5.09       3.73     8.0  175    0.93   7.12      3.53       0      True
+           all|alone|no|95-99c|3-60d|spread 2c|quiet 1368    0.98   1.32       3.12    15.0  962    0.98   1.70      3.52       5      True
+           all|alone|no|90-98c|30-60d|spread 2c|none 1065    0.95   2.19       3.10    31.0  755    0.95   3.07      3.51      19      True
+          all|alone|no|95-99c|60-180d|spread 5c|none  568    0.97   2.36       3.02     6.0  311    0.97   3.59      3.34       0      True
+          all|alone|no|95-98c|60-180d|spread 5c|none  537    0.97   2.47       3.01     6.0  294    0.96   3.75      3.32       0      True
+        all|alone|no|90-95c|60-180d|spread any|quiet  481    0.93   4.38       3.55    13.0  205    0.93   6.20      3.29       2      True
+         all|alone|no|95-99c|30-60d|spread any|quiet  830    0.97   1.90       3.29     7.0  415    0.97   2.60      3.29       0      True
+         all|alone|no|90-95c|60-180d|spread 5c|quiet  406    0.93   4.96       3.68     9.0  180    0.93   6.56      3.29       1      True
+           all|alone|no|95-99c|30-60d|spread 2c|none  954    0.97   1.99       3.58     9.0  617    0.97   2.16      3.10       5     False
+         all|alone|no|95-98c|30-60d|spread any|quiet  664    0.97   2.38       3.45     5.0  302    0.97   3.11      3.07       0     False
+          all|alone|no|95-99c|30-60d|spread 5c|quiet  744    0.97   2.18       3.60     4.0  363    0.98   2.55      3.04       0     False
+          all|alone|no|90-99c|30-60d|spread 2c|quiet  836    0.97   2.38       3.66     9.0  408    0.97   2.69      3.03       2     False
+       all|alone|no|98-99.5c|10-60d|spread any|quiet 1261    0.99   1.01       3.12     4.0  882    0.99   1.14      3.03       1     False
+          all|alone|no|95-99c|30-60d|spread 2c|quiet  726    0.97   2.31       3.76     3.0  354    0.98   2.55      3.01       0     False
+         all|alone|no|80-95c|60-180d|spread any|fell  283    0.87   7.14       3.06    20.0  175    0.87   8.88      2.98      10     False
+geopolitics|alone|no|80-95c|60-180d|spread any|quiet  156    0.91  10.19       3.99     0.0  115    0.91   8.61      2.97       1     False
+           all|alone|no|95-98c|30-60d|spread 2c|none  793    0.97   2.30       3.54     8.0  499    0.97   2.40      2.89       5     False
+  geopolitics|alone|no|90-99c|3-60d|spread any|quiet  447    0.97   2.69       3.20     2.0  539    0.97   2.20      2.87       5     False
+           all|alone|no|95-99c|30-60d|spread 5c|none  995    0.97   2.04       3.73     9.0  659    0.97   1.95      2.86       7     False
+          all|alone|no|90-98c|30-60d|spread 2c|quiet  678    0.96   2.63       3.40     9.0  305    0.96   3.17      2.82       2     False
+          all|alone|no|95-98c|30-60d|spread 5c|quiet  573    0.97   2.62       3.52     3.0  257    0.97   3.07      2.81       0     False
+          all|alone|no|95-98c|30-60d|spread 2c|quiet  562    0.97   2.60       3.47     3.0  251    0.97   3.08      2.78       0     False
+  geopolitics|alone|no|90-98c|60-180d|spread 2c|none  198    0.93   6.47       3.31     2.0  187    0.93   5.43      2.77       3     False
+  geopolitics|alone|no|90-99c|60-180d|spread 2c|none  200    0.93   6.40       3.31     2.0  187    0.93   5.42      2.77       3     False
+          all|alone|no|95-98c|30-60d|spread any|none  938    0.97   1.92       3.21    13.0  608    0.97   2.08      2.76       8     False
+ geopolitics|alone|no|90-99c|10-60d|spread any|quiet  392    0.97   2.77       3.02     2.0  440    0.97   2.41      2.76       4     False
+geopolitics|alone|no|90-99c|60-180d|spread any|quiet  161    0.94   6.71       3.29     0.0  125    0.94   6.02      2.74       0     False
+geopolitics|alone|no|90-98c|60-180d|spread any|quiet  160    0.94   6.74       3.28     0.0  118    0.94   6.34      2.73       0     False
+          all|alone|no|95-99c|30-60d|spread any|none 1102    0.97   1.77       3.40    13.0  729    0.97   1.75      2.72       9     False
+  geopolitics|alone|no|90-95c|60-180d|spread 2c|none  183    0.93   6.90       3.29     2.0  167    0.93   5.87      2.71       3     False
+          all|alone|no|80-95c|60-180d|spread 5c|fell  219    0.87   8.40       3.17    13.0  143    0.87   8.87      2.71       8     False
+   geopolitics|alone|no|90-99c|3-60d|spread 5c|quiet  429    0.97   2.57       3.05     2.0  478    0.97   2.12      2.68       4     False
+           all|alone|no|95-98c|30-60d|spread 5c|none  830    0.97   2.35       3.70     8.0  543    0.97   2.13      2.67       7     False
+ geopolitics|alone|no|90-98c|60-180d|spread any|none  216    0.93   6.60       3.52     2.0  193    0.93   5.16      2.63       4     False
+ geopolitics|alone|no|90-95c|60-180d|spread any|none  202    0.93   7.02       3.51     2.0  177    0.93   5.60      2.63       4     False
+ geopolitics|alone|no|90-99c|60-180d|spread any|none  219    0.93   6.54       3.53     2.0  193    0.93   5.12      2.62       4     False
+   geopolitics|alone|no|90-99c|3-60d|spread 2c|quiet  427    0.97   2.55       3.03     2.0  467    0.97   2.03      2.56       4     False
+  geopolitics|alone|no|90-98c|60-180d|spread 5c|none  208    0.93   6.58       3.44     2.0  189    0.93   4.98      2.54       4     False
+  geopolitics|alone|no|90-99c|60-180d|spread 5c|none  211    0.93   6.50       3.45     2.0  189    0.93   4.93      2.52       4     False
+  geopolitics|alone|no|90-95c|60-180d|spread 5c|none  194    0.93   6.98       3.42     2.0  170    0.93   5.35      2.48       4     False
+  geopolitics|alone|no|80-95c|60-180d|spread 2c|none  235    0.88   8.04       3.35    11.0  234    0.88   5.32      2.14      18     False
+  geopolitics|alone|no|80-95c|60-180d|spread 5c|none  244    0.88   8.07       3.38    12.0  243    0.87   5.23      2.11      20     False
+ geopolitics|alone|no|80-95c|60-180d|spread any|none  250    0.88   7.87       3.32    13.0  251    0.87   4.28      1.74      23     False
+          all|alone|no|35-65c|30-60d|spread any|none  437    0.52  16.16       3.12   177.0  447    0.52  10.22      1.71     189     False
+  geopolitics|alone|no|80-90c|60-180d|spread 2c|none  174    0.85   9.61       3.06    11.0  175    0.85   5.34      1.68      18     False
+  geopolitics|alone|no|80-90c|60-180d|spread 5c|none  184    0.85   9.64       3.13    12.0  184    0.85   5.12      1.63      20     False
+       economy|alone|no|90-99c|10-60d|spread 5c|none  287    0.96   3.76       3.00     2.0  688    0.95   1.19      1.30      25     False
+ geopolitics|alone|no|80-90c|60-180d|spread any|none  189    0.85   9.20       3.03    13.0  192    0.85   3.85      1.25      23     False
+        economy|alone|no|90-99c|3-60d|spread 5c|none  339    0.96   3.49       3.05     3.0  947    0.95   0.90      1.17      36     False
+  geopolitics|alone|no|50-90c|60-180d|spread 5c|none  233    0.76  11.78       3.01    36.0  259    0.74   5.22      0.99      57     False
+       economy|alone|no|90-99c|3-60d|spread any|none  376    0.96   3.40       3.09     4.0 1092    0.95   0.78      0.88      44     False
+ geopolitics|alone|no|50-90c|60-180d|spread any|none  238    0.75  12.21       3.12    37.0  263    0.74   4.50      0.84      59     False
