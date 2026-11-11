@@ -109,7 +109,8 @@ jobs:
           tail -n 2 us-lasttick.log || true
       - name: Commit what was recorded
         if: always() && steps.gate.outputs.go == 'true'
-        run: bash scripts/ci_save_state.sh "Paper orders before games: run ending $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+        run: |
+          bash scripts/ci_save_state.sh "Paper orders before games: run ending $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
       - name: Start the next run
         # Only after a run that worked. A run that failed must not start
         # another at once, or a fault would loop; the watchdog retries it.
