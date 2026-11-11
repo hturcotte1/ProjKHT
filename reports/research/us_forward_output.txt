@@ -1,70 +1,72 @@
-Forward tests on Polymarket US, from 2 snapshot(s), 5,223 rows
+Forward tests on Polymarket US, from 3 snapshot(s), 7,960 rows
 
 A. The recorder
-   cycles: 2, from 11 Nov 06:20 to 11 Nov 09:11 UTC
-   books per cycle: median 2,612; two-sided: 2,144; with a twin: 323
-   hours between cycles: median 2.8, longest 2.8; errors in all: 0
+   cycles: 3, from 11 Nov 06:20 to 11 Nov 15:18 UTC
+   books per cycle: median 2,629; two-sided: 2,161; with a twin: 327
+   hours between cycles: median 4.5, longest 6.1; errors in all: 0
 
-B. Rewards for resting orders, over 1 cycle(s)
+B. Rewards for resting orders, over 2 cycle(s)
    programmes followed: 22; paid to nobody in every cycle so far: 4 (kpic_20261107, diesel_day_week_month_20261110, gas_state_20261110, politics_t4_coverage_20261103)
 
-B2. Events with a single market in their reward programme: 145 markets, followed over 0.0 days
-   If each had its programme's whole pool to itself, 100 contracts a side would be paid (dollars a day, by the formula): first snapshot $124 in all, last snapshot $124
-   of the ten that would pay most at the first snapshot, 0 now have three times the size resting on their thinner side
+B2. Events with a single market in their reward programme: 156 markets, followed over 0.3 days
+   If each had its programme's whole pool to itself, 100 contracts a side would be paid (dollars a day, by the formula): first snapshot $124 in all, last snapshot $110
+   of the ten that would pay most at the first snapshot, 1 now have three times the size resting on their thinner side
    (if the generous reading were right, others should pile in here; if the size stays small, the pool is probably shared by the whole programme)
 
-B3. Fields of the reward schedule: not recorded yet
+B3. Fields of the reward schedule: 11 at the last cycle (11 Nov 15:18 UTC), none that was not there on 11 November. No reward cap and no minimum volume has been published.
 
-C. F1, two exchanges forward: purchases so far 22 in 17 events; $288 spent at $50 or the size on offer; average gap 10.8c
+C. F1, two exchanges forward: purchases so far 26 in 20 events; $325 spent at $50 or the size on offer; average gap 11.8c
    after 1 day(s), sold on Polymarket US: 0 purchases marked so far
    after 1 day(s), at the polymarket.com middle: 0 purchases marked so far
    after 3 day(s), sold on Polymarket US: 0 purchases marked so far
    after 3 day(s), at the polymarket.com middle: 0 purchases marked so far
    after 7 day(s), sold on Polymarket US: 0 purchases marked so far
    after 7 day(s), at the polymarket.com middle: 0 purchases marked so far
+   at settlement: 0 settled so far
    confirmed if, at 7 days sold on Polymarket US, the mean is positive with t >= 2.58 on at least 100 purchases (docs/07, section 3)
 
-D. F2, "No" on a stand-alone question at 90-98c: signals 59, purchases 49 in 12 events; median on offer at the best price: 30 contracts
+D. F2, "No" on a stand-alone question at 90-98c: signals 63, purchases 53 in 12 events; median on offer at the best price: 37 contracts
+   settled so far: 0
    confirmed if the mean return is positive with z >= 2.58 by event on at least 300 purchases (docs/06, section 8)
 
-E. Gaps of 3c or more: 19 were there at the first snapshot; 3 new ones in 0.1 days since (25.3 a day), worth $9.06 at the paper size ($76.58 a day)
+E. Gaps of 3c or more: 19 were there at the first snapshot; 7 new ones in 0.4 days since (18.7 a day), worth $27.07 at the paper size ($72.44 a day)
 
 single-market events that would pay most under the generous reading
                                       slug                  program  pool  snapshots  thin_side_first  thin_side_last  generous_first  generous_last
-bpchc-congress-impchrmv-hegseth-2027-03-31    politics_mid_20261109  75.0          1            151.8           151.8            24.6           24.6
-           apdc-jenhua-nvda-ceo-2026-12-31         finance_20261109  50.0          1             56.6            56.6            22.1           22.1
-               apdc-petehegseth-2026-12-31    politics_mid_20261109  75.0          1            112.4           112.4            18.1           18.1
-   pic-congress-impeach-hegseth-2026-12-31    politics_mid_20261109  75.0          1            438.5           438.5            10.8           10.8
-           pvwc-usse-ks-lea-2026-11-03-rep    politics_low_20261031  20.0          1              5.5             5.5             9.3            9.3
-cpoc-ussec-la-ms-fl-2026-11-03-rla-dms-rfl    politics_low_20261031  20.0          1              2.1             2.1             7.6            7.6
-               rxcpc-usrxcpi-fall-2027-yes macro_strategic_20261012  50.0          1            441.6           441.6             6.5            6.5
-                 apdc-kashpatel-2026-12-31    politics_low_20261031  20.0          1            239.5           239.5             5.3            5.3
-        snapc-ussnap-40m-2027-12-31-gte40m macro_strategic_20261012  50.0          1           1117.9          1117.9             3.0            3.0
-        stsc-bab-el-mandeb-clsd-2026-12-31     geopolitics_20260924  15.0          1            273.8           273.8             2.8            2.8
-          rahec-usrealwage-v-infl-2026-yes macro_strategic_20261012  50.0          1           1624.2          1624.2             2.6            2.6
-         cbpac-usfed-hike2-2026-12-31-hike      macro_high_20260924  75.0          1           3332.9          3332.9             1.8            1.8
+bpchc-congress-impchrmv-hegseth-2027-03-31    politics_mid_20261109  75.0          2            151.8           135.2            24.6           12.0
+           apdc-jenhua-nvda-ceo-2026-12-31         finance_20261109  50.0          2             56.6             9.7            22.1           37.7
+               apdc-petehegseth-2026-12-31    politics_mid_20261109  75.0          2            112.4          1847.4            18.1            2.8
+   pic-congress-impeach-hegseth-2026-12-31    politics_mid_20261109  75.0          2            438.5            97.6            10.8           19.5
+           pvwc-usse-ks-lea-2026-11-03-rep    politics_low_20261031  20.0          2              5.5             0.0             9.3            0.0
+cpoc-ussec-la-ms-fl-2026-11-03-rla-dms-rfl    politics_low_20261031  20.0          2              2.1             1.1             7.6            7.6
+               rxcpc-usrxcpi-fall-2027-yes macro_strategic_20261012  50.0          2            441.6           416.3             6.5            6.7
+                 apdc-kashpatel-2026-12-31    politics_low_20261031  20.0          2            239.5           364.2             5.3            3.6
+        snapc-ussnap-40m-2027-12-31-gte40m macro_strategic_20261012  50.0          2           1117.9          1118.9             3.0            3.0
+        stsc-bab-el-mandeb-clsd-2026-12-31     geopolitics_20260924  15.0          2            273.8           263.8             2.8            2.9
+          rahec-usrealwage-v-infl-2026-yes macro_strategic_20261012  50.0          2           1624.2          1524.2             2.6            2.7
+         cbpac-usfed-hike2-2026-12-31-hike      macro_high_20260924  75.0          2           3332.9          5812.2             1.8            1.0
 
 reward programmes
                                     program  cycles  pool  target  max_spread  markets  sides_paid_mean  sides_paid_min  sides_paid_max  cycles_nobody_paid   first_seen
-             presidential_election_20261028       1 500.0 20000.0         NaN      177            332.0             332             332                   0 11 Nov 09:11
-            dancing_with_the_stars_20260924       1 250.0   500.0         NaN       26             20.0              20              20                   0 11 Nov 09:11
-                              kpic_20261107       1 250.0  2000.0        0.04       13              0.0               0               0                   1 11 Nov 09:11
-                     politics_high_20261031       1 225.0 10000.0         NaN       33             53.0              53              53                   0 11 Nov 09:11
-                           climate_20260924       1 185.0  7500.0         NaN       60              2.0               2               2                   0 11 Nov 09:11
-                      culture_high_20260924       1  75.0   500.0         NaN      140            229.0             229             229                   0 11 Nov 09:11
-                      politics_mid_20261109       1  75.0  5000.0         NaN      180            140.0             140             140                   0 11 Nov 09:11
-                        macro_high_20260924       1  75.0  5000.0         NaN       25             24.0              24              24                   0 11 Nov 09:11
-climate_politics_science_strategic_20261013       1  50.0  3000.0         NaN       19             33.0              33              33                   0 11 Nov 09:11
-                        technology_20260924       1  50.0  1000.0         NaN      103            106.0             106             106                   0 11 Nov 09:11
-                   macro_strategic_20261012       1  50.0  3000.0         NaN       39             72.0              72              72                   0 11 Nov 09:11
-                           finance_20261109       1  50.0   500.0         NaN       65            122.0             122             122                   0 11 Nov 09:11
-                    culture_low_20260924_v2       1  40.0   500.0        0.06      857            232.0             232             232                   0 11 Nov 09:11
-    politics_trump_approval_weekly_20261019       1  30.0  2000.0         NaN        8              4.0               4               4                   0 11 Nov 09:11
-   presidential_2028_state_winners_20261028       1  25.0  2000.0        0.05       36             62.0              62              62                   0 11 Nov 09:11
-                      politics_low_20261031       1  20.0  2000.0         NaN      170            256.0             256             256                   0 11 Nov 09:11
-             diesel_day_week_month_20261110       1  15.0   500.0        0.06      107              0.0               0               0                   1 11 Nov 09:11
-                         gas_state_20261110       1  15.0   500.0        0.06       98              0.0               0               0                   1 11 Nov 09:11
-                         macro_low_20260924       1  15.0  5000.0         NaN      102             22.0              22              22                   0 11 Nov 09:11
-                       geopolitics_20260924       1  15.0  2000.0         NaN        7             14.0              14              14                   0 11 Nov 09:11
-                           science_20260924       1  10.0 10000.0         NaN        4              2.0               2               2                   0 11 Nov 09:11
-              politics_t4_coverage_20261103       1   2.0  2000.0        0.06     3112              0.0               0               0                   1 11 Nov 09:11
+             presidential_election_20261028       2 500.0 20000.0         NaN      177            332.0             332             332                   0 11 Nov 09:11
+            dancing_with_the_stars_20260924       2 250.0   500.0         NaN       24             19.5              19              20                   0 11 Nov 09:11
+                              kpic_20261107       2 250.0  2000.0        0.04       13              0.0               0               0                   2 11 Nov 09:11
+                     politics_high_20261031       2 225.0 10000.0         NaN       33             53.0              53              53                   0 11 Nov 09:11
+                           climate_20260924       2 185.0  7500.0         NaN       90              2.5               2               3                   0 11 Nov 09:11
+                      culture_high_20260924       2  75.0   500.0         NaN      140            228.0             227             229                   0 11 Nov 09:11
+                      politics_mid_20261109       2  75.0  5000.0         NaN      180            138.0             136             140                   0 11 Nov 09:11
+                        macro_high_20260924       2  75.0  5000.0         NaN       25             24.0              24              24                   0 11 Nov 09:11
+climate_politics_science_strategic_20261013       2  50.0  3000.0         NaN       19             32.0              31              33                   0 11 Nov 09:11
+                        technology_20260924       2  50.0  1000.0         NaN      103            105.5             105             106                   0 11 Nov 09:11
+                   macro_strategic_20261012       2  50.0  3000.0         NaN       39             70.0              68              72                   0 11 Nov 09:11
+                           finance_20261109       2  50.0   500.0         NaN       65            122.0             122             122                   0 11 Nov 09:11
+                    culture_low_20260924_v2       2  40.0   500.0        0.06      857            267.0             232             302                   0 11 Nov 09:11
+    politics_trump_approval_weekly_20261019       2  30.0  2000.0         NaN        8              4.0               4               4                   0 11 Nov 09:11
+   presidential_2028_state_winners_20261028       2  25.0  2000.0        0.05       36             62.0              62              62                   0 11 Nov 09:11
+                      politics_low_20261031       2  20.0  2000.0         NaN      170            255.5             255             256                   0 11 Nov 09:11
+             diesel_day_week_month_20261110       2  15.0   500.0        0.06      128              0.0               0               0                   2 11 Nov 09:11
+                         gas_state_20261110       2  15.0   500.0        0.06       98              0.0               0               0                   2 11 Nov 09:11
+                         macro_low_20260924       2  15.0  5000.0         NaN      119             30.5              22              39                   0 11 Nov 09:11
+                       geopolitics_20260924       2  15.0  2000.0         NaN        7             14.0              14              14                   0 11 Nov 09:11
+                           science_20260924       2  10.0 10000.0         NaN        4              2.0               2               2                   0 11 Nov 09:11
+              politics_t4_coverage_20261103       2   2.0  2000.0        0.06     3112              0.0               0               0                   2 11 Nov 09:11

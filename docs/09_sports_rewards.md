@@ -450,6 +450,17 @@ itself at 14:48 UTC, and with it the rehearsal of the order system
 (`docs/10_us_quoter.md`). The scoring script was run on the real output for
 the first time and works.
 
+**11 November, 18:33 UTC.** Nothing new to judge. The second run is still
+going and commits what it recorded when it ends, at about 19:50 UTC, so
+the scoring script still sees only the first five hours, and no game in
+them started 12 hours ago. The next run is already queued behind it. The
+reward schedule carries no new field: no cap and no minimum volume has
+been published. From its next run the same job also records the last
+minutes of crypto markets for another test (`docs/11_crypto_us.md`),
+beside this one and without touching it. To keep that recording whole, a
+run that would have ended between 21:35 and 22:03 UTC now ends at 21:33.
+That changes when a run of this test ends and nothing it measures.
+
 *Still to check, once a run has spanned it:* the exchange restarts each
 market's running totals of trading once a day, at 17:00 Eastern (22:00
 UTC). Rule 6 reads fills off those totals. If the restart itself shows up
