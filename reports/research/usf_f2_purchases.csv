@@ -1,0 +1,50 @@
+ts,slug,shape,dte,ts2,no_ask,bid_qty1,cost,contracts,event_id,event_title,label,category
+1794378035,aaagaspc-usgas-highm-2026-11-30-gt4pt2500,collection,26.943344907407408,1794388262,0.97,8.64,0.9727644999999999,8.64,217407.0,How High Will US Gas Prices Get This Month?,Above $4.2500,macro
+1794378035,aaagaspc-usgas-month-2026-11-30-gt3pt9000,collection,26.943344907407408,1794388262,0.96,4.0,0.963648,4.0,218427.0,US Gas Prices This Month,Above $3.9000,macro
+1794378035,ccpc-bilbrd-1album-any2026-alewar,collection,59.902372685185185,1794388262,0.97,6077.4,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Alex Warren,culture
+1794378035,ccpc-bilbrd-1album-any2026-benboo,collection,59.902372685185185,1794388262,0.95,1000.02,0.9545125,52.631578947368425,59385.0,Who Will Have a #1 Album in 2026?,Benson Boone,culture
+1794378035,ccpc-bilbrd-1album-any2026-beyonc,collection,59.902372685185185,1794388262,0.96,2.01,0.963648,2.01,59385.0,Who Will Have a #1 Album in 2026?,Beyonce,culture
+1794378035,ccpc-bilbrd-1album-any2026-bileil,collection,59.902372685185185,1794388262,0.96,0.99,0.963648,0.99,59385.0,Who Will Have a #1 Album in 2026?,Billie Eilish,culture
+1794378035,ccpc-bilbrd-1album-any2026-chaxcx,collection,59.902372685185185,1794388262,0.97,3429.65,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Charli xcx,culture
+1794378035,ccpc-bilbrd-1album-any2026-coldpl,collection,59.902372685185185,1794388262,0.97,0.01,0.9727644999999999,0.01,59385.0,Who Will Have a #1 Album in 2026?,Coldplay,culture
+1794378035,ccpc-bilbrd-1album-any2026-doechi,collection,59.902372685185185,1794388262,0.97,1.01,0.9727644999999999,1.01,59385.0,Who Will Have a #1 Album in 2026?,Doechii,culture
+1794378035,ccpc-bilbrd-1album-any2026-dualip,collection,59.902372685185185,1794388262,0.97,3.55,0.9727644999999999,3.55,59385.0,Who Will Have a #1 Album in 2026?,Dua Lipa,culture
+1794378035,ccpc-bilbrd-1album-any2026-eminem,collection,59.902372685185185,1794388262,0.9299999999999999,0.12,0.9361845,0.12,59385.0,Who Will Have a #1 Album in 2026?,Eminem,culture
+1794378035,ccpc-bilbrd-1album-any2026-jusbie,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59385.0,Who Will Have a #1 Album in 2026?,Justin Bieber,culture
+1794378035,ccpc-bilbrd-1album-any2026-kanwes,collection,59.902372685185185,1794388262,0.91,1.71,0.9177805,1.71,59385.0,Who Will Have a #1 Album in 2026?,Kanye West / Ye,culture
+1794378035,ccpc-bilbrd-1album-any2026-kenlam,collection,59.902372685185185,1794388262,0.91,1.0,0.9177805,1.0,59385.0,Who Will Have a #1 Album in 2026?,Kendrick Lamar,culture
+1794378035,ccpc-bilbrd-1album-any2026-lilver,collection,59.902372685185185,1794388262,0.97,41.69,0.9727644999999999,41.69,59385.0,Who Will Have a #1 Album in 2026?,Lil Uzi Vert,culture
+1794378035,ccpc-bilbrd-1album-any2026-lilway,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59385.0,Who Will Have a #1 Album in 2026?,Lil Wayne,culture
+1794378035,ccpc-bilbrd-1album-any2026-lolyou,collection,59.902372685185185,1794388262,0.96,0.03,0.963648,0.03,59385.0,Who Will Have a #1 Album in 2026?,Lola Young,culture
+1794378035,ccpc-bilbrd-1album-any2026-nf,collection,59.902372685185185,1794388262,0.98,1.29,0.981862,1.29,59385.0,Who Will Have a #1 Album in 2026?,NF,culture
+1794378035,ccpc-bilbrd-1album-any2026-nicmin,collection,59.902372685185185,1794388262,0.97,0.6,0.9727644999999999,0.6,59385.0,Who Will Have a #1 Album in 2026?,Nicki Minaj,culture
+1794378035,ccpc-bilbrd-1album-any2026-olidea,collection,59.902372685185185,1794388262,0.95,10.56,0.9545125,10.56,59385.0,Who Will Have a #1 Album in 2026?,Olivia Dean,culture
+1794378035,ccpc-bilbrd-1album-any2026-rauale,collection,59.902372685185185,1794388262,0.97,1.33,0.9727644999999999,1.33,59385.0,Who Will Have a #1 Album in 2026?,Rauw Alejandro,culture
+1794378035,ccpc-bilbrd-1album-any2026-rihann,collection,59.902372685185185,1794388262,0.97,834.34,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Rihanna,culture
+1794378035,ccpc-bilbrd-1album-any2026-selgom,collection,59.902372685185185,1794388262,0.97,1.01,0.9727644999999999,1.01,59385.0,Who Will Have a #1 Album in 2026?,Selena Gomez,culture
+1794378035,ccpc-bilbrd-1album-any2026-tatmcr,collection,59.902372685185185,1794388262,0.95,1.42,0.9545125,1.42,59385.0,Who Will Have a #1 Album in 2026?,Tate McRae,culture
+1794378035,ccpc-bilbrd-1album-any2026-trasco,collection,59.902372685185185,1794388262,0.97,1.05,0.9727644999999999,1.05,59385.0,Who Will Have a #1 Album in 2026?,Travis Scott,culture
+1794378035,ccpc-bilbrd-1album-any2026-youaga,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59385.0,Who Will Have a #1 Album in 2026?,YoungBoy Never Broke Again,culture
+1794378035,ccpc-bilbrd-1album-any2026-youthu,collection,59.902372685185185,1794388262,0.97,200.75,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Young Thug,culture
+1794378035,ccpc-bilbrd-1song-any-11-24-2026-hatmad,collection,27.902372685185185,1794388262,0.98,2090.92,0.981862,51.02040816326531,198433.0,Which Songs Will Be Billboard #1 in November?,Hate That I Made You Love Me - Ariana Grande,culture
+1794378035,ccpc-bilbrd-1song-any-11-24-2026-houwif,collection,27.902372685185185,1794388262,0.97,0.01,0.9727644999999999,0.01,198433.0,Which Songs Will Be Billboard #1 in November?,Housewife - Tate McRae,culture
+1794378035,ccpc-bilbrd-1song-any-11-24-2026-stuson,collection,27.902372685185185,1794388262,0.98,12.52,0.981862,12.52,198433.0,Which Songs Will Be Billboard #1 in November?,Stupid Song - Olivia Rodrigo,culture
+1794378035,rotc-t-thehun-2026-11-23-gte90,collection,26.902372685185185,1794388262,0.97,425.0,0.9727644999999999,51.54639175257732,147770.0,The Hunger Games: Sunrise on the Reaping Rotten Tomatoes Score?,90+,culture
+1794378035,stsc-hormuz-normal-2026-12-31,single,50.94402777777778,1794388262,0.92,150486.12,0.926992,54.347826086956516,44402.0,Strait of Hormuz Traffic Returns to Normal?,"By December 31, 2026",geopolitics
+1794378035,tac-grammys-nom-aoty-2026-11-16-deadbe,collection,19.902372685185185,1794388262,0.91,18.0,0.9177805,18.0,162110.0,Grammy Nominees: Album of the Year,Deadbeat - Tame Impala,culture
+1794378035,tac-grammys-nom-bdpr-2026-11-16-worshi,collection,19.902372685185185,1794388262,0.9299999999999999,1000.0,0.9361845,53.763440860215056,162135.0,Grammy Nominees: Best Dance Pop Recording,WORSHIP - ASAKE,culture
+1794378035,tac-grammys-nom-bna-2026-11-16-esdeek,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,EsDeeKid,culture
+1794378035,tac-grammys-nom-bna-2026-11-16-unders,collection,19.902372685185185,1794388262,0.95,30.0,0.9545125,30.0,162118.0,Grammy Nominees: Best New Artist,underscores,culture
+1794378035,tac-grammys-nom-bpdgp-2026-11-16-firawa,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,Fire Away (feat. Slayyyter) - Madeon feat. Slayyyter,culture
+1794378035,tac-grammys-nom-bpdgp-2026-11-16-hipdon,collection,19.902372685185185,1794388262,0.97,1000.0,0.9727644999999999,51.54639175257732,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,"Hips Dont Lie (Anniversary Version) - Shakira, Ed Sheeran & Beele",culture
+1794378035,tac-grammys-nom-bpdgp-2026-11-16-opeup,collection,19.902372685185185,1794388262,0.96,1000.0,0.963648,52.083333333333336,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,OPEN UP YOUR HEART - Justin Bieber & Eddie Benjamin,culture
+1794378035,tac-grammys-nom-bpdgp-2026-11-16-repdom,collection,19.902372685185185,1794388262,0.95,1000.0,0.9545125,52.631578947368425,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,Reputation (feat. Dominic Fike) - Ravyn Lenae feat. Dominic Fike,culture
+1794378035,tac-grammys-nom-bpsp-2026-11-16-chanel,collection,19.902372685185185,1794388262,0.96,50.0,0.963648,50.0,162121.0,Grammy Nominees: Best Pop Solo Performance,Chanel - Tyla,culture
+1794378035,tac-grammys-nom-bpsp-2026-11-16-saubla,collection,19.902372685185185,1794388262,0.9299999999999999,1000.0,0.9361845,53.763440860215056,162121.0,Grammy Nominees: Best Pop Solo Performance,Sauvignon Blanc - Rosalia,culture
+1794378035,tac-grammys-nom-bpva-2026-11-16-daufro,collection,19.902372685185185,1794388262,0.94,1000.0,0.9453579999999999,53.19148936170213,162134.0,Grammy Nominees: Best Pop Vocal Album,Daughter from Hell - Gracie Abrams,culture
+1794378035,tac-grammys-nom-bpva-2026-11-16-its,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,It's Not That Deep - Demi Lovato,culture
+1794378035,tac-grammys-nom-bpva-2026-11-16-lucor,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,Luck... or Something - Hilary Duff,culture
+1794378035,tac-grammys-nom-bpva-2026-11-16-vie,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,Vie - Doja Cat,culture
+1794378035,tac-grammys-nom-bpva-2026-11-16-visito,collection,19.902372685185185,1794388262,0.95,1050.0,0.9545125,52.631578947368425,162134.0,Grammy Nominees: Best Pop Vocal Album,The Visitor - Sienna Spiro,culture
+1794378035,tac-grammys-nom-bpva-2026-11-16-wild,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,WILD - KATSEYE,culture
+1794378035,tac-grammys-nom-bpva-2026-11-16-wildch,collection,19.902372685185185,1794388262,0.97,1000.0,0.9727644999999999,51.54639175257732,162134.0,Grammy Nominees: Best Pop Vocal Album,WILDCHILD - Alex Warren,culture

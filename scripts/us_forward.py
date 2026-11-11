@@ -79,6 +79,42 @@ def section_rewards(rewards: pd.DataFrame) -> tuple[list[str], pd.DataFrame]:
     return out, g
 
 
+def section_single(snaps: pd.DataFrame, markets: pd.DataFrame) -> tuple[list[str], pd.DataFrame]:
+    """Events with one market in their reward programme: how much rests at the best prices, over time.
+
+    Whether a daily pool is one for a whole programme or one for each event
+    is not known (docs/08_rewards.md, section 10). Where an event has a
+    single market nothing else has to be assumed, so these books are where
+    the answer would show: if each had its programme's pool to itself, 100
+    contracts a side would be paid tens of dollars a day in the thinnest of
+    them, and other people's orders there should grow quickly.
+    """
+    if "rw_program" not in snaps or snaps["rw_program"].notna().sum() == 0:
+        return ["B2. Events with a single market in their programme: no snapshot carries the reward columns yet"], pd.DataFrame()
+    s = snaps[snaps["rw_program"].notna()].merge(markets[["slug", "event_id", "event_title", "label"]], on="slug", how="left")
+    s["event_id"] = s["event_id"].fillna(s["slug"])
+    s = s[s.groupby(["ts", "rw_program", "event_id"])["slug"].transform("nunique") == 1].copy()
+    if s.empty:
+        return ["B2. Events with a single market in their programme: none"], pd.DataFrame()
+    s["thin_side"] = s[["rw_bid_score", "rw_ask_score"]].min(axis=1)
+    s["generous"] = s["rw_pool"] * 0.5 * (100.0 / (100.0 + s["rw_bid_score"]) * s["rw_bid_ok"] + 100.0 / (100.0 + s["rw_ask_score"]) * s["rw_ask_ok"])
+    s = s.sort_values("ts")
+    first, last = s.groupby("slug").head(1).set_index("slug"), s.groupby("slug").tail(1).set_index("slug")
+    t = pd.DataFrame({"program": last["rw_program"], "pool": last["rw_pool"], "snapshots": s.groupby("slug")["ts"].nunique(),
+                      "thin_side_first": first["thin_side"], "thin_side_last": last["thin_side"], "thin_side_max": s.groupby("slug")["thin_side"].max(),
+                      "generous_first": first["generous"], "generous_last": last["generous"], "market": last["event_title"].fillna("") + ": " + last["label"].fillna("")})
+    t = t.sort_values("generous_first", ascending=False).reset_index()
+    days = (s["ts"].max() - s["ts"].min()) / 86_400.0
+    top = t.head(10)
+    grew = int((top["thin_side_last"] >= 3 * top["thin_side_first"].clip(lower=1.0)).sum())
+    out = [f"B2. Events with a single market in their reward programme: {len(t)} markets, followed over {days:.1f} days",
+           "   If each had its programme's whole pool to itself, 100 contracts a side would be paid (dollars a day, by the formula): "
+           f"first snapshot ${t['generous_first'].sum():,.0f} in all, last snapshot ${t['generous_last'].sum():,.0f}",
+           f"   of the ten that would pay most at the first snapshot, {grew} now have three times the size resting on their thinner side",
+           "   (if the generous reading were right, others should pile in here; if the size stays small, the pool is probably shared by the whole programme)"]
+    return out, t
+
+
 def first_gaps(snaps: pd.DataFrame, gap: float = GAP) -> pd.DataFrame:
     """F1 purchases: the first snapshot at which a market's US quote is beyond a tradable polymarket.com quote by ``gap`` after the fee."""
     s = snaps[snaps["intl_bid"].notna() & snaps["intl_ask"].notna() & ((snaps["intl_ask"] - snaps["intl_bid"]) <= MAX_INTL_SPREAD + 1e-9)].copy()
@@ -212,6 +248,8 @@ def main() -> None:
     lines += section_recorder(log) + [""]
     rw_lines, rw = section_rewards(rewards)
     lines += rw_lines + [""]
+    one_lines, one = section_single(snaps, markets)
+    lines += one_lines + [""]
     f1_lines, f1 = section_f1(snaps, markets, args.settle)
     lines += f1_lines + [""]
     f2_lines, f2 = section_f2(snaps, markets, args.settle)
@@ -219,9 +257,14 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     if len(rw):
         rw.to_csv(OUT / "usf_rewards.csv", index=False)
+    if len(one):
+        one.round(2).to_csv(OUT / "usf_single_market_events.csv", index=False)
     f1.to_csv(OUT / "usf_f1_purchases.csv", index=False)
     f2.to_csv(OUT / "usf_f2_purchases.csv", index=False)
     text = "\n".join(lines) + "\n"
+    if len(one):
+        show = one.head(12)[["slug", "program", "pool", "snapshots", "thin_side_first", "thin_side_last", "generous_first", "generous_last"]]
+        text += "\nsingle-market events that would pay most under the generous reading\n" + show.round(1).to_string(index=False) + "\n"
     if len(rw):
         text += "\nreward programmes\n" + rw.round(2).to_string(index=False) + "\n"
     (OUT / "us_forward_output.txt").write_text(text)
