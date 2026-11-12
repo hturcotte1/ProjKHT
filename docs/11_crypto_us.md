@@ -957,6 +957,23 @@ So the rule stays where exactly one result pays by arithmetic, the
 brackets of a number, and where that was checked on every settled ladder.
 Anywhere else the rules of the event have to be read first.
 
+**A second look, 12 November, 00:29 UTC: the sets that do have one
+winner.** The exchange's list of open events (5,548 of them, with the best
+bid of every market) was read once. By their names 242 events with three
+or more markets ask who wins one thing: a title, a race, an award. 96 of
+them have a bid on at least four fifths of their markets. In those the
+best bids add up to $0.93 at the middle, $1.02 at the upper tenth and
+$1.07 at the most. After the fee on each sale, one of the 96 leaves
+anything over the dollar, and that one less than a cent. The sets that
+settle within two weeks, a Grand Prix, a tennis final, a television
+contest, stand at $1.01 to $1.03 before fees.
+
+That is where such sums would be left by somebody who sells whole sets
+whenever it pays, and the exchange's collateral return makes that cheap
+to do. So this trade is not waiting to be found in sports or awards. The
+daily crypto ladder, at $1.42 to $1.46 for hours on 11 November, is the
+exception, and the 1¢ reward bids are why.
+
 ### Notes while the test runs
 
 **11 November, 23:18 UTC.** The rule above was committed at 23:03 UTC
