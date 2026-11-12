@@ -9,6 +9,7 @@
     kht us-rewards   paper orders before games on Polymarket US: what the reward formula would pay them (read-only)
     kht us-lasttick  crypto markets on Polymarket US in their last minutes: the books with sizes (read-only)
     kht us-quote     rest orders before games on Polymarket US: on paper unless live trading is switched on
+    kht us-take      sell to the last-tick bids of crypto markets on Polymarket US: on paper unless live trading is switched on
     kht us-earnings  what the exchange says it paid in rewards, beside what the formula said (needs the account's key)
     kht geoblock     is this machine allowed to place orders?
 """
@@ -194,6 +195,53 @@ def cmd_us_quote(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_us_take(args: argparse.Namespace) -> int:
+    """Place the trades of test L1 (docs/12_us_taker.md). On paper unless --live or --preview, which need the switch and the key."""
+    import tempfile
+
+    from .api.http import Http
+    from .api.polymarket_us import PolymarketUS
+    from .trading.us_taker import Engine, LiveTaker, PaperTaker, TakerConfig, load_recording, replay
+
+    cfg = TakerConfig.load(Path(args.config))
+    reach, brake = cfg.yardsticks(Path.cwd())
+    if args.replay:
+        if args.live or args.preview:
+            print("a replay is on paper: it cannot be combined with --live or --preview")
+            return 2
+        rec = load_recording(Path(args.replay))
+        state = Path(args.state) if args.state else Path(tempfile.mkdtemp(prefix="kht-us-take-replay-"))
+        engine = Engine(state, cfg, PaperTaker(), reach, brake, mode="replay")
+        if args.settle:
+            us = PolymarketUS(Http(rate_per_host={"gateway.polymarket.us": 6.0}))
+        line = replay(engine, rec["books"], rec["markets"], rec["index"], rec["levels"], rec["settlements"])
+        if args.settle:
+            for slug in list(engine.held):
+                value = us.settlement(slug)
+                if value is not None:
+                    engine.settle(slug, value, ts=engine.held[slug].end + 60)
+            engine.write_status()
+        print(f"[{_stamp()}] replay of {args.replay}: {line}")
+        print((state / "STATUS.md").read_text())
+        print(f"written to {state}")
+        return 0
+    state = Path(args.state or "state/us-taker")
+    if args.live or args.preview:
+        from .trading.us_live import LiveUSBroker
+
+        broker, mode = LiveTaker(LiveUSBroker.from_env(preview=args.preview), preview=args.preview), ("preview" if args.preview else "live")
+    else:
+        broker, mode = PaperTaker(), "paper"
+    engine = Engine(state, cfg, broker, reach, brake, mode=mode)
+    print(f"[{_stamp()}] Polymarket US last-tick sales: {mode}, yardstick {cfg.yardstick}, coins {', '.join(cfg.coins)}, "
+          f"at most ${cfg.money:,.0f} tied up at one settlement time, {cfg.cap:g} contracts a market")
+    if engine.stopped():
+        print(f"[{_stamp()}] {engine.stopped()}")
+    line = engine.run(args.minutes, PolymarketUS(Http(rate_per_host={"gateway.polymarket.us": 6.0})))
+    print(f"[{_stamp()}] ended: {line}")
+    return 0
+
+
 def cmd_us_earnings(args: argparse.Namespace) -> int:
     """Set what the exchange credited beside what the formula said. This is the comparison the whole idea waits on."""
     import json
@@ -278,6 +326,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--sweep", type=float, default=None, help="seconds between two readings of one book, at least (test L1: leave it alone)")
     p.add_argument("--kinds", default=None, help="only these kinds of market, comma-separated: range, above_below, one_touch, up_down (test L1: leave it alone)")
     p.set_defaults(fn=cmd_us_lasttick)
+
+    p = sub.add_parser("us-take", help="sell to the last-tick bids of crypto markets on Polymarket US (on paper unless switched on)")
+    p.add_argument("--config", default="config/us_taker.json")
+    p.add_argument("--state", default=None, help="where its record is kept (default state/us-taker; for a replay, a temporary directory)")
+    p.add_argument("--minutes", type=float, default=60.0, help="how long to run")
+    p.add_argument("--live", action="store_true", help="send real orders (also needs the environment switch and the account's key)")
+    p.add_argument("--preview", action="store_true", help="read live books and send every order to the exchange's preview call only")
+    p.add_argument("--replay", default=None, help="run on paper over a recording of kht us-lasttick, e.g. state/us-lasttick")
+    p.add_argument("--settle", action="store_true", help="with --replay: ask the exchange what the traded markets settled at")
+    p.set_defaults(fn=cmd_us_take)
 
     p = sub.add_parser("us-quote", help="rest orders before games on Polymarket US (on paper unless switched on)")
     p.add_argument("--config", default="config/us_quoter.json")

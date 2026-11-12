@@ -713,6 +713,9 @@ small one.
    fixed sum that may be locked at one settlement time, a cap a level,
    Bitcoin only to begin with, and a full stop for the day at the first
    loss, since a loss means the rule or its facts were wrong.
+   *Since 12 November this program exists:* `kht us-take`, described in
+   `docs/12_us_taker.md`. It runs on paper and over recorded evenings.
+   Its connection to the exchange has never been run.
 4. **Small first.** $500 locked for a week of evenings keeps about $4.50
    an evening if every order fills. That is not the point of it. The point
    is to learn whether the bids are still there the evening after somebody

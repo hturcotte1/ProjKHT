@@ -212,6 +212,7 @@ learn that. The story is in
 | Crypto on Polymarket US: what is there, the 1¢ bids nobody sells to, and test L1 of selling to them in the last minutes | [`docs/11_crypto_us.md`](docs/11_crypto_us.md) |
 | What the crypto order books showed in their last minutes at the latest run | `state/us-lasttick/STATUS.md` (from its first run) |
 | Test L2, selling a whole ladder of brackets at once: the rule and the bar | [`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 12 |
+| The program that would place the last-tick sales: limits, safeguards, steps before any real order | [`docs/12_us_taker.md`](docs/12_us_taker.md) |
 | What Polymarket US's order books showed at the last cycle | [`state/us/STATUS.md`](state/us/STATUS.md) |
 | What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-long/STATUS.md` (from its first cycle) |
 
@@ -283,6 +284,10 @@ python scripts/us_lasttick_score.py --settle  # test L1 on what has been recorde
 
 ```bash
 python scripts/us_ladder_score.py --settle    # test L2 on what has been recorded
+```
+
+```bash
+kht us-take --replay state/us-lasttick --settle   # the order program for L1, on paper, over the recorded evenings
 ```
 
 ```bash

@@ -45,6 +45,7 @@ Code: `src/kht/trading/engine.py` (`Engine.run_cycle`).
 | Paper orders before games | `trading/us_rewards.py` | Not part of any account: a simulation of small resting orders on Polymarket US, paid by the exchange's published reward formula. See "Paper orders before games on Polymarket US" below |
 | Orders before games, for real or on paper | `trading/us_quoter.py`, `trading/us_live.py` | The system that would rest those orders with a real account: choice of games, limits, orders that may only rest and that expire by themselves. On paper by default; the live connection has never been run. `docs/10_us_quoter.md` |
 | Crypto markets in their last minutes | `trading/us_lasttick.py`, `trading/lasttick_rule.py` | Not part of any account: a recorder of the order books of Polymarket US crypto markets in the quarter of an hour before they settle, and the rule of test L1 that is applied to them afterwards. See "Crypto markets in their last minutes" below |
+| Sales to the last-tick bids, for real or on paper | `trading/us_taker.py` | The program that would place the trades of test L1 with a real account: one order a market, a fixed sum at one settlement time, a stop at the first loss. On paper by default, and it can be replayed over the recorder's evenings; the live connection has never been run. `docs/12_us_taker.md` |
 | Whole crypto ladders | `trading/us_lasttick.py` (a second copy), `trading/ladder_rule.py` | Not part of any account: the same recorder reading every bracket of the daily and weekly ladders through their last five and a half hours, and the rule of test L2 that is applied afterwards. See "Whole ladders" below |
 
 ## What the strategy does
@@ -520,6 +521,18 @@ python scripts/lasttick_history.py index
 ```bash
 python scripts/lasttick_history.py run
 ```
+
+The program that would place these trades for real is `kht us-take`
+(`src/kht/trading/us_taker.py`). It calls the same rule on each reading,
+runs on paper by default, and has never been run against the exchange.
+To run it over what the recorder wrote down:
+
+```bash
+kht us-take --replay state/us-lasttick --settle
+```
+
+What it does, its limits and the steps before any real order are in
+`docs/12_us_taker.md`.
 
 ### Whole ladders
 
