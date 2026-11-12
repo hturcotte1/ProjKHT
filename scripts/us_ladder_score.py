@@ -134,8 +134,11 @@ def account(found: list[dict], books: Books, money: float = rule.MONEY, collater
         if pos is None:
             s = rule.decide(with_bid, left, have)
             if s is not None:
+                # described, not judged: the same orders against the books of the next reading, two minutes on
+                nxt = {x: lv for x in lad["slugs"] if (lv := books.at(x, t + rule.GRID)) is not None}
                 positions[i] = {**s, "ladder": lad["name"], "coin": lad["coin"], "horizon": lad["horizon"], "end": lad["end"], "ts": t, "left": left,
-                                "brackets": len(lad["slugs"]), "first_legs": len(s["legs"]), "locked_at_sale": s["locks"], "added": 0, "slugs": lad["slugs"]}
+                                "brackets": len(lad["slugs"]), "first_legs": len(s["legs"]), "locked_at_sale": s["locks"], "added": 0, "slugs": lad["slugs"],
+                                "later": rule.later(s, nxt)}
         else:
             legs = rule.top_up(with_bid, pos, have)
             if legs:
@@ -236,8 +239,11 @@ def main() -> int:
             rows.append({"ladder": p["ladder"], "sold at (UTC)": f"{datetime.fromtimestamp(p['ts'], timezone.utc):%H:%M}", "minutes left": round(p["left"] / 60.0),
                          "size": p["q"], "brackets sold": len(p["legs"]), "of": p["brackets"], "added later": p["added"], "money in": round(p["money"], 2),
                          "fees": round(p["fees"], 2), "pays at most": p["pays_at_most"], "locked": round(p["locks"], 2), "money to open it": round(p["margin"], 2),
-                         "kept": round(rule.result(p, paid), 2) if done else np.nan})
+                         "kept": round(rule.result(p, paid), 2) if done else np.nan,
+                         "2 min later: legs whole": f"{p['later']['whole']} of {p['later']['legs']}", "locked then": round(p["later"]["locks"], 2)})
         say(pd.DataFrame(rows).to_string(index=False))
+        say("  The last two columns are not part of the rule. They put the same orders to the books of the next reading, two minutes on:")
+        say("  how many legs would still have filled whole, and what the sale would have locked with only those fills.")
 
     say()
     say("The judged account: $10,000 for each settlement time, a dollar less its price tied up for every contract sold")
@@ -281,7 +287,8 @@ def main() -> int:
     for name, pos in (("", positions), ("_return", netted)):
         legs = [{"ladder": p["ladder"], "slug": s, **leg, "paid": paid.get(s, np.nan)} for p in pos for s, leg in p["legs"].items()]
         pd.DataFrame(legs).to_csv(out / f"ld_legs{name}.csv", index=False)
-        pd.DataFrame([{k: v for k, v in p.items() if k not in ("legs", "slugs")} for p in pos]).to_csv(out / f"ld_sales{name}.csv", index=False)
+        pd.DataFrame([{**{k: v for k, v in p.items() if k not in ("legs", "slugs", "later")}, **{f"later_{k}": v for k, v in p["later"].items()}}
+                      for p in pos]).to_csv(out / f"ld_sales{name}.csv", index=False)
     (out / "ld_summary.txt").write_text("\n".join(lines) + "\n")
     return 0
 

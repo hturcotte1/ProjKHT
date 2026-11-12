@@ -53,8 +53,12 @@ def bids(row: dict[str, Any]) -> Levels:
 
 
 def sell(levels: Levels, q: float) -> dict[str, float]:
-    """Selling up to ``q`` contracts into one bracket's bids, from the best down: each level one fill."""
+    """Selling up to ``q`` contracts into one bracket's bids, from the best down: each level one fill.
+
+    ``limit`` is the lowest price anything was sold at: the price a real order for this leg would carry.
+    """
     sold = money = fees = margin = 0.0
+    limit = None
     for px, qty in levels:
         take = round(min(qty, q - sold), 2)
         if take <= 0:
@@ -63,7 +67,8 @@ def sell(levels: Levels, q: float) -> dict[str, float]:
         money += take * px
         fees += fee(take, px)
         margin += take * (1.0 - px)                      # a contract sold locks $1 less its price until the ladder settles
-    return {"sold": sold, "money": money, "fees": fees, "margin": margin}
+        limit = px
+    return {"sold": sold, "money": money, "fees": fees, "margin": margin, "limit": limit}
 
 
 def sale(books: dict[str, Levels], q: float) -> dict[str, Any]:
@@ -149,6 +154,26 @@ def add(position: dict[str, Any], legs: dict[str, dict[str, float]]) -> None:
         position[key] += sum(leg[key] for leg in legs.values())
     position["pays_at_most"] = max(leg["sold"] for leg in position["legs"].values())
     position["locks"] = position["money"] - position["fees"] - position["pays_at_most"]
+
+
+def later(position: dict[str, Any], books: dict[str, Levels]) -> dict[str, Any]:
+    """The same orders against other books: what a sale would have been had it met ``books`` instead of the ones it was decided on.
+
+    Each leg is an order for the size it sold, at the lowest price it sold
+    at; it takes what ``books`` bid at that price or better. This is not
+    part of the rule. It describes how much a sale owes to being filled at
+    once: if the legs near the price shrink and the far ones do not, what
+    is left can be less than nothing.
+    """
+    legs = {}
+    for slug, leg in position["legs"].items():
+        at_or_above = [(px, qty) for px, qty in books.get(slug) or [] if leg["limit"] is not None and px >= leg["limit"] - 1e-9]
+        legs[slug] = sell(at_or_above, leg["sold"])
+    money = sum(x["money"] for x in legs.values())
+    fees = sum(x["fees"] for x in legs.values())
+    most = max((x["sold"] for x in legs.values()), default=0.0)
+    return {"legs": len(legs), "whole": sum(1 for s, x in legs.items() if x["sold"] >= position["legs"][s]["sold"] - 1e-9),
+            "none": sum(1 for x in legs.values() if x["sold"] <= 0), "money": money, "fees": fees, "pays_at_most": most, "locks": money - fees - most}
 
 
 def result(position: dict[str, Any], paid: dict[str, float]) -> float:

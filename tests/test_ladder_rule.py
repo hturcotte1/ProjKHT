@@ -108,3 +108,20 @@ def test_a_ladder_is_read_165_times_from_five_and_a_half_hours_to_two_minutes_be
     end = 1_794_520_800.0
     r = rule.readings(end)
     assert len(r) == 165 and r[0] == end - 330 * 60 and r[-1] == end - 120 and all(b - a == 120 for a, b in zip(r, r[1:]))
+
+
+def test_the_same_orders_against_later_books_show_what_a_sale_owes_to_being_filled_at_once():
+    books = {f"far{i:02d}": [(0.01, 1000.0)] for i in range(40)} | {"near": [(0.80, 150.0), (0.78, 50.0)]}
+    pos = rule.decide(books, left=3 * 3600, room=1e9)
+    assert pos["q"] == 200.0 and pos["legs"]["near"]["limit"] == 0.78 and pos["legs"]["far00"]["limit"] == 0.01
+    same = rule.later(pos, books)
+    assert same["whole"] == same["legs"] == 41 and same["none"] == 0 and same["locks"] == pytest.approx(pos["locks"])
+    # two minutes on, the bid near the price has dropped below the order's price for all but 60 contracts; the far bids are as they were
+    moved = {**books, "near": [(0.79, 60.0), (0.70, 5000.0)]}
+    then = rule.later(pos, moved)
+    assert then["whole"] == 40 and then["none"] == 0 and then["pays_at_most"] == 200.0
+    assert then["money"] == pytest.approx(40 * 2.0 + 60 * 0.79) and then["locks"] < 0 < pos["locks"]      # the far legs filled, the near one mostly did not
+    # a bracket that is no longer bid at all, or no longer read
+    gone = rule.later(pos, {k: v for k, v in books.items() if k != "near"})
+    assert gone["none"] == 1 and gone["locks"] == pytest.approx(40 * 2.0 - 40 * rule.fee(200, 0.01) - 200.0)
+    assert rule.later(pos, {})["money"] == 0 and rule.later(pos, {})["locks"] == 0

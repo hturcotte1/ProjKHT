@@ -834,6 +834,15 @@ how many brackets had a bid, how many of those at 1¢, and what sizes of
 10, 100 and the best size would have locked. That is described, not
 judged.
 
+It describes one more thing, added at 00:30 UTC on 12 November, before
+anything was recorded. Every sale is put once more to the books of the
+next reading, two minutes on: each leg as an order for the size it sold,
+at the lowest price it sold at. The script says how many legs would still
+have filled whole and what the sale would have locked with only those
+fills. If the legs near the price have shrunk and the far ones have not,
+that figure is below zero. It is the paper's nearest answer to the first
+thing listed under "What paper cannot show".
+
 ### The bar
 
 By 18 November, when L1 and R1 are also read: at least five evenings
