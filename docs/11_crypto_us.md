@@ -624,6 +624,16 @@ What was changed the same evening, between 22:28 and 22:35 UTC:
   a second job in the same workflow starts the next run at once from a
   fresh machine. This does not wait for GitHub's schedule. It has not
   been seen to work yet: that takes a lost machine.
+- 12 November, 00:42 UTC: the nearest thing to that was tried once. A
+  small job on GitHub was made to fail on purpose with the same follow-up
+  job behind it. The follow-up ran, read when its run had started, and
+  took the "failed within ten minutes" branch, which starts nothing. So
+  the condition and the reading work. The one step not exercised is the
+  command that starts the next run, and that same command has ended
+  every normal run of the job so far. The test job was removed again.
+  By then the watchdog had still not been started by GitHub's schedule,
+  two hours after it was added, so the restart inside the job is the
+  protection that counts.
 
 One mistake of mine on the way: the first version of the changed job file
 did not parse, and for about a minute GitHub would not start the job. The
