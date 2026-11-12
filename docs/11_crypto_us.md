@@ -668,6 +668,13 @@ is part of why only 55 of the 136 results out of reach had an order in
 the last quarter of an hour. Whether that hour is always like this is
 something L1's recorder cannot say: it reads the last 17 minutes.
 
+*At each check-in while the test runs:* the order program of
+`docs/12_us_taker.md` is run on paper over the recordings
+(`kht us-take --replay state/us-lasttick --settle`, with a configuration
+for all four coins and $10,000). It should make the sales the scoring
+script's small account makes. If it does not, one of the two is wrong and
+that comes before anything else.
+
 ## 10. The same bids elsewhere on the exchange
 
 The recorder of `state/us/` reads the books of every reward market outside
