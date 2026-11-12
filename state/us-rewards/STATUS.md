@@ -1,24 +1,22 @@
-# Paper orders before games on Polymarket US: run ended 2026-11-12 03:34 UTC
+# Paper orders before games on Polymarket US: run ended 2026-11-12 08:33 UTC
 
 A simulation. No orders are placed and no key is used. What this is for, and the rules: docs/09_sports_rewards.md.
 
-- ran for 298 minutes; 150 rounds of readings; 21,038 order books read; 0 errors
-- games followed in their six hours before the start: 333; with a price to rest at: 280
-- times a resting order would have been traded against: 749
+- ran for 299 minutes; 150 rounds of readings; 38,092 order books read; 0 errors
+- games followed in their six hours before the start: 419; with a price to rest at: 343
+- times a resting order would have been traded against: 509
 
 By reward programme, for orders of 100 contracts on each side. The reward is what the published formula gives, before the $1 minimum; it is not money anyone has been paid.
 
 | Programme | Games | Pool a game | Hours watched | Of them quoted | Share of the score | Reward by formula | Times traded against |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| table_tennis_moneyline_day_of_20261018 | 135 | $1.67 | 296 | 40% | 49% | $16.10 | 54 |
-| itf_moneyline_dayof_20261018 | 124 | $12.00 | 258 | 97% | 14% | $69.34 | 85 |
-| utr_moneyline_day_of_20261008 | 22 | $10.00 | 20 | 74% | 20% | $4.92 | 13 |
-| atp_wta_moneyline_day_of_20261018 | 14 | $40.00 | 32 | 100% | 1% | $2.54 | 46 |
-| doubles_moneyline_day_of_20261018 | 14 | $10.00 | 36 | 94% | 17% | $9.79 | 8 |
-| esports_moneyline_pre_game_20261008 | 7 | $10.00 | 13 | 96% | 1% | $0.31 | 76 |
-| nhl_regular_moneyline_day_of_20261018 | 6 | $33.00 | 18 | 100% | 0% | $0.11 | 466 |
-| astra_cup_women_moneyline_day_of_20261014 | 5 | $6.00 | 6 | 0% | 0% | $0.00 | 0 |
-| bskt_cup_3x3_moneyline_day_of_20261014 | 4 | $6.00 | 3 | 5% | 80% | $0.13 | 0 |
-| darts_moneyline_day_of_20260924 | 2 | $5.00 | 4 | 24% | 75% | $0.54 | 1 |
+| table_tennis_moneyline_day_of_20261018 | 188 | $1.67 | 533 | 41% | 43% | $34.17 | 77 |
+| itf_moneyline_dayof_20261018 | 132 | $12.00 | 454 | 99% | 12% | $108.84 | 203 |
+| utr_moneyline_day_of_20261008 | 30 | $10.00 | 103 | 46% | 24% | $18.74 | 21 |
+| esports_moneyline_pre_game_20261008 | 26 | $10.00 | 58 | 83% | 9% | $7.18 | 120 |
+| doubles_moneyline_day_of_20261018 | 14 | $10.00 | 34 | 89% | 21% | $10.89 | 23 |
+| atp_wta_moneyline_day_of_20261018 | 13 | $40.00 | 33 | 99% | 2% | $3.32 | 63 |
+| astra_cup_women_moneyline_day_of_20261014 | 11 | $6.00 | 32 | 13% | 65% | $2.69 | 2 |
+| darts_moneyline_day_of_20260924 | 5 | $5.00 | 4 | 26% | 42% | $0.35 | 0 |
 
 The judged totals over all runs are in reports/research/usr_summary.txt (scripts/us_rewards_score.py).
