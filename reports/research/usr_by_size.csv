@@ -1,0 +1,15 @@
+programmes,contracts_a_side,games,reward_formula,reward_paid,games_filled,contracts_filled,fills_at_settlement,fills_at_last_mid,net,net_a_game,z,money_in_a_game
+own pool,10,383,41.5,1.002,192,2104.38,-33.079,-10.617,-32.077,-0.084,-1.379,9.821
+own pool,25,383,96.823,25.429,192,4681.61,-130.85,-29.904,-105.421,-0.275,-1.739,24.553
+own pool,50,383,168.997,90.465,192,8394.69,-243.671,-62.825,-153.206,-0.4,-1.243,49.106
+own pool,100,383,284.125,204.619,192,14872.09,-540.272,-120.153,-335.653,-0.876,-1.647,98.211
+own pool,250,383,534.558,477.569,192,29209.63,-993.015,-275.723,-515.446,-1.346,-1.125,245.528
+own pool,500,383,751.595,701.552,192,44012.91,-1554.097,-457.125,-852.545,-2.226,-1.139,491.055
+own pool,1000,383,985.046,944.37,192,62731.48,-2068.093,-649.161,-1123.723,-2.934,-1.285,982.11
+"pool shared with other markets of the game, split equally (an assumption)",10,207,8.575,0.0,94,970.95,-4.828,-2.657,-4.828,-0.023,,9.576
+"pool shared with other markets of the game, split equally (an assumption)",25,207,19.431,0.0,94,2006.8,26.0,-9.946,26.0,0.126,,23.939
+"pool shared with other markets of the game, split equally (an assumption)",50,207,32.587,0.0,94,3028.95,29.868,-21.408,29.868,0.144,,47.879
+"pool shared with other markets of the game, split equally (an assumption)",100,207,45.963,2.213,94,4737.88,38.447,-43.934,40.66,0.196,,95.758
+"pool shared with other markets of the game, split equally (an assumption)",250,207,67.455,9.389,94,8577.95,95.777,-103.672,105.166,0.508,,239.394
+"pool shared with other markets of the game, split equally (an assumption)",500,207,83.63,23.118,94,12113.43,-74.661,-167.923,-51.543,-0.249,,478.789
+"pool shared with other markets of the game, split equally (an assumption)",1000,207,98.313,37.865,94,13829.67,-497.706,-200.727,-459.841,-2.221,,957.577

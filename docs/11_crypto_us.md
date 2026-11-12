@@ -678,6 +678,15 @@ is part of why only 55 of the 136 results out of reach had an order in
 the last quarter of an hour. Whether that hour is always like this is
 something L1's recorder cannot say: it reads the last 17 minutes.
 
+**12 November, 09:04 UTC.** Nothing to score yet, as expected: the first
+daily settlement the recorder can see is tonight's. From 22:43 UTC on
+11 November to 08:00 UTC it took 1,080 readings of 40 markets, the hourly
+up-or-down markets of the four coins at ten hours. The rule called all of
+them within reach and traded none, under both yardsticks. The job's log
+says both recorders were running, with no errors. The order program was
+replayed over the same readings and sent no order, which is what the
+scoring script says it should.
+
 *At each check-in while the test runs:* the order program of
 `docs/12_us_taker.md` is run on paper over the recordings
 (`kht us-take --replay state/us-lasttick --settle`, with a configuration
@@ -707,6 +716,14 @@ is empty. And the two furthest levels had traded 3,266 and 4,046
 contracts, where a far level of the crypto ladder has usually traded
 none. Somebody sells to those bids. In crypto, so far, almost nobody
 does.
+
+A second look, at 09:03 UTC on 12 November, at that day's ladder says the
+same more plainly. It was decided: 98¢ bid for "above $3.905" and 2¢ for
+"above $3.91". Bids of 1¢ stood on two levels only, for about 900
+contracts each. On the thirteen levels from $3.925 up there was no bid
+left at all, only offers at 1¢, and the four highest had each traded
+about 1,800 contracts. The 1¢ bids had been there and somebody had sold
+to all of them. The exchange showed the markets as closed at that hour.
 
 ## 11. If it holds: what a real version would need
 
@@ -1017,3 +1034,9 @@ three readings of each, no errors. The scoring script was run on
 tonight's real books of 16:50 UTC laid out as a recording, and on made-up
 recordings in its tests. No evening has been recorded yet.
 
+**12 November, 09:04 UTC.** The second recorder is running: the log of the
+run that began at 03:34 UTC says so, and it ended with no errors and no
+readings, which is right, since no ladder came within five and a half
+hours of its end before 08:33. The run going now will meet today's
+ladders at 16:30 UTC. The scoring script was run on what there is and
+says nothing has been recorded yet.

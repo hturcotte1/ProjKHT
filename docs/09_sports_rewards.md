@@ -493,12 +493,51 @@ From the next run the job carries one more recorder for the crypto tests
 (`docs/11_crypto_us.md`, section 12). It reads other markets and shares
 only the machine with this test.
 
+**12 November, 09:04 UTC. The first games are old enough to count, and
+one day is not a test.** Four runs are in: 19.9 hours of recording, 1,166
+games followed. Since the restart at 22:35 UTC the job has not missed:
+two full runs of 298 minutes with no errors, a save every hour, and the
+next run going since 08:33. The watchdog was started by GitHub's schedule
+once, at 03:18 UTC, nearly five hours after it was added. It asks to be
+started every quarter of an hour.
+
+383 games started more than 12 hours ago and have settled, all on one US
+date, 11 November. The judge asks for 2,000 games on five dates, so
+nothing is judged. For orders of 100 contracts a side:
+
+| Account | Games | Reward by the formula, after the $1 minimum | What the fills made, held to the result | Net | A game |
+|---|---:|---:|---:|---:|---:|
+| R1-all | 383 | $204.62 | −$540.27 | −$335.65 | −$0.88 |
+| R1-thin | 272 | $180.32 | −$412.89 | −$232.56 | −$0.86 |
+| R1-core | 207 | $145.70 | −$369.26 | −$223.56 | −$1.08 |
+
+So on the first day all three are behind. Half the games had an order
+traded against (192 of 383 in R1-all, 14,872 contracts). Two figures
+describe what that cost, and they are far apart. Valued where the price
+stood just before the start, the fills of R1-all cost $120, which is less
+than the reward and about what the history of section 4 led one to
+expect. Held to the result they cost $540. The difference is the results
+of 192 matches going one way more than the other, and a day cannot say
+whether that is luck or the thing the test is looking for. The rule
+judges by the result, and it needs the five dates. Lower-tour tennis,
+the programme the lead rests on, was the worst of the day: 162 games,
+$77 of reward, $355 lost on fills.
+
+The rehearsal of the order system ran 17.7 hours with no errors: 81
+markets rested in, $39 of reward after the minimum, 97 fills, 22
+positions settled for −$269, 13 still open. It tells the same story with
+fewer games.
+
+No reward cap and no minimum volume has been published.
+
 *Still to check, once a run has spanned it:* the exchange restarts each
 market's running totals of trading once a day, at 17:00 Eastern (22:00
 UTC). Rule 6 reads fills off those totals. If the restart itself shows up
 as a burst of fills at that minute, they are not real fills, and that would
 be a fault in the measuring to be fixed and dated here. The first run
-ended before that hour.
+ended before that hour. *12 November, 09:04 UTC:* still open. The run that
+would have spanned 22:00 UTC on 11 November was the one lost with its
+machine. Tonight's is the first that will.
 
 ## 9. The rules as filed, and a change on 18 November
 

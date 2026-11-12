@@ -1,0 +1,24 @@
+Test L1 on live books (docs/11_crypto_us.md, section 5). No order was placed: these are paper trades against orders seen in the book.
+recorded: 11 November 22:43 to 12 November 08:00 UTC; 1,080 readings of 40 markets ending at 10 different times, 0 of them a daily settlement
+
+===== L1-recent: the reach of 2023 to 2026, with the brake =====
+what became of each market followed (a market is counted once, by how the rule judged it)
+   within reach                                           40
+
+L1-recent-all (every trade the rule finds, 2,000 contracts a market at most)
+   no trade
+
+L1-recent-10k ($10,000 to lock at each settlement time)
+   no trade
+
+what docs/11 asks before a real test is worth discussing: 5 daily settlements recorded (so far 0); L1-recent-10k collecting $50 a day on average (so far $0.00 over 0 days); and no result that was out of reach coming in (so far 0 lost).
+
+===== L1-strict: the reach of the worst year since 2020, as first written =====
+what became of each market followed (a market is counted once, by how the rule judged it)
+   within reach                                           40
+
+L1-strict-all (every trade the rule finds, 2,000 contracts a market at most)
+   no trade
+
+L1-strict-10k ($10,000 to lock at each settlement time)
+   no trade
