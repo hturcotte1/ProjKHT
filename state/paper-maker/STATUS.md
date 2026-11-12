@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-12 03:15 UTC. Started 2026-11-10 07:39 UTC.
+As of 2026-11-12 09:01 UTC. Started 2026-11-10 07:39 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $1,003.55 |
+| Equity (positions marked at the bid) | $1,003.70 |
 | Starting bankroll | $1,000.00 |
-| Change | $+3.55 (+0.35%) |
+| Change | $+3.70 (+0.37%) |
 | Cash | $720.06 |
 | In positions (cost) | $279.94 |
 | Realised profit | $+0.00 |
@@ -20,15 +20,15 @@ As of 2026-11-12 03:15 UTC. Started 2026-11-10 07:39 UTC.
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
 | US imports Russian diesel by November 15? | No | 20.7 | 0.965 | 0.984 | $+0.39 | 4 |
-| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.971 | $+0.53 | 4 |
-| Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.970 | $-0.08 | 4 |
-| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.961 | $+0.21 | 14 |
-| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.958 | $+0.17 | 19 |
-| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.979 | $+0.63 | 19 |
+| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.978 | $+0.68 | 4 |
+| Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.971 | $-0.06 | 4 |
+| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.965 | $+0.29 | 14 |
+| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.961 | $+0.23 | 19 |
+| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.984 | $+0.74 | 19 |
 | NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.971 | $+0.23 | 19 |
-| Russia x Ukraine ceasefire by December 31, 2026? | No | 21.7 | 0.920 | 0.939 | $+0.41 | 50 |
+| Russia x Ukraine ceasefire by December 31, 2026? | No | 21.7 | 0.920 | 0.937 | $+0.37 | 50 |
 | Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.930 | $+0.67 | 50 |
-| Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.930 | $+0.67 | 50 |
+| Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.920 | $+0.44 | 50 |
 | Tesla and SpaceX merger officially announced by December 31? | No | 22.2 | 0.900 | 0.900 | $-0.00 | 50 |
 | US strike on Cuba by December 31? | No | 21.7 | 0.920 | 0.920 | $+0.00 | 50 |
 | Will Gavin Newsom announce a Presidential run before 2027? | No | 21.7 | 0.920 | 0.910 | $-0.22 | 50 |
@@ -87,4 +87,4 @@ As of 2026-11-12 03:15 UTC. Started 2026-11-10 07:39 UTC.
 
 ## Equity history
 
-13 cycles from 2026-11-10 07:39 UTC to 2026-11-12 03:14 UTC; equity $1,000.00 → $1,003.55. The longest gap between two cycles was 7.1 hours.
+14 cycles from 2026-11-10 07:39 UTC to 2026-11-12 09:00 UTC; equity $1,000.00 → $1,003.70. The longest gap between two cycles was 7.1 hours.
