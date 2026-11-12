@@ -67,7 +67,12 @@ over. Its answers are below, under "The fourth round"; in one line each:
   the bids add up to beyond that. It needs no view of how far the price
   can move. It is also small: that evening's sale kept about $13 on
   $10,000. A second paper test (L2, same document, section 12) records
-  whole ladders with sizes to see what is really there.
+  whole ladders with sizes to see what is really there. The exchange's
+  documentation adds one thing that could make it less small: for a set
+  of results of which only one can pay, and a price ladder is one, it can
+  tie up only the largest leg once the sale stands, if that is switched
+  on for the account. Whether it is for an ordinary account is something
+  only an account holder can find out.
 
 ## What came out of it
 

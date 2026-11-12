@@ -7,6 +7,12 @@ a half hours before they settled. This applies the rule to them: one paper
 account of $10,000 that sells every bracket of a ladder at once when that
 locks enough, and what it kept once the ladder settled.
 
+A second account stands beside the judged one. It differs in one thing:
+it takes the exchange's "mutually exclusive collateral return" as switched
+on (docs/11, section 12, "What the exchange ties up for a ladder"). Once a
+ladder is sold, that account has only its largest leg tied up, and the
+rest of the money is free for the other ladders.
+
     python scripts/us_ladder_score.py [--state state/us-ladder] [--settle] [--out reports/research]
 
 ``--settle`` asks the exchange what each bracket settled at (public, no
@@ -83,14 +89,30 @@ class Books:
         return None if k < 0 or t - a[k] > rule.FRESH else self.levels[slug][k]
 
 
-def account(found: list[dict], books: Books, money: float = rule.MONEY) -> tuple[list[dict], pd.DataFrame]:
-    """The rule on every ladder: its sale, if any, and a description of every reading."""
+def account(found: list[dict], books: Books, money: float = rule.MONEY, collateral_return: bool = False) -> tuple[list[dict], pd.DataFrame]:
+    """The rule on every ladder: its sale, if any, and a description of every reading.
+
+    Without ``collateral_return`` every contract sold ties up $1 less its
+    price until the ladder settles, and the ladders that settle together
+    share the money. With it, the exchange's documented netting for a
+    mutually exclusive event is taken as switched on: a sale still has to be
+    opened with a dollar a contract, but once it stands only its largest
+    leg is tied up. What that frees may be used for other ladders and not
+    for the one it came from.
+    """
     events = sorted((t, i) for i, lad in enumerate(found) for t in rule.readings(lad["end"]))
     order = {i: (rule.COINS.index(lad["coin"]), rule.HORIZONS.index(lad["horizon"])) for i, lad in enumerate(found)}
     events.sort(key=lambda e: (e[0], order[e[1]]))
-    room: dict[float, float] = {}
     positions: dict[int, dict] = {}
     curve = []
+
+    def usable(i: int, end: float) -> float:
+        """The money ladder ``i`` may still open sales with."""
+        mine = positions[i]["margin"] if i in positions else 0.0
+        others = [p for j, p in positions.items() if j != i and p["end"] == end]
+        if collateral_return:
+            return money - mine - sum(p["pays_at_most"] for p in others)
+        return money - mine - sum(p["margin"] for p in others)
     for t, i in events:
         lad = found[i]
         left = lad["end"] - t
@@ -107,20 +129,18 @@ def account(found: list[dict], books: Books, money: float = rule.MONEY) -> tuple
                       "best_margin": round(free["margin"], 2) if free else np.nan})
         if not with_bid:
             continue
-        have = room.setdefault(lad["end"], money)
+        have = usable(i, lad["end"])
         pos = positions.get(i)
         if pos is None:
             s = rule.decide(with_bid, left, have)
             if s is not None:
                 positions[i] = {**s, "ladder": lad["name"], "coin": lad["coin"], "horizon": lad["horizon"], "end": lad["end"], "ts": t, "left": left,
                                 "brackets": len(lad["slugs"]), "first_legs": len(s["legs"]), "locked_at_sale": s["locks"], "added": 0, "slugs": lad["slugs"]}
-                room[lad["end"]] = have - s["margin"]
         else:
             legs = rule.top_up(with_bid, pos, have)
             if legs:
                 rule.add(pos, legs)
                 pos["added"] += len(legs)
-                room[lad["end"]] = have - sum(leg["margin"] for leg in legs.values())
     return [positions[i] for i in sorted(positions)], pd.DataFrame(curve)
 
 
@@ -149,13 +169,15 @@ def evenings(found: list[dict], curve: pd.DataFrame, positions: list[dict], paid
     rows = []
     for end in sorted({lad["end"] for lad in found}):
         mine = [lad for lad in found if lad["end"] == end]
-        c = curve[(curve["end"] == end) & (curve["coin"] == "btc") & (curve["horizon"] == "daily")]
+        # the Bitcoin ladder that settles then: the daily one, and on a Friday, when there is none, the weekly one
+        c = curve[(curve["end"] == end) & (curve["coin"] == "btc")]
+        c = c[c["horizon"] == ("daily" if (c["horizon"] == "daily").any() else "weekly")]
         good = int((c["fresh"] >= MOST * c["brackets"]).sum()) if len(c) else 0
         pos = [p for p in positions if p["end"] == end]
         settled = all(all(s in paid for s in lad["slugs"]) for lad in mine)
         odd = [lad["name"] for lad in mine if all(s in paid for s in lad["slugs"]) and abs(sum(paid[s] for s in lad["slugs"]) - 1.0) > 1e-9]
         kept = sum(rule.result(p, paid) for p in pos) if settled else np.nan
-        rows.append({"end": end, "evening": f"{datetime.fromtimestamp(end, timezone.utc):%d %b %H:%M}", "ladders": len(mine), "btc_daily_readings": good,
+        rows.append({"end": end, "evening": f"{datetime.fromtimestamp(end, timezone.utc):%d %b %H:%M}", "ladders": len(mine), "btc_readings": good,
                      "recorded": good >= RECORDED, "sales": len(pos), "locked": sum(p["locks"] for p in pos), "margin": sum(p["margin"] for p in pos),
                      "settled": settled, "kept": kept, "ladders_not_paying_one": ", ".join(odd)})
     return pd.DataFrame(rows)
@@ -195,25 +217,31 @@ def main() -> int:
     found = ladders(m)
     say(f"recorded: {len(b):,} readings of {b['slug'].nunique():,} brackets in {len(found)} ladders, from "
         f"{datetime.fromtimestamp(b['ts'].min(), timezone.utc):%d %b %H:%M} to {datetime.fromtimestamp(b['ts'].max(), timezone.utc):%d %b %H:%M} UTC")
-    positions, curve = account(found, Books(b))
+    recorded = Books(b)
+    positions, curve = account(found, recorded)
+    netted, _ = account(found, recorded, collateral_return=True)
     now = datetime.now(timezone.utc).timestamp()
     ended = [s for lad in found if lad["end"] + 120 < now for s in lad["slugs"]]
     paid = settlements(state, ended, args.settle)
     ev = evenings(found, curve, positions, paid)
+    ev_netted = evenings(found, curve, netted, paid)
 
-    say()
-    say("The account ($10,000 for each settlement time):")
-    if positions:
+    def show(pos: list[dict]) -> None:
+        if not pos:
+            say("  no sale: at no reading did a sale lock what the rule asks ($25, or $10 in the last half hour)")
+            return
         rows = []
-        for p in positions:
+        for p in pos:
             done = all(s in paid for s in p["slugs"])
             rows.append({"ladder": p["ladder"], "sold at (UTC)": f"{datetime.fromtimestamp(p['ts'], timezone.utc):%H:%M}", "minutes left": round(p["left"] / 60.0),
                          "size": p["q"], "brackets sold": len(p["legs"]), "of": p["brackets"], "added later": p["added"], "money in": round(p["money"], 2),
-                         "fees": round(p["fees"], 2), "pays at most": p["pays_at_most"], "locked": round(p["locks"], 2), "money tied up": round(p["margin"], 2),
+                         "fees": round(p["fees"], 2), "pays at most": p["pays_at_most"], "locked": round(p["locks"], 2), "money to open it": round(p["margin"], 2),
                          "kept": round(rule.result(p, paid), 2) if done else np.nan})
         say(pd.DataFrame(rows).to_string(index=False))
-    else:
-        say("  no sale: at no reading did a sale lock what the rule asks ($25, or $10 in the last half hour)")
+
+    say()
+    say("The judged account: $10,000 for each settlement time, a dollar less its price tied up for every contract sold")
+    show(positions)
     say()
     say("By settlement time:")
     say(ev.drop(columns=["end"]).round(2).to_string(index=False))
@@ -221,6 +249,16 @@ def main() -> int:
         say("  A ladder in which not exactly one bracket paid is not what the rule takes a ladder to be. Look at it before anything else.")
     say()
     say("Verdict by the bar fixed in advance: " + verdict(ev, positions, paid))
+
+    say()
+    say("The second account: the same rule and the same $10,000, with the exchange's collateral return taken as switched on,")
+    say("so that a ladder once sold ties up only its largest leg and the other ladders can use the rest")
+    show(netted)
+    say()
+    say("By settlement time:")
+    say(ev_netted.drop(columns=["end"]).round(2).to_string(index=False))
+    say()
+    say("The same bar read for the second account: " + verdict(ev_netted, netted, paid))
 
     say()
     say("The day of each ladder, described and not judged: what an untouched $10,000 would have locked at a reading")
@@ -239,9 +277,11 @@ def main() -> int:
     out.mkdir(parents=True, exist_ok=True)
     curve.to_csv(out / "ld_curve.csv", index=False)
     ev.to_csv(out / "ld_evenings.csv", index=False)
-    legs = [{"ladder": p["ladder"], "slug": s, **leg, "paid": paid.get(s, np.nan)} for p in positions for s, leg in p["legs"].items()]
-    pd.DataFrame(legs).to_csv(out / "ld_legs.csv", index=False)
-    pd.DataFrame([{k: v for k, v in p.items() if k not in ("legs", "slugs")} for p in positions]).to_csv(out / "ld_sales.csv", index=False)
+    ev_netted.to_csv(out / "ld_evenings_return.csv", index=False)
+    for name, pos in (("", positions), ("_return", netted)):
+        legs = [{"ladder": p["ladder"], "slug": s, **leg, "paid": paid.get(s, np.nan)} for p in pos for s, leg in p["legs"].items()]
+        pd.DataFrame(legs).to_csv(out / f"ld_legs{name}.csv", index=False)
+        pd.DataFrame([{k: v for k, v in p.items() if k not in ("legs", "slugs")} for p in pos]).to_csv(out / f"ld_sales{name}.csv", index=False)
     (out / "ld_summary.txt").write_text("\n".join(lines) + "\n")
     return 0
 

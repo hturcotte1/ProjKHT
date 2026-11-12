@@ -845,6 +845,11 @@ construction the rule cannot lose on a ladder in which exactly one
 bracket pays, so a loss would mean the ladder or the recording is not
 what it is taken for.
 
+*Corrected at 00:25 UTC on 12 November, before anything was recorded:*
+the exchange lists no daily ladder on Fridays, only the weekly one, which
+settles that evening. On a Friday the weekly Bitcoin ladder is the one
+whose readings are counted.
+
 $20 an evening on $10,000 is a fifth of one percent a day. Below that it
 is not worth a program and a key, whatever the certainty.
 
@@ -857,13 +862,73 @@ is not worth a program and a key, whatever the certainty.
   contracts sold with nothing certain about them. A real version would
   sell the brackets near the price first and the rest only up to what
   those filled.
-- **The margin.** If the exchange locks less for a set of brackets of
-  which one can pay, the same money goes several times as far. Not known.
+- **The margin.** The exchange's documentation says it can tie up less
+  for a set of brackets of which one can pay. See the next heading.
+  Whether that is switched on for an ordinary account is not known.
 - **The other side.** The bids exist to collect a reward. Somebody who is
   sold 1¢ contracts every evening may bid for fewer, or stop.
 - **Company.** One seller was there tonight, within a minute of the
   quotes appearing. There is room for a second only as long as the bids
   are bigger than the first one's lots.
+
+### What the exchange ties up for a ladder: its own documentation
+
+Read on 12 November, after the rule above was fixed. Four pages of the
+exchange's public documentation bear on it
+([collateral and margin](https://docs.polymarket.us/market-structure/collateral-and-margin),
+[mutually exclusive collateral return](https://docs.polymarket.us/market-structure/mutually-exclusive-collateral-return),
+[directional collateral return](https://docs.polymarket.us/market-structure/directional-collateral-return),
+[crypto questions](https://docs.polymarket.us/faqs/crypto-faqs)).
+What they say:
+
+- A contract sold short ties up $1, and the sale price is credited: what
+  the account can still spend falls by $1 less the price. That is what
+  the rule above assumes.
+- A ladder of price brackets is, in the exchange's own words, "one
+  mutually exclusive event per expiry": exactly one bracket settles Yes.
+- For such an event there is something called collateral return. "When
+  collateral return is enabled on your account" and the account is short
+  in several results of one event, the requirement is "reduced by the
+  smaller offsetting position size". The example is 9,000 contracts short
+  in one candidate and 1,000 in another: 9,000 tied up, not 10,000.
+- What is freed may be used in other events. It may not be used to add
+  to the event it came from.
+- Buying back one of the legs means giving the freed money back first.
+  If it has been spent elsewhere, the order to buy back is refused.
+- The ladders of "above" levels and the one-touch markets do not qualify
+  for this or for its sister rule.
+
+What they do not say: how an account gets it switched on, and what three
+or more legs come to. The example has two. Its reasoning, that only one
+result can pay, gives the largest leg for any number of legs, and I take
+it so below. That is my reading and not a quotation.
+
+What it means here:
+
+- **Opening still takes a dollar a contract.** Freed money cannot go back
+  into the same ladder, so every leg has to be paid for out of money that
+  did not come from it. The seller of 11 November fits this exactly:
+  10,000 contracts in 59 lots is what $10,000 opens at a dollar a
+  contract.
+- **Once it stands, a sold ladder ties up its largest leg.** For that
+  seller about $170, with the other $9,800 free for other ladders that
+  evening. The rule above lets the four coins' ladders share one $10,000.
+  With collateral return each could be opened with nearly all of it, one
+  after the other.
+- **It bears on L1 as well.** The far brackets of one ladder are one
+  event, so of all the brackets L1 sells in a ladder at most one can turn
+  against it. L1's accounts tie up a dollar a contract and take no credit
+  for this. The far "above" levels are different: several of them can
+  pay at once, and nothing is netted there.
+
+**A second account, added at 00:25 UTC on 12 November, before anything
+was recorded.** The same rule, the same $10,000 and the same bar, with
+collateral return taken as switched on. A sale must still be opened with
+$1 less its price for every contract, out of money the same ladder has
+not freed. Once sold, a ladder counts as tying up its largest leg at a
+dollar a contract, and the rest is free for the other ladders. The first
+account, written before this was read, stays the judged one. Both are
+reported, and this says which came first.
 
 ### The same arithmetic elsewhere: one look, and a warning
 

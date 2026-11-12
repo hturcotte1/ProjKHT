@@ -549,8 +549,11 @@ python scripts/us_ladder_score.py --settle
 ```
 
 It keeps one paper account of $10,000 and also describes each ladder's
-day, reading by reading. It writes `reports/research/ld_summary.txt` and
-the `ld_` tables beside it.
+day, reading by reading. Beside the judged account it keeps a second one
+that takes the exchange's "mutually exclusive collateral return" as
+switched on: a sold ladder then ties up only its largest leg, and the
+other ladders can use the rest. It writes
+`reports/research/ld_summary.txt` and the `ld_` tables beside it.
 
 ### Keeping the recordings
 

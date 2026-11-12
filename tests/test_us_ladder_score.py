@@ -146,7 +146,7 @@ def test_an_evening_counts_once_recorded_and_settled_and_the_verdict_waits_for_f
     positions, curve = score.account(found, score.Books(b))
     paid = {s: 0.0 for x in found for s in x["slugs"]} | {NEAR[1]: 1.0, ETH_NEAR[0]: 1.0}
     ev = score.evenings(found, curve, positions, paid)
-    assert len(ev) == 1 and bool(ev.loc[0, "recorded"]) and ev.loc[0, "btc_daily_readings"] == 165 and ev.loc[0, "sales"] == 1
+    assert len(ev) == 1 and bool(ev.loc[0, "recorded"]) and ev.loc[0, "btc_readings"] == 165 and ev.loc[0, "sales"] == 1
     assert bool(ev.loc[0, "settled"]) and ev.loc[0, "kept"] == pytest.approx(positions[0]["locks"]) and ev.loc[0, "ladders_not_paying_one"] == ""
     assert score.verdict(ev, positions, paid).startswith("NOT YET JUDGED: 1 evenings recorded and settled")
     # five such evenings pass the bar; a ladder that paid on two brackets is named, and a loss fails it
@@ -180,3 +180,45 @@ def test_the_script_runs_on_a_recording_and_writes_its_tables(tmp_path, monkeypa
     assert len(sales) == 1 and len(legs) == 32 and legs["paid"].sum() == 1.0 and len(curve) == 330
     monkeypatch.setattr(sys, "argv", ["us_ladder_score.py", "--state", str(tmp_path / "nothing"), "--out", str(out)])
     assert score.main() == 0 and "Nothing has been recorded yet" in capsys.readouterr().out
+
+
+def test_with_collateral_return_a_sold_ladder_ties_up_only_its_largest_leg(tmp_path):
+    evening(tmp_path)
+    b, m = score.load(tmp_path)
+    found, books = score.ladders(m), score.Books(b)
+    plain, _ = score.account(found, books)
+    netted, _ = score.account(found, books, collateral_return=True)
+    assert [p["coin"] for p in plain] == ["btc"]                                 # the judged account: Bitcoin takes the money
+    # the second account: once Bitcoin is sold only 300 contracts' worth is tied up, so Ether can be opened too, at the same reading
+    assert [p["coin"] for p in netted] == ["btc", "eth"] and [p["left"] for p in netted] == [200 * MIN, 200 * MIN]
+    assert netted[0]["q"] == plain[0]["q"] == 300.0 and netted[1]["q"] == 300.0
+    assert netted[0]["margin"] + netted[1]["margin"] > rule.MONEY                # more than the account holds was opened in all, one ladder after the other
+    assert netted[0]["pays_at_most"] + netted[1]["pays_at_most"] == 600.0        # and this is what stays tied up
+    assert netted[0]["added"] == 1 and len(netted[0]["legs"]) == 32              # the late bracket is still added: money that Ether freed may be used for Bitcoin
+    # opening still takes a dollar a contract less its price: with too little left to open the second ladder whole, it is opened smaller
+    small, _ = score.account(found, books, money=9_000.0, collateral_return=True)
+    assert small[0]["q"] == 300.0 and small[0]["margin"] <= 9_000.0
+    assert small[1]["coin"] == "eth" and small[1]["margin"] <= 9_000.0 - 300.0 + 1e-6 and 250.0 < small[1]["q"] < 300.0
+
+
+def test_money_freed_by_a_ladder_cannot_be_used_to_add_to_that_same_ladder(tmp_path):
+    evening(tmp_path)
+    b, m = score.load(tmp_path)
+    found, books = score.ladders(m), score.Books(b)
+    # just enough to open the Bitcoin ladder (29 far brackets and two near the price), and nothing over
+    opening = 29 * 297.0 + 150.0 + 180.0
+    netted, _ = score.account([found[0]], books, money=opening, collateral_return=True)
+    assert netted[0]["q"] == 300.0 and netted[0]["added"] == 0                   # the open end quoted later cannot be added: what the sale freed is not for this ladder
+    netted, _ = score.account([found[0]], books, money=opening + 297.0, collateral_return=True)
+    assert netted[0]["added"] == 1
+
+
+def test_on_a_friday_the_weekly_bitcoin_ladder_says_whether_the_evening_was_recorded(tmp_path):
+    markets = [market_row(f"cpc-btc-range-wk-2026-11-13-{70000 + 500 * i}", horizon="weekly") for i in range(10)]
+    books = [book_row(mk["slug"], 2 * k, [(0.01, 1000.0)]) for k in range(165, 0, -1) for mk in markets]
+    write_run(tmp_path, "r1", books, markets)
+    b, m = score.load(tmp_path)
+    found = score.ladders(m)
+    positions, curve = score.account(found, score.Books(b))
+    ev = score.evenings(found, curve, positions, {})
+    assert [(x["coin"], x["horizon"]) for x in found] == [("btc", "weekly")] and bool(ev.loc[0, "recorded"]) and ev.loc[0, "btc_readings"] == 165
