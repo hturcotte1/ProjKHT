@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -76,7 +77,7 @@ def reach_from(by_year: pd.DataFrame, floor: float = FLOOR) -> dict[int, float]:
     out, so_far = {}, floor
     for h, v in worst.items():
         so_far = max(so_far, float(v))
-        out[int(h)] = round(so_far, 5)
+        out[int(h)] = math.ceil(so_far * 1e5 - 1e-9) / 1e5          # written to five places, rounded up: never nearer than the figure it stands for
     return out
 
 

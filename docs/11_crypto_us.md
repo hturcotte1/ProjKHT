@@ -1192,6 +1192,62 @@ with a loss.
 
 It is made by `scripts/lasthours_reach.py` and uses coin prices only.
 
+### The yardstick, computed
+
+Run at 09:18 UTC on 13 November, after the definition above was committed
+(`caa6002`, 09:12 UTC). The reach, as a share of the price:
+
+| Minutes ahead | 30 | 60 | 120 | 180 | 240 | 330 |
+|---|---:|---:|---:|---:|---:|---:|
+| Bitcoin | 3.97% | 5.34% | 7.41% | 9.05% | 10.18% | 10.99% |
+| Ether | 5.02% | 6.87% | 8.90% | 10.27% | 11.61% | 12.87% |
+| Solana | 8.36% | 10.76% | 14.53% | 17.50% | 20.07% | 24.31% |
+| XRP | 8.18% | 10.94% | 14.38% | 16.44% | 18.93% | 21.39% |
+
+Every figure is set by 2020 or 2021. This year alone would give Bitcoin
+2.72% an hour ahead where the table has 5.34%.
+
+The check holds. With the brake, the worst coin, year and time ahead is
+Solana in 2020, four hours ahead: one start in 581 ended beyond the
+reach.
+
+At the settlement time itself, from so many minutes before 5 pm New York
+to 5 pm, on the 2,506 evenings since 2020 (2,283 for Solana), leaving out
+the evenings the brake stops: how many ended beyond the reach.
+
+| Minutes before | 60 | 120 | 180 | 240 | 300 |
+|---|---:|---:|---:|---:|---:|
+| Bitcoin | 0 | 1 | 0 | 0 | 0 |
+| Ether | 1 | 3 | 1 | 1 | 1 |
+| Solana | 0 | 0 | 0 | 0 | 0 |
+| XRP | 0 | 3 | 3 | 3 | 2 |
+
+That is about what one start in 500 should give, and it shows what the
+bad evening looks like. On 13 April 2024 Bitcoin ended 7.95% from where
+it stood two hours earlier, against a reach of 7.41%, and Ether and XRP
+went beyond theirs the same evening. A seller by this rule would have
+lost one bracket in each of three ladders at once.
+
+**An illustration, counted for nothing: the evening of 12 November,**
+which was looked at before the rule was fixed.
+
+| | Sales | Contracts | Premium after the fee | Tied up | Largest single sale |
+|---|---:|---:|---:|---:|---:|
+| L3-all | 70 | 35,068 | $317.86 | $34,717 | $1,980 |
+| L3-10k | 17 | 10,101 | $91.55 | $10,000 | $995 |
+
+Nothing lost. Of the 70 bids sold to, 68 still stood as large at the
+bracket's next reading, two minutes on. Two thirds of L3-all is the
+Bitcoin ladder: 43 brackets, $208.70. The $10,000 account was full within
+a quarter of an hour of the recording's start, on the furthest brackets:
+ten of Bitcoin's, 10.9% and more from the price, six of Ether's and one
+of XRP's.
+
+The last column is the other half of the trade. The $10,000 account
+collects about $90 an evening and its largest sale is $995. On an evening
+like 13 April 2024 it loses that sale, and one in Ether and one in XRP
+with it: about $2,000, or three weeks of evenings.
+
 ### The rule
 
 1. **Readings** are the second recorder's: every bracket's book about

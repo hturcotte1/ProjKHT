@@ -46,6 +46,7 @@ Code: `src/kht/trading/engine.py` (`Engine.run_cycle`).
 | Orders before games, for real or on paper | `trading/us_quoter.py`, `trading/us_live.py` | The system that would rest those orders with a real account: choice of games, limits, orders that may only rest and that expire by themselves. On paper by default; the live connection has never been run. `docs/10_us_quoter.md` |
 | Crypto markets in their last minutes | `trading/us_lasttick.py`, `trading/lasttick_rule.py` | Not part of any account: a recorder of the order books of Polymarket US crypto markets in the quarter of an hour before they settle, and the rule of test L1 that is applied to them afterwards. See "Crypto markets in their last minutes" below |
 | Sales to the last-tick bids, for real or on paper | `trading/us_taker.py` | The program that would place the trades of test L1 with a real account: one order a market, a fixed sum at one settlement time, a stop at the first loss. On paper by default, and it can be replayed over the recorder's evenings; the live connection has never been run. `docs/12_us_taker.md` |
+| Far brackets, hours ahead | `trading/lasthours_rule.py` | Not part of any account: the rule of test L3, applied afterwards to the books the second recorder wrote down. See "Far brackets, hours ahead" below |
 | Whole crypto ladders | `trading/us_lasttick.py` (a second copy), `trading/ladder_rule.py` | Not part of any account: the same recorder reading every bracket of the daily and weekly ladders through their last five and a half hours, and the rule of test L2 that is applied afterwards. See "Whole ladders" below |
 
 ## What the strategy does
@@ -567,6 +568,21 @@ that takes the exchange's "mutually exclusive collateral return" as
 switched on: a sold ladder then ties up only its largest leg, and the
 other ladders can use the rest. It writes
 `reports/research/ld_summary.txt` and the `ld_` tables beside it.
+
+### Far brackets, hours ahead
+
+The first evening recorded live showed that the bids worth selling to are
+gone an hour before a ladder settles. Test L3 sells to them while they
+stand (`docs/11_crypto_us.md`, section 13): brackets only, far enough by
+`config/lasthours_reach.json`, a table of how far each coin has stood from
+where it was up to five and three quarter hours later, made from minute
+prices by `scripts/lasthours_reach.py`. The rule is
+`src/kht/trading/lasthours_rule.py`. It reads the second recorder's books
+and needs no recorder of its own:
+
+```bash
+python scripts/us_lasthours_score.py --settle
+```
 
 ### Keeping the recordings
 
