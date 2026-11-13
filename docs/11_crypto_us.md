@@ -712,12 +712,12 @@ bid of 1¢, ten were for 100 contracts or more.
 The second recorder, which watches the brackets for five and a half
 hours, shows why. From 16:30 to 21:00 UTC the daily Bitcoin ladder
 carried 1¢ bids of about 1,000 contracts on 38 to 47 of its 58 brackets.
-After 21:00 it carried 1¢ bids on 29 brackets, for three contracts in
-all. Two things took the big bids away. One of the two firms that post
+After 21:00 it carried 1¢ bids on 29 brackets, for three to eight
+contracts in all. Two things took the big bids away. One of the two firms that post
 them withdraws its bid from a bracket as soon as part of it has been
 sold to. And between 21:00 and 21:02 somebody sold to the whole of the
 other firm's bid, 1,005 contracts, on each of the 18 brackets from
-$77,000 up, which were 8% and more above the price: about 19,100
+$77,000 up, which were nearly 8% and more above the price: about 19,100
 contracts. On 11 November those brackets had traded nothing but the 169
 contracts of section 9's seller, so this is a second newcomer in two
 days.
@@ -1096,8 +1096,8 @@ says nothing has been recorded yet.
 found fresh books, so the evening counts.
 
 - **The judged account sold once.** The Bitcoin ladder at 18:42 UTC, 198
-  minutes before the end: 182.68 contracts in each of its 58 brackets,
-  $227.94 in, $19.60 in fees, $182.68 to pay at most. Locked: $25.66. At
+  minutes before the end: up to 182.68 contracts in each of its 58
+  brackets, $227.94 in, $19.60 in fees, $182.68 to pay at most. Locked: $25.66. At
   settlement it kept $28.24, since the bracket that paid had only 180.10
   contracts bid for. It took the whole $10,000 to open.
 - **The second account did the same and no more.** No other ladder ever

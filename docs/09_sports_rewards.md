@@ -547,8 +547,8 @@ Both days are behind taken alone: 11 November by $641 on 495 games,
 the fills of R1-all cost $351, less than the reward. Held to the result
 they cost $1,314. That gap was put down to one day's luck yesterday. It
 has now come twice and in the same direction, and most of it is in one
-place: lower-tour tennis, 377 games, $194 of reward, $116 lost on fills
-at the price before the start and $722 at the result. An order there
+programme, the ITF tennis tour: 377 games, $194 of reward, $116 lost on
+fills at the price before the start and $722 at the result. An order there
 that gets filled seems to be filled by somebody who knows more about the
 match than the last price shows. Two days do not prove that, and the
 rule waits for five. But if it holds, the history of section 4 measured
