@@ -1122,3 +1122,116 @@ and on paper it depends on sixty orders all meeting the book that was
 read. That is the first thing listed under "What paper cannot show", and
 the two-minute figure says it is not a small thing.
 
+## 13. L3: the same bids while they are there, fixed at 09:12 UTC on 13 November
+
+### Why a third test
+
+L1 sells in the last quarter of an hour. The first evening recorded live
+showed that the bids worth selling to are gone by then (section 9). They
+stand from about 16:30 to 21:00 UTC, which is five and a half hours to
+one hour before the daily settlement. Whoever wants them has to sell
+hours ahead and not minutes ahead. That is a different risk, so it gets
+its own yardstick and its own test. L1 and L2 run on as they were fixed.
+
+What was looked at before this was fixed: the evening of 12 November in
+the second recorder's books, as section 9 and section 12 report it, and
+the afternoon of 11 November. Nothing else. So 12 November can only ever
+be an illustration here. The test is the evenings from tonight.
+
+### The trade, and how it differs from L1
+
+Selling "Yes" to a 1¢ bid on a bracket far from the price, and holding
+to settlement. As in L1 a contract sold keeps 0.9¢ and ties up 99¢. Two
+things are different.
+
+- **More time.** With hours to go the price can go much further than in a
+  quarter of an hour, so "far" has to be further.
+- **Brackets only, and at most one of them can pay.** L1 also sells
+  "above" levels, and if the price runs through several of those they all
+  pay. A ladder of brackets is one event with one result. However many of
+  its brackets were sold, the price can end in one. So an evening's sales
+  in one ladder collect 0.9¢ a contract on every bracket and can lose 99¢
+  a contract on one. With twenty brackets sold at the same size that is
+  18¢ collected against 99¢ at risk once, where a single L1 sale is 0.9¢
+  against 99¢.
+
+That second point is why this yardstick asks for less than L1's. It is
+also the whole of the reason, and if it is wrong the test will say so
+with a loss.
+
+### Far enough: the yardstick, fixed here before it is computed
+
+1. **What is sold:** brackets of the daily and weekly ladders of the four
+   coins. No "above" levels, no "hit" markets, no up-or-down markets.
+2. **Distance:** how far the index, as the exchange last published it, is
+   from the bracket's nearer edge, as a share of the index. A bracket the
+   index is in is never sold.
+3. **Time ahead:** the time left to the bracket's end, plus the age of
+   the index level, plus one minute, rounded up to the next five minutes.
+4. **The reach.** From one-minute prices of each coin since 1 January
+   2020, the same files as L1: take every minute as a start and measure
+   how far the price stood from there that many minutes later. For each
+   calendar year take the distance that only one start in 500 ended
+   beyond. The reach is the largest of those yearly figures, at least 1%,
+   and never less than the reach for a shorter time. A bracket is far
+   enough if its distance is larger than the reach.
+5. **Why "ended" and one in 500, where L1 has "went" and one in 5,000.** A
+   bracket pays on where the price ends, not on what it touches. And the
+   nearest bracket sold is the only one this figure is tight for. If one
+   start in 500 ends beyond its edge on either side, under one in 1,000
+   ends beyond it on its side, and fewer still in that very bracket. The
+   sale keeps nine in 1,000. Every bracket further out is safer than
+   that.
+6. **The brake** is L1's, unchanged: nothing is sold if any five-minute
+   change of the index in the hour before was larger than the coin's
+   limit, or if fewer than six of those changes are known.
+7. **The check that goes with it,** fixed now: with the brake, in no
+   coin, year and time ahead did starts end beyond the reach more often
+   than one in 500. If that does not hold, the yardstick is not used and
+   this test does not run.
+
+It is made by `scripts/lasthours_reach.py` and uses coin prices only.
+
+### The rule
+
+1. **Readings** are the second recorder's: every bracket's book about
+   every two minutes from 330 minutes before its end. A reading counts
+   from 330 minutes to 2 minutes before the end.
+2. **The index level** is the newest one the recorder had seen published
+   when the reading was taken, if it is at most ten minutes old.
+3. **The sale.** If the bracket is far enough and the brake is clear:
+   sell to the best bid, if that bid is at 5¢ or less, for the size shown
+   at that price and at most 2,000 contracts. One sale a bracket.
+4. **The fee** is 0.095 × price × (1 − price) a contract, as in L1.
+5. **Two accounts,** as in L1. L3-all takes every sale. L3-10k has
+   $10,000 to tie up at each settlement time, a dollar less the price
+   for every contract, and takes sales in the order they come until it
+   is used up. The exchange's collateral return is not assumed.
+6. **Reported beside them:** for each ladder its largest sale, which is
+   the most that ladder can lose; the sales of a contract or more; and
+   how many of the bids sold to were still there at the next reading.
+
+### The bar
+
+Five evenings are left before 18 November: tonight, when only the weekly
+ladders settle, and 14 to 17 November. By then: at least four evenings
+recorded; L3-10k collected at least $50 an evening on average; and no
+bracket it sold paid. One loss in five evenings would not be bad luck.
+It would mean the yardstick is wrong.
+
+### What is already known against it
+
+- **Others are there.** On 12 November somebody sold to 19,100 contracts
+  of these bids at 21:00 UTC, and an equal-lot seller took 46 a bracket at
+  19:04. On paper this account sells as soon as its yardstick lets it,
+  which for the furthest brackets is before either of them. In the book,
+  whoever comes first has the bid, and one of the two firms that post
+  these bids withdraws what is left as soon as it is hit.
+- **The bids may not last.** Every sale costs the firm that posted the
+  bid about $10 a bracket. The reward rules change on 18 November.
+- **A loss, when it comes, comes in company.** It is one bracket of one
+  ladder. But the four coins move together, so four ladders can lose on
+  the same evening.
+- **Paper fills.** The far bids stood still for hours on 12 November, so
+  this is less of a worry than in L2. It is still paper.
+
