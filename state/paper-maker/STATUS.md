@@ -1,41 +1,42 @@
 # Account status (paper)
 
-As of 2026-11-12 19:08 UTC. Started 2026-11-10 07:39 UTC.
+As of 2026-11-13 00:26 UTC. Started 2026-11-10 07:39 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $999.72 |
+| Equity (positions marked at the bid) | $993.96 |
 | Starting bankroll | $1,000.00 |
-| Change | $-0.28 (-0.03%) |
-| Cash | $620.08 |
-| In positions (cost) | $379.92 |
+| Change | $-6.04 (-0.60%) |
+| Cash | $600.08 |
+| In positions (cost) | $399.92 |
 | Realised profit | $+0.00 |
 | Fees paid | $0.00 |
-| Open positions | 19 |
-| Fills | 20 |
+| Open positions | 20 |
+| Fills | 21 |
 | Settled positions | 0 |
 
 ## Open positions
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| US imports Russian diesel by November 15? | No | 20.7 | 0.965 | 0.991 | $+0.54 | 3 |
-| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.982 | $+0.76 | 3 |
-| Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.942 | $-0.66 | 3 |
-| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.973 | $+0.46 | 13 |
-| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.951 | $+0.02 | 18 |
-| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.985 | $+0.76 | 18 |
-| NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.971 | $+0.23 | 18 |
-| Russia x Ukraine ceasefire by December 31, 2026? | No | 21.7 | 0.920 | 0.910 | $-0.22 | 49 |
-| Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.930 | $+0.67 | 49 |
+| US imports Russian diesel by November 15? | No | 20.7 | 0.965 | 0.971 | $+0.12 | 3 |
+| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.983 | $+0.78 | 3 |
+| Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.945 | $-0.60 | 3 |
+| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.968 | $+0.36 | 13 |
+| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.957 | $+0.15 | 18 |
+| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.989 | $+0.84 | 18 |
+| NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.976 | $+0.33 | 18 |
+| Russia x Ukraine ceasefire by December 31, 2026? | No | 21.7 | 0.920 | 0.916 | $-0.09 | 49 |
+| Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.940 | $+0.89 | 49 |
 | China x India military clash by December 31, 2026? | No | 21.3 | 0.940 | 0.920 | $-0.43 | 49 |
-| Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.910 | $+0.22 | 49 |
-| Tesla and SpaceX merger officially announced by December 31? | No | 22.2 | 0.900 | 0.890 | $-0.22 | 49 |
+| Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.900 | $-0.00 | 49 |
+| Tesla and SpaceX merger officially announced by December 31? | No | 22.2 | 0.900 | 0.680 | $-4.89 | 49 |
 | Will Russia capture all of Kostyantynivka by December 31, 2026? | No | 21.5 | 0.930 | 0.910 | $-0.43 | 49 |
-| US strike on Cuba by December 31? | No | 21.7 | 0.920 | 0.920 | $+0.00 | 49 |
-| Will Gavin Newsom announce a Presidential run before 2027? | No | 21.7 | 0.920 | 0.870 | $-1.09 | 49 |
+| US x Cuba military clash in 2026? | No | 21.5 | 0.930 | 0.910 | $-0.43 | 49 |
+| US strike on Cuba by December 31? | No | 21.7 | 0.920 | 0.880 | $-0.87 | 49 |
+| Will Gavin Newsom announce a Presidential run before 2027? | No | 21.7 | 0.920 | 0.880 | $-0.87 | 49 |
 | Jerome Powell out from Fed Board by December 31? | No | 21.5 | 0.930 | 0.910 | $-0.43 | 49 |
-| Will there be at least 10000 measles cases in the U.S. in 2026? | No | 20.9 | 0.956 | 0.946 | $-0.21 | 49 |
+| Will there be at least 10000 measles cases in the U.S. in 2026? | No | 20.9 | 0.956 | 0.945 | $-0.23 | 49 |
 | Will Samuel Alito announce his retirement by December 31, 2026? | No | 20.9 | 0.958 | 0.956 | $-0.04 | 49 |
 | Will FISA Section 702 reauthorization become law this year? | No | 22.2 | 0.900 | 0.890 | $-0.22 | 49 |
 
@@ -49,7 +50,6 @@ As of 2026-11-12 19:08 UTC. Started 2026-11-10 07:39 UTC.
 | Venezuela election scheduled by December 31, 2026? | BUY No | 0.920 | 21.7 | 0.0 |
 | Will inflation reach more than 4.5% in 2026? | BUY No | 0.900 | 22.2 | 0.0 |
 | SCOTUS accepts sports event contract case by December 31, 2026? | BUY No | 0.900 | 22.2 | 0.0 |
-| US x Cuba military clash in 2026? | BUY No | 0.930 | 21.5 | 0.0 |
 | Foreign intervention in Gaza by December 31? | BUY No | 0.920 | 21.7 | 0.0 |
 | Will OpenAI announce another Millennium Prize solution by December 31, | BUY No | 0.911 | 21.9 | 0.0 |
 | Will Russia enter Sloviansk by December 31, 2026? | BUY No | 0.940 | 21.3 | 0.0 |
@@ -69,7 +69,6 @@ As of 2026-11-12 19:08 UTC. Started 2026-11-10 07:39 UTC.
 
 | When | Market | Side | Price | Size | Fee |
 |---|---|---|---:|---:|---:|
-| 2026-11-10 12:06 UTC | Will Zelenskyy talk to Putin by December 31? | BUY | 0.900 | 22.2 | 0.0000 |
 | 2026-11-10 15:34 UTC | US announces end of Iranian blockade by November 15, 2026? | BUY | 0.946 | 21.1 | 0.0000 |
 | 2026-11-10 16:46 UTC | Will Trump meet with Vladimir Putin in 2026? | BUY | 0.900 | 22.2 | 0.0000 |
 | 2026-11-10 22:40 UTC | NATO x Russia military clash by November 30, 2026? | BUY | 0.960 | 20.8 | 0.0000 |
@@ -84,7 +83,8 @@ As of 2026-11-12 19:08 UTC. Started 2026-11-10 07:39 UTC.
 | 2026-11-12 17:10 UTC | Will Russia capture all of Kostyantynivka by December 31, 20 | BUY | 0.930 | 21.5 | 0.0000 |
 | 2026-11-12 14:57 UTC | Jerome Powell out from Fed Board by December 31? | BUY | 0.930 | 21.5 | 0.0000 |
 | 2026-11-12 10:48 UTC | Will there be at least 10000 measles cases in the U.S. in 20 | BUY | 0.956 | 20.9 | 0.0000 |
+| 2026-11-12 20:31 UTC | US x Cuba military clash in 2026? | BUY | 0.930 | 21.5 | 0.0000 |
 
 ## Equity history
 
-15 cycles from 2026-11-10 07:39 UTC to 2026-11-12 19:08 UTC; equity $1,000.00 → $999.72. The longest gap between two cycles was 10.1 hours.
+16 cycles from 2026-11-10 07:39 UTC to 2026-11-13 00:26 UTC; equity $1,000.00 → $993.96. The longest gap between two cycles was 10.1 hours.

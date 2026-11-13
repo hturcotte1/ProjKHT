@@ -1,6 +1,6 @@
 # Account status (paper)
 
-As of 2026-11-12 19:08 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-13 00:26 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
@@ -47,4 +47,4 @@ As of 2026-11-12 19:08 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-9 cycles from 2026-11-10 20:50 UTC to 2026-11-12 19:08 UTC; equity $1,000.00 → $999.13. The longest gap between two cycles was 10.1 hours.
+10 cycles from 2026-11-10 20:50 UTC to 2026-11-13 00:26 UTC; equity $1,000.00 → $999.13. The longest gap between two cycles was 10.1 hours.
