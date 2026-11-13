@@ -1225,8 +1225,9 @@ the evenings the brake stops: how many ended beyond the reach.
 That is about what one start in 500 should give, and it shows what the
 bad evening looks like. On 13 April 2024 Bitcoin ended 7.95% from where
 it stood two hours earlier, against a reach of 7.41%, and Ether and XRP
-went beyond theirs the same evening. A seller by this rule would have
-lost one bracket in each of three ladders at once.
+went beyond theirs the same evening. A seller by this rule who was still
+selling two hours before the end could have lost a bracket in each of
+three ladders at once.
 
 **An illustration, counted for nothing: the evening of 12 November,**
 which was looked at before the rule was fixed.
@@ -1244,9 +1245,10 @@ ten of Bitcoin's, 10.9% and more from the price, six of Ether's and one
 of XRP's.
 
 The last column is the other half of the trade. The $10,000 account
-collects about $90 an evening and its largest sale is $995. On an evening
-like 13 April 2024 it loses that sale, and one in Ether and one in XRP
-with it: about $2,000, or three weeks of evenings.
+collects about $90 an evening and its largest sale is $995. If the price
+ends in that bracket, eleven evenings of collecting are gone. And it need
+not be alone: its largest sales in Ether and XRP were $495 each, and
+13 April 2024 shows the coins going together.
 
 ### The rule
 
