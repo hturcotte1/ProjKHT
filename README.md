@@ -74,6 +74,22 @@ over. Its answers are below, under "The fourth round"; in one line each:
   on for the account. Whether it is for an ordinary account is something
   only an account holder can find out.
 
+  **The first evening recorded live, 12 November, changed this lead.**
+  The test of the last minutes found $8 where it needed $50, because the
+  bids it was built to sell to are not there in the last minutes. They
+  stand from about 16:30 to 21:00 UTC, and what stays to the end is a bid
+  for a tenth of a contract. The history had shown the price of that bid
+  and could not show its size. Others are selling too: that evening
+  somebody sold to 19,100 contracts of those bids at 21:00, an hour
+  before the end. The sale of the whole ladder came out at $28 kept on
+  $10,000, and would have lost $10 against the books two minutes later.
+  A third paper test, L3 (same document, section 13), was fixed the next
+  morning before any new evening: sell the far brackets while the bids
+  stand, hours ahead, by a yardstick made for that. On the evening already
+  seen it would have collected $92 on $10,000 with nothing lost; that
+  evening counts for nothing, and the test is the evenings from
+  13 November.
+
 ## What came out of it
 
 **The idea as first stated does not survive costs.** "Buy at 70 because the
@@ -185,6 +201,7 @@ counted as found unless it clears what the luckiest worthless rule reaches.
 | **Being paid to leave orders.** Polymarket US pays rewards for resting orders and publishes the schedule | **A lead, not a result.** Outside sports some pools are paid to nobody today ([`docs/08_rewards.md`](docs/08_rewards.md)). In sports every game has its own pool. By the published formula 100 contracts resting on each side before a lower-tour tennis match would be paid about 27¢ an hour, and on 29,647 past matches being run over cost 18¢ to 21¢ an hour: the reward is about one and a half times the cost. Doubles and darts fail that check. A paper test on live order books is running, rules fixed first. **From 18 November 2026 the exchange's filed rules let it cap a reward at a share of the account's own trading, which would end this where it is applied:** [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md), section 9 |
 | **Crypto on Polymarket US** (11 November): the last tick | **A second lead, not a result.** Whoever works the reward pools on the daily and weekly price ladders bids 1¢, for the size the programme asks, on levels the price cannot reach, and leaves the bid until the end. Almost nobody sells to it: two thirds of those markets never traded a contract. Test L1 sells there in the last quarter of an hour, with "cannot reach" defined from minute prices since 2020 before any market was looked at. History: 4,208 such results, none came in, 734 with an order to sell to. On the 2,506 evenings since 2020 the price passed the limit on five, for one coin each. The history has no sizes; a recorder now collects them ([`docs/11_crypto_us.md`](docs/11_crypto_us.md)) |
 | **Crypto on Polymarket US** (11 November): the whole ladder | **A paper test, just begun.** The same evening somebody sold 10,000 contracts in equal lots across the daily Bitcoin ladder. A ladder pays $1 on exactly one bracket (checked on all 2,814 settled ladders), so selling every bracket at once keeps whatever the bids add up to beyond $1 and the fees, with no view of the price. With the real books of that evening it is small: about $13 on $10,000. Test L2 records whole ladders with sizes and sells on paper when a sale locks enough ([`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 12) |
+| **Crypto on Polymarket US** (13 November): the far brackets, hours ahead | **A paper test, just begun.** The first live evening showed the 1¢ bids of real size stand from about 16:30 to 21:00 UTC and are gone in the last hour, so the last-tick test has nothing to sell to ($8 on its first evening against a bar of $50). Test L3 sells the far brackets while the bids stand, by where the price has ended hours later (one start in 500, worst year since 2020). Of the brackets of one ladder at most one can pay. On the evening already seen: $92 on $10,000, largest single sale $995. Others are already selling to the same bids ([`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 13) |
 
 What exists now that did not: a recorder that writes down the real order
 books of Polymarket US, with sizes, every cycle, and the polymarket.com
@@ -213,6 +230,7 @@ learn that. The story is in
 | What the crypto order books showed in their last minutes at the latest run | `state/us-lasttick/STATUS.md` (from its first run) |
 | Test L2, selling a whole ladder of brackets at once: the rule and the bar | [`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 12 |
 | The program that would place the last-tick sales: limits, safeguards, steps before any real order | [`docs/12_us_taker.md`](docs/12_us_taker.md) |
+| Test L3, selling far brackets hours ahead, while the bids are there: the yardstick, the rule and the bar | [`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 13 |
 | What Polymarket US's order books showed at the last cycle | [`state/us/STATUS.md`](state/us/STATUS.md) |
 | What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-long/STATUS.md` (from its first cycle) |
 
@@ -284,6 +302,10 @@ python scripts/us_lasttick_score.py --settle  # test L1 on what has been recorde
 
 ```bash
 python scripts/us_ladder_score.py --settle    # test L2 on what has been recorded
+```
+
+```bash
+python scripts/us_lasthours_score.py --settle # test L3 on the same recordings
 ```
 
 ```bash
