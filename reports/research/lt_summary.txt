@@ -1,24 +1,50 @@
 Test L1 on live books (docs/11_crypto_us.md, section 5). No order was placed: these are paper trades against orders seen in the book.
-recorded: 11 November 22:43 to 12 November 08:00 UTC; 1,080 readings of 40 markets ending at 10 different times, 0 of them a daily settlement
+recorded: 11 November 22:43 to 13 November 08:00 UTC; 8,940 readings of 388 markets ending at 34 different times, 1 of them a daily settlement
 
 ===== L1-recent: the reach of 2023 to 2026, with the brake =====
 what became of each market followed (a market is counted once, by how the rule judged it)
-   within reach                                           40
+   trade                                                  36
+   out of reach, nobody bidding                          117
+   out of reach, nobody offering                          16
+   within reach                                          219
 
 L1-recent-all (every trade the rule finds, 2,000 contracts a market at most)
-   no trade
+   trades 36 (29 sales, 7 purchases); contracts 930; premium after the fee $8.42; most locked at one settlement $920
+   settled 36 of 36; lost 0; result $8.42
+   how far out of reach, by premium: more than 1.5 times the reach $0.00 (0 contracts); more than 2 times the reach $0.00 (0 contracts)
+   by day of settlement (UTC):
+          day  trades  contracts  locked  premium  settled  lost  pnl
+   2026-11-12      36     929.72  920.42     8.42       36     0 8.42
 
 L1-recent-10k ($10,000 to lock at each settlement time)
-   no trade
+   trades 36 (29 sales, 7 purchases); contracts 930; premium after the fee $8.42; most locked at one settlement $920
+   settled 36 of 36; lost 0; result $8.42
+   how far out of reach, by premium: more than 1.5 times the reach $0.00 (0 contracts); more than 2 times the reach $0.00 (0 contracts)
+   by day of settlement (UTC):
+          day  trades  contracts  locked  premium  settled  lost  pnl
+   2026-11-12      36     929.72  920.42     8.42       36     0 8.42
 
-what docs/11 asks before a real test is worth discussing: 5 daily settlements recorded (so far 0); L1-recent-10k collecting $50 a day on average (so far $0.00 over 0 days); and no result that was out of reach coming in (so far 0 lost).
+what docs/11 asks before a real test is worth discussing: 5 daily settlements recorded (so far 1); L1-recent-10k collecting $50 a day on average (so far $8.42 over 1 days); and no result that was out of reach coming in (so far 0 lost).
 
 ===== L1-strict: the reach of the worst year since 2020, as first written =====
 what became of each market followed (a market is counted once, by how the rule judged it)
-   within reach                                           40
+   trade                                                   2
+   out of reach, nobody bidding                           89
+   out of reach, nobody offering                           7
+   within reach                                          290
 
 L1-strict-all (every trade the rule finds, 2,000 contracts a market at most)
-   no trade
+   trades 2 (2 sales, 0 purchases); contracts 0; premium after the fee $0.00; most locked at one settlement $0
+   settled 2 of 2; lost 0; result $0.00
+   how far out of reach, by premium: more than 1.5 times the reach $0.00 (0 contracts); more than 2 times the reach $0.00 (0 contracts)
+   by day of settlement (UTC):
+          day  trades  contracts  locked  premium  settled  lost  pnl
+   2026-11-12       2        0.2     0.2      0.0        2     0  0.0
 
 L1-strict-10k ($10,000 to lock at each settlement time)
-   no trade
+   trades 2 (2 sales, 0 purchases); contracts 0; premium after the fee $0.00; most locked at one settlement $0
+   settled 2 of 2; lost 0; result $0.00
+   how far out of reach, by premium: more than 1.5 times the reach $0.00 (0 contracts); more than 2 times the reach $0.00 (0 contracts)
+   by day of settlement (UTC):
+          day  trades  contracts  locked  premium  settled  lost  pnl
+   2026-11-12       2        0.2     0.2      0.0        2     0  0.0

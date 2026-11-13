@@ -687,6 +687,55 @@ says both recorders were running, with no errors. The order program was
 replayed over the same readings and sent no order, which is what the
 scoring script says it should.
 
+**13 November, 09:09 UTC. The first evening recorded live, and the bids
+are not there.** The settlement of 12 November at 22:00 UTC was followed
+whole: 256 markets, 5,376 readings, from 21:43 to 22:01.
+
+| | L1-recent | L1-strict |
+|---|---:|---:|
+| Results out of reach | 169 | 98 |
+| Of them, with nobody to trade against | 133 | 96 |
+| Trades | 36 | 2 |
+| Of them, for a contract or more | 2 | 0 |
+| Contracts | 930 | 0.2 |
+| Premium after the fee, all of it and the $10,000 account alike | $8.42 | $0.00 |
+| Lost | 0 | 0 |
+| Refused because the book disagreed | 0 | 0 |
+
+The bar asks the $10,000 account for $50 a day. It collected $8.42, and
+none of it from the trade this test was built on. The two trades of any
+size were purchases at 99¢ of levels sure to pay, in Ether and XRP. The
+other 34 were sales and purchases of a tenth of a contract. Not one 1¢
+bid of real size was left to sell to: of 798 readings that showed a best
+bid of 1¢, ten were for 100 contracts or more.
+
+The second recorder, which watches the brackets for five and a half
+hours, shows why. From 16:30 to 21:00 UTC the daily Bitcoin ladder
+carried 1¢ bids of about 1,000 contracts on 38 to 47 of its 58 brackets.
+After 21:00 it carried 1¢ bids on 29 brackets, for three contracts in
+all. Two things took the big bids away. One of the two firms that post
+them withdraws its bid from a bracket as soon as part of it has been
+sold to. And between 21:00 and 21:02 somebody sold to the whole of the
+other firm's bid, 1,005 contracts, on each of the 18 brackets from
+$77,000 up, which were 8% and more above the price: about 19,100
+contracts. On 11 November those brackets had traded nothing but the 169
+contracts of section 9's seller, so this is a second newcomer in two
+days.
+
+So section 4 was wrong where it said the bid is left until the end. The
+history showed a 1¢ bid still standing in the last minutes, and it was
+right about the price. The history has no sizes, and the bid that stays
+is for a tenth of a contract. I wrote that the history could not show
+sizes. I did not think the size would be that. L1 as written looks for
+its trade in a quarter of an hour in which there is nothing left to
+trade, and four more evenings will not change that. It runs to
+18 November as fixed and will be reported as it comes out.
+
+The order program was replayed over the same readings. It sent two
+orders, the two trades of real size, for $8.38: the scoring script's
+figure less the trades of under one contract, which the program does not
+send.
+
 *At each check-in while the test runs:* the order program of
 `docs/12_us_taker.md` is run on paper over the recordings
 (`kht us-take --replay state/us-lasttick --settle`, with a configuration
@@ -1040,3 +1089,36 @@ readings, which is right, since no ladder came within five and a half
 hours of its end before 08:33. The run going now will meet today's
 ladders at 16:30 UTC. The scoring script was run on what there is and
 says nothing has been recorded yet.
+
+**13 November, 09:09 UTC. The first evening.** The second recorder took
+20,916 readings of 126 brackets in the four daily ladders, from 16:30 to
+22:00 UTC on 12 November. 164 of the 165 readings of the Bitcoin ladder
+found fresh books, so the evening counts.
+
+- **The judged account sold once.** The Bitcoin ladder at 18:42 UTC, 198
+  minutes before the end: 182.68 contracts in each of its 58 brackets,
+  $227.94 in, $19.60 in fees, $182.68 to pay at most. Locked: $25.66. At
+  settlement it kept $28.24, since the bracket that paid had only 180.10
+  contracts bid for. It took the whole $10,000 to open.
+- **The second account did the same and no more.** No other ladder ever
+  locked $10. The best reading of the Ether ladder locked 80¢, Solana's
+  and XRP's a few cents. Their 1¢ bids are fewer and the bids near the
+  price are for too little.
+- **Two minutes later the same sale would have lost.** Put to the books
+  of the next reading, 50 of the 58 legs still filled whole and the sale
+  locked −$10.50. That is not a quirk of that reading. A sale would have
+  locked $25 or more at 3 of the 164 readings and $10 or more at 64. Of
+  those 64, 16 still locked anything two minutes on. The far bids stand
+  still. The bids near the price do not, and the whole of what is locked
+  is smaller than what they move in two minutes.
+- **The equal-lot seller came back, smaller.** At 19:04 UTC, 46 contracts
+  in each of about 50 Bitcoin brackets, those near the price included:
+  about 2,300 contracts.
+- **The far bids were taken whole at 21:00**, as section 9 describes.
+
+One evening, and the bar asks for five. As it stands: the certain version
+of this trade exists, on the Bitcoin ladder only, at about $25 on $10,000,
+and on paper it depends on sixty orders all meeting the book that was
+read. That is the first thing listed under "What paper cannot show", and
+the two-minute figure says it is not a small thing.
+

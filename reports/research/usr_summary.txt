@@ -1,96 +1,100 @@
 Paper orders before games on Polymarket US (docs/09_sports_rewards.md). A simulation: no order was placed, and no reward was paid to anyone.
-runs: 4; hours recorded: 19.9; games followed: 1,166; first reading 11 Nov 09:50 UTC, last 12 Nov 08:33 UTC
-games that started more than 12 hours ago: 591; of them with a settlement on file: 590
+runs: 8; hours recorded: 39.8; games followed: 1,968; first reading 11 Nov 09:50 UTC, last 13 Nov 08:14 UTC
+games that started more than 12 hours ago: 1,466; of them with a settlement on file: 1,463
 
 JUDGED ACCOUNT R1-all: every such programme. 100 contracts on each side.
-games judged (started more than 12 hours ago, settlement known): 383 over 1 US dates and 9 date-programme groups; games still waiting for a settlement: 1
-reward by the published formula: $284.12; after the $1 minimum by market and date: $204.62
-   (as the filed rules word the split, described only: $410.78; of it in games that reach $1: $339.54)
-   under the rules in force from 18 November, IF the exchange capped these rewards at a share of the account's own executed volume: cap 100%: $87.69; cap 50%: $78.62; cap 10%: $44.84 (described only)
-games in which an order was traded against: 192 (50.1%); contracts: 14,872
-what those fills made, held to settlement: $-540.27; valued at the last middle of the book before the start: $-120.15
-net: $-335.65; a game: $-0.876; z with each date-programme group as one observation: -1.65
-money resting in one game while quoted: about $98; game-hours quoted: 1,254
+games judged (started more than 12 hours ago, settlement known): 909 over 2 US dates and 20 date-programme groups; games still waiting for a settlement: 3
+reward by the published formula: $755.37; after the $1 minimum by market and date: $546.71
+   (as the filed rules word the split, described only: $1,140.16; of it in games that reach $1: $999.61)
+   under the rules in force from 18 November, IF the exchange capped these rewards at a share of the account's own executed volume: cap 100%: $244.99; cap 50%: $217.68; cap 10%: $123.54 (described only)
+games in which an order was traded against: 526 (57.9%); contracts: 37,311
+what those fills made, held to settlement: $-1,314.02; valued at the last middle of the book before the start: $-351.26
+net: $-767.30; a game: $-0.844; z with each date-programme group as one observation: -1.99
+money resting in one game while quoted: about $98; game-hours quoted: 3,501
 verdict by the rule fixed in advance (at least 2,000 games over at least 5 dates, mean net above zero with z of 3 or more): NOT YET JUDGED, too few games or dates
 
 by US date of the game
        day  games  hours_quoted  share_of_score  reward_formula  reward_paid  games_filled  contracts_filled  fills_at_settlement  fills_at_last_mid      net  net_a_game
-2026-11-11    383      1254.061           0.165         284.125      204.619           192          14872.09             -540.272           -120.153 -335.653      -0.876
+2026-11-11    495      1598.641           0.161         361.546      259.440           254          19728.89             -900.548           -114.004 -641.108      -1.295
+2026-11-12    414      1902.040           0.167         393.819      287.273           272          17582.19             -413.468           -237.261 -126.195      -0.305
 
 by programme
                                   program  games  hours_quoted  share_of_score  reward_formula  reward_paid  games_filled  contracts_filled  fills_at_settlement  fills_at_last_mid      net  net_a_game
-             itf_moneyline_dayof_20261018    162       610.160           0.128         121.612       77.374            88           6158.34             -355.149            -48.747 -277.775      -1.715
-            utr_moneyline_day_of_20261008     45       147.215           0.300          71.341       68.326            14            294.08              -14.106            -16.928   54.220       1.205
-      esports_moneyline_pre_game_20261008     38       154.448           0.112          20.852       19.681            25           2539.40               23.093            -34.741   42.773       1.126
-        doubles_moneyline_day_of_20261018     31       119.968           0.192          28.429       19.532            11            833.03              -14.564            -13.436    4.967       0.160
-        atp_wta_moneyline_day_of_20261018     30       141.108           0.016           7.732        2.697            28           3661.55              -42.813             15.123  -40.117      -1.337
-   table_tennis_moneyline_day_of_20261018     28        20.420           0.588           8.975        1.918            13            872.72              -70.314              0.057  -68.396      -2.443
-          darts_moneyline_day_of_20260924     21        21.875           0.417           4.229        0.000             4            306.28              -15.552             -0.043  -15.552      -0.741
-   bskt_cup_3x3_moneyline_day_of_20261014     15        13.898           0.273           3.796        0.000             5            100.44              -37.351             -2.909  -37.351      -2.490
-astra_cup_women_moneyline_day_of_20261014     13        24.969           0.687          17.159       15.092             4            106.25              -13.515            -18.529    1.577       0.121
+             itf_moneyline_dayof_20261018    377      1731.592           0.119         324.836      193.628           253          15531.12             -722.210           -115.886 -528.582      -1.402
+            utr_moneyline_day_of_20261008    128       454.611           0.263         188.220      171.044            51           1078.20               12.216            -61.734  183.260       1.432
+      esports_moneyline_pre_game_20261008     96       415.193           0.153          53.981       49.973            69           6741.78               33.462           -131.521   83.434       0.869
+        atp_wta_moneyline_day_of_20261018     67       329.173           0.012          12.038        2.697            64           8187.10             -133.916             36.562 -131.219      -1.958
+        doubles_moneyline_day_of_20261018     67       291.060           0.170          62.166       47.415            35           2568.25             -255.463            -31.041 -208.048      -3.105
+   table_tennis_moneyline_day_of_20261018     61        95.568           0.463          34.752       19.503            21            991.93              -93.904              0.301  -74.402      -1.220
+   bskt_cup_3x3_moneyline_day_of_20261014     39        24.736           0.399           9.692        2.548             9            237.26              -98.612            -26.268  -96.064      -2.463
+          darts_moneyline_day_of_20260924     36        65.392           0.476          22.584       17.428            10            463.10              -45.916            -10.180  -28.488      -0.791
+astra_cup_women_moneyline_day_of_20261014     31        66.165           0.712          47.096       42.478             7            112.34              -16.673            -18.499   25.805       0.832
+    nhl_regular_moneyline_day_of_20261018      7        27.192           0.001           0.000        0.000             7           1400.00                7.000              7.000    7.000       1.000
 
 JUDGED ACCOUNT R1-thin: the programmes named in advance as thinly quoted (itf_moneyline, doubles_moneyline, utr_moneyline, darts_moneyline, astra_cup_women_moneyline). 100 contracts on each side.
-games judged (started more than 12 hours ago, settlement known): 272 over 1 US dates and 5 date-programme groups; games still waiting for a settlement: 0
-reward by the published formula: $242.77; after the $1 minimum by market and date: $180.32
-   (as the filed rules word the split, described only: $317.12; of it in games that reach $1: $258.70)
-   under the rules in force from 18 November, IF the exchange capped these rewards at a share of the account's own executed volume: cap 100%: $70.00; cap 50%: $62.75; cap 10%: $34.90 (described only)
-games in which an order was traded against: 121 (44.5%); contracts: 7,698
-what those fills made, held to settlement: $-412.89; valued at the last middle of the book before the start: $-97.68
-net: $-232.56; a game: $-0.855; z with each date-programme group as one observation: -1.22
-money resting in one game while quoted: about $98; game-hours quoted: 924
+games judged (started more than 12 hours ago, settlement known): 639 over 2 US dates and 10 date-programme groups; games still waiting for a settlement: 3
+reward by the published formula: $644.90; after the $1 minimum by market and date: $471.99
+   (as the filed rules word the split, described only: $914.62; of it in games that reach $1: $805.12)
+   under the rules in force from 18 November, IF the exchange capped these rewards at a share of the account's own executed volume: cap 100%: $199.58; cap 50%: $175.69; cap 10%: $97.96 (described only)
+games in which an order was traded against: 356 (55.7%); contracts: 19,753
+what those fills made, held to settlement: $-1,028.05; valued at the last middle of the book before the start: $-237.34
+net: $-556.05; a game: $-0.870; z with each date-programme group as one observation: -1.55
+money resting in one game while quoted: about $98; game-hours quoted: 2,609
 verdict by the rule fixed in advance (at least 2,000 games over at least 5 dates, mean net above zero with z of 3 or more): NOT YET JUDGED, too few games or dates
 
 by US date of the game
        day  games  hours_quoted  share_of_score  reward_formula  reward_paid  games_filled  contracts_filled  fills_at_settlement  fills_at_last_mid      net  net_a_game
-2026-11-11    272       924.186           0.186          242.77      180.324           121           7697.98             -412.887            -97.684 -232.563      -0.855
+2026-11-11    355      1191.774           0.183         318.412      235.145           165           9799.94             -711.143           -103.775 -475.998      -1.341
+2026-11-12    284      1417.046           0.166         326.491      236.848           191           9953.07             -316.902           -133.564  -80.054      -0.282
 
 JUDGED ACCOUNT R1-core: lower-tour tennis only (itf_moneyline, utr_moneyline). 100 contracts on each side.
-games judged (started more than 12 hours ago, settlement known): 207 over 1 US dates and 2 date-programme groups; games still waiting for a settlement: 0
-reward by the published formula: $192.95; after the $1 minimum by market and date: $145.70
-   (as the filed rules word the split, described only: $248.35; of it in games that reach $1: $204.69)
-   under the rules in force from 18 November, IF the exchange capped these rewards at a share of the account's own executed volume: cap 100%: $62.12; cap 50%: $54.88; cap 10%: $31.30 (described only)
-games in which an order was traded against: 102 (49.3%); contracts: 6,452
-what those fills made, held to settlement: $-369.26; valued at the last middle of the book before the start: $-65.68
-net: $-223.56; a game: $-1.080; z with each date-programme group as one observation: -1.09
-money resting in one game while quoted: about $98; game-hours quoted: 757
+games judged (started more than 12 hours ago, settlement known): 505 over 2 US dates and 4 date-programme groups; games still waiting for a settlement: 2
+reward by the published formula: $513.06; after the $1 minimum by market and date: $364.67
+   (as the filed rules word the split, described only: $720.86; of it in games that reach $1: $634.32)
+   under the rules in force from 18 November, IF the exchange capped these rewards at a share of the account's own executed volume: cap 100%: $165.70; cap 50%: $142.57; cap 10%: $76.60 (described only)
+games in which an order was traded against: 304 (60.2%); contracts: 16,609
+what those fills made, held to settlement: $-709.99; valued at the last middle of the book before the start: $-177.62
+net: $-345.32; a game: $-0.684; z with each date-programme group as one observation: -0.88
+money resting in one game while quoted: about $98; game-hours quoted: 2,186
 verdict by the rule fixed in advance (at least 2,000 games over at least 5 dates, mean net above zero with z of 3 or more): NOT YET JUDGED, too few games or dates
 
 by US date of the game
        day  games  hours_quoted  share_of_score  reward_formula  reward_paid  games_filled  contracts_filled  fills_at_settlement  fills_at_last_mid      net  net_a_game
-2026-11-11    207       757.375           0.162         192.952        145.7           102           6452.42             -369.256            -65.675 -223.555       -1.08
+2026-11-11    277       978.166           0.164         255.429      188.840           138           8126.75             -536.483            -69.366 -347.644      -1.255
+2026-11-12    228      1208.036           0.137         257.628      175.833           166           8482.57             -173.511           -108.253    2.322       0.010
 
 every order size (only 100 on the first kind of programme is judged; the rest is description)
                                                                programmes  contracts_a_side  games  reward_formula  reward_paid  games_filled  contracts_filled  fills_at_settlement  fills_at_last_mid       net  net_a_game      z  money_in_a_game
-                                                                 own pool                10    383          41.500        1.002           192           2104.38              -33.079            -10.617   -32.077      -0.084 -1.379            9.821
-                                                                 own pool                25    383          96.823       25.429           192           4681.61             -130.850            -29.904  -105.421      -0.275 -1.739           24.553
-                                                                 own pool                50    383         168.997       90.465           192           8394.69             -243.671            -62.825  -153.206      -0.400 -1.243           49.106
-                                                                 own pool               100    383         284.125      204.619           192          14872.09             -540.272           -120.153  -335.653      -0.876 -1.647           98.211
-                                                                 own pool               250    383         534.558      477.569           192          29209.63             -993.015           -275.723  -515.446      -1.346 -1.125          245.528
-                                                                 own pool               500    383         751.595      701.552           192          44012.91            -1554.097           -457.125  -852.545      -2.226 -1.139          491.055
-                                                                 own pool              1000    383         985.046      944.370           192          62731.48            -2068.093           -649.161 -1123.723      -2.934 -1.285          982.110
-pool shared with other markets of the game, split equally (an assumption)                10    207           8.575        0.000            94            970.95               -4.828             -2.657    -4.828      -0.023    NaN            9.576
-pool shared with other markets of the game, split equally (an assumption)                25    207          19.431        0.000            94           2006.80               26.000             -9.946    26.000       0.126    NaN           23.939
-pool shared with other markets of the game, split equally (an assumption)                50    207          32.587        0.000            94           3028.95               29.868            -21.408    29.868       0.144    NaN           47.879
-pool shared with other markets of the game, split equally (an assumption)               100    207          45.963        2.213            94           4737.88               38.447            -43.934    40.660       0.196    NaN           95.758
-pool shared with other markets of the game, split equally (an assumption)               250    207          67.455        9.389            94           8577.95               95.777           -103.672   105.166       0.508    NaN          239.394
-pool shared with other markets of the game, split equally (an assumption)               500    207          83.630       23.118            94          12113.43              -74.661           -167.923   -51.543      -0.249    NaN          478.789
-pool shared with other markets of the game, split equally (an assumption)              1000    207          98.313       37.865            94          13829.67             -497.706           -200.727  -459.841      -2.221    NaN          957.577
+                                                                 own pool                10    909         110.786        3.155           526           5434.73             -128.862            -38.800  -125.707      -0.138 -2.840            9.815
+                                                                 own pool                25    909         255.102       55.437           526          11950.04             -344.415            -98.935  -288.978      -0.318 -2.644           24.538
+                                                                 own pool                50    909         450.966      218.547           526          21195.28             -663.902           -188.992  -445.355      -0.490 -2.090           49.076
+                                                                 own pool               100    909         755.365      546.713           526          37311.08            -1314.016           -351.265  -767.303      -0.844 -1.988           98.151
+                                                                 own pool               250    909        1415.818     1262.191           526          73399.08            -2093.122           -766.285  -830.931      -0.914 -0.971          245.378
+                                                                 own pool               500    909        1973.669     1865.015           526         112930.12            -2329.948          -1239.943  -464.933      -0.511 -0.322          490.756
+                                                                 own pool              1000    909        2565.428     2479.295           526         165878.34            -2401.004          -1709.683    78.291       0.086  0.039          981.511
+pool shared with other markets of the game, split equally (an assumption)                10    554          25.357        0.000           243           2390.92                9.308              1.149     9.308       0.017  1.513            9.517
+pool shared with other markets of the game, split equally (an assumption)                25    554          57.128        0.000           243           4912.21               28.988             -5.986    28.988       0.052  0.502           23.792
+pool shared with other markets of the game, split equally (an assumption)                50    554          92.107        0.000           243           7350.55               29.723            -14.982    29.723       0.054  0.263           47.585
+pool shared with other markets of the game, split equally (an assumption)               100    554         128.892        6.396           243          11114.47               37.594            -34.737    43.990       0.079  0.147           95.169
+pool shared with other markets of the game, split equally (an assumption)               250    554         181.334       32.877           243          19776.08                4.940           -101.180    37.817       0.068  0.055          237.923
+pool shared with other markets of the game, split equally (an assumption)               500    554         218.266       60.950           243          26867.67             -519.559           -221.204  -458.609      -0.828 -0.554          475.847
+pool shared with other markets of the game, split equally (an assumption)              1000    554         249.907       89.033           243          31104.51            -1737.039           -340.072 -1648.006      -2.975 -1.395          951.694
 
 all games recorded so far, settled or not, 100 contracts a side: reward by the formula and how often an order was traded against
                                   program  games  hours_quoted  share_of_score  reward_formula  reward_paid  games_filled  contracts_filled  fills_at_last_mid
-   table_tennis_moneyline_day_of_20261018    480       847.320           0.437         108.379       11.012           181           8698.58            -45.713
-             itf_moneyline_dayof_20261018    331      1326.638           0.127         270.290      146.298           195          11902.78            -83.715
-            utr_moneyline_day_of_20261008     97       247.252           0.278         109.158       91.897            32            752.82            -49.097
-      esports_moneyline_pre_game_20261008     67       223.604           0.112          31.950       26.446            36           3985.61            -39.705
-        doubles_moneyline_day_of_20261018     56       202.751           0.195          53.624       40.625            25           1906.60            -20.948
-        atp_wta_moneyline_day_of_20261018     53       215.749           0.015          11.641        2.697            46           5714.87             21.857
-          darts_moneyline_day_of_20260924     28        23.738           0.429           7.485        0.000             5            307.93             -0.035
-astra_cup_women_moneyline_day_of_20261014     24        29.126           0.682          19.854       17.040             5            110.33            -18.509
-   bskt_cup_3x3_moneyline_day_of_20261014     24        14.122           0.281           3.970        0.000             5            100.44             -2.909
-    nhl_regular_moneyline_day_of_20261018      6        21.426           0.001           0.000        0.000             6           1200.00              6.000
+   table_tennis_moneyline_day_of_20261018    841      1580.563           0.482         220.418       30.369           327          14537.18            -16.742
+             itf_moneyline_dayof_20261018    469      2180.497           0.115         394.044      215.822           310          18984.89           -135.488
+            utr_moneyline_day_of_20261008    191       591.221           0.264         251.660      219.453            75           1467.39            -65.224
+      esports_moneyline_pre_game_20261008    121       484.639           0.157          99.330       88.534            83           8363.34           -155.679
+        atp_wta_moneyline_day_of_20261018     90       428.753           0.014          17.644        3.815            85          10819.63             47.907
+        doubles_moneyline_day_of_20261018     79       353.950           0.159          76.304       59.584            46           3512.44            -26.087
+   bskt_cup_3x3_moneyline_day_of_20261014     61        28.515           0.444          12.480        2.548            11            246.27            -26.878
+          darts_moneyline_day_of_20260924     58        97.034           0.451          35.442       23.877            17            633.94            -11.929
+astra_cup_women_moneyline_day_of_20261014     41        67.108           0.711          47.716       42.478             7            112.34            -18.499
+    nhl_regular_moneyline_day_of_20261018     17        85.011           0.001           0.000        0.000            17           3400.00             17.000
 
 THE REHEARSAL: the order-placing system on paper, under its own limits (config/us_quoter.json). Described, not judged.
-from 11 Nov 14:48 to 12 Nov 08:29 UTC (17.7 hours); games rested in at once: median 13; most at risk in positions: $587.15
-markets rested in: 81; reward by the formula: $60.13; counting only a market and date that reached $1: $39.15
-fills: 97 (1,942 contracts); positions settled: 22, for $-269.26; still open: 13
-net so far, reward after the minimum plus settled positions: $-230.11
+from 11 Nov 14:48 to 13 Nov 08:25 UTC (41.6 hours); games rested in at once: median 13; most at risk in positions: $587.15
+markets rested in: 207; reward by the formula: $149.12; counting only a market and date that reached $1: $95.86
+fills: 228 (4,415 contracts); positions settled: 65, for $-46.22; still open: 14
+net so far, reward after the minimum plus settled positions: $49.63

@@ -530,6 +530,37 @@ fewer games.
 
 No reward cap and no minimum volume has been published.
 
+**13 November, 09:09 UTC. Two dates, and both behind.** Eight runs are in,
+39.8 hours of recording, 1,968 games followed. The job has not missed
+since the restart: every run its full 298 minutes, no errors, a save
+every hour. 909 games are old enough to count and settled, on two US
+dates. The judge asks for 2,000 on five, so nothing is judged.
+
+| Account | Games | Reward by the formula, after the $1 minimum | What the fills made, held to the result | Net | A game |
+|---|---:|---:|---:|---:|---:|
+| R1-all | 909 | $546.71 | −$1,314.02 | −$767.30 | −$0.84 |
+| R1-thin | 639 | $471.99 | −$1,028.05 | −$556.05 | −$0.87 |
+| R1-core | 505 | $364.67 | −$709.99 | −$345.32 | −$0.68 |
+
+Both days are behind taken alone: 11 November by $641 on 495 games,
+12 November by $126 on 414. Valued at the price just before the start,
+the fills of R1-all cost $351, less than the reward. Held to the result
+they cost $1,314. That gap was put down to one day's luck yesterday. It
+has now come twice and in the same direction, and most of it is in one
+place: lower-tour tennis, 377 games, $194 of reward, $116 lost on fills
+at the price before the start and $722 at the result. An order there
+that gets filled seems to be filled by somebody who knows more about the
+match than the last price shows. Two days do not prove that, and the
+rule waits for five. But if it holds, the history of section 4 measured
+the wrong cost, since it could only see prices before the start.
+
+The rehearsal of the order system, which chooses 20 games at a time by
+its own limits, is the other way round so far: 41.6 hours, 207 markets,
+$96 of reward after the minimum, 228 fills, 65 positions settled for
+−$46, 14 still open. No errors.
+
+No reward cap and no minimum volume has been published.
+
 *Still to check, once a run has spanned it:* the exchange restarts each
 market's running totals of trading once a day, at 17:00 Eastern (22:00
 UTC). Rule 6 reads fills off those totals. If the restart itself shows up

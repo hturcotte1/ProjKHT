@@ -1,0 +1,43 @@
+Test L2: selling every bracket of a ladder at once (docs/11_crypto_us.md, section 12)
+scored 13 November 2026, 09:00 UTC. A paper account. No order was placed.
+recorded: 20,916 readings of 126 brackets in 4 ladders, from 12 Nov 16:30 to 12 Nov 22:00 UTC
+
+The judged account: $10,000 for each settlement time, a dollar less its price tied up for every contract sold
+                ladder sold at (UTC)  minutes left   size  brackets sold  of  added later  money in  fees  pays at most  locked  money to open it  kept 2 min later: legs whole  locked then
+btc daily 12 Nov 22:00         18:42           198 182.68             58  58            0    227.94  19.6        182.68   25.66           9999.76 28.24                50 of 58        -10.5
+  The last two columns are not part of the rule. They put the same orders to the books of the next reading, two minutes on:
+  how many legs would still have filled whole, and what the sale would have locked with only those fills.
+
+By settlement time:
+     evening  ladders  btc_readings  recorded  sales  locked  margin  settled  kept ladders_not_paying_one
+12 Nov 22:00        4           164      True      1   25.66 9999.76     True 28.24                       
+
+Verdict by the bar fixed in advance: NOT YET JUDGED: 1 evenings recorded and settled, 5 are asked for
+
+The second account: the same rule and the same $10,000, with the exchange's collateral return taken as switched on,
+so that a ladder once sold ties up only its largest leg and the other ladders can use the rest
+                ladder sold at (UTC)  minutes left   size  brackets sold  of  added later  money in  fees  pays at most  locked  money to open it  kept 2 min later: legs whole  locked then
+btc daily 12 Nov 22:00         18:42           198 182.68             58  58            0    227.94  19.6        182.68   25.66           9999.76 28.24                50 of 58        -10.5
+  The last two columns are not part of the rule. They put the same orders to the books of the next reading, two minutes on:
+  how many legs would still have filled whole, and what the sale would have locked with only those fills.
+
+By settlement time:
+     evening  ladders  btc_readings  recorded  sales  locked  margin  settled  kept ladders_not_paying_one
+12 Nov 22:00        4           164      True      1   25.66 9999.76     True 28.24                       
+
+The same bar read for the second account: NOT YET JUDGED: 1 evenings recorded and settled, 5 are asked for
+
+The day of each ladder, described and not judged: what an untouched $10,000 would have locked at a reading
+minutes_left            300 min left   240 min left   180 min left   120 min left    60 min left    30 min left   16 min left     2 min left
+ladder                                                                                                                                      
+btc daily 12 Nov 22:00  38 at 1c, +1   43 at 1c, +2  44 at 1c, +12  46 at 1c, +19  47 at 1c, +13   29 at 1c, +0  29 at 1c, +0   13 at 1c, -0
+eth daily 12 Nov 22:00  19 at 1c, +0   20 at 1c, -0    7 at 1c, -0   24 at 1c, -0   18 at 1c, -0      0 at 1c,      0 at 1c,       0 at 1c, 
+sol daily 12 Nov 22:00   8 at 1c, -0   15 at 1c, -0   18 at 1c, -0   15 at 1c, -0   21 at 1c, -0  0 at 1c, -129   0 at 1c, -0  0 at 1c, -242
+xrp daily 12 Nov 22:00   6 at 1c, -0  8 at 1c, -164    5 at 1c, +0    5 at 1c, -0    7 at 1c, -1      0 at 1c,      0 at 1c,   0 at 1c, -159
+
+Each ladder's best reading:
+                ladder  minutes left  brackets with a bid  at 1c  sum of best bids   size  locked  money tied up
+btc daily 12 Nov 22:00          92.0                   58     47              1.49 193.14   33.94        9999.54
+eth daily 12 Nov 22:00          68.0                   25      6              1.79   3.43    0.80          81.23
+sol daily 12 Nov 22:00         154.0                   24     13              1.03   0.21    0.01           4.82
+xrp daily 12 Nov 22:00         138.0                    8      4              1.07   0.44    0.03           3.05
