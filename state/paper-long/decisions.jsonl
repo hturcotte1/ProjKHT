@@ -20,3 +20,4 @@
 {"action": "screened", "by_limit": {"event": 3}, "count": 3, "ts": 1794510527.7789798}
 {"action": "order", "dte": 139.36819700254887, "edge": 0.016959444083746833, "filled": 0.0, "kind": "MAKER", "market_id": 6343893, "order_id": "paper-17", "p_win": 0.9669594440837468, "price": 0.93, "reason": "Putin out as President of Russia by March 31, 2027? | buy 'No' at 0.950, est. 0.967, edge 1.70c, 139d", "side": "BUY", "size": 21.5, "status": "OPEN", "ts": 1794510527.7789798}
 {"action": "screened", "by_limit": {"event": 3, "theme 'climate-science'": 1}, "count": 4, "ts": 1794529585.0416534}
+{"action": "screened", "by_limit": {"event": 3, "theme 'weather'": 1}, "count": 4, "ts": 1794554227.716508}
