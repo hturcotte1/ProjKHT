@@ -15,3 +15,7 @@ run,slug,kind,horizon,coin,index,start,end,strike,lower,upper,range_kind,directi
 20261113T092912Z,cpceth-eth-updown-1h-2026-11-13-1200z,up_down,1h,eth,ETHUSD_RTI,1794571200.0,1794574800.0,,,,unspecified,unspecified,1957.65,1794573792.8
 20261113T092912Z,cpcsol-sol-updown-1h-2026-11-13-1200z,up_down,1h,sol,SOLUSD_RTI,1794571200.0,1794574800.0,,,,unspecified,unspecified,80.5985,1794573792.8
 20261113T092912Z,cpcxrp-xrp-updown-1h-2026-11-13-1200z,up_down,1h,xrp,XRPUSD_RTI,1794571200.0,1794574800.0,,,,unspecified,unspecified,1.02261,1794573792.8
+20261113T092912Z,cpc-btc-updown-1h-2026-11-13-1300z,up_down,1h,btc,BRTI,1794574800.0,1794578400.0,,,,unspecified,unspecified,69145.37,1794577392.9
+20261113T092912Z,cpceth-eth-updown-1h-2026-11-13-1300z,up_down,1h,eth,ETHUSD_RTI,1794574800.0,1794578400.0,,,,unspecified,unspecified,1957.97,1794577392.9
+20261113T092912Z,cpcsol-sol-updown-1h-2026-11-13-1300z,up_down,1h,sol,SOLUSD_RTI,1794574800.0,1794578400.0,,,,unspecified,unspecified,80.643,1794577392.9
+20261113T092912Z,cpcxrp-xrp-updown-1h-2026-11-13-1300z,up_down,1h,xrp,XRPUSD_RTI,1794574800.0,1794578400.0,,,,unspecified,unspecified,1.01914,1794577392.9
