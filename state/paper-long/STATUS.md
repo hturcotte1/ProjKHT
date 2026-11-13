@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-13 07:17 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-13 15:33 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $998.88 |
+| Equity (positions marked at the bid) | $999.50 |
 | Starting bankroll | $1,000.00 |
-| Change | $-1.12 (-0.11%) |
+| Change | $-0.50 (-0.05%) |
 | Cash | $940.02 |
 | In positions (cost) | $59.98 |
 | Realised profit | $+0.00 |
@@ -20,7 +20,7 @@ As of 2026-11-13 07:17 UTC. Started 2026-11-10 20:50 UTC.
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
 | 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.970 | $-0.06 | 80 |
-| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.929 | $-0.83 | 108 |
+| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.959 | $-0.21 | 108 |
 | Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.932 | $-0.23 | 139 |
 
 ## Resting orders
@@ -47,4 +47,4 @@ As of 2026-11-13 07:17 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-11 cycles from 2026-11-10 20:50 UTC to 2026-11-13 07:17 UTC; equity $1,000.00 → $998.88. The longest gap between two cycles was 10.1 hours.
+12 cycles from 2026-11-10 20:50 UTC to 2026-11-13 15:33 UTC; equity $1,000.00 → $999.50. The longest gap between two cycles was 10.1 hours.

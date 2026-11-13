@@ -51,3 +51,4 @@
 {"action": "screened", "by_limit": {"event": 17, "theme 'big-tech'": 4, "theme 'iran'": 5, "theme 'israel'": 1, "theme 'middle-east'": 7, "theme 'russia'": 2, "theme 'tech'": 15, "total": 27}, "count": 78, "ts": 1794510504.5867352}
 {"action": "screened", "by_limit": {"event": 18, "theme 'big-tech'": 1, "theme 'iran'": 5, "theme 'israel'": 8, "theme 'middle-east'": 1, "theme 'russia'": 1, "theme 'tech'": 21, "total": 30}, "count": 85, "ts": 1794529569.514614}
 {"action": "screened", "by_limit": {"event": 21, "theme 'big-tech'": 2, "theme 'iran'": 5, "theme 'israel'": 7, "theme 'middle-east'": 1, "theme 'russia'": 1, "theme 'tech'": 20, "total": 33}, "count": 90, "ts": 1794554204.9033148}
+{"action": "screened", "by_limit": {"event": 17, "theme 'big-tech'": 14, "theme 'iran'": 5, "theme 'middle-east'": 8, "theme 'russia'": 1, "theme 'tech'": 6, "total": 28}, "count": 79, "ts": 1794583963.1065423}
