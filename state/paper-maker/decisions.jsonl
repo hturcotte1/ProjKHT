@@ -169,3 +169,4 @@
 {"action": "blocked", "market_id": 1807912, "reason": "Will any country leave NATO by December 31, 2026? | buy 'No' at 0.979, est. 0.988, edge 0.93c, 48d", "ts": 1794644481.9624817, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 3090816, "reason": "Will CMI declare a Millennium Prize Problem solved by Decemb | buy 'No' at 0.979, est. 0.988, edge 0.92c, 48d", "ts": 1794644481.9624817, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 677367, "reason": "China coup attempt before 2027? | buy 'No' at 0.980, est. 0.989, edge 0.90c, 48d", "ts": 1794644481.9624817, "why": "total exposure cap"}
+{"action": "screened", "by_limit": {"event": 9, "theme 'iran'": 20, "theme 'israel'": 14, "theme 'middle-east'": 11, "theme 'oil'": 2, "theme 'russia'": 2, "theme 'tech'": 20, "theme 'ukraine'": 8, "total": 40}, "count": 126, "ts": 1794669340.269023}
