@@ -1333,7 +1333,7 @@ recorded whole: 42,164 readings of 254 brackets from 16:30 to 22:01 UTC.
 
 All five were in Bitcoin's weekly ladder at the first reading, 13% and
 more from the price, and all five bids still stood at the next reading.
-246 brackets were far enough and had nobody bidding. The firms that post
+223 brackets were far enough and had nobody bidding. The firms that post
 1¢ bids on the daily ladders do not post them on the weekly ones, at
 least not on the day they settle. There was nothing to leave at 21:00
 and nobody sold anything whole.
