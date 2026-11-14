@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-13 21:37 UTC. Started 2026-11-10 19:18 UTC.
+As of 2026-11-14 01:49 UTC. Started 2026-11-10 19:18 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $990.61 |
+| Equity (positions marked at the bid) | $990.91 |
 | Starting bankroll | $1,000.00 |
-| Change | $-9.39 (-0.94%) |
+| Change | $-9.09 (-0.91%) |
 | Cash | $218.39 |
 | In positions (cost) | $781.61 |
 | Realised profit | $+0.00 |
@@ -20,13 +20,13 @@ As of 2026-11-13 21:37 UTC. Started 2026-11-10 19:18 UTC.
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
 | Pete Hegseth out as Secretary of Defense by November 14? | No | 20.7 | 0.965 | 0.997 | $+0.66 | 1 |
-| Israel x Iran ceasefire continues through November 20? | Yes | 21.5 | 0.930 | 0.910 | $-0.43 | 7 |
+| Israel x Iran ceasefire continues through November 20? | Yes | 21.5 | 0.930 | 0.920 | $-0.22 | 7 |
 | Marco Rubio out as Secretary of State by November 30, 2026? | No | 20.6 | 0.971 | 0.968 | $-0.07 | 17 |
 | US imposes new sanctions on China by November 30, 2026? | No | 21.7 | 0.923 | 0.890 | $-0.72 | 17 |
-| France accuses foreign country of provoking unrest by November 30? | No | 10.0 | 0.974 | 0.955 | $-0.19 | 17 |
-| Will Trump meet with Volodymyr Zelenskyy by November 30, 2026? | No | 21.4 | 0.934 | 0.921 | $-0.28 | 17 |
+| France accuses foreign country of provoking unrest by November 30? | No | 10.0 | 0.974 | 0.957 | $-0.17 | 17 |
+| Will Trump meet with Volodymyr Zelenskyy by November 30, 2026? | No | 21.4 | 0.934 | 0.920 | $-0.30 | 17 |
 | Perim Island no longer under Houthi control by November 30? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 17 |
-| Will WTI Crude Oil (WTI) hit (LOW) $65 in November? | No | 20.4 | 0.980 | 0.975 | $-0.10 | 17 |
+| Will WTI Crude Oil (WTI) hit (LOW) $65 in November? | No | 20.4 | 0.980 | 0.933 | $-0.96 | 17 |
 | Will Marco Rubio be TIME Person of the Year 2026? | No | 20.8 | 0.965 | 0.961 | $-0.08 | 47 |
 | Will Billie Eilish have a #1 song on the Billboard Hot 100 in 2026? | No | 20.6 | 0.971 | 0.969 | $-0.03 | 47 |
 | Will Trump meet with Changpeng Zhao in 2026? | No | 20.6 | 0.973 | 0.959 | $-0.29 | 48 |
@@ -37,20 +37,20 @@ As of 2026-11-13 21:37 UTC. Started 2026-11-10 19:18 UTC.
 | Will Greece recognize Palestine before 2027? | No | 20.8 | 0.964 | 0.964 | $-0.01 | 48 |
 | U.S. evacuates Beirut Embassy by December 31? | No | 20.8 | 0.963 | 0.940 | $-0.48 | 48 |
 | Fetterman out by December 31, 2026? | No | 20.9 | 0.960 | 0.962 | $+0.05 | 48 |
-| Greece x Turkey military engagement by December 31? | No | 20.8 | 0.960 | 0.920 | $-0.83 | 48 |
+| Greece x Turkey military engagement by December 31? | No | 20.8 | 0.960 | 0.925 | $-0.73 | 48 |
 | Fetterman leaves the Democrats by December 31, 2026? | No | 20.7 | 0.969 | 0.957 | $-0.25 | 48 |
-| Will Tom Homan be arrested before 2027? | No | 20.6 | 0.971 | 0.960 | $-0.23 | 48 |
-| Greenland snap election called by December 31? | No | 21.0 | 0.954 | 0.930 | $-0.50 | 48 |
+| Will Tom Homan be arrested before 2027? | No | 20.6 | 0.971 | 0.963 | $-0.17 | 48 |
+| Greenland snap election called by December 31? | No | 21.0 | 0.954 | 0.931 | $-0.48 | 48 |
 | Will Russia capture Borova by December 31, 2026? | No | 20.5 | 0.976 | 0.965 | $-0.23 | 48 |
 | U.S. recognizes Russian sovereignty over Crimea by December 31, 2026? | No | 20.6 | 0.969 | 0.970 | $+0.02 | 48 |
-| Will Tucker Carlson announce a presidential run before 2027? | No | 21.0 | 0.954 | 0.950 | $-0.08 | 48 |
-| Will Russia capture Oleksiievo-Druzhkivka by December 31, 2026? | No | 20.8 | 0.960 | 0.925 | $-0.73 | 48 |
+| Will Tucker Carlson announce a presidential run before 2027? | No | 21.0 | 0.954 | 0.949 | $-0.10 | 48 |
+| Will Russia capture Oleksiievo-Druzhkivka by December 31, 2026? | No | 20.8 | 0.960 | 0.959 | $-0.02 | 48 |
 | Ukraine peace referendum scheduled by December 31? | No | 12.5 | 0.960 | 0.963 | $+0.04 | 48 |
 | Will the US federal government take a stake in Anduril Industries, Inc | No | 20.8 | 0.962 | 0.930 | $-0.66 | 48 |
-| Will Trump pardon Himself before 2027? | No | 20.9 | 0.961 | 0.961 | $+0.01 | 48 |
-| Will Trump visit Greenland by December 31? | No | 20.6 | 0.971 | 0.965 | $-0.13 | 48 |
+| Will Trump pardon Himself before 2027? | No | 20.9 | 0.961 | 0.967 | $+0.13 | 48 |
+| Will Trump visit Greenland by December 31? | No | 20.6 | 0.971 | 0.961 | $-0.21 | 48 |
 | Tusk out by December 31? | No | 20.0 | 0.968 | 0.971 | $+0.06 | 48 |
-| Will Prabowo Subianto cease to be President of Indonesia by December 3 | No | 20.9 | 0.957 | 0.943 | $-0.29 | 48 |
+| Will Prabowo Subianto cease to be President of Indonesia by December 3 | No | 20.9 | 0.957 | 0.944 | $-0.27 | 48 |
 | Joseph Aoun out as President of Lebanon by December 31? | No | 20.6 | 0.971 | 0.962 | $-0.19 | 48 |
 | Meloni out as Prime Minister of Italy by December 31? | No | 20.6 | 0.972 | 0.965 | $-0.14 | 48 |
 | Will the OpenAI spy be accused of working for Russia by December 31? | No | 20.7 | 0.967 | 0.953 | $-0.30 | 48 |
@@ -82,4 +82,4 @@ As of 2026-11-13 21:37 UTC. Started 2026-11-10 19:18 UTC.
 
 ## Equity history
 
-14 cycles from 2026-11-10 19:18 UTC to 2026-11-13 21:37 UTC; equity $997.69 → $990.61. The longest gap between two cycles was 10.1 hours.
+15 cycles from 2026-11-10 19:18 UTC to 2026-11-14 01:49 UTC; equity $997.69 → $990.91. The longest gap between two cycles was 10.1 hours.
