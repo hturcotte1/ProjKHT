@@ -270,7 +270,7 @@ def main() -> int:
     say("The day of each ladder, described and not judged: what an untouched $10,000 would have locked at a reading")
     look = curve[curve["minutes_left"].isin([float(x) for x in LOOKS])]
     if len(look):
-        t = look.assign(cell=lambda d: d.apply(lambda r: "-" if r["fresh"] == 0 else f"{r['at_1c']:.0f} at 1c, {'' if pd.isna(r['best_locks']) else format(r['best_locks'], '+.0f')}", axis=1))
+        t = look.assign(cell=lambda d: d.apply(lambda r: "-" if r["fresh"] == 0 else f"{r['at_1c']:.0f} at 1c, {'' if pd.isna(r['best_locks']) else (format(r['best_locks'], '+.0f') if r['best_locks'] > 0.005 else 'nothing')}", axis=1))
         say(t.pivot(index="ladder", columns="minutes_left", values="cell").reindex(columns=[float(x) for x in LOOKS]).rename(columns=lambda c: f"{c:.0f} min left").to_string())
     top = curve.dropna(subset=["best_locks"])
     if len(top):

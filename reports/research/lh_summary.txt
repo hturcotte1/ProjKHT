@@ -1,31 +1,35 @@
 Test L3: selling far brackets while the bids are there (docs/11_crypto_us.md, section 13)
-scored 13 November 2026, 09:17 UTC. Paper sales against bids seen in the book. No order was placed.
-recorded: 20,916 readings of 126 brackets, from 12 Nov 16:30 to 12 Nov 22:00 UTC
+scored 14 November 2026, 09:05 UTC. Paper sales against bids seen in the book. No order was placed.
+recorded: 63,080 readings of 380 brackets, from 12 Nov 16:30 to 13 Nov 22:01 UTC
 
 what became of each bracket followed (a bracket is counted once, by its sale or by how its last reading was judged)
-   trade                                                      70
-   far enough, nobody bidding                                 23
-   not far enough                                             29
-   the index is in this bracket                                4
+   trade                                                      75
+   far enough, nobody bidding                                246
+   not far enough                                             51
+   the index is in this bracket                                8
 
 L3-all (every sale the rule finds, 2,000 contracts a bracket at most)
      evening  counted  btc_stretches  recorded  sales  of_a_contract_or_more  contracts  tied_up  premium  settled  lost    pnl
 12 Nov 22:00    False            165      True     70                     46   35068.31 34717.46   317.86     True     0 317.86
+13 Nov 22:00     True            165      True      5                      1      54.66    53.57     0.99     True     0   0.99
    by ladder (largest_sale is the most that ladder can lose; still_next: bids sold to that stood as large at the bracket's next reading)
      evening coin horizon  brackets  contracts  premium  tied_up  largest_sale  first_minutes_left  last_minutes_left  nearest still_next  lost    pnl
 12 Nov 22:00  btc   daily        43    23032.2   208.70 22801.87       1980.00                 330                  4   0.0248   43 of 43     0 208.70
 12 Nov 22:00  eth   daily        14     6507.7    58.96  6442.66        499.52                 330                 68   0.0783   13 of 14     0  58.96
 12 Nov 22:00  sol   daily         9     3018.8    27.46  2988.47        499.95                 225                 63   0.1157     9 of 9     0  27.46
 12 Nov 22:00  xrp   daily         4     2509.6    22.74  2484.46        989.56                 329                 79   0.1302     3 of 4     0  22.74
+13 Nov 22:00  btc  weekly         5       54.7     0.99    53.57         53.17                 330                330   0.1301     5 of 5     0   0.99
 
 L3-10k ($10,000 to tie up at each settlement time)
      evening  counted  btc_stretches  recorded  sales  of_a_contract_or_more  contracts  tied_up  premium  settled  lost   pnl
-12 Nov 22:00    False            165      True     17                     15   10101.06  10000.0    91.55     True     0 91.55
+12 Nov 22:00    False            165      True     17                     15   10101.06 10000.00    91.55     True     0 91.55
+13 Nov 22:00     True            165      True      5                      1      54.66    53.57     0.99     True     0  0.99
    by ladder (largest_sale is the most that ladder can lose; still_next: bids sold to that stood as large at the bracket's next reading)
      evening coin horizon  brackets  contracts  premium  tied_up  largest_sale  first_minutes_left  last_minutes_left  nearest still_next  lost   pnl
 12 Nov 22:00  btc   daily        10     7101.1    64.37  7030.01        995.05                 330                314   0.1091   10 of 10     0 64.37
 12 Nov 22:00  eth   daily         6     2500.0    22.65  2475.00        495.00                 330                318   0.1289     6 of 6     0 22.65
 12 Nov 22:00  xrp   daily         1      500.0     4.53   495.00        495.00                 329                329   0.2176     1 of 1     0  4.53
+13 Nov 22:00  btc  weekly         5       54.7     0.99    53.57         53.17                 330                330   0.1301     5 of 5     0  0.99
 
 Evenings before 13 November were looked at before the rule was fixed. They are shown and counted for nothing.
-Verdict by the bar fixed in advance, for L3-10k: NOT YET JUDGED: 0 evenings recorded and settled since the rule was fixed, 4 are asked for
+Verdict by the bar fixed in advance, for L3-10k: NOT YET JUDGED: 1 evenings recorded and settled since the rule was fixed, 4 are asked for

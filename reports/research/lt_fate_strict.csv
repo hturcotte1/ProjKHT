@@ -387,3 +387,671 @@ cpc-btc-updown-1h-2026-11-13-0700z,btc,up_down,1h,1794556800.0,20,within reach
 cpceth-eth-updown-1h-2026-11-13-0700z,eth,up_down,1h,1794556800.0,20,within reach
 cpcsol-sol-updown-1h-2026-11-13-0700z,sol,up_down,1h,1794556800.0,20,within reach
 cpcxrp-xrp-updown-1h-2026-11-13-0700z,xrp,up_down,1h,1794556800.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-0800z,btc,up_down,1h,1794560400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-0800z,eth,up_down,1h,1794560400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-0800z,sol,up_down,1h,1794560400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-0800z,xrp,up_down,1h,1794560400.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-0900z,btc,up_down,1h,1794564000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-0900z,eth,up_down,1h,1794564000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-0900z,sol,up_down,1h,1794564000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-0900z,xrp,up_down,1h,1794564000.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-1000z,btc,up_down,1h,1794567600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-1000z,eth,up_down,1h,1794567600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-1000z,sol,up_down,1h,1794567600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-1000z,xrp,up_down,1h,1794567600.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-1100z,btc,up_down,1h,1794571200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-1100z,eth,up_down,1h,1794571200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-1100z,sol,up_down,1h,1794571200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-1100z,xrp,up_down,1h,1794571200.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-1200z,btc,up_down,1h,1794574800.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-1200z,eth,up_down,1h,1794574800.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-1200z,sol,up_down,1h,1794574800.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-1200z,xrp,up_down,1h,1794574800.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-1300z,btc,up_down,1h,1794578400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-1300z,eth,up_down,1h,1794578400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-1300z,sol,up_down,1h,1794578400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-1300z,xrp,up_down,1h,1794578400.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-1400z,btc,up_down,1h,1794582000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-1400z,eth,up_down,1h,1794582000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-1400z,sol,up_down,1h,1794582000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-1400z,xrp,up_down,1h,1794582000.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-1500z,btc,up_down,1h,1794585600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-1500z,eth,up_down,1h,1794585600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-1500z,sol,up_down,1h,1794585600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-1500z,xrp,up_down,1h,1794585600.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-1600z,btc,up_down,1h,1794589200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-1600z,eth,up_down,1h,1794589200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-1600z,sol,up_down,1h,1794589200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-1600z,xrp,up_down,1h,1794589200.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-1700z,btc,up_down,1h,1794592800.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-1700z,eth,up_down,1h,1794592800.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-1700z,sol,up_down,1h,1794592800.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-1700z,xrp,up_down,1h,1794592800.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-1800z,btc,up_down,1h,1794596400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-1800z,eth,up_down,1h,1794596400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-1800z,sol,up_down,1h,1794596400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-1800z,xrp,up_down,1h,1794596400.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-1900z,btc,up_down,1h,1794600000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-1900z,eth,up_down,1h,1794600000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-1900z,sol,up_down,1h,1794600000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-1900z,xrp,up_down,1h,1794600000.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-2000z,btc,up_down,1h,1794603600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-2000z,eth,up_down,1h,1794603600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-2000z,sol,up_down,1h,1794603600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-2000z,xrp,up_down,1h,1794603600.0,20,within reach
+cpc-btc-above-wk-2026-11-13-56000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-56500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-57000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-57500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-58000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-58500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-59000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-59500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-60000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-60500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-61000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-61500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-62000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-62500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-63000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-63500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpc-btc-above-wk-2026-11-13-64000,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-64500,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-65000,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-65500,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-66000,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-66500,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-67000,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-67500,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-68000,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-68500,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-69000,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-69500,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-70000,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-70500,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-71000,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-71500,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-72000,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-72500,btc,above_below,weekly,1794607200.0,7,within reach
+cpc-btc-above-wk-2026-11-13-73000,btc,above_below,weekly,1794607200.0,7,trade
+cpc-btc-above-wk-2026-11-13-73500,btc,above_below,weekly,1794607200.0,7,trade
+cpc-btc-above-wk-2026-11-13-74000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-74500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-75000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-75500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-76000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-76500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-77000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-77500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-78000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-78500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-79000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-79500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-80000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-80500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-81000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-81500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-82000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-82500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-83000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-83500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-84000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-84500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-85000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-85500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-86000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-86500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-87000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-87500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-88000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-88500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-89000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-89500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-90000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-90500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-91000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-91500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-92000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-92500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-93000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-93500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-94000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-94500,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-above-wk-2026-11-13-95000,btc,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-h-w-2026-11-13-80000,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-h-w-2026-11-13-82500,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-h-w-2026-11-13-85000,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-h-w-2026-11-13-87500,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-h-w-2026-11-13-90000,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-h-w-2026-11-13-92500,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-h-w-2026-11-13-95000,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-h-w-2026-11-13-97500,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-l-w-2026-11-13-50000,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-l-w-2026-11-13-52500,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-l-w-2026-11-13-55000,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-l-w-2026-11-13-57500,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-l-w-2026-11-13-60000,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-l-w-2026-11-13-62500,btc,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-hit-l-w-2026-11-13-65000,btc,one_touch,weekly,1794607200.0,7,within reach
+cpc-btc-hit-l-w-2026-11-13-67500,btc,one_touch,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-56000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-56500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-57000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-57500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-58000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-58500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-59000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-59500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-60000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-60500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-61000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-61500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-62000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-62500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-63000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-63500,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-64000,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-64500,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-65000,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-65500,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-66000,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-66500,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-67000,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-67500,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-68000,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-68500,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-69000,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-69500,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-70000,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-70500,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-71000,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-71500,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-72000,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-72500,btc,range,weekly,1794607200.0,7,within reach
+cpc-btc-range-wk-2026-11-13-73000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-73500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-74000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-74500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-75000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-75500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-76000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-76500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-77000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-77500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-78000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-78500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-79000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-79500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-80000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-80500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-81000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-81500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-82000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-82500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-83000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-83500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-84000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-84500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-85000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-85500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-86000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-86500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-87000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-87500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-88000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-88500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-89000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-89500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-90000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-90500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-91000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-91500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-92000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-92500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-93000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-93500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-94000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-94500,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-above-95000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-range-wk-2026-11-13-below-56000,btc,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpc-btc-updown-1d-2026-11-12-2200z,btc,up_down,1d,1794607200.0,7,within reach
+cpc-btc-updown-1h-2026-11-13-2100z,btc,up_down,1h,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-1400,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1420,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1440,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1460,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1480,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1500,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1520,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1540,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1560,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1580,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1600,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1620,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1640,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1660,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1680,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1700,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1720,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1740,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1760,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1780,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody offering"
+cpceth-eth-above-wk-2026-11-13-1800,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-1820,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-1840,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-1860,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-1880,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-1900,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-1920,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-1940,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-1960,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-1980,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-2000,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-2020,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-2040,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-2060,eth,above_below,weekly,1794607200.0,7,within reach
+cpceth-eth-above-wk-2026-11-13-2080,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2100,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2120,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2140,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2160,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2180,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2200,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2220,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2240,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2260,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2280,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2300,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2320,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2340,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2360,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2380,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2400,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2420,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2440,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2460,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2480,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2500,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2520,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2540,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2560,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2580,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2600,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2620,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2640,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2660,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2680,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2700,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2720,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2740,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2760,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2780,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2800,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2820,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2840,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2860,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2880,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2900,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2920,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2940,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2960,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-2980,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-3000,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-3020,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-above-wk-2026-11-13-3040,eth,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-h-w-2026-11-13-2400,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-h-w-2026-11-13-2500,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-h-w-2026-11-13-2600,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-h-w-2026-11-13-2700,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-h-w-2026-11-13-2800,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-h-w-2026-11-13-2900,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-h-w-2026-11-13-3000,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-h-w-2026-11-13-3100,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-l-w-2026-11-13-1200,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-l-w-2026-11-13-1300,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-l-w-2026-11-13-1400,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-l-w-2026-11-13-1500,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-l-w-2026-11-13-1600,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-l-w-2026-11-13-1700,eth,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-hit-l-w-2026-11-13-1800,eth,one_touch,weekly,1794607200.0,7,within reach
+cpceth-eth-hit-l-w-2026-11-13-1900,eth,one_touch,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-1400,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1420,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1440,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1460,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1480,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1500,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1520,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1540,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1560,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1580,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1600,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1620,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1640,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1660,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1680,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1700,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1720,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1740,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1760,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-1780,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-1800,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-1820,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-1840,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-1860,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-1880,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-1900,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-1920,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-1940,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-1960,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-1980,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-2000,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-2020,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-2040,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-2060,eth,range,weekly,1794607200.0,7,within reach
+cpceth-eth-range-wk-2026-11-13-2080,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2100,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2120,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2140,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2160,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2180,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2200,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2220,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2240,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2260,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2280,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2300,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2320,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2340,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2360,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2380,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2400,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2420,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2440,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2460,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2480,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2500,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2520,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2540,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2560,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2580,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2600,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2620,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2640,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2660,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2680,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2700,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2720,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2740,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2760,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2780,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2800,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2820,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2840,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2860,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2880,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2900,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2920,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2940,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2960,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-2980,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-3000,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-3020,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-above-3040,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-range-wk-2026-11-13-below-1400,eth,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpceth-eth-updown-1d-2026-11-12-2200z,eth,up_down,1d,1794607200.0,7,within reach
+cpceth-eth-updown-1h-2026-11-13-2100z,eth,up_down,1h,1794607200.0,7,within reach
+cpcsol-sol-above-wk-2026-11-13-100,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-101,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-102,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-103,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-104,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-105,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-106,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-107,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-108,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-109,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-110,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-111,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-112,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-113,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-114,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-115,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-116,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-117,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-118,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-119,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-120,sol,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-121,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-122,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-123,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-124,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-56,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcsol-sol-above-wk-2026-11-13-57,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcsol-sol-above-wk-2026-11-13-58,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcsol-sol-above-wk-2026-11-13-59,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcsol-sol-above-wk-2026-11-13-60,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcsol-sol-above-wk-2026-11-13-61,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcsol-sol-above-wk-2026-11-13-62,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcsol-sol-above-wk-2026-11-13-63,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcsol-sol-above-wk-2026-11-13-64,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcsol-sol-above-wk-2026-11-13-65,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcsol-sol-above-wk-2026-11-13-66,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcsol-sol-above-wk-2026-11-13-67,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-68,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-69,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-70,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-71,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-72,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-73,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-74,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-75,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-76,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-77,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-78,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-79,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-80,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-81,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-82,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-83,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-84,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-85,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-86,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-87,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-88,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-89,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-90,sol,above_below,weekly,1794607200.0,6,within reach
+cpcsol-sol-above-wk-2026-11-13-91,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-92,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-93,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-94,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-95,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-96,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-97,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-98,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-above-wk-2026-11-13-99,sol,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-h-w-2026-11-13-100,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-h-w-2026-11-13-105,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-h-w-2026-11-13-110,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-h-w-2026-11-13-115,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-h-w-2026-11-13-120,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-h-w-2026-11-13-125,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-h-w-2026-11-13-130,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-h-w-2026-11-13-95,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-l-w-2026-11-13-40,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-l-w-2026-11-13-45,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-l-w-2026-11-13-50,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-l-w-2026-11-13-55,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-l-w-2026-11-13-60,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-l-w-2026-11-13-65,sol,one_touch,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-hit-l-w-2026-11-13-70,sol,one_touch,weekly,1794607200.0,6,within reach
+cpcsol-sol-hit-l-w-2026-11-13-75,sol,one_touch,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-100,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-101,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-102,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-103,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-104,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-105,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-106,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-107,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-108,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-109,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-110,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-111,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-112,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-113,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-114,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-115,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-116,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-117,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-118,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-119,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-120,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-121,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-122,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-123,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-56,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-57,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-58,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-59,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-60,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-61,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-62,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-63,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-64,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-65,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-66,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-67,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-68,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-69,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-70,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-71,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-72,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-73,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-74,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-75,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-76,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-77,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-78,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-79,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-80,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-81,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-82,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-83,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-84,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-85,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-86,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-87,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-88,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-89,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-90,sol,range,weekly,1794607200.0,6,within reach
+cpcsol-sol-range-wk-2026-11-13-91,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-92,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-93,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-94,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-95,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-96,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-97,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-98,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-99,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-above-124,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-range-wk-2026-11-13-below-56,sol,range,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcsol-sol-updown-1d-2026-11-12-2200z,sol,up_down,1d,1794607200.0,6,within reach
+cpcsol-sol-updown-1h-2026-11-13-2100z,sol,up_down,1h,1794607200.0,6,within reach
+cpcxrp-xrp-above-wk-2026-11-13-0p7,xrp,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcxrp-xrp-above-wk-2026-11-13-0p75,xrp,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcxrp-xrp-above-wk-2026-11-13-0p8,xrp,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcxrp-xrp-above-wk-2026-11-13-0p85,xrp,above_below,weekly,1794607200.0,6,"out of reach, nobody offering"
+cpcxrp-xrp-above-wk-2026-11-13-0p9,xrp,above_below,weekly,1794607200.0,6,within reach
+cpcxrp-xrp-above-wk-2026-11-13-0p95,xrp,above_below,weekly,1794607200.0,6,within reach
+cpcxrp-xrp-above-wk-2026-11-13-1,xrp,above_below,weekly,1794607200.0,6,within reach
+cpcxrp-xrp-above-wk-2026-11-13-1p05,xrp,above_below,weekly,1794607200.0,6,within reach
+cpcxrp-xrp-above-wk-2026-11-13-1p1,xrp,above_below,weekly,1794607200.0,6,within reach
+cpcxrp-xrp-above-wk-2026-11-13-1p15,xrp,above_below,weekly,1794607200.0,6,within reach
+cpcxrp-xrp-above-wk-2026-11-13-1p2,xrp,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcxrp-xrp-above-wk-2026-11-13-1p25,xrp,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcxrp-xrp-above-wk-2026-11-13-1p3,xrp,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcxrp-xrp-above-wk-2026-11-13-1p35,xrp,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcxrp-xrp-above-wk-2026-11-13-1p4,xrp,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcxrp-xrp-above-wk-2026-11-13-1p45,xrp,above_below,weekly,1794607200.0,6,"out of reach, nobody bidding"
+cpcxrp-xrp-above-wk-2026-11-13-1p5,xrp,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-above-wk-2026-11-13-1p55,xrp,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-above-wk-2026-11-13-1p6,xrp,above_below,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-h-w-2026-11-13-1p3,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-h-w-2026-11-13-1p4,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-h-w-2026-11-13-1p5,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-h-w-2026-11-13-1p6,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-h-w-2026-11-13-1p7,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-h-w-2026-11-13-1p8,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-h-w-2026-11-13-1p9,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-h-w-2026-11-13-2,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-l-w-2026-11-13-0p3,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-l-w-2026-11-13-0p4,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-l-w-2026-11-13-0p5,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-l-w-2026-11-13-0p6,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-l-w-2026-11-13-0p7,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-l-w-2026-11-13-0p8,xrp,one_touch,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-hit-l-w-2026-11-13-0p9,xrp,one_touch,weekly,1794607200.0,7,within reach
+cpcxrp-xrp-hit-l-w-2026-11-13-1,xrp,one_touch,weekly,1794607200.0,7,within reach
+cpcxrp-xrp-range-wk-2026-11-13-0p7,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-0p75,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-0p8,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-0p85,xrp,range,weekly,1794607200.0,7,within reach
+cpcxrp-xrp-range-wk-2026-11-13-0p9,xrp,range,weekly,1794607200.0,7,within reach
+cpcxrp-xrp-range-wk-2026-11-13-0p95,xrp,range,weekly,1794607200.0,7,within reach
+cpcxrp-xrp-range-wk-2026-11-13-1,xrp,range,weekly,1794607200.0,7,within reach
+cpcxrp-xrp-range-wk-2026-11-13-1p05,xrp,range,weekly,1794607200.0,7,within reach
+cpcxrp-xrp-range-wk-2026-11-13-1p1,xrp,range,weekly,1794607200.0,7,within reach
+cpcxrp-xrp-range-wk-2026-11-13-1p15,xrp,range,weekly,1794607200.0,7,within reach
+cpcxrp-xrp-range-wk-2026-11-13-1p2,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-1p25,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-1p3,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-1p35,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-1p4,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-1p45,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-1p5,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-1p55,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-above-1p6,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-13-below-0p7,xrp,range,weekly,1794607200.0,7,"out of reach, nobody bidding"
+cpcxrp-xrp-updown-1d-2026-11-12-2200z,xrp,up_down,1d,1794607200.0,7,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-2100z,xrp,up_down,1h,1794607200.0,7,within reach
+cpc-btc-updown-1h-2026-11-13-2200z,btc,up_down,1h,1794610800.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-2200z,eth,up_down,1h,1794610800.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-2200z,sol,up_down,1h,1794610800.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-2200z,xrp,up_down,1h,1794610800.0,20,within reach
+cpc-btc-updown-1h-2026-11-13-2300z,btc,up_down,1h,1794614400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-13-2300z,eth,up_down,1h,1794614400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-13-2300z,sol,up_down,1h,1794614400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-13-2300z,xrp,up_down,1h,1794614400.0,20,within reach
+cpc-btc-updown-1h-2026-11-14-0000z,btc,up_down,1h,1794618000.0,19,within reach
+cpceth-eth-updown-1h-2026-11-14-0000z,eth,up_down,1h,1794618000.0,19,within reach
+cpcsol-sol-updown-1h-2026-11-14-0000z,sol,up_down,1h,1794618000.0,19,within reach
+cpcxrp-xrp-updown-1h-2026-11-14-0000z,xrp,up_down,1h,1794618000.0,19,within reach
+cpc-btc-updown-1h-2026-11-14-0100z,btc,up_down,1h,1794621600.0,19,within reach
+cpceth-eth-updown-1h-2026-11-14-0100z,eth,up_down,1h,1794621600.0,19,within reach
+cpcsol-sol-updown-1h-2026-11-14-0100z,sol,up_down,1h,1794621600.0,19,within reach
+cpcxrp-xrp-updown-1h-2026-11-14-0100z,xrp,up_down,1h,1794621600.0,19,within reach
+cpc-btc-updown-1h-2026-11-14-0200z,btc,up_down,1h,1794625200.0,19,within reach
+cpceth-eth-updown-1h-2026-11-14-0200z,eth,up_down,1h,1794625200.0,19,within reach
+cpcsol-sol-updown-1h-2026-11-14-0200z,sol,up_down,1h,1794625200.0,19,within reach
+cpcxrp-xrp-updown-1h-2026-11-14-0200z,xrp,up_down,1h,1794625200.0,19,within reach
+cpc-btc-updown-1h-2026-11-14-0300z,btc,up_down,1h,1794628800.0,19,within reach
+cpceth-eth-updown-1h-2026-11-14-0300z,eth,up_down,1h,1794628800.0,19,within reach
+cpcsol-sol-updown-1h-2026-11-14-0300z,sol,up_down,1h,1794628800.0,19,within reach
+cpcxrp-xrp-updown-1h-2026-11-14-0300z,xrp,up_down,1h,1794628800.0,19,within reach
+cpc-btc-updown-1h-2026-11-14-0400z,btc,up_down,1h,1794632400.0,19,within reach
+cpceth-eth-updown-1h-2026-11-14-0400z,eth,up_down,1h,1794632400.0,19,within reach
+cpcsol-sol-updown-1h-2026-11-14-0400z,sol,up_down,1h,1794632400.0,19,within reach
+cpcxrp-xrp-updown-1h-2026-11-14-0400z,xrp,up_down,1h,1794632400.0,19,within reach
+cpc-btc-updown-1h-2026-11-14-0500z,btc,up_down,1h,1794636000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-14-0500z,eth,up_down,1h,1794636000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-14-0500z,sol,up_down,1h,1794636000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-14-0500z,xrp,up_down,1h,1794636000.0,20,within reach
+cpc-btc-updown-1h-2026-11-14-0600z,btc,up_down,1h,1794639600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-14-0600z,eth,up_down,1h,1794639600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-14-0600z,sol,up_down,1h,1794639600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-14-0600z,xrp,up_down,1h,1794639600.0,20,within reach
+cpc-btc-updown-1h-2026-11-14-0700z,btc,up_down,1h,1794643200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-14-0700z,eth,up_down,1h,1794643200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-14-0700z,sol,up_down,1h,1794643200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-14-0700z,xrp,up_down,1h,1794643200.0,20,within reach

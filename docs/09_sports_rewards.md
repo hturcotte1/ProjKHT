@@ -561,6 +561,36 @@ $96 of reward after the minimum, 228 fills, 65 positions settled for
 
 No reward cap and no minimum volume has been published.
 
+**14 November, 09:08 UTC. Three dates, all three behind.** Thirteen runs
+are in, 64.7 hours of recording with no gap since the restart, 2,626
+games followed. 1,340 games are old enough to count and settled, on three
+US dates. The judge asks for 2,000 on five, so nothing is judged.
+
+| Account | Games | Reward by the formula, after the $1 minimum | What the fills made, held to the result | The same at the price before the start | Net | A game |
+|---|---:|---:|---:|---:|---:|---:|
+| R1-all | 1,340 | $768.06 | −$1,795.00 | −$432.50 | −$1,026.94 | −$0.77 |
+| R1-thin | 924 | $647.99 | −$1,394.97 | −$302.88 | −$746.98 | −$0.81 |
+| R1-core | 718 | $499.12 | −$1,067.88 | −$229.63 | −$568.76 | −$0.79 |
+
+By date, R1-all: 11 November −$641 on 495 games, 12 November −$130 on
+522, 13 November −$256 on 323. The ITF tour alone: 499 games, $231 of
+reward, $156 lost on fills at the price before the start and $1,053 at
+the result. The other lower-tour programme, UTR, is ahead by $252 on 219
+games.
+
+So the gap between the two ways of valuing a fill has now come on three
+dates running, and it is the ITF tour each time. That is no longer one
+day's luck. The orders that get filled there lose about seven times what
+the price before the start says they should. The judge still wants its
+five dates and 2,000 games, and will have them in about two days. To pass
+it would need the days still to come to undo these three.
+
+The rehearsal of the order system: 65.5 hours, 299 markets, $123 of
+reward after the minimum, 342 fills, 98 positions settled for −$140, 11
+still open. Net −$16. No errors.
+
+No reward cap and no minimum volume has been published.
+
 *Still to check, once a run has spanned it:* the exchange restarts each
 market's running totals of trading once a day, at 17:00 Eastern (22:00
 UTC). Rule 6 reads fills off those totals. If the restart itself shows up

@@ -736,6 +736,15 @@ orders, the two trades of real size, for $8.38: the scoring script's
 figure less the trades of under one contract, which the program does not
 send.
 
+**14 November, 09:08 UTC.** Two settlements are recorded. The second,
+Friday 13 November, had no daily ladder: the weekly markets settled, 576
+of them, followed whole from 21:43 to 22:02. L1-recent found eight
+trades there, one of them for a whole contract, and collected two cents.
+Over the two evenings the $10,000 account has $8.44, which is $4.22 a
+day against a bar of $50. Nothing lost. L1-strict has nothing. The order
+program, replayed, sent three orders for $8.39: the scoring script's
+three trades of a contract or more.
+
 *At each check-in while the test runs:* the order program of
 `docs/12_us_taker.md` is run on paper over the recordings
 (`kht us-take --replay state/us-lasttick --settle`, with a configuration
@@ -1122,6 +1131,24 @@ and on paper it depends on sixty orders all meeting the book that was
 read. That is the first thing listed under "What paper cannot show", and
 the two-minute figure says it is not a small thing.
 
+**14 November, 09:08 UTC. The second evening: nothing.** On Fridays the
+exchange lists no daily ladder, and the weekly ladders that settled on
+13 November carry none of the 1¢ bids. Bitcoin's weekly ladder has 80
+brackets. At most 15 of them had any bid, and the seven with a 1¢ bid
+had one contract between them. Ether's and XRP's had none. No reading of
+any of the four ladders locked anything, so the judged account made no
+sale, and neither did the second account. No equal-lot seller came.
+
+Over the two evenings the judged account has kept $28.24, which is
+$14.12 an evening against a bar of $20, with a sale on one evening of
+two.
+
+One figure in the scoring script's description was misleading and was
+changed today. Where no size locks anything, the table of each ladder's
+day printed what its largest bid would have lost, as if that were the
+best on offer. It now prints "nothing". The rule and the account are
+untouched.
+
 ## 13. L3: the same bids while they are there, fixed at 09:12 UTC on 13 November
 
 ### Why a third test
@@ -1292,4 +1319,27 @@ It would mean the yardstick is wrong.
   the same evening.
 - **Paper fills.** The far bids stood still for hours on 12 November, so
   this is less of a worry than in L2. It is still paper.
+
+### Notes while the test runs
+
+**14 November, 09:08 UTC. The first evening that counts, and it was a
+Friday.** Only the weekly ladders settled on 13 November. They were
+recorded whole: 42,164 readings of 254 brackets from 16:30 to 22:01 UTC.
+
+| | Sales | Of a contract or more | Contracts | Premium after the fee | Largest single sale | Lost |
+|---|---:|---:|---:|---:|---:|---:|
+| L3-10k | 5 | 1 | 54.7 | $0.99 | $53.17 | 0 |
+| L3-all | 5 | 1 | 54.7 | $0.99 | $53.17 | 0 |
+
+All five were in Bitcoin's weekly ladder at the first reading, 13% and
+more from the price, and all five bids still stood at the next reading.
+246 brackets were far enough and had nobody bidding. The firms that post
+1¢ bids on the daily ladders do not post them on the weekly ones, at
+least not on the day they settle. There was nothing to leave at 21:00
+and nobody sold anything whole.
+
+Verdict by the bar: not yet judged, one evening of the four asked for.
+The bar is $50 an evening on average. With 99¢ on the first, the four
+daily evenings to come would have to bring about $62 each. The evening
+of 12 November, which counts for nothing, would have brought $92.
 
