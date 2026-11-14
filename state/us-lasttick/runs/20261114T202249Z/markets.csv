@@ -1,0 +1,5 @@
+run,slug,kind,horizon,coin,index,start,end,strike,lower,upper,range_kind,direction,price_to_beat,first_seen
+20261114T202249Z,cpc-btc-updown-1h-2026-11-14-2000z,up_down,1h,btc,BRTI,1794686400.0,1794690000.0,,,,unspecified,unspecified,65652.97,1794688989.6
+20261114T202249Z,cpceth-eth-updown-1h-2026-11-14-2000z,up_down,1h,eth,ETHUSD_RTI,1794686400.0,1794690000.0,,,,unspecified,unspecified,1833.23,1794688989.6
+20261114T202249Z,cpcsol-sol-updown-1h-2026-11-14-2000z,up_down,1h,sol,SOLUSD_RTI,1794686400.0,1794690000.0,,,,unspecified,unspecified,72.1585,1794688989.6
+20261114T202249Z,cpcxrp-xrp-updown-1h-2026-11-14-2000z,up_down,1h,xrp,XRPUSD_RTI,1794686400.0,1794690000.0,,,,unspecified,unspecified,0.9527,1794688989.6
