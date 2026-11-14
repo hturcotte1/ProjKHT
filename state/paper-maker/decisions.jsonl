@@ -171,3 +171,4 @@
 {"action": "blocked", "market_id": 677367, "reason": "China coup attempt before 2027? | buy 'No' at 0.980, est. 0.989, edge 0.90c, 48d", "ts": 1794644481.9624817, "why": "total exposure cap"}
 {"action": "screened", "by_limit": {"event": 9, "theme 'iran'": 20, "theme 'israel'": 14, "theme 'middle-east'": 11, "theme 'oil'": 2, "theme 'russia'": 2, "theme 'tech'": 20, "theme 'ukraine'": 8, "total": 40}, "count": 126, "ts": 1794669340.269023}
 {"action": "screened", "by_limit": {"event": 9, "theme 'iran'": 13, "theme 'israel'": 14, "theme 'middle-east'": 11, "theme 'oil'": 7, "theme 'russia'": 2, "theme 'tech'": 19, "theme 'ukraine'": 8, "total": 37}, "count": 120, "ts": 1794686364.9348826}
+{"action": "screened", "by_limit": {"event": 10, "theme 'iran'": 19, "theme 'israel'": 2, "theme 'middle-east'": 21, "theme 'oil'": 2, "theme 'russia'": 2, "theme 'tech'": 18, "theme 'ukraine'": 8, "total": 39}, "count": 121, "ts": 1794700344.2877278}

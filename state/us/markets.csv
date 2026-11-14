@@ -3760,3 +3760,7 @@ tc-temp-laxhigh-2026-11-16-gte69lt70f,2525675,climate,WEATHER,futures,268631,Hig
 tc-temp-laxhigh-2026-11-16-gte71lt72f,2525676,climate,WEATHER,futures,268631,Highest temperature in Los Angeles on November 16?,71 to 72,Highest temperature in Los Angeles on November 16?,2026-11-17T13:00:00Z,0.01,0.095,1794686395
 vmc-ussemov-ma-2026-11-03-d35-40,470812,politics,USCONGRESS,futures,86730,Massachusetts Senate Election Margin of Victory,Democrat 35-40%,Massachusetts Senate Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1794686395
 vtc-usseto-ar-2026-11-03-gt900k,470234,politics,USCONGRESS,futures,86542,Arkansas Senate Election: Turnout,Above 900K,Arkansas Senate Election: Turnout,2027-01-15T00:00:00Z,0.01,0.095,1794686395
+aaagaspc-usdsl-datec-20261029-20261231-gt5pt2000,1941718,macro,COMMODITY,futures,,,Above $5.2000,US diesel price at year end,2027-01-08T04:59:00Z,0.01,0.095,1794700366
+aaagaspc-usdsl-datec-20261029-20261231-gt5pt8000,1941721,macro,COMMODITY,futures,,,Above $5.8000,US diesel price at year end,2027-01-08T04:59:00Z,0.01,0.095,1794700366
+nphc-nvidiaceo-2028-12-31-chakaw,2542327,finance,EXECUTIVE,futures,259467,Next CEO of NVIDIA?,Charlie Kawwas,Next CEO of NVIDIA?,2029-01-15T04:00:00Z,0.01,0.095,1794700366
+vtc-usseto-nc-2026-11-03-gt4pt5m,470650,politics,USCONGRESS,futures,86679,North Carolina Senate Election: Turnout,Above 4.5M,North Carolina Senate Election: Turnout,2027-01-15T00:00:00Z,0.01,0.095,1794700366

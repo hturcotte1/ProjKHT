@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-14 19:59 UTC. Started 2026-11-10 07:37 UTC.
+As of 2026-11-14 23:52 UTC. Started 2026-11-10 07:37 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $994.58 |
+| Equity (positions marked at the bid) | $994.72 |
 | Starting bankroll | $1,000.00 |
-| Change | $-5.42 (-0.54%) |
+| Change | $-5.28 (-0.53%) |
 | Cash | $208.27 |
 | In positions (cost) | $791.73 |
 | Realised profit | $+0.00 |
@@ -19,47 +19,47 @@ As of 2026-11-14 19:59 UTC. Started 2026-11-10 07:37 UTC.
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| Strait of Hormuz traffic returns to normal by November 30? | No | 20.7 | 0.967 | 0.986 | $+0.39 | 16 |
-| Iran leadership change by November 30? | No | 20.5 | 0.977 | 0.979 | $+0.04 | 16 |
-| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 20.8 | 0.960 | 0.959 | $-0.02 | 16 |
-| US-Iran Final Nuclear Deal by November 30, 2026? | No | 6.4 | 0.968 | 0.988 | $+0.13 | 16 |
-| Will Anthropic IPO by November 30, 2026? | Yes | 20.7 | 0.967 | 0.983 | $+0.32 | 16 |
+| Strait of Hormuz traffic returns to normal by November 30? | No | 20.7 | 0.967 | 0.985 | $+0.37 | 16 |
+| Iran leadership change by November 30? | No | 20.5 | 0.977 | 0.977 | $+0.00 | 16 |
+| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 20.8 | 0.960 | 0.962 | $+0.04 | 16 |
+| US-Iran Final Nuclear Deal by November 30, 2026? | No | 6.4 | 0.968 | 0.983 | $+0.10 | 16 |
+| Will Anthropic IPO by November 30, 2026? | Yes | 20.7 | 0.967 | 0.984 | $+0.35 | 16 |
 | Bab el-Mandeb Strait effectively closed by November 30? | No | 20.6 | 0.969 | 0.973 | $+0.08 | 16 |
-| NATO x Russia military clash by November 30, 2026? | No | 20.4 | 0.978 | 0.975 | $-0.06 | 16 |
-| Will WTI Crude Oil (WTI) hit (HIGH) $125 in November? | No | 20.7 | 0.969 | 0.981 | $+0.24 | 16 |
+| NATO x Russia military clash by November 30, 2026? | No | 20.4 | 0.978 | 0.977 | $-0.02 | 16 |
+| Will WTI Crude Oil (WTI) hit (HIGH) $125 in November? | No | 20.7 | 0.969 | 0.970 | $+0.02 | 16 |
 | UAE x Saudi Arabia sever diplomatic relations in 2026? | No | 20.6 | 0.969 | 0.968 | $-0.02 | 47 |
 | China x Japan military clash before 2027? | No | 18.5 | 0.978 | 0.976 | $-0.04 | 47 |
-| Will Missouri enact a data center moratorium by December 31, 2026? | No | 20.6 | 0.972 | 0.976 | $+0.08 | 47 |
+| Will Missouri enact a data center moratorium by December 31, 2026? | No | 20.6 | 0.972 | 0.978 | $+0.12 | 47 |
 | Will inflation reach more than 5% in 2026? | No | 20.8 | 0.962 | 0.950 | $-0.25 | 47 |
 | France declares state of emergency by December 31, 2026? | No | 20.6 | 0.969 | 0.973 | $+0.08 | 47 |
 | Will Ukraine agree to give up the rest of Donbas by December 31, 2026? | No | 5.0 | 0.963 | 0.961 | $-0.01 | 47 |
-| Zelenskyy out as Ukraine president by end of 2026? | No | 20.8 | 0.961 | 0.982 | $+0.44 | 47 |
+| Zelenskyy out as Ukraine president by end of 2026? | No | 20.8 | 0.961 | 0.981 | $+0.42 | 47 |
 | Will Anthony Fauci be arrested before 2027? | No | 20.6 | 0.970 | 0.964 | $-0.13 | 47 |
 | Will Russia enter Kramatorsk by December 31, 2026? | No | 20.8 | 0.960 | 0.940 | $-0.42 | 47 |
 | NATO article 5 before 2027? | No | 20.6 | 0.973 | 0.972 | $-0.02 | 47 |
 | Will Russia capture Sloviansk by December 31? | No | 0.5 | 0.965 | 0.967 | $+0.00 | 47 |
-| Trump out as President before 2027? | No | 20.5 | 0.977 | 0.972 | $-0.10 | 47 |
-| Will Hamas agree to disarm by December 31? | No | 20.8 | 0.960 | 0.961 | $+0.02 | 47 |
+| Trump out as President before 2027? | No | 20.5 | 0.977 | 0.976 | $-0.02 | 47 |
+| Will Hamas agree to disarm by December 31? | No | 20.8 | 0.960 | 0.960 | $+0.00 | 47 |
 | Delcy Rodríguez out as leader of Venezuela by December 31, 2026? | No | 20.8 | 0.964 | 0.942 | $-0.47 | 47 |
 | Andrew Tate released from custody by December 31, 2026? | No | 20.6 | 0.971 | 0.950 | $-0.44 | 47 |
-| Will Trump recognize Somaliland before 2027? | No | 20.9 | 0.957 | 0.956 | $-0.02 | 47 |
+| Will Trump recognize Somaliland before 2027? | No | 20.9 | 0.957 | 0.957 | $+0.00 | 47 |
 | Will the U.S. invade Cuba in 2026? | No | 20.5 | 0.977 | 0.975 | $-0.04 | 47 |
 | China x Taiwan military clash before 2027? | No | 6.6 | 0.968 | 0.965 | $-0.02 | 47 |
-| Will Russia capture Lyman by December 31, 2026? | No | 20.8 | 0.963 | 0.977 | $+0.29 | 47 |
+| Will Russia capture Lyman by December 31, 2026? | No | 20.8 | 0.963 | 0.978 | $+0.31 | 47 |
 | JD Vance out as VP by December 31? | No | 20.5 | 0.977 | 0.975 | $-0.04 | 47 |
 | Will there be at least 10000 measles cases in the U.S. in 2026? | No | 20.8 | 0.961 | 0.946 | $-0.31 | 47 |
-| Will Lebanon recognize Israel by December 31? | No | 20.8 | 0.960 | 0.960 | $+0.00 | 47 |
+| Will Lebanon recognize Israel by December 31? | No | 20.8 | 0.960 | 0.978 | $+0.37 | 47 |
 | Will Syria join the Abraham Accords before 2027? | No | 20.8 | 0.961 | 0.955 | $-0.12 | 47 |
-| Will Samuel Alito announce his retirement by December 31, 2026? | No | 20.7 | 0.965 | 0.967 | $+0.03 | 47 |
-| Miguel Díaz-Canel out as leader of Cuba by December 31? | No | 16.2 | 0.960 | 0.954 | $-0.10 | 47 |
+| Will Samuel Alito announce his retirement by December 31, 2026? | No | 20.7 | 0.965 | 0.960 | $-0.11 | 47 |
+| Miguel Díaz-Canel out as leader of Cuba by December 31? | No | 16.2 | 0.960 | 0.953 | $-0.11 | 47 |
 | Milei out as President of Argentina before 2027? | No | 20.5 | 0.975 | 0.973 | $-0.04 | 47 |
 | Cuban regime falls in 2026? | No | 20.5 | 0.974 | 0.969 | $-0.10 | 47 |
-| Will Russia capture Orikhiv by December 31, 2026? | No | 20.9 | 0.955 | 0.917 | $-0.80 | 47 |
+| Will Russia capture Orikhiv by December 31, 2026? | No | 20.9 | 0.955 | 0.918 | $-0.77 | 47 |
 | US x Russia military clash by December 31, 2026? | No | 20.5 | 0.974 | 0.960 | $-0.29 | 47 |
 | U.S. agrees to a new trade deal with "Pakistan" before 2027? | No | 20.6 | 0.971 | 0.880 | $-1.88 | 47 |
 | Will Austria recognize Palestine before 2027? | No | 20.8 | 0.962 | 0.949 | $-0.28 | 47 |
 | Cilia Flores released from custody by December 31, 2026? | No | 20.7 | 0.965 | 0.955 | $-0.21 | 47 |
-| Alexandre de Moraes out as Brazil Supreme Court Justice? | No | 20.9 | 0.960 | 0.945 | $-0.30 | 47 |
+| Alexandre de Moraes out as Brazil Supreme Court Justice? | No | 20.9 | 0.960 | 0.944 | $-0.33 | 47 |
 | Will Louisiana enact a data center moratorium by December 31, 2026? | No | 20.6 | 0.973 | 0.969 | $-0.08 | 47 |
 | Will India strike Pakistan by December 31, 2026? | No | 20.6 | 0.969 | 0.922 | $-0.97 | 47 |
 
@@ -85,4 +85,4 @@ As of 2026-11-14 19:59 UTC. Started 2026-11-10 07:37 UTC.
 
 ## Equity history
 
-23 cycles from 2026-11-10 07:37 UTC to 2026-11-14 19:59 UTC; equity $999.24 → $994.58. The longest gap between two cycles was 10.1 hours.
+24 cycles from 2026-11-10 07:37 UTC to 2026-11-14 23:52 UTC; equity $999.24 → $994.72. The longest gap between two cycles was 10.1 hours.
