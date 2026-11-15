@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-15 19:11 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-15 23:27 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $998.25 |
+| Equity (positions marked at the bid) | $998.11 |
 | Starting bankroll | $1,000.00 |
-| Change | $-1.75 (-0.18%) |
+| Change | $-1.89 (-0.19%) |
 | Cash | $799.90 |
 | In positions (cost) | $200.10 |
 | Realised profit | $+0.00 |
@@ -22,12 +22,12 @@ As of 2026-11-15 19:11 UTC. Started 2026-11-10 20:50 UTC.
 | Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.970 | $-0.22 | 74 |
 | US recession by end of 2026? | No | 20.4 | 0.979 | 0.975 | $-0.08 | 76 |
 | 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.972 | $-0.02 | 77 |
-| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.973 | $+0.00 | 105 |
+| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.964 | $-0.18 | 105 |
 | Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.970 | $+0.02 | 105 |
 | Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.951 | $-0.61 | 119 |
 | Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 136 |
 | Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.931 | $-0.25 | 136 |
-| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 154 |
+| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.923 | $-0.27 | 154 |
 | Will Jordan Bardella advance to the second round of the next French pr | No | 21.5 | 0.933 | 0.930 | $-0.06 | 154 |
 
 ## Resting orders
@@ -56,4 +56,4 @@ As of 2026-11-15 19:11 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-21 cycles from 2026-11-10 20:50 UTC to 2026-11-15 19:11 UTC; equity $1,000.00 → $998.25. The longest gap between two cycles was 10.1 hours.
+22 cycles from 2026-11-10 20:50 UTC to 2026-11-15 23:27 UTC; equity $1,000.00 → $998.11. The longest gap between two cycles was 10.1 hours.

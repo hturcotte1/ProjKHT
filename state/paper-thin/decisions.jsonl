@@ -82,3 +82,4 @@
 {"action": "blocked", "market_id": 4178732, "reason": "Will the 30-year Treasury yield dip below 4.60% before 2027? | buy 'No' at 0.965, est. 0.973, edge 0.63c, 45d", "ts": 1794746523.9472702, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 1125394, "reason": "Will S&P 500 (SPX) hit $5,800 (LOW) in December? | buy 'No' at 0.973, est. 0.980, edge 0.61c, 46d", "ts": 1794746523.9472702, "why": "total exposure cap"}
 {"action": "screened", "by_limit": {"event": 18, "theme 'big-tech'": 14, "theme 'iran'": 5, "theme 'middle-east'": 11, "theme 'russia'": 2, "theme 'tech'": 8, "total": 29}, "count": 87, "ts": 1794769887.39922}
+{"action": "screened", "by_limit": {"event": 18, "theme 'big-tech'": 2, "theme 'iran'": 6, "theme 'middle-east'": 11, "theme 'russia'": 2, "theme 'tech'": 18, "total": 29}, "count": 86, "ts": 1794785215.137736}
