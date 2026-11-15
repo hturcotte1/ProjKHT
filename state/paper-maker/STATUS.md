@@ -1,18 +1,18 @@
 # Account status (paper)
 
-As of 2026-11-14 23:52 UTC. Started 2026-11-10 07:39 UTC.
+As of 2026-11-15 05:04 UTC. Started 2026-11-10 07:39 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $1,000.01 |
+| Equity (positions marked at the bid) | $1,000.40 |
 | Starting bankroll | $1,000.00 |
-| Change | $+0.01 (+0.00%) |
-| Cash | $480.11 |
-| In positions (cost) | $519.89 |
+| Change | $+0.40 (+0.04%) |
+| Cash | $460.11 |
+| In positions (cost) | $539.89 |
 | Realised profit | $+0.00 |
 | Fees paid | $0.00 |
-| Open positions | 26 |
-| Fills | 27 |
+| Open positions | 27 |
+| Fills | 28 |
 | Settled positions | 0 |
 
 ## Open positions
@@ -20,23 +20,24 @@ As of 2026-11-14 23:52 UTC. Started 2026-11-10 07:39 UTC.
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
 | US imports Russian diesel by November 15? | No | 20.7 | 0.965 | 0.981 | $+0.33 | 1 |
-| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.990 | $+0.93 | 1 |
-| Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.982 | $+0.16 | 1 |
-| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.980 | $+0.61 | 11 |
-| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.962 | $+0.25 | 16 |
-| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.983 | $+0.72 | 16 |
-| Will Jensen Huang rejoin NVIDIA by November 30, 2026? | No | 21.1 | 0.950 | 0.942 | $-0.17 | 16 |
-| Pete Hegseth out as Secretary of Defense by November 30? | No | 21.1 | 0.946 | 0.944 | $-0.04 | 16 |
+| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.993 | $+0.99 | 1 |
+| Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.978 | $+0.08 | 1 |
+| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.976 | $+0.53 | 11 |
+| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.958 | $+0.17 | 16 |
+| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.987 | $+0.80 | 16 |
+| Will Jensen Huang rejoin NVIDIA by November 30, 2026? | No | 21.1 | 0.950 | 0.948 | $-0.04 | 16 |
+| Pete Hegseth out as Secretary of Defense by November 30? | No | 21.1 | 0.946 | 0.947 | $+0.02 | 16 |
 | NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.977 | $+0.35 | 16 |
 | Will WTI Crude Oil (WTI) hit (HIGH) $110 in November? | No | 21.7 | 0.920 | 0.930 | $+0.22 | 16 |
 | Russia x Ukraine ceasefire by December 31, 2026? | No | 21.7 | 0.920 | 0.928 | $+0.17 | 47 |
-| Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.955 | $+1.22 | 47 |
+| Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.965 | $+1.44 | 47 |
 | China x India military clash by December 31, 2026? | No | 21.3 | 0.940 | 0.950 | $+0.21 | 47 |
 | Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.930 | $+0.67 | 47 |
 | Tesla and SpaceX merger officially announced by December 31? | No | 22.2 | 0.900 | 0.710 | $-4.22 | 47 |
-| Will Russia capture all of Kostyantynivka by December 31, 2026? | No | 21.5 | 0.930 | 0.880 | $-1.08 | 47 |
+| Will Russia capture all of Kostyantynivka by December 31, 2026? | No | 21.5 | 0.930 | 0.890 | $-0.86 | 47 |
 | US x Cuba military clash in 2026? | No | 21.5 | 0.930 | 0.920 | $-0.22 | 47 |
-| Will a new country join the Abraham Accords before 2027? | No | 22.2 | 0.902 | 0.914 | $+0.27 | 47 |
+| Will a new country join the Abraham Accords before 2027? | No | 22.2 | 0.902 | 0.928 | $+0.58 | 47 |
+| China x Philippines military clash before 2027? | No | 22.5 | 0.890 | 0.870 | $-0.45 | 47 |
 | US strike on Cuba by December 31? | No | 21.7 | 0.920 | 0.910 | $-0.22 | 47 |
 | Will Gavin Newsom announce a Presidential run before 2027? | No | 21.7 | 0.920 | 0.950 | $+0.65 | 47 |
 | Jerome Powell out from Fed Board by December 31? | No | 21.5 | 0.930 | 0.910 | $-0.43 | 47 |
@@ -54,7 +55,6 @@ As of 2026-11-14 23:52 UTC. Started 2026-11-10 07:39 UTC.
 | Edi Rama out as Albania PM in 2026? | BUY No | 0.900 | 22.2 | 0.0 |
 | Will Russia capture Orikhiv by December 31, 2026? | BUY No | 0.914 | 21.9 | 0.0 |
 | Zhang Youxia sentenced to prison before 2027? | BUY No | 0.930 | 21.5 | 0.0 |
-| China x Philippines military clash before 2027? | BUY No | 0.890 | 22.5 | 0.0 |
 | Will inflation reach more than 4.5% in 2026? | BUY No | 0.900 | 22.2 | 0.0 |
 | Will Israel launch a major ground offensive in Gaza by December 31? | BUY No | 0.920 | 21.7 | 0.0 |
 | Foreign intervention in Gaza by December 31? | BUY No | 0.920 | 21.7 | 0.0 |
@@ -69,7 +69,6 @@ As of 2026-11-14 23:52 UTC. Started 2026-11-10 07:39 UTC.
 
 | When | Market | Side | Price | Size | Fee |
 |---|---|---|---:|---:|---:|
-| 2026-11-11 04:07 UTC | Will Samuel Alito announce his retirement by December 31, 20 | BUY | 0.958 | 20.9 | 0.0000 |
 | 2026-11-11 12:51 UTC | Russia x Ukraine ceasefire by December 31, 2026? | BUY | 0.920 | 21.7 | 0.0000 |
 | 2026-11-11 23:37 UTC | Tesla and SpaceX merger officially announced by December 31? | BUY | 0.900 | 22.2 | 0.0000 |
 | 2026-11-12 11:45 UTC | Will FISA Section 702 reauthorization become law this year? | BUY | 0.900 | 22.2 | 0.0000 |
@@ -84,7 +83,8 @@ As of 2026-11-14 23:52 UTC. Started 2026-11-10 07:39 UTC.
 | 2026-11-13 18:50 UTC | Pete Hegseth out as Secretary of Defense by November 30? | BUY | 0.946 | 21.1 | 0.0000 |
 | 2026-11-13 21:55 UTC | Will WTI Crude Oil (WTI) hit (HIGH) $110 in November? | BUY | 0.920 | 21.7 | 0.0000 |
 | 2026-11-13 21:49 UTC | Will Jensen Huang rejoin NVIDIA by November 30, 2026? | BUY | 0.950 | 21.1 | 0.0000 |
+| 2026-11-15 02:10 UTC | China x Philippines military clash before 2027? | BUY | 0.890 | 22.5 | 0.0000 |
 
 ## Equity history
 
-24 cycles from 2026-11-10 07:39 UTC to 2026-11-14 23:52 UTC; equity $1,000.00 → $1,000.01. The longest gap between two cycles was 10.1 hours.
+25 cycles from 2026-11-10 07:39 UTC to 2026-11-15 05:04 UTC; equity $1,000.00 → $1,000.40. The longest gap between two cycles was 10.1 hours.
