@@ -174,3 +174,4 @@
 {"action": "screened", "by_limit": {"event": 10, "theme 'iran'": 19, "theme 'israel'": 2, "theme 'middle-east'": 21, "theme 'oil'": 2, "theme 'russia'": 2, "theme 'tech'": 18, "theme 'ukraine'": 8, "total": 39}, "count": 121, "ts": 1794700344.2877278}
 {"action": "screened", "by_limit": {"event": 10, "theme 'iran'": 19, "theme 'israel'": 17, "theme 'oil'": 10, "theme 'russia'": 2, "theme 'tech'": 16, "theme 'ukraine'": 10, "total": 39}, "count": 123, "ts": 1794719052.9466133}
 {"action": "screened", "by_limit": {"event": 9, "theme 'iran'": 27, "theme 'israel'": 16, "theme 'oil'": 4, "theme 'russia'": 3, "theme 'tech'": 15, "theme 'ukraine'": 12, "total": 40}, "count": 126, "ts": 1794746514.546063}
+{"action": "screened", "by_limit": {"event": 9, "theme 'iran'": 17, "theme 'israel'": 3, "theme 'middle-east'": 22, "theme 'oil'": 5, "theme 'russia'": 4, "theme 'tech'": 15, "theme 'ukraine'": 9, "total": 41}, "count": 125, "ts": 1794769875.8296034}

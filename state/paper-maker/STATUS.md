@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-15 12:42 UTC. Started 2026-11-10 07:39 UTC.
+As of 2026-11-15 19:11 UTC. Started 2026-11-10 07:39 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $1,001.69 |
+| Equity (positions marked at the bid) | $1,001.98 |
 | Starting bankroll | $1,000.00 |
-| Change | $+1.69 (+0.17%) |
+| Change | $+1.98 (+0.20%) |
 | Cash | $420.13 |
 | In positions (cost) | $579.87 |
 | Realised profit | $+0.00 |
@@ -19,35 +19,35 @@ As of 2026-11-15 12:42 UTC. Started 2026-11-10 07:39 UTC.
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| US imports Russian diesel by November 15? | No | 20.7 | 0.965 | 0.990 | $+0.52 | 1 |
-| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.995 | $+1.04 | 1 |
-| Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.987 | $+0.27 | 1 |
-| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.971 | $+0.42 | 11 |
-| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.962 | $+0.25 | 16 |
-| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.983 | $+0.72 | 16 |
-| Will Jensen Huang rejoin NVIDIA by November 30, 2026? | No | 21.1 | 0.950 | 0.961 | $+0.23 | 16 |
-| Pete Hegseth out as Secretary of Defense by November 30? | No | 21.1 | 0.946 | 0.950 | $+0.08 | 16 |
-| NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.982 | $+0.46 | 16 |
-| Will WTI Crude Oil (WTI) hit (HIGH) $110 in November? | No | 21.7 | 0.920 | 0.930 | $+0.22 | 16 |
+| US imports Russian diesel by November 15? | No | 20.7 | 0.965 | 0.991 | $+0.54 | 0 |
+| US announces end of Iranian blockade by November 15, 2026? | No | 21.1 | 0.946 | 0.995 | $+1.04 | 0 |
+| Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.987 | $+0.27 | 0 |
+| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.975 | $+0.50 | 10 |
+| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.962 | $+0.25 | 15 |
+| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.983 | $+0.72 | 15 |
+| Will Jensen Huang rejoin NVIDIA by November 30, 2026? | No | 21.1 | 0.950 | 0.951 | $+0.02 | 15 |
+| Pete Hegseth out as Secretary of Defense by November 30? | No | 21.1 | 0.946 | 0.952 | $+0.13 | 15 |
+| NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.980 | $+0.42 | 15 |
+| Will WTI Crude Oil (WTI) hit (HIGH) $110 in November? | No | 21.7 | 0.920 | 0.940 | $+0.43 | 15 |
 | Russia x Ukraine ceasefire by December 31, 2026? | No | 21.7 | 0.920 | 0.930 | $+0.22 | 46 |
-| Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.967 | $+1.49 | 46 |
-| China x India military clash by December 31, 2026? | No | 21.3 | 0.940 | 0.950 | $+0.21 | 47 |
-| Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.920 | $+0.44 | 47 |
-| Tesla and SpaceX merger officially announced by December 31? | No | 22.2 | 0.900 | 0.720 | $-4.00 | 47 |
-| Zhang Youxia sentenced to prison before 2027? | No | 21.5 | 0.930 | 0.930 | $-0.00 | 47 |
-| Will Russia enter Kramatorsk by December 31, 2026? | No | 21.3 | 0.940 | 0.930 | $-0.21 | 47 |
-| Will Russia capture all of Kostyantynivka by December 31, 2026? | No | 21.5 | 0.930 | 0.910 | $-0.43 | 47 |
-| US x Cuba military clash in 2026? | No | 21.5 | 0.930 | 0.920 | $-0.22 | 47 |
-| Will a new country join the Abraham Accords before 2027? | No | 22.2 | 0.902 | 0.928 | $+0.58 | 47 |
-| China x Philippines military clash before 2027? | No | 22.5 | 0.890 | 0.890 | $+0.00 | 47 |
-| US strike on Cuba by December 31? | No | 21.7 | 0.920 | 0.910 | $-0.22 | 47 |
-| Will Gavin Newsom announce a Presidential run before 2027? | No | 21.7 | 0.920 | 0.940 | $+0.43 | 47 |
-| Jerome Powell out from Fed Board by December 31? | No | 21.5 | 0.930 | 0.910 | $-0.43 | 47 |
-| Will there be at least 10000 measles cases in the U.S. in 2026? | No | 20.9 | 0.956 | 0.947 | $-0.19 | 47 |
-| Insurrection Act invoked by December 31? | No | 21.3 | 0.940 | 0.940 | $-0.00 | 47 |
-| Will Samuel Alito announce his retirement by December 31, 2026? | No | 20.9 | 0.958 | 0.959 | $+0.02 | 47 |
-| Will FISA Section 702 reauthorization become law this year? | No | 22.2 | 0.900 | 0.910 | $+0.22 | 47 |
-| Venezuela election scheduled by December 31, 2026? | No | 21.7 | 0.920 | 0.900 | $-0.43 | 47 |
+| Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.971 | $+1.58 | 46 |
+| China x India military clash by December 31, 2026? | No | 21.3 | 0.940 | 0.950 | $+0.21 | 46 |
+| Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.920 | $+0.44 | 46 |
+| Tesla and SpaceX merger officially announced by December 31? | No | 22.2 | 0.900 | 0.720 | $-4.00 | 46 |
+| Zhang Youxia sentenced to prison before 2027? | No | 21.5 | 0.930 | 0.930 | $-0.00 | 46 |
+| Will Russia enter Kramatorsk by December 31, 2026? | No | 21.3 | 0.940 | 0.940 | $-0.00 | 46 |
+| Will Russia capture all of Kostyantynivka by December 31, 2026? | No | 21.5 | 0.930 | 0.910 | $-0.43 | 46 |
+| US x Cuba military clash in 2026? | No | 21.5 | 0.930 | 0.920 | $-0.22 | 46 |
+| Will a new country join the Abraham Accords before 2027? | No | 22.2 | 0.902 | 0.908 | $+0.13 | 46 |
+| China x Philippines military clash before 2027? | No | 22.5 | 0.890 | 0.890 | $+0.00 | 46 |
+| US strike on Cuba by December 31? | No | 21.7 | 0.920 | 0.910 | $-0.22 | 46 |
+| Will Gavin Newsom announce a Presidential run before 2027? | No | 21.7 | 0.920 | 0.950 | $+0.65 | 46 |
+| Jerome Powell out from Fed Board by December 31? | No | 21.5 | 0.930 | 0.910 | $-0.43 | 46 |
+| Will there be at least 10000 measles cases in the U.S. in 2026? | No | 20.9 | 0.956 | 0.952 | $-0.08 | 46 |
+| Insurrection Act invoked by December 31? | No | 21.3 | 0.940 | 0.940 | $-0.00 | 46 |
+| Will Samuel Alito announce his retirement by December 31, 2026? | No | 20.9 | 0.958 | 0.959 | $+0.02 | 46 |
+| Will FISA Section 702 reauthorization become law this year? | No | 22.2 | 0.900 | 0.910 | $+0.22 | 46 |
+| Venezuela election scheduled by December 31, 2026? | No | 21.7 | 0.920 | 0.900 | $-0.43 | 46 |
 
 ## Resting orders
 
@@ -87,4 +87,4 @@ As of 2026-11-15 12:42 UTC. Started 2026-11-10 07:39 UTC.
 
 ## Equity history
 
-26 cycles from 2026-11-10 07:39 UTC to 2026-11-15 12:41 UTC; equity $1,000.00 → $1,001.69. The longest gap between two cycles was 10.1 hours.
+27 cycles from 2026-11-10 07:39 UTC to 2026-11-15 19:11 UTC; equity $1,000.00 → $1,001.98. The longest gap between two cycles was 10.1 hours.
