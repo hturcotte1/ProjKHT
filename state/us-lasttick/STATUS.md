@@ -1,10 +1,10 @@
 # Crypto markets in their last minutes
 
-*Written by `kht us-lasttick` at the end of a run: 15 November 2026, 16:18 UTC. It lists what was read. The rule of `docs/11_crypto_us.md` is applied by `scripts/us_lasttick_score.py`, not here.*
+*Written by `kht us-lasttick` at the end of a run: 15 November 2026, 21:18 UTC. It lists what was read. The rule of `docs/11_crypto_us.md` is applied by `scripts/us_lasttick_score.py`, not here.*
 
-- Run `20261115T112110Z`: 298 minutes, 130 listings, 540 readings of 20 markets ending at 5 different times, 0 errors.
+- Run `20261115T162025Z`: 298 minutes, 130 listings, 540 readings of 20 markets ending at 5 different times, 0 errors.
 - At the last reading before their end, 0 markets had a best bid of 1¢ (0 contracts) and 0 a best offer of 99¢ (0 contracts). This counts every such market, near the price or far from it.
-- Index levels last published: BTC 64,585.62, ETH 1,806.43, SOL 71.162, XRP 0.954.
+- Index levels last published: BTC 64,985.65, ETH 1,819.83, SOL 71.7992, XRP 0.9611.
 
 | Markets followed | Number |
 |---|---:|
