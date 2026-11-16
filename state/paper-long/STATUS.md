@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-16 03:06 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-16 09:01 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $998.02 |
+| Equity (positions marked at the bid) | $998.19 |
 | Starting bankroll | $1,000.00 |
-| Change | $-1.98 (-0.20%) |
+| Change | $-1.81 (-0.18%) |
 | Cash | $799.90 |
 | In positions (cost) | $200.10 |
 | Realised profit | $+0.00 |
@@ -22,7 +22,7 @@ As of 2026-11-16 03:06 UTC. Started 2026-11-10 20:50 UTC.
 | Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.970 | $-0.22 | 74 |
 | US recession by end of 2026? | No | 20.4 | 0.979 | 0.975 | $-0.08 | 76 |
 | 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.972 | $-0.02 | 77 |
-| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.964 | $-0.18 | 105 |
+| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.972 | $-0.02 | 105 |
 | Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.966 | $-0.06 | 105 |
 | Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.951 | $-0.61 | 119 |
 | Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 136 |
@@ -57,4 +57,4 @@ As of 2026-11-16 03:06 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-23 cycles from 2026-11-10 20:50 UTC to 2026-11-16 03:06 UTC; equity $1,000.00 → $998.02. The longest gap between two cycles was 10.1 hours.
+24 cycles from 2026-11-10 20:50 UTC to 2026-11-16 09:01 UTC; equity $1,000.00 → $998.19. The longest gap between two cycles was 10.1 hours.
