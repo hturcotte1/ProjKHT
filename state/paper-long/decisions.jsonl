@@ -46,3 +46,5 @@
 {"action": "screened", "by_limit": {"event": 4, "theme 'weather'": 1}, "count": 5, "ts": 1794769911.8620205}
 {"action": "order", "dte": 136.36606641179986, "edge": 0.016959444083746833, "filled": 21.05, "kind": "TAKER", "market_id": 6343893, "order_id": "paper-34", "p_win": 0.9669594440837468, "price": 0.95, "reason": "Putin out as President of Russia by March 31, 2027? | buy 'No' at 0.950, est. 0.967, edge 1.70c, 136d", "side": "BUY", "size": 21.05, "status": "FILLED", "ts": 1794769911.8620205}
 {"action": "screened", "by_limit": {"event": 4, "theme 'climate-science'": 1}, "count": 5, "ts": 1794785223.6055558}
+{"action": "screened", "by_limit": {"event": 4, "theme 'weather'": 1}, "count": 5, "ts": 1794798382.6970046}
+{"action": "order", "dte": 105.07820952541023, "edge": 0.011734410229375047, "filled": 0.0, "kind": "MAKER", "market_id": 1126855, "order_id": "paper-36", "p_win": 0.976734410229375, "price": 0.936, "reason": "Will Venezuelan crude oil production reach 1.4m barrels per  | buy 'No' at 0.965, est. 0.977, edge 1.17c, 105d", "side": "BUY", "size": 21.36, "status": "OPEN", "ts": 1794798382.6970046}
