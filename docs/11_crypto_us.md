@@ -745,6 +745,30 @@ day against a bar of $50. Nothing lost. L1-strict has nothing. The order
 program, replayed, sent three orders for $8.39: the scoring script's
 three trades of a contract or more.
 
+**16 November, 09:25 UTC.** Four settlements are recorded. The two since
+the last note, 14 and 15 November, brought 9 and 13 trades, none of a
+whole contract, and three cents between them.
+
+| Evening | Trades | Of a contract or more | Contracts | Premium after the fee | Lost |
+|---|---:|---:|---:|---:|---:|
+| 12 November | 36 | 2 | 929.7 | $8.42 | 0 |
+| 13 November | 8 | 1 | 1.7 | $0.02 | 0 |
+| 14 November | 9 | 0 | 0.9 | $0.01 | 0 |
+| 15 November | 13 | 0 | 2.1 | $0.02 | 0 |
+
+Over the four evenings the $10,000 account has $8.47, which is $2.12 a
+day against a bar of $50. Nothing lost. L1-strict has nine trades for
+one contract in all. The order program, replayed over all four evenings,
+sent three orders and made $8.39: the scoring script's three trades of a
+contract or more.
+
+L1 can no longer reach its bar. To average $50 over the five evenings it
+asks for, the fifth would have to bring $242, and no evening has brought
+$9. The reason is the one found on the first evening: 851 of the markets
+followed ended out of reach with nobody bidding, and what bids there were
+in the last quarter of an hour were for a tenth of a contract. The last
+two evenings are recorded and scored all the same.
+
 *At each check-in while the test runs:* the order program of
 `docs/12_us_taker.md` is run on paper over the recordings
 (`kht us-take --replay state/us-lasttick --settle`, with a configuration
@@ -1149,6 +1173,47 @@ day printed what its largest bid would have lost, as if that were the
 best on offer. It now prints "nothing". The rule and the account are
 untouched.
 
+**16 November, 09:25 UTC. Four evenings, one sale, and the bar is out of
+reach.** The evenings of 14 and 15 November were recorded whole, 164
+readings of Bitcoin's ladder each. No reading of any ladder locked
+anything worth having. The best was one cent on 14 November and two
+cents on 15 November, both on Bitcoin and both for a tenth of a contract.
+
+| Ladder | Brackets with a bid, at its best reading | Of them at 1¢ | Best bids add up to | Size that locks most | Locks |
+|---|---:|---:|---:|---:|---:|
+| Bitcoin, 12 November | 58 | 47 | $1.49 | 193.1 | $33.94 |
+| Bitcoin, 14 November | 24 | 12 | $1.07 | 0.1 | $0.01 |
+| Bitcoin, 15 November | 54 | 44 | $1.20 | 0.1 | $0.02 |
+| Ether, 14 November | 14 | 2 | $0.74 | nothing | |
+| Ether, 15 November | 32 | 22 | $0.82 | nothing | |
+| Solana, 14 November | 18 | 10 | $0.57 | nothing | |
+| Solana, 15 November | 6 | 1 | $0.44 | nothing | |
+| XRP, 14 November | 7 | 1 | $0.83 | nothing | |
+| XRP, 15 November | 2 | 0 | $0.88 | nothing | |
+
+On Bitcoin the best bids still add up to more than a dollar. But what
+lifts the sum over a dollar is the bids near the price, and those are for
+a tenth of a contract. The bids of real size are the 1¢ ones far away,
+and by themselves they are far short of a dollar. So the judged account
+made no sale on either evening, and neither did the second account.
+
+Over four evenings the judged account has one sale and $28.24 kept, which
+is $7.06 an evening against a bar of $20. The bar also asks for a sale on
+at least four evenings. Two evenings are left, so three is the most it
+can have. **L2 fails its bar whatever 16 and 17 November bring.** They
+are recorded and scored all the same.
+
+An equal-lot seller came on 15 November and not on 14 November. Between
+17:52 and 17:54 UTC somebody sold about 93 contracts on each of 40 of the
+ladder's 92 brackets of Bitcoin, 3,731 contracts, 32 of the lots at 1¢.
+It is the third such sale seen, after 169 a bracket on 11 November and 46
+on 12 November. This one was not a locked sale by the arithmetic of this
+section. Valued at each bracket's last trade it took in about $91 and
+paid about $8 in fees, against $93 owed if one of the brackets it sold
+pays: about $11 short of locked. It left out the bracket just below the
+price and everything from $65,750 up. So whoever does this is not relying
+on the sum of the bids. They take a view as well.
+
 ## 13. L3: the same bids while they are there, fixed at 09:12 UTC on 13 November
 
 ### Why a third test
@@ -1343,3 +1408,78 @@ The bar is $50 an evening on average. With 99¢ on the first, the four
 daily evenings to come would have to bring about $62 each. The evening
 of 12 November, which counts for nothing, would have brought $92.
 
+**16 November, 09:25 UTC. Two daily evenings: $87 and $92, nothing lost,
+and the bids are thinning.** Both evenings were recorded whole, 165
+readings of Bitcoin's ladder each.
+
+| Evening | Account | Sales | Of a contract or more | Contracts | Premium after the fee | Tied up | Largest single sale | Lost |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| 14 November | L3-10k | 19 | 16 | 9,574.6 | $87.39 | $9,478 | $999.31 | 0 |
+| 14 November | L3-all | 19 | 16 | 9,574.6 | $87.39 | $9,478 | $999.31 | 0 |
+| 15 November | L3-10k | 23 | 16 | 10,101.4 | $91.89 | $10,000 | $1,492.03 | 0 |
+| 15 November | L3-all | 57 | 47 | 39,156.8 | $355.12 | $38,765 | $1,492.03 | 0 |
+
+On 14 November the $10,000 was never all used: what the rule found over
+the whole evening was 9,575 contracts. Bitcoin gave 3 brackets and 1,010
+contracts, Ether 8 and 4,505, Solana 7 and 4,013, XRP 1 and 47. On
+15 November the account was full within two minutes of the window
+opening, at 16:30 UTC: Ether 15 brackets and 8,179 contracts, Bitcoin 7
+and 1,508, Solana 1 and 415. The nearest any sold bracket stood to the
+price at its sale was 2.5% (Bitcoin, three minutes before the end on
+14 November). None paid.
+
+**Verdict by the bar: not yet judged.** Three evenings count so far, 13,
+14 and 15 November: $0.99, $87.39 and $91.89, which is $180.27, or $60.09
+an evening against a bar of $50 over at least four evenings with nothing
+lost. Tonight would have to bring $20 for four evenings to average $50.
+Over all five, the two evenings left would have to bring $70 between
+them.
+
+Four things the two evenings showed that the premium does not:
+
+- **Fewer of the bids are still there two minutes later.** Of the bids
+  the paper account sold to, 68 of 70 stood as large at the bracket's
+  next reading on 12 November. On 14 November it was 14 of 19, and on
+  15 November 13 of 23 for L3-10k and 36 of 57 for L3-all. By premium,
+  $68.37 of L3-10k's $87.39 on 14 November came from bids that still
+  stood, and on 15 November only $28.52 of $91.89. An order that arrives
+  after the bid has gone is not filled and loses nothing, and the account
+  can then sell to a later bid. Described only, and not part of the rule:
+  a $10,000 account that could sell only to the bids that still stood as
+  large at the next reading would have collected $0.99, $68.37 and $91.89
+  on the three evenings, $53.75 an evening. So the paper figure of $60 is
+  too high, by something between nothing and a tenth on these evenings,
+  and it rests on bids that come and go within minutes.
+- **The large bids are fewer and they leave earlier.** Counting brackets
+  whose best bid is 5¢ or less for 500 contracts or more, at the middle
+  reading of each half hour:
+
+  | Ladder | 12 November | 14 November | 15 November |
+  |---|---|---|---|
+  | Bitcoin | 34 to 42 brackets, 34,000 to 44,000 contracts, until 21:00 UTC | 10 or 11 brackets, 11,000 to 13,000 contracts, gone at 17:13 UTC | 18 or 19 brackets, 18,000 to 24,000 contracts, gone at 19:50 UTC |
+  | Ether | 14 to 24 brackets, 9,500 to 17,000 contracts, until 21:00 | 10 to 13 brackets, 8,000 to 19,000 contracts, until 20:30 | 22 to 25 brackets at first, 5 or 6 from 19:00, gone at 20:30 |
+  | Solana | 13 to 16 brackets, 7,500 to 16,000 contracts, until 21:00 | 9 to 14 brackets, 7,750 to 16,300 contracts, until 20:30 | 13 brackets at 17:00 and 27 at 17:30, next to nothing before or after |
+  | XRP | 4 or 5 brackets until 21:00 | 1 to 4 brackets until 19:00 | one bracket, for an hour and a half |
+
+  Both of these evenings were at a weekend and 12 November was a
+  Thursday, so two evenings cannot say whether this is the weekend or a
+  change.
+- **On these two evenings the bids were withdrawn, not taken.** On
+  14 November one trade of 100 contracts or more went into a bid of 5¢ or
+  less on any of the four ladders: 135 contracts, on Ether. Bitcoin's
+  large bids were pulled at 17:13 UTC with less than a contract sold to
+  them. On 15 November one bid of 1,007 contracts, on the $54,000
+  bracket, was sold whole at 19:32 UTC, and the rest were pulled at about
+  19:50.
+- **Somebody else sells across the ladder.** On 15 November at 17:52 UTC
+  an equal-lot seller sold about 93 contracts on each of 40 Bitcoin
+  brackets (section 12, note of today). The 1¢ bids it sold to stayed in
+  the book afterwards, smaller by 93.
+
+One correction to what was written here on 13 November. The seller who
+came at 21:00 UTC on 12 November did not only take Bitcoin's bids. In the
+readings of 21:00 and 21:02 UTC whole bids were sold on all four ladders:
+19 brackets of Bitcoin's (19,099 contracts), 9 of Ether's (4,514), 8 of
+Solana's (4,038) and 5 of XRP's (2,506). That is 30,157 contracts and
+about $270 after fees for whoever sold, in two minutes. The large bids
+have not stood until 21:00 on any evening since.

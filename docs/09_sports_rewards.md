@@ -591,6 +591,84 @@ still open. Net −$16. No errors.
 
 No reward cap and no minimum volume has been published.
 
+**16 November, 09:22 UTC. The first account is judged, and it fails.**
+23 runs are in, 114.4 hours of recording with no gap since the restart,
+4,645 games followed. 2,295 games of R1-all are old enough to count and
+settled, on five US dates. That is what the judge asked for.
+
+| Account | Games | Reward by the formula, after the $1 minimum | What the fills made, held to the result | The same at the price before the start | Net | A game | z |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| R1-all | 2,295 | $1,711.24 | −$3,482.96 | −$811.79 | −$1,771.72 | −$0.77 | −1.47 |
+| R1-thin | 1,629 | $1,530.34 | −$3,577.39 | −$599.58 | −$2,047.05 | −$1.26 | −2.25 |
+| R1-core | 1,315 | $1,313.19 | −$3,217.89 | −$505.93 | −$1,904.70 | −$1.45 | −2.23 |
+
+The rule asks for a mean above zero with z of 3 or more. R1-all's mean is
+below zero, so **R1-all fails**. R1-thin and R1-core have fewer than the
+2,000 games they need and are not judged. Both are further behind than
+R1-all. R1-thin should have its 2,000 by the last check-in on
+18 November; R1-core probably will not.
+
+By date, R1-all: 11 November −$641 on 495 games, 12 November −$130 on
+523, 13 November −$248 on 370, 14 November +$445 on 348, 15 November
+−$1,198 on 559. One date ahead and four behind. The worst is the last:
+15 November paid the most reward of any date, $677, and its fills lost
+$1,875.
+
+The ITF tour alone: 984 games, $937 of reward, $408 lost on fills at the
+price before the start and $3,020 at the result. Net −$2,083, which is
+more than the whole loss: every other programme together is ahead by
+$311. UTR is ahead by $178 on 331 games. The main tennis tours are ahead
+by $455 on 210 games, but their reward was $4. The rest is how 210
+results fell.
+
+What the five dates say:
+
+- **The reward is there, by the formula.** $1,711 on 2,295 games, about
+  75¢ a game. Nobody was paid it, and only a real account can show
+  whether the exchange pays what its formula says.
+- **The cost is not the one section 4 measured.** Valued at the price
+  before the start, the fills cost $812, about half the reward, which is
+  what the history said. Held to the result they cost $3,483. The $2,671
+  between the two is fills that went on losing after the start, and
+  $2,612 of it is the ITF tour. In a fair market that difference averages
+  nothing. Here it has had the same sign on four dates of five.
+- **How sure is that?** For R1-all, z is −1.47: a loss, but not one so
+  far below zero that luck is ruled out. For the two accounts that are
+  mostly ITF it is about −2.2. The test was built to show a profit beyond
+  doubt, and it shows a loss.
+- **Closing each fill before the start would not rescue it.** With every
+  fill closed at the middle of the book, at no cost at all, R1-all would
+  be $899 ahead. Closing costs something: at half a cent a contract the
+  112,049 contracts cost $560, and at a cent $1,120. This was not tested,
+  and it is no reason to hope.
+
+Without the games that touch the hole of 11 November (217 games whose six
+hours before the start overlap 19:47 to 22:35 UTC that day), as promised
+in the note of 11 November: R1-all has 2,155 games and −$1,588.59, a
+game −$0.74, z −1.30. R1-thin 1,523 games and −$1,902.98. R1-core 1,224
+games and −$1,870.46. The verdict does not turn on the hole.
+
+Under a cap on rewards, described only: the same orders would have been
+paid $769 with a cap of 100% of what they traded, $672 at 50% and $405 at
+10%, against $1,711 with none.
+
+The rehearsal of the order system: 113.4 hours, 533 markets, $369 of
+reward after the minimum, 490 fills (10,413 contracts), 151 positions
+settled for −$505, 9 still open. Net −$137. It was level two days ago and
+has gone the way of the test.
+
+No reward cap and no minimum volume has been published, as far as the
+public schedule shows. Read at 09:19 UTC today it has 72,386 time periods
+on 45,113 markets, with the same ten fields as on 11 November, and none
+of them is a cap or a volume requirement. The filed rules ask for 48
+hours' notice, and 18 November begins at 05:00 UTC, so that notice would
+be due by now. I could not read the exchange's own rewards page today.
+
+The two runs of 14 November with 1,137 and 2,007 fills, against about 350
+to 950 in every other full run, are not a fault. It was a Saturday with a UFC
+card (1,171 of the second run's fills), a full evening of ice hockey and
+the final of the League of Legends world championship.
+
 *Still to check, once a run has spanned it:* the exchange restarts each
 market's running totals of trading once a day, at 17:00 Eastern (22:00
 UTC). Rule 6 reads fills off those totals. If the restart itself shows up
@@ -599,6 +677,40 @@ be a fault in the measuring to be fixed and dated here. The first run
 ended before that hour. *12 November, 09:04 UTC:* still open. The run that
 would have spanned 22:00 UTC on 11 November was the one lost with its
 machine. Tonight's is the first that will.
+
+*16 November, 09:22 UTC: checked. The premise was wrong, and something
+else was found.* The totals are not restarted each day. Public books read
+today carry totals and first, lowest and highest trade times that go back
+days: a tennis market that opened on 12 November showed 23,682 contracts
+traded and an opening trade of 12 November. So there is no daily restart
+for rule 6 to trip over.
+
+What the fills do show is a limit of the measuring. On each of the four
+evenings recorded so far (12 to 15 November), from about 22:08 to 22:30
+UTC, the public book stands still. Almost no fill is recorded in those
+minutes: 18 by a trade over the four evenings, where the 68 minutes
+before them have 882. The first reading after 22:30 UTC then
+shows everything that traded meanwhile at once: 154 fills out of 4.4
+million contracts of trading. Three quarters of them carry no trade time
+later than the reading before, against 7% at other hours, which is what
+catching up looks like. So trading goes on and the public book does not
+show it, and the paper orders rest blind through that stretch at the
+prices of the last reading before it. A real order would rest through it
+too, but whoever placed it would presumably see the market by another
+route.
+
+The judged account barely feels it. 81 of its 4,064 fills, 2,405 of its
+112,049 contracts, come from readings between 22:08 and 22:33 UTC, and
+they made $86 at the result. With every fill recorded in those minutes
+left out, R1-all's net goes from −$1,771.72 to −$1,695.95 and its z from
+−1.47 to −1.39; R1-thin from −$2,047.05 to −$1,997.79; R1-core from
+−$1,904.70 to −$1,846.82. No verdict changes. The judged figures stay as
+the rule makes them, and this stands beside them.
+
+25 of those fills are of one or two contracts at a price far from the
+book, for example one contract at 98.5¢ where the offer stood at 81¢.
+17 of them are on the next day's ITF games on 14 November. I do not know
+what they are. They weigh nothing in the account.
 
 ## 9. The rules as filed, and a change on 18 November
 
