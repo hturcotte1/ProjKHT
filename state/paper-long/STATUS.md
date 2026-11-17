@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-17 03:56 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-17 13:16 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $997.34 |
+| Equity (positions marked at the bid) | $997.49 |
 | Starting bankroll | $1,000.00 |
-| Change | $-2.66 (-0.27%) |
+| Change | $-2.51 (-0.25%) |
 | Cash | $779.90 |
 | In positions (cost) | $220.10 |
 | Realised profit | $+0.00 |
@@ -19,16 +19,16 @@ As of 2026-11-17 03:56 UTC. Started 2026-11-10 20:50 UTC.
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.970 | $-0.22 | 73 |
-| US recession by end of 2026? | No | 20.4 | 0.979 | 0.975 | $-0.08 | 75 |
+| Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.970 | $-0.22 | 72 |
+| US recession by end of 2026? | No | 20.4 | 0.979 | 0.975 | $-0.08 | 74 |
 | 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.972 | $-0.02 | 76 |
 | Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 93 |
 | Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.961 | $-0.25 | 104 |
-| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.938 | $-0.64 | 104 |
+| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.944 | $-0.52 | 104 |
 | Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.951 | $-0.61 | 118 |
 | Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 135 |
-| Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.932 | $-0.23 | 135 |
-| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 153 |
+| Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.933 | $-0.21 | 135 |
+| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 152 |
 | Will Jordan Bardella advance to the second round of the next French pr | No | 21.5 | 0.933 | 0.930 | $-0.06 | 153 |
 
 ## Resting orders
@@ -58,4 +58,4 @@ As of 2026-11-17 03:56 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-26 cycles from 2026-11-10 20:50 UTC to 2026-11-17 03:55 UTC; equity $1,000.00 → $997.34. The longest gap between two cycles was 12.1 hours.
+27 cycles from 2026-11-10 20:50 UTC to 2026-11-17 13:16 UTC; equity $1,000.00 → $997.49. The longest gap between two cycles was 12.1 hours.
