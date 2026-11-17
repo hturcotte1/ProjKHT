@@ -55,3 +55,5 @@
 {"action": "blocked", "market_id": 1058191, "reason": "Major volcano eruption (VEI \u22656) in 2026? | buy 'No' at 0.968, est. 0.979, edge 1.11c, 135d", "ts": 1794887759.6976151, "why": "theme 'weather' exposure 99.97 above cap 80.00"}
 {"action": "blocked", "market_id": 1088912, "reason": "1 megaton meteor strike in 2026? | buy 'No' at 0.980, est. 0.988, edge 0.81c, 104d", "ts": 1794887759.6976151, "why": "theme 'weather' exposure 99.97 above cap 80.00"}
 {"action": "screened", "by_limit": {"event": 3, "theme 'weather'": 1}, "count": 4, "ts": 1794921365.0563817}
+{"action": "screened", "by_limit": {"event": 4, "theme 'weather'": 1}, "count": 5, "ts": 1794952295.334042}
+{"action": "order", "dte": 134.25514659673527, "edge": 0.018190708937593447, "filled": 21.5, "kind": "TAKER", "market_id": 5745721, "order_id": "paper-41", "p_win": 0.9481907089375934, "price": 0.93, "reason": "Ilhan Omar denaturalization case filed by March 31, 2027? | buy 'No' at 0.930, est. 0.948, edge 1.82c, 134d", "side": "BUY", "size": 21.5, "status": "FILLED", "ts": 1794952295.334042}
