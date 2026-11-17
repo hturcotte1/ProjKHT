@@ -303,3 +303,7 @@ run,slug,kind,horizon,coin,index,start,end,strike,lower,upper,range_kind,directi
 20261117T181247Z,cpcxrp-xrp-range-day-2026-11-17-below-0p7,range,daily,xrp,XRPUSD_RTI,,1794952800.0,,,0.69999,below,unspecified,,1794951787.7
 20261117T181247Z,cpcxrp-xrp-updown-1d-2026-11-16-2200z,up_down,1d,xrp,XRPUSD_RTI,1794866400.0,1794952800.0,,,,unspecified,unspecified,0.95858,1794951787.7
 20261117T181247Z,cpcxrp-xrp-updown-1h-2026-11-17-2100z,up_down,1h,xrp,XRPUSD_RTI,1794949200.0,1794952800.0,,,,unspecified,unspecified,0.96695,1794951787.7
+20261117T181247Z,cpc-btc-updown-1h-2026-11-17-2200z,up_down,1h,btc,BRTI,1794952800.0,1794956400.0,,,,unspecified,unspecified,64283.3,1794955393.0
+20261117T181247Z,cpceth-eth-updown-1h-2026-11-17-2200z,up_down,1h,eth,ETHUSD_RTI,1794952800.0,1794956400.0,,,,unspecified,unspecified,1803.67,1794955393.0
+20261117T181247Z,cpcsol-sol-updown-1h-2026-11-17-2200z,up_down,1h,sol,SOLUSD_RTI,1794952800.0,1794956400.0,,,,unspecified,unspecified,73.419,1794955393.0
+20261117T181247Z,cpcxrp-xrp-updown-1h-2026-11-17-2200z,up_down,1h,xrp,XRPUSD_RTI,1794952800.0,1794956400.0,,,,unspecified,unspecified,0.96898,1794955393.0
