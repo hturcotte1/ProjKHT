@@ -50,3 +50,7 @@
 {"action": "order", "dte": 105.07820952541023, "edge": 0.011734410229375047, "filled": 0.0, "kind": "MAKER", "market_id": 1126855, "order_id": "paper-36", "p_win": 0.976734410229375, "price": 0.936, "reason": "Will Venezuelan crude oil production reach 1.4m barrels per  | buy 'No' at 0.965, est. 0.977, edge 1.17c, 105d", "side": "BUY", "size": 21.36, "status": "OPEN", "ts": 1794798382.6970046}
 {"action": "screened", "by_limit": {"event": 4, "theme 'weather'": 1}, "count": 5, "ts": 1794819696.0293343}
 {"action": "screened", "by_limit": {"event": 4, "theme 'weather'": 1}, "count": 5, "ts": 1794863354.7195187}
+{"action": "screened", "by_limit": {"event": 3}, "count": 3, "ts": 1794887759.6976151}
+{"action": "order", "dte": 104.04375349982469, "edge": 0.015539719533386731, "filled": 0.0, "kind": "MAKER", "market_id": 1073747, "order_id": "paper-39", "p_win": 0.9555397195333867, "price": 0.93, "reason": "5kt meteor strike in 2026? | buy 'No' at 0.940, est. 0.956, edge 1.55c, 104d", "side": "BUY", "size": 21.5, "status": "OPEN", "ts": 1794887759.6976151}
+{"action": "blocked", "market_id": 1058191, "reason": "Major volcano eruption (VEI \u22656) in 2026? | buy 'No' at 0.968, est. 0.979, edge 1.11c, 135d", "ts": 1794887759.6976151, "why": "theme 'weather' exposure 99.97 above cap 80.00"}
+{"action": "blocked", "market_id": 1088912, "reason": "1 megaton meteor strike in 2026? | buy 'No' at 0.980, est. 0.988, edge 0.81c, 104d", "ts": 1794887759.6976151, "why": "theme 'weather' exposure 99.97 above cap 80.00"}
