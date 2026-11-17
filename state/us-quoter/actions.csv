@@ -40053,3 +40053,12 @@ ts,action,slug,side,intent,price,qty,expires,id,why
 1794956537,place,aec-itfwo-astsha-emejon-2026-11-18,ask,ORDER_INTENT_BUY_SHORT,0.43,100.0,1794956717,paper-158361,
 1794956567,cancel,aec-itfme-corcro-wihmer-2026-11-18,ask,ORDER_INTENT_BUY_SHORT,0.73,100.0,1794956687,paper-158349,
 1794956567,place,aec-itfme-corcro-wihmer-2026-11-18,ask,ORDER_INTENT_BUY_SHORT,0.72,100.0,1794956747,paper-158366,
+1794956657,cancel,aec-itfme-abrasa-borbut-2026-11-18,bid,ORDER_INTENT_BUY_LONG,0.34,100.0,1794956807,paper-158376,
+1794956657,place,aec-itfme-abrasa-borbut-2026-11-18,bid,ORDER_INTENT_BUY_LONG,0.32,100.0,1794956837,paper-158385,
+1794956717,cancel,aec-itfme-abrasa-borbut-2026-11-18,bid,ORDER_INTENT_BUY_LONG,0.32,100.0,1794956837,paper-158385,
+1794956717,place,aec-itfme-abrasa-borbut-2026-11-18,bid,ORDER_INTENT_BUY_LONG,0.34,100.0,1794956897,paper-158400,
+1794956897,cancel,aec-itfme-oswtir-elistr-2026-11-18,bid,ORDER_INTENT_BUY_LONG,0.31,54.0,1794957017,paper-158439,
+1794956897,place,aec-itfme-oswtir-elistr-2026-11-18,bid,ORDER_INTENT_BUY_LONG,0.33,54.0,1794957077,paper-158451,
+1794956987,cancel,aec-itfme-corcro-wihmer-2026-11-18,ask,ORDER_INTENT_BUY_SHORT,0.72,100.0,1794957107,paper-158460,
+1794956987,place,aec-itfme-corcro-wihmer-2026-11-18,ask,ORDER_INTENT_BUY_SHORT,0.71,100.0,1794957167,paper-158472,
+1794957047,stop,,,,,,,,the run ended
