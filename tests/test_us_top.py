@@ -258,3 +258,52 @@ def test_earlier_runs_give_the_last_market_of_each_kind(tmp_path):
     assert set(found) == {GOLD, "cpc-btc-updown-1d-2026-11-18-2200z"}       # the later Bitcoin market, and nothing that is not ours
     assert found[GOLD]["target"] == 10000 and found[GOLD]["max_spread"] == 0.03
     assert top.earlier(tmp_path / "nothing-here") == {}
+
+
+class PricedUS(FakeUS):
+    """As the first exchange, and it names the market's asset and serves its reference price in fifteen-second candles."""
+
+    def __init__(self, clock):
+        super().__init__(clock)
+        self.price_calls = []
+
+    def market(self, slug):
+        m = super().market(slug)
+        m["assetPriceTerms"]["asset"] = {"assetClass": "ASSET_CLASS_COMMODITY", "symbol": "gold"}
+        return m
+
+    def asset_prices(self, assets, start, end=0, bucket="15S"):
+        self.price_calls.append((round(self.clock.t - T0), tuple(assets), int(start), bucket))
+        first = int(start) - int(start) % 15
+        last = int(self.clock.t) - int(self.clock.t) % 15                # the candle in progress is served too
+        return {a: [{"ts": ts, "open": 3850.0, "high": 3851.0, "low": 3849.0, "close": 3850.0 + (ts - T0) / 15, "ticks": 14} for ts in range(first, last + 1, 15)] for a in assets}
+
+
+def test_the_reference_price_is_kept_in_finished_candles_without_gaps_or_repeats(tmp_path):
+    clock = Clock(T0)
+    us = PricedUS(clock)
+    line = top.run(tmp_path, minutes=5, us=us, now=clock.now, sleep=clock.sleep, background=False)
+    assert line["errors"] == 0
+    with gzip.open(tmp_path / "runs" / line["run"] / "prices.csv.gz", "rt") as fh:
+        rows = list(csv.DictReader(fh))
+    assert rows and {r["asset"] for r in rows} == {"commodity:gold"}
+    stamps = [int(r["ts"]) for r in rows]
+    assert stamps == sorted(set(stamps))                                  # each candle once
+    assert all(b - a == 15 for a, b in zip(stamps, stamps[1:]))           # and none missed between two sweeps
+    assert max(stamps) + 15 <= clock.t                                    # the candle in progress is never written down
+    assert float(rows[-1]["close"]) == 3850.0 + (stamps[-1] - T0) / 15 and rows[0]["ticks"] == "14"
+    assert all(c[3] == "15S" and c[1] == ("commodity:gold",) for c in us.price_calls) and len(us.price_calls) <= line["cycles"]
+    markets = {r["slug"]: r for r in csv.DictReader((tmp_path / "runs" / line["run"] / "markets.csv").open())}
+    assert markets[GOLD]["asset"] == "commodity:gold"
+
+
+def test_a_failing_price_feed_does_not_stop_the_books(tmp_path):
+    class Broken(PricedUS):
+        def asset_prices(self, *a, **k):
+            raise RuntimeError("503")
+
+    clock = Clock(T0)
+    line = top.run(tmp_path, minutes=3, us=Broken(clock), now=clock.now, sleep=clock.sleep, background=False)
+    assert line["books"] >= 5 and line["errors"] >= 1
+    with gzip.open(tmp_path / "runs" / line["run"] / "prices.csv.gz", "rt") as fh:
+        assert list(csv.DictReader(fh)) == []

@@ -101,6 +101,35 @@ class PolymarketUS:
             return None
         return None if value is None else float(value)
 
+    def asset_prices(self, assets: list[str], start: int, end: int = 0, bucket: str = "15S") -> dict[str, list[dict[str, Any]]]:
+        """The exchange's own reference prices, as candles: ``{asset: [{"ts", "open", "high", "low", "close", "ticks"}]}``.
+
+        ``assets`` are named ``class:symbol``, for example ``commodity:gold``
+        or ``crypto:btc``, at most ten at once. These are the prices its
+        price markets settle on (for gold and silver a Chainlink spot
+        stream, for the coins the market's reference index), published
+        about once a second and served without a key. ``bucket`` is one of
+        1S, 5S, 15S, 1M, 5M, 15M, 1H, 1D; a request returns at most 3,600
+        candles. ``end`` of 0 means now, and the candle in progress is
+        included. A candle in which nothing was published has ``ticks`` 0
+        and carries the last close.
+        """
+        data = self.http.get(GATEWAY + "/v1/asset-prices/history", params={"assets": list(assets), "from": int(start), "to": int(end),
+                                                                          "bucket": "ASSET_PRICE_BUCKET_" + bucket}) or {}
+        out: dict[str, list[dict[str, Any]]] = {}
+        for series in data.get("series") or []:
+            a = series.get("asset") or {}
+            key = f"{str(a.get('assetClass') or '').replace('ASSET_CLASS_', '').lower()}:{a.get('symbol')}"
+            rows = []
+            for c in series.get("candles") or []:
+                try:
+                    rows.append({"ts": int(c["timestamp"]), "open": float(c["open"]), "high": float(c["high"]), "low": float(c["low"]),
+                                 "close": float(c["close"]), "ticks": int(c.get("tickCount") or 0)})
+                except (KeyError, TypeError, ValueError):
+                    continue
+            out[key] = rows
+        return out
+
     def price_history(self, slug: str, interval: str = "INTERVAL_ALL", fidelity: int = 180) -> list[tuple[int, float, float]]:
         """(timestamp, ask of "Yes", ask of "No") observations of the order book.
 

@@ -397,6 +397,21 @@ kept from the same 313 games, 61 of them UTR, and the order system was
 rehearsing on UTR. No errors. The run is still going. Today's markets and
 games count for neither test.
 
+**18 November, 16:47 UTC. The exchange publishes its own reference
+prices, and the recorder now keeps them.** Its documentation lists an
+"Asset Prices" call that needs no key: the price its gold, silver and coin
+markets settle on, as candles down to one second
+(`/v1/asset-prices/history`; for gold and silver a Chainlink spot stream,
+for the coins the market's reference index). One-minute candles go back to
+20 October for gold and to 1 September for Bitcoin. The recorder now
+writes fifteen-second candles of each market's asset beside the books
+(`prices.csv.gz`), from the job's next run at about 20:28 UTC. Nothing in
+test G1 uses them: its rule stands at other people's prices and has no
+view of its own. They are there so that each paper fill can be set
+against where the price went in the minutes after it, which says in days
+what day-end results would take weeks to say, and so that a rule with a
+view of its own can be tried on the same recordings later.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because

@@ -16,6 +16,7 @@ Files, under ``state/us-top/runs/<run>/``:
 
     books.csv.gz   every reading: both sides of the book to twelve levels, the totals traded, the last, lowest and highest trade
     markets.csv    each market read: its programme, pool, target size, discount factor, maximum spread, and what it asks
+    prices.csv.gz  the exchange's own reference price of each market's asset, as fifteen-second candles (added 18 November 2026)
 """
 
 from __future__ import annotations
@@ -43,7 +44,9 @@ DATED = re.compile(r"^(?P<stem>.+?)-(?P<date>\d{4}-\d{2}-\d{2})-(?P<hhmm>\d{4})z
 
 BOOK_FIELDS = ["run", "ts", "slug", "state", "tx", "bids", "asks", "traded", "notional", "last", "last_t", "low", "low_t", "high", "high_t", "open_interest"]
 MARKET_FIELDS = ["run", "slug", "program", "pool", "target", "discount", "max_spread", "period", "question", "window_start", "window_end", "end", "price_to_beat",
-                 "first_seen"]
+                 "first_seen", "asset"]
+PRICE_FIELDS = ["run", "asset", "ts", "open", "high", "low", "close", "ticks"]
+CANDLE = 15               # seconds in one candle of the reference price
 LOG_FIELDS = ["run", "started", "ended", "minutes", "cycles", "schedule_reads", "books", "errors", "markets"]
 
 
@@ -88,8 +91,11 @@ def market_terms(market: dict[str, Any]) -> dict[str, Any]:
     """What one such market asks, from the exchange's description of it."""
     t = market.get("assetPriceTerms") or {}
     beat = t.get("priceToBeat") or {}
+    a = t.get("asset") or {}
+    asset = f"{str(a.get('assetClass') or '').replace('ASSET_CLASS_', '').lower()}:{a.get('symbol')}" if a.get("symbol") and a.get("assetClass") else None
     return {"question": market.get("question") or "", "window_start": _when(t.get("windowStart")), "window_end": _when(t.get("windowEnd")),
-            "end": _when(market.get("endDate")), "price_to_beat": _amount(beat) if beat else None, "next_window_start": t.get("nextWindowStart")}
+            "end": _when(market.get("endDate")), "price_to_beat": _amount(beat) if beat else None, "next_window_start": t.get("nextWindowStart"),
+            "asset": asset}
 
 
 def _short(x: float, places: int) -> str:
@@ -170,6 +176,8 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
     was_read: set[str] = set()                      # markets a book was read of in this run
     described: set[str] = set()
     books: list[dict[str, Any]] = []
+    prices: list[dict[str, Any]] = []
+    last_candle: dict[str, int] = {}                # the start of the newest finished candle kept, by asset
     for slug, terms in earlier(state, programmes).items():
         known[slug] = {**terms, "first_seen": round(started, 1)}
         gone[slug] = -1e18                          # a market of an earlier run: not read, only asked what follows it
@@ -228,6 +236,26 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
             rows = [{"run": run_id, **m} for s, m in known.items() if s in was_read]
         _write_gz(out / "books.csv.gz", BOOK_FIELDS, books)
         _write(out / "markets.csv", MARKET_FIELDS, rows)
+        _write_gz(out / "prices.csv.gz", PRICE_FIELDS, prices)
+
+    def read_prices(t: float, slugs: list[str]) -> None:
+        """Keep the finished candles of the reference price of each asset whose market is being read. One request a sweep."""
+        with lock:
+            assets = sorted({known[s]["asset"] for s in slugs if known.get(s, {}).get("asset")})
+        if not assets:
+            return
+        since = min((last_candle.get(a, 0) for a in assets), default=0)
+        start = max(since + CANDLE, int(t) - 3600) if since else int(t) - 120
+        try:
+            got = us.asset_prices(assets, start, 0, f"{CANDLE}S")
+        except Exception:
+            counts["errors"] += 1
+            return
+        for asset, candles in got.items():
+            for c in candles:
+                if c["ts"] > last_candle.get(asset, 0) and c["ts"] + CANDLE <= t:      # the candle in progress waits for the next sweep
+                    prices.append({"run": run_id, "asset": asset, **c})
+                    last_candle[asset] = c["ts"]
 
     def one(slug: str) -> tuple[str, float, dict[str, Any] | None]:
         try:
@@ -280,6 +308,7 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
                         gone.setdefault(slug, ts)
                     else:
                         gone.pop(slug, None)
+            read_prices(now(), active)
         cycles += 1
         if now() - flushed >= 600:
             flush()

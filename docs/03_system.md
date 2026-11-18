@@ -642,6 +642,7 @@ kht us-top --state state/us-top --minutes 300
 |---|---|
 | `books.csv.gz` | One row a reading: both sides of the book to twelve levels (`price:size;price:size`, best first), the running totals of contracts and dollars traded, the last, lowest and highest trade with their times |
 | `markets.csv` | Each market read: its programme, pool, target size, discount factor and maximum spread, the start and end of its window, the price to beat |
+| `prices.csv.gz` | The exchange's own reference price of each market's asset, the price it settles on, as fifteen-second candles (`PolymarketUS.asset_prices`, public and keyless) |
 
 It finds the markets in the reward schedule, which it reads every quarter
 of an hour in a second thread so that no reading waits for it, and it

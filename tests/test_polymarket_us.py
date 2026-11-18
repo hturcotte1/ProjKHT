@@ -51,3 +51,24 @@ def test_yes_settlement_reads_the_first_outcome_price_of_a_resolved_market_only(
     assert yes_settlement({"status": "MARKET_STATUS_OPEN", "outcomePrices": json.dumps(["0.15", "0.85"])}) is None
     assert yes_settlement({"status": "MARKET_STATUS_RESOLVED", "outcomePrices": "not json"}) is None
     assert GATEWAY.startswith("https://")
+
+
+def test_asset_prices_reads_candles_by_asset_and_skips_malformed_ones():
+    class Prices(FakeHttp):
+        def get(self, url, params=None, **kw):
+            self.calls.append((url, dict(params or {})))
+            return {"series": [
+                {"asset": {"assetClass": "ASSET_CLASS_COMMODITY", "symbol": "gold"}, "bucket": "ASSET_PRICE_BUCKET_15S",
+                 "candles": [{"timestamp": "1795020225", "open": "3737.73", "high": "3738.38", "low": "3737.61", "close": "3738.38", "tickCount": 14},
+                             {"timestamp": 1795020240, "open": "3738.38", "high": "3738.38", "low": "3738.38", "close": "3738.38"},
+                             {"timestamp": 1795020255, "open": "soon"}]},
+                {"asset": {"assetClass": "ASSET_CLASS_CRYPTO", "symbol": "btc"}, "candles": []}]}
+
+    http = Prices({})
+    got = PolymarketUS(http).asset_prices(["commodity:gold", "crypto:btc"], 1795020200, bucket="15S")
+    assert set(got) == {"commodity:gold", "crypto:btc"} and got["crypto:btc"] == []
+    assert got["commodity:gold"] == [{"ts": 1795020225, "open": 3737.73, "high": 3738.38, "low": 3737.61, "close": 3738.38, "ticks": 14},
+                                     {"ts": 1795020240, "open": 3738.38, "high": 3738.38, "low": 3738.38, "close": 3738.38, "ticks": 0}]
+    url, params = http.calls[0]
+    assert url == GATEWAY + "/v1/asset-prices/history"
+    assert params == {"assets": ["commodity:gold", "crypto:btc"], "from": 1795020200, "to": 0, "bucket": "ASSET_PRICE_BUCKET_15S"}
