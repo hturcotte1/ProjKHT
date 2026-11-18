@@ -1771,3 +1771,799 @@ cpc-btc-updown-1h-2026-11-16-0700z,btc,up_down,1h,1794816000.0,20,within reach
 cpceth-eth-updown-1h-2026-11-16-0700z,eth,up_down,1h,1794816000.0,20,within reach
 cpcsol-sol-updown-1h-2026-11-16-0700z,sol,up_down,1h,1794816000.0,20,within reach
 cpcxrp-xrp-updown-1h-2026-11-16-0700z,xrp,up_down,1h,1794816000.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-0800z,btc,up_down,1h,1794819600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-0800z,eth,up_down,1h,1794819600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-0800z,sol,up_down,1h,1794819600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-0800z,xrp,up_down,1h,1794819600.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-0900z,btc,up_down,1h,1794823200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-0900z,eth,up_down,1h,1794823200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-0900z,sol,up_down,1h,1794823200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-0900z,xrp,up_down,1h,1794823200.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-1000z,btc,up_down,1h,1794826800.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-1000z,eth,up_down,1h,1794826800.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-1000z,sol,up_down,1h,1794826800.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-1000z,xrp,up_down,1h,1794826800.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-1100z,btc,up_down,1h,1794830400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-1100z,eth,up_down,1h,1794830400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-1100z,sol,up_down,1h,1794830400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-1100z,xrp,up_down,1h,1794830400.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-1200z,btc,up_down,1h,1794834000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-1200z,eth,up_down,1h,1794834000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-1200z,sol,up_down,1h,1794834000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-1200z,xrp,up_down,1h,1794834000.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-1300z,btc,up_down,1h,1794837600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-1300z,eth,up_down,1h,1794837600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-1300z,sol,up_down,1h,1794837600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-1300z,xrp,up_down,1h,1794837600.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-1400z,btc,up_down,1h,1794841200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-1400z,eth,up_down,1h,1794841200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-1400z,sol,up_down,1h,1794841200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-1400z,xrp,up_down,1h,1794841200.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-1500z,btc,up_down,1h,1794844800.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-1500z,eth,up_down,1h,1794844800.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-1500z,sol,up_down,1h,1794844800.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-1500z,xrp,up_down,1h,1794844800.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-1600z,btc,up_down,1h,1794848400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-1600z,eth,up_down,1h,1794848400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-1600z,sol,up_down,1h,1794848400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-1600z,xrp,up_down,1h,1794848400.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-1700z,btc,up_down,1h,1794852000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-1700z,eth,up_down,1h,1794852000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-1700z,sol,up_down,1h,1794852000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-1700z,xrp,up_down,1h,1794852000.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-1800z,btc,up_down,1h,1794855600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-1800z,eth,up_down,1h,1794855600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-1800z,sol,up_down,1h,1794855600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-1800z,xrp,up_down,1h,1794855600.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-1900z,btc,up_down,1h,1794859200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-1900z,eth,up_down,1h,1794859200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-1900z,sol,up_down,1h,1794859200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-1900z,xrp,up_down,1h,1794859200.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-2000z,btc,up_down,1h,1794862800.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-2000z,eth,up_down,1h,1794862800.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-2000z,sol,up_down,1h,1794862800.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-2000z,xrp,up_down,1h,1794862800.0,20,within reach
+cpc-btc-above-day-2026-11-16-54750,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-55000,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-55250,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-55500,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-55750,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-56000,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-56250,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-56500,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-56750,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-57000,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-57250,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-57500,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-57750,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-58000,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-58250,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-58500,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-58750,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-59000,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-59250,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-59500,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-59750,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-60000,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-60250,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-60500,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-60750,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-61000,btc,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-16-61250,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-61500,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-61750,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-62000,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-62250,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-62500,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-62750,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-63000,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-63250,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-63500,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-63750,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-64000,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-64250,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-64500,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-64750,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-65000,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-65250,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-65500,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-65750,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-66000,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-66250,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-66500,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-66750,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-67000,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-67250,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-67500,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-67750,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-68000,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-68250,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-68500,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-68750,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-69000,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-69250,btc,above_below,daily,1794866400.0,12,within reach
+cpc-btc-above-day-2026-11-16-69500,btc,above_below,daily,1794866400.0,10,trade
+cpc-btc-above-day-2026-11-16-69750,btc,above_below,daily,1794866400.0,10,trade
+cpc-btc-above-day-2026-11-16-70000,btc,above_below,daily,1794866400.0,10,trade
+cpc-btc-above-day-2026-11-16-70250,btc,above_below,daily,1794866400.0,10,trade
+cpc-btc-above-day-2026-11-16-70500,btc,above_below,daily,1794866400.0,10,trade
+cpc-btc-above-day-2026-11-16-70750,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-71000,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-71250,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-71500,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-71750,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-72000,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-72250,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-72500,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-72750,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-73000,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-73250,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-73500,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-73750,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-74000,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-74250,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-74500,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-74750,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-75000,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-16-75250,btc,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-54750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-55000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-55250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-55500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-55750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-56000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-56250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-56500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-56750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-57000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-57250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-57500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-57750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-58000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-58250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-58500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-58750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-59000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-59250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-59500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-59750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-60000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-60250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-60500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-60750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-61000,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-61250,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-61500,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-61750,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-62000,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-62250,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-62500,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-62750,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-63000,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-63250,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-63500,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-63750,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-64000,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-64250,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-64500,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-64750,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-65000,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-65250,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-65500,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-65750,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-66000,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-66250,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-66500,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-66750,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-67000,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-67250,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-67500,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-67750,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-68000,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-68250,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-68500,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-68750,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-69000,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-69250,btc,range,daily,1794866400.0,11,within reach
+cpc-btc-range-day-2026-11-16-69500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-69750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-70000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-70250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-70500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-70750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-71000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-71250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-71500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-71750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-72000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-72250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-72500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-72750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-73000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-73250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-73500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-73750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-74000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-74250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-74500,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-74750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-75000,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-above-75250,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-16-below-54750,btc,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpc-btc-updown-1d-2026-11-15-2200z,btc,up_down,1d,1794866400.0,11,within reach
+cpc-btc-updown-1h-2026-11-16-2100z,btc,up_down,1h,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1460,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1480,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1500,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1520,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1540,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1560,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1580,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1600,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1620,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1640,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1660,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1680,eth,above_below,daily,1794866400.0,11,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-16-1700,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1720,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1740,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1760,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1780,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1800,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1820,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1840,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1860,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1880,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1900,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1920,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1940,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1960,eth,above_below,daily,1794866400.0,11,within reach
+cpceth-eth-above-day-2026-11-16-1980,eth,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-16-2000,eth,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-16-2020,eth,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-16-2040,eth,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-16-2060,eth,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-16-2080,eth,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-16-2100,eth,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-16-2120,eth,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-16-2140,eth,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-16-2160,eth,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-16-2180,eth,above_below,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1460,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1480,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1500,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1520,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1540,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1560,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1580,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1600,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1620,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1640,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1660,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-1680,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1700,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1720,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1740,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1760,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1780,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1800,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1820,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1840,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1860,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1880,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1900,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1920,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1940,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1960,eth,range,daily,1794866400.0,11,within reach
+cpceth-eth-range-day-2026-11-16-1980,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-2000,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-2020,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-2040,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-2060,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-2080,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-2100,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-2120,eth,range,daily,1794866400.0,11,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-2140,eth,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-2160,eth,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-above-2180,eth,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-16-below-1460,eth,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpceth-eth-updown-1d-2026-11-15-2200z,eth,up_down,1d,1794866400.0,12,within reach
+cpceth-eth-updown-1h-2026-11-16-2100z,eth,up_down,1h,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-57,sol,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-16-58,sol,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-16-59,sol,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-16-60,sol,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-16-61,sol,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-16-62,sol,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-16-63,sol,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-16-64,sol,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-16-65,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-66,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-67,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-68,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-69,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-70,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-71,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-72,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-73,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-74,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-75,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-76,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-77,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-78,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-79,sol,above_below,daily,1794866400.0,12,within reach
+cpcsol-sol-above-day-2026-11-16-80,sol,above_below,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-above-day-2026-11-16-81,sol,above_below,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-above-day-2026-11-16-82,sol,above_below,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-above-day-2026-11-16-83,sol,above_below,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-above-day-2026-11-16-84,sol,above_below,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-above-day-2026-11-16-85,sol,above_below,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-above-day-2026-11-16-86,sol,above_below,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-above-day-2026-11-16-87,sol,above_below,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-57,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-58,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-59,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-60,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-61,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-62,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-63,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-64,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-65,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-66,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-67,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-68,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-69,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-70,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-71,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-72,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-73,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-74,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-75,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-76,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-77,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-78,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-79,sol,range,daily,1794866400.0,12,within reach
+cpcsol-sol-range-day-2026-11-16-80,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-81,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-82,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-83,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-84,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-85,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-86,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-above-87,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-16-below-57,sol,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcsol-sol-updown-1d-2026-11-15-2200z,sol,up_down,1d,1794866400.0,12,within reach
+cpcsol-sol-updown-1h-2026-11-16-2100z,sol,up_down,1h,1794866400.0,12,within reach
+cpcxrp-xrp-above-day-2026-11-16-0p7,xrp,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcxrp-xrp-above-day-2026-11-16-0p75,xrp,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcxrp-xrp-above-day-2026-11-16-0p8,xrp,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcxrp-xrp-above-day-2026-11-16-0p85,xrp,above_below,daily,1794866400.0,12,"out of reach, nobody offering"
+cpcxrp-xrp-above-day-2026-11-16-0p9,xrp,above_below,daily,1794866400.0,12,within reach
+cpcxrp-xrp-above-day-2026-11-16-0p95,xrp,above_below,daily,1794866400.0,12,within reach
+cpcxrp-xrp-above-day-2026-11-16-1,xrp,above_below,daily,1794866400.0,12,within reach
+cpcxrp-xrp-above-day-2026-11-16-1p05,xrp,above_below,daily,1794866400.0,12,within reach
+cpcxrp-xrp-above-day-2026-11-16-1p1,xrp,above_below,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcxrp-xrp-above-day-2026-11-16-1p15,xrp,above_below,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcxrp-xrp-above-day-2026-11-16-1p2,xrp,above_below,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-16-0p7,xrp,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-16-0p75,xrp,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-16-0p8,xrp,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-16-0p85,xrp,range,daily,1794866400.0,12,within reach
+cpcxrp-xrp-range-day-2026-11-16-0p9,xrp,range,daily,1794866400.0,12,within reach
+cpcxrp-xrp-range-day-2026-11-16-0p95,xrp,range,daily,1794866400.0,12,within reach
+cpcxrp-xrp-range-day-2026-11-16-1,xrp,range,daily,1794866400.0,12,within reach
+cpcxrp-xrp-range-day-2026-11-16-1p05,xrp,range,daily,1794866400.0,12,within reach
+cpcxrp-xrp-range-day-2026-11-16-1p1,xrp,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-16-1p15,xrp,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-16-above-1p2,xrp,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-16-below-0p7,xrp,range,daily,1794866400.0,12,"out of reach, nobody bidding"
+cpcxrp-xrp-updown-1d-2026-11-15-2200z,xrp,up_down,1d,1794866400.0,12,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-2100z,xrp,up_down,1h,1794866400.0,12,within reach
+cpc-btc-updown-1h-2026-11-16-2200z,btc,up_down,1h,1794870000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-2200z,eth,up_down,1h,1794870000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-2200z,sol,up_down,1h,1794870000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-2200z,xrp,up_down,1h,1794870000.0,20,within reach
+cpc-btc-updown-1h-2026-11-16-2300z,btc,up_down,1h,1794873600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-16-2300z,eth,up_down,1h,1794873600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-16-2300z,sol,up_down,1h,1794873600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-16-2300z,xrp,up_down,1h,1794873600.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-0000z,btc,up_down,1h,1794877200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-0000z,eth,up_down,1h,1794877200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-0000z,sol,up_down,1h,1794877200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-0000z,xrp,up_down,1h,1794877200.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-0100z,btc,up_down,1h,1794880800.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-0100z,eth,up_down,1h,1794880800.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-0100z,sol,up_down,1h,1794880800.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-0100z,xrp,up_down,1h,1794880800.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-0200z,btc,up_down,1h,1794884400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-0200z,eth,up_down,1h,1794884400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-0200z,sol,up_down,1h,1794884400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-0200z,xrp,up_down,1h,1794884400.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-0300z,btc,up_down,1h,1794888000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-0300z,eth,up_down,1h,1794888000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-0300z,sol,up_down,1h,1794888000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-0300z,xrp,up_down,1h,1794888000.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-0400z,btc,up_down,1h,1794891600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-0400z,eth,up_down,1h,1794891600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-0400z,sol,up_down,1h,1794891600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-0400z,xrp,up_down,1h,1794891600.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-0500z,btc,up_down,1h,1794895200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-0500z,eth,up_down,1h,1794895200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-0500z,sol,up_down,1h,1794895200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-0500z,xrp,up_down,1h,1794895200.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-0600z,btc,up_down,1h,1794898800.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-0600z,eth,up_down,1h,1794898800.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-0600z,sol,up_down,1h,1794898800.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-0600z,xrp,up_down,1h,1794898800.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-0700z,btc,up_down,1h,1794902400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-0700z,eth,up_down,1h,1794902400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-0700z,sol,up_down,1h,1794902400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-0700z,xrp,up_down,1h,1794902400.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-0800z,btc,up_down,1h,1794906000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-0800z,eth,up_down,1h,1794906000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-0800z,sol,up_down,1h,1794906000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-0800z,xrp,up_down,1h,1794906000.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-0900z,btc,up_down,1h,1794909600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-0900z,eth,up_down,1h,1794909600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-0900z,sol,up_down,1h,1794909600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-0900z,xrp,up_down,1h,1794909600.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-1000z,btc,up_down,1h,1794913200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-1000z,eth,up_down,1h,1794913200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-1000z,sol,up_down,1h,1794913200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-1000z,xrp,up_down,1h,1794913200.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-1100z,btc,up_down,1h,1794916800.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-1100z,eth,up_down,1h,1794916800.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-1100z,sol,up_down,1h,1794916800.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-1100z,xrp,up_down,1h,1794916800.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-1200z,btc,up_down,1h,1794920400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-1200z,eth,up_down,1h,1794920400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-1200z,sol,up_down,1h,1794920400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-1200z,xrp,up_down,1h,1794920400.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-1300z,btc,up_down,1h,1794924000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-1300z,eth,up_down,1h,1794924000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-1300z,sol,up_down,1h,1794924000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-1300z,xrp,up_down,1h,1794924000.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-1400z,btc,up_down,1h,1794927600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-1400z,eth,up_down,1h,1794927600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-1400z,sol,up_down,1h,1794927600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-1400z,xrp,up_down,1h,1794927600.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-1500z,btc,up_down,1h,1794931200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-1500z,eth,up_down,1h,1794931200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-1500z,sol,up_down,1h,1794931200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-1500z,xrp,up_down,1h,1794931200.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-1600z,btc,up_down,1h,1794934800.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-1600z,eth,up_down,1h,1794934800.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-1600z,sol,up_down,1h,1794934800.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-1600z,xrp,up_down,1h,1794934800.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-1700z,btc,up_down,1h,1794938400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-1700z,eth,up_down,1h,1794938400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-1700z,sol,up_down,1h,1794938400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-1700z,xrp,up_down,1h,1794938400.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-1800z,btc,up_down,1h,1794942000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-1800z,eth,up_down,1h,1794942000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-1800z,sol,up_down,1h,1794942000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-1800z,xrp,up_down,1h,1794942000.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-1900z,btc,up_down,1h,1794945600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-1900z,eth,up_down,1h,1794945600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-1900z,sol,up_down,1h,1794945600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-1900z,xrp,up_down,1h,1794945600.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-2000z,btc,up_down,1h,1794949200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-2000z,eth,up_down,1h,1794949200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-2000z,sol,up_down,1h,1794949200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-2000z,xrp,up_down,1h,1794949200.0,20,within reach
+cpc-btc-above-day-2026-11-17-56750,btc,above_below,daily,1794952800.0,14,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-17-57000,btc,above_below,daily,1794952800.0,14,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-17-57250,btc,above_below,daily,1794952800.0,14,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-17-57500,btc,above_below,daily,1794952800.0,14,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-17-57750,btc,above_below,daily,1794952800.0,14,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-17-58000,btc,above_below,daily,1794952800.0,14,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-17-58250,btc,above_below,daily,1794952800.0,14,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-17-58500,btc,above_below,daily,1794952800.0,14,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-17-58750,btc,above_below,daily,1794952800.0,14,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-17-59000,btc,above_below,daily,1794952800.0,14,"out of reach, nobody offering"
+cpc-btc-above-day-2026-11-17-59250,btc,above_below,daily,1794952800.0,12,trade
+cpc-btc-above-day-2026-11-17-59500,btc,above_below,daily,1794952800.0,12,trade
+cpc-btc-above-day-2026-11-17-59750,btc,above_below,daily,1794952800.0,12,trade
+cpc-btc-above-day-2026-11-17-60000,btc,above_below,daily,1794952800.0,12,trade
+cpc-btc-above-day-2026-11-17-60250,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-60500,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-60750,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-61000,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-61250,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-61500,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-61750,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-62000,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-62250,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-62500,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-62750,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-63000,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-63250,btc,above_below,daily,1794952800.0,14,within reach
+cpc-btc-above-day-2026-11-17-63500,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-63750,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-64000,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-64250,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-64500,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-64750,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-65000,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-65250,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-65500,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-65750,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-66000,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-66250,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-66500,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-66750,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-67000,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-67250,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-67500,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-67750,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-68000,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-68250,btc,above_below,daily,1794952800.0,13,within reach
+cpc-btc-above-day-2026-11-17-68500,btc,above_below,daily,1794952800.0,12,trade
+cpc-btc-above-day-2026-11-17-68750,btc,above_below,daily,1794952800.0,12,trade
+cpc-btc-above-day-2026-11-17-69000,btc,above_below,daily,1794952800.0,12,trade
+cpc-btc-above-day-2026-11-17-69250,btc,above_below,daily,1794952800.0,12,trade
+cpc-btc-above-day-2026-11-17-69500,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-69750,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-70000,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-70250,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-70500,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-70750,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-71000,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-71250,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-71500,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-71750,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-72000,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-72250,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-72500,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-72750,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-73000,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-above-day-2026-11-17-73250,btc,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-56750,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-57000,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-57250,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-57500,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-57750,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-58000,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-58250,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-58500,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-58750,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-59000,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-59250,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-59500,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-59750,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-60000,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-60250,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-60500,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-60750,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-61000,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-61250,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-61500,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-61750,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-62000,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-62250,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-62500,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-62750,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-63000,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-63250,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-63500,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-63750,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-64000,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-64250,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-64500,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-64750,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-65000,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-65250,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-65500,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-65750,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-66000,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-66250,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-66500,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-66750,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-67000,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-67250,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-67500,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-67750,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-68000,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-68250,btc,range,daily,1794952800.0,13,within reach
+cpc-btc-range-day-2026-11-17-68500,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-68750,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-69000,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-69250,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-69500,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-69750,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-70000,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-70250,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-70500,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-70750,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-71000,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-71250,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-71500,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-71750,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-72000,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-72250,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-72500,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-72750,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-73000,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-above-73250,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-range-day-2026-11-17-below-56750,btc,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpc-btc-updown-1d-2026-11-16-2200z,btc,up_down,1d,1794952800.0,13,within reach
+cpc-btc-updown-1h-2026-11-17-2100z,btc,up_down,1h,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1520,eth,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-17-1540,eth,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-17-1560,eth,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-17-1580,eth,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-17-1600,eth,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-17-1620,eth,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-17-1640,eth,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-17-1660,eth,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpceth-eth-above-day-2026-11-17-1680,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1700,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1720,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1740,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1760,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1780,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1800,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1820,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1840,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1860,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1880,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1900,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1920,eth,above_below,daily,1794952800.0,13,within reach
+cpceth-eth-above-day-2026-11-17-1940,eth,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-17-1960,eth,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-17-1980,eth,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-17-2000,eth,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-17-2020,eth,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-17-2040,eth,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-17-2060,eth,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-17-2080,eth,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-17-2100,eth,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-above-day-2026-11-17-2120,eth,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-1520,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-1540,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-1560,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-1580,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-1600,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-1620,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-1640,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-1660,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1680,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1700,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1720,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1740,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1760,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1780,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1800,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1820,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1840,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1860,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1880,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1900,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1920,eth,range,daily,1794952800.0,13,within reach
+cpceth-eth-range-day-2026-11-17-1940,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-1960,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-1980,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-2000,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-2020,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-2040,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-2060,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-2080,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-2100,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-above-2120,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-range-day-2026-11-17-below-1520,eth,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpceth-eth-updown-1d-2026-11-16-2200z,eth,up_down,1d,1794952800.0,13,within reach
+cpceth-eth-updown-1h-2026-11-17-2100z,eth,up_down,1h,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-56,sol,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-17-57,sol,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-17-58,sol,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-17-59,sol,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-17-60,sol,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-17-61,sol,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-17-62,sol,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-17-63,sol,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-17-64,sol,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-17-65,sol,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcsol-sol-above-day-2026-11-17-66,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-67,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-68,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-69,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-70,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-71,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-72,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-73,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-74,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-75,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-76,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-77,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-78,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-79,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-80,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-81,sol,above_below,daily,1794952800.0,13,within reach
+cpcsol-sol-above-day-2026-11-17-82,sol,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-above-day-2026-11-17-83,sol,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-above-day-2026-11-17-84,sol,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-above-day-2026-11-17-85,sol,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-above-day-2026-11-17-86,sol,above_below,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-56,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-57,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-58,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-59,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-60,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-61,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-62,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-63,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-64,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-65,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-66,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-67,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-68,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-69,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-70,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-71,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-72,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-73,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-74,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-75,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-76,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-77,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-78,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-79,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-80,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-81,sol,range,daily,1794952800.0,13,within reach
+cpcsol-sol-range-day-2026-11-17-82,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-83,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-84,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-85,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-above-86,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-range-day-2026-11-17-below-56,sol,range,daily,1794952800.0,13,"out of reach, nobody bidding"
+cpcsol-sol-updown-1d-2026-11-16-2200z,sol,up_down,1d,1794952800.0,13,within reach
+cpcsol-sol-updown-1h-2026-11-17-2100z,sol,up_down,1h,1794952800.0,13,within reach
+cpcxrp-xrp-above-day-2026-11-17-0p7,xrp,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcxrp-xrp-above-day-2026-11-17-0p75,xrp,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcxrp-xrp-above-day-2026-11-17-0p8,xrp,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcxrp-xrp-above-day-2026-11-17-0p85,xrp,above_below,daily,1794952800.0,13,"out of reach, nobody offering"
+cpcxrp-xrp-above-day-2026-11-17-0p9,xrp,above_below,daily,1794952800.0,13,within reach
+cpcxrp-xrp-above-day-2026-11-17-0p95,xrp,above_below,daily,1794952800.0,14,within reach
+cpcxrp-xrp-above-day-2026-11-17-1,xrp,above_below,daily,1794952800.0,14,within reach
+cpcxrp-xrp-above-day-2026-11-17-1p05,xrp,above_below,daily,1794952800.0,14,within reach
+cpcxrp-xrp-above-day-2026-11-17-1p1,xrp,above_below,daily,1794952800.0,14,"out of reach, nobody bidding"
+cpcxrp-xrp-above-day-2026-11-17-1p15,xrp,above_below,daily,1794952800.0,14,"out of reach, nobody bidding"
+cpcxrp-xrp-above-day-2026-11-17-1p2,xrp,above_below,daily,1794952800.0,14,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-17-0p7,xrp,range,daily,1794952800.0,14,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-17-0p75,xrp,range,daily,1794952800.0,14,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-17-0p8,xrp,range,daily,1794952800.0,14,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-17-0p85,xrp,range,daily,1794952800.0,14,within reach
+cpcxrp-xrp-range-day-2026-11-17-0p9,xrp,range,daily,1794952800.0,14,within reach
+cpcxrp-xrp-range-day-2026-11-17-0p95,xrp,range,daily,1794952800.0,14,within reach
+cpcxrp-xrp-range-day-2026-11-17-1,xrp,range,daily,1794952800.0,14,within reach
+cpcxrp-xrp-range-day-2026-11-17-1p05,xrp,range,daily,1794952800.0,14,within reach
+cpcxrp-xrp-range-day-2026-11-17-1p1,xrp,range,daily,1794952800.0,14,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-17-1p15,xrp,range,daily,1794952800.0,14,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-17-above-1p2,xrp,range,daily,1794952800.0,14,"out of reach, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-17-below-0p7,xrp,range,daily,1794952800.0,14,"out of reach, nobody bidding"
+cpcxrp-xrp-updown-1d-2026-11-16-2200z,xrp,up_down,1d,1794952800.0,14,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-2100z,xrp,up_down,1h,1794952800.0,14,within reach
+cpc-btc-updown-1h-2026-11-17-2200z,btc,up_down,1h,1794956400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-2200z,eth,up_down,1h,1794956400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-2200z,sol,up_down,1h,1794956400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-2200z,xrp,up_down,1h,1794956400.0,20,within reach
+cpc-btc-updown-1h-2026-11-17-2300z,btc,up_down,1h,1794960000.0,20,within reach
+cpceth-eth-updown-1h-2026-11-17-2300z,eth,up_down,1h,1794960000.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-17-2300z,sol,up_down,1h,1794960000.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-17-2300z,xrp,up_down,1h,1794960000.0,20,within reach
+cpc-btc-updown-1h-2026-11-18-0000z,btc,up_down,1h,1794963600.0,20,within reach
+cpceth-eth-updown-1h-2026-11-18-0000z,eth,up_down,1h,1794963600.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-18-0000z,sol,up_down,1h,1794963600.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-18-0000z,xrp,up_down,1h,1794963600.0,20,within reach
+cpc-btc-updown-1h-2026-11-18-0100z,btc,up_down,1h,1794967200.0,20,within reach
+cpceth-eth-updown-1h-2026-11-18-0100z,eth,up_down,1h,1794967200.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-18-0100z,sol,up_down,1h,1794967200.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-18-0100z,xrp,up_down,1h,1794967200.0,20,within reach
+cpc-btc-updown-1h-2026-11-18-0200z,btc,up_down,1h,1794970800.0,20,within reach
+cpceth-eth-updown-1h-2026-11-18-0200z,eth,up_down,1h,1794970800.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-18-0200z,sol,up_down,1h,1794970800.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-18-0200z,xrp,up_down,1h,1794970800.0,20,within reach
+cpc-btc-updown-1h-2026-11-18-0300z,btc,up_down,1h,1794974400.0,20,within reach
+cpceth-eth-updown-1h-2026-11-18-0300z,eth,up_down,1h,1794974400.0,20,within reach
+cpcsol-sol-updown-1h-2026-11-18-0300z,sol,up_down,1h,1794974400.0,20,within reach
+cpcxrp-xrp-updown-1h-2026-11-18-0300z,xrp,up_down,1h,1794974400.0,20,within reach

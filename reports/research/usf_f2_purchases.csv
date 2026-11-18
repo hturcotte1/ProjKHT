@@ -1,141 +1,309 @@
-ts,slug,shape,dte,ts2,no_ask,bid_qty1,cost,contracts,event_id,event_title,label,category
-1794378035,aaagaspc-usgas-highm-2026-11-30-gt4pt2500,collection,26.943344907407408,1794388262,0.97,8.64,0.9727644999999999,8.64,217407.0,How High Will US Gas Prices Get This Month?,Above $4.2500,macro
-1794378035,ccpc-bilbrd-1album-any2026-alewar,collection,59.902372685185185,1794388262,0.97,6077.4,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Alex Warren,culture
-1794378035,ccpc-bilbrd-1album-any2026-benboo,collection,59.902372685185185,1794388262,0.95,1000.02,0.9545125,52.631578947368425,59385.0,Who Will Have a #1 Album in 2026?,Benson Boone,culture
-1794378035,ccpc-bilbrd-1album-any2026-chaxcx,collection,59.902372685185185,1794388262,0.97,3429.65,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Charli xcx,culture
-1794378035,ccpc-bilbrd-1album-any2026-coldpl,collection,59.902372685185185,1794388262,0.97,0.01,0.9727644999999999,0.01,59385.0,Who Will Have a #1 Album in 2026?,Coldplay,culture
-1794378035,ccpc-bilbrd-1album-any2026-doechi,collection,59.902372685185185,1794388262,0.97,1.01,0.9727644999999999,1.01,59385.0,Who Will Have a #1 Album in 2026?,Doechii,culture
-1794378035,ccpc-bilbrd-1song-any2026-trasco,collection,59.902372685185185,1794388262,0.97,9.97,0.9727644999999999,9.97,59386.0,Who Will Have a #1 Song in 2026?,Travis Scott,culture
-1794378035,ccpc-bilbrd-1song-any2026-thewee,collection,59.902372685185185,1794388262,0.97,5.83,0.9727644999999999,5.83,59386.0,Who Will Have a #1 Song in 2026?,The Weeknd,culture
-1794378035,ccpc-bilbrd-1song-any-11-24-2026-stuson,collection,27.902372685185185,1794388262,0.98,12.52,0.981862,12.52,198433.0,Which Songs Will Be Billboard #1 in November?,Stupid Song - Olivia Rodrigo,culture
-1794378035,ccpc-bilbrd-1song-any2026-aaproc,collection,59.902372685185185,1794388262,0.98,0.02,0.981862,0.02,59386.0,Who Will Have a #1 Song in 2026?,A$AP Rocky,culture
-1794378035,ccpc-bilbrd-1song-any2026-bileil,collection,59.902372685185185,1794388262,0.9299999999999999,0.02,0.9361845,0.02,59386.0,Who Will Have a #1 Song in 2026?,Billie Eilish,culture
-1794378035,ccpc-bilbrd-1song-any2026-tylthe,collection,59.902372685185185,1794388262,0.98,1.0,0.981862,1.0,59386.0,Who Will Have a #1 Song in 2026?,"Tyler, The Creator",culture
-1794378035,ccpc-bilbrd-1song-any-11-24-2026-hatmad,collection,27.902372685185185,1794388262,0.98,2090.92,0.981862,51.02040816326531,198433.0,Which Songs Will Be Billboard #1 in November?,Hate That I Made You Love Me - Ariana Grande,culture
-1794378035,ccpc-bilbrd-1song-any-11-24-2026-houwif,collection,27.902372685185185,1794388262,0.97,0.01,0.9727644999999999,0.01,198433.0,Which Songs Will Be Billboard #1 in November?,Housewife - Tate McRae,culture
-1794378035,ccpc-bilbrd-1song-any2026-lilbab,collection,59.902372685185185,1794388262,0.97,4.56,0.9727644999999999,4.56,59386.0,Who Will Have a #1 Song in 2026?,Lil Baby,culture
-1794378035,ccpc-bilbrd-1song-any2026-kenlam,collection,59.902372685185185,1794388262,0.97,1.02,0.9727644999999999,1.02,59386.0,Who Will Have a #1 Song in 2026?,Kendrick Lamar,culture
-1794378035,ccpc-bilbrd-1song-any2026-zacbry,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59386.0,Who Will Have a #1 Song in 2026?,Zach Bryan,culture
-1794378035,ccpc-bilbrd-1song-any2026-posmal,collection,59.902372685185185,1794388262,0.97,1.01,0.9727644999999999,1.01,59386.0,Who Will Have a #1 Song in 2026?,Post Malone,culture
-1794378035,rotc-t-thehun-2026-11-23-gte90,collection,26.902372685185185,1794388262,0.97,425.0,0.9727644999999999,51.54639175257732,147770.0,The Hunger Games: Sunrise on the Reaping Rotten Tomatoes Score?,90+,culture
-1794378035,ccpc-bilbrd-1album-any2026-dualip,collection,59.902372685185185,1794388262,0.97,3.55,0.9727644999999999,3.55,59385.0,Who Will Have a #1 Album in 2026?,Dua Lipa,culture
-1794378035,ccpc-bilbrd-1album-any2026-eminem,collection,59.902372685185185,1794388262,0.9299999999999999,0.12,0.9361845,0.12,59385.0,Who Will Have a #1 Album in 2026?,Eminem,culture
-1794378035,ccpc-bilbrd-1album-any2026-lilway,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59385.0,Who Will Have a #1 Album in 2026?,Lil Wayne,culture
-1794378035,ccpc-bilbrd-1album-any2026-youthu,collection,59.902372685185185,1794388262,0.97,200.75,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Young Thug,culture
-1794378035,tac-grammys-nom-bdpr-2026-11-16-worshi,collection,19.902372685185185,1794388262,0.9299999999999999,1000.0,0.9361845,53.763440860215056,162135.0,Grammy Nominees: Best Dance Pop Recording,WORSHIP - ASAKE,culture
-1794378035,ccpc-bilbrd-1album-any2026-lolyou,collection,59.902372685185185,1794388262,0.96,0.03,0.963648,0.03,59385.0,Who Will Have a #1 Album in 2026?,Lola Young,culture
-1794378035,ccpc-bilbrd-1album-any2026-kenlam,collection,59.902372685185185,1794388262,0.91,1.0,0.9177805,1.0,59385.0,Who Will Have a #1 Album in 2026?,Kendrick Lamar,culture
-1794378035,tac-grammys-nom-bpva-2026-11-16-wild,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,WILD - KATSEYE,culture
-1794378035,tac-grammys-nom-bpva-2026-11-16-wildch,collection,19.902372685185185,1794388262,0.97,1000.0,0.9727644999999999,51.54639175257732,162134.0,Grammy Nominees: Best Pop Vocal Album,WILDCHILD - Alex Warren,culture
-1794378035,ccpc-bilbrd-1album-any2026-lilver,collection,59.902372685185185,1794388262,0.97,41.69,0.9727644999999999,41.69,59385.0,Who Will Have a #1 Album in 2026?,Lil Uzi Vert,culture
-1794378035,tac-grammys-nom-bpva-2026-11-16-visito,collection,19.902372685185185,1794388262,0.95,1050.0,0.9545125,52.631578947368425,162134.0,Grammy Nominees: Best Pop Vocal Album,The Visitor - Sienna Spiro,culture
-1794378035,ccpc-bilbrd-1album-any2026-kanwes,collection,59.902372685185185,1794388262,0.91,1.71,0.9177805,1.71,59385.0,Who Will Have a #1 Album in 2026?,Kanye West / Ye,culture
-1794378035,ccpc-bilbrd-1album-any2026-jusbie,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59385.0,Who Will Have a #1 Album in 2026?,Justin Bieber,culture
-1794378035,ccpc-bilbrd-1album-any2026-tatmcr,collection,59.902372685185185,1794388262,0.95,1.42,0.9545125,1.42,59385.0,Who Will Have a #1 Album in 2026?,Tate McRae,culture
-1794378035,ccpc-bilbrd-1album-any2026-trasco,collection,59.902372685185185,1794388262,0.97,1.05,0.9727644999999999,1.05,59385.0,Who Will Have a #1 Album in 2026?,Travis Scott,culture
-1794378035,ccpc-bilbrd-1album-any2026-youaga,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59385.0,Who Will Have a #1 Album in 2026?,YoungBoy Never Broke Again,culture
-1794378035,tac-grammys-nom-aoty-2026-11-16-deadbe,collection,19.902372685185185,1794388262,0.91,18.0,0.9177805,18.0,162110.0,Grammy Nominees: Album of the Year,Deadbeat - Tame Impala,culture
-1794378035,stsc-hormuz-normal-2026-12-31,deadline,50.94402777777778,1794388262,0.92,150486.12,0.926992,54.347826086956516,44402.0,Strait of Hormuz Traffic Returns to Normal?,"By December 31, 2026",geopolitics
-1794378035,tac-grammys-nom-bpva-2026-11-16-its,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,It's Not That Deep - Demi Lovato,culture
-1794378035,aaagaspc-usgas-month-2026-11-30-gt3pt9000,collection,26.943344907407408,1794388262,0.96,4.0,0.963648,4.0,218427.0,US Gas Prices This Month,Above $3.9000,macro
-1794378035,ccpc-bilbrd-1song-any2026-dojcat,collection,59.902372685185185,1794388262,0.97,1.02,0.9727644999999999,1.02,59386.0,Who Will Have a #1 Song in 2026?,Doja Cat,culture
-1794378035,ccpc-bilbrd-1song-any2026-edshe,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59386.0,Who Will Have a #1 Song in 2026?,Ed Sheeran,culture
-1794378035,ccpc-bilbrd-1song-any2026-fut,collection,59.902372685185185,1794388262,0.97,0.01,0.9727644999999999,0.01,59386.0,Who Will Have a #1 Song in 2026?,Future,culture
-1794378035,ccpc-bilbrd-1album-any2026-bileil,collection,59.902372685185185,1794388262,0.96,0.99,0.963648,0.99,59385.0,Who Will Have a #1 Album in 2026?,Billie Eilish,culture
-1794378035,ccpc-bilbrd-1song-any2026-morwal,collection,59.902372685185185,1794388262,0.97,5.02,0.9727644999999999,5.02,59386.0,Who Will Have a #1 Song in 2026?,Morgan Wallen,culture
-1794378035,tac-grammys-nom-bna-2026-11-16-unders,collection,19.902372685185185,1794388262,0.95,30.0,0.9545125,30.0,162118.0,Grammy Nominees: Best New Artist,underscores,culture
-1794378035,tac-grammys-nom-bna-2026-11-16-esdeek,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,EsDeeKid,culture
-1794378035,tac-grammys-nom-bpdgp-2026-11-16-hipdon,collection,19.902372685185185,1794388262,0.97,1000.0,0.9727644999999999,51.54639175257732,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,"Hips Dont Lie (Anniversary Version) - Shakira, Ed Sheeran & Beele",culture
-1794378035,tac-grammys-nom-bpdgp-2026-11-16-opeup,collection,19.902372685185185,1794388262,0.96,1000.0,0.963648,52.083333333333336,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,OPEN UP YOUR HEART - Justin Bieber & Eddie Benjamin,culture
-1794378035,ccpc-bilbrd-1album-any2026-rauale,collection,59.902372685185185,1794388262,0.97,1.33,0.9727644999999999,1.33,59385.0,Who Will Have a #1 Album in 2026?,Rauw Alejandro,culture
-1794378035,ccpc-bilbrd-1album-any2026-rihann,collection,59.902372685185185,1794388262,0.97,834.34,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Rihanna,culture
-1794378035,ccpc-bilbrd-1album-any2026-selgom,collection,59.902372685185185,1794388262,0.97,1.01,0.9727644999999999,1.01,59385.0,Who Will Have a #1 Album in 2026?,Selena Gomez,culture
-1794378035,ccpc-bilbrd-1album-any2026-beyonc,collection,59.902372685185185,1794388262,0.96,2.01,0.963648,2.01,59385.0,Who Will Have a #1 Album in 2026?,Beyonce,culture
-1794378035,tac-grammys-nom-bpdgp-2026-11-16-firawa,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,Fire Away (feat. Slayyyter) - Madeon feat. Slayyyter,culture
-1794378035,ccpc-bilbrd-1album-any2026-olidea,collection,59.902372685185185,1794388262,0.95,10.56,0.9545125,10.56,59385.0,Who Will Have a #1 Album in 2026?,Olivia Dean,culture
-1794378035,tac-grammys-nom-bpva-2026-11-16-daufro,collection,19.902372685185185,1794388262,0.94,1000.0,0.9453579999999999,53.19148936170213,162134.0,Grammy Nominees: Best Pop Vocal Album,Daughter from Hell - Gracie Abrams,culture
-1794378035,ccpc-bilbrd-1album-any2026-nf,collection,59.902372685185185,1794388262,0.98,1.29,0.981862,1.29,59385.0,Who Will Have a #1 Album in 2026?,NF,culture
-1794378035,ccpc-bilbrd-1album-any2026-nicmin,collection,59.902372685185185,1794388262,0.97,0.6,0.9727644999999999,0.6,59385.0,Who Will Have a #1 Album in 2026?,Nicki Minaj,culture
-1794378035,tac-grammys-nom-bpsp-2026-11-16-saubla,collection,19.902372685185185,1794388262,0.9299999999999999,1000.0,0.9361845,53.763440860215056,162121.0,Grammy Nominees: Best Pop Solo Performance,Sauvignon Blanc - Rosalia,culture
-1794378035,tac-grammys-nom-bpdgp-2026-11-16-repdom,collection,19.902372685185185,1794388262,0.95,1000.0,0.9545125,52.631578947368425,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,Reputation (feat. Dominic Fike) - Ravyn Lenae feat. Dominic Fike,culture
-1794378035,tac-grammys-nom-bpsp-2026-11-16-chanel,collection,19.902372685185185,1794388262,0.96,50.0,0.963648,50.0,162121.0,Grammy Nominees: Best Pop Solo Performance,Chanel - Tyla,culture
-1794378035,tac-grammys-nom-bpva-2026-11-16-vie,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,Vie - Doja Cat,culture
-1794378035,tac-grammys-nom-bpva-2026-11-16-lucor,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,Luck... or Something - Hilary Duff,culture
-1794388262,tac-grammys-nom-bpva-2026-11-16-swaii,collection,19.784004629629628,1794410316,0.94,1000.0,0.9453579999999999,53.19148936170213,162134.0,Grammy Nominees: Best Pop Vocal Album,SWAG II - Justin Bieber,culture
-1794388262,tac-grammys-nom-bpsp-2026-11-16-ilovei,collection,19.784004629629628,1794410316,0.9299999999999999,37.0,0.9361845,37.0,162121.0,Grammy Nominees: Best Pop Solo Performance,iloveitiloveitiloveit - Bella Kay,culture
-1794388262,tac-grammys-nom-aoty-2026-11-16-wesend,collection,19.784004629629628,1794410316,0.95,41.0,0.9545125,41.0,162110.0,Grammy Nominees: Album of the Year,West End Girl - Lily Allen,culture
-1794388262,tac-grammys-nom-bpdgp-2026-11-16-beab,collection,19.784004629629628,1794410316,0.96,29.0,0.963648,29.0,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,Beat A B!tch Up - Alemeda & Doechii,culture
-1794410316,aaagaspc-usgas-highm-2026-11-30-gt4pt3500,collection,26.56972222222222,1794435778,0.98,2.32,0.981862,2.32,217407.0,How High Will US Gas Prices Get This Month?,Above $4.3500,macro
-1794410316,rotc-t-ebenez-2026-11-16-gte70,collection,19.52875,1794435778,0.98,100.0,0.981862,51.02040816326531,251258.0,Ebenezer Rotten Tomatoes Score?,70+,culture
-1794410316,aaagaspc-usgas-month-2026-11-30-gt3pt8000,collection,26.56972222222222,1794435778,0.92,78.24,0.926992,54.347826086956516,218427.0,US Gas Prices This Month,Above $3.8000,macro
-1794378035,tac-grammys-nom-bna-2026-11-16-jade,collection,19.902372685185185,1794435778,0.98,150.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,JADE,culture
-1794435778,cpic-uscpi-nov-yoy-2026-12-10-gt4pt4pct,collection,43.23405092592593,1794453348,0.95,0.11,0.9545125,0.11,258023.0,CPI YoY in November,Above 4.4%,macro
-1794435778,cpic-uscpi-nov-yoy-2026-12-10-gt4pt3pct,collection,43.23405092592593,1794453348,0.92,0.16,0.926992,0.16,258023.0,CPI YoY in November,Above 4.3%,macro
-1794435778,tac-grammys-nom-bna-2026-11-16-beache,collection,19.234050925925924,1794453348,0.96,100.0,0.963648,52.083333333333336,162118.0,Grammy Nominees: Best New Artist,The Beaches,culture
-1794435778,tac-grammys-nom-bna-2026-11-16-sailor,collection,19.234050925925924,1794453348,0.96,33.0,0.963648,33.0,162118.0,Grammy Nominees: Best New Artist,SAILORR,culture
-1794435778,cpic-uscpicore-nov-mom-2026-12-10-gt0pt5pct,collection,43.23405092592593,1794453348,0.97,0.44,0.9727644999999999,0.44,258017.0,Core CPI MoM in November,Above 0.5%,macro
-1794435778,tac-grammys-nom-bna-2026-11-16-magbay,collection,19.234050925925924,1794453348,0.98,100.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,Magdalena Bay,culture
-1794435778,tac-grammys-nom-bna-2026-11-16-mkgee,collection,19.234050925925924,1794453348,0.98,100.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,Mk.gee,culture
-1794435778,cpic-uscpicore-nov-mom-2026-12-10-gt0pt4pct,collection,43.23405092592593,1794453348,0.94,0.36,0.9453579999999999,0.36,258017.0,Core CPI MoM in November,Above 0.4%,macro
-1794435778,tac-grammys-nom-bna-2026-11-16-saskea,collection,19.234050925925924,1794453348,0.96,53.0,0.963648,52.083333333333336,162118.0,Grammy Nominees: Best New Artist,Sasha Keable,culture
-1794435778,tac-grammys-nom-bna-2026-11-16-renrap,collection,19.234050925925924,1794453348,0.98,150.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,Renee Rapp,culture
-1794435778,cpic-uscpicore-nov-mom-2026-12-10-gt0pt6pct,collection,43.23405092592593,1794453348,0.97,0.77,0.9727644999999999,0.77,258017.0,Core CPI MoM in November,Above 0.6%,macro
-1794435778,tac-grammys-nom-bna-2026-11-16-jesmur,collection,19.234050925925924,1794453348,0.98,99.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,Jessie Murph,culture
-1794435778,tac-grammys-nom-bna-2026-11-16-bigxth,collection,19.234050925925924,1794453348,0.98,100.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,BigXthaPlug,culture
-1794435778,tac-grammys-nom-bpsp-2026-11-16-spedem,collection,19.234050925925924,1794453348,0.95,90.0,0.9545125,52.631578947368425,162121.0,Grammy Nominees: Best Pop Solo Performance,Speed Demon - JUS,culture
-1794435778,cpic-uscpi-nov-mom-2026-12-10-gt0pt4pct,collection,43.23405092592593,1794453348,0.97,0.77,0.9727644999999999,0.77,258011.0,CPI MoM in November,Above 0.4%,macro
-1794435778,cpic-uscpi-nov-mom-2026-12-10-gt0pt5pct,collection,43.23405092592593,1794453348,0.97,3723.8,0.9727644999999999,51.54639175257732,258011.0,CPI MoM in November,Above 0.5%,macro
-1794435778,cpic-uscpi-nov-mom-2026-12-10-gt0pt6pct,collection,43.23405092592593,1794453348,0.97,0.1,0.9727644999999999,0.1,258011.0,CPI MoM in November,Above 0.6%,macro
-1794435778,cpic-uscpi-nov-mom-2026-12-10-gt0pt2pct,collection,43.23405092592593,1794453348,0.98,0.11,0.981862,0.11,258011.0,CPI MoM in November,Above 0.2%,macro
-1794435778,cpic-uscpi-nov-mom-2026-12-10-gt0pt3pct,collection,43.23405092592593,1794453348,0.98,4.22,0.981862,4.22,258011.0,CPI MoM in November,Above 0.3%,macro
-1794435778,ccpc-bilbrd-1album-any2026-charoa,collection,59.23405092592593,1794453348,0.97,0.01,0.9727644999999999,0.01,59385.0,Who Will Have a #1 Album in 2026?,Chappell Roan,culture
-1794435778,ccpc-bilbrd-1album-any2026-ladgag,collection,59.23405092592593,1794453348,0.97,2.0,0.9727644999999999,2.0,59385.0,Who Will Have a #1 Album in 2026?,Lady Gaga,culture
-1794474097,ccpc-bilbrd-1song-any2026-sabcar,collection,58.790543981481484,1794510536,0.9299999999999999,0.02,0.9361845,0.02,59386.0,Who Will Have a #1 Song in 2026?,Sabrina Carpenter,culture
-1794474097,cpic-uscpicore-nov-yoy-2026-12-10-gt3pt3pct,collection,42.790543981481484,1794510536,0.91,0.12,0.9177805,0.12,258047.0,Core CPI YoY in November,Above 3.3%,macro
-1794435778,ccrc-ntflx-1movus-2026-11-17-misgre,collection,20.234050925925924,1794510536,0.98,0.97,0.981862,0.97,255346.0,Top US Netflix Movie This Week?,Misty Green,culture
-1794474097,ccrc-ntflx-1movglbl-2026-11-17-dogchr,collection,19.79054398148148,1794510536,0.97,42.0,0.9727644999999999,42.0,255345.0,Top Global Netflix Movie This Week?,A Dog's Perfect Christmas,culture
-1794510536,aaagaspc-usdsl-month-2026-11-30-gt6pt1000,collection,25.40976851851852,1794529591,0.97,200.01,0.9727644999999999,51.54639175257732,218428.0,US Diesel Prices This Month,Above $6.1000,macro
-1794510536,raincli-rain-daily-2026-11-12-ksfo,collection,14.41045138888889,1794529591,0.96,212.0,0.963648,52.083333333333336,253430.0,Where will it rain on Nov 12?,San Francisco,climate
-1794510536,raincli-rain-daily-2026-11-13-kmia,collection,15.41045138888889,1794529591,0.9299999999999999,282.0,0.9361845,53.763440860215056,257327.0,Where will it rain on Nov 13?,Miami,climate
-1794510536,cpic-uscpi-nov-yoy-2026-12-10-gt4pt2pct,collection,42.368796296296296,1794529591,0.98,0.11,0.981862,0.11,258023.0,CPI YoY in November,Above 4.2%,macro
-1794510536,cpic-uscpi-nov-yoy-2026-12-10-gt4pt1pct,collection,42.368796296296296,1794529591,0.97,39.09,0.9727644999999999,39.09,258023.0,CPI YoY in November,Above 4.1%,macro
-1794510536,aaagaspc-usdsl-month-2026-11-30-gt6pt0000,collection,25.40976851851852,1794529591,0.9299999999999999,1086.37,0.9361845,53.763440860215056,218428.0,US Diesel Prices This Month,Above $6.0000,macro
-1794510536,aaagaspc-akdsl-month-2026-11-30-gt7pt3000,collection,25.40976851851852,1794529591,0.92,9.38,0.926992,9.38,218439.0,Alaska Diesel Prices This Month,Above $7.3000,macro
-1794510536,ccpc-bilbrd-1song-any2026-jachar,collection,58.368796296296296,1794529591,0.98,12.1,0.981862,12.1,59386.0,Who Will Have a #1 Song in 2026?,Jack Harlow,culture
-1794529591,cpic-uscpi-nov-yoy-2026-12-10-gt3pt9pct,collection,42.14825231481481,1794554234,0.91,0.11,0.9177805,0.11,258023.0,CPI YoY in November,Above 3.9%,macro
-1794554234,tac-grammys-nom-bpva-2026-11-16-midsun,collection,17.863032407407406,1794583996,0.91,300.0,0.9177805,54.94505494505494,162134.0,Grammy Nominees: Best Pop Vocal Album,Midnight Sun - Zara Larsson,culture
-1794554234,ccpc-bilbrd-1album-any2026-fraoce,collection,57.86303240740741,1794583996,0.95,0.02,0.9545125,0.02,59385.0,Who Will Have a #1 Album in 2026?,Frank Ocean,culture
-1794554234,tac-grammys-nom-aoty-2026-11-16-midnow,collection,17.863032407407406,1794583996,0.96,50.0,0.963648,50.0,162110.0,Grammy Nominees: Album of the Year,Middle of Nowhere - Kacey Musgraves,culture
-1794554234,ccpc-bilbrd-1song-any2026-fraoce,collection,57.86303240740741,1794583996,0.97,0.02,0.9727644999999999,0.02,59386.0,Who Will Have a #1 Song in 2026?,Frank Ocean,culture
-1794554234,ccpc-bilbrd-1album-any2026-sabcar,collection,57.86303240740741,1794583996,0.97,0.01,0.9727644999999999,0.01,59385.0,Who Will Have a #1 Album in 2026?,Sabrina Carpenter,culture
-1794554234,tac-grammys-nom-bna-2026-11-16-belkay,collection,17.863032407407406,1794583996,0.94,100.0,0.9453579999999999,53.19148936170213,162118.0,Grammy Nominees: Best New Artist,Bella Kay,culture
-1794554234,tac-grammys-nom-bna-2026-11-16-kencar,collection,17.863032407407406,1794583996,0.96,57.0,0.963648,52.083333333333336,162118.0,Grammy Nominees: Best New Artist,Ken Carson,culture
-1794554234,tac-grammys-nom-bpsp-2026-11-16-beher,collection,17.863032407407406,1794583996,0.94,52.0,0.9453579999999999,52.0,162121.0,Grammy Nominees: Best Pop Solo Performance,Be Her - Ella Langley,culture
-1794554234,ccpc-bilbrd-1album-any2026-posmal,collection,57.86303240740741,1794583996,0.91,13.01,0.9177805,13.01,59385.0,Who Will Have a #1 Album in 2026?,Post Malone,culture
-1794554234,tac-grammys-nom-bpsp-2026-11-16-fevdre,collection,17.863032407407406,1794583996,0.92,100.0,0.926992,54.347826086956516,162121.0,Grammy Nominees: Best Pop Solo Performance,FEVER DREAM - Alex Warren,culture
-1794554234,tac-grammys-nom-bpsp-2026-11-16-herall,collection,17.863032407407406,1794583996,0.98,100.0,0.981862,51.02040816326531,162121.0,Grammy Nominees: Best Pop Solo Performance,Here All Night - Demi Lovato,culture
-1794554234,aimc-anthr-opus-gte5pt6-2026-11-13,deadline,31.863032407407406,1794605885,0.97,3.26,0.9727644999999999,3.26,223752.0,Claude Opus 5.6+ Released?,"By November 13, 2026",technology
-1794605885,ccpc-bilbrd-1album-any2026-sombr,collection,57.265219907407406,1794621004,0.97,0.02,0.9727644999999999,0.02,59385.0,Who Will Have a #1 Album in 2026?,sombr,culture
-1794605885,tac-grammys-nom-bpdgp-2026-11-16-whaif,collection,17.265219907407406,1794621004,0.95,100.0,0.9545125,52.631578947368425,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,What If Its Right? - Gracie Abrams & Marcus Mumford,culture
-1794621004,cpic-uscpicore-nov-yoy-2026-12-10-gt3pt0pct,collection,41.09023148148148,1794644526,0.94,0.1,0.9453579999999999,0.1,258047.0,Core CPI YoY in November,Above 3.0%,macro
-1794621004,cpic-uscpicore-nov-yoy-2026-12-10-gt3pt1pct,collection,41.09023148148148,1794644526,0.97,0.45,0.9727644999999999,0.45,258047.0,Core CPI YoY in November,Above 3.1%,macro
-1794621004,cpic-uscpicore-nov-yoy-2026-12-10-gt3pt2pct,collection,41.09023148148148,1794644526,0.97,0.77,0.9727644999999999,0.77,258047.0,Core CPI YoY in November,Above 3.2%,macro
-1794669383,stsc-hormuz-week-2026-11-22-ge32,collection,23.94695601851852,1794686395,0.94,29.79,0.9453579999999999,29.79,266637.0,Traffic through the Strait of Hormuz next week?,32+ Ships,geopolitics
-1794686395,cpic-uscpi-nov-mom-2026-12-10-gt0pt1pct,collection,40.333391203703705,1794700366,0.9299999999999999,193.3,0.9361845,53.763440860215056,258011.0,CPI MoM in November,Above 0.1%,macro
-1794700366,tac-grammys-nom-bpva-2026-11-16-pop,collection,16.171689814814815,1794719085,0.98,50.0,0.981862,50.0,162134.0,Grammy Nominees: Best Pop Vocal Album,A*Pop - Tyla,culture
-1794719085,aaagaspc-cagas-lowc-20261029-20261231-lt3pt8000,single,53.996006944444446,1794746560,0.96,0.2,0.963648,0.2,,,Below $3.8000,macro
-1794719085,ccpc-bilbrd-1album-any2026-thewee,collection,55.95503472222222,1794746560,0.97,223.01,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,The Weeknd,culture
-1794719085,tac-grammys-nom-bpdgp-2026-11-16-takme,collection,15.955034722222223,1794746560,0.94,100.0,0.9453579999999999,53.19148936170213,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,Take Me Dancing (feat. SZA) - Doja Cat feat. SZA,culture
-1794746560,aaagaspc-njgas-datec-20261029-20261231-gt5pt0000,single,53.67800925925926,1794769918,0.97,0.21,0.9727644999999999,0.21,,,Above $5.0000,macro
-1794769918,ccpc-bilbrd-1song-any2026-pesplu,collection,55.36668981481481,1794785228,0.98,1.0,0.981862,1.0,59386.0,Who Will Have a #1 Song in 2026?,Peso Pluma,culture
-1794769918,aaagaspc-usgas-day-2026-11-16-gt3pt8150,collection,8.407662037037037,1794785228,0.98,140.0,0.981862,51.02040816326531,272523.0,US Gas Prices on November 16th,Above $3.8150,macro
-1794769918,ccpc-bilbrd-1song-any2026-lukcom,collection,55.36668981481481,1794785228,0.98,1.0,0.981862,1.0,59386.0,Who Will Have a #1 Song in 2026?,Luke Combs,culture
-1794769918,ccpc-bilbrd-1song-any2026-kanwes,collection,55.36668981481481,1794785228,0.98,1.0,0.981862,1.0,59386.0,Who Will Have a #1 Song in 2026?,Kanye West,culture
-1794769918,tac-grammys-nom-rapalb-2026-11-16-faloff,collection,15.366689814814816,1794785228,0.98,150.0,0.981862,51.02040816326531,162120.0,Grammy Nominees: Best Rap Album,The Fall-Off - J. Cole,culture
-1794769918,kpic-hd-q3comp-2026-11-17-1-1pt25pct,collection,16.366689814814816,1794785228,0.98,4115.52,0.981862,51.02040816326531,258450.0,Home Depot Q3 FY2026 Comparable Sales Growth?,1%-1.25%,finance
-1794785228,tac-grammys-nom-bna-2026-11-16-rolmod,collection,15.189490740740741,1794798388,0.92,123.0,0.926992,54.347826086956516,162118.0,Grammy Nominees: Best New Artist,Role Model,culture
-1794798388,kpic-nvda-q3gm-2026-11-17-71-73pct,collection,16.037175925925926,1794819700,0.98,0.01,0.981862,0.01,258354.0,NVIDIA Q3 FY2027 Non-GAAP Gross Margin?,71% to 73%,finance
-1794798388,stsc-hormuz-normal-2026-11-30,deadline,15.07883101851852,1794819700,0.98,491.33,0.981862,51.02040816326531,44402.0,Strait of Hormuz Traffic Returns to Normal?,"By November 30, 2026",geopolitics
-1794798388,vmc-ushrmov-il-11-2026-11-03-dgte35,single,59.87050925925926,1794819700,0.94,0.06,0.9453579999999999,0.06,93355.0,IL-11 House Election Margin of Victory,Democrat 35%+,politics
-1794798388,vmc-ushrmov-mi-04-2026-11-03-dgte12,single,59.87050925925926,1794819700,0.98,0.01,0.981862,0.01,93403.0,MI-04 House Election Margin of Victory,Democrat 12%+,politics
-1794798388,vmc-ushrmov-mo-02-2026-11-03-dgte6,single,59.87050925925926,1794819700,0.98,0.06,0.981862,0.06,93416.0,MO-02 House Election Margin of Victory,Democrat 6%+,politics
+ts,slug,shape,dte,ts2,no_ask,bid_qty1,cost,contracts,event_id,event_title,label,category,yes_settle
+1794378035,ccpc-bilbrd-1album-any2026-alewar,collection,59.902372685185185,1794388262,0.97,6077.4,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Alex Warren,culture,
+1794378035,ccpc-bilbrd-1album-any2026-benboo,collection,59.902372685185185,1794388262,0.95,1000.02,0.9545125,52.631578947368425,59385.0,Who Will Have a #1 Album in 2026?,Benson Boone,culture,
+1794378035,ccpc-bilbrd-1album-any2026-lilver,collection,59.902372685185185,1794388262,0.97,41.69,0.9727644999999999,41.69,59385.0,Who Will Have a #1 Album in 2026?,Lil Uzi Vert,culture,
+1794378035,ccpc-bilbrd-1album-any2026-chaxcx,collection,59.902372685185185,1794388262,0.97,3429.65,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Charli xcx,culture,
+1794378035,ccpc-bilbrd-1song-any2026-kenlam,collection,59.902372685185185,1794388262,0.97,1.02,0.9727644999999999,1.02,59386.0,Who Will Have a #1 Song in 2026?,Kendrick Lamar,culture,
+1794378035,ccpc-bilbrd-1album-any2026-lolyou,collection,59.902372685185185,1794388262,0.96,0.03,0.963648,0.03,59385.0,Who Will Have a #1 Album in 2026?,Lola Young,culture,
+1794378035,ccpc-bilbrd-1album-any2026-lilway,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59385.0,Who Will Have a #1 Album in 2026?,Lil Wayne,culture,
+1794378035,ccpc-bilbrd-1album-any2026-nf,collection,59.902372685185185,1794388262,0.98,1.29,0.981862,1.29,59385.0,Who Will Have a #1 Album in 2026?,NF,culture,
+1794378035,ccpc-bilbrd-1song-any2026-lilbab,collection,59.902372685185185,1794388262,0.97,4.56,0.9727644999999999,4.56,59386.0,Who Will Have a #1 Song in 2026?,Lil Baby,culture,
+1794378035,ccpc-bilbrd-1album-any2026-olidea,collection,59.902372685185185,1794388262,0.95,10.56,0.9545125,10.56,59385.0,Who Will Have a #1 Album in 2026?,Olivia Dean,culture,
+1794378035,ccpc-bilbrd-1album-any2026-nicmin,collection,59.902372685185185,1794388262,0.97,0.6,0.9727644999999999,0.6,59385.0,Who Will Have a #1 Album in 2026?,Nicki Minaj,culture,
+1794378035,ccpc-bilbrd-1album-any2026-dualip,collection,59.902372685185185,1794388262,0.97,3.55,0.9727644999999999,3.55,59385.0,Who Will Have a #1 Album in 2026?,Dua Lipa,culture,
+1794378035,aaagaspc-usgas-month-2026-11-30-gt3pt9000,collection,26.943344907407408,1794388262,0.96,4.0,0.963648,4.0,218427.0,US Gas Prices This Month,Above $3.9000,macro,
+1794378035,ccpc-bilbrd-1song-any2026-posmal,collection,59.902372685185185,1794388262,0.97,1.01,0.9727644999999999,1.01,59386.0,Who Will Have a #1 Song in 2026?,Post Malone,culture,
+1794378035,ccpc-bilbrd-1song-any2026-morwal,collection,59.902372685185185,1794388262,0.97,5.02,0.9727644999999999,5.02,59386.0,Who Will Have a #1 Song in 2026?,Morgan Wallen,culture,
+1794378035,ccpc-bilbrd-1album-any2026-rauale,collection,59.902372685185185,1794388262,0.97,1.33,0.9727644999999999,1.33,59385.0,Who Will Have a #1 Album in 2026?,Rauw Alejandro,culture,
+1794378035,tac-grammys-nom-bpdgp-2026-11-16-firawa,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,Fire Away (feat. Slayyyter) - Madeon feat. Slayyyter,culture,0.0
+1794378035,tac-grammys-nom-bpdgp-2026-11-16-hipdon,collection,19.902372685185185,1794388262,0.97,1000.0,0.9727644999999999,51.54639175257732,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,"Hips Dont Lie (Anniversary Version) - Shakira, Ed Sheeran & Beele",culture,0.0
+1794378035,tac-grammys-nom-bpdgp-2026-11-16-opeup,collection,19.902372685185185,1794388262,0.96,1000.0,0.963648,52.083333333333336,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,OPEN UP YOUR HEART - Justin Bieber & Eddie Benjamin,culture,0.0
+1794378035,tac-grammys-nom-bpdgp-2026-11-16-repdom,collection,19.902372685185185,1794388262,0.95,1000.0,0.9545125,52.631578947368425,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,Reputation (feat. Dominic Fike) - Ravyn Lenae feat. Dominic Fike,culture,0.0
+1794378035,ccpc-bilbrd-1song-any2026-trasco,collection,59.902372685185185,1794388262,0.97,9.97,0.9727644999999999,9.97,59386.0,Who Will Have a #1 Song in 2026?,Travis Scott,culture,
+1794378035,tac-grammys-nom-bna-2026-11-16-unders,collection,19.902372685185185,1794388262,0.95,30.0,0.9545125,30.0,162118.0,Grammy Nominees: Best New Artist,underscores,culture,0.0
+1794378035,tac-grammys-nom-bdpr-2026-11-16-worshi,collection,19.902372685185185,1794388262,0.9299999999999999,1000.0,0.9361845,53.763440860215056,162135.0,Grammy Nominees: Best Dance Pop Recording,WORSHIP - ASAKE,culture,0.0
+1794378035,ccpc-bilbrd-1album-any2026-selgom,collection,59.902372685185185,1794388262,0.97,1.01,0.9727644999999999,1.01,59385.0,Who Will Have a #1 Album in 2026?,Selena Gomez,culture,
+1794378035,tac-grammys-nom-bpva-2026-11-16-lucor,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,Luck... or Something - Hilary Duff,culture,0.0
+1794378035,tac-grammys-nom-bpva-2026-11-16-visito,collection,19.902372685185185,1794388262,0.95,1050.0,0.9545125,52.631578947368425,162134.0,Grammy Nominees: Best Pop Vocal Album,The Visitor - Sienna Spiro,culture,0.0
+1794378035,tac-grammys-nom-bpva-2026-11-16-vie,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,Vie - Doja Cat,culture,0.0
+1794378035,tac-grammys-nom-bpva-2026-11-16-its,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,It's Not That Deep - Demi Lovato,culture,0.0
+1794378035,ccpc-bilbrd-1song-any2026-fut,collection,59.902372685185185,1794388262,0.97,0.01,0.9727644999999999,0.01,59386.0,Who Will Have a #1 Song in 2026?,Future,culture,
+1794378035,ccpc-bilbrd-1album-any2026-rihann,collection,59.902372685185185,1794388262,0.97,834.34,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Rihanna,culture,
+1794378035,ccpc-bilbrd-1song-any2026-tylthe,collection,59.902372685185185,1794388262,0.98,1.0,0.981862,1.0,59386.0,Who Will Have a #1 Song in 2026?,"Tyler, The Creator",culture,
+1794378035,ccpc-bilbrd-1song-any2026-dojcat,collection,59.902372685185185,1794388262,0.97,1.02,0.9727644999999999,1.02,59386.0,Who Will Have a #1 Song in 2026?,Doja Cat,culture,
+1794378035,ccpc-bilbrd-1song-any2026-edshe,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59386.0,Who Will Have a #1 Song in 2026?,Ed Sheeran,culture,
+1794378035,tac-grammys-nom-bpva-2026-11-16-daufro,collection,19.902372685185185,1794388262,0.94,1000.0,0.9453579999999999,53.19148936170213,162134.0,Grammy Nominees: Best Pop Vocal Album,Daughter from Hell - Gracie Abrams,culture,0.0
+1794378035,ccpc-bilbrd-1song-any2026-thewee,collection,59.902372685185185,1794388262,0.97,5.83,0.9727644999999999,5.83,59386.0,Who Will Have a #1 Song in 2026?,The Weeknd,culture,
+1794378035,tac-grammys-nom-bpva-2026-11-16-wildch,collection,19.902372685185185,1794388262,0.97,1000.0,0.9727644999999999,51.54639175257732,162134.0,Grammy Nominees: Best Pop Vocal Album,WILDCHILD - Alex Warren,culture,0.0
+1794378035,tac-grammys-nom-bpva-2026-11-16-wild,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162134.0,Grammy Nominees: Best Pop Vocal Album,WILD - KATSEYE,culture,0.0
+1794378035,tac-grammys-nom-bna-2026-11-16-esdeek,collection,19.902372685185185,1794388262,0.98,1000.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,EsDeeKid,culture,0.0
+1794378035,ccpc-bilbrd-1album-any2026-coldpl,collection,59.902372685185185,1794388262,0.97,0.01,0.9727644999999999,0.01,59385.0,Who Will Have a #1 Album in 2026?,Coldplay,culture,
+1794378035,ccpc-bilbrd-1album-any2026-doechi,collection,59.902372685185185,1794388262,0.97,1.01,0.9727644999999999,1.01,59385.0,Who Will Have a #1 Album in 2026?,Doechii,culture,
+1794378035,ccpc-bilbrd-1album-any2026-bileil,collection,59.902372685185185,1794388262,0.96,0.99,0.963648,0.99,59385.0,Who Will Have a #1 Album in 2026?,Billie Eilish,culture,
+1794378035,ccpc-bilbrd-1album-any2026-eminem,collection,59.902372685185185,1794388262,0.9299999999999999,0.12,0.9361845,0.12,59385.0,Who Will Have a #1 Album in 2026?,Eminem,culture,
+1794378035,tac-grammys-nom-bpsp-2026-11-16-saubla,collection,19.902372685185185,1794388262,0.9299999999999999,1000.0,0.9361845,53.763440860215056,162121.0,Grammy Nominees: Best Pop Solo Performance,Sauvignon Blanc - Rosalia,culture,1.0
+1794378035,aaagaspc-usgas-highm-2026-11-30-gt4pt2500,collection,26.943344907407408,1794388262,0.97,8.64,0.9727644999999999,8.64,217407.0,How High Will US Gas Prices Get This Month?,Above $4.2500,macro,
+1794378035,tac-grammys-nom-bpsp-2026-11-16-chanel,collection,19.902372685185185,1794388262,0.96,50.0,0.963648,50.0,162121.0,Grammy Nominees: Best Pop Solo Performance,Chanel - Tyla,culture,0.0
+1794378035,ccpc-bilbrd-1album-any2026-kenlam,collection,59.902372685185185,1794388262,0.91,1.0,0.9177805,1.0,59385.0,Who Will Have a #1 Album in 2026?,Kendrick Lamar,culture,
+1794378035,ccpc-bilbrd-1song-any-11-24-2026-hatmad,collection,27.902372685185185,1794388262,0.98,2090.92,0.981862,51.02040816326531,198433.0,Which Songs Will Be Billboard #1 in November?,Hate That I Made You Love Me - Ariana Grande,culture,
+1794378035,ccpc-bilbrd-1song-any2026-zacbry,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59386.0,Who Will Have a #1 Song in 2026?,Zach Bryan,culture,
+1794378035,ccpc-bilbrd-1album-any2026-jusbie,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59385.0,Who Will Have a #1 Album in 2026?,Justin Bieber,culture,
+1794378035,ccpc-bilbrd-1album-any2026-beyonc,collection,59.902372685185185,1794388262,0.96,2.01,0.963648,2.01,59385.0,Who Will Have a #1 Album in 2026?,Beyonce,culture,
+1794378035,ccpc-bilbrd-1album-any2026-kanwes,collection,59.902372685185185,1794388262,0.91,1.71,0.9177805,1.71,59385.0,Who Will Have a #1 Album in 2026?,Kanye West / Ye,culture,
+1794378035,ccpc-bilbrd-1album-any2026-youthu,collection,59.902372685185185,1794388262,0.97,200.75,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,Young Thug,culture,
+1794378035,ccpc-bilbrd-1album-any2026-youaga,collection,59.902372685185185,1794388262,0.97,0.02,0.9727644999999999,0.02,59385.0,Who Will Have a #1 Album in 2026?,YoungBoy Never Broke Again,culture,
+1794378035,ccpc-bilbrd-1album-any2026-trasco,collection,59.902372685185185,1794388262,0.97,1.05,0.9727644999999999,1.05,59385.0,Who Will Have a #1 Album in 2026?,Travis Scott,culture,
+1794378035,ccpc-bilbrd-1song-any-11-24-2026-stuson,collection,27.902372685185185,1794388262,0.98,12.52,0.981862,12.52,198433.0,Which Songs Will Be Billboard #1 in November?,Stupid Song - Olivia Rodrigo,culture,
+1794378035,ccpc-bilbrd-1song-any2026-aaproc,collection,59.902372685185185,1794388262,0.98,0.02,0.981862,0.02,59386.0,Who Will Have a #1 Song in 2026?,A$AP Rocky,culture,
+1794378035,ccpc-bilbrd-1song-any2026-bileil,collection,59.902372685185185,1794388262,0.9299999999999999,0.02,0.9361845,0.02,59386.0,Who Will Have a #1 Song in 2026?,Billie Eilish,culture,
+1794378035,ccpc-bilbrd-1song-any-11-24-2026-houwif,collection,27.902372685185185,1794388262,0.97,0.01,0.9727644999999999,0.01,198433.0,Which Songs Will Be Billboard #1 in November?,Housewife - Tate McRae,culture,
+1794378035,stsc-hormuz-normal-2026-12-31,deadline,50.94402777777778,1794388262,0.92,150486.12,0.926992,54.347826086956516,44402.0,Strait of Hormuz Traffic Returns to Normal?,"By December 31, 2026",geopolitics,
+1794378035,tac-grammys-nom-aoty-2026-11-16-deadbe,collection,19.902372685185185,1794388262,0.91,18.0,0.9177805,18.0,162110.0,Grammy Nominees: Album of the Year,Deadbeat - Tame Impala,culture,0.0
+1794378035,rotc-t-thehun-2026-11-23-gte90,collection,26.902372685185185,1794388262,0.97,425.0,0.9727644999999999,51.54639175257732,147770.0,The Hunger Games: Sunrise on the Reaping Rotten Tomatoes Score?,90+,culture,
+1794378035,ccpc-bilbrd-1album-any2026-tatmcr,collection,59.902372685185185,1794388262,0.95,1.42,0.9545125,1.42,59385.0,Who Will Have a #1 Album in 2026?,Tate McRae,culture,
+1794388262,tac-grammys-nom-aoty-2026-11-16-wesend,collection,19.784004629629628,1794410316,0.95,41.0,0.9545125,41.0,162110.0,Grammy Nominees: Album of the Year,West End Girl - Lily Allen,culture,0.0
+1794388262,tac-grammys-nom-bpva-2026-11-16-swaii,collection,19.784004629629628,1794410316,0.94,1000.0,0.9453579999999999,53.19148936170213,162134.0,Grammy Nominees: Best Pop Vocal Album,SWAG II - Justin Bieber,culture,0.0
+1794388262,tac-grammys-nom-bpdgp-2026-11-16-beab,collection,19.784004629629628,1794410316,0.96,29.0,0.963648,29.0,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,Beat A B!tch Up - Alemeda & Doechii,culture,0.0
+1794388262,tac-grammys-nom-bpsp-2026-11-16-ilovei,collection,19.784004629629628,1794410316,0.9299999999999999,37.0,0.9361845,37.0,162121.0,Grammy Nominees: Best Pop Solo Performance,iloveitiloveitiloveit - Bella Kay,culture,0.0
+1794378035,tac-grammys-nom-bna-2026-11-16-jade,collection,19.902372685185185,1794435778,0.98,150.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,JADE,culture,0.0
+1794410316,aaagaspc-usgas-highm-2026-11-30-gt4pt3500,collection,26.56972222222222,1794435778,0.98,2.32,0.981862,2.32,217407.0,How High Will US Gas Prices Get This Month?,Above $4.3500,macro,
+1794410316,aaagaspc-usgas-month-2026-11-30-gt3pt8000,collection,26.56972222222222,1794435778,0.92,78.24,0.926992,54.347826086956516,218427.0,US Gas Prices This Month,Above $3.8000,macro,
+1794410316,rotc-t-ebenez-2026-11-16-gte70,collection,19.52875,1794435778,0.98,100.0,0.981862,51.02040816326531,251258.0,Ebenezer Rotten Tomatoes Score?,70+,culture,0.0
+1794435778,ccpc-bilbrd-1album-any2026-ladgag,collection,59.23405092592593,1794453348,0.97,2.0,0.9727644999999999,2.0,59385.0,Who Will Have a #1 Album in 2026?,Lady Gaga,culture,
+1794435778,tac-grammys-nom-bna-2026-11-16-renrap,collection,19.234050925925924,1794453348,0.98,150.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,Renee Rapp,culture,0.0
+1794435778,tac-grammys-nom-bna-2026-11-16-saskea,collection,19.234050925925924,1794453348,0.96,53.0,0.963648,52.083333333333336,162118.0,Grammy Nominees: Best New Artist,Sasha Keable,culture,0.0
+1794435778,tac-grammys-nom-bna-2026-11-16-sailor,collection,19.234050925925924,1794453348,0.96,33.0,0.963648,33.0,162118.0,Grammy Nominees: Best New Artist,SAILORR,culture,0.0
+1794435778,tac-grammys-nom-bpsp-2026-11-16-spedem,collection,19.234050925925924,1794453348,0.95,90.0,0.9545125,52.631578947368425,162121.0,Grammy Nominees: Best Pop Solo Performance,Speed Demon - JUS,culture,0.0
+1794435778,tac-grammys-nom-bna-2026-11-16-magbay,collection,19.234050925925924,1794453348,0.98,100.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,Magdalena Bay,culture,0.0
+1794435778,tac-grammys-nom-bna-2026-11-16-mkgee,collection,19.234050925925924,1794453348,0.98,100.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,Mk.gee,culture,0.0
+1794435778,tac-grammys-nom-bna-2026-11-16-jesmur,collection,19.234050925925924,1794453348,0.98,99.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,Jessie Murph,culture,0.0
+1794435778,cpic-uscpi-nov-mom-2026-12-10-gt0pt3pct,collection,43.23405092592593,1794453348,0.98,4.22,0.981862,4.22,258011.0,CPI MoM in November,Above 0.3%,macro,
+1794435778,cpic-uscpi-nov-mom-2026-12-10-gt0pt2pct,collection,43.23405092592593,1794453348,0.98,0.11,0.981862,0.11,258011.0,CPI MoM in November,Above 0.2%,macro,
+1794435778,ccpc-bilbrd-1album-any2026-charoa,collection,59.23405092592593,1794453348,0.97,0.01,0.9727644999999999,0.01,59385.0,Who Will Have a #1 Album in 2026?,Chappell Roan,culture,
+1794435778,tac-grammys-nom-bna-2026-11-16-bigxth,collection,19.234050925925924,1794453348,0.98,100.0,0.981862,51.02040816326531,162118.0,Grammy Nominees: Best New Artist,BigXthaPlug,culture,0.0
+1794435778,cpic-uscpicore-nov-mom-2026-12-10-gt0pt6pct,collection,43.23405092592593,1794453348,0.97,0.77,0.9727644999999999,0.77,258017.0,Core CPI MoM in November,Above 0.6%,macro,
+1794435778,tac-grammys-nom-bna-2026-11-16-beache,collection,19.234050925925924,1794453348,0.96,100.0,0.963648,52.083333333333336,162118.0,Grammy Nominees: Best New Artist,The Beaches,culture,0.0
+1794435778,cpic-uscpi-nov-mom-2026-12-10-gt0pt6pct,collection,43.23405092592593,1794453348,0.97,0.1,0.9727644999999999,0.1,258011.0,CPI MoM in November,Above 0.6%,macro,
+1794435778,cpic-uscpi-nov-mom-2026-12-10-gt0pt4pct,collection,43.23405092592593,1794453348,0.97,0.77,0.9727644999999999,0.77,258011.0,CPI MoM in November,Above 0.4%,macro,
+1794435778,cpic-uscpi-nov-mom-2026-12-10-gt0pt5pct,collection,43.23405092592593,1794453348,0.97,3723.8,0.9727644999999999,51.54639175257732,258011.0,CPI MoM in November,Above 0.5%,macro,
+1794435778,cpic-uscpi-nov-yoy-2026-12-10-gt4pt4pct,collection,43.23405092592593,1794453348,0.95,0.11,0.9545125,0.11,258023.0,CPI YoY in November,Above 4.4%,macro,
+1794435778,cpic-uscpi-nov-yoy-2026-12-10-gt4pt3pct,collection,43.23405092592593,1794453348,0.92,0.16,0.926992,0.16,258023.0,CPI YoY in November,Above 4.3%,macro,
+1794435778,cpic-uscpicore-nov-mom-2026-12-10-gt0pt5pct,collection,43.23405092592593,1794453348,0.97,0.44,0.9727644999999999,0.44,258017.0,Core CPI MoM in November,Above 0.5%,macro,
+1794435778,cpic-uscpicore-nov-mom-2026-12-10-gt0pt4pct,collection,43.23405092592593,1794453348,0.94,0.36,0.9453579999999999,0.36,258017.0,Core CPI MoM in November,Above 0.4%,macro,
+1794435778,ccrc-ntflx-1movus-2026-11-17-misgre,collection,20.234050925925924,1794510536,0.98,0.97,0.981862,0.97,255346.0,Top US Netflix Movie This Week?,Misty Green,culture,0.0
+1794474097,ccpc-bilbrd-1song-any2026-sabcar,collection,58.790543981481484,1794510536,0.9299999999999999,0.02,0.9361845,0.02,59386.0,Who Will Have a #1 Song in 2026?,Sabrina Carpenter,culture,
+1794474097,ccrc-ntflx-1movglbl-2026-11-17-dogchr,collection,19.79054398148148,1794510536,0.97,42.0,0.9727644999999999,42.0,255345.0,Top Global Netflix Movie This Week?,A Dog's Perfect Christmas,culture,0.0
+1794474097,cpic-uscpicore-nov-yoy-2026-12-10-gt3pt3pct,collection,42.790543981481484,1794510536,0.91,0.12,0.9177805,0.12,258047.0,Core CPI YoY in November,Above 3.3%,macro,
+1794510536,aaagaspc-akdsl-month-2026-11-30-gt7pt3000,collection,25.40976851851852,1794529591,0.92,9.38,0.926992,9.38,218439.0,Alaska Diesel Prices This Month,Above $7.3000,macro,
+1794510536,aaagaspc-usdsl-month-2026-11-30-gt6pt0000,collection,25.40976851851852,1794529591,0.9299999999999999,1086.37,0.9361845,53.763440860215056,218428.0,US Diesel Prices This Month,Above $6.0000,macro,
+1794510536,aaagaspc-usdsl-month-2026-11-30-gt6pt1000,collection,25.40976851851852,1794529591,0.97,200.01,0.9727644999999999,51.54639175257732,218428.0,US Diesel Prices This Month,Above $6.1000,macro,
+1794510536,ccpc-bilbrd-1song-any2026-jachar,collection,58.368796296296296,1794529591,0.98,12.1,0.981862,12.1,59386.0,Who Will Have a #1 Song in 2026?,Jack Harlow,culture,
+1794510536,cpic-uscpi-nov-yoy-2026-12-10-gt4pt2pct,collection,42.368796296296296,1794529591,0.98,0.11,0.981862,0.11,258023.0,CPI YoY in November,Above 4.2%,macro,
+1794510536,cpic-uscpi-nov-yoy-2026-12-10-gt4pt1pct,collection,42.368796296296296,1794529591,0.97,39.09,0.9727644999999999,39.09,258023.0,CPI YoY in November,Above 4.1%,macro,
+1794510536,raincli-rain-daily-2026-11-12-ksfo,collection,14.41045138888889,1794529591,0.96,212.0,0.963648,52.083333333333336,253430.0,Where will it rain on Nov 12?,San Francisco,climate,0.0
+1794510536,raincli-rain-daily-2026-11-13-kmia,collection,15.41045138888889,1794529591,0.9299999999999999,282.0,0.9361845,53.763440860215056,257327.0,Where will it rain on Nov 13?,Miami,climate,1.0
+1794529591,cpic-uscpi-nov-yoy-2026-12-10-gt3pt9pct,collection,42.14825231481481,1794554234,0.91,0.11,0.9177805,0.11,258023.0,CPI YoY in November,Above 3.9%,macro,
+1794554234,tac-grammys-nom-bna-2026-11-16-kencar,collection,17.863032407407406,1794583996,0.96,57.0,0.963648,52.083333333333336,162118.0,Grammy Nominees: Best New Artist,Ken Carson,culture,0.0
+1794554234,tac-grammys-nom-bpsp-2026-11-16-beher,collection,17.863032407407406,1794583996,0.94,52.0,0.9453579999999999,52.0,162121.0,Grammy Nominees: Best Pop Solo Performance,Be Her - Ella Langley,culture,0.0
+1794554234,tac-grammys-nom-bpva-2026-11-16-midsun,collection,17.863032407407406,1794583996,0.91,300.0,0.9177805,54.94505494505494,162134.0,Grammy Nominees: Best Pop Vocal Album,Midnight Sun - Zara Larsson,culture,0.0
+1794554234,tac-grammys-nom-bpsp-2026-11-16-herall,collection,17.863032407407406,1794583996,0.98,100.0,0.981862,51.02040816326531,162121.0,Grammy Nominees: Best Pop Solo Performance,Here All Night - Demi Lovato,culture,0.0
+1794554234,ccpc-bilbrd-1album-any2026-fraoce,collection,57.86303240740741,1794583996,0.95,0.02,0.9545125,0.02,59385.0,Who Will Have a #1 Album in 2026?,Frank Ocean,culture,
+1794554234,tac-grammys-nom-bna-2026-11-16-belkay,collection,17.863032407407406,1794583996,0.94,100.0,0.9453579999999999,53.19148936170213,162118.0,Grammy Nominees: Best New Artist,Bella Kay,culture,0.0
+1794554234,ccpc-bilbrd-1album-any2026-posmal,collection,57.86303240740741,1794583996,0.91,13.01,0.9177805,13.01,59385.0,Who Will Have a #1 Album in 2026?,Post Malone,culture,
+1794554234,tac-grammys-nom-aoty-2026-11-16-midnow,collection,17.863032407407406,1794583996,0.96,50.0,0.963648,50.0,162110.0,Grammy Nominees: Album of the Year,Middle of Nowhere - Kacey Musgraves,culture,0.0
+1794554234,tac-grammys-nom-bpsp-2026-11-16-fevdre,collection,17.863032407407406,1794583996,0.92,100.0,0.926992,54.347826086956516,162121.0,Grammy Nominees: Best Pop Solo Performance,FEVER DREAM - Alex Warren,culture,0.0
+1794554234,ccpc-bilbrd-1song-any2026-fraoce,collection,57.86303240740741,1794583996,0.97,0.02,0.9727644999999999,0.02,59386.0,Who Will Have a #1 Song in 2026?,Frank Ocean,culture,
+1794554234,ccpc-bilbrd-1album-any2026-sabcar,collection,57.86303240740741,1794583996,0.97,0.01,0.9727644999999999,0.01,59385.0,Who Will Have a #1 Album in 2026?,Sabrina Carpenter,culture,
+1794554234,aimc-anthr-opus-gte5pt6-2026-11-13,deadline,31.863032407407406,1794605885,0.97,3.26,0.9727644999999999,3.26,223752.0,Claude Opus 5.6+ Released?,"By November 13, 2026",technology,0.0
+1794605885,tac-grammys-nom-bpdgp-2026-11-16-whaif,collection,17.265219907407406,1794621004,0.95,100.0,0.9545125,52.631578947368425,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,What If Its Right? - Gracie Abrams & Marcus Mumford,culture,0.0
+1794605885,ccpc-bilbrd-1album-any2026-sombr,collection,57.265219907407406,1794621004,0.97,0.02,0.9727644999999999,0.02,59385.0,Who Will Have a #1 Album in 2026?,sombr,culture,
+1794621004,cpic-uscpicore-nov-yoy-2026-12-10-gt3pt2pct,collection,41.09023148148148,1794644526,0.97,0.77,0.9727644999999999,0.77,258047.0,Core CPI YoY in November,Above 3.2%,macro,
+1794621004,cpic-uscpicore-nov-yoy-2026-12-10-gt3pt0pct,collection,41.09023148148148,1794644526,0.94,0.1,0.9453579999999999,0.1,258047.0,Core CPI YoY in November,Above 3.0%,macro,
+1794621004,cpic-uscpicore-nov-yoy-2026-12-10-gt3pt1pct,collection,41.09023148148148,1794644526,0.97,0.45,0.9727644999999999,0.45,258047.0,Core CPI YoY in November,Above 3.1%,macro,
+1794669383,stsc-hormuz-week-2026-11-22-ge32,collection,23.94695601851852,1794686395,0.94,29.79,0.9453579999999999,29.79,266637.0,Traffic through the Strait of Hormuz next week?,32+ Ships,geopolitics,
+1794686395,cpic-uscpi-nov-mom-2026-12-10-gt0pt1pct,collection,40.333391203703705,1794700366,0.9299999999999999,193.3,0.9361845,53.763440860215056,258011.0,CPI MoM in November,Above 0.1%,macro,
+1794700366,tac-grammys-nom-bpva-2026-11-16-pop,collection,16.171689814814815,1794719085,0.98,50.0,0.981862,50.0,162134.0,Grammy Nominees: Best Pop Vocal Album,A*Pop - Tyla,culture,0.0
+1794719085,tac-grammys-nom-bpdgp-2026-11-16-takme,collection,15.955034722222223,1794746560,0.94,100.0,0.9453579999999999,53.19148936170213,162122.0,Grammy Nominees: Best Pop Duo/Group Performance,Take Me Dancing (feat. SZA) - Doja Cat feat. SZA,culture,0.0
+1794719085,ccpc-bilbrd-1album-any2026-thewee,collection,55.95503472222222,1794746560,0.97,223.01,0.9727644999999999,51.54639175257732,59385.0,Who Will Have a #1 Album in 2026?,The Weeknd,culture,
+1794719085,aaagaspc-cagas-lowc-20261029-20261231-lt3pt8000,single,53.996006944444446,1794746560,0.96,0.2,0.963648,0.2,,,Below $3.8000,macro,
+1794746560,aaagaspc-njgas-datec-20261029-20261231-gt5pt0000,single,53.67800925925926,1794769918,0.97,0.21,0.9727644999999999,0.21,,,Above $5.0000,macro,
+1794769918,ccpc-bilbrd-1song-any2026-pesplu,collection,55.36668981481481,1794785228,0.98,1.0,0.981862,1.0,59386.0,Who Will Have a #1 Song in 2026?,Peso Pluma,culture,
+1794769918,ccpc-bilbrd-1song-any2026-lukcom,collection,55.36668981481481,1794785228,0.98,1.0,0.981862,1.0,59386.0,Who Will Have a #1 Song in 2026?,Luke Combs,culture,
+1794769918,ccpc-bilbrd-1song-any2026-kanwes,collection,55.36668981481481,1794785228,0.98,1.0,0.981862,1.0,59386.0,Who Will Have a #1 Song in 2026?,Kanye West,culture,
+1794769918,kpic-hd-q3comp-2026-11-17-1-1pt25pct,collection,16.366689814814816,1794785228,0.98,4115.52,0.981862,51.02040816326531,258450.0,Home Depot Q3 FY2026 Comparable Sales Growth?,1%-1.25%,finance,0.0
+1794769918,tac-grammys-nom-rapalb-2026-11-16-faloff,collection,15.366689814814816,1794785228,0.98,150.0,0.981862,51.02040816326531,162120.0,Grammy Nominees: Best Rap Album,The Fall-Off - J. Cole,culture,0.0
+1794769918,aaagaspc-usgas-day-2026-11-16-gt3pt8150,collection,8.407662037037037,1794785228,0.98,140.0,0.981862,51.02040816326531,272523.0,US Gas Prices on November 16th,Above $3.8150,macro,0.0
+1794785228,tac-grammys-nom-bna-2026-11-16-rolmod,collection,15.189490740740741,1794798388,0.92,123.0,0.926992,54.347826086956516,162118.0,Grammy Nominees: Best New Artist,Role Model,culture,0.0
+1794798388,stsc-hormuz-normal-2026-11-30,deadline,15.07883101851852,1794819700,0.98,491.33,0.981862,51.02040816326531,44402.0,Strait of Hormuz Traffic Returns to Normal?,"By November 30, 2026",geopolitics,
+1794798388,kpic-nvda-q3gm-2026-11-17-71-73pct,collection,16.037175925925926,1794819700,0.98,0.01,0.981862,0.01,258354.0,NVIDIA Q3 FY2027 Non-GAAP Gross Margin?,71% to 73%,finance,0.0
+1794798388,vmc-ushrmov-mi-04-2026-11-03-dgte12,single,59.87050925925926,1794819700,0.98,0.01,0.981862,0.01,93403.0,MI-04 House Election Margin of Victory,Democrat 12%+,politics,
+1794798388,vmc-ushrmov-mo-02-2026-11-03-dgte6,single,59.87050925925926,1794819700,0.98,0.06,0.981862,0.06,93416.0,MO-02 House Election Margin of Victory,Democrat 6%+,politics,
+1794798388,vmc-ushrmov-il-11-2026-11-03-dgte35,single,59.87050925925926,1794819700,0.94,0.06,0.9453579999999999,0.06,93355.0,IL-11 House Election Margin of Victory,Democrat 35%+,politics,
+1794819700,lawec-cryptoleg-2026-12-31,single,59.79050925925926,1794863360,0.96,19213.7,0.963648,52.083333333333336,59388.0,Crypto Market Structure Legislation Becomes Law?,"By December 31, 2026",politics,
+1794819700,iarc-group-2026-12-31-antfau,collection,59.79050925925926,1794863360,0.96,691.37,0.963648,52.083333333333336,60956.0,Who will be arrested in 2026?,Anthony Fauci,politics,
+1794819700,gsrc-gsearch-1person-2026-erlhaa,collection,59.79050925925926,1794863360,0.94,64.05,0.9453579999999999,53.19148936170213,148043.0,#1 Searched Person on Google 2026?,Erling Haaland,culture,
+1794819700,ipcc-2026ipos-glean,collection,59.79050925925926,1794863360,0.98,4094.0,0.981862,51.02040816326531,26292.0,Which Companies Will Confirm an IPO in 2026?,Glean,finance,
+1794819700,ipcc-2026ipos-ramp,collection,59.79050925925926,1794863360,0.96,22.0,0.963648,22.0,26292.0,Which Companies Will Confirm an IPO in 2026?,Ramp,finance,
+1794819700,ipcc-2026ipos-ledger,collection,59.79050925925926,1794863360,0.98,15.0,0.981862,15.0,26292.0,Which Companies Will Confirm an IPO in 2026?,Ledger,finance,
+1794819700,iarc-group-2026-12-31-johbre,collection,59.79050925925926,1794863360,0.91,481.13,0.9177805,54.94505494505494,60956.0,Who will be arrested in 2026?,John Brennan,politics,
+1794819700,dipcc-us-iran-contnts-2026--urnsur,collection,59.79050925925926,1794863360,0.96,6.64,0.963648,6.64,47849.0,What Will Be in a US-Iran Deal in 2026?,Enriched Uranium Surrender,geopolitics,
+1794819700,gsrc-gsearch-1person-2026-badbun,collection,59.79050925925926,1794863360,0.97,1.0,0.9727644999999999,1.0,148043.0,#1 Searched Person on Google 2026?,Bad Bunny,culture,
+1794819700,iarc-group-2026-12-31-phogat,collection,59.79050925925926,1794863360,0.96,239.45,0.963648,52.083333333333336,60956.0,Who will be arrested in 2026?,Phoebe Gates,politics,
+1794819700,iarc-jenhua-arrested-2026-11-30,deadline,59.79050925925926,1794863360,0.98,17916.92,0.981862,51.02040816326531,259529.0,Jensen Huang Arrested?,"By November 30, 2026",finance,
+1794819700,iarc-group-2026-12-31-tuccar,collection,59.79050925925926,1794863360,0.98,612.98,0.981862,51.02040816326531,60956.0,Who will be arrested in 2026?,Tucker Carlson,politics,
+1794819700,iarc-netanyahu-2026-12-31,single,59.79050925925926,1794863360,0.98,26440.92,0.981862,51.02040816326531,60955.0,Netanyahu Arrested?,"By December 31, 2026",politics,
+1794819700,ipcc-2026ipos-vanta,collection,59.79050925925926,1794863360,0.98,4958.0,0.981862,51.02040816326531,26292.0,Which Companies Will Confirm an IPO in 2026?,Vanta,finance,
+1794819700,gsrc-gsearch-1person-2026-dontru,collection,59.79050925925926,1794863360,0.98,795.08,0.981862,51.02040816326531,148043.0,#1 Searched Person on Google 2026?,Donald Trump,culture,
+1794819700,aaagaspc-usgas-high-2026-12-31-gt5pt20,collection,59.79050925925926,1794863360,0.97,51.11,0.9727644999999999,51.11,109973.0,How High Will US Gas Prices Get in 2026?,Above $5.20,macro,
+1794819700,aaagaspc-usgas-high-2026-12-31-gt4pt80,collection,59.79050925925926,1794863360,0.9299999999999999,123.56,0.9361845,53.763440860215056,109973.0,How High Will US Gas Prices Get in 2026?,Above $4.80,macro,
+1794819700,aaagaspc-usgas-high-2026-12-31-gt5pt00,collection,59.79050925925926,1794863360,0.96,120.0,0.963648,52.083333333333336,109973.0,How High Will US Gas Prices Get in 2026?,Above $5.00,macro,
+1794819700,opdc-wrldld-2026-12-31-javmil,collection,59.79050925925926,1794863360,0.98,152.02,0.981862,51.02040816326531,110134.0,Which World Leaders Will Leave Office in 2026?,Javier Milei - President of Argentina,politics,
+1794819700,opdc-wrldld-2026-12-31-feltsh,collection,59.79050925925926,1794863360,0.92,0.04,0.926992,0.04,110134.0,Which World Leaders Will Leave Office in 2026?,Felix Tshisekedi - President of the Democratic Republic of the Congo,politics,
+1794819700,opdc-wrldld-2026-12-31-dannob,collection,59.79050925925926,1794863360,0.91,0.42,0.9177805,0.42,110134.0,Which World Leaders Will Leave Office in 2026?,Daniel Noboa - President of Ecuador,politics,
+1794819700,iarc-group-2026-12-31-hilcli,collection,59.79050925925926,1794863360,0.97,9980.68,0.9727644999999999,51.54639175257732,60956.0,Who will be arrested in 2026?,Hillary Clinton,politics,
+1794819700,tpoyc-2026-mojkha,collection,59.79050925925926,1794863360,0.96,5163.11,0.963648,52.083333333333336,44392.0,TIME Person of the Year 2026,Mojtaba Khamenei,culture,
+1794819700,tpoyc-2026-mohgha,collection,59.79050925925926,1794863360,0.97,2443.13,0.9727644999999999,51.54639175257732,44392.0,TIME Person of the Year 2026,Mohammad-Bagher Ghalibaf,culture,
+1794819700,usgcc-aliens-12-31-2026,single,59.79050925925926,1794863360,0.98,92262.0,0.981862,51.02040816326531,17708.0,US Confirms That Aliens Exist?,"December 31, 2026",politics,
+1794819700,opdc-wrldld-2026-12-31-frimer,collection,59.79050925925926,1794863360,0.97,184.59,0.9727644999999999,51.54639175257732,110134.0,Which World Leaders Will Leave Office in 2026?,Friedrich Merz - Chancellor of Germany,politics,
+1794819700,tpoyc-2026-xijin,collection,59.79050925925926,1794863360,0.96,2431.26,0.963648,52.083333333333336,44392.0,TIME Person of the Year 2026,Xi Jinping,culture,
+1794819700,vmc-ushrmov-wa-06-2026-11-03-dgte35,single,59.623842592592595,1794863360,0.98,0.98,0.981862,0.98,101612.0,WA-06 House Election Margin of Victory,Democrat 35%+,politics,
+1794819700,dipcc-us-iran-contnts-2026--enrcap,collection,59.79050925925926,1794863360,0.95,38.62,0.9545125,38.62,47849.0,What Will Be in a US-Iran Deal in 2026?,Uranium Enrichment % Cap,geopolitics,
+1794819700,opdc-wrldld-2026-12-31-kimun,collection,59.79050925925926,1794863360,0.96,301.01,0.963648,52.083333333333336,110134.0,Which World Leaders Will Leave Office in 2026?,Kim Jong Un - Supreme Leader of North Korea,politics,
+1794819700,opdc-wrldld-2026-12-31-migdia,collection,59.79050925925926,1794863360,0.95,1.02,0.9545125,1.02,110134.0,Which World Leaders Will Leave Office in 2026?,Miguel Diaz-Canel - First Secretary of the Communist Party of Cuba,politics,
+1794819700,cranc-uspres28-12-31-2026-vivram,collection,59.79050925925926,1794863360,0.97,6.21,0.9727644999999999,6.21,44781.0,Who Will Announce a Presidential Run in 2026?,Vivek Ramaswamy,politics,
+1794819700,cranc-uspres28-12-31-2026-zohmam,collection,59.79050925925926,1794863360,0.98,536.41,0.981862,51.02040816326531,44781.0,Who Will Announce a Presidential Run in 2026?,Zohran Mamdani,politics,
+1794819700,iarc-group-2026-12-31-canowe,collection,59.79050925925926,1794863360,0.96,332.72,0.963648,52.083333333333336,60956.0,Who will be arrested in 2026?,Candace Owens,politics,
+1794819700,opdc-wrldld-2026-12-31-jennie,collection,59.79050925925926,1794863360,0.94,0.69,0.9453579999999999,0.69,110134.0,Which World Leaders Will Leave Office in 2026?,Jens-Frederik Nielsen - Prime Minister of Greenland,politics,
+1794819700,opdc-wrldld-2026-12-31-rodper,collection,59.79050925925926,1794863360,0.9299999999999999,0.12,0.9361845,0.12,110134.0,Which World Leaders Will Leave Office in 2026?,Rodrigo Paz Pereira - President of Bolivia,politics,
+1794819700,cranc-uspres28-12-31-2026-petbut,collection,59.79050925925926,1794863360,0.95,6.49,0.9545125,6.49,44781.0,Who Will Announce a Presidential Run in 2026?,Pete Buttigieg,politics,
+1794819700,cranc-uspres28-12-31-2026-robken,collection,59.79050925925926,1794863360,0.97,616.65,0.9727644999999999,51.54639175257732,44781.0,Who Will Announce a Presidential Run in 2026?,Robert F. Kennedy Jr.,politics,
+1794819700,dipcc-us-iran-contnts-2026--enrmor,collection,59.79050925925926,1794863360,0.94,361.87,0.9453579999999999,53.19148936170213,47849.0,What Will Be in a US-Iran Deal in 2026?,1+ Year Enrichment Moratorium,geopolitics,
+1794819700,dipcc-us-iran-contnts-2026--irnfnd,collection,59.79050925925926,1794863360,0.95,405.77,0.9545125,52.631578947368425,47849.0,What Will Be in a US-Iran Deal in 2026?,Iran Reconstruction Funding,geopolitics,
+1794819700,pic-congress-impeach-hegseth-2026-12-31,single,59.79050925925926,1794863360,0.98,29132.06,0.981862,51.02040816326531,254385.0,Pete Hegseth Impeached?,"By December 31, 2026",politics,
+1794819700,opdc-wrldld-2026-12-31-seblec,collection,59.79050925925926,1794863360,0.95,0.97,0.9545125,0.97,110134.0,Which World Leaders Will Leave Office in 2026?,Sebastien Lecornu - Prime Minister of France,politics,
+1794819700,opdc-wrldld-2026-12-31-vlaput,collection,59.79050925925926,1794863360,0.98,0.01,0.981862,0.01,110134.0,Which World Leaders Will Leave Office in 2026?,Vladimir Putin - President of Russia,politics,
+1794819700,tpoyc-2026-dontru,collection,59.79050925925926,1794863360,0.95,3950.59,0.9545125,52.631578947368425,44392.0,TIME Person of the Year 2026,Donald Trump,culture,
+1794819700,tpoyc-2026-daramo,collection,59.79050925925926,1794863360,0.95,3716.22,0.9545125,52.631578947368425,44392.0,TIME Person of the Year 2026,Dario Amodei,culture,
+1794819700,dipcc-us-iran-contnts-2026--enrcaplte5,collection,59.79050925925926,1794863360,0.94,10.15,0.9453579999999999,10.15,47849.0,What Will Be in a US-Iran Deal in 2026?,5% Enrichment Cap (1+ Year),geopolitics,
+1794819700,tpoyc-2026-samalt,collection,59.79050925925926,1794863360,0.97,691.53,0.9727644999999999,51.54639175257732,44392.0,TIME Person of the Year 2026,Sam Altman,culture,
+1794819700,tpoyc-2026-petmag,collection,59.79050925925926,1794863360,0.98,4.22,0.981862,4.22,44392.0,TIME Person of the Year 2026,Peter Magyar,culture,
+1794819700,tpoyc-2026-reiwis,collection,59.79050925925926,1794863360,0.96,0.21,0.963648,0.21,44392.0,TIME Person of the Year 2026,Reid Wiseman,culture,
+1794819700,tpoyc-2026-shesha,collection,59.79050925925926,1794863360,0.98,2.72,0.981862,2.72,44392.0,TIME Person of the Year 2026,Shehbaz Sharif,culture,
+1794819700,aimrc-company1-dur2026-alibab,collection,59.79050925925926,1794863360,0.95,7335.58,0.9545125,52.631578947368425,51412.0,Which Companies will have #1 AI Model in 2026?,Alibaba,technology,
+1794819700,aimrc-company1-dur2026-amazon,collection,59.79050925925926,1794863360,0.98,5579.34,0.981862,51.02040816326531,51412.0,Which Companies will have #1 AI Model in 2026?,Amazon,technology,
+1794819700,aimc-xai-grok-5-2026-12-31,deadline,59.79050925925926,1794863360,0.92,4097.12,0.926992,54.347826086956516,59419.0,Grok 5 Released?,"By December 31, 2026",technology,
+1794819700,cranc-uspres28-12-31-2026-krinoe,collection,59.79050925925926,1794863360,0.97,688.15,0.9727644999999999,51.54639175257732,44781.0,Who Will Announce a Presidential Run in 2026?,Kristi Noem,politics,
+1794819700,cranc-uspres28-12-31-2026-jossha,collection,59.79050925925926,1794863360,0.96,28.4,0.963648,28.4,44781.0,Who Will Announce a Presidential Run in 2026?,Josh Shapiro,politics,
+1794819700,cranc-uspres28-12-31-2026-kamhar,collection,59.79050925925926,1794863360,0.96,97.26,0.963648,52.083333333333336,44781.0,Who Will Announce a Presidential Run in 2026?,Kamala Harris,politics,
+1794819700,cranc-uspres28-12-31-2026-jonoss,collection,59.79050925925926,1794863360,0.97,508.84,0.9727644999999999,51.54639175257732,44781.0,Who Will Announce a Presidential Run in 2026?,Jon Ossoff,politics,
+1794819700,cranc-uspres28-12-31-2026-tuccar,collection,59.79050925925926,1794863360,0.97,2766.8,0.9727644999999999,51.54639175257732,44781.0,Who Will Announce a Presidential Run in 2026?,Tucker Carlson,politics,
+1794819700,cranc-uspres28-12-31-2026-stesmi,collection,59.79050925925926,1794863360,0.97,3.98,0.9727644999999999,3.98,44781.0,Who Will Announce a Presidential Run in 2026?,Stephen A. Smith,politics,
+1794819700,cranc-uspres28-12-31-2026-tedcru,collection,59.79050925925926,1794863360,0.97,2931.2,0.9727644999999999,51.54639175257732,44781.0,Who Will Announce a Presidential Run in 2026?,Ted Cruz,politics,
+1794819700,cranc-uspres28-12-31-2026-steban,collection,59.79050925925926,1794863360,0.98,215.58,0.981862,51.02040816326531,44781.0,Who Will Announce a Presidential Run in 2026?,Steve Bannon,politics,
+1794819700,opdc-wrldld-2026-12-31-leemyu,collection,59.79050925925926,1794863360,0.96,123.95,0.963648,52.083333333333336,110134.0,Which World Leaders Will Leave Office in 2026?,Lee Jae Myung - President of South Korea,politics,
+1794819700,aimrc-chinese-arena-ovrall-1-2026-12-31,single,59.79050925925926,1794863360,0.92,37115.48,0.926992,54.347826086956516,59414.0,Chinese AI Model Ranked #1?,"By December 31, 2026",technology,
+1794819700,aimc-openai-gpt-astra-6pt1-2026-11-16,deadline,59.79050925925926,1794863360,0.97,73.93,0.9727644999999999,51.54639175257732,109994.0,GPT Astra 6.1 Released?,"By November 16, 2026",technology,0.0
+1794819700,aaagaspc-usgas-high-2026-12-31-gt5pt40,collection,59.79050925925926,1794863360,0.97,5102.29,0.9727644999999999,51.54639175257732,109973.0,How High Will US Gas Prices Get in 2026?,Above $5.40,macro,
+1794819700,aaagaspc-usgas-high-2026-12-31-gt5pt60,collection,59.79050925925926,1794863360,0.98,7191.2,0.981862,51.02040816326531,109973.0,How High Will US Gas Prices Get in 2026?,Above $5.60,macro,
+1794819700,aimrc-company1-dur2026-moonsh,collection,59.79050925925926,1794863360,0.97,5196.05,0.9727644999999999,51.54639175257732,51412.0,Which Companies will have #1 AI Model in 2026?,Moonshot,technology,
+1794819700,aimrc-company1-dur2026-xai,collection,59.79050925925926,1794863360,0.9299999999999999,3254.14,0.9361845,53.763440860215056,51412.0,Which Companies will have #1 AI Model in 2026?,xAI,technology,
+1794819700,aimrc-company1-dur2026-meta,collection,59.79050925925926,1794863360,0.91,750.27,0.9177805,54.94505494505494,51412.0,Which Companies will have #1 AI Model in 2026?,Meta,technology,
+1794819700,aimrc-company1-dur2026-byteda,collection,59.79050925925926,1794863360,0.97,7301.89,0.9727644999999999,51.54639175257732,51412.0,Which Companies will have #1 AI Model in 2026?,ByteDance,technology,
+1794819700,tpoyc-2026-badbun,collection,59.79050925925926,1794863360,0.96,4356.26,0.963648,52.083333333333336,44392.0,TIME Person of the Year 2026,Bad Bunny,culture,
+1794819700,rtc-dwts-s35-highscore-2026-11-17-tatali,collection,15.79050925925926,1794863360,0.94,5.1,0.9453579999999999,5.1,256212.0,Dancing With The Stars S35: Week 10 Highest Scorer,Tatyana Ali,culture,0.0
+1794819700,cranc-uspres28-12-31-2026-dontru,collection,59.79050925925926,1794863360,0.97,1348.89,0.9727644999999999,51.54639175257732,44781.0,Who Will Announce a Presidential Run in 2026?,Donald Trump,politics,
+1794819700,opdc-wrldld-2026-12-31-ramkad,collection,59.79050925925926,1794863360,0.95,2.42,0.9545125,2.42,110134.0,Which World Leaders Will Leave Office in 2026?,Ramzan Kadyrov - Head of the Chechen Republic,politics,
+1794819700,opdc-wrldld-2026-12-31-recerd,collection,59.79050925925926,1794863360,0.97,15.3,0.9727644999999999,15.3,110134.0,Which World Leaders Will Leave Office in 2026?,Recep Tayyip Erdogan - President of Turkiye,politics,
+1794819700,pmmsc-usmort30-hi-yr-2026-12-31-gte8pt10,collection,59.79050925925926,1794863360,0.97,170.75,0.9727644999999999,51.54639175257732,151811.0,How High Will 30-Year Mortgage Get by Dec. 31?,8.10%,macro,
+1794819700,pmmsc-usmort30-lw-yr-2026-12-31-lte6pt70,collection,59.79050925925926,1794863360,0.96,448.66,0.963648,52.083333333333336,151812.0,How Low Will 30-Year Mortgage Get by Dec. 31?,6.70%,macro,
+1794819700,pmmsc-usmort30-hi-yr-2026-12-31-gte8pt00,collection,59.79050925925926,1794863360,0.97,39185.18,0.9727644999999999,51.54639175257732,151811.0,How High Will 30-Year Mortgage Get by Dec. 31?,8.00%,macro,
+1794819700,dipcc-us-iran-contnts-2026--dilut,collection,59.79050925925926,1794863360,0.92,430.57,0.926992,54.347826086956516,47849.0,What Will Be in a US-Iran Deal in 2026?,Dilution of Iran's Uranium,geopolitics,
+1794819700,opdc-wrldld-2026-12-31-emmmac,collection,59.79050925925926,1794863360,0.97,55.73,0.9727644999999999,51.54639175257732,110134.0,Which World Leaders Will Leave Office in 2026?,Emmanuel Macron - President of France,politics,
+1794819700,opdc-wrldld-2026-12-31-clashe,collection,59.79050925925926,1794863360,0.97,3822.39,0.9727644999999999,51.54639175257732,110134.0,Which World Leaders Will Leave Office in 2026?,Claudia Sheinbaum - President of Mexico,politics,
+1794819700,opdc-wrldld-2026-12-31-cyrram,collection,59.79050925925926,1794863360,0.98,2.0,0.981862,2.0,110134.0,Which World Leaders Will Leave Office in 2026?,Cyril Ramaphosa - President of South Africa,politics,
+1794819700,opdc-wrldld-2026-12-31-naybuk,collection,59.79050925925926,1794863360,0.97,19.31,0.9727644999999999,19.31,110134.0,Which World Leaders Will Leave Office in 2026?,Nayib Bukele - President of El Salvador,politics,
+1794819700,opdc-wrldld-2026-12-31-metfre,collection,59.79050925925926,1794863360,0.91,0.12,0.9177805,0.12,110134.0,Which World Leaders Will Leave Office in 2026?,Mette Frederiksen - Prime Minister of Denmark,politics,
+1794819700,tpoyc-2026-vicglo,collection,59.79050925925926,1794863360,0.96,8395.53,0.963648,52.083333333333336,44392.0,TIME Person of the Year 2026,Victor Glover,culture,
+1794819700,pnwpc-elonmusk-2026-12-31-gt1pt3t,collection,59.79050925925926,1794863360,0.94,148.19,0.9453579999999999,53.19148936170213,60954.0,Elon Musk Net Worth on December 31?,Above $1.3 Trillion,finance,
+1794819700,pnwpc-elonmusk-by-2026-12-31-hit-1pt3t,collection,59.79050925925926,1794863360,0.92,4910.47,0.926992,54.347826086956516,53731.0,What Will Elon's Net Worth Hit By December 31?,$1.3 Trillion,finance,
+1794819700,pnwpc-elonmusk-by-2026-12-31-hit-1pt2t,collection,59.79050925925926,1794863360,0.91,114.91,0.9177805,54.94505494505494,53731.0,What Will Elon's Net Worth Hit By December 31?,$1.2 Trillion,finance,
+1794819700,pnwpc-elonmusk-by-2026-12-31-hit-1pt5t,collection,59.79050925925926,1794863360,0.96,637.41,0.963648,52.083333333333336,53731.0,What Will Elon's Net Worth Hit By December 31?,$1.5 Trillion,finance,
+1794819700,pmmsc-usmort30-hi-yr-2026-12-31-gte7pt70,collection,59.79050925925926,1794863360,0.94,232.5,0.9453579999999999,53.19148936170213,151811.0,How High Will 30-Year Mortgage Get by Dec. 31?,7.70%,macro,
+1794819700,cranc-uspres28-12-31-2026-marrub,collection,59.79050925925926,1794863360,0.97,1372.99,0.9727644999999999,51.54639175257732,44781.0,Who Will Announce a Presidential Run in 2026?,Marco Rubio,politics,
+1794819700,cranc-uspres28-12-31-2026-markel,collection,59.79050925925926,1794863360,0.95,1145.88,0.9545125,52.631578947368425,44781.0,Who Will Announce a Presidential Run in 2026?,Mark Kelly,politics,
+1794819700,cranc-uspres28-12-31-2026-bersan,collection,59.79050925925926,1794863360,0.97,214.74,0.9727644999999999,51.54639175257732,44781.0,Who Will Announce a Presidential Run in 2026?,Bernie Sanders,politics,
+1794819700,cranc-uspres28-12-31-2026-andyan,collection,59.79050925925926,1794863360,0.96,105.4,0.963648,52.083333333333336,44781.0,Who Will Announce a Presidential Run in 2026?,Andrew Yang,politics,
+1794819700,pmmsc-usmort30-hi-yr-2026-12-31-gte7pt80,collection,59.79050925925926,1794863360,0.9299999999999999,173.52,0.9361845,53.763440860215056,151811.0,How High Will 30-Year Mortgage Get by Dec. 31?,7.80%,macro,
+1794819700,apdc-trumpadmin-2026-stewit,collection,59.79050925925926,1794863360,0.91,276.3,0.9177805,54.94505494505494,44391.0,Who Will Be Announced Out of Their Trump Admin Role in 2026?,Steve Witkoff,politics,
+1794819700,apdc-trumpadmin-2026-scobes,collection,59.79050925925926,1794863360,0.91,348.02,0.9177805,54.94505494505494,44391.0,Who Will Be Announced Out of Their Trump Admin Role in 2026?,Scott Bessent,politics,
+1794819700,cranc-uspres28-12-31-2026-dontrujr,collection,59.79050925925926,1794863360,0.97,102.66,0.9727644999999999,51.54639175257732,44781.0,Who Will Announce a Presidential Run in 2026?,Donald Trump Jr.,politics,
+1794819700,cranc-uspres28-12-31-2026-gavnew,collection,59.79050925925926,1794863360,0.98,13283.12,0.981862,51.02040816326531,44781.0,Who Will Announce a Presidential Run in 2026?,Gavin Newsom,politics,
+1794819700,cranc-uspres28-12-31-2026-hunbid,collection,59.79050925925926,1794863360,0.98,20.22,0.981862,20.22,44781.0,Who Will Announce a Presidential Run in 2026?,Hunter Biden,politics,
+1794819700,cranc-uspres28-12-31-2026-jdvan,collection,59.79050925925926,1794863360,0.97,19.38,0.9727644999999999,19.38,44781.0,Who Will Announce a Presidential Run in 2026?,J.D. Vance,politics,
+1794819700,apdc-trumpadmin-2026-robken,collection,59.79050925925926,1794863360,0.91,76.63,0.9177805,54.94505494505494,44391.0,Who Will Be Announced Out of Their Trump Admin Role in 2026?,Robert F. Kennedy Jr.,politics,
+1794819700,apdc-trumpadmin-2026-marrub,collection,59.79050925925926,1794863360,0.94,2510.48,0.9453579999999999,53.19148936170213,44391.0,Who Will Be Announced Out of Their Trump Admin Role in 2026?,Marco Rubio,politics,
+1794819700,apdc-trumpadmin-2026-brorol,collection,59.79050925925926,1794863360,0.91,32.71,0.9177805,32.71,44391.0,Who Will Be Announced Out of Their Trump Admin Role in 2026?,Brooke Rollins,politics,
+1794819700,apdc-trumpadmin-2026-johrat,collection,59.79050925925926,1794863360,0.94,294.57,0.9453579999999999,53.19148936170213,44391.0,Who Will Be Announced Out of Their Trump Admin Role in 2026?,John Ratcliffe,politics,
+1794819700,cranc-uspres28-12-31-2026-aleoca,collection,59.79050925925926,1794863360,0.94,567.92,0.9453579999999999,53.19148936170213,44781.0,Who Will Announce a Presidential Run in 2026?,Alexandria Ocasio-Cortez,politics,
+1794819700,stsc-bab-el-mandeb-clsd-2026-12-31,single,59.79050925925926,1794863360,0.92,133.76,0.926992,54.347826086956516,53721.0,Bab el-Mandeb Strait Effectively Closed?,"By December 31, 2026",geopolitics,
+1794819700,tpoyc-2026-marrub,collection,59.79050925925926,1794863360,0.97,1318.21,0.9727644999999999,51.54639175257732,44392.0,TIME Person of the Year 2026,Marco Rubio,culture,
+1794819700,tpoyc-2026-jerhan,collection,59.79050925925926,1794863360,0.95,0.42,0.9545125,0.42,44392.0,TIME Person of the Year 2026,Jeremy Hansen,culture,
+1794819700,tpoyc-2026-liomes,collection,59.79050925925926,1794863360,0.98,1746.85,0.981862,51.02040816326531,44392.0,TIME Person of the Year 2026,Lionel Messi,culture,
+1794819700,tpoyc-2026-elomus,collection,59.79050925925926,1794863360,0.97,206.15,0.9727644999999999,51.54639175257732,44392.0,TIME Person of the Year 2026,Elon Musk,culture,
+1794819700,aimrc-company1-dur2026-deepse,collection,59.79050925925926,1794863360,0.94,7033.59,0.9453579999999999,53.19148936170213,51412.0,Which Companies will have #1 AI Model in 2026?,DeepSeek,technology,
+1794819700,aimrc-company1-dur2026-baidu,collection,59.79050925925926,1794863360,0.94,3503.99,0.9453579999999999,53.19148936170213,51412.0,Which Companies will have #1 AI Model in 2026?,Baidu,technology,
+1794819700,apdc-jerpowgov-2026-12-31,single,59.79050925925926,1794863360,0.9299999999999999,44268.62,0.9361845,53.763440860215056,44389.0,Jerome Powell Announced Out as Fed Governor?,"By December 31, 2026",politics,
+1794819700,apdc-daramo-anthceo-2026-12-31,single,59.79050925925926,1794863360,0.95,27640.6,0.9545125,52.631578947368425,60953.0,Dario Amodei Announced Out as Anthropic CEO?,"By December 31, 2026",finance,
+1794819700,apdc-elonmusk-tsla-ceo-2026-12-31,single,59.79050925925926,1794863360,0.95,19788.68,0.9545125,52.631578947368425,53728.0,Elon Musk Announced Out As Tesla CEO?,"By December 31, 2026",finance,
+1794819700,tpoyc-2026-bennet,collection,59.79050925925926,1794863360,0.92,666.83,0.926992,54.347826086956516,44392.0,TIME Person of the Year 2026,Benjamin Netanyahu,culture,
+1794819700,tpoyc-2026-chrkoc,collection,59.79050925925926,1794863360,0.96,789.09,0.963648,52.083333333333336,44392.0,TIME Person of the Year 2026,Christina Koch,culture,
+1794819700,tpoyc-2026-chatgp,collection,59.79050925925926,1794863360,0.97,6350.26,0.9727644999999999,51.54639175257732,44392.0,TIME Person of the Year 2026,ChatGPT,culture,
+1794819700,pmmsc-usmort30-lw-yr-2026-12-31-lte6pt90,collection,59.79050925925926,1794863360,0.9299999999999999,151.0,0.9361845,53.763440860215056,151812.0,How Low Will 30-Year Mortgage Get by Dec. 31?,6.90%,macro,
+1794819700,pmmsc-usmort30-lw-yr-2026-12-31-lte6pt80,collection,59.79050925925926,1794863360,0.94,9162.76,0.9453579999999999,53.19148936170213,151812.0,How Low Will 30-Year Mortgage Get by Dec. 31?,6.80%,macro,
+1794819700,apdc-andburpm-2026-12-31,single,59.79050925925926,1794863360,0.96,17483.08,0.963648,52.083333333333336,60958.0,Andy Burnham Announced Out as UK PM?,"By December 31, 2026",politics,
+1794819700,pmmsc-usmort30-hi-yr-2026-12-31-gte7pt90,collection,59.79050925925926,1794863360,0.97,41456.66,0.9727644999999999,51.54639175257732,151811.0,How High Will 30-Year Mortgage Get by Dec. 31?,7.90%,macro,
+1794819700,apdc-trumpadmin-2026-steche,collection,59.79050925925926,1794863360,0.98,368.89,0.981862,51.02040816326531,44391.0,Who Will Be Announced Out of Their Trump Admin Role in 2026?,Steven Cheung,politics,
+1794819700,cbpac-usfed-2026-cut,single,59.79050925925926,1794863360,0.98,41161.84,0.981862,51.02040816326531,44782.0,Fed Rate Cut in 2026?,Cut,macro,
+1794819700,apdc-trumpadmin-2026-tomhom,collection,59.79050925925926,1794863360,0.94,22.53,0.9453579999999999,22.53,44391.0,Who Will Be Announced Out of Their Trump Admin Role in 2026?,Tom Homan,politics,
+1794819700,apdc-altman-openai-ceo-2026-12-31,single,59.79050925925926,1794863360,0.96,49305.89,0.963648,52.083333333333336,53729.0,Sam Altman Announced Out As OpenAI CEO?,"By December 31, 2026",finance,
+1794819700,apdc-trumpadmin-2026-rodsco,collection,59.79050925925926,1794863360,0.91,42.13,0.9177805,42.13,44391.0,Who Will Be Announced Out of Their Trump Admin Role in 2026?,Rodney Scott,politics,
+1794819700,apdc-trumpadmin-2026-rusvou,collection,59.79050925925926,1794863360,0.92,26.09,0.926992,26.09,44391.0,Who Will Be Announced Out of Their Trump Admin Role in 2026?,Russell Vought,politics,
+1794819700,tpoyc-2026-ai,collection,59.79050925925926,1794863360,0.96,9454.1,0.963648,52.083333333333336,44392.0,TIME Person of the Year 2026,Artificial Intelligence,culture,
+1794819700,apdc-alito-2026-12-31,single,59.79050925925926,1794863360,0.96,40291.66,0.963648,52.083333333333336,44390.0,Samuel Alito Announced Out as SCOTUS Justice?,"By December 31, 2026",politics,
+1794819700,tpoyc-2026-popleo,collection,59.79050925925926,1794863360,0.92,323.06,0.926992,54.347826086956516,44392.0,TIME Person of the Year 2026,Pope Leo XIV,culture,
+1794819700,ipcc-2026ipos-epic-games,collection,59.79050925925926,1794863360,0.98,10478.0,0.981862,51.02040816326531,26292.0,Which Companies Will Confirm an IPO in 2026?,Epic Games,finance,
+1794819700,ipcc-2026ipos-discord,collection,59.79050925925926,1794863360,0.95,75.0,0.9545125,52.631578947368425,26292.0,Which Companies Will Confirm an IPO in 2026?,Discord,finance,
+1794819700,ipcc-2026ipos-anduril,collection,59.79050925925926,1794863360,0.98,2981.0,0.981862,51.02040816326531,26292.0,Which Companies Will Confirm an IPO in 2026?,Anduril,finance,
+1794819700,opdc-wrldld-2026-12-31-chrlux,collection,59.79050925925926,1794863360,0.91,5.13,0.9177805,5.13,110134.0,Which World Leaders Will Leave Office in 2026?,Christopher Luxon - Prime Minister of New Zealand,politics,
+1794819700,opdc-liscook-fedgov-2026-12-31,single,59.79050925925926,1794863360,0.96,22621.36,0.963648,52.083333333333336,74915.0,Lisa Cook Officially Out as Fed Governor?,"By December 31, 2026",politics,
+1794819700,mowc-nato-us-12-31-2026,single,59.79050925925926,1794863360,0.97,14290.61,0.9727644999999999,51.54639175257732,47822.0,US Withdraws From NATO?,"By December 31, 2026",politics,
+1794819700,lawec-saveact-2026-12-31,single,59.79050925925926,1794863360,0.98,152607.62,0.981862,51.02040816326531,44784.0,Save Act Becomes Law?,"By December 31, 2026",politics,
+1794863360,gsrc-gsearch-1person-2026-nicmad,collection,59.285185185185185,1794887765,0.96,375.0,0.963648,52.083333333333336,148043.0,#1 Searched Person on Google 2026?,Nicolas Maduro,culture,
+1794863360,ccrc-ntflx-1movus-2026-11-17-allen,collection,15.285185185185185,1794887765,0.97,0.19,0.9727644999999999,0.19,255346.0,Top US Netflix Movie This Week?,Allen,culture,0.0
+1794863360,kpic-nvda-q3gm-2026-11-17-lt71pct,collection,15.285185185185185,1794887765,0.98,3038.19,0.981862,51.02040816326531,258354.0,NVIDIA Q3 FY2027 Non-GAAP Gross Margin?,Less Than 71%,finance,0.0
+1794863360,aaagaspc-usgas-high-2026-12-31-gt4pt60,collection,59.285185185185185,1794887765,0.92,11.23,0.926992,11.23,109973.0,How High Will US Gas Prices Get in 2026?,Above $4.60,macro,
+1794863360,kpic-nvda-q3gm-2026-11-17-gte77pct,collection,15.285185185185185,1794887765,0.98,1242.08,0.981862,51.02040816326531,258354.0,NVIDIA Q3 FY2027 Non-GAAP Gross Margin?,77% or More,finance,0.0
+1794863360,kpic-hd-q3comp-2026-11-17-lt1pct,collection,15.285185185185185,1794887765,0.98,187.37,0.981862,51.02040816326531,258450.0,Home Depot Q3 FY2026 Comparable Sales Growth?,Less Than 1%,finance,0.0
+1794863360,kpic-hd-q3comp-2026-11-17-2-2pt25pct,collection,15.285185185185185,1794887765,0.98,187.93,0.981862,51.02040816326531,258450.0,Home Depot Q3 FY2026 Comparable Sales Growth?,2%-2.25%,finance,1.0
+1794863360,kpic-hd-q3comp-2026-11-17-1pt75-2pct,collection,15.285185185185185,1794887765,0.98,187.38,0.981862,51.02040816326531,258450.0,Home Depot Q3 FY2026 Comparable Sales Growth?,1.75%-2%,finance,0.0
+1794863360,kpic-hd-q3comp-2026-11-17-1pt25-1pt5pct,collection,15.285185185185185,1794887765,0.98,1650.01,0.981862,51.02040816326531,258450.0,Home Depot Q3 FY2026 Comparable Sales Growth?,1.25%-1.5%,finance,0.0
+1794863360,cranc-uspres28-12-31-2026-corboo,collection,59.285185185185185,1794887765,0.97,1.98,0.9727644999999999,1.98,44781.0,Who Will Announce a Presidential Run in 2026?,Cory Booker,politics,
+1794863360,kpic-hd-q3comp-2026-11-17-1pt5-1pt75pct,collection,15.285185185185185,1794887765,0.98,187.37,0.981862,51.02040816326531,258450.0,Home Depot Q3 FY2026 Comparable Sales Growth?,1.5%-1.75%,finance,0.0
+1794863360,cranc-uspres28-12-31-2026-margre,collection,59.285185185185185,1794887765,0.98,212.3,0.981862,51.02040816326531,44781.0,Who Will Announce a Presidential Run in 2026?,Marjorie Taylor Greene,politics,
+1794863360,tpoyc-2026-abdels,collection,59.285185185185185,1794887765,0.97,0.01,0.9727644999999999,0.01,44392.0,TIME Person of the Year 2026,Abdul El-Sayed,culture,
+1794887765,ccrc-ntflx-1movglbl-2026-11-17-misgre,collection,15.002719907407407,1794921370,0.96,7.97,0.963648,7.97,255345.0,Top Global Netflix Movie This Week?,Misty Green,culture,0.0
+1794921370,stsc-hormuz-highavg-2026-11-30-ge60,collection,35.03043981481481,1794952302,0.97,0.79,0.9727644999999999,0.79,266615.0,Highest 7-Day Average Ship Traffic through the Strait of Hormuz by Nov. 30?,60+,geopolitics,
+1794921370,aaagaspc-usgas-week-2026-11-23-gt3pt7000,collection,13.654745370370371,1794952302,0.97,6.11,0.9727644999999999,6.11,277202.0,US Gas Prices This Week,Above $3.7000,macro,
+1794952302,ccpc-bilbrd-1album-any2026-lanrey,collection,53.255763888888886,1794971912,0.97,0.01,0.9727644999999999,0.01,59385.0,Who Will Have a #1 Album in 2026?,Lana Del Rey,culture,
+1794952302,cranc-uspres28-12-31-2026-elomus,collection,58.255763888888886,1794971912,0.98,10863.27,0.981862,51.02040816326531,44781.0,Who Will Announce a Presidential Run in 2026?,Elon Musk,politics,
+1794952302,cranc-uspres28-12-31-2026-oprwin,collection,58.255763888888886,1794971912,0.98,11353.13,0.981862,51.02040816326531,44781.0,Who Will Announce a Presidential Run in 2026?,Oprah Winfrey,politics,
+1794952302,kpic-tgt-q3comp-2026-11-18-1-3pct,collection,15.25576388888889,1794971912,0.97,710.61,0.9727644999999999,51.54639175257732,278861.0,Target Q3 FY2026 Comparable Sales Growth?,1%-3%,finance,
+1794952302,aaagaspc-usdsl-month-2026-11-30-gt5pt9000,collection,20.296736111111112,1794971912,0.91,166.32,0.9177805,54.94505494505494,218428.0,US Diesel Prices This Month,Above $5.9000,macro,
+1794952302,stsc-suez-week-2026-11-29-ge340,collection,27.672430555555554,1794971912,0.98,0.8,0.981862,0.8,281058.0,Traffic through the Suez Canal next week?,340+ Ships,geopolitics,
+1794952302,stsc-suez-week-2026-11-29-ge330,collection,27.672430555555554,1794971912,0.97,0.64,0.9727644999999999,0.64,281058.0,Traffic through the Suez Canal next week?,330+ Ships,geopolitics,
+1794952302,stsc-suez-week-2026-11-29-ge300,collection,27.672430555555554,1794971912,0.98,0.81,0.981862,0.81,281058.0,Traffic through the Suez Canal next week?,300+ Ships,geopolitics,
+1794952302,stsc-hormuz-highw-2026-11-29-ge6,collection,27.672430555555554,1794971912,0.96,162.8,0.963648,52.083333333333336,281027.0,Peak Daily Traffic through the Strait of Hormuz next week?,6+ Ships,geopolitics,
+1794952302,rotc-t-avedoo-2026-12-21-gte95,collection,48.255763888888886,1794971912,0.92,25.0,0.926992,25.0,126457.0,Avengers: Doomsday Rotten Tomatoes Score?,95+,culture,
+1794952302,kpic-wmt-q3uscomp-2026-11-19-lt1pct,collection,16.25576388888889,1794971912,0.97,14.7,0.9727644999999999,14.7,278762.0,Walmart Q3 FY2027 U.S. Comparable Sales Growth (Ex-Fuel)?,Less Than 1%,finance,
+1794952302,kpic-wmt-q3uscomp-2026-11-19-4-5pt5pct,collection,16.25576388888889,1794971912,0.98,2123.78,0.981862,51.02040816326531,278762.0,Walmart Q3 FY2027 U.S. Comparable Sales Growth (Ex-Fuel)?,4%-5.5%,finance,
+1794952302,kpic-wmt-q3uscomp-2026-11-19-1-2pt5pct,collection,16.25576388888889,1794971912,0.91,440.81,0.9177805,54.94505494505494,278762.0,Walmart Q3 FY2027 U.S. Comparable Sales Growth (Ex-Fuel)?,1%-2.5%,finance,

@@ -769,6 +769,48 @@ followed ended out of reach with nobody bidding, and what bids there were
 in the last quarter of an hour were for a tenth of a contract. The last
 two evenings are recorded and scored all the same.
 
+**18 November, 09:15 UTC. The test is over. L1 does not pass.** Six daily
+settlements were recorded, one more than the bar asked for.
+
+| Evening | Trades | Of a contract or more | Contracts | Premium after the fee | Lost |
+|---|---:|---:|---:|---:|---:|
+| 12 November | 36 | 2 | 929.7 | $8.42 | 0 |
+| 13 November | 8 | 1 | 1.7 | $0.02 | 0 |
+| 14 November | 9 | 0 | 0.9 | $0.01 | 0 |
+| 15 November | 13 | 0 | 2.1 | $0.02 | 0 |
+| 16 November | 12 | 0 | 1.2 | $0.01 | 0 |
+| 17 November | 26 | 4 | 1,960.3 | $17.76 | 0 |
+| All six | 104 | 7 | 2,896 | $26.24 | 0 |
+
+By the bar of section 5, read for the $10,000 account of L1-recent:
+
+- at least five settlements recorded: yes, six;
+- $50 a day on average: no, $4.37;
+- no result that was out of reach coming in: none did, in 104 trades.
+
+L1-strict, beside it: 22 trades for two contracts in all, two cents,
+nothing lost.
+
+Why it came out this way is in the note of 13 November, and the other
+five evenings repeated it. The bids of real size are taken away by 21:00
+UTC at the latest, an hour before the end. In the last quarter of an hour
+1,175 of the markets followed ended out of reach with nobody bidding and
+256 with nobody offering, and most of what did trade was a tenth of a
+contract. $25.32 of the $26.24 came from three purchases at 99¢: 494 and
+433 contracts on 12 November and 1,869 on 17 November, each from somebody
+offering "Yes" at 99¢ on a level the price had already left well behind.
+Those are not the reward bids this test was built on, and three in six
+evenings is not something to build on either.
+
+The order program, replayed over all six evenings, sent seven orders,
+all filled on paper, and made $26.11: the scoring script's seven trades
+of a contract or more.
+
+What this cannot show: whether an order sent on a book that is up to
+thirty seconds old would have been filled; and whether the yardstick is
+right, since a level that fails once in several thousand cannot be
+checked by 104 trades that all came in.
+
 *At each check-in while the test runs:* the order program of
 `docs/12_us_taker.md` is run on paper over the recordings
 (`kht us-take --replay state/us-lasttick --settle`, with a configuration
@@ -1214,6 +1256,48 @@ pays: about $11 short of locked. It left out the bracket just below the
 price and everything from $65,750 up. So whoever does this is not relying
 on the sum of the bids. They take a view as well.
 
+**18 November, 09:15 UTC. The test is over. L2 does not pass.** Six
+evenings were recorded whole, 164 readings of Bitcoin's ladder on each.
+
+- at least five evenings recorded: yes, six;
+- a sale on at least four of them: no, on one;
+- at least $20 kept an evening on average: no, $4.71 ($28.24 in all);
+- no ladder with a loss: none.
+
+The second account, with the exchange's collateral return taken as
+switched on, made the same one sale and no other. There was never a
+second ladder worth selling for the freed money to go to.
+
+The one sale, once more: Bitcoin's daily ladder on 12 November at 18:42
+UTC, 182.68 contracts on each of its 58 brackets. It locked $25.66 and
+kept $28.24 at settlement. Put to the books of the next reading, two
+minutes later, 50 of the 58 legs would still have filled whole, and with
+only those the sale would have locked −$10.50.
+
+The best reading of each ladder on the last two evenings:
+
+| Ladder | Brackets with a bid | Of them at 1¢ | Best bids add up to | Size that locks most | Locks |
+|---|---:|---:|---:|---:|---:|
+| Bitcoin, 16 November | 52 | 39 | $1.26 | 0.1 | $0.03 |
+| Bitcoin, 17 November | 19 | 5 | $0.87 | nothing | |
+| Ether, 16 November | 4 | 0 | $0.66 | nothing | |
+| Ether, 17 November | 7 | 1 | $0.56 | nothing | |
+| Solana, 16 November | 6 | 2 | $0.47 | nothing | |
+| Solana, 17 November | 10 | 3 | $0.52 | nothing | |
+| XRP, 16 November | 11 | 5 | $0.93 | nothing | |
+| XRP, 17 November | 7 | 4 | $0.74 | nothing | |
+
+No equal-lot seller came on 16 or 17 November.
+
+Why it came out this way: a ladder can be sold whole for more than it
+can owe only while the bids near the price are of some size, and they
+are for a tenth of a contract. In six evenings that was different for
+part of one. What paper cannot show hardly matters after that, but for
+the record: 58 orders would have to fill together on books thirty
+seconds old, each leg ties up a dollar a contract until the sale stands,
+and the two-minutes-later figure says the one sale found would not have
+survived the wait.
+
 ## 13. L3: the same bids while they are there, fixed at 09:12 UTC on 13 November
 
 ### Why a third test
@@ -1483,3 +1567,93 @@ readings of 21:00 and 21:02 UTC whole bids were sold on all four ladders:
 Solana's (4,038) and 5 of XRP's (2,506). That is 30,157 contracts and
 about $270 after fees for whoever sold, in two minutes. The large bids
 have not stood until 21:00 on any evening since.
+
+**18 November, 09:15 UTC. The test is over. L3 does not pass. Nothing was
+lost, and the bids it was built on have nearly gone.** Five evenings
+count, 13 to 17 November, all recorded whole.
+
+| Evening | Account | Sales | Of a contract or more | Contracts | Premium after the fee | Largest single sale | Bids still as large two minutes later | Lost |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| 13 November | L3-10k | 5 | 1 | 54.7 | $0.99 | $53.17 | 5 of 5 | 0 |
+| 14 November | L3-10k | 19 | 16 | 9,574.6 | $87.39 | $999.31 | 14 of 19 | 0 |
+| 15 November | L3-10k | 23 | 16 | 10,101.4 | $91.89 | $1,492.03 | 13 of 23 | 0 |
+| 16 November | L3-10k | 27 | 4 | 672.2 | $6.82 | $559.35 | 26 of 27 | 0 |
+| 17 November | L3-10k | 11 | 7 | 2,611.4 | $23.66 | $499.96 | 11 of 11 | 0 |
+| All five | L3-10k | 85 | 44 | 23,014 | $210.75 | $1,492.03 | 69 of 85 | 0 |
+| All five | L3-all | 119 | 75 | 52,070 | $473.97 | $1,492.03 | 92 of 119 | 0 |
+
+L3-all differs from L3-10k on one evening only, 15 November, when there
+was more on offer than $10,000 could take: 57 sales, 39,157 contracts,
+$355.12.
+
+By the bar:
+
+- at least four evenings recorded: yes, five;
+- L3-10k collected at least $50 an evening on average: no, $42.15;
+- no bracket it sold paid: none did.
+
+By ladder, the last two evenings. On 16 November: XRP 5 brackets and 670
+contracts for $6.80, Bitcoin 22 brackets and 2.2 contracts between them,
+Ether and Solana nothing. On 17 November: XRP 5 brackets and 2,021
+contracts for $18.31, Ether one bid of 500 for $4.53, Bitcoin 5 brackets
+and 90 contracts for $0.82.
+
+**The large bids, evening by evening.** Brackets whose best bid is 5¢ or
+less for 500 contracts or more, at the middle reading of each half hour:
+
+| Ladder | 12 Nov | 14 Nov | 15 Nov | 16 Nov | 17 Nov |
+|---|---|---|---|---|---|
+| Bitcoin | 34 to 42, until 21:00 UTC | 10 or 11, gone at 17:13 | 18 or 19, gone at 19:50 | none | one, for the first hour |
+| Ether | 14 to 24, until 21:00 | 10 to 13, until 20:30 | 22 to 25 at first, gone at 20:30 | 1 or 2, of 5,000 | 1 to 5, until 19:00 |
+| Solana | 13 to 16, until 21:00 | 9 to 14, until 20:30 | 13 and 27 for an hour | 1 or 2, of 5,000 | 3, until 18:30 |
+| XRP | 4 or 5, until 21:00 | 1 to 4, until 19:00 | one | 3 to 5, until 19:00 | 3 to 7, until 19:00 |
+
+In the note of 16 November I could not tell a weekend from a change. It
+was a change. Monday and Tuesday had less than the weekend. On Bitcoin
+the firms that put about 1,000 contracts at 1¢ on every far bracket have
+stopped. What large bids remain on Ether and Solana sit a bracket or two
+from the price, too near for this rule at that hour, and the rule left
+them alone. Of the 25 brackets that had a large low bid at some reading
+on 16 November it judged 15 not far enough and sold three; the price was
+in three more, and four became far enough only after their bid had gone.
+107 brackets that evening were far enough and had nobody bidding, and 102
+on the next.
+
+**Who else sold.** Contracts traded into bids of 5¢ or less on the four
+daily ladders while they were recorded: 33,774 on 12 November, 555 on
+14 November, 3,652 on 15 November, 1,379 on 16 November and 3,140 on
+17 November. No equal-lot seller came on the last two evenings and
+nobody took the bids whole. There was little left to take.
+
+**The bids that were gone two minutes later.** By premium, $128.13 of the
+$210.75 came from bids that still stood as large at the bracket's next
+reading. Described only: a $10,000 account that could sell only to those
+would have collected $38.30 an evening.
+
+**What the five evenings say.**
+
+- The yardstick was not broken: 85 sales, 119 for L3-all, and no bracket
+  paid. Five evenings cannot test a yardstick built to fail once in 500
+  starts in its worst year. They only failed to break it.
+- The money was there on two evenings of five: $87 and $92 on $10,000.
+  On the other three it was $1, $7 and $24.
+- All of it depends on bids that two firms post to collect a reward, at
+  a cent a contract of their own money each time somebody sells to them.
+  On 12 November one seller took about $270 from them in two minutes. By
+  16 November the bids on Bitcoin's far brackets were gone. I cannot show
+  that the one caused the other. The reward rules also changed today.
+
+**What paper cannot show.** Whether an order would have been filled: the
+public book is up to thirty seconds old, and a fifth of the bids sold to
+were gone or smaller two minutes later. What the exchange ties up: a
+dollar less the price for each contract is what I assumed, and collateral
+return, if an account has it, would lower that (section 12). What the
+other side does once somebody sells to it every evening: the week
+suggests it leaves. And what the rule change of 18 November does to the
+reward these bids were posted for: nothing is published that says.
+
+**What I conclude.** L3 is the nearest any of the four tests came, and it
+is not enough. There is no loss to report and no result either. If the
+far 1¢ bids come back in size, the recorder, the rule and the scoring
+script are here and one evening of them would show it. I would not put
+money on it as things stand.

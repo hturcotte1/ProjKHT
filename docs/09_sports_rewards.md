@@ -712,6 +712,127 @@ book, for example one contract at 98.5¢ where the offer stood at 81¢.
 17 of them are on the next day's ITF games on 14 November. I do not know
 what they are. They weigh nothing in the account.
 
+**18 November, 09:14 UTC. The test is over. All three accounts are judged,
+and all three fail.** The recorder stopped by itself at 04:10 UTC today,
+as built. It made 32 runs and 159.2 hours of recording, with no gap after
+the restart of 11 November and no errors, and followed 6,291 games. 3,532
+games of R1-all are old enough to count and settled, on seven US dates,
+11 to 17 November. Another 261 from the last evening started less than
+twelve hours before this was scored, and 57 have no settlement on file.
+They cannot change a verdict: their reward so far comes to $222.
+
+| Account | Games | Reward by the formula, after the $1 minimum | What the fills made, held to the result | The same at the price before the start | Net | A game | z | By the rule |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| R1-all | 3,532 | $3,008.51 | −$5,183.57 | −$1,334.62 | −$2,175.05 | −$0.62 | −1.37 | fails |
+| R1-thin | 2,493 | $2,714.09 | −$4,616.40 | −$964.56 | −$1,902.31 | −$0.76 | −1.33 | fails |
+| R1-core | 2,112 | $2,450.27 | −$4,120.98 | −$814.00 | −$1,670.71 | −$0.79 | −1.16 | fails |
+
+The rule asked for a mean above zero with z of 3 or more, on at least
+2,000 games and five dates. All three accounts have the games and the
+dates, and all three means are below zero.
+
+By date, R1-all:
+
+| US date | Games | Reward after the minimum | Fills, held to the result | Net |
+|---|---:|---:|---:|---:|
+| 11 November | 495 | $259.44 | −$900.55 | −$641.11 |
+| 12 November | 523 | $340.62 | −$470.59 | −$129.97 |
+| 13 November | 370 | $181.27 | −$429.24 | −$247.97 |
+| 14 November | 348 | $252.81 | +$192.07 | +$444.88 |
+| 15 November | 691 | $798.11 | −$2,344.93 | −$1,546.82 |
+| 16 November | 685 | $810.70 | −$763.14 | +$47.57 |
+| 17 November | 420 | $365.58 | −$467.20 | −$101.62 |
+
+Five dates behind and two ahead. (15 November had 559 games in the note
+of 16 November. The rest of its games have settled since.)
+
+By programme, R1-all:
+
+| Programme | Games | Reward after the minimum | Fills, held to the result | The same at the price before the start | Net |
+|---|---:|---:|---:|---:|---:|
+| ITF tennis | 1,626 | $1,864.83 | −$3,893.99 | −$639.47 | −$2,029.16 |
+| UTR tennis | 486 | $585.44 | −$226.99 | −$174.54 | +$358.45 |
+| ATP and WTA | 370 | $13.92 | +$203.71 | +$45.85 | +$217.62 |
+| E-sports | 361 | $214.22 | −$430.44 | −$433.22 | −$216.21 |
+| Darts | 154 | $81.16 | −$161.01 | −$53.62 | −$79.86 |
+| Table tennis | 146 | $63.74 | −$288.23 | −$7.01 | −$224.49 |
+| Tennis doubles | 124 | $94.91 | −$254.92 | −$41.53 | −$160.01 |
+| 3x3 basketball | 108 | $2.55 | −$103.41 | −$26.88 | −$100.86 |
+| Astra cup, women | 103 | $87.76 | −$79.50 | −$55.40 | +$8.26 |
+| Ice hockey, UFC, League of Legends | 54 | $0.00 | +$51.19 | +$51.19 | +$51.19 |
+
+What the week says:
+
+- **The reward is there, by the formula.** $3,009 on 3,532 games, 85¢ a
+  game. 1,438 of the games reached the $1 minimum.
+- **The orders are traded against in most games.** 2,245 of the 3,532,
+  for 178,001 contracts.
+- **Valued before the start, the fills cost less than half the reward.**
+  $1,335, which is what the history of section 4 led me to expect. Held
+  to the result, as the rule fixed, they cost $5,184.
+- **The difference is the ITF tour.** Of the $3,849 between the two
+  valuations, $3,255 is ITF. There a filled order goes on to lose after
+  the start, six times what the last price before the start says it
+  should. ITF alone is −$2,029 of the −$2,175. All the other programmes
+  together are $146 behind.
+- **It is a loss, not a proven one.** With z between −1.2 and −1.4, luck
+  is not ruled out. The test was built to show a profit beyond doubt. It
+  shows none.
+
+The same result three other ways, none of which changes a verdict:
+
+| | R1-all | R1-thin | R1-core |
+|---|---:|---:|---:|
+| As judged | −$2,175.05 | −$1,902.31 | −$1,670.71 |
+| Without the 217 games that touch the hole of 11 November, 19:47 to 22:35 UTC | −$1,991.92 on 3,392 games | −$1,758.24 on 2,387 | −$1,636.47 on 2,021 |
+| Without the 256 fills recorded between 22:08 and 22:33 UTC, when the public book stands still | −$1,972.35 | −$1,762.67 | −$1,522.45 |
+| Without both | −$1,789.22 | −$1,618.60 | −$1,488.21 |
+
+Closing each fill before the start instead of holding it was never
+tested, and the figures do not invite it. At the middle of the book and
+at no cost R1-all would be $1,674 ahead. Closing 178,001 contracts at
+half a cent each costs $890, and at a cent $1,780.
+
+One programme did what the lead said it would: UTR, $585 of reward
+against $227 lost on fills, $358 ahead on 486 games. It was named in
+advance only as half of R1-core, not alone. Picking it out now is
+choosing after the result, so it is a description and nothing more.
+
+The rehearsal of the order system, which rests in at most 20 games at a
+time and chooses them by its own limits: 157.3 hours, 759 markets, $570
+of reward after the minimum, 663 fills (14,735 contracts), 208 positions
+settled for −$485, 15 still open. Net +$85 so far. It was −$137 two days
+ago. A week of it settles nothing either way.
+
+**A cap.** Under a cap on rewards, described only, the same orders would
+have been paid $1,394 with a cap of 100% of what they traded, $1,212 at
+50% and $737 at 10%, against $3,009 with none. The amended rules are in
+force from today. Read at 09:12 UTC, the public schedule has 85,245 time
+periods on 51,530 markets with the same ten fields as on 11 November.
+None is a cap or a minimum volume. So none has been published there. I
+could not read the exchange's own rewards page.
+
+**What this test does not show.**
+
+- **No reward was paid to anyone.** The formula is taken at its word,
+  with my reading of how a pool is split and of the $1 minimum. Only a
+  real account's earnings record can check that.
+- **No order was placed.** A fill is inferred from the book's running
+  totals, read every two minutes, with our order put first in line. That
+  is unkind where being filled is bad news. It is kind in a busy market,
+  where it fills both sides and books the spread: the last row of the
+  table above is that and nothing else.
+- **The public book stands still for about twenty minutes each evening**
+  (the note of 16 November above). The paper orders rest blind through it.
+- **One week.** Seven dates, the last week before the rules changed.
+
+**What I conclude.** Resting 100 contracts on each side of every game and
+collecting the reward does not pay on paper, and I would not try it with
+money. The reward is as large as the formula says. The cost is larger,
+because in the one programme with the most games and the most reward,
+somebody on the other side knows more about the match than the price
+does.
+
 ## 9. The rules as filed, and a change on 18 November
 
 *Found on 11 November at about 11:05 UTC, after everything above. It

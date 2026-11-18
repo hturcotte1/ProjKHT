@@ -1,63 +1,71 @@
 Test L1 on live books (docs/11_crypto_us.md, section 5). No order was placed: these are paper trades against orders seen in the book.
-recorded: 11 November 22:43 to 16 November 08:00 UTC; 32,148 readings of 1,772 markets ending at 106 different times, 4 of them a daily settlement
+recorded: 11 November 22:43 to 18 November 04:00 UTC; 47,316 readings of 2,568 markets ending at 150 different times, 6 of them a daily settlement
 
 ===== L1-recent: the reach of 2023 to 2026, with the brake =====
 what became of each market followed (a market is counted once, by how the rule judged it)
-   trade                                                  66
-   out of reach, nobody bidding                          851
-   out of reach, nobody offering                         152
+   trade                                                 104
+   out of reach, nobody bidding                        1,175
+   out of reach, nobody offering                         256
    out of reach, but the index has been moving fast        2
-   within reach                                          701
+   within reach                                        1,031
 
 L1-recent-all (every trade the rule finds, 2,000 contracts a market at most)
-   trades 66 (51 sales, 15 purchases); contracts 934; premium after the fee $8.47; most locked at one settlement $920
-   settled 66 of 66; lost 0; result $8.47
-   how far out of reach, by premium: more than 1.5 times the reach $0.00 (0 contracts); more than 2 times the reach $0.00 (0 contracts)
+   trades 104 (76 sales, 28 purchases); contracts 2,896; premium after the fee $26.24; most locked at one settlement $1,941
+   settled 104 of 104; lost 0; result $26.24
+   how far out of reach, by premium: more than 1.5 times the reach $0.01 (1 contracts); more than 2 times the reach $0.00 (0 contracts)
    by day of settlement (UTC):
-          day  trades  contracts  locked  premium  settled  lost  pnl
-   2026-11-12      36     929.72  920.42     8.42       36     0 8.42
-   2026-11-13       8       1.70    1.68     0.02        8     0 0.02
-   2026-11-14       9       0.90    0.89     0.01        9     0 0.01
-   2026-11-15      13       2.08    2.06     0.02       13     0 0.02
+          day  trades  contracts  locked  premium  settled  lost   pnl
+   2026-11-12      36     929.72  920.42     8.42       36     0  8.42
+   2026-11-13       8       1.70    1.68     0.02        8     0  0.02
+   2026-11-14       9       0.90    0.89     0.01        9     0  0.01
+   2026-11-15      13       2.08    2.06     0.02       13     0  0.02
+   2026-11-16      12       1.20    1.19     0.01       12     0  0.01
+   2026-11-17      26    1960.32 1940.72    17.76       26     0 17.76
 
 L1-recent-10k ($10,000 to lock at each settlement time)
-   trades 66 (51 sales, 15 purchases); contracts 934; premium after the fee $8.47; most locked at one settlement $920
-   settled 66 of 66; lost 0; result $8.47
-   how far out of reach, by premium: more than 1.5 times the reach $0.00 (0 contracts); more than 2 times the reach $0.00 (0 contracts)
+   trades 104 (76 sales, 28 purchases); contracts 2,896; premium after the fee $26.24; most locked at one settlement $1,941
+   settled 104 of 104; lost 0; result $26.24
+   how far out of reach, by premium: more than 1.5 times the reach $0.01 (1 contracts); more than 2 times the reach $0.00 (0 contracts)
    by day of settlement (UTC):
-          day  trades  contracts  locked  premium  settled  lost  pnl
-   2026-11-12      36     929.72  920.42     8.42       36     0 8.42
-   2026-11-13       8       1.70    1.68     0.02        8     0 0.02
-   2026-11-14       9       0.90    0.89     0.01        9     0 0.01
-   2026-11-15      13       2.08    2.06     0.02       13     0 0.02
+          day  trades  contracts  locked  premium  settled  lost   pnl
+   2026-11-12      36     929.72  920.42     8.42       36     0  8.42
+   2026-11-13       8       1.70    1.68     0.02        8     0  0.02
+   2026-11-14       9       0.90    0.89     0.01        9     0  0.01
+   2026-11-15      13       2.08    2.06     0.02       13     0  0.02
+   2026-11-16      12       1.20    1.19     0.01       12     0  0.01
+   2026-11-17      26    1960.32 1940.72    17.76       26     0 17.76
 
-what docs/11 asks before a real test is worth discussing: 5 daily settlements recorded (so far 4); L1-recent-10k collecting $50 a day on average (so far $2.12 over 4 days); and no result that was out of reach coming in (so far 0 lost).
+what docs/11 asks before a real test is worth discussing: 5 daily settlements recorded (so far 6); L1-recent-10k collecting $50 a day on average (so far $4.37 over 6 days); and no result that was out of reach coming in (so far 0 lost).
 
 ===== L1-strict: the reach of the worst year since 2020, as first written =====
 what became of each market followed (a market is counted once, by how the rule judged it)
-   trade                                                   9
-   out of reach, nobody bidding                          708
-   out of reach, nobody offering                         120
-   within reach                                          935
+   trade                                                  22
+   out of reach, nobody bidding                          953
+   out of reach, nobody offering                         202
+   within reach                                        1,391
 
 L1-strict-all (every trade the rule finds, 2,000 contracts a market at most)
-   trades 9 (9 sales, 0 purchases); contracts 1; premium after the fee $0.01; most locked at one settlement $0
-   settled 9 of 9; lost 0; result $0.01
+   trades 22 (18 sales, 4 purchases); contracts 2; premium after the fee $0.02; most locked at one settlement $1
+   settled 22 of 22; lost 0; result $0.02
    how far out of reach, by premium: more than 1.5 times the reach $0.00 (0 contracts); more than 2 times the reach $0.00 (0 contracts)
    by day of settlement (UTC):
           day  trades  contracts  locked  premium  settled  lost  pnl
-   2026-11-12       2        0.2     0.2      0.0        2     0  0.0
-   2026-11-13       2        0.2     0.2      0.0        2     0  0.0
-   2026-11-14       3        0.3     0.3      0.0        3     0  0.0
-   2026-11-15       2        0.2     0.2      0.0        2     0  0.0
+   2026-11-12       2        0.2    0.20     0.00        2     0 0.00
+   2026-11-13       2        0.2    0.20     0.00        2     0 0.00
+   2026-11-14       3        0.3    0.30     0.00        3     0 0.00
+   2026-11-15       2        0.2    0.20     0.00        2     0 0.00
+   2026-11-16       5        0.5    0.50     0.00        5     0 0.00
+   2026-11-17       8        0.8    0.79     0.01        8     0 0.01
 
 L1-strict-10k ($10,000 to lock at each settlement time)
-   trades 9 (9 sales, 0 purchases); contracts 1; premium after the fee $0.01; most locked at one settlement $0
-   settled 9 of 9; lost 0; result $0.01
+   trades 22 (18 sales, 4 purchases); contracts 2; premium after the fee $0.02; most locked at one settlement $1
+   settled 22 of 22; lost 0; result $0.02
    how far out of reach, by premium: more than 1.5 times the reach $0.00 (0 contracts); more than 2 times the reach $0.00 (0 contracts)
    by day of settlement (UTC):
           day  trades  contracts  locked  premium  settled  lost  pnl
-   2026-11-12       2        0.2     0.2      0.0        2     0  0.0
-   2026-11-13       2        0.2     0.2      0.0        2     0  0.0
-   2026-11-14       3        0.3     0.3      0.0        3     0  0.0
-   2026-11-15       2        0.2     0.2      0.0        2     0  0.0
+   2026-11-12       2        0.2    0.20     0.00        2     0 0.00
+   2026-11-13       2        0.2    0.20     0.00        2     0 0.00
+   2026-11-14       3        0.3    0.30     0.00        3     0 0.00
+   2026-11-15       2        0.2    0.20     0.00        2     0 0.00
+   2026-11-16       5        0.5    0.50     0.00        5     0 0.00
+   2026-11-17       8        0.8    0.79     0.01        8     0 0.01
