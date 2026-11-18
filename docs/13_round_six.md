@@ -378,7 +378,7 @@ One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
 one side does not hold the target size or the two sides are too far
-apart. Three quarters of the daily Bitcoin brackets, 22 of 27 earnings
+apart. Three quarters of the daily Bitcoin brackets, 21 of 27 earnings
 markets, 84 of 100 markets on the 2028 state winners. Making such a book
 qualify takes the whole target size on both sides, which is market making
 with a view on the price and not what either test does. It is noted here
