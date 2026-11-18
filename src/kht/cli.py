@@ -175,7 +175,11 @@ def cmd_us_top(args: argparse.Namespace) -> int:
     """Record the books of the single-market reward programmes on Polymarket US every half minute. Reads public data only."""
     from .trading.us_top import run
 
-    line = run(Path(args.state), minutes=args.minutes, budget=args.budget)
+    extra = {}
+    if args.programmes:                         # the same recorder on other programmes (test K1: the earnings markets), which have no price to beat
+        extra = {"programmes": tuple(x.strip() for x in args.programmes.split(",") if x.strip()), "price_terms": False,
+                 "test": args.test, "scorer": args.scorer}
+    line = run(Path(args.state), minutes=args.minutes, budget=args.budget, **extra)
     print(f"[{_stamp()}] Polymarket US top of book: {line['minutes']:.0f} minutes, {line['books']} readings of {line['markets']} markets, "
           f"{line['schedule_reads']} readings of the reward schedule, {line['errors']} errors")
     return 0
@@ -343,6 +347,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--state", default="state/us-top")
     p.add_argument("--minutes", type=float, default=300.0, help="how long to record")
     p.add_argument("--budget", type=float, default=4.0, help="requests a second, at most")
+    p.add_argument("--programmes", default=None, help="other reward programmes to record instead, comma-separated (test G1: leave it alone)")
+    p.add_argument("--test", default="K1", help="with --programmes: the test the recording is for, named in the run's summary")
+    p.add_argument("--scorer", default="scripts/us_kpi_score.py", help="with --programmes: the script that scores it, named in the run's summary")
     p.set_defaults(fn=cmd_us_top)
 
     p = sub.add_parser("us-take", help="sell to the last-tick bids of crypto markets on Polymarket US (on paper unless switched on)")

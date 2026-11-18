@@ -17,6 +17,10 @@ Files, under ``state/us-top/runs/<run>/``:
     books.csv.gz   every reading: both sides of the book to twelve levels, the totals traded, the last, lowest and highest trade
     markets.csv    each market read: its programme, pool, target size, discount factor, maximum spread, and what it asks
     prices.csv.gz  the exchange's own reference price of each market's asset, as fifteen-second candles (added 18 November 2026)
+
+The same recorder is run a second time on the earnings markets (programme
+``kpic``), into ``state/us-kpi``, for test K1 of the same document. Those
+markets have no window and no price to beat, so they are described once.
 """
 
 from __future__ import annotations
@@ -44,7 +48,8 @@ DATED = re.compile(r"^(?P<stem>.+?)-(?P<date>\d{4}-\d{2}-\d{2})-(?P<hhmm>\d{4})z
 
 BOOK_FIELDS = ["run", "ts", "slug", "state", "tx", "bids", "asks", "traded", "notional", "last", "last_t", "low", "low_t", "high", "high_t", "open_interest"]
 MARKET_FIELDS = ["run", "slug", "program", "pool", "target", "discount", "max_spread", "period", "question", "window_start", "window_end", "end", "price_to_beat",
-                 "first_seen", "asset"]
+                 "first_seen", "asset", "listed", "reports"]
+REPORTS = (("before the market open", "before"), ("after the market close", "after"))      # how an earnings market's own text says when the company reports
 PRICE_FIELDS = ["run", "asset", "ts", "open", "high", "low", "close", "ticks"]
 CANDLE = 15               # seconds in one candle of the reference price
 LOG_FIELDS = ["run", "started", "ended", "minutes", "cycles", "schedule_reads", "books", "errors", "markets"]
@@ -93,9 +98,11 @@ def market_terms(market: dict[str, Any]) -> dict[str, Any]:
     beat = t.get("priceToBeat") or {}
     a = t.get("asset") or {}
     asset = f"{str(a.get('assetClass') or '').replace('ASSET_CLASS_', '').lower()}:{a.get('symbol')}" if a.get("symbol") and a.get("assetClass") else None
+    text = str(market.get("description") or "").lower()
+    reports = next((word for phrase, word in REPORTS if phrase in text), None)
     return {"question": market.get("question") or "", "window_start": _when(t.get("windowStart")), "window_end": _when(t.get("windowEnd")),
             "end": _when(market.get("endDate")), "price_to_beat": _amount(beat) if beat else None, "next_window_start": t.get("nextWindowStart"),
-            "asset": asset}
+            "asset": asset, "listed": _when(market.get("startDate") or market.get("createdAt")), "reports": reports}
 
 
 def _short(x: float, places: int) -> str:
@@ -159,8 +166,14 @@ def earlier(state: Path, programmes: tuple[str, ...] = PROGRAMMES) -> dict[str, 
 
 def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: float = 4.0, sweep: float = SWEEP, programmes: tuple[str, ...] = PROGRAMMES,
         now: Callable[[], float] = time.time, sleep: Callable[[float], None] = time.sleep, max_cycles: int | None = None,
-        background: bool = True) -> dict[str, Any]:
-    """Record for ``minutes``. ``background`` reads the long reward schedule in a second thread, so that it never delays a reading."""
+        background: bool = True, price_terms: bool = True, test: str = "G1", scorer: str = "scripts/us_top_score.py") -> dict[str, Any]:
+    """Record for ``minutes``. ``background`` reads the long reward schedule in a second thread, so that it never delays a reading.
+
+    ``price_terms`` is for markets on a price (gold, the coins): an open one
+    is asked again each minute until the exchange gives its price to beat.
+    Markets of other kinds are described once. ``test`` and ``scorer`` only
+    name, in the run's summary, the test the recording is for.
+    """
     if us is None:
         from ..api.http import Http
 
@@ -277,7 +290,8 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
         if t - chained_at >= CHAIN_EVERY:
             chained_at = t
             with lock:
-                todo = [s for s, m in known.items() if s not in described or (s in active and s not in unread and m.get("price_to_beat") is None)]
+                todo = [s for s, m in known.items()
+                        if s not in described or (price_terms and s in active and s not in unread and m.get("price_to_beat") is None)]
             for slug in todo:                        # once for each market, and again while an open one has no price to beat yet
                 describe(slug)
             chain(t)
@@ -324,19 +338,20 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
     line = {"run": run_id, "started": int(started), "ended": int(ended), "minutes": round((ended - started) / 60.0, 1), "cycles": cycles,
             "schedule_reads": counts["schedule"], "books": len(books), "errors": counts["errors"], "markets": len(read)}
     _append(state / "log.csv", LOG_FIELDS, [line])
-    (state / "STATUS.md").write_text(status_text(line, read, books))
+    (state / "STATUS.md").write_text(status_text(line, read, books, test, scorer))
     return line
 
 
-def status_text(line: dict[str, Any], known: dict[str, dict[str, Any]], books: list[dict[str, Any]]) -> str:
+def status_text(line: dict[str, Any], known: dict[str, dict[str, Any]], books: list[dict[str, Any]], test: str = "G1",
+                scorer: str = "scripts/us_top_score.py") -> str:
     """A plain summary of one run. It lists what was read and scores nothing."""
     stamp = datetime.fromtimestamp(line["ended"], timezone.utc).strftime("%d %B %Y, %H:%M UTC")
     per: dict[str, int] = {}
     for b in books:
         per[b["slug"]] = per.get(b["slug"], 0) + 1
     lines = ["# The top of the book in single-market reward programmes", "",
-             f"*Written by `kht us-top` at the end of a run: {stamp}. It lists what was read. The rule of test G1 (`docs/13_round_six.md`) is applied by "
-             "`scripts/us_top_score.py`, not here.*", "",
+             f"*Written by `kht us-top` at the end of a run: {stamp}. It lists what was read. The rule of test {test} (`docs/13_round_six.md`) is applied by "
+             f"`{scorer}`, not here.*", "",
              f"- Run `{line['run']}`: {line['minutes']:.0f} minutes, {line['books']:,} readings of {line['markets']} markets, "
              f"{line['schedule_reads']} readings of the reward schedule, {line['errors']} errors.", "",
              "| Market | Programme | Pool a day | Target size | Readings |", "|---|---|---:|---:|---:|"]

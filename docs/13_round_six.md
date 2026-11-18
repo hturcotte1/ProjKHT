@@ -394,6 +394,101 @@ situation comes back often enough to matter.
   filled earns little.
 - **The formula is taken at its word,** here as everywhere.
 
+## 4c. Test K1: small orders at the best prices of the earnings markets
+
+**Fixed at 17:19 UTC on 18 November 2026, after reading the books of the
+first such markets twice today (15:05 and 17:09 UTC) and before any event
+it counts was listed.**
+
+**What they are.** Since 16 November the exchange lists markets on a
+company's quarterly figures two or three days before the company reports:
+"Will Intuit report earnings per share above $2.46?", and brackets on
+figures such as sales growth. Target reported on 18 November; Walmart,
+Williams-Sonoma and Intuit report on the 19th. Their reward programme
+(`kpic`) is two days old and pays **$250 a day for each event, for a
+target size of 500 contracts**, with a maximum spread of 6¢. For its
+target size it is the largest pool on the exchange: the gold market pays
+$1,000 a day for 5,000 contracts.
+
+**What was seen.** At 15:05 UTC only 6 of 27 such books qualified. By
+17:09 UTC 19 of the 22 still open did: firms had arrived and were resting
+575 to 6,500 contracts a side, a cent apart in most. Almost nobody trades
+there (10, 2,664 and 1,189 contracts in two days in the three markets
+below). Three of the seven events are a single market, which is where a
+pool can be counted without guessing how it is shared:
+
+| Event of one market | Best bid and offer at 17:09 UTC | What 100 contracts at those prices would hold | By the formula, a day |
+|---|---|---:|---:|
+| Intuit, earnings per share | 4,605 at 90¢, 6,571 at 91¢ | 1.8% | $4.50 |
+| Walmart, earnings per share | 1,429 at 63¢, 1,391 at 64¢ | 6.6% | $16.50 |
+| Williams-Sonoma, earnings per share | 1,016 at 77¢, 1,522 at 78¢ | 7.6% | $19 |
+
+**The danger is the report itself.** The price goes to nothing or to a
+dollar the moment the figure is out, and an order still resting is taken
+by whoever reads the release first. The time of the report is known in
+advance, so the rule leaves before it.
+
+**The rule.** A second copy of the recorder of test G1
+(`kht us-top --programmes kpic`, `state/us-kpi/`) reads the whole book of
+every earnings market each half minute. `scripts/us_kpi_score.py` applies:
+
+1. **Rules 1 to 4 of test G1, unchanged** (`top_rule.py`): orders rest
+   only while the book qualifies without us and its best prices are at
+   most three ticks apart; one order at the best bid and one at the best
+   offer; 100 contracts a side is judged and the account never holds more
+   than that either way; the same fills.
+2. **The cut-off.** Nothing rests from 15:00 US Eastern on the day of the
+   report if the market's own text says the company reports "after the
+   market close", and from midnight US Eastern at the start of that day
+   otherwise. The day is in the market's name.
+3. **Closing.** At the first reading at or after the cut-off, what the
+   account holds is sold to the bids as read, or bought back from the
+   offers, as far down the book as it takes, and pays the fee of somebody
+   who takes a price (0.095 × price × (1 − price) a contract). What
+   cannot be closed is held to the result.
+4. **Reward.** By the filed formula with our orders in the book. Each
+   second our orders rest in a qualifying book earns the pool divided by
+   86,400, times our share of the score. A reading stands for the time to
+   the next, at most 60 seconds. Under $1 for a market and a UTC day
+   counts as nothing.
+
+**One account is judged: events that are one market, 100 contracts a
+side.** An event is one company, one figure and one report date, as the
+market names give them. An event counts if it was listed at or after
+18:00 UTC on 18 November 2026, first read within six hours of its
+listing, read at least 85% of the half minutes from there to the cut-off,
+and read again within ten minutes after the cut-off. The events of
+19 November were listed before that and count for nothing.
+
+**The bar.** When at least 12 such events on at least 5 report dates are
+finished:
+
+> The account passes if its net result (reward after the $1 minimum, plus
+> what the fills and the closing made) averages at least $5 an event,
+> with t ≥ 3, each event counting as one observation.
+
+One look, at the first check-in after both numbers are reached. Events of
+several markets are recorded and described with the pool divided evenly
+between their markets, which is an assumption. So is every other order
+size, and what the same orders would be paid under a cap.
+
+**Why $5.** 100 contracts a side ties up about $100 for two days.
+
+**What is already known against it.**
+
+- **The firms were there within two days.** A late-comer of 100
+  contracts holds 2% to 8% today, and that falls as more arrive.
+- **Almost nothing trades.** Under a cap at a share of what an account
+  itself trades, an order that is never traded against earns nothing.
+- **The cut-off covers the scheduled report and nothing else.** A company
+  can warn early, a figure can leak, a date can move.
+- **"For each event" is the help page's word** ("Daily (per event)"), as
+  it is for games. Nobody has been paid by it.
+- **It may be slow.** Outside the reporting season few companies report.
+  Twelve events of one market may take until late January. The recording
+  job stops on 3 December as it stands; keeping it running for this test
+  is a change to the job and not to the rule.
+
 ## 5. What no paper test can show, and the cheapest way to learn it
 
 Every reward figure in this project is the published formula applied to
@@ -420,10 +515,10 @@ bids. It is also the owner's decision.
 
 ## 6. Notes while the tests run
 
-*At each check-in:* `python scripts/us_rewards2_score.py --settle` and
-`python scripts/us_top_score.py --settle` (which scores G1 and Q1), the
-figures written here with their date, and nothing in sections 3, 4 and 4b
-changed.
+*At each check-in:* `python scripts/us_rewards2_score.py --settle`,
+`python scripts/us_top_score.py --settle` (which scores G1 and Q1) and
+`python scripts/us_kpi_score.py --settle` (K1), the figures written here
+with their date, and nothing in sections 3, 4, 4b and 4c changed.
 
 **18 November, 15:31 UTC. Both tests are recording.** The rules above were
 committed at 15:27 UTC. The recording job was started again at 15:28 UTC
@@ -507,6 +602,34 @@ somebody else's stale order was left for a late-comer to take: by the
 next reading the book had moved. Whoever does take those orders is there
 in seconds with the score in front of them. Two-minute readings and no
 score feed cannot follow that, and there is no test to make of it.
+
+**18 November, 17:19 UTC. Two more things looked at this afternoon, and
+where test K1 came from.** Exploration, read once from public data.
+
+*The exchange's own grouping of markets into events.* A pool is "per
+event", so only an event that is one market has a pool that can be
+counted without guessing. Earlier today I had grouped markets by their
+names, which is wrong outside sports. By the exchange's own listing of
+5,367 events, 66 open markets in the programmes that pay by the day are
+an event alone.
+Apart from the six up-or-down markets already recorded, the large ones
+are five UFC main events ($310, target 20,000: deep books), and three
+earnings events at $250 a day for a target of 500. Test K1, section 4c,
+is the earnings events.
+
+*Daily temperature markets* (the day's high in five cities, six brackets
+a day, pool $185 for each event, target 7,500, no maximum spread). Two
+findings. Their prices sit within a cent or two of the same contracts on
+Kalshi, a busier exchange whose prices I read only as a yardstick, so
+there is nothing there for a buyer after the fee. And of 90 markets no
+bid side holds the target size, and only 9 offer sides do. Eight of the
+nine are brackets the day has already ruled out or all but ruled out,
+where somebody offers between 11,600 and 298,000 contracts at 1¢. That is
+hundreds of thousands of dollars held against orders that cannot lose,
+to collect the pool by size. It is
+the rugby market again, every day. A small account can only have its
+share by size there. But it is one more sign that orders of this kind are
+being paid: nobody ties up that much for nothing.
 
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily

@@ -651,7 +651,23 @@ window, a minute before it opens. It decides nothing. The rule of test G1
 is `src/kht/trading/top_rule.py` and is applied by
 `scripts/us_top_score.py --settle`.
 
-Both run in the *us-rewards* job, which was started again on 18 November
+The same recorder runs a second time on the earnings markets (programme
+`kpic`: a few markets on a company's quarterly figures, listed two or
+three days before it reports), into its own folder, for test K1:
+
+```bash
+kht us-top --state state/us-kpi --programmes kpic --minutes 300
+```
+
+It writes the same files. `markets.csv` also carries when each market was
+listed and whether its own text says the company reports before the
+market opens or after it closes, which is what the cut-off of test K1 is
+taken from. Those markets have no window and no price to beat, so each is
+described once. `scripts/us_kpi_score.py --settle` applies the rule of
+test K1 (`docs/13_round_six.md`, section 4c). The recordings of test G1
+in `state/us-top` are not touched by it.
+
+All of these run in the *us-rewards* job, which was started again on 18 November
 at 15:28 UTC and stops by itself on 3 December 2026. The last-minutes
 recorder of test L1 is no longer run. The ladder recorder is, to see
 whether the large far bids return. The order system rehearses on paper on

@@ -41,11 +41,14 @@ of the exchange's reward rules found four things:
   day; silver, $750), and one still pays on a result that was decided
   three days ago.
 
-Three new paper tests are fixed in writing and recording: **R2**, resting
+Four new paper tests are fixed in writing and recording: **R2**, resting
 orders before UTR matches, on new games; **G1**, small orders at the
-best prices of the gold and silver markets; and **Q1**, one order for the
+best prices of the gold and silver markets; **Q1**, one order for the
 target size at 1¢ (or 99¢) when a side of those markets stands empty and
-the pool is therefore paying nobody. None has a result yet. As
+the pool is therefore paying nobody; and **K1**, small orders at the best
+prices of the new markets on company earnings ($250 a day for each event,
+for a target of only 500 contracts), withdrawn before the company
+reports. None has a result yet. As
 before, no order is placed and nobody has been paid a reward: whether the
 exchange pays what its formula says is the one thing only a real account
 can show.
@@ -301,7 +304,7 @@ learn that. The story is in
 | Test L2, selling a whole ladder of brackets at once: the rule and the bar | [`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 12 |
 | The program that would place the last-tick sales: limits, safeguards, steps before any real order | [`docs/12_us_taker.md`](docs/12_us_taker.md) |
 | Test L3, selling far brackets hours ahead, while the bids are there: the yardstick, the rule and the bar | [`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 13 |
-| Round six, Polymarket US only: what the week's recordings and the reward rules show on a second reading; tests R2 (UTR), G1 and Q1 (gold and silver), their rules and bars | [`docs/13_round_six.md`](docs/13_round_six.md) |
+| Round six, Polymarket US only: what the week's recordings and the reward rules show on a second reading; tests R2 (UTR), G1 and Q1 (gold and silver) and K1 (company earnings), their rules and bars | [`docs/13_round_six.md`](docs/13_round_six.md) |
 | What Polymarket US's order books showed at the last cycle | [`state/us/STATUS.md`](state/us/STATUS.md) |
 | What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-long/STATUS.md` (from its first cycle) |
 
@@ -392,6 +395,10 @@ python scripts/us_rewards2_score.py --settle  # test R2 (UTR, from 19 November)
 
 ```bash
 python scripts/us_top_score.py --settle       # tests G1 and Q1 (gold and silver up or down)
+```
+
+```bash
+python scripts/us_kpi_score.py --settle       # test K1 (markets on company earnings)
 ```
 
 ```bash
