@@ -235,3 +235,18 @@ def test_a_listing_that_cannot_be_read_stops_nothing_and_says_nothing(tmp_path):
     with gzip.open(next(tmp_path.glob("runs/*/books.csv.gz")), "rt") as fh:
         rows = list(csv.DictReader(fh))
     assert [r["period"] for r in rows][2:4] == ["", ""] and rows[4]["period"] == "NS"       # two readings with nothing known, then the listing is back
+
+
+def test_a_match_whose_book_can_no_longer_be_read_is_let_go(tmp_path):
+    clock = Clock(T0 - 600.0)
+    us = FakeUS(clock)
+    real = us.book
+
+    def gone(slug):
+        if clock.t >= T0 - 300.0:
+            raise RuntimeError("404")
+        return real(slug)
+
+    us.book = gone
+    line = live.run(tmp_path, minutes=30.0, us=us, now=clock.now, sleep=clock.sleep, background=False)
+    assert line["books"] == 10 and line["errors"] == live.GIVE_UP          # ten readings, then twenty tries, then no more

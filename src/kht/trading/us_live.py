@@ -47,6 +47,7 @@ AHEAD = 900.0                     # a match is followed from this long before it
 AFTER = 120.0                     # and until this long after its market has stopped being open
 LONGEST = 30 * 3600.0             # or this long after it was first read, whichever comes first (a suspended match can stay for days)
 SCHEDULE_EVERY = 900              # seconds between two readings of the reward schedule
+GIVE_UP = 20                      # readings in a row without a book after which a match is let go
 
 BOOK_FIELDS = TOP_BOOK_FIELDS + ["start", "live", "period", "score", "state_t"]
 MARKET_FIELDS = ["run", "slug", "event", "title", "first_seen", "start_first",
@@ -111,6 +112,7 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
     last_state: dict[str, dict[str, Any]] = {}      # what the listing last said of each
     gone: dict[str, float] = {}                     # when a market was first seen not open
     done: set[str] = set()                          # followed to its end
+    failed: dict[str, int] = {}                     # readings in a row that brought no book
     terms: dict[str, dict[str, Any]] = {}
     books: list[dict[str, Any]] = []
     counts = {"schedule": 0, "listings": 0, "errors": 0}
@@ -174,7 +176,11 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
                 for slug, ts, book in pool.map(one, active):
                     if not book:
                         counts["errors"] += 1
+                        failed[slug] = failed.get(slug, 0) + 1
+                        if failed[slug] >= GIVE_UP:      # ten minutes without a book: the market is gone, and asking on would only count errors
+                            done.add(slug)
                         continue
+                    failed.pop(slug, None)
                     try:
                         row = book_row(run_id, ts, slug, book)
                     except Exception:                # one odd book must not end the run
