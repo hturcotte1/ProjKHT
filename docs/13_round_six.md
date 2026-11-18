@@ -631,6 +631,18 @@ the rugby market again, every day. A small account can only have its
 share by size there. But it is one more sign that orders of this kind are
 being paid: nobody ties up that much for nothing.
 
+**18 November, 17:23 UTC. Test K1 is in the recording job.** Its rule
+was committed at 17:20 UTC. The job's file was changed at 17:21 UTC to
+start the second recorder (`state/us-kpi`), and the run that begins at
+about 20:28 UTC is the first to carry it. Tried against the exchange for
+two minutes before that, into a scratch folder: 22 earnings markets, each
+read every half minute, with its pool, target size, maximum spread,
+listing time and "before the open" or "after the close" written down, and
+no errors. The events of 19 November will be recorded from this evening
+and described. They cannot count: they were listed on 16 and 17 November
+and I had read their books. The four check-ins now score Q1 and K1 as
+well.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
