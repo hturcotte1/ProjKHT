@@ -237,11 +237,51 @@ def test_a_run_that_starts_between_two_markets_finds_the_next_from_the_last_one_
     us = GapUS(clock)
     line = top.run(tmp_path, minutes=8, us=us, now=clock.now, sleep=clock.sleep, background=False)
     rows = read_books(tmp_path, line)
-    assert {r["slug"] for r in rows} == {GapUS.LATER}                      # the old market is not read again
-    assert T0 + 600.0 <= float(rows[0]["ts"]) <= T0 + 630.0
-    markets = list(csv.DictReader((tmp_path / "runs" / line["run"] / "markets.csv").open()))
-    assert [m["slug"] for m in markets] == [GapUS.LATER] and float(markets[0]["pool"]) == 1000.0 and line["markets"] == 1
+    old = [r for r in rows if r["slug"] == GOLD]
+    assert old and all(r["state"] != "OPEN" for r in old)                  # the old market is looked at, found closed,
+    assert float(old[-1]["ts"]) <= T0 + 300.0 + top.AFTER + 30.0           # and left alone after two minutes
+    later = [r for r in rows if r["slug"] == GapUS.LATER]
+    assert T0 + 600.0 <= float(later[0]["ts"]) <= T0 + 630.0
+    markets = {m["slug"]: m for m in csv.DictReader((tmp_path / "runs" / line["run"] / "markets.csv").open())}
+    assert set(markets) == {GOLD, GapUS.LATER} and float(markets[GapUS.LATER]["pool"]) == 1000.0
     assert first["run"] != line["run"] and line["errors"] == 0
+
+
+def test_a_run_that_starts_while_a_market_is_open_goes_on_reading_it(tmp_path):
+    """A run lasts five hours and a market a day. The run after the one that first read a market must read it too."""
+    first_clock = Clock(T0)
+    first = top.run(tmp_path, minutes=1.0, us=GapUS(first_clock), now=first_clock.now, sleep=first_clock.sleep, background=False)
+    assert first["markets"] == 1
+    clock = Clock(T0 + 75.0)                                               # the next run starts while the market is still open
+    us = GapUS(clock)
+    us.iter_incentives = lambda statuses=None: iter([])                    # even if the schedule gives it nothing
+    line = top.run(tmp_path, minutes=11, us=us, now=clock.now, sleep=clock.sleep, background=False)
+    rows = read_books(tmp_path, line)
+    gold = [r for r in rows if r["slug"] == GOLD]
+    still_open = [r for r in gold if r["state"] == "OPEN"]
+    assert len(still_open) == 4                                            # read every half minute from the run's first moment to the close
+    assert float(still_open[0]["ts"]) == pytest.approx(T0 + 75.0, abs=1.0)
+    assert any(r["state"] != "OPEN" for r in gold)                         # and seen to close
+    later = [r for r in rows if r["slug"] == GapUS.LATER]
+    assert later and T0 + 600.0 <= float(later[0]["ts"]) <= T0 + 630.0     # and the market after it is found in its first half minute
+    assert line["errors"] == 0
+
+
+def test_an_earlier_market_whose_book_is_gone_costs_a_few_errors_and_no_more(tmp_path):
+    first_clock = Clock(T0)
+    top.run(tmp_path, minutes=1.0, us=GapUS(first_clock), now=first_clock.now, sleep=first_clock.sleep, background=False)
+
+    class Gone(GapUS):
+        def book(self, slug):
+            if slug == GOLD:
+                raise RuntimeError("404: no such market")
+            return super().book(slug)
+
+    clock = Clock(T0 + 7200.0)
+    line = top.run(tmp_path, minutes=90, us=Gone(clock), now=clock.now, sleep=clock.sleep, background=False)
+    assert line["errors"] == top.GIVE_UP                                   # asked for an hour, then no more
+    rows = read_books(tmp_path, line)
+    assert rows and {r["slug"] for r in rows} == {GapUS.LATER}             # and the market after it is still found from it
 
 
 def test_earlier_runs_give_the_last_market_of_each_kind(tmp_path):

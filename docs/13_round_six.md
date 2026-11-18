@@ -770,6 +770,34 @@ listed start times showed that UTR's are not match times but group
 times. That is exploration. What it suggests is test D1, on matches not
 yet played.
 
+**18 November, 17:51 UTC. A fault of my own making in the recorder of
+tests G1 and Q1, found before it could cost anything, and mended.** The
+change of 15:36 UTC above taught a new run to take the last market an
+earlier run had read as its starting point for finding the next one. I
+had it mark that market as finished. But a run lasts five hours and a
+market a day: when a run starts, the market of the run before is nearly
+always still open. Marked as finished, it would not have been read again,
+by that run or any after it. Every market would have been recorded for
+the first few hours of its day only, no market-day would ever have been
+"recorded whole", and tests G1 and Q1 would have had nothing to judge.
+
+I found it by asking, while reading the newer recorders through, what
+happens at the start of a run, and then trying it: a run started from a
+folder in which an earlier run had written down an open market read no
+book at all. The mended recorder reads such a market like any other until
+it sees it closed. Three tests cover it: a run that starts while a market
+is open goes on reading it and sees it close; a run that starts between
+two markets looks at the old one, finds it closed and leaves it; and a
+market whose book cannot be had any more is given up after an hour. Tried
+against the exchange from a copy of today's recordings, as tonight's run
+will start: all six open markets read from the first half minute, with
+their terms and reference prices, no errors.
+
+No recording is affected. The run going since 15:28 UTC has the older
+code, which has no such starting point at all. The first run with any of
+today's changes begins at about 20:28 UTC and will have the mended code.
+The rules and bars of G1 and Q1 are untouched.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because

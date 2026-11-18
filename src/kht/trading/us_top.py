@@ -191,9 +191,12 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
     books: list[dict[str, Any]] = []
     prices: list[dict[str, Any]] = []
     last_candle: dict[str, int] = {}                # the start of the newest finished candle kept, by asset
+    failed: dict[str, int] = {}                     # readings in a row without a book, for a market that has been known to have one
     for slug, terms in earlier(state, programmes).items():
+        # The last market of each kind that an earlier run wrote down. It may still be open: a run lasts five hours
+        # and a market a day. So it is read like any other, until it is seen not to be open. (Until 18 November 2026,
+        # 17:55 UTC, such a market was marked as gone here and never read again by the new run. No run had used that code.)
         known[slug] = {**terms, "first_seen": round(started, 1)}
-        gone[slug] = -1e18                          # a market of an earlier run: not read, only asked what follows it
     counts = {"schedule": 0, "errors": 0}
     scheduled_at = [-1e18]
     busy = [False]
@@ -309,8 +312,12 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
                                 unread.pop(slug, None)
                         else:
                             counts["errors"] += 1
+                            failed[slug] = failed.get(slug, 0) + 1
+                            if failed[slug] >= GIVE_UP and slug not in was_read:
+                                gone[slug] = -1e18   # a market of an earlier run whose book cannot be had any more: kept only for what follows it
                         continue
                     unread.pop(slug, None)
+                    failed.pop(slug, None)
                     was_read.add(slug)
                     try:
                         row = book_row(run_id, ts, slug, book)
