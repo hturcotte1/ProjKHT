@@ -9,18 +9,13 @@
 # One run lasts about five hours and then starts the next, so that games are
 # followed without gaps. What it has recorded is pushed once an hour, so a
 # machine that is lost costs an hour at most, and a second job below then
-# starts the next run at once. It stops by itself on 18 November 2026.
-# To stop it sooner: add an empty file state/us-rewards/STOP, or
-# Actions tab -> "us-rewards" -> "..." -> "Disable workflow" (and the same
-# for "us-rewards-watchdog", which restarts it).
+# starts the next run at once. It stopped by itself on 18 November 2026,
+# when the tests ended, and its schedule was removed that day. Started by
+# hand it ends at once, at the date check in its first step.
 name: us-rewards
 
 on:
   workflow_dispatch:
-  schedule:
-    # A safety net only. If a run ends without starting its successor, this
-    # starts one within a few hours. While a run is going, it just waits.
-    - cron: "41 */2 * * *"
 
 permissions:
   contents: write
