@@ -3,13 +3,34 @@
 Trading how the crowd *perceives* an outcome on Polymarket, rather than the
 outcome itself: research, a tested rule, and a trading system running on paper.
 
-## Where this stands (11 November 2026)
+## Where this stands (18 November 2026)
 
 **The one rule that passed its tests lives on polymarket.com, which a US
 resident cannot use. On Polymarket US, the exchange the account will be on,
-nothing is confirmed.** Polymarket US is a separate exchange with its own
-markets, crowd, fees and data. A fourth round went looking for what carries
-over. Its answers are below, under "The fourth round"; in one line each:
+nothing is confirmed. The two leads found there in November were each
+tested on paper for a week, with the rules fixed first, and neither
+passed.** No real order was ever placed, no key was ever used, and nothing
+was lost. Polymarket US is a separate exchange with its own markets,
+crowd, fees and data.
+
+The four paper tests that ended on 18 November, each by the bar written
+down before its data existed:
+
+| Test | What it tried | Its bar | What it showed |
+|---|---|---|---|
+| R1 | Rest 100 contracts on each side of every game in the reward programmes, for the six hours before the start, and collect the published reward | A profit per game above zero beyond doubt (z of 3), on 2,000 games and five dates | **Fails, for all three accounts named in advance.** 3,532 games on seven dates: $3,009 of reward by the formula, $5,184 lost on the orders that were traded against. Nearly all of the loss is the ITF tennis tour |
+| L1 | Sell to the 1¢ bids on crypto price levels out of reach, in the last quarter of an hour | $50 a day on $10,000, nothing lost | **Does not pass.** $4.37 a day over six evenings, nothing lost. The bids of real size are gone before the last hour |
+| L2 | Sell every bracket of a price ladder at once, when the bids add up to more than the ladder can owe | A sale on four evenings of five, $20 kept an evening | **Does not pass.** One sale in six evenings, $28 kept |
+| L3 | Sell the far brackets hours ahead, while the bids stand | $50 an evening on $10,000 over four evenings, no bracket sold that pays | **Does not pass.** $42 an evening over five evenings, no bracket paid. $87 and $92 on two evenings, next to nothing on the other three: the large bids on Bitcoin's far brackets were gone by 16 November |
+
+The details are in `docs/09_sports_rewards.md`, section 8, and
+`docs/11_crypto_us.md`, sections 9, 12 and 13. What stays running is the
+paper accounts of the polymarket.com rule and the recorder of Polymarket
+US order books. The week-long recording job has stopped by itself.
+
+A fourth round, before those tests, went looking for what carries over
+from polymarket.com. Its answers are below, under "The fourth round"; in
+one line each:
 
 - the rule's kind of question barely exists on Polymarket US, and what
   history there is leans the same way without proving it;
@@ -19,7 +40,9 @@ over. Its answers are below, under "The fourth round"; in one line each:
   first, and all four failed: a search over thousands of rules, buying
   whatever is cheaper there than on polymarket.com, sports, and the fast
   crypto markets;
-- two leads are open. The first: the exchange pays a published reward
+- two leads were open on 11 November, and what follows is how they were
+  written up at the time, kept as it was. The table above is what became
+  of them. The first: the exchange pays a published reward
   for orders left resting in its markets, and before most sports games
   very little is resting where it counts. The risk is being traded
   against just before a
@@ -105,6 +128,15 @@ over. Its answers are below, under "The fourth round"; in one line each:
   bids it sells to are getting fewer and come and go within minutes, and
   one bracket paying would take back eleven to sixteen evenings. The last
   reading of all four is on 18 November.
+
+  **18 November: the last reading.** None of the four passes. The reward
+  orders fail for all three accounts, on 3,532 games. The last-tick test
+  ends at $4.37 a day and the whole-ladder test at one sale in six
+  evenings. The third test ends at $42.15 an evening against $50, with
+  no bracket sold that paid: its last two evenings brought $7 and $24,
+  because the large 1¢ bids on Bitcoin's far brackets were no longer
+  posted. The exchange's amended reward rules took effect the same day.
+  No cap shows in its public schedule so far.
 
 ## What came out of it
 
@@ -214,10 +246,10 @@ counted as found unless it clears what the luckiest worthless rule reaches.
 | What Polymarket US's price history is | Where one side of an order book is empty it shows the last trade as if it were a quote. Checked against more than 600 live books. A backtest on it buys from nobody |
 | **Two exchanges, one question:** buy on Polymarket US whatever is cheaper there than on polymarket.com | **Failed**, on rules fixed beforehand: −19.8% on 505 purchases. The two exchanges are equally accurate, and for most shared questions polymarket.com is the smaller market |
 | Sports on Polymarket US (most of that exchange): 3,360 rules on a year of games, fixed in writing first | **Nothing.** Not one rule passed even the first step, on 118,339 games. An hour before a game the middle of the order book is a fair price; a buyer loses the spread and the fee ([`docs/06_polymarket_us.md`](docs/06_polymarket_us.md), section 10) |
-| **Being paid to leave orders.** Polymarket US pays rewards for resting orders and publishes the schedule | **A lead, not a result.** Outside sports some pools are paid to nobody today ([`docs/08_rewards.md`](docs/08_rewards.md)). In sports every game has its own pool. By the published formula 100 contracts resting on each side before a lower-tour tennis match would be paid about 27¢ an hour, and on 29,647 past matches being run over cost 18¢ to 21¢ an hour: the reward is about one and a half times the cost. Doubles and darts fail that check. **The paper test on live order books, rules fixed first, has failed for its widest account (16 November):** 2,295 games on five dates, $1,711 of reward by the formula against $3,483 lost on the orders that were traded against, held to the result. The loss is the ITF tennis tour: valued before the start its fills cost $408, at the result $3,020. **From 18 November 2026 the exchange's filed rules let it cap a reward at a share of the account's own trading, which would end this where it is applied:** [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md), section 9 |
-| **Crypto on Polymarket US** (11 November): the last tick | **A second lead, not a result.** Whoever works the reward pools on the daily and weekly price ladders bids 1¢, for the size the programme asks, on levels the price cannot reach, and leaves the bid until the end. Almost nobody sells to it: two thirds of those markets never traded a contract. Test L1 sells there in the last quarter of an hour, with "cannot reach" defined from minute prices since 2020 before any market was looked at. History: 4,208 such results, none came in, 734 with an order to sell to. On the 2,506 evenings since 2020 the price passed the limit on five, for one coin each. The history has no sizes; a recorder now collects them. **After four live evenings (16 November): $8.47 against a bar of $50 a day, nothing lost, and the bar is out of reach.** The bids of real size are gone before the last quarter of an hour ([`docs/11_crypto_us.md`](docs/11_crypto_us.md)) |
-| **Crypto on Polymarket US** (11 November): the whole ladder | **Fails its bar (16 November): one sale in four evenings, $28 kept, where it asks for a sale on four evenings.** The same evening somebody sold 10,000 contracts in equal lots across the daily Bitcoin ladder. A ladder pays $1 on exactly one bracket (checked on all 2,814 settled ladders), so selling every bracket at once keeps whatever the bids add up to beyond $1 and the fees, with no view of the price. With the real books of that evening it is small: about $13 on $10,000. Test L2 records whole ladders with sizes and sells on paper when a sale locks enough ([`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 12) |
-| **Crypto on Polymarket US** (13 November): the far brackets, hours ahead | **A paper test, three evenings in (16 November): $0.99, $87 and $92 on $10,000, $60 an evening against a bar of $50, nothing lost, one more evening needed before it is judged.** The bids it sells to are getting fewer, leave earlier, and come and go within minutes. The first live evening showed the 1¢ bids of real size stand from about 16:30 to 21:00 UTC and are gone in the last hour, so the last-tick test has nothing to sell to ($8 on its first evening against a bar of $50). Test L3 sells the far brackets while the bids stand, by where the price has ended hours later (one start in 500, worst year since 2020). Of the brackets of one ladder at most one can pay. On the evening already seen: $92 on $10,000, largest single sale $995. Others are already selling to the same bids ([`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 13) |
+| **Being paid to leave orders.** Polymarket US pays rewards for resting orders and publishes the schedule | **Tested on paper for a week, and failed (18 November).** Outside sports some pools are paid to nobody today ([`docs/08_rewards.md`](docs/08_rewards.md)). In sports every game has its own pool. By the published formula 100 contracts resting on each side before a lower-tour tennis match would be paid about 27¢ an hour, and on 29,647 past matches being run over cost 18¢ to 21¢ an hour: the reward is about one and a half times the cost. Doubles and darts fail that check. **The paper test on live order books, rules fixed first, failed for all three accounts named in advance:** 3,532 games on seven dates, $3,009 of reward by the formula against $5,184 lost on the orders that were traded against, held to the result. The loss is the ITF tennis tour: valued before the start its fills cost $639, at the result $3,894. No reward was paid to anyone; the formula is taken at its word. **From 18 November 2026 the exchange's filed rules let it cap a reward at a share of the account's own trading, which would end this where it is applied:** [`docs/09_sports_rewards.md`](docs/09_sports_rewards.md), section 9 |
+| **Crypto on Polymarket US** (11 November): the last tick | **Did not pass its paper test (18 November).** Whoever works the reward pools on the daily and weekly price ladders bids 1¢, for the size the programme asks, on levels the price cannot reach, and leaves the bid until the end. Almost nobody sells to it: two thirds of those markets never traded a contract. Test L1 sells there in the last quarter of an hour, with "cannot reach" defined from minute prices since 2020 before any market was looked at. History: 4,208 such results, none came in, 734 with an order to sell to. On the 2,506 evenings since 2020 the price passed the limit on five, for one coin each. The history has no sizes; a recorder now collects them. **Six live evenings: $4.37 a day against a bar of $50, nothing lost in 104 trades.** The bids of real size are gone before the last quarter of an hour ([`docs/11_crypto_us.md`](docs/11_crypto_us.md)) |
+| **Crypto on Polymarket US** (11 November): the whole ladder | **Did not pass its paper test (18 November): one sale in six evenings, $28 kept, where it asks for a sale on four evenings of five.** The same evening somebody sold 10,000 contracts in equal lots across the daily Bitcoin ladder. A ladder pays $1 on exactly one bracket (checked on all 2,814 settled ladders), so selling every bracket at once keeps whatever the bids add up to beyond $1 and the fees, with no view of the price. With the real books of that evening it is small: about $13 on $10,000. Test L2 records whole ladders with sizes and sells on paper when a sale locks enough ([`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 12) |
+| **Crypto on Polymarket US** (13 November): the far brackets, hours ahead | **Did not pass its paper test (18 November): $42 an evening on $10,000 over five evenings against a bar of $50, and no bracket sold that paid.** $87 and $92 on two evenings, $1, $7 and $24 on the others. The large 1¢ bids on Bitcoin's far brackets were gone by 16 November. The first live evening showed the 1¢ bids of real size stand from about 16:30 to 21:00 UTC and are gone in the last hour, so the last-tick test has nothing to sell to ($8 on its first evening against a bar of $50). Test L3 sells the far brackets while the bids stand, by where the price has ended hours later (one start in 500, worst year since 2020). Of the brackets of one ladder at most one can pay. On the evening already seen: $92 on $10,000, largest single sale $995. Others are already selling to the same bids ([`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 13) |
 
 What exists now that did not: a recorder that writes down the real order
 books of Polymarket US, with sizes, every cycle, and the polymarket.com
@@ -280,7 +312,10 @@ itself, not of anything a US resident can do with it.
 The same job also runs the **Polymarket US recorder** (`kht us-record`,
 `state/us/`): no account, no trades, only the order books written down.
 
-A second job, *us-rewards*, runs the **paper orders before games**
+A second job, *us-rewards*, ran from 11 to 18 November 2026 and has
+stopped. Its recordings are in the repository and the scoring scripts
+below read them. What it ran, in the words written while it was running:
+the **paper orders before games**
 (`kht us-rewards`, `state/us-rewards/`). It follows every game in the
 exchange's reward programmes on who wins through the six hours before its
 start, reading each order book about every two minutes, and works out what
