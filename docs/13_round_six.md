@@ -874,6 +874,41 @@ job (about 20:28 UTC) and the first match that counts (19 November, US
 Eastern). The bar is as it was. Three new tests cover the amended
 clauses.
 
+**18 November, 21:43 UTC. The first run with today's changes, checked.**
+The run that began at 15:28 UTC ended well at 20:27 and started the next
+one, which has all of today's code. From its save of 21:27 UTC:
+
+- *The recorder of tests G1 and Q1* picked up the six open markets 82
+  seconds after the run before it had last read them, which is the
+  restart that the fault mended at 17:51 UTC would have broken. 624
+  readings since, exactly half a minute apart, with each market's terms,
+  and the exchange's reference price of each asset in fifteen-second
+  candles without a gap or a repeat.
+- *The earnings recorder (K1)*: 22 markets, 104 readings each, the
+  longest gap 33 seconds, with when each was listed and whether its
+  company reports before the open or after the close. No errors.
+- *The recorder of matches (D1)*: 30 UTR matches, 2,448 readings, the
+  longest gap 34 seconds, the listed start, the period and the score on
+  every one, and both reward periods' terms for every match. Seven
+  matches went from not started to play while being read. No errors.
+- *The two paper accounts before games (R2)*: 145 games each, 23 of them
+  UTR, as before.
+
+The three scoring scripts read the new files. Nothing is judged: none of
+today's markets, events or matches counts.
+
+Two things from those first hours, described only. For test Q1: in the
+5.8 hours of today's gold market that were recorded, the 1¢ bid would
+have rested for 4.1 hours and earned $88 by the formula, and it would
+then have been sold to in full, 4,982 contracts for $50. That is what
+happens when a market is dead enough for somebody to offer at 1¢: their
+offer meets the bid. So on such a day the order ends by paying its $50,
+and the bar's condition that fills cost no more than a quarter of the
+reward is a real one. For test D1: four matches were followed from their
+listed start to play. They waited 3, 4, 22 and 26 minutes. The orders
+would have rested through three of those waits and been traded against
+in none.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
