@@ -112,8 +112,10 @@ jobs:
           # half minute. Read-only as well.
           (timeout $((mins + 2))m kht us-top --state state/us-top --minutes $((mins - 2)) > us-top.log 2>&1 || true) &
           # The recorder of test K1 (docs/13_round_six.md, section 4c): the
-          # same program on the earnings markets, into its own folder.
-          (timeout $((mins + 2))m kht us-top --state state/us-kpi --programmes kpic --budget 2 --minutes $((mins - 2)) > us-kpi.log 2>&1 || true) &
+          # same program on the earnings markets, into its own folder. Its
+          # budget lets it read a hundred and fifty books in a half minute:
+          # in a reporting season there are many more markets than now.
+          (timeout $((mins + 2))m kht us-top --state state/us-kpi --programmes kpic --budget 5 --minutes $((mins - 2)) > us-kpi.log 2>&1 || true) &
           # The recorder of test D1 (docs/13_round_six.md, section 4d): each
           # UTR match from a quarter of an hour before its listed start until
           # its market closes, with what the public listing says of the match.
