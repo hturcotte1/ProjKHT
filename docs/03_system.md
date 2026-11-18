@@ -612,6 +612,50 @@ UTC (GitHub shows it as disabled). Over the week the recording lost
 nothing after 11 November: every run its full five hours, a save every
 hour, no errors.
 
+## Round six: two paper accounts before games, and the top of the book
+
+*Added 18 November 2026. The tests are in `docs/13_round_six.md`.*
+
+`kht us-rewards` can keep a second paper account beside the first, from
+the same readings of each book:
+
+```bash
+kht us-rewards --state state/us-rewards --top-state state/us-rewards-top --minutes 300
+```
+
+The first account is unchanged: each order rests at the first price with
+20 of other people's contracts behind it. The second rests at the best
+price itself. Each writes its own `runs/<run>/games.csv.gz` and
+`hits.csv`, in the same form, so every script that reads one reads the
+other. `scripts/us_rewards2_score.py --settle` judges test R2 on the two
+(UTR games from 19 November).
+
+`kht us-top` (`src/kht/trading/us_top.py`) reads the whole book of each
+daily up-or-down market (gold, silver, Bitcoin, Ether, Solana, XRP) every
+thirty seconds:
+
+```bash
+kht us-top --state state/us-top --minutes 300
+```
+
+| File under `state/us-top/runs/<run>/` | Contents |
+|---|---|
+| `books.csv.gz` | One row a reading: both sides of the book to twelve levels (`price:size;price:size`, best first), the running totals of contracts and dollars traded, the last, lowest and highest trade with their times |
+| `markets.csv` | Each market read: its programme, pool, target size, discount factor and maximum spread, the start and end of its window, the price to beat |
+
+It finds the markets in the reward schedule, which it reads every quarter
+of an hour in a second thread so that no reading waits for it, and it
+finds each day's new market from the time the exchange gives for the next
+window, a minute before it opens. It decides nothing. The rule of test G1
+is `src/kht/trading/top_rule.py` and is applied by
+`scripts/us_top_score.py --settle`.
+
+Both run in the *us-rewards* job, which was started again on 18 November
+at 15:28 UTC and stops by itself on 3 December 2026. The last-minutes
+recorder of test L1 is no longer run. The ladder recorder is, to see
+whether the large far bids return. The order system rehearses on paper on
+UTR matches only (`config/us_quoter_utr.json`, `state/us-quoter-utr/`).
+
 ## Reproducing the research
 
 ```bash

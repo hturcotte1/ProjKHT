@@ -833,6 +833,15 @@ because in the one programme with the most games and the most reward,
 somebody on the other side knows more about the match than the price
 does.
 
+*18 November, 15:30 UTC. A second reading.* The week's recordings were
+gone through again the same afternoon (`docs/13_round_six.md`, section 2).
+Three things there belong beside the result above. In ITF the trading
+before a match says who wins, by about 4¢ a contract beyond the last
+price. In a quarter of ITF games the listed start time was wrong, so that
+orders meant to rest before the match rested through it, and those games
+lost about 12¢ on every contract filled. And UTR taken alone was ahead on
+six dates of seven, which a new test, R2, now asks again of new games.
+
 ## 9. The rules as filed, and a change on 18 November
 
 *Found on 11 November at about 11:05 UTC, after everything above. It
