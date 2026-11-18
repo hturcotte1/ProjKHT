@@ -752,6 +752,24 @@ and described. They cannot count: they were listed on 16 and 17 November
 and I had read their books. The four check-ins now score Q1 and K1 as
 well.
 
+**18 November, 17:45 UTC. Test D1 is in the recording job too.** Its rule
+was committed at 17:42 UTC and the job's file changed at 17:43 UTC, so the
+run that begins at about 20:28 UTC carries its recorder
+(`state/us-live`). Tried against the exchange for three minutes before
+that, into a scratch folder: 29 UTR matches followed, each read every
+half minute, the listing read seven times, no errors. Of the 29, 10 were
+listed as being played or suspended, 1 as finished, and 18 as not
+started: 4 not yet at their listed start and 14 more than three hours
+past it. Most of those 14 are pairings of a group whose earlier matches
+were still going on, with an empty book. The check-ins now score all five tests.
+
+How the idea was reached, for the record. The follow-up on ITF above made
+me look for the moment a match really starts. The exchange's event
+listing turned out to carry it, with the score. Laying that beside the
+listed start times showed that UTR's are not match times but group
+times. That is exploration. What it suggests is test D1, on matches not
+yet played.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
