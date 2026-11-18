@@ -798,6 +798,17 @@ code, which has no such starting point at all. The first run with any of
 today's changes begins at about 20:28 UTC and will have the mended code.
 The rules and bars of G1 and Q1 are untouched.
 
+**18 November, 17:56 UTC. The job's requests, counted against the
+exchange's limit.** The exchange allows twenty requests a second from one
+address. With two more recorders in the job I counted what its programs
+may ask between them and set the two new ones to three a second each:
+eighteen for the five recorders together, and the rehearsal of the order
+system reads a few books a minute beside them. The recorder of matches
+also waits three minutes before its first reading of the reward schedule,
+since every other program reads it the moment it starts. A request that
+is refused is tried again, so the cost of going over would have been late
+readings, not lost ones. The check-ins look at the gaps between readings.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
