@@ -1,21 +1,31 @@
 # Follows Polymarket US games through the six hours before they start and
 # works out what small resting orders would have been paid by the exchange's
 # published reward formula, and how often they would have been traded
-# against (docs/09_sports_rewards.md).
-# Beside that it carries two recorders of crypto order books for two other
-# paper tests (docs/11_crypto_us.md, sections 5 and 12).
+# against (docs/09_sports_rewards.md; from 18 November 2026 two paper
+# accounts are kept, docs/13_round_six.md, test R2).
+# Beside that it carries a recorder of the gold, silver and coin up-or-down
+# markets, read every half minute (docs/13, test G1), a recorder of the
+# crypto ladders (docs/11_crypto_us.md, section 12), and a rehearsal of the
+# order system on paper.
 # A simulation: it reads public market data only. No credentials, no orders.
 #
 # One run lasts about five hours and then starts the next, so that games are
 # followed without gaps. What it has recorded is pushed once an hour, so a
 # machine that is lost costs an hour at most, and a second job below then
-# starts the next run at once. It stopped by itself on 18 November 2026,
-# when the tests ended, and its schedule was removed that day. Started by
-# hand it ends at once, at the date check in its first step.
+# starts the next run at once. It ran from 11 to 18 November 2026 for the
+# first tests and was started again that evening for those of round six.
+# It stops by itself on 3 December 2026.
+# To stop it sooner: add an empty file state/us-rewards/STOP, or
+# Actions tab -> "us-rewards" -> "..." -> "Disable workflow" (and the same
+# for "us-rewards-watchdog", which restarts it).
 name: us-rewards
 
 on:
   workflow_dispatch:
+  schedule:
+    # A safety net only. If a run ends without starting its successor, this
+    # starts one within a few hours. While a run is going, it just waits.
+    - cron: "41 */2 * * *"
 
 permissions:
   contents: write
@@ -41,12 +51,18 @@ jobs:
           if [ -f state/us-rewards/STOP ]; then
             echo "stopped by the file state/us-rewards/STOP" | tee -a "$GITHUB_STEP_SUMMARY"
             echo "go=false" >> "$GITHUB_OUTPUT"
-          elif [ "$(date -u +%Y%m%d)" -ge 20261118 ]; then
+          elif [ "$(date -u +%Y%m%d)" -ge 20261203 ]; then
             echo "past the end date of the test" | tee -a "$GITHUB_STEP_SUMMARY"
             echo "go=false" >> "$GITHUB_OUTPUT"
           else
             echo "go=true" >> "$GITHUB_OUTPUT"
           fi
+      - name: Keep the watchdog switched on while the test runs
+        if: steps.gate.outputs.go == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh workflow enable us-rewards-watchdog.yml || true
       - uses: actions/setup-python@v5
         if: steps.gate.outputs.go == 'true'
         with:
@@ -60,9 +76,8 @@ jobs:
         timeout-minutes: 320
         run: |
           # A run lasts five hours. If that would end it between 21:35 and
-          # 22:03 UTC, it ends at 21:33 instead: the daily crypto markets
-          # settle at 22:00 and the third program below has to see their
-          # last quarter of an hour whole.
+          # 22:03 UTC, it ends at 21:33 instead: the daily markets close at
+          # 22:00 and the recorders below have to see them close.
           now=$(date -u +%s); mins=300
           day=$((now - now % 86400))
           for d in 0 86400; do
@@ -86,28 +101,31 @@ jobs:
           ) &
           saver=$!
           # Alongside the judged test: the order-placing system itself, on
-          # paper and under its own limits (docs/10_us_quoter.md). It sends
-          # nothing anywhere. If it fails, the judged test is not affected.
-          (timeout $((mins + 2))m kht us-quote --config config/us_quoter.json --state state/us-quoter --minutes $((mins - 2)) > us-quote.log 2>&1 || true) &
-          # And a recorder for another test: crypto markets in their last
-          # minutes (docs/11_crypto_us.md). Read-only as well, and as
-          # harmless to the judged test if it fails.
-          (timeout $((mins + 2))m kht us-lasttick --state state/us-lasttick --minutes $((mins - 2)) > us-lasttick.log 2>&1 || true) &
-          # A second copy of that recorder, for the test of section 12 of
-          # the same document: the brackets only, from five and a half hours
-          # before they settle, every two minutes, into its own directory.
+          # paper and under its own limits (docs/10_us_quoter.md), for UTR
+          # matches only. It sends nothing anywhere. If it fails, the judged
+          # test is not affected.
+          (timeout $((mins + 2))m kht us-quote --config config/us_quoter_utr.json --state state/us-quoter-utr --minutes $((mins - 2)) > us-quoter-utr.log 2>&1 || true) &
+          # The recorder of test G1 (docs/13_round_six.md, section 4): the
+          # whole book of the gold, silver and coin up-or-down markets every
+          # half minute. Read-only as well.
+          (timeout $((mins + 2))m kht us-top --state state/us-top --minutes $((mins - 2)) > us-top.log 2>&1 || true) &
+          # The recorder of the crypto ladders (docs/11_crypto_us.md, section
+          # 12): the brackets, from five and a half hours before they settle,
+          # every two minutes. Kept to see whether the large far bids return.
           (timeout $((mins + 2))m kht us-lasttick --state state/us-ladder --kinds range --follow 19800 --sweep 120 --budget 3 --minutes $((mins - 2)) > us-ladder.log 2>&1 || true) &
           # Their output is only shown when the run ends. Say now whether
           # each is up, so that a fault shows in the log the same evening.
           sleep 15
-          for name in us-quote us-lasttick us-ladder; do
+          for name in us-quoter-utr us-top us-ladder; do
             if pgrep -f "state/$name" > /dev/null; then echo "$name is running"; else echo "$name is NOT running:"; cat "$name.log" || true; fi
           done
-          kht us-rewards --state state/us-rewards --minutes "$mins"
+          # Two paper accounts from the same readings: the rule of test R1,
+          # and orders at the best price itself (docs/13, section 3).
+          kht us-rewards --state state/us-rewards --top-state state/us-rewards-top --minutes "$mins"
           kill "$saver" 2>/dev/null || true
           wait
-          tail -n 4 us-quote.log || true
-          tail -n 2 us-lasttick.log || true
+          tail -n 4 us-quoter-utr.log || true
+          tail -n 2 us-top.log || true
           tail -n 2 us-ladder.log || true
       - name: Commit what was recorded
         if: always() && steps.gate.outputs.go == 'true'
@@ -138,7 +156,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if [ "$(date -u +%Y%m%d)" -ge 20261118 ]; then
+          if [ "$(date -u +%Y%m%d)" -ge 20261203 ]; then
             echo "past the end date of the test"
             exit 0
           fi
