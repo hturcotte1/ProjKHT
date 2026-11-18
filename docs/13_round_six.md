@@ -481,6 +481,33 @@ against where the price went in the minutes after it, which says in days
 what day-end results would take weeks to say, and so that a rule with a
 view of its own can be tried on the same recordings later.
 
+**18 November, 16:59 UTC. Following the ITF trading as a buyer, looked
+at once more and closed.** Section 2 said the trading before an ITF match
+points to the winner and left "about a cent" for somebody who follows it.
+That was one contract a game in the direction of the game's whole flow, at
+the last middle. Done the way a follower would have to do it, it is worse.
+Take every trade the week's recordings saw before a game, and buy one
+contract the same way at the best price of the next reading, about two
+minutes later, paying the fee, and hold it to the result (exploration, on
+the same week):
+
+| Programme | Trades followed | Games | A trade, after the fee | t by game |
+|---|---:|---:|---:|---:|
+| ITF tennis | 3,409 | 1,079 | −1.4¢ | −1.1 |
+| ITF, the game-start field a placeholder | 630 | 283 | −2.8¢ | −1.2 |
+| UTR tennis | 385 | 189 | −4.4¢ | −1.6 |
+| Table tennis | 1,728 | 993 | −3.5¢ | −2.9 |
+| E-sports | 2,312 | 254 | −6.2¢ | −1.6 |
+| ATP and WTA | 3,769 | 339 | −7.2¢ | −3.6 |
+
+Even at the price the trade itself went at, a follower in ITF is 0.9¢
+behind after the fee. In the games whose start time was wrong the paper
+orders lost because the price ran away from them during play, not because
+somebody else's stale order was left for a late-comer to take: by the
+next reading the book had moved. Whoever does take those orders is there
+in seconds with the score in front of them. Two-minute readings and no
+score feed cannot follow that, and there is no test to make of it.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
