@@ -69,6 +69,7 @@ def test_saves_what_the_job_wrote_and_nothing_else(repos):
     write(runner / "state/us-rewards-top/runs/r1/games.csv.gz", "top games v1\n")
     write(runner / "state/us-top/runs/x/books.csv.gz", "top books v1\n")
     write(runner / "state/us-kpi/runs/x/books.csv.gz", "earnings books v1\n")
+    write(runner / "state/us-live/runs/x/books.csv.gz", "match books v1\n")
     write(runner / "state/us-quoter-utr/cycles.csv", "utr cycle 1\n")
     write(runner / "notes-of-the-job.txt", "not state\n")
     # meanwhile somebody else pushes a newer settlements file and a document
@@ -76,11 +77,12 @@ def test_saves_what_the_job_wrote_and_nothing_else(repos):
     write(other / "docs/notes.md", "notes\nmore\n")
     git(other, "commit", "-q", "-am", "scores")
     git(other, "push", "-q", "origin", "work")
-    assert save(runner, tmp_path, "save 1") == "save: pushed 8 files"
+    assert save(runner, tmp_path, "save 1") == "save: pushed 9 files"
     seen = on_branch(origin, tmp_path)
     assert (seen / "state/us-rewards-top/runs/r1/games.csv.gz").read_text() == "top games v1\n"
     assert (seen / "state/us-top/runs/x/books.csv.gz").read_text() == "top books v1\n"
     assert (seen / "state/us-kpi/runs/x/books.csv.gz").read_text() == "earnings books v1\n"
+    assert (seen / "state/us-live/runs/x/books.csv.gz").read_text() == "match books v1\n"
     assert (seen / "state/us-quoter-utr/cycles.csv").read_text() == "utr cycle 1\n"
     assert (seen / "state/us-rewards/runs/r1/games.csv.gz").read_text() == "games v1\n"
     assert (seen / "state/us-lasttick/runs/x/books.csv.gz").read_text() == "books v1\n"
@@ -91,7 +93,7 @@ def test_saves_what_the_job_wrote_and_nothing_else(repos):
     write(runner / "state/us-rewards/runs/r1/games.csv.gz", "games v2\n")
     with (runner / "state/us-rewards/log.csv").open("a") as fh:
         fh.write("r1,2\n")
-    assert save(runner, tmp_path, "save 2") == "save: pushed 9 files"
+    assert save(runner, tmp_path, "save 2") == "save: pushed 10 files"
     assert save(runner, tmp_path, "save 3") == "save: nothing new since the last save"
     seen = on_branch(origin, tmp_path)
     assert (seen / "state/us-rewards/runs/r1/games.csv.gz").read_text() == "games v2\n"

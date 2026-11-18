@@ -667,6 +667,24 @@ described once. `scripts/us_kpi_score.py --settle` applies the rule of
 test K1 (`docs/13_round_six.md`, section 4c). The recordings of test G1
 in `state/us-top` are not touched by it.
 
+`kht us-live` (`src/kht/trading/us_live.py`) follows every UTR match
+from a quarter of an hour before its listed start until its market
+closes, for test D1:
+
+```bash
+kht us-live --state state/us-live --minutes 300
+```
+
+Every half minute it reads the exchange's public listing of tennis events,
+which carries a live score from its data provider (being played or not,
+the set, the score, when that was last updated), and the whole book of
+each match it follows. `books.csv.gz` has the same columns as the other
+book recorders and, beside them, the listed start, live or not, the
+period and the score. `markets.csv` has each match with the terms of its
+two reward periods, the six hours before the start and play.
+`scripts/us_delay_score.py --settle` applies the rule of test D1
+(`docs/13_round_six.md`, section 4d).
+
 All of these run in the *us-rewards* job, which was started again on 18 November
 at 15:28 UTC and stops by itself on 3 December 2026. The last-minutes
 recorder of test L1 is no longer run. The ladder recorder is, to see

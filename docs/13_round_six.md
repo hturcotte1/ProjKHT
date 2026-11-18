@@ -489,6 +489,114 @@ size, and what the same orders would be paid under a cap.
   job stops on 3 December as it stands; keeping it running for this test
   is a change to the job and not to the rule.
 
+## 4d. Test D1: between a UTR match's listed start and its real one
+
+**Fixed at 17:41 UTC on 18 November 2026, after a look at this afternoon's
+books of matches that were waiting to start, and before any match it
+counts.**
+
+**What was found this afternoon.**
+
+- **The exchange publishes the score.** Its public listing of events
+  carries, for tennis, what its data provider says of each match: being
+  played or not, the set, the score to the point, and when that was last
+  updated. It needs no key.
+- **UTR matches do not start when they are listed to.** They are listed
+  in groups with one start time and played one after another. In last
+  week's recordings the last trade of a UTR match came 2.7 hours after
+  its listed start at the median, and more than 3.7 hours after it in a
+  quarter of them, where a match takes an hour or two. At 17:28 UTC
+  today, 10 of the 19 UTR matches past their listed start were still
+  listed as not started, 49 to 209 minutes after it.
+- **In that stretch the book is nearly empty.** The people who rest
+  orders before a match have taken them away at the listed start (test
+  R2 itself leaves ten minutes before it). The people who make prices
+  during play have not come. What is left is a contract or two at the
+  best prices, and in four of the waiting matches somebody resting 250 or
+  more a side, eleven to fourteen cents apart, who has had the same
+  thought.
+- **A reward pool is running through it, and I do not know which.** If
+  the exchange counts "the six hours before the start" back from the
+  real start, the stretch is the last part of that period: $10 a match,
+  target size 250, maximum spread 7¢. If it counts "play" from the listed
+  start, the stretch is the first part of play: $50 a match, target size
+  500, maximum spread 6¢. Only an account's earnings record can say.
+
+**The rule.** A new recorder, `kht us-live` (`src/kht/trading/us_live.py`,
+`state/us-live/`), follows every UTR match from a quarter of an hour
+before its listed start until its market closes. Every half minute it
+writes down what the listing says of the match and the whole book.
+`scripts/us_delay_score.py` applies:
+
+1. **When anything rests.** At a reading, if the market is open, the
+   listed start has passed, and the listing says in so many words that
+   the match has not started: period "NS", not being played, no score.
+   If the listing could not be read, or says anything else, nothing
+   rests.
+2. **Where and how much.** 500 contracts on each side, five cents either
+   side of the middle of the best bid and best offer as read, rounded
+   outwards to a cent (so ten or eleven cents apart). Only if both sides
+   show a price and the best prices are at most three ticks apart. The
+   account never holds more than 500 either way.
+3. **Fills.** Rule 4 of test G1.
+4. **Leaving.** From the first reading at which the listing shows play,
+   nothing rests, and what was traded against is closed at the prices
+   read, down the book and over the next readings if it takes them,
+   paying the fee of somebody who takes a price. So on paper an order
+   stands for up to half a minute after play shows. A real one would be
+   gone in seconds.
+5. **The reward, worked out both ways.** *As the six hours before:* $10,
+   times the seconds our orders rest in a book that qualifies by that
+   period's terms, times our share of the score, over 21,600 seconds. No
+   $1 minimum is applied to it alone, because it would be added to what
+   an account already resting before the listed start earns in the same
+   market and period. *As play:* $50, times the same by the terms of
+   play, over the seconds from the listed start to the market's close.
+
+**One account is judged: 500 contracts a side, every UTR match listed to
+start on or after 19 November 2026, US Eastern time.** A match counts if
+it was read from its listed start (no later than a minute after it) until
+it was seen to start or to close, at least 85% of the half minutes
+between. A match that starts on time counts, as nothing gained and
+nothing lost. 250 contracts a side is followed beside it.
+
+**The bar.** When at least 400 such matches on at least 10 US dates are
+finished, one of three things is written down:
+
+> **Passes**, if the mean net result per match (reward, plus what the
+> fills and their closing made) is above zero with z ≥ 3, each US date
+> counting as one observation, with the reward counted as the six hours
+> before the start.
+>
+> **Passes only if play is counted from the listed start**, if that
+> holds only with the reward counted as play.
+>
+> **Does not pass**, otherwise.
+
+One look.
+
+**What is already known against it.**
+
+- **"Not started" is the listing's word.** If it is late, or wrong, the
+  orders rest into play, at 500 contracts. The paper account suffers
+  that as it is recorded, half a minute at a time.
+- **It is not small.** 500 contracts a side is $250 to $500 a match, and
+  several matches wait at once.
+- **Somebody is already there** in some of these matches, at half the
+  size and further from the price.
+- **What the stretch is paid is not known at all,** which is why the
+  verdict has to say which reading it needs. One evening of real orders
+  would show it. That needs the order program and a key, and is the
+  owner's decision.
+
+**What this says about test R2.** R2 counts its reward over the six hours
+before the *listed* start. If the exchange counts those six hours back
+from the real start, the first part of R2's resting is outside the paid
+period by as long as the match is late: about a sixth of the reward for a
+match an hour late, half for one three hours late. R2's rule and bar are
+not changed. Its result will be read with this beside it, and the new
+recordings will say how late its matches were.
+
 ## 5. What no paper test can show, and the cheapest way to learn it
 
 Every reward figure in this project is the published formula applied to
@@ -516,9 +624,10 @@ bids. It is also the owner's decision.
 ## 6. Notes while the tests run
 
 *At each check-in:* `python scripts/us_rewards2_score.py --settle`,
-`python scripts/us_top_score.py --settle` (which scores G1 and Q1) and
-`python scripts/us_kpi_score.py --settle` (K1), the figures written here
-with their date, and nothing in sections 3, 4, 4b and 4c changed.
+`python scripts/us_top_score.py --settle` (which scores G1 and Q1),
+`python scripts/us_kpi_score.py --settle` (K1) and
+`python scripts/us_delay_score.py --settle` (D1), the figures written
+here with their date, and nothing in sections 3 to 4d changed.
 
 **18 November, 15:31 UTC. Both tests are recording.** The rules above were
 committed at 15:27 UTC. The recording job was started again at 15:28 UTC

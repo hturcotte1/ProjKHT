@@ -9,6 +9,7 @@
     kht us-rewards   paper orders before games on Polymarket US: what the reward formula would pay them (read-only)
     kht us-lasttick  crypto markets on Polymarket US in their last minutes: the books with sizes (read-only)
     kht us-top       the whole book of the single-market reward programmes on Polymarket US, every half minute (read-only)
+    kht us-live      UTR matches around their start on Polymarket US: the listing's word on the match, and the book (read-only)
     kht us-quote     rest orders before games on Polymarket US: on paper unless live trading is switched on
     kht us-take      sell to the last-tick bids of crypto markets on Polymarket US: on paper unless live trading is switched on
     kht us-earnings  what the exchange says it paid in rewards, beside what the formula said (needs the account's key)
@@ -185,6 +186,16 @@ def cmd_us_top(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_us_live(args: argparse.Namespace) -> int:
+    """Record UTR matches around their start on Polymarket US: what the listing says of the match, and the book. Reads public data only."""
+    from .trading.us_live import run
+
+    line = run(Path(args.state), minutes=args.minutes, budget=args.budget)
+    print(f"[{_stamp()}] Polymarket US matches around their start: {line['minutes']:.0f} minutes, {line['books']} readings of {line['markets']} matches, "
+          f"{line['listings']} readings of the listing, {line['errors']} errors")
+    return 0
+
+
 def cmd_us_quote(args: argparse.Namespace) -> int:
     """Rest orders before games on Polymarket US. On paper unless --live or --preview is given and the environment allows it."""
     from .api.http import Http
@@ -351,6 +362,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--test", default="K1", help="with --programmes: the test the recording is for, named in the run's summary")
     p.add_argument("--scorer", default="scripts/us_kpi_score.py", help="with --programmes: the script that scores it, named in the run's summary")
     p.set_defaults(fn=cmd_us_top)
+
+    p = sub.add_parser("us-live", help="record UTR matches from before their listed start until their market closes on Polymarket US (read-only)")
+    p.add_argument("--state", default="state/us-live")
+    p.add_argument("--minutes", type=float, default=300.0, help="how long to record")
+    p.add_argument("--budget", type=float, default=4.0, help="requests a second, at most")
+    p.set_defaults(fn=cmd_us_live)
 
     p = sub.add_parser("us-take", help="sell to the last-tick bids of crypto markets on Polymarket US (on paper unless switched on)")
     p.add_argument("--config", default="config/us_taker.json")
