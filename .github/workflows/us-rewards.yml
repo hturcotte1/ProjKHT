@@ -111,15 +111,18 @@ jobs:
           # whole book of the gold, silver and coin up-or-down markets every
           # half minute. Read-only as well.
           (timeout $((mins + 2))m kht us-top --state state/us-top --minutes $((mins - 2)) > us-top.log 2>&1 || true) &
+          # The exchange allows twenty requests a second from one address.
+          # The budgets of the programs in this job add up to eighteen:
+          # us-rewards 5, us-top 4, the two below 3 each, the ladders 3.
           # The recorder of test K1 (docs/13_round_six.md, section 4c): the
-          # same program on the earnings markets, into its own folder. Its
-          # budget lets it read a hundred and fifty books in a half minute:
-          # in a reporting season there are many more markets than now.
-          (timeout $((mins + 2))m kht us-top --state state/us-kpi --programmes kpic --budget 5 --minutes $((mins - 2)) > us-kpi.log 2>&1 || true) &
+          # same program on the earnings markets, into its own folder. Three
+          # a second reads ninety books in a half minute. In a reporting
+          # season there may be more markets than that: see the check-ins.
+          (timeout $((mins + 2))m kht us-top --state state/us-kpi --programmes kpic --budget 3 --minutes $((mins - 2)) > us-kpi.log 2>&1 || true) &
           # The recorder of test D1 (docs/13_round_six.md, section 4d): each
           # UTR match from a quarter of an hour before its listed start until
           # its market closes, with what the public listing says of the match.
-          (timeout $((mins + 2))m kht us-live --state state/us-live --minutes $((mins - 2)) > us-live.log 2>&1 || true) &
+          (timeout $((mins + 2))m kht us-live --state state/us-live --budget 3 --minutes $((mins - 2)) > us-live.log 2>&1 || true) &
           # The recorder of the crypto ladders (docs/11_crypto_us.md, section
           # 12): the brackets, from five and a half hours before they settle,
           # every two minutes. Kept to see whether the large far bids return.
