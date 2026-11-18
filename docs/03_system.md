@@ -446,6 +446,12 @@ lasts five hours, commits what it recorded and starts the next one. It
 stops by itself on 18 November 2026, or at once if a file
 `state/us-rewards/STOP` exists.
 
+*18 November 2026:* it did. The last run ended at 04:10 UTC and the run
+it started ended at the date check twelve seconds later. The workflow's
+schedule was removed the same morning. It can still be started by hand,
+and to record again the date in its first step and in its `restart` job
+would have to be moved.
+
 | File under `state/us-rewards/` | Contents |
 |---|---|
 | `runs/<run>/games.csv.gz` | One row per game per US date: seconds watched and quoted, and for each order size the share of the score it held, in share-seconds |
@@ -600,6 +606,11 @@ the recording job if no run of it is going. GitHub starts scheduled jobs
 less often than they ask to be started, sometimes much less, so it is a
 net with wide meshes and not a guarantee. Both stop by themselves on
 18 November 2026.
+
+*18 November 2026:* both did. The watchdog switched itself off at 01:53
+UTC (GitHub shows it as disabled). Over the week the recording lost
+nothing after 11 November: every run its full five hours, a save every
+hour, no errors.
 
 ## Reproducing the research
 
