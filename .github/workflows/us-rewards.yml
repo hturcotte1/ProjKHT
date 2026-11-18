@@ -4,9 +4,10 @@
 # against (docs/09_sports_rewards.md; from 18 November 2026 two paper
 # accounts are kept, docs/13_round_six.md, test R2).
 # Beside that it carries a recorder of the gold, silver and coin up-or-down
-# markets, read every half minute (docs/13, test G1), a recorder of the
-# crypto ladders (docs/11_crypto_us.md, section 12), and a rehearsal of the
-# order system on paper.
+# markets, read every half minute (docs/13, test G1), the same recorder on
+# the earnings markets (docs/13, test K1), a recorder of the crypto ladders
+# (docs/11_crypto_us.md, section 12), and a rehearsal of the order system
+# on paper.
 # A simulation: it reads public market data only. No credentials, no orders.
 #
 # One run lasts about five hours and then starts the next, so that games are
@@ -109,6 +110,9 @@ jobs:
           # whole book of the gold, silver and coin up-or-down markets every
           # half minute. Read-only as well.
           (timeout $((mins + 2))m kht us-top --state state/us-top --minutes $((mins - 2)) > us-top.log 2>&1 || true) &
+          # The recorder of test K1 (docs/13_round_six.md, section 4c): the
+          # same program on the earnings markets, into its own folder.
+          (timeout $((mins + 2))m kht us-top --state state/us-kpi --programmes kpic --budget 2 --minutes $((mins - 2)) > us-kpi.log 2>&1 || true) &
           # The recorder of the crypto ladders (docs/11_crypto_us.md, section
           # 12): the brackets, from five and a half hours before they settle,
           # every two minutes. Kept to see whether the large far bids return.
@@ -116,7 +120,7 @@ jobs:
           # Their output is only shown when the run ends. Say now whether
           # each is up, so that a fault shows in the log the same evening.
           sleep 15
-          for name in us-quoter-utr us-top us-ladder; do
+          for name in us-quoter-utr us-top us-kpi us-ladder; do
             if pgrep -f "state/$name" > /dev/null; then echo "$name is running"; else echo "$name is NOT running:"; cat "$name.log" || true; fi
           done
           # Two paper accounts from the same readings: the rule of test R1,
@@ -126,6 +130,7 @@ jobs:
           wait
           tail -n 4 us-quoter-utr.log || true
           tail -n 2 us-top.log || true
+          tail -n 2 us-kpi.log || true
           tail -n 2 us-ladder.log || true
       - name: Commit what was recorded
         if: always() && steps.gate.outputs.go == 'true'
