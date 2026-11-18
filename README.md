@@ -51,7 +51,10 @@ for a target of only 500 contracts), withdrawn before the company
 reports; and **D1**, orders resting between a UTR match's listed start
 and its real one, which is often well after it, a stretch in which the
 order book is nearly empty and the exchange's own public score feed says
-the match has not begun. None has a result yet. As
+the match has not begun. None has a result yet. One already has real
+evidence against it: on 18 November somebody placed the very order of
+test Q1 in the gold market, and it was sold to in full within fifty
+minutes, for $50 against about $11 of reward by the formula. As
 before, no order is placed and nobody has been paid a reward: whether the
 exchange pays what its formula says is the one thing only a real account
 can show.

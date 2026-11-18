@@ -394,6 +394,43 @@ situation comes back often enough to matter.
   filled earns little.
 - **The formula is taken at its word,** here as everywhere.
 
+**Added on 18 November at 21:46 UTC, from the first afternoon's
+recording, which does not count: it has been tried, and it lost.** At
+17:00:00 UTC, eight minutes after this section was pushed, somebody
+placed a bid for 5,010 contracts at 1¢ in the gold market, which had
+shown no bid at any reading since 15:06. It was sold to a few contracts
+at a time
+from 17:12. By 17:31 that had taken it under the target size, so the book
+stopped qualifying again. Between 17:49:30 and 17:50:00 the rest of it,
+4,870 contracts, was sold to in one go. By the formula the bid had earned
+about $11, for the 31 minutes in which it made the book qualify. It had
+paid $50. Nobody bid again for the rest of the day, and the silver market
+had no bid all afternoon.
+
+Why it was sold to is plain once seen. Selling 5,000 contracts at 1¢ into
+such a bid earns $50 by the evening on $4,950 put up, with nothing to
+fear short of gold rising 2.8% in four hours. Anyone with idle money
+takes that. The bid has to rest for about two and a quarter hours to earn
+its $50 back, and this one lasted fifty minutes.
+
+**This changes what a pass would mean.** The paper order is not in the
+book, so nobody can sell to it. It is counted as traded against only when
+somebody else's order at 1¢ is, as happened today. On a day when nobody
+else bids, the paper order rests for hours and is never taken, which a
+real one would not be allowed to do. So the judged figure is too kind,
+and I now expect the real order to lose. The rule and the bar stay as
+they were fixed. Beside the judged figure the scoring script now reports
+what the result would be if each order were sold to in full fifty minutes
+after it first rested, as the one real order seen so far was. That figure
+is described and judges nothing.
+
+Whether the bid's appearing eight minutes after this section was made
+public is chance, I cannot tell. Its size, the target plus ten, and its
+time, the stroke of the hour, look like a program that was already
+running. If it was not chance, then whatever this repository finds is
+known to others the moment it is pushed. Whether the repository stays
+public is the owner's decision.
+
 ## 4c. Test K1: small orders at the best prices of the earnings markets
 
 **Fixed at 17:19 UTC on 18 November 2026, after reading the books of the
@@ -671,11 +708,14 @@ $300, enough to clear the $1 minimum and to be read off an earnings
 record. It needs no program and no key, only an order placed by hand, and
 it is the owner's decision.
 
-The order of section 4b is a second way, with more to show for it and
-$50 at stake: on an afternoon when the gold market shows no bid, a buy
-order for 5,000 contracts at 1¢. By the formula it earns about $22 an
-hour for as long as the offers stay within six cents and nobody else
-bids. It is also the owner's decision.
+The order of section 4b looked like a second way: on an afternoon when
+the gold market shows no bid, a buy order for 5,000 contracts at 1¢,
+earning about $22 an hour by the formula. *Corrected the same day,
+21:46 UTC:* somebody placed that order at 17:00 UTC and it was sold to in
+full within fifty minutes (section 4b). As a way of learning whether the
+exchange pays its formula it would still work, since about $11 of reward
+would show on the earnings record. But it costs its $50, which the rugby
+order does not. I would not place it.
 
 ## 6. Notes while the tests run
 
@@ -898,16 +938,17 @@ The three scoring scripts read the new files. Nothing is judged: none of
 today's markets, events or matches counts.
 
 Two things from those first hours, described only. For test Q1: in the
-5.8 hours of today's gold market that were recorded, the 1¢ bid would
-have rested for 4.1 hours and earned $88 by the formula, and it would
-then have been sold to in full, 4,982 contracts for $50. That is what
-happens when a market is dead enough for somebody to offer at 1¢: their
-offer meets the bid. So on such a day the order ends by paying its $50,
-and the bar's condition that fills cost no more than a quarter of the
-reward is a real one. For test D1: four matches were followed from their
-listed start to play. They waited 3, 4, 22 and 26 minutes. The orders
-would have rested through three of those waits and been traded against
-in none.
+5.8 hours of today's gold market that were recorded, the paper bid at 1¢
+would have rested for 4.1 hours, earned $88 by the formula, and been
+sold to for 4,982 contracts, $50. *Looked into at 21:46 UTC:* those
+sales were real ones, to a real bid. Somebody placed the very order of
+test Q1 at 17:00 UTC and was sold to in full by 17:50. Section 4b now
+says what that means: a real order of this kind does not get to rest for
+four hours, the paper figure is too kind, and I expect the test's order
+to lose in practice whatever its paper result. For test D1: four matches
+were followed from their listed start to play. They waited 3, 4, 22 and
+26 minutes. The orders would have rested through three of those waits
+and been traded against in none.
 
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily

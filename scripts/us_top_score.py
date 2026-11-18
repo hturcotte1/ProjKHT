@@ -36,6 +36,8 @@ OUT = ROOT / "reports" / "research"
 JUDGED_PROGRAMMES = ("metals_gold_updown_1d", "metals_silver_updown_1d")
 MIN_DAYS, MIN_DATES, BAR_T, BAR_NET = 10, 6, 3.0, 20.0
 Q1_BAR_NET, Q1_FILLS_AT_MOST, Q1_PAID_DAYS = 20.0, 0.25, 4       # test Q1: dollars a market-day, fills as a share of the reward, market-days with a reward
+SOLD_TO_AFTER = 3000.0    # described beside test Q1, not judged: as if each order were traded against in full fifty minutes after it first rested,
+                          # which is what happened to the one real order of this kind seen so far (gold, 18 November 2026, 17:00 to 17:50 UTC)
 WHOLE_START = 900.0       # a market-day is recorded whole if its first open reading came within this long of the start of its window,
 WHOLE_COVER = 0.85        # readings cover this share of the half minutes it was open,
 WHOLE_END = 180.0         # and it was seen to close within this long of its last open reading
@@ -110,11 +112,19 @@ def simulate(rows: list[dict], terms: dict, size: float) -> dict:
             "fills": n_fills, "trades": trades}
 
 
-def simulate_last_tick(rows: list[dict], terms: dict) -> dict:
-    """One market under the rule of test Q1: the target size at the last tick of a side nobody stands on."""
+def simulate_last_tick(rows: list[dict], terms: dict, sold_to_after: float | None = None) -> dict:
+    """One market under the rule of test Q1: the target size at the last tick of a side nobody stands on.
+
+    ``sold_to_after`` is for a figure that is described and not judged. The
+    paper order is not in the book, so nobody can trade against it: it is
+    counted as traded against only when somebody else's order at that price
+    is. With ``sold_to_after`` each order is also counted as traded against
+    in full once it has rested that many seconds.
+    """
     target, discount = float(terms["target"]), float(terms["discount"])
     max_spread = None if pd.isna(terms.get("max_spread")) else float(terms["max_spread"])
     bought = sold = cash = credit = rest_s = 0.0
+    rested = {"bid": 0.0, "ask": 0.0}
     n_fills = 0
     q = prev = None
     for i, r in enumerate(rows):
@@ -132,6 +142,15 @@ def simulate_last_tick(rows: list[dict], terms: dict) -> dict:
             sb, sa = rule.shares(bids, asks, q, target, discount, max_spread)
             credit += dt * (sb + sa) / 2.0
             rest_s += dt
+            if sold_to_after is not None:
+                side = "bid" if q["bid_px"] is not None else "ask"
+                rested[side] += dt
+                if rested[side] >= sold_to_after:
+                    if side == "bid" and bought < target:
+                        cash -= (target - bought) * rule.LOW; bought = target; n_fills += 1
+                    elif side == "ask" and sold < target:
+                        cash += (target - sold) * rule.HIGH; sold = target; n_fills += 1
+                    q = None                               # the order is gone: nothing of it is left to be traded against
         prev = r
     return {"bought": bought, "sold": sold, "cash": cash, "credit": credit, "rest_s": rest_s, "fills": n_fills}
 
@@ -147,10 +166,15 @@ def last_tick_day(slug: str, rows: list[dict], terms: dict, settle: float | None
     reward = float(terms["pool"]) * s["credit"] / open_s
     paid = reward if reward >= MINIMUM else 0.0
     pnl = (s["cash"] + (s["bought"] - s["sold"]) * settle) if settle is not None else np.nan
+    h = simulate_last_tick(rows, terms, SOLD_TO_AFTER)                   # described, not judged: as if sold to in full fifty minutes after first resting
+    h_reward = float(terms["pool"]) * h["credit"] / open_s
+    h_paid = h_reward if h_reward >= MINIMUM else 0.0
+    h_pnl = (h["cash"] + (h["bought"] - h["sold"]) * settle) if settle is not None else np.nan
     return {"slug": slug, "program": frame["program"], "day": frame["day"], "whole": frame["whole"], "open_hours": frame["open_hours"], "cover": frame["cover"],
             "qualifies": frame["qualifies"], "resting": s["rest_s"] / open_s, "reward_formula": reward, "reward_paid": paid, "fills": s["fills"],
             "bought": s["bought"], "sold": s["sold"], "settle": settle if settle is not None else np.nan, "pnl_fills": pnl,
-            "net": paid + pnl if settle is not None else np.nan, "pool": float(terms["pool"]), "target": float(terms["target"])}
+            "net": paid + pnl if settle is not None else np.nan, "pool": float(terms["pool"]), "target": float(terms["target"]),
+            "reward_if_sold_to": h_paid, "pnl_if_sold_to": h_pnl, "net_if_sold_to": h_paid + h_pnl if settle is not None else np.nan}
 
 
 def verdict_last_tick(days: pd.DataFrame) -> str:
@@ -299,6 +323,13 @@ def main() -> int:
             say()
             say("by programme, market-days recorded whole and settled")
             say(g.round(2).to_string(index=False))
+            jj = k[k["program"].isin(JUDGED_PROGRAMMES)]
+            if len(jj):
+                say()
+                say(f"described, not judged: gold and silver as if each order were traded against in full {SOLD_TO_AFTER / 60:.0f} minutes after it first rested, "
+                    "as the one real order of this kind seen so far was (gold, 18 November 2026): "
+                    f"reward ${jj['reward_if_sold_to'].sum():,.2f}, fills ${jj['pnl_if_sold_to'].sum():,.2f}, net ${jj['net_if_sold_to'].sum():,.2f} "
+                    f"on {len(jj)} market-days, ${jj['net_if_sold_to'].mean():,.2f} a market-day")
     say()
     say("Verdict by the bar fixed in advance (gold and silver together): " + verdict_last_tick(last_ticks))
     (out / "tp_summary.txt").write_text("\n".join(lines) + "\n")

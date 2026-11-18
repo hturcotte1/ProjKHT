@@ -390,3 +390,16 @@ def test_the_last_tick_verdict_asks_for_money_on_several_days_and_cheap_fills():
     assert score.verdict_last_tick(costly).startswith("DOES NOT PASS")               # sixty a market-day, but the fills take two fifths of the reward
     small = pd.DataFrame([day(i, 10.0) for i in range(12)])
     assert score.verdict_last_tick(small).startswith("DOES NOT PASS")
+
+
+def test_the_described_figure_counts_the_last_tick_order_as_sold_to_after_fifty_minutes():
+    """Beside test Q1, not judged: the paper order cannot be traded against by anyone, so one figure counts it as taken in full after fifty minutes."""
+    terms = {"pool": 1000.0, "target": 5000.0, "discount": 0.3, "max_spread": 0.03}
+    rows = [{"ts": T0 + 30.0 * i, "state": "OPEN", "bids": "", "asks": "0.03:6000", "traded": 0.0, "notional": 0.0, "last": None, "last_t": None, "low": None, "low_t": None,
+             "high": None, "high_t": None} for i in range(241)]                      # two hours with no bid and nothing traded
+    plain = score.simulate_last_tick(rows, terms)
+    assert plain["bought"] == 0 and plain["rest_s"] == pytest.approx(7200.0)
+    harsh = score.simulate_last_tick(rows, terms, sold_to_after=3000.0)
+    assert harsh["bought"] == 5000.0 and harsh["cash"] == pytest.approx(-50.0)       # the whole target, a cent a contract
+    assert harsh["rest_s"] == pytest.approx(3000.0) and harsh["fills"] == 1          # and nothing rests after it
+    assert score.SOLD_TO_AFTER == 3000.0
