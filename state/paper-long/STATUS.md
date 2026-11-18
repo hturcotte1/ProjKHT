@@ -1,6 +1,6 @@
 # Account status (paper)
 
-As of 2026-11-18 09:01 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-18 11:59 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
@@ -19,8 +19,8 @@ As of 2026-11-18 09:01 UTC. Started 2026-11-10 20:50 UTC.
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.968 | $-0.26 | 72 |
-| US recession by end of 2026? | No | 20.4 | 0.979 | 0.975 | $-0.08 | 74 |
+| Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.967 | $-0.29 | 72 |
+| US recession by end of 2026? | No | 20.4 | 0.979 | 0.976 | $-0.06 | 74 |
 | 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.972 | $-0.02 | 75 |
 | Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 92 |
 | Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.962 | $-0.23 | 103 |
@@ -29,7 +29,7 @@ As of 2026-11-18 09:01 UTC. Started 2026-11-10 20:50 UTC.
 | Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 134 |
 | Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.934 | $-0.19 | 134 |
 | Ilhan Omar denaturalization case filed by March 31, 2027? | No | 21.5 | 0.933 | 0.920 | $-0.27 | 134 |
-| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 152 |
+| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 151 |
 | Will Jordan Bardella advance to the second round of the next French pr | No | 21.5 | 0.933 | 0.930 | $-0.06 | 152 |
 
 ## Resting orders
@@ -59,4 +59,4 @@ As of 2026-11-18 09:01 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-30 cycles from 2026-11-10 20:50 UTC to 2026-11-18 09:01 UTC; equity $1,000.00 → $997.24. The longest gap between two cycles was 12.1 hours.
+31 cycles from 2026-11-10 20:50 UTC to 2026-11-18 11:59 UTC; equity $1,000.00 → $997.24. The longest gap between two cycles was 12.1 hours.
