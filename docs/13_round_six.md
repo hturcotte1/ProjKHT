@@ -355,3 +355,31 @@ it is the owner's decision.
 *At each check-in:* `python scripts/us_rewards2_score.py --settle` and
 `python scripts/us_top_score.py --settle`, the figures written here with
 their date, and nothing in sections 3 and 4 changed.
+
+**18 November, 15:31 UTC. Both tests are recording.** The rules above were
+committed at 15:27 UTC. The recording job was started again at 15:28 UTC
+(run 59 of *us-rewards*), with the second paper account, the new
+recorder, the ladder recorder and the order system rehearsing on UTR
+matches only. The watchdog that restarts it is switched on again. The job
+stops by itself on 3 December.
+
+Tried against the exchange for two and a half minutes before that, into a
+scratch folder: the new recorder found the six markets, read each every
+half minute and wrote their terms down, with no errors. Tomorrow's gold
+and Bitcoin markets are already listed but have no book until their
+window starts, so the recorder looks for each by name from a minute
+before and waits for it.
+
+Check-ins are set for 20, 24 and 27 November and 2 December. The first
+whole market-day of G1 is the gold and silver window that opens at 23:15
+UTC tonight. The first games of R2 are those of 19 November, US Eastern.
+
+One thing the scan of the reward schedule showed after the rules were
+fixed, which changes nothing in them: of 15,929 open markets in daily
+programmes, many are paying nobody at the moment they were read, because
+one side does not hold the target size or the two sides are too far
+apart. Three quarters of the daily Bitcoin brackets, 22 of 27 earnings
+markets, 84 of 100 markets on the 2028 state winners. Making such a book
+qualify takes the whole target size on both sides, which is market making
+with a view on the price and not what either test does. It is noted here
+as a third thing to look at once these two have reported.
