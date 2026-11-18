@@ -49,9 +49,9 @@ the pool is therefore paying nobody; **K1**, small orders at the best
 prices of the new markets on company earnings ($250 a day for each event,
 for a target of only 500 contracts), withdrawn before the company
 reports; and **D1**, orders resting between a UTR match's listed start
-and its real one, which is often an hour or more later, a stretch in
-which the order book is nearly empty and the exchange's own public score
-feed says the match has not begun. None has a result yet. As
+and its real one, which is often well after it, a stretch in which the
+order book is nearly empty and the exchange's own public score feed says
+the match has not begun. None has a result yet. As
 before, no order is placed and nobody has been paid a reward: whether the
 exchange pays what its formula says is the one thing only a real account
 can show.
