@@ -188,8 +188,12 @@ def _paid(bid_at: float | None, ask_at: float | None, max_spread: float | None) 
     return bid_at is not None, ask_at is not None
 
 
-def quote_state(b: dict[str, Any], game: dict[str, Any]) -> dict[str, Any]:
+def quote_state(b: dict[str, Any], game: dict[str, Any], depth: float = DEPTH) -> dict[str, Any]:
     """What the paper account would have resting in this book, and what each order size would score.
+
+    ``depth`` is how many of other people's contracts mark a price as one to
+    join. Test R1 used 20. With 0 the order joins the best price itself,
+    whatever rests there (test R2, docs/13).
 
     ``quoting`` is true when both sides have a real price near the best and
     those two prices are at most MAX_WIDTH apart. ``share[x]`` holds, for
@@ -205,7 +209,7 @@ def quote_state(b: dict[str, Any], game: dict[str, Any]) -> dict[str, Any]:
     alone_ask_at, score_ask = reward_walk(asks, target, discount, tick)
     out["alone"] = _paid(alone_bid_at, alone_ask_at, max_spread)
     out["score"] = (score_bid, score_ask)
-    bid_px, ask_px = quote_level(bids, tick), quote_level(asks, tick)
+    bid_px, ask_px = quote_level(bids, tick, depth), quote_level(asks, tick, depth)
     if bid_px is None or ask_px is None or ask_px <= bid_px or ask_px - bid_px > MAX_WIDTH + 1e-9:
         return out
     out.update({"quoting": True, "bid_px": bid_px, "ask_px": ask_px})
@@ -267,8 +271,9 @@ def et_date(ts: float) -> str:
 class Follower:
     """One game being followed: its last reading, and what the paper orders have accrued so far."""
 
-    def __init__(self, game: dict[str, Any]):
+    def __init__(self, game: dict[str, Any], depth: float = DEPTH):
         self.game = game
+        self.depth = depth
         self.prev: tuple[float, dict[str, Any], dict[str, Any]] | None = None       # time, book, quote state
         self.days: dict[str, dict[str, Any]] = {}
         self.first_ts: float | None = None
@@ -291,7 +296,7 @@ class Follower:
         """Take one reading of the game's order book at time ``ts``."""
         g = self.game
         b = read_book(book)
-        q = quote_state(b, g)
+        q = quote_state(b, g, self.depth)
         opens, pulls = g["start"] - WINDOW, g["start"] - PULL
         if self.prev is not None:
             t0, b0, q0 = self.prev
@@ -364,11 +369,17 @@ def _write(path: Path, fields: list[str], rows: list[dict[str, Any]]) -> None:
 
 
 def run(state: Path, minutes: float, us: PolymarketUS | None = None, interval: float = 120.0, budget: float = 5.0, workers: int = 8,
-        now: Callable[[], float] = time.time, sleep: Callable[[float], None] = time.sleep, max_cycles: int | None = None) -> dict[str, Any]:
+        now: Callable[[], float] = time.time, sleep: Callable[[float], None] = time.sleep, max_cycles: int | None = None,
+        top_state: Path | None = None) -> dict[str, Any]:
     """Follow every game in its day-of period for ``minutes`` and write down what the paper orders did.
 
     Each game's book is read about every ``interval`` seconds, less often
     if that would take more than ``budget`` requests a second.
+
+    With ``top_state``, a second paper account is kept from the same
+    readings and written there in the same form: its orders join the best
+    price itself instead of the first price with 20 contracts behind it
+    (docs/13, test R2). The first account is not changed by it.
     """
     if us is None:
         from ..api.http import Http
@@ -379,12 +390,18 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, interval: f
     out = state / "runs" / run_id
     out.mkdir(parents=True, exist_ok=True)
     followers: dict[str, Follower] = {}
+    tops: dict[str, Follower] = {}                  # the second account, where one is kept
+    top_out = None if top_state is None else top_state / "runs" / run_id
+    if top_out is not None:
+        top_out.mkdir(parents=True, exist_ok=True)
     schedule: dict[str, dict[str, Any]] = {}
     read_at, cycles, books, errors, flushed = -1e18, 0, 0, 0, started
 
     def flush() -> None:
-        _write_gz(out / "games.csv.gz", GAME_FIELDS, [r for f in followers.values() for r in f.rows(run_id)])
-        _write(out / "hits.csv", HIT_FIELDS, [{"run": run_id, **h} for f in followers.values() for h in f.hits])
+        for where, who in ((out, followers), (top_out, tops)):
+            if where is not None:
+                _write_gz(where / "games.csv.gz", GAME_FIELDS, [r for f in who.values() for r in f.rows(run_id)])
+                _write(where / "hits.csv", HIT_FIELDS, [{"run": run_id, **h} for f in who.values() for h in f.hits])
 
     def one(slug: str) -> tuple[str, float, dict[str, Any] | None]:
         try:
@@ -404,9 +421,13 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, interval: f
         for slug, g in schedule.items():
             if slug in followers:
                 if not followers[slug].done:             # the exchange moves a start time now and then, and its periods move with it
-                    followers[slug].game.update({k: g[k] for k in ("pool", "target", "discount", "max_spread", "markets_in_event", "start")})
+                    for who in (followers, tops):
+                        if slug in who:
+                            who[slug].game.update({k: g[k] for k in ("pool", "target", "discount", "max_spread", "markets_in_event", "start")})
             elif g["start"] - WINDOW <= t < g["start"] - PULL:
                 followers[slug] = Follower(dict(g))
+                if top_state is not None:
+                    tops[slug] = Follower(dict(g), depth=0.0)
         # a game is read until one reading after quoting stops, which closes its last interval
         active = [s for s, f in followers.items() if not f.done and f.game["start"] - WINDOW <= t]
         with cf.ThreadPoolExecutor(max_workers=workers) as pool:
@@ -415,10 +436,13 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, interval: f
                     errors += 1
                     continue
                 books += 1
-                try:
-                    followers[slug].see(ts, book)
-                except Exception:                        # one odd book must not end five hours of recording
-                    errors += 1
+                for who in (followers, tops):
+                    if slug not in who:
+                        continue
+                    try:
+                        who[slug].see(ts, book)
+                    except Exception:                    # one odd book must not end five hours of recording
+                        errors += 1
         cycles += 1
         if now() - flushed >= 900:
             flush()
@@ -436,6 +460,11 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, interval: f
             "errors": errors, "games": len(followers), "games_quoted": quoted, "hits": n_hits}
     _append(state / "log.csv", LOG_FIELDS, [line])
     (state / "STATUS.md").write_text(status_text(line, followers))
+    if top_state is not None:
+        top_line = {**line, "games_quoted": sum(1 for f in tops.values() if f.quoted), "hits": sum(len(f.hits) for f in tops.values())}
+        _append(top_state / "log.csv", LOG_FIELDS, [top_line])
+        (top_state / "STATUS.md").write_text(status_text(top_line, tops).replace(
+            "A simulation.", "A simulation, and the second account of it: these orders join the best price itself (docs/13_round_six.md, test R2).", 1))
     return line
 
 

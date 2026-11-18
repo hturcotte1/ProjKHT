@@ -1,0 +1,15 @@
+{
+  "_comment": "The same order system as config/us_quoter.json, for UTR matches only (docs/13_round_six.md, section 3). On paper unless live trading is switched on in the environment. Sizes are contracts, money is dollars, times are seconds.",
+  "size": 250,
+  "programmes": ["utr_moneyline"],
+  "max_games": 30,
+  "max_at_risk": 3000,
+  "max_day_loss": 300,
+  "min_reward": 1.2,
+  "min_lead": 1800,
+  "max_filled_games": 8,
+  "refresh": 30,
+  "scan": 300,
+  "expire": 180,
+  "renew": 90
+}

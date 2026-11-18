@@ -24,9 +24,29 @@ down before its data existed:
 | L3 | Sell the far brackets hours ahead, while the bids stand | $50 an evening on $10,000 over four evenings, no bracket sold that pays | **Does not pass.** $42 an evening over five evenings, no bracket paid. $87 and $92 on two evenings, next to nothing on the other three: the large bids on Bitcoin's far brackets were gone by 16 November |
 
 The details are in `docs/09_sports_rewards.md`, section 8, and
-`docs/11_crypto_us.md`, sections 9, 12 and 13. What stays running is the
-paper accounts of the polymarket.com rule and the recorder of Polymarket
-US order books. The week-long recording job has stopped by itself.
+`docs/11_crypto_us.md`, sections 9, 12 and 13.
+
+**A sixth round began the same day, on Polymarket US only**
+(`docs/13_round_six.md`). A second reading of the week's recordings and
+of the exchange's reward rules found four things:
+
+- in ITF tennis the trading before a match says who wins, and in a
+  quarter of ITF matches the listed start time was wrong, so "before the
+  match" was partly during it. That is where test R1 lost its money;
+- UTR tennis is the one programme where resting orders came out ahead
+  that week, on six or seven dates of seven;
+- the reward formula pays far more for standing at the best price than
+  for size a tick behind it, and test R1 stood a tick behind;
+- some reward pools belong to a single market (gold up or down, $1,000 a
+  day; silver, $750), and one still pays on a result that was decided
+  three days ago.
+
+Two new paper tests are fixed in writing and recording: **R2**, resting
+orders before UTR matches, on new games; and **G1**, small orders at the
+best prices of the gold and silver markets. Neither has a result yet. As
+before, no order is placed and nobody has been paid a reward: whether the
+exchange pays what its formula says is the one thing only a real account
+can show.
 
 A fourth round, before those tests, went looking for what carries over
 from polymarket.com. Its answers are below, under "The fourth round"; in
@@ -279,6 +299,7 @@ learn that. The story is in
 | Test L2, selling a whole ladder of brackets at once: the rule and the bar | [`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 12 |
 | The program that would place the last-tick sales: limits, safeguards, steps before any real order | [`docs/12_us_taker.md`](docs/12_us_taker.md) |
 | Test L3, selling far brackets hours ahead, while the bids are there: the yardstick, the rule and the bar | [`docs/11_crypto_us.md`](docs/11_crypto_us.md), section 13 |
+| Round six, Polymarket US only: what the week's recordings and the reward rules show on a second reading; tests R2 (UTR) and G1 (gold and silver), their rules and bars | [`docs/13_round_six.md`](docs/13_round_six.md) |
 | What Polymarket US's order books showed at the last cycle | [`state/us/STATUS.md`](state/us/STATUS.md) |
 | What the paper accounts hold right now | [`state/paper/STATUS.md`](state/paper/STATUS.md), [`state/paper-maker/STATUS.md`](state/paper-maker/STATUS.md), [`state/paper-thin/STATUS.md`](state/paper-thin/STATUS.md), `state/paper-long/STATUS.md` (from its first cycle) |
 
@@ -312,9 +333,13 @@ itself, not of anything a US resident can do with it.
 The same job also runs the **Polymarket US recorder** (`kht us-record`,
 `state/us/`): no account, no trades, only the order books written down.
 
-A second job, *us-rewards*, ran from 11 to 18 November 2026 and has
-stopped. Its recordings are in the repository and the scoring scripts
-below read them. What it ran, in the words written while it was running:
+A second job, *us-rewards*, ran from 11 to 18 November 2026 for the four
+tests that ended that day, and was started again the same evening for the
+two tests of round six (`docs/13_round_six.md`): the paper orders before
+games now keep a second account beside the first, and a new recorder,
+`kht us-top`, reads the gold, silver and coin up-or-down markets every
+half minute (`state/us-top/`). It stops by itself on 3 December 2026.
+What it ran in its first week, in the words written then:
 the **paper orders before games**
 (`kht us-rewards`, `state/us-rewards/`). It follows every game in the
 exchange's reward programmes on who wins through the six hours before its
@@ -357,6 +382,14 @@ python scripts/us_ladder_score.py --settle    # test L2 on what has been recorde
 
 ```bash
 python scripts/us_lasthours_score.py --settle # test L3 on the same recordings
+```
+
+```bash
+python scripts/us_rewards2_score.py --settle  # test R2 (UTR, from 19 November)
+```
+
+```bash
+python scripts/us_top_score.py --settle       # test G1 (gold and silver up or down)
 ```
 
 ```bash

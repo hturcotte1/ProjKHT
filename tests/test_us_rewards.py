@@ -217,3 +217,28 @@ def test_run_follows_games_in_their_window_and_writes_files(tmp_path):
     assert "itf_moneyline_dayof_1" in status and "No orders are placed" in status
     # the reward the status reports: 360 seconds of a 6-hour window, $12 a game, shares of a half and a quarter
     assert f"${12 * (180 + 90) / (2 * 21600):,.2f}" in status
+
+
+def test_the_second_account_joins_the_best_price_itself(tmp_path):
+    # a tenth of a contract at 46c, a hundred at 45c: the first account steps back to 45c, the second stands at 46c
+    b = rw.read_book(book([(0.46, 0.1), (0.45, 100.0), (0.01, 2000.0)], [(0.47, 300.0), (0.99, 2000.0)]))
+    first, second = rw.quote_state(b, GAME), rw.quote_state(b, GAME, depth=0.0)
+    assert first["bid_px"] == 0.45 and second["bid_px"] == 0.46 and first["ask_px"] == second["ask_px"] == 0.47
+    # one tick behind the best price the first account's hundred are worth half of the other hundred beside them, and next to nothing beside... the dust
+    assert first["share"][100][0] == pytest.approx(0.5 * 100 / (0.1 + 0.5 * 200.0))
+    assert second["share"][100][0] == pytest.approx(100.0 / (100.1 + 0.5 * 100.0))
+    assert second["share"][100][0] > first["share"][100][0]
+    # kept from the same readings, written beside the first in the same form
+    clock = {"t": rw._when("2026-11-12T15:00:00Z")}
+    us = FakeUS([entry("aec-utr-a-b-2026-11-12", program="utr_moneyline_day_of_1")], {"aec-utr-a-b-2026-11-12": book([(0.46, 0.1), (0.45, 100.0), (0.01, 2000.0)], [(0.47, 300.0), (0.99, 2000.0)])})
+    top = tmp_path / "top"
+    line = rw.run(tmp_path / "first", minutes=7, us=us, interval=120.0, now=lambda: clock["t"], sleep=lambda s: clock.__setitem__("t", clock["t"] + s), top_state=top)
+    assert line["books"] == 4                                           # each book read once, for both accounts
+    rows = {}
+    for name, where in (("first", tmp_path / "first"), ("top", top)):
+        with gzip.open(where / "runs" / line["run"] / "games.csv.gz", "rt", newline="") as fh:
+            rows[name] = list(csv.DictReader(fh))[0]
+        assert (where / "log.csv").exists() and (where / "runs" / line["run"] / "hits.csv").exists()
+    assert float(rows["first"]["bid_last"]) == 0.45 and float(rows["top"]["bid_last"]) == 0.46
+    assert float(rows["top"]["acc_bid_100"]) > float(rows["first"]["acc_bid_100"])
+    assert "second account" in (top / "STATUS.md").read_text() and "second account" not in (tmp_path / "first" / "STATUS.md").read_text()

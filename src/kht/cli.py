@@ -8,6 +8,7 @@
     kht us-record    write down the Polymarket US order books and their polymarket.com twins (read-only)
     kht us-rewards   paper orders before games on Polymarket US: what the reward formula would pay them (read-only)
     kht us-lasttick  crypto markets on Polymarket US in their last minutes: the books with sizes (read-only)
+    kht us-top       the whole book of the single-market reward programmes on Polymarket US, every half minute (read-only)
     kht us-quote     rest orders before games on Polymarket US: on paper unless live trading is switched on
     kht us-take      sell to the last-tick bids of crypto markets on Polymarket US: on paper unless live trading is switched on
     kht us-earnings  what the exchange says it paid in rewards, beside what the formula said (needs the account's key)
@@ -152,7 +153,7 @@ def cmd_us_rewards(args: argparse.Namespace) -> int:
     """Follow games on Polymarket US before they start and score paper orders by the reward formula. Reads public data only."""
     from .trading.us_rewards import run
 
-    line = run(Path(args.state), minutes=args.minutes, interval=args.interval)
+    line = run(Path(args.state), minutes=args.minutes, interval=args.interval, top_state=Path(args.top_state) if args.top_state else None)
     print(f"[{_stamp()}] Polymarket US paper orders: {line['minutes']:.0f} minutes, {line['games']} games followed ({line['games_quoted']} quoted), "
           f"{line['books']} books read, {line['hits']} times traded against, {line['errors']} errors")
     return 0
@@ -167,6 +168,16 @@ def cmd_us_lasttick(args: argparse.Namespace) -> int:
                sweep=args.sweep if args.sweep else SWEEP, kinds=kinds)
     print(f"[{_stamp()}] Polymarket US last minutes: {line['minutes']:.0f} minutes, {line['listings']} listings, {line['books']} readings of "
           f"{line['markets']} markets ending at {line['ends']} times, {line['errors']} errors")
+    return 0
+
+
+def cmd_us_top(args: argparse.Namespace) -> int:
+    """Record the books of the single-market reward programmes on Polymarket US every half minute. Reads public data only."""
+    from .trading.us_top import run
+
+    line = run(Path(args.state), minutes=args.minutes, budget=args.budget)
+    print(f"[{_stamp()}] Polymarket US top of book: {line['minutes']:.0f} minutes, {line['books']} readings of {line['markets']} markets, "
+          f"{line['schedule_reads']} readings of the reward schedule, {line['errors']} errors")
     return 0
 
 
@@ -316,6 +327,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--state", default="state/us-rewards")
     p.add_argument("--minutes", type=float, default=300.0, help="how long to follow the order books")
     p.add_argument("--interval", type=float, default=120.0, help="seconds between readings of one book")
+    p.add_argument("--top-state", default=None, help="keep a second paper account there, from the same readings, whose orders join the best price itself")
     p.set_defaults(fn=cmd_us_rewards)
 
     p = sub.add_parser("us-lasttick", help="record crypto markets on Polymarket US in their last minutes, with sizes (read-only)")
@@ -326,6 +338,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--sweep", type=float, default=None, help="seconds between two readings of one book, at least (test L1: leave it alone)")
     p.add_argument("--kinds", default=None, help="only these kinds of market, comma-separated: range, above_below, one_touch, up_down (test L1: leave it alone)")
     p.set_defaults(fn=cmd_us_lasttick)
+
+    p = sub.add_parser("us-top", help="record the whole book of the single-market reward programmes on Polymarket US (read-only)")
+    p.add_argument("--state", default="state/us-top")
+    p.add_argument("--minutes", type=float, default=300.0, help="how long to record")
+    p.add_argument("--budget", type=float, default=4.0, help="requests a second, at most")
+    p.set_defaults(fn=cmd_us_top)
 
     p = sub.add_parser("us-take", help="sell to the last-tick bids of crypto markets on Polymarket US (on paper unless switched on)")
     p.add_argument("--config", default="config/us_taker.json")
