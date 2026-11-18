@@ -332,6 +332,68 @@ not being paid for.
 - **The exchange can cap it.** Under a cap an order that is seldom traded
   against is paid little. That is reported with the result.
 
+## 4b. Test Q1: the last tick of a side nobody is standing on
+
+**Fixed at 16:51 UTC on 18 November 2026, after a look at fifty minutes of
+the new recorder's first run and before any market it counts had opened.**
+
+**What was seen.** From 15:29 to 16:20 UTC today the gold market had no
+bid at all. Gold was 2.8% under its price to beat, "up" was offered at 3¢
+for 5,800 to 7,300 contracts, and people were buying it there a few
+hundred at a time. A book with a maximum spread pays nobody while one side
+is short of the target size, so for that time the $1,000 pool was paying
+nobody. One order would have changed that: a bid for the target size,
+5,000 contracts, at 1¢. It costs $50 if all of it is sold to. The bid side
+would then hold the target, three cents from the offers where six are
+allowed, and the whole score of the bid side, which is half of what each
+second pays, would belong to that order. By the formula that is $18 for
+those fifty minutes. Nobody sold a contract at 1¢ in them.
+
+**The rule** (`last_tick` in `src/kht/trading/top_rule.py`), applied by
+the same script to the same recordings as test G1:
+
+1. **When.** At a reading, if the market is open and the book as read
+   does *not* qualify: if the bid side holds less than the target size,
+   and a bid for the target size at 1¢ would make the book qualify, that
+   bid rests until the next reading. Likewise an offer for the target
+   size at 99¢ when it is the offer side that is short. While the book
+   qualifies as it is, nothing rests.
+2. **How much.** Always the target size. Once the account has bought the
+   target size at 1¢ in a market, it rests no more bids there, and the
+   same for offers at 99¢. So one side of one market can cost at most a
+   little under twice the target size times one cent: $100 in gold, $60
+   in silver.
+3. **Fills, reward, the $1 minimum, what a fill is worth:** rules 4 to 6
+   of test G1, unchanged. A contract bought at 1¢ is held to settlement:
+   it loses the cent, or it pays a dollar.
+
+**One account is judged: gold and silver together.** The four coins are
+described. A market-day counts as in test G1, and only markets whose
+window starts after 16:51 UTC on 18 November count.
+
+**The bar.** When at least 10 market-days on at least 6 dates have been
+recorded whole and settled:
+
+> The account passes if its net result averages at least $20 a
+> market-day, its fills have cost at most a quarter of its reward, and it
+> earned a reward on at least 4 of the market-days.
+
+One look. There is no t in this bar. What the rule can lose is fixed by
+its construction, so the question is not luck. It is whether the
+situation comes back often enough to matter.
+
+**What is already known against it.**
+
+- **Anybody can do it, and the firms already there can do it bigger.**
+  It pays only while they do not bother to bid a cent. The day they do,
+  the side is shared by size, and 100,000 contracts at 1¢ cost them
+  $1,000 at most.
+- **It is the kind of order a cap is for.** It is a real order and it is
+  filled whenever somebody sells at a cent. But it is seldom filled, and
+  under a cap at a share of executed volume an order that is seldom
+  filled earns little.
+- **The formula is taken at its word,** here as everywhere.
+
 ## 5. What no paper test can show, and the cheapest way to learn it
 
 Every reward figure in this project is the published formula applied to
@@ -350,11 +412,18 @@ $300, enough to clear the $1 minimum and to be read off an earnings
 record. It needs no program and no key, only an order placed by hand, and
 it is the owner's decision.
 
+The order of section 4b is a second way, with more to show for it and
+$50 at stake: on an afternoon when the gold market shows no bid, a buy
+order for 5,000 contracts at 1¢. By the formula it earns about $22 an
+hour for as long as the offers stay within six cents and nobody else
+bids. It is also the owner's decision.
+
 ## 6. Notes while the tests run
 
 *At each check-in:* `python scripts/us_rewards2_score.py --settle` and
-`python scripts/us_top_score.py --settle`, the figures written here with
-their date, and nothing in sections 3 and 4 changed.
+`python scripts/us_top_score.py --settle` (which scores G1 and Q1), the
+figures written here with their date, and nothing in sections 3, 4 and 4b
+changed.
 
 **18 November, 15:31 UTC. Both tests are recording.** The rules above were
 committed at 15:27 UTC. The recording job was started again at 15:28 UTC

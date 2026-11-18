@@ -89,3 +89,37 @@ def test_fills_when_the_other_side_moves_through_our_price():
     assert rule.fills(q, before, reading(1030.0, 500.0, 250.0), bids_now, ASKS) == (0.0, 100.0)
     one_sided = {"bid_px": None, "bid_qty": 0.0, "ask_px": 0.54, "ask_qty": 100.0}
     assert rule.fills(one_sided, before, reading(1030.0, 540.0, 250.0 + 40 * 0.52), BIDS, ASKS) == (0.0, 0.0)
+
+
+def test_last_tick_stands_where_one_order_is_all_that_is_missing():
+    asks = [(0.03, 6900.0), (0.11, 20.0)]
+    q = rule.last_tick([], asks, 0.0, 0.0, 5000, 0.03)                   # gold on 18 November: nobody bidding, 6,900 offered at 3c
+    assert (q["bid_px"], q["bid_qty"], q["ask_px"]) == (0.01, 5000, None) and q["why"] == "resting"
+    sb, sa = rule.shares([], asks, q, 5000, 0.3, 0.03)
+    assert sb == pytest.approx(1.0) and sa == 0.0                         # the whole of the bid side, none of the offer side
+    # a tenth of a contract at 2c does not change it much: ours is one tick behind and still nearly all of the side
+    sb, _ = rule.shares([(0.02, 0.1)], asks, rule.last_tick([(0.02, 0.1)], asks, 0.0, 0.0, 5000, 0.03), 5000, 0.3, 0.03)
+    assert sb == pytest.approx(0.3 * 5000 / (0.1 + 0.3 * 5000))
+    # the mirror image: nobody offering, the bids at 97c
+    q = rule.last_tick([(0.97, 8000.0)], [], 0.0, 0.0, 5000, 0.03)
+    assert (q["ask_px"], q["ask_qty"], q["bid_px"]) == (0.99, 5000, None)
+
+
+def test_last_tick_rests_nothing_when_it_would_not_help_or_is_not_needed():
+    asks = [(0.03, 6900.0)]
+    assert rule.last_tick([(0.02, 6000.0)], asks, 0.0, 0.0, 5000, 0.03)["why"] == "the book qualifies without us"
+    assert rule.last_tick([], [(0.03, 2700.0), (0.71, 400.0)], 0.0, 0.0, 3000, 0.03)["bid_px"] is None      # silver that day: the offers do not hold the target either
+    assert rule.last_tick([], [(0.09, 6900.0)], 0.0, 0.0, 5000, 0.03)["bid_px"] is None                     # the offers are eight cents from the last tick: six are allowed
+    assert rule.last_tick([], [(0.09, 6900.0)], 0.0, 0.0, 5000, 0.05)["bid_px"] == 0.01                     # ten are allowed here
+    assert rule.last_tick([], asks, 5000.0, 0.0, 5000, 0.03)["bid_px"] is None                              # the account has bought the target size already
+    assert rule.last_tick([], asks, 4999.0, 0.0, 5000, 0.03)["bid_qty"] == 5000                             # until then the order is always the whole target
+    assert rule.last_tick([], asks, 0.0, 0.0, 5000, 0.03, state="EXPIRED")["why"] == "no market"
+    assert rule.last_tick([], [(0.01, 9000.0)], 0.0, 0.0, 5000, 0.03)["bid_px"] is None                     # an offer at the last tick itself: a bid there would cross it
+    assert rule.last_tick([], [], 0.0, 0.0, 5000, 0.03)["why"] == "an order at the last tick would not make it qualify"
+
+
+def test_last_tick_order_is_filled_only_at_the_last_tick():
+    q = rule.last_tick([], [(0.03, 6900.0)], 0.0, 0.0, 5000, 0.03)
+    before = reading(1000.0, 4000.0, 300.0)
+    assert rule.fills(q, before, reading(1030.0, 4400.0, 300.0 + 400 * 0.03), [], [(0.03, 6500.0)]) == (0.0, 0.0)    # people buying at 3c: not us
+    assert rule.fills(q, before, reading(1030.0, 4400.0, 300.0 + 400 * 0.01), [], [(0.03, 6900.0)]) == (400.0, 0.0)  # somebody sold 400 at a cent

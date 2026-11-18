@@ -35,6 +35,7 @@ from kht.trading.us_top import decode, wanted  # noqa: E402
 OUT = ROOT / "reports" / "research"
 JUDGED_PROGRAMMES = ("metals_gold_updown_1d", "metals_silver_updown_1d")
 MIN_DAYS, MIN_DATES, BAR_T, BAR_NET = 10, 6, 3.0, 20.0
+Q1_BAR_NET, Q1_FILLS_AT_MOST, Q1_PAID_DAYS = 20.0, 0.25, 4       # test Q1: dollars a market-day, fills as a share of the reward, market-days with a reward
 WHOLE_START = 900.0       # a market-day is recorded whole if its first open reading came within this long of the start of its window,
 WHOLE_COVER = 0.85        # readings cover this share of the half minutes it was open,
 WHOLE_END = 180.0         # and it was seen to close within this long of its last open reading
@@ -107,6 +108,63 @@ def simulate(rows: list[dict], terms: dict, size: float) -> dict:
         prev = r
     return {"pos": pos, "cash": cash, "credit": credit, "qualify_s": qualify_s, "rest_s": rest_s, "bought": bought, "sold": sold, "notional": notional,
             "fills": n_fills, "trades": trades}
+
+
+def simulate_last_tick(rows: list[dict], terms: dict) -> dict:
+    """One market under the rule of test Q1: the target size at the last tick of a side nobody stands on."""
+    target, discount = float(terms["target"]), float(terms["discount"])
+    max_spread = None if pd.isna(terms.get("max_spread")) else float(terms["max_spread"])
+    bought = sold = cash = credit = rest_s = 0.0
+    n_fills = 0
+    q = prev = None
+    for i, r in enumerate(rows):
+        bids, asks = decode(r.get("bids")), decode(r.get("asks"))
+        if q is not None and prev is not None and (q["bid_px"] is not None or q["ask_px"] is not None):
+            bf, af = rule.fills(q, prev, r, bids, asks)
+            if bf > rule.EPS:
+                bought += bf; cash -= bf * q["bid_px"]; n_fills += 1
+            if af > rule.EPS:
+                sold += af; cash += af * q["ask_px"]; n_fills += 1
+        nxt = rows[i + 1] if i + 1 < len(rows) else None
+        dt = min(float(nxt["ts"]) - float(r["ts"]), rule.MAX_CREDIT) if nxt is not None else 0.0
+        q = rule.last_tick(bids, asks, bought, sold, target, max_spread, str(r.get("state")))
+        if q["bid_px"] is not None or q["ask_px"] is not None:
+            sb, sa = rule.shares(bids, asks, q, target, discount, max_spread)
+            credit += dt * (sb + sa) / 2.0
+            rest_s += dt
+        prev = r
+    return {"bought": bought, "sold": sold, "cash": cash, "credit": credit, "rest_s": rest_s, "fills": n_fills}
+
+
+def last_tick_day(slug: str, rows: list[dict], terms: dict, settle: float | None) -> dict | None:
+    """One market under test Q1: reward by the formula, what its fills made, and whether the day was recorded whole."""
+    sized = market_day(slug, rows, terms, settle)
+    if not sized:
+        return None
+    frame = sized[0]                                                     # the same day, the same test of wholeness, the same length
+    s = simulate_last_tick(rows, terms)
+    open_s = frame["open_hours"] * 3600.0
+    reward = float(terms["pool"]) * s["credit"] / open_s
+    paid = reward if reward >= MINIMUM else 0.0
+    pnl = (s["cash"] + (s["bought"] - s["sold"]) * settle) if settle is not None else np.nan
+    return {"slug": slug, "program": frame["program"], "day": frame["day"], "whole": frame["whole"], "open_hours": frame["open_hours"], "cover": frame["cover"],
+            "qualifies": frame["qualifies"], "resting": s["rest_s"] / open_s, "reward_formula": reward, "reward_paid": paid, "fills": s["fills"],
+            "bought": s["bought"], "sold": s["sold"], "settle": settle if settle is not None else np.nan, "pnl_fills": pnl,
+            "net": paid + pnl if settle is not None else np.nan, "pool": float(terms["pool"]), "target": float(terms["target"])}
+
+
+def verdict_last_tick(days: pd.DataFrame) -> str:
+    """The bar of docs/13, section 4b, read on gold and silver together."""
+    if not len(days):
+        return "NOT YET JUDGED: nothing recorded"
+    j = days[days["program"].isin(JUDGED_PROGRAMMES) & days["whole"] & days["net"].notna()]
+    n, dates = len(j), j["day"].nunique()
+    if n < MIN_DAYS or dates < MIN_DATES:
+        return f"NOT YET JUDGED: {n} market-days recorded whole and settled on {dates} dates; {MIN_DAYS} on {MIN_DATES} are asked for"
+    mean, reward, cost, paid_days = j["net"].mean(), j["reward_paid"].sum(), -j["pnl_fills"].clip(upper=0).sum(), int((j["reward_paid"] >= MINIMUM).sum())
+    ok = mean >= Q1_BAR_NET and cost <= Q1_FILLS_AT_MOST * reward and paid_days >= Q1_PAID_DAYS
+    return (f"{'PASSES' if ok else 'DOES NOT PASS'}: {n} market-days on {dates} dates, net ${mean:,.2f} a market-day on average (at least ${Q1_BAR_NET:g} asked); "
+            f"fills cost ${cost:,.2f} against ${reward:,.2f} of reward (at most {Q1_FILLS_AT_MOST:.0%} asked); a reward on {paid_days} market-days (at least {Q1_PAID_DAYS} asked)")
 
 
 def market_day(slug: str, rows: list[dict], terms: dict, settle: float | None) -> list[dict]:
@@ -186,13 +244,18 @@ def main() -> int:
     closed = [s for s, g in b.groupby("slug") if (g["state"] != "OPEN").any()]
     settle = settlements(state, closed, args.settle)
     terms = m.set_index("slug").to_dict("index") if len(m) else {}
-    rows = []
+    rows, ticks = [], []
     for slug, g in b.groupby("slug"):
         if slug not in terms or pd.isna(terms[slug].get("pool")) or pd.isna(terms[slug].get("target")):
             continue
         y = float(settle[slug]) if slug in settle.index else None
-        rows += market_day(slug, g.to_dict("records"), terms[slug], y)
+        recs = g.to_dict("records")
+        rows += market_day(slug, recs, terms[slug], y)
+        lt = last_tick_day(slug, recs, terms[slug], y)
+        if lt is not None:
+            ticks.append(lt)
     days = pd.DataFrame(rows)
+    last_ticks = pd.DataFrame(ticks)
     if not len(days):
         say("no market with known terms yet")
         (out / "tp_summary.txt").write_text("\n".join(lines) + "\n")
@@ -218,6 +281,26 @@ def main() -> int:
         say("   none yet")
     say()
     say("Verdict by the bar fixed in advance (gold and silver together, 100 contracts a side): " + verdict(days))
+
+    # ---- test Q1: the target size at the last tick of a side nobody stands on (docs/13, section 4b)
+    say()
+    say("Test Q1: the target size at the last tick of a side nobody is standing on (docs/13_round_six.md, section 4b)")
+    if len(last_ticks):
+        last_ticks.round(4).to_csv(out / "tp_last_tick_days.csv", index=False)
+        show = ["day", "program", "whole", "open_hours", "qualifies", "resting", "reward_paid", "fills", "bought", "sold", "settle", "pnl_fills", "net"]
+        say("each market-day (qualifies: share of the time the book was paid as it was; resting: share of the time our order rested and made it paid)")
+        say(last_ticks.sort_values(["program", "day"])[show].round(3).to_string(index=False))
+        k = last_ticks[last_ticks["whole"] & last_ticks["net"].notna()]
+        if len(k):
+            g = k.groupby("program").agg(days=("net", "size"), with_reward=("reward_paid", lambda s: int((s >= MINIMUM).sum())), reward=("reward_paid", "sum"),
+                                         fills=("fills", "sum"), bought=("bought", "sum"), sold=("sold", "sum"), pnl_fills=("pnl_fills", "sum"), net=("net", "sum"),
+                                         a_day=("net", "mean"), worst=("net", "min")).reset_index()
+            g.round(2).to_csv(out / "tp_last_tick_by_programme.csv", index=False)
+            say()
+            say("by programme, market-days recorded whole and settled")
+            say(g.round(2).to_string(index=False))
+    say()
+    say("Verdict by the bar fixed in advance (gold and silver together): " + verdict_last_tick(last_ticks))
     (out / "tp_summary.txt").write_text("\n".join(lines) + "\n")
     return 0
 

@@ -307,3 +307,46 @@ def test_a_failing_price_feed_does_not_stop_the_books(tmp_path):
     assert line["books"] >= 5 and line["errors"] >= 1
     with gzip.open(tmp_path / "runs" / line["run"] / "prices.csv.gz", "rt") as fh:
         assert list(csv.DictReader(fh)) == []
+
+
+def test_a_last_tick_order_is_paid_half_the_pool_for_the_time_it_makes_the_book_qualify():
+    # an hour: for the first half the book qualifies as it is; then the bids go and 6,900 stay offered at 3c
+    rows = recorded(GOLD, T0 + 60.0, 120)
+    for r in rows[60:120]:
+        r["bids"], r["asks"] = "", "0.03:6900"
+    d = score.last_tick_day(GOLD, rows, TERMS, 0.0)
+    assert d["whole"] and d["fills"] == 0 and d["bought"] == 0
+    assert d["resting"] == pytest.approx(0.5, abs=0.01)
+    assert d["reward_formula"] == pytest.approx(1000.0 * 0.5 * 0.5, rel=0.02)        # half the hour, and the bid side is half of each second's pay
+    assert d["net"] == pytest.approx(d["reward_paid"]) and d["pnl_fills"] == 0.0
+    # while the book qualifies without us nothing rests: a day like that earns nothing here
+    quiet = score.last_tick_day(GOLD, recorded(GOLD, T0 + 60.0, 120), TERMS, 0.0)
+    assert quiet["resting"] == 0.0 and quiet["reward_paid"] == 0.0 and quiet["net"] == 0.0
+
+
+def test_a_last_tick_fill_costs_a_cent_a_contract_and_stops_at_the_target():
+    # somebody sells 9,000 at a cent in two lots: the order is filled for 5,000 and again for its whole 5,000? No: after the target has been bought it stops
+    rows = recorded(GOLD, T0 + 60.0, 120, bids="", asks="0.03:6900", traded=lambda i: 0.0 if i < 10 else (4000.0 if i < 20 else 9000.0),
+                    notional=lambda i: 0.0 if i < 10 else (40.0 if i < 20 else 90.0))
+    lost = score.last_tick_day(GOLD, rows, TERMS, 0.0)
+    assert lost["bought"] == 9000.0 and lost["fills"] == 2                        # 4,000, then the whole order once more: it rested while under the target
+    assert lost["pnl_fills"] == pytest.approx(-90.0)
+    assert lost["resting"] < 0.2                                                  # and nothing after that
+    won = score.last_tick_day(GOLD, rows, TERMS, 1.0)
+    assert won["pnl_fills"] == pytest.approx(9000.0 * 0.99)                       # the contracts bought at a cent are not always worthless
+    assert score.last_tick_day(GOLD, [{**r, "state": "EXPIRED"} for r in recorded(GOLD, T0, 5)], TERMS, 1.0) is None
+
+
+def test_the_last_tick_verdict_asks_for_money_on_several_days_and_cheap_fills():
+    def day(i, reward, pnl=0.0, program="metals_gold_updown_1d", whole=True):
+        return {"program": program, "whole": whole, "reward_paid": reward, "pnl_fills": pnl, "net": reward + pnl, "day": f"2026-11-{19 + i // 2:02d}"}
+    assert score.verdict_last_tick(pd.DataFrame()).startswith("NOT YET JUDGED")
+    assert score.verdict_last_tick(pd.DataFrame([day(i, 100.0) for i in range(8)])).startswith("NOT YET JUDGED: 8 market-days")
+    good = pd.DataFrame([day(i, 120.0 if i % 2 else 0.0, -10.0 if i % 4 == 1 else 0.0) for i in range(12)])
+    assert score.verdict_last_tick(good).startswith("PASSES: 12 market-days on 6 dates")
+    one_big_day = pd.DataFrame([day(i, 600.0 if i == 0 else 0.0) for i in range(12)])
+    assert score.verdict_last_tick(one_big_day).startswith("DOES NOT PASS")          # fifty dollars a market-day, all of it from one
+    costly = pd.DataFrame([day(i, 100.0, -40.0) for i in range(12)])
+    assert score.verdict_last_tick(costly).startswith("DOES NOT PASS")               # sixty a market-day, but the fills take two fifths of the reward
+    small = pd.DataFrame([day(i, 10.0) for i in range(12)])
+    assert score.verdict_last_tick(small).startswith("DOES NOT PASS")

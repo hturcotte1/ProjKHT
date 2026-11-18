@@ -116,6 +116,35 @@ def quotes(bids: Side, asks: Side, position: float, size: float, target: float, 
     return {"bid_px": bid_px if bid_qty > EPS else None, "bid_qty": bid_qty, "ask_px": ask_px if ask_qty > EPS else None, "ask_qty": ask_qty, "why": "resting"}
 
 
+LOW, HIGH = 0.01, 0.99    # the last tick at either end
+
+
+def last_tick(bids: Side, asks: Side, bought: float, sold: float, target: float, max_spread: float | None, state: str = "OPEN") -> dict[str, Any]:
+    """The order the rule of test Q1 rests on one reading: the target size at the last tick of a side nobody is standing on.
+
+    A book with a maximum spread pays nobody while one side is short of the
+    target size. When that is all that is missing, an order for the target
+    size at 1 cent (or an offer at 99 cents) makes the book qualify. It can
+    lose a cent a contract and no more. Nothing rests if the book qualifies
+    as it is, if the order would not make it qualify, or once the account
+    has traded the target size at that tick in this market. Like the rest
+    of this module it is written for programmes that have a maximum spread,
+    which every market the recorder reads has.
+    """
+    none = {"bid_px": None, "bid_qty": 0.0, "ask_px": None, "ask_qty": 0.0}
+    if state != "OPEN":
+        return {**none, "why": "no market"}
+    if qualifies(bids, asks, target, max_spread):
+        return {**none, "why": "the book qualifies without us"}
+    if reaches(bids, target) is None and bought < target - EPS and (not asks or asks[0][0] > LOW + EPS):
+        if qualifies(with_order(bids, LOW, target, True), asks, target, max_spread):
+            return {**none, "bid_px": LOW, "bid_qty": target, "why": "resting"}
+    if reaches(asks, target) is None and sold < target - EPS and (not bids or bids[0][0] < HIGH - EPS):
+        if qualifies(bids, with_order(asks, HIGH, target, False), target, max_spread):
+            return {**none, "ask_px": HIGH, "ask_qty": target, "why": "resting"}
+    return {**none, "why": "an order at the last tick would not make it qualify"}
+
+
 def shares(bids: Side, asks: Side, q: dict[str, Any], target: float, discount: float, max_spread: float | None) -> tuple[float, float]:
     """Our share of each side's score with the orders ``q`` in the book; (0, 0) if the book with them does not qualify."""
     if q["bid_px"] is None and q["ask_px"] is None:
