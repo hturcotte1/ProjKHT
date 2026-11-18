@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-18 03:18 UTC. Started 2026-11-10 07:39 UTC.
+As of 2026-11-18 09:01 UTC. Started 2026-11-10 07:39 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $1,004.39 |
+| Equity (positions marked at the bid) | $1,005.83 |
 | Starting bankroll | $1,000.00 |
-| Change | $+4.39 (+0.44%) |
+| Change | $+5.83 (+0.58%) |
 | Cash | $342.02 |
 | In positions (cost) | $659.84 |
 | Realised profit | $+1.87 |
@@ -20,21 +20,21 @@ As of 2026-11-18 03:18 UTC. Started 2026-11-10 07:39 UTC.
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
 | Israel x Iran ceasefire continues through November 15? | Yes | 20.5 | 0.974 | 0.996 | $+0.45 | -2 |
-| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.992 | $+0.86 | 8 |
-| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.968 | $+0.38 | 13 |
+| Will Anthropic IPO by November 25, 2026? | Yes | 21.0 | 0.951 | 0.994 | $+0.90 | 8 |
+| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.974 | $+0.51 | 13 |
 | Iran full airspace closure by November 30, 2026? | No | 22.0 | 0.910 | 0.900 | $-0.22 | 13 |
-| US imports Russian diesel by November 30? | No | 21.2 | 0.943 | 0.917 | $-0.55 | 13 |
-| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.986 | $+0.78 | 13 |
-| Will Jensen Huang rejoin NVIDIA by November 30, 2026? | No | 21.1 | 0.950 | 0.967 | $+0.36 | 13 |
-| Pete Hegseth out as Secretary of Defense by November 30? | No | 21.1 | 0.946 | 0.969 | $+0.49 | 13 |
-| NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.983 | $+0.48 | 13 |
-| Will WTI Crude Oil (WTI) hit (HIGH) $110 in November? | No | 21.7 | 0.920 | 0.976 | $+1.22 | 13 |
-| Russia x Ukraine ceasefire by December 31, 2026? | No | 21.7 | 0.920 | 0.930 | $+0.22 | 44 |
-| Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.989 | $+1.98 | 44 |
+| US imports Russian diesel by November 30? | No | 21.2 | 0.943 | 0.924 | $-0.40 | 13 |
+| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.989 | $+0.84 | 13 |
+| Will Jensen Huang rejoin NVIDIA by November 30, 2026? | No | 21.1 | 0.950 | 0.973 | $+0.48 | 13 |
+| Pete Hegseth out as Secretary of Defense by November 30? | No | 21.1 | 0.946 | 0.972 | $+0.55 | 13 |
+| NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.982 | $+0.46 | 13 |
+| Will WTI Crude Oil (WTI) hit (HIGH) $110 in November? | No | 21.7 | 0.920 | 0.977 | $+1.24 | 13 |
+| Russia x Ukraine ceasefire by December 31, 2026? | No | 21.7 | 0.920 | 0.932 | $+0.26 | 44 |
+| Will Trump meet with Vladimir Putin in 2026? | Yes | 22.2 | 0.900 | 0.991 | $+2.02 | 44 |
 | China x India military clash by December 31, 2026? | No | 21.3 | 0.940 | 0.954 | $+0.30 | 44 |
 | Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.940 | $+0.89 | 44 |
 | Tesla and SpaceX merger officially announced by December 31? | No | 22.2 | 0.900 | 0.760 | $-3.11 | 44 |
-| US strike on Colombia by December 31? | No | 21.7 | 0.920 | 0.870 | $-1.09 | 44 |
+| US strike on Colombia by December 31? | No | 21.7 | 0.920 | 0.890 | $-0.65 | 44 |
 | Zhang Youxia sentenced to prison before 2027? | No | 21.5 | 0.930 | 0.920 | $-0.22 | 44 |
 | Will Russia enter Kramatorsk by December 31, 2026? | No | 21.3 | 0.940 | 0.960 | $+0.43 | 44 |
 | Will Russia capture all of Kostyantynivka by December 31, 2026? | No | 21.5 | 0.930 | 0.910 | $-0.43 | 44 |
@@ -43,15 +43,15 @@ As of 2026-11-18 03:18 UTC. Started 2026-11-10 07:39 UTC.
 | Will OpenAI announce another Millennium Prize solution by December 31, | No | 21.8 | 0.917 | 0.943 | $+0.57 | 44 |
 | China x Philippines military clash before 2027? | No | 22.5 | 0.890 | 0.890 | $+0.00 | 44 |
 | US strike on Cuba by December 31? | No | 21.7 | 0.920 | 0.900 | $-0.43 | 44 |
-| OpenAI announces it has achieved AGI before 2027? | No | 21.5 | 0.930 | 0.920 | $-0.22 | 44 |
-| Will Gavin Newsom announce a Presidential run before 2027? | No | 21.7 | 0.920 | 0.928 | $+0.17 | 44 |
+| OpenAI announces it has achieved AGI before 2027? | No | 21.5 | 0.930 | 0.930 | $-0.00 | 44 |
+| Will Gavin Newsom announce a Presidential run before 2027? | No | 21.7 | 0.920 | 0.921 | $+0.02 | 44 |
 | Jerome Powell out from Fed Board by December 31? | No | 21.5 | 0.930 | 0.900 | $-0.65 | 44 |
 | Will there be at least 10000 measles cases in the U.S. in 2026? | No | 20.9 | 0.956 | 0.950 | $-0.13 | 44 |
 | Insurrection Act invoked by December 31? | No | 21.3 | 0.940 | 0.940 | $-0.00 | 44 |
 | Will Samuel Alito announce his retirement by December 31, 2026? | No | 20.9 | 0.958 | 0.969 | $+0.23 | 44 |
 | Will FISA Section 702 reauthorization become law this year? | No | 22.2 | 0.900 | 0.910 | $+0.22 | 44 |
-| Alexandre de Moraes out as Brazil Supreme Court Justice? | No | 21.2 | 0.943 | 0.956 | $+0.28 | 44 |
-| Venezuela election scheduled by December 31, 2026? | No | 21.7 | 0.920 | 0.860 | $-1.30 | 44 |
+| Alexandre de Moraes out as Brazil Supreme Court Justice? | No | 21.2 | 0.943 | 0.959 | $+0.34 | 44 |
+| Venezuela election scheduled by December 31, 2026? | No | 21.7 | 0.920 | 0.870 | $-1.09 | 44 |
 
 ## Resting orders
 
@@ -96,4 +96,4 @@ As of 2026-11-18 03:18 UTC. Started 2026-11-10 07:39 UTC.
 
 ## Equity history
 
-35 cycles from 2026-11-10 07:39 UTC to 2026-11-18 03:18 UTC; equity $1,000.00 → $1,004.39. The longest gap between two cycles was 12.1 hours.
+36 cycles from 2026-11-10 07:39 UTC to 2026-11-18 09:01 UTC; equity $1,000.00 → $1,005.83. The longest gap between two cycles was 12.1 hours.

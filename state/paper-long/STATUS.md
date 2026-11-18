@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-18 03:18 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-18 09:01 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $997.26 |
+| Equity (positions marked at the bid) | $997.24 |
 | Starting bankroll | $1,000.00 |
-| Change | $-2.74 (-0.27%) |
+| Change | $-2.76 (-0.28%) |
 | Cash | $759.84 |
 | In positions (cost) | $240.16 |
 | Realised profit | $+0.00 |
@@ -20,7 +20,7 @@ As of 2026-11-18 03:18 UTC. Started 2026-11-10 20:50 UTC.
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
 | Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.968 | $-0.26 | 72 |
-| US recession by end of 2026? | No | 20.4 | 0.979 | 0.976 | $-0.06 | 74 |
+| US recession by end of 2026? | No | 20.4 | 0.979 | 0.975 | $-0.08 | 74 |
 | 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.972 | $-0.02 | 75 |
 | Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 92 |
 | Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.962 | $-0.23 | 103 |
@@ -38,6 +38,7 @@ As of 2026-11-18 03:18 UTC. Started 2026-11-10 20:50 UTC.
 |---|---|---:|---:|---:|
 | Will Venezuelan crude oil production reach 1.4m barrels per day in 202 | BUY No | 0.936 | 21.4 | 0.0 |
 | 5kt meteor strike in 2026? | BUY No | 0.930 | 21.5 | 0.0 |
+| Will Jensen Huang join SpaceX by March 31, 2027? | BUY No | 0.890 | 22.5 | 0.0 |
 
 ## Latest fills
 
@@ -58,4 +59,4 @@ As of 2026-11-18 03:18 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-29 cycles from 2026-11-10 20:50 UTC to 2026-11-18 03:18 UTC; equity $1,000.00 → $997.26. The longest gap between two cycles was 12.1 hours.
+30 cycles from 2026-11-10 20:50 UTC to 2026-11-18 09:01 UTC; equity $1,000.00 → $997.24. The longest gap between two cycles was 12.1 hours.
