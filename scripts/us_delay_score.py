@@ -5,12 +5,18 @@ no reward was paid to anyone.
 
     python scripts/us_delay_score.py --settle     # look up how finished matches settled (public data), then score
 
-A tennis match seldom starts when it is listed to. From the listed start
-until the exchange's own listing shows the match as started, the rule rests
-500 contracts on each side, five cents either side of the middle of the
-book, and takes them away at the first reading that shows play. Whatever
-was traded against is closed from that reading on at the prices read, fee
-paid.
+A tennis match seldom starts when it is listed to. From the first time its
+listed start passes until the exchange's own listing shows the match as
+started, the rule rests 500 contracts on each side, five cents either side
+of the middle of the book, and takes them away at the first reading that
+shows play. Whatever was traded against is closed from that reading on at
+the prices read, fee paid.
+
+While a match waits, the exchange moves its listed start forward ten or
+twenty minutes at a time. The orders stay through that, as long as the
+start as it then stands is past or no more than half an hour ahead. (This
+was written in on 18 November 2026, before the recorder's first run and
+before any match that counts: docs/13, section 4d.)
 
 What that stretch is paid is not known, so the reward is worked out two
 ways and the verdict says which it needs:
@@ -18,8 +24,8 @@ ways and the verdict says which it needs:
     as the last part of the six hours before the start ($10 a match), if
     the exchange counts those six hours back from the real start;
 
-    as the first part of play ($50 a match), if it counts play from the
-    listed start.
+    with every second past the listed start, as it then stood, counted as
+    play ($50 a match), and the rest as the six hours before.
 
 Writes reports/research/dl_*.csv and dl_summary.txt.
 """
@@ -54,6 +60,7 @@ OUT = ROOT / "reports" / "research"
 SIZE = 500.0                      # contracts a side: the target size of the reward for play, and twice that of the six hours before
 SIZES = (250.0, 500.0)            # 250 is followed beside it; it can only be paid as part of the six hours before
 AWAY = 0.05                       # each order rests this far from the middle of the book, rounded outwards to a cent
+AHEAD_MOST = 1800.0               # once a listed start has passed, orders stay while the start as it then stands is no further ahead than this
 DAY_OF = 6 * 3600.0               # the length of the period before the start
 COUNTED_FROM = 1_795_064_400.0    # 19 November 2026, 00:00 US Eastern (05:00 UTC): matches listed to start from here on count, as in test R2
 MIN_MATCHES, MIN_DATES, BAR = 400, 10, 3.0
@@ -132,10 +139,11 @@ def simulate(rows: list[dict], terms: dict, size: float = SIZE) -> dict:
     """One match: the orders through the stretch between the listed start and the real one, their fills, and the closing when play shows."""
     live = (float(terms["live_target"]), float(terms["live_discount"]), None if pd.isna(terms.get("live_max_spread")) else float(terms["live_max_spread"]))
     before = (float(terms["dayof_target"]), float(terms["dayof_discount"]), None if pd.isna(terms.get("dayof_max_spread")) else float(terms["dayof_max_spread"]))
-    pos = cash = fees = wait_s = rest_s = credit_live = credit_before = bought = sold = 0.0
+    pos = cash = fees = wait_s = rest_s = past_s = credit_live = credit_before = credit_ahead = bought = sold = 0.0
     n_fills = 0
     q = prev = None
     listed = started = closed = None
+    opened = False                                     # a listed start has passed with the match not started
     for i, r in enumerate(rows):
         ts = float(r["ts"])
         bids, asks = decode(r.get("bids")), decode(r.get("asks"))
@@ -158,21 +166,27 @@ def simulate(rows: list[dict], terms: dict, size: float = SIZE) -> dict:
                 got, fee, done = close_out(pos, bids, asks)
                 cash += got; fees += fee
                 pos -= done if pos > 0 else -done
-        elif is_open and started is None and start is not None and ts >= start and waiting(r):
-            if listed is None:
-                listed = start
+        elif is_open and started is None and start is not None and waiting(r) and (ts >= start or (opened and start - ts <= AHEAD_MOST)):
+            past = ts >= start                         # past the listed start as it stands at this reading
+            if past and not opened:
+                opened, listed = True, start
             nxt = rows[i + 1] if i + 1 < len(rows) else None
             dt = min(float(nxt["ts"]) - ts, rule.MAX_CREDIT) if nxt is not None else 0.0
             wait_s += dt
             q = quotes(bids, asks, pos, size)
             if q["bid_px"] is not None or q["ask_px"] is not None:
                 rest_s += dt
-                credit_live += dt * sum(rule.shares(bids, asks, q, *live)) / 2.0
-                credit_before += dt * sum(rule.shares(bids, asks, q, *before)) / 2.0
+                as_before = dt * sum(rule.shares(bids, asks, q, *before)) / 2.0
+                credit_before += as_before
+                if past:
+                    past_s += dt
+                    credit_live += dt * sum(rule.shares(bids, asks, q, *live)) / 2.0
+                else:
+                    credit_ahead += as_before
         prev = r
     last_open = max((float(r["ts"]) for r in rows if str(r.get("state")) == "OPEN"), default=None)
-    return {"pos": pos, "cash": cash, "fees": fees, "wait_s": wait_s, "rest_s": rest_s, "credit_live": credit_live, "credit_before": credit_before, "bought": bought,
-            "sold": sold, "fills": n_fills, "listed": listed, "started": started, "closed": closed, "last_open": last_open}
+    return {"pos": pos, "cash": cash, "fees": fees, "wait_s": wait_s, "rest_s": rest_s, "past_s": past_s, "credit_live": credit_live, "credit_before": credit_before,
+            "credit_ahead": credit_ahead, "bought": bought, "sold": sold, "fills": n_fills, "listed": listed, "started": started, "closed": closed, "last_open": last_open}
 
 
 def match_rows(slug: str, rows: list[dict], terms: dict, settle: float | None) -> list[dict]:
@@ -197,18 +211,21 @@ def match_rows(slug: str, rows: list[dict], terms: dict, settle: float | None) -
         # the reward, two ways
         reward_before = float(terms["dayof_pool"]) * s["credit_before"] / DAY_OF
         play_s = (s["last_open"] - listed + 30.0) if s["last_open"] is not None and listed is not None and s["closed"] is not None else np.nan
+        ahead = float(terms["dayof_pool"]) * s["credit_ahead"] / DAY_OF      # the seconds before the listed start as it then stood: the six hours before, either way
         if s["credit_live"] <= 0.0:
-            reward_live = 0.0                              # nothing rested, or nothing that the terms of play would pay: the length of play does not matter
+            reward_live = ahead                            # nothing that the terms of play would pay: the length of play does not matter
         else:
-            reward_live = float(terms["live_pool"]) * s["credit_live"] / play_s if play_s == play_s and play_s > 0 else np.nan
+            reward_live = float(terms["live_pool"]) * s["credit_live"] / play_s + ahead if play_s == play_s and play_s > 0 else np.nan
         if abs(s["pos"]) > rule.EPS:                       # what could not be closed is held to the result
             pnl = s["cash"] - s["fees"] + s["pos"] * settle if settle is not None else np.nan
         else:
             pnl = s["cash"] - s["fees"]
         day = pd.Timestamp(listed, unit="s", tz="UTC").tz_convert("America/New_York").strftime("%Y-%m-%d") if listed is not None else ""
-        out.append({"slug": slug, "day": day, "size": size, "whole": whole, "listed": listed, "started": s["started"], "closed": s["closed"],
-                    "wait_min": s["wait_s"] / 60.0, "rest_min": s["rest_s"] / 60.0, "share_before": s["credit_before"] / s["rest_s"] if s["rest_s"] > 0 else 0.0,
-                    "share_live": s["credit_live"] / s["rest_s"] if s["rest_s"] > 0 else 0.0, "reward_before": reward_before, "reward_live": reward_live,
+        out.append({"slug": slug, "day": day, "size": size, "whole": whole, "from_start": bool(listed is not None and first <= listed + WHOLE_BEFORE),
+                    "listed": listed, "started": s["started"], "closed": s["closed"],
+                    "wait_min": s["wait_s"] / 60.0, "rest_min": s["rest_s"] / 60.0, "past_min": s["past_s"] / 60.0,
+                    "share_before": s["credit_before"] / s["rest_s"] if s["rest_s"] > 0 else 0.0,
+                    "share_live": s["credit_live"] / s["past_s"] if s["past_s"] > 0 else 0.0, "reward_before": reward_before, "reward_live": reward_live,
                     "fills": s["fills"], "bought": s["bought"], "sold": s["sold"], "fees": s["fees"], "held": s["pos"], "settle": settle if settle is not None else np.nan,
                     "pnl_fills": pnl, "net_before": reward_before + pnl if pnl == pnl else np.nan,
                     "net_live": reward_live + pnl if pnl == pnl and reward_live == reward_live else np.nan})
@@ -276,19 +293,22 @@ def main() -> int:
         return 0
     matches.round(4).to_csv(out / "dl_matches.csv", index=False)
     j = matches[matches["size"] == SIZE]
-    seen = j[j["started"].notna() | j["closed"].notna()]
+    seen = j[(j["started"].notna() | j["closed"].notna()) & j["from_start"]]          # followed from the listed start: the others were already waiting or playing
     say()
-    say(f"matches followed: {len(j):,}; seen to start or to close: {len(seen):,}; recorded whole and listed to start from 19 November (US Eastern): {int(j['whole'].sum()):,}")
+    say(f"matches followed: {len(j):,}; followed from their listed start and seen to start or to close: {len(seen):,}; "
+        f"recorded whole and listed to start from 19 November (US Eastern): {int(j['whole'].sum()):,}")
     if len(seen):
         w = seen["wait_min"]
-        rested = f"our orders rested for {seen['rest_min'].sum() / w.sum():.0%} of that time" if w.sum() > 0 else "no waiting seen yet"
-        say(f"minutes between the listed start and the first sign of play (or the close), as read: a quarter of matches under {w.quantile(0.25):.0f}, half under {w.median():.0f}, "
-            f"a quarter over {w.quantile(0.75):.0f}; {rested}")
+        rested = f"the orders rested for {seen['rest_min'].sum() / w.sum():.0%}" if w.sum() > 0 else "there were none yet"
+        late = (seen[["started", "closed"]].min(axis=1) - seen["listed"]) / 60.0
+        say(f"minutes from the first listed start to the first sign of play (or the close): a quarter of matches under {late.quantile(0.25):.0f}, half under {late.median():.0f}, "
+            f"a quarter over {late.quantile(0.75):.0f}; of the minutes in which the rule lets orders rest, {rested}")
     k = matches[matches["whole"] & matches["net_before"].notna()]
     say()
     say("by order size, matches recorded whole and finished (reward both ways; fills closed when play shows, fee paid)")
     if len(k):
-        g = k.groupby("size").agg(matches=("slug", "size"), waited_min=("wait_min", "sum"), rested_min=("rest_min", "sum"), share_before=("share_before", "mean"),
+        g = k.groupby("size").agg(matches=("slug", "size"), waited_min=("wait_min", "sum"), rested_min=("rest_min", "sum"), past_min=("past_min", "sum"),
+                                  share_before=("share_before", "mean"),
                                   share_live=("share_live", "mean"), reward_before=("reward_before", "sum"), reward_live=("reward_live", "sum"),
                                   matches_filled=("fills", lambda s: int((s > 0).sum())), contracts=("bought", lambda s: s.sum() + k.loc[s.index, "sold"].sum()),
                                   fees=("fees", "sum"), pnl_fills=("pnl_fills", "sum"), net_before=("net_before", "sum"), net_live=("net_live", "sum")).reset_index()

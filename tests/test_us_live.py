@@ -33,9 +33,9 @@ def reading(ts, bids="0.39:1;0.01:650", asks="0.4:1;0.99:650", period="NS", live
             "low": None, "low_t": None, "high": None, "high_t": None, "start": start, "live": live_now, "period": period, "score": score_now}
 
 
-def span(start, end, step=30.0, **kw):
-    out, t = [], start
-    while t <= end:
+def span(first, last, step=30.0, **kw):
+    out, t = [], first
+    while t <= last:
         out.append(reading(t, **kw))
         t += step
     return out
@@ -84,6 +84,43 @@ def test_an_hour_of_waiting_is_paid_both_ways_and_nothing_rests_once_play_shows(
     assert r["reward_live"] == pytest.approx(50.0 * 3600.0 * r["share_live"] / (3600.0 + 5400.0), rel=1e-3)
     assert 0.3 < r["share_live"] < 0.9 and 0.3 < r["share_before"] < 0.95                  # the single contracts at the best prices keep part of the score
     assert r["net_before"] == pytest.approx(r["reward_before"]) and r["net_live"] == pytest.approx(r["reward_live"])
+
+
+def test_the_orders_stay_while_the_listed_start_is_moved_forward_a_little_at_a_time():
+    """While a match waits the exchange moves its listed start on, ten or twenty minutes at a time. The orders stay through that."""
+    rows = span(T0 - 900.0, T0 - 30.0)                                        # before the first listed start: nothing rests
+    rows += span(T0, T0 + 570.0)                                              # past it
+    rows += span(T0 + 600.0, T0 + 1170.0, start=T0 + 1200.0)                  # the start has been moved twenty minutes on
+    rows += span(T0 + 1200.0, T0 + 1470.0, start=T0 + 1200.0)                 # past that one too
+    rows += span(T0 + 1500.0, T0 + 1770.0, start=T0 + 2100.0)                 # and moved again
+    rows += span(T0 + 1800.0, T0 + 5370.0, start=T0 + 1790.0, period="S1", live_now=1, score_now="0-0:15-0", bids="0.39:400", asks="0.4:400")
+    rows += span(T0 + 5400.0, T0 + 5520.0, state="CLOSED", period="FT", live_now=0, score_now="6-4, 6-4", bids="", asks="")
+    s = score.simulate(rows, TERMS, 500.0)
+    assert s["listed"] == T0 and s["started"] == T0 + 1800.0
+    assert s["wait_s"] == pytest.approx(1800.0) and s["rest_s"] == pytest.approx(1800.0)       # half an hour, without a break
+    r = next(x for x in score.match_rows(MARKET, rows, TERMS, 1.0) if x["size"] == 500.0)
+    assert r["whole"]
+    assert r["reward_before"] == pytest.approx(10.0 * 1800.0 * r["share_before"] / 21_600.0)
+    # counted as play only for the fifteen minutes past a listed start as it then stood; the other fifteen as the six hours before
+    past, ahead = 900.0, 900.0
+    assert r["past_min"] == pytest.approx(15.0)
+    assert r["reward_live"] == pytest.approx(50.0 * past * r["share_live"] / 5400.0 + 10.0 * ahead * r["share_before"] / 21_600.0, rel=1e-3)
+
+
+def test_nothing_rests_while_a_match_is_put_off_by_more_than_half_an_hour():
+    rows = span(T0 - 900.0, T0 + 570.0)                                       # ten minutes past the listed start,
+    rows += span(T0 + 600.0, T0 + 7170.0, start=T0 + 7200.0)                  # then put off by two hours
+    rows += span(T0 + 7200.0, T0 + 7290.0, start=T0 + 7200.0)
+    rows += span(T0 + 7320.0, T0 + 9000.0, start=T0 + 7300.0, period="S1", live_now=1, score_now="0-0:15-0", bids="0.39:400", asks="0.4:400")
+    s = score.simulate(rows, TERMS, 500.0)
+    # ten minutes at first; then nothing until half an hour before the new start; then thirty minutes and the two past it
+    assert s["rest_s"] == pytest.approx(600.0 + 1800.0 + 120.0)
+
+
+def test_before_the_first_listed_start_has_passed_nothing_rests_however_near_it_is():
+    rows = span(T0 - 900.0, T0 - 30.0)
+    rows += span(T0, T0 + 600.0, period="S1", live_now=1, score_now="0-0:15-0", bids="0.39:400", asks="0.4:400")
+    assert score.simulate(rows, TERMS, 500.0)["rest_s"] == 0.0
 
 
 def test_250_a_side_cannot_be_paid_as_play():

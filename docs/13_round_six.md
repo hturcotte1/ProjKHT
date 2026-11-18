@@ -495,6 +495,42 @@ size, and what the same orders would be paid under a cap.
 books of matches that were waiting to start, and before any match it
 counts.**
 
+**Amended at 18:35 UTC the same day, before the recorder's first run in
+the job and before any match that counts** (the first are those listed to
+start on 19 November, US Eastern). Two clauses were changed, rules 1 and
+5 below, and this is why. I ran the new recorder for 45 minutes into a
+scratch folder (17:46 to 18:30 UTC, 19 matches, readings half a minute
+apart, no errors) and saw something single looks had not shown: **while
+a match waits, the exchange keeps moving its listed start forward, ten or
+twenty minutes at a time, and once play begins it sets the start to about
+the real one.** One match went 17:50, 18:10, 18:30, 18:40 in three
+quarters of an hour and had still not begun.
+
+As first written, rule 1 let orders rest only while "the listed start has
+passed". With a start that keeps moving, that would have switched the
+orders off each time the start was moved on and on again each time it
+passed: about 17 minutes of resting in a wait of 45. That was never the
+idea, which is the title of this section. Rule 1 now keeps the orders
+through the wait, and stops only if the match is put off by more than
+half an hour. Rule 5's second way of counting the reward is changed with
+it, so that it does not credit the larger pool for time when the listing
+itself said the match was still ahead.
+
+The same 45 minutes showed where the orders of before the match go. In
+five matches somebody had 340 to 1,190 contracts a side resting until the
+listed start itself. Within half a minute of it they were gone, and they
+did not come back when the start was moved on. What was left was a few
+contracts. Two matches went from waiting to play while being read, 5 and
+20 minutes after their first listed start. In both the listing showed
+play at the first point or before it, and the book did not move for the
+next half minute. None of this counts for the test.
+
+That those orders leave at the listed start to the half minute can be
+read two ways, and I cannot tell which is right. Their owners may not
+trust the start time, which the listing's score would cure. Or they may
+know that the reward stops there, in which case the wait earns less than
+either way of counting below, or nothing.
+
 **What was found this afternoon.**
 
 - **The exchange publishes the score.** Its public listing of events
@@ -528,11 +564,13 @@ before its listed start until its market closes. Every half minute it
 writes down what the listing says of the match and the whole book.
 `scripts/us_delay_score.py` applies:
 
-1. **When anything rests.** At a reading, if the market is open, the
-   listed start has passed, and the listing says in so many words that
-   the match has not started: period "NS", not being played, no score.
-   If the listing could not be read, or says anything else, nothing
-   rests.
+1. **When anything rests.** From the first reading at which the market
+   is open, the listed start has passed, and the listing says in so many
+   words that the match has not started: period "NS", not being played,
+   no score. From then on at every reading at which the listing still
+   says so and the listed start, as it then stands, is past or no more
+   than thirty minutes ahead. If the listing could not be read, or says
+   anything else, nothing rests.
 2. **Where and how much.** 500 contracts on each side, five cents either
    side of the middle of the best bid and best offer as read, rounded
    outwards to a cent (so ten or eleven cents apart). Only if both sides
@@ -550,8 +588,11 @@ writes down what the listing says of the match and the whole book.
    period's terms, times our share of the score, over 21,600 seconds. No
    $1 minimum is applied to it alone, because it would be added to what
    an account already resting before the listed start earns in the same
-   market and period. *As play:* $50, times the same by the terms of
-   play, over the seconds from the listed start to the market's close.
+   market and period. *As play:* the seconds that are past the listed
+   start as it stands at that reading are counted as play, $50 times the
+   same by the terms of play, over the seconds from the first listed
+   start to the market's close; the other seconds are counted as the six
+   hours before, as above.
 
 **One account is judged: 500 contracts a side, every UTR match listed to
 start on or after 19 November 2026, US Eastern time.** A match counts if
@@ -569,7 +610,7 @@ finished, one of three things is written down:
 > before the start.
 >
 > **Passes only if play is counted from the listed start**, if that
-> holds only with the reward counted as play.
+> holds only with the seconds past the listed start counted as play.
 >
 > **Does not pass**, otherwise.
 
@@ -584,10 +625,19 @@ One look.
   several matches wait at once.
 - **Somebody is already there** in some of these matches, at half the
   size and further from the price.
+- **A resting order changes what it rests in.** In the 45 minutes of the
+  trial one waiting book lost every order near its price half a minute
+  after a sale of a sixth of a contract. Whoever keeps those small
+  orders takes them away at the first sign of anything. The paper
+  account counts a fill only when a trade is recorded at its price. It
+  cannot see the trade that 500 contracts standing there would have
+  drawn from somebody who knew why the others had left.
 - **What the stretch is paid is not known at all,** which is why the
-  verdict has to say which reading it needs. One evening of real orders
-  would show it. That needs the order program and a key, and is the
-  owner's decision.
+  verdict has to say which reading it needs. It may be paid nothing: the
+  people who rest orders before a match leave at the listed start to the
+  half minute, and they may know why. One evening of real orders would
+  show it. That needs the order program and a key, and is the owner's
+  decision.
 
 **What this says about test R2.** R2 counts its reward over the six hours
 before the *listed* start. If the exchange counts those six hours back
@@ -596,6 +646,12 @@ period by as long as the match is late: about a sixth of the reward for a
 match an hour late, half for one three hours late. R2's rule and bar are
 not changed. Its result will be read with this beside it, and the new
 recordings will say how late its matches were.
+
+The trial adds one thing to this. Once play begins the exchange sets a
+match's start to about the real one. If it works its rewards out
+afterwards from that field, "the six hours before the start" are the six
+before play, which is the reading under which R2's figure is too high.
+I still cannot tell from outside.
 
 ## 5. What no paper test can show, and the cheapest way to learn it
 
@@ -808,6 +864,15 @@ also waits three minutes before its first reading of the reward schedule,
 since every other program reads it the moment it starts. A request that
 is refused is tried again, so the cost of going over would have been late
 readings, not lost ones. The check-ins look at the gaps between readings.
+
+**18 November, 18:35 UTC. Test D1's rule amended before any of its data
+exist.** Section 4d says what was changed and why: the exchange moves a
+waiting match's listed start forward a little at a time, which the rule
+as first written did not expect. The amendment was made after the rule
+was first fixed (17:41 UTC) and before the recorder's first run in the
+job (about 20:28 UTC) and the first match that counts (19 November, US
+Eastern). The bar is as it was. Three new tests cover the amended
+clauses.
 
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
