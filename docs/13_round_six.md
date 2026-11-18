@@ -388,6 +388,15 @@ as its starting point. Three tests cover it. The job's run that began at
 installs the new one, well before 23:15. The rule and the bar are
 untouched.
 
+**18 November, 16:41 UTC. The first hourly save, checked.** The job's
+first save came at 16:29 UTC. The new recorder had 618 readings of the six
+markets from 15:29 to 16:20, half a minute apart (the longest gap 33
+seconds), with each market's pool, target size, maximum spread, window and
+price to beat written down. Both paper accounts before games were being
+kept from the same 313 games, 61 of them UTR, and the order system was
+rehearsing on UTR. No errors. The run is still going. Today's markets and
+games count for neither test.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
