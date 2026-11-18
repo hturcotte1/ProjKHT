@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-17 21:51 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-18 03:18 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $997.22 |
+| Equity (positions marked at the bid) | $997.26 |
 | Starting bankroll | $1,000.00 |
-| Change | $-2.78 (-0.28%) |
+| Change | $-2.74 (-0.27%) |
 | Cash | $759.84 |
 | In positions (cost) | $240.16 |
 | Realised profit | $+0.00 |
@@ -19,12 +19,12 @@ As of 2026-11-17 21:51 UTC. Started 2026-11-10 20:50 UTC.
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.970 | $-0.22 | 72 |
-| US recession by end of 2026? | No | 20.4 | 0.979 | 0.975 | $-0.08 | 74 |
+| Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.968 | $-0.26 | 72 |
+| US recession by end of 2026? | No | 20.4 | 0.979 | 0.976 | $-0.06 | 74 |
 | 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.972 | $-0.02 | 75 |
 | Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 92 |
-| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.961 | $-0.25 | 103 |
-| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.943 | $-0.54 | 103 |
+| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.962 | $-0.23 | 103 |
+| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.945 | $-0.50 | 103 |
 | Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.951 | $-0.61 | 117 |
 | Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 134 |
 | Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.934 | $-0.19 | 134 |
@@ -58,4 +58,4 @@ As of 2026-11-17 21:51 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-28 cycles from 2026-11-10 20:50 UTC to 2026-11-17 21:51 UTC; equity $1,000.00 → $997.22. The longest gap between two cycles was 12.1 hours.
+29 cycles from 2026-11-10 20:50 UTC to 2026-11-18 03:18 UTC; equity $1,000.00 → $997.26. The longest gap between two cycles was 12.1 hours.

@@ -99,3 +99,4 @@
 {"action": "screened", "by_limit": {"event": 7, "theme 'foreign-policy'": 1, "theme 'iran'": 9, "theme 'israel'": 1, "theme 'middle-east'": 7, "theme 'ukraine'": 8, "theme 'venezuela'": 1, "total": 29}, "count": 63, "ts": 1794887717.129076}
 {"action": "screened", "by_limit": {"event": 7, "theme 'foreign-policy'": 4, "theme 'iran'": 6, "theme 'israel'": 2, "theme 'middle-east'": 2, "theme 'oil'": 8, "theme 'ukraine'": 6, "theme 'venezuela'": 1, "total": 32}, "count": 68, "ts": 1794921317.8459308}
 {"action": "screened", "by_limit": {"event": 7, "theme 'iran'": 7, "theme 'israel'": 5, "theme 'oil'": 7, "theme 'ukraine'": 8, "theme 'venezuela'": 3, "total": 31}, "count": 68, "ts": 1794952260.2438278}
+{"action": "screened", "by_limit": {"event": 7, "theme 'iran'": 4, "theme 'israel'": 3, "theme 'middle-east'": 6, "theme 'oil'": 6, "theme 'ukraine'": 8, "theme 'venezuela'": 3, "total": 32}, "count": 69, "ts": 1794971883.4760604}
