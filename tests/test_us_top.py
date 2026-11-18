@@ -181,3 +181,80 @@ def test_the_verdict_waits_for_ten_market_days_on_six_dates():
     assert score.verdict(thin).startswith("DOES NOT PASS")              # sure of itself, but under twenty dollars a market-day
     noisy = pd.DataFrame([day(i, 200.0 if i % 2 else -150.0) for i in range(12)])
     assert score.verdict(noisy).startswith("DOES NOT PASS")             # twenty-five dollars on average, and nothing to tell it from luck
+
+
+class GapUS(FakeUS):
+    """The first market closes after three minutes; the window after it starts ten minutes in, and its book appears then."""
+
+    LATER = "cpausp-gold-updown-1d-2026-11-18-2325z"
+
+    def iter_incentives(self, statuses=None):
+        self.schedule_reads += 1
+        if self.clock.t >= T0 + 180.0:
+            return iter([])                                             # between two markets the schedule lists none that is open
+        return iter([entry(GOLD, "metals_gold_updown_1d_20261110")])
+
+    def market(self, slug):
+        nxt = T0 + 600.0 if slug == GOLD else T0 + 86_400.0
+        return {"question": "Gold Up or Down Daily", "endDate": iso(T0 + 1800.0),
+                "assetPriceTerms": {"windowStart": iso(T0), "windowEnd": iso(T0 + 180.0), "priceToBeat": {"value": "3852.56", "currency": "USD"},
+                                    "nextWindowStart": iso(nxt)}}
+
+    def book(self, slug):
+        self.asked.append((round(self.clock.t - T0), slug))
+        if slug == self.LATER:
+            if self.clock.t < T0 + 600.0:
+                raise RuntimeError("404: no such market yet")
+            return book()
+        return book(state="MARKET_STATE_EXPIRED" if self.clock.t >= T0 + 180.0 else "MARKET_STATE_OPEN")
+
+
+def read_books(folder, line):
+    with gzip.open(folder / "runs" / line["run"] / "books.csv.gz", "rt") as fh:
+        return list(csv.DictReader(fh))
+
+
+def test_the_next_market_is_found_long_after_the_one_before_it_closed(tmp_path):
+    clock = Clock(T0)
+    us = GapUS(clock)
+    line = top.run(tmp_path, minutes=14, us=us, now=clock.now, sleep=clock.sleep, background=False)
+    rows = read_books(tmp_path, line)
+    later = [r for r in rows if r["slug"] == GapUS.LATER]
+    assert later and T0 + 600.0 <= float(later[0]["ts"]) <= T0 + 630.0     # read from the first half minute of its window
+    assert line["errors"] == 0                                             # looking for it a minute early is not an error
+    asked = [t for t, s in us.asked if s == GapUS.LATER]
+    assert min(asked) >= 540                                               # and not looked for before that
+    gold = [r for r in rows if r["slug"] == GOLD]
+    assert float(gold[-1]["ts"]) <= T0 + 180.0 + top.AFTER + 30.0          # the closed market is left alone meanwhile
+
+
+def test_a_run_that_starts_between_two_markets_finds_the_next_from_the_last_one_read(tmp_path):
+    # an earlier run read the first market to its end
+    first = top.run(tmp_path, minutes=4, us=GapUS(Clock(T0)), now=(c := Clock(T0)).now, sleep=c.sleep, background=False)
+    assert top.earlier(tmp_path) and list(top.earlier(tmp_path)) == [GOLD]
+    # the next run starts five minutes in: nothing is open, and the schedule lists nothing
+    clock = Clock(T0 + 300.0)
+    us = GapUS(clock)
+    line = top.run(tmp_path, minutes=8, us=us, now=clock.now, sleep=clock.sleep, background=False)
+    rows = read_books(tmp_path, line)
+    assert {r["slug"] for r in rows} == {GapUS.LATER}                      # the old market is not read again
+    assert T0 + 600.0 <= float(rows[0]["ts"]) <= T0 + 630.0
+    markets = list(csv.DictReader((tmp_path / "runs" / line["run"] / "markets.csv").open()))
+    assert [m["slug"] for m in markets] == [GapUS.LATER] and float(markets[0]["pool"]) == 1000.0 and line["markets"] == 1
+    assert first["run"] != line["run"] and line["errors"] == 0
+
+
+def test_earlier_runs_give_the_last_market_of_each_kind(tmp_path):
+    for run, slugs in (("20261118T151332Z", [GOLD, "cpc-btc-updown-1d-2026-11-17-2200z"]), ("20261118T201500Z", ["cpc-btc-updown-1d-2026-11-18-2200z", "tec-not-ours-2026-11-18-2200z"])):
+        d = tmp_path / "runs" / run
+        d.mkdir(parents=True)
+        with (d / "markets.csv").open("w", newline="") as fh:
+            w = csv.DictWriter(fh, fieldnames=top.MARKET_FIELDS)
+            w.writeheader()
+            for s in slugs:
+                program = "nba_winner_futures_20261110" if s.startswith("tec") else ("metals_gold_updown_1d_20261110" if "gold" in s else "crypto_btc_updown_1d_20261110")
+                w.writerow({"run": run, "slug": s, "program": program, "pool": 400, "target": 10000, "discount": 0.3, "max_spread": 0.03, "period": "daily_event"})
+    found = top.earlier(tmp_path)
+    assert set(found) == {GOLD, "cpc-btc-updown-1d-2026-11-18-2200z"}       # the later Bitcoin market, and nothing that is not ours
+    assert found[GOLD]["target"] == 10000 and found[GOLD]["max_spread"] == 0.03
+    assert top.earlier(tmp_path / "nothing-here") == {}

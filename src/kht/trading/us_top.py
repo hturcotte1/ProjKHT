@@ -123,6 +123,34 @@ def book_row(run_id: str, ts: float, slug: str, book: dict[str, Any]) -> dict[st
             "open_interest": _num(st.get("openInterest"))}
 
 
+def earlier(state: Path, programmes: tuple[str, ...] = PROGRAMMES) -> dict[str, dict[str, Any]]:
+    """The last market of each kind that earlier runs wrote down, with its programme's terms.
+
+    A run can start while none of a programme's markets is open: gold's
+    closes at 22:00 UTC and the next opens at 23:15. The market that was
+    last read is then the only way to the name of the next one.
+    """
+    import csv
+
+    last: dict[str, dict[str, Any]] = {}
+    for path in sorted(state.glob("runs/*/markets.csv")):
+        try:
+            with path.open(newline="") as fh:
+                rows = list(csv.DictReader(fh))
+        except OSError:
+            continue
+        for r in rows:
+            m = DATED.match(r.get("slug") or "")
+            if not m or wanted(r.get("program") or "", programmes) is None:
+                continue
+            key = m.group("stem")
+            stamp = m.group("date") + m.group("hhmm")
+            if key not in last or stamp >= last[key]["_stamp"]:
+                last[key] = {"_stamp": stamp, "slug": r["slug"], "program": r.get("program"), "pool": _num(r.get("pool")), "target": _num(r.get("target")),
+                             "discount": _num(r.get("discount")), "max_spread": _num(r.get("max_spread")), "period": r.get("period") or ""}
+    return {v["slug"]: {k: x for k, x in v.items() if k != "_stamp"} for v in last.values() if v["pool"] and v["target"] and v["discount"] is not None}
+
+
 def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: float = 4.0, sweep: float = SWEEP, programmes: tuple[str, ...] = PROGRAMMES,
         now: Callable[[], float] = time.time, sleep: Callable[[float], None] = time.sleep, max_cycles: int | None = None,
         background: bool = True) -> dict[str, Any]:
@@ -136,10 +164,15 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
     out = state / "runs" / run_id
     out.mkdir(parents=True, exist_ok=True)
     lock = threading.Lock()
-    known: dict[str, dict[str, Any]] = {}           # every market read in this run, with its terms
+    known: dict[str, dict[str, Any]] = {}           # every market this run knows of, with its terms
     gone: dict[str, float] = {}                     # when a market was first seen not open
     unread: dict[str, int] = {}                     # readings in a row that failed, for a market never read yet
+    was_read: set[str] = set()                      # markets a book was read of in this run
+    described: set[str] = set()
     books: list[dict[str, Any]] = []
+    for slug, terms in earlier(state, programmes).items():
+        known[slug] = {**terms, "first_seen": round(started, 1)}
+        gone[slug] = -1e18                          # a market of an earlier run: not read, only asked what follows it
     counts = {"schedule": 0, "errors": 0}
     scheduled_at = [-1e18]
     busy = [False]
@@ -161,24 +194,38 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
             busy[0] = False
 
     def describe(slug: str) -> None:
-        """Fill in what a market asks, once, and look for the market that follows it."""
+        """Fill in what a market asks: its window, its price to beat, and when the window after it starts."""
         try:
             terms = market_terms(us.market(slug))
         except Exception:
             counts["errors"] += 1
             return
         with lock:
-            known[slug].update({k: v for k, v in terms.items() if v is not None})
-            follower = next_slug(slug, terms.get("next_window_start"))
-            if follower and follower not in known and terms.get("next_window_start") and (_when(terms["next_window_start"]) or 1e18) <= now() + CHAIN_EVERY:
-                # the following market takes its programme's terms from the one before it until the schedule has been read again
-                known[follower] = {**{k: known[slug].get(k) for k in ("program", "pool", "target", "discount", "max_spread", "period")},
-                                   "slug": follower, "first_seen": round(now(), 1)}
-                unread[follower] = 0
+            if slug in known:
+                known[slug].update({k: v for k, v in terms.items() if v is not None})
+                described.add(slug)
+
+    def chain(t: float) -> None:
+        """Add the market that follows each known one, from a minute before its window starts.
+
+        This goes over every market known, open or long closed: gold's next
+        market opens more than an hour after the one before it has closed.
+        """
+        with lock:
+            for slug, m in list(known.items()):
+                start = _when(m.get("next_window_start"))
+                if start is None or start < t - 2 * 86_400 or start > t + CHAIN_EVERY:
+                    continue
+                follower = next_slug(slug, m.get("next_window_start"))
+                if follower and follower not in known:
+                    # it takes its programme's terms from the one before it until the schedule has been read again
+                    known[follower] = {**{k: m.get(k) for k in ("program", "pool", "target", "discount", "max_spread", "period")},
+                                       "slug": follower, "first_seen": round(t, 1)}
+                    unread[follower] = 0
 
     def flush() -> None:
         with lock:
-            rows = [{"run": run_id, **m} for m in known.values()]
+            rows = [{"run": run_id, **m} for s, m in known.items() if s in was_read]
         _write_gz(out / "books.csv.gz", BOOK_FIELDS, books)
         _write(out / "markets.csv", MARKET_FIELDS, rows)
 
@@ -201,8 +248,11 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
             active = [s for s in known if s not in gone or t - gone[s] <= AFTER]
         if t - chained_at >= CHAIN_EVERY:
             chained_at = t
-            for slug in active:
+            with lock:
+                todo = [s for s, m in known.items() if s not in described or (s in active and s not in unread and m.get("price_to_beat") is None)]
+            for slug in todo:                        # once for each market, and again while an open one has no price to beat yet
                 describe(slug)
+            chain(t)
             with lock:
                 active = [s for s in known if s not in gone or t - gone[s] <= AFTER]
         if active:
@@ -219,6 +269,7 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
                             counts["errors"] += 1
                         continue
                     unread.pop(slug, None)
+                    was_read.add(slug)
                     try:
                         row = book_row(run_id, ts, slug, book)
                     except Exception:                # one odd book must not end the run
@@ -240,10 +291,11 @@ def run(state: Path, minutes: float, us: PolymarketUS | None = None, budget: flo
             break
     flush()
     ended = now()
+    read = {s: m for s, m in known.items() if s in was_read}
     line = {"run": run_id, "started": int(started), "ended": int(ended), "minutes": round((ended - started) / 60.0, 1), "cycles": cycles,
-            "schedule_reads": counts["schedule"], "books": len(books), "errors": counts["errors"], "markets": len(known)}
+            "schedule_reads": counts["schedule"], "books": len(books), "errors": counts["errors"], "markets": len(read)}
     _append(state / "log.csv", LOG_FIELDS, [line])
-    (state / "STATUS.md").write_text(status_text(line, known, books))
+    (state / "STATUS.md").write_text(status_text(line, read, books))
     return line
 
 

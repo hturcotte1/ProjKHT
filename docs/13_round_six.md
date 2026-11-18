@@ -374,6 +374,20 @@ Check-ins are set for 20, 24 and 27 November and 2 December. The first
 whole market-day of G1 is the gold and silver window that opens at 23:15
 UTC tonight. The first games of R2 are those of 19 November, US Eastern.
 
+**18 November, 15:36 UTC. A fault in the new recorder, found by reading
+it again and mended before it could cost a market-day.** The recorder
+found each day's new market from the one before it, but only while that
+one was still being read. Gold's and silver's close at 22:00 UTC and the
+next open at 23:15, so the hand-over would have been left to the reading
+of the reward schedule, a quarter of an hour apart, and the first reading
+of the new market could have come later than the 15 minutes section 4
+allows. It now asks every market it knows of, closed or not, and a run
+that starts between two markets takes the last one an earlier run read
+as its starting point. Three tests cover it. The job's run that began at
+15:28 UTC still has the old code; the run after it, at about 20:28 UTC,
+installs the new one, well before 23:15. The rule and the bar are
+untouched.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
