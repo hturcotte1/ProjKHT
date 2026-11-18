@@ -112,8 +112,9 @@ jobs:
           # half minute. Read-only as well.
           (timeout $((mins + 2))m kht us-top --state state/us-top --minutes $((mins - 2)) > us-top.log 2>&1 || true) &
           # The exchange allows twenty requests a second from one address.
-          # The budgets of the programs in this job add up to eighteen:
+          # The recorders of this job may ask eighteen between them:
           # us-rewards 5, us-top 4, the two below 3 each, the ladders 3.
+          # The rehearsal above reads a few books a minute beside them.
           # The recorder of test K1 (docs/13_round_six.md, section 4c): the
           # same program on the earnings markets, into its own folder. Three
           # a second reads ninety books in a half minute. In a reporting
