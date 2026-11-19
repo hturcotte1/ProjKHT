@@ -4772,3 +4772,84 @@ tenyc-10yr-day-11-20-2026-gte5pt00,2506323,macro,FISCAL,futures,266576,10-YR Tre
 thryc-30yr-hi-mth-11-2026-gte5pt60,1983799,macro,FISCAL,futures,211151,How High Will 30-YR Treasury Yield Go in November?,5.60% or Higher,How High Will 30-YR Treasury Yield Go in November?,2026-12-11T04:59:00Z,0.01,0.095,1795024694
 vmc-usgubmov-md-2026-11-03-dgte50,471331,politics,USSTATE,futures,86880,Maryland Governor Election Margin of Victory,Democrat 50%+,Maryland Governor Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1795024694
 vtc-usgubto-md-2026-11-03-gt1pt55m,471059,politics,USSTATE,futures,86800,Maryland Governor Election: Turnout,Above 1.55M,Maryland Governor Election: Turnout,2027-01-15T00:00:00Z,0.01,0.095,1795024694
+aaagaspc-usdsl-datec-20261029-20261231-gt6pt8000,1941726,macro,COMMODITY,futures,,,Above $6.8000,US diesel price at year end,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-datec-20261029-20261231-gt7pt0000,1941727,macro,COMMODITY,futures,,,Above $7.0000,US diesel price at year end,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-datec-20261029-20261231-gt7pt4000,1941729,macro,COMMODITY,futures,,,Above $7.4000,US diesel price at year end,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-day-2026-11-19-gt5pt9350,2669802,macro,COMMODITY,futures,284248,US Diesel Prices on November 19th,Above $5.9350,US Diesel Prices on November 19th,2026-11-27T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-day-2026-11-19-gt5pt9400,2669804,macro,COMMODITY,futures,284248,US Diesel Prices on November 19th,Above $5.9400,US Diesel Prices on November 19th,2026-11-27T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-highc-20261029-20261231-gt6pt8000,1941649,macro,COMMODITY,futures,,,Above $6.8000,How high will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-highc-20261029-20261231-gt7pt0000,1941651,macro,COMMODITY,futures,,,Above $7.0000,How high will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-highc-20261029-20261231-gt7pt8000,1941659,macro,COMMODITY,futures,,,Above $7.8000,How high will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-highc-20261029-20261231-gt8pt2000,1941665,macro,COMMODITY,futures,,,Above $8.2000,How high will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-highc-20261029-20261231-gt8pt4000,1941668,macro,COMMODITY,futures,,,Above $8.4000,How high will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-highc-20261029-20261231-gt8pt6000,1941671,macro,COMMODITY,futures,,,Above $8.6000,How high will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-highc-20261029-20261231-gt8pt8000,1941674,macro,COMMODITY,futures,,,Above $8.8000,How high will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-highc-20261029-20261231-gt9pt0000,1941677,macro,COMMODITY,futures,,,Above $9.0000,How high will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-lowc-20261029-20261231-lt3pt7000,1941683,macro,COMMODITY,futures,,,Below $3.7000,How low will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-lowc-20261029-20261231-lt3pt9000,1941686,macro,COMMODITY,futures,,,Below $3.9000,How low will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-lowc-20261029-20261231-lt4pt1000,1941689,macro,COMMODITY,futures,,,Below $4.1000,How low will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-lowc-20261029-20261231-lt4pt3000,1941692,macro,COMMODITY,futures,,,Below $4.3000,How low will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-lowc-20261029-20261231-lt4pt5000,1941695,macro,COMMODITY,futures,,,Below $4.5000,How low will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usdsl-lowc-20261029-20261231-lt4pt7000,1941698,macro,COMMODITY,futures,,,Below $4.7000,How low will US diesel prices get this year?,2027-01-08T04:59:00Z,0.01,0.095,1795053620
+aaagaspc-usgas-loww-2026-11-22-lt3pt6800,2599341,macro,COMMODITY,futures,276282,How Low Will US Gas Prices Get This Week?,Below $3.6800,How Low Will US Gas Prices Get This Week?,2026-11-30T04:59:00Z,0.01,0.095,1795053620
+ccrc-ntflx-1movglbl-2026-11-24-guasta,2652500,culture,MOVIES,futures,282581,Top Global Netflix Movie This Week?,Guarding Stars,Top Global Netflix Movie This Week?,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+ccrc-ntflx-1movglbl-2026-11-24-stepsm,2652499,culture,MOVIES,futures,282581,Top Global Netflix Movie This Week?,Steps,Top Global Netflix Movie This Week?,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+ccrc-ntflx-1movus-2026-11-24-guasta,2652510,culture,MOVIES,futures,282582,Top US Netflix Movie This Week?,Guarding Stars,Top US Netflix Movie This Week?,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+ccrc-ntflx-1movus-2026-11-24-obsess,2652512,culture,MOVIES,futures,282582,Top US Netflix Movie This Week?,Obsession,Top US Netflix Movie This Week?,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+ccrc-ntflx-1movus-2026-11-24-stepsm,2652509,culture,MOVIES,futures,282582,Top US Netflix Movie This Week?,Steps,Top US Netflix Movie This Week?,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+ccrc-ntflx-1shwus-2026-11-24-winmal,2652530,culture,TV,futures,282584,Top US Netflix Show This Week?,Win the Mall: Season 1,Top US Netflix Show This Week?,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+cpagsp-silver-updown-15m-2026-11-19-0200z,2676487,finance,COMMODITY,,284652,Silver Up or Down 15m,Silver Up or Down 15m,Silver Up or Down 15m,2026-11-19T02:45:00Z,0.01,0.095,1795053620
+cpagsp-silver-updown-1d-2026-11-18-2315z,2653801,finance,COMMODITY,,282746,Silver Up or Down Daily,Silver Up or Down Daily,Silver Up or Down Daily,2026-11-19T22:30:00Z,0.01,0.095,1795053620
+cpagsp-silver-updown-1h-2026-11-19-0200z,2659053,finance,COMMODITY,,282929,Silver Up or Down Hourly,Silver Up or Down Hourly,Silver Up or Down Hourly,2026-11-19T03:30:00Z,0.01,0.095,1795053620
+cpausp-gold-updown-15m-2026-11-19-0200z,2676485,finance,COMMODITY,,284651,Gold Up or Down 15m,Gold Up or Down 15m,Gold Up or Down 15m,2026-11-19T02:45:00Z,0.01,0.095,1795053620
+cpausp-gold-updown-1d-2026-11-18-2315z,2653802,finance,COMMODITY,,282747,Gold Up or Down Daily,Gold Up or Down Daily,Gold Up or Down Daily,2026-11-19T22:30:00Z,0.01,0.095,1795053620
+cpausp-gold-updown-1h-2026-11-19-0200z,2659055,finance,COMMODITY,,282931,Gold Up or Down Hourly,Gold Up or Down Hourly,Gold Up or Down Hourly,2026-11-19T03:30:00Z,0.01,0.095,1795053620
+cpngf-natgas-updown-15m-2026-11-19-0200z,2679660,finance,COMMODITY,,285477,Natural Gas Up or Down 15m,Natural Gas Up or Down 15m,Natural Gas Up or Down 15m,2026-11-19T02:45:00Z,0.01,0.095,1795053620
+cpngf-natgas-updown-1h-2026-11-19-0200z,2679539,finance,COMMODITY,,285356,Natural Gas Up or Down Hourly,Natural Gas Up or Down Hourly,Natural Gas Up or Down Hourly,2026-11-19T03:30:00Z,0.01,0.095,1795053620
+cpwtif-wti-updown-15m-2026-11-19-0200z,2679673,finance,COMMODITY,,285490,WTI Crude Up or Down 15m,WTI Crude Up or Down 15m,WTI Crude Up or Down 15m,2026-11-19T02:45:00Z,0.01,0.095,1795053620
+cpwtif-wti-updown-1h-2026-11-19-0200z,2679681,finance,COMMODITY,,285498,WTI Crude Up or Down Hourly,WTI Crude Up or Down Hourly,WTI Crude Up or Down Hourly,2026-11-19T03:30:00Z,0.01,0.095,1795053620
+cranc-uspres28-12-31-2027-margre,2110950,politics,USPRES,futures,223506,Who Will Announce a Presidential Run Before 2028?,Marjorie Taylor Greene,Who Will Announce a Presidential Run Before 2028?,2028-01-15T04:00:00Z,0.01,0.095,1795053620
+cranc-uspres28-12-31-2027-tulgab,2111003,politics,USPRES,futures,223506,Who Will Announce a Presidential Run Before 2028?,Tulsi Gabbard,Who Will Announce a Presidential Run Before 2028?,2028-01-15T04:00:00Z,0.01,0.095,1795053620
+cranc-uspres28-12-31-2027-vivram,2110974,politics,USPRES,futures,223506,Who Will Announce a Presidential Run Before 2028?,Vivek Ramaswamy,Who Will Announce a Presidential Run Before 2028?,2028-01-15T04:00:00Z,0.01,0.095,1795053620
+gsrc-gsearch-1movie-2026-michae,1279420,culture,MOVIES,futures,148016,#1 Searched Movie on Google 2026?,Michael,#1 Searched Movie on Google 2026?,2027-01-15T04:00:00Z,0.01,0.095,1795053620
+gsrc-gsearch-1movie-2026-obsess,1279423,culture,MOVIES,futures,148016,#1 Searched Movie on Google 2026?,Obsession,#1 Searched Movie on Google 2026?,2027-01-15T04:00:00Z,0.01,0.095,1795053620
+gsrc-gsearch-1movie-2026-spiman,1279422,culture,MOVIES,futures,148016,#1 Searched Movie on Google 2026?,Spider-Man: Brand New Day,#1 Searched Movie on Google 2026?,2027-01-15T04:00:00Z,0.01,0.095,1795053620
+gsrc-gsearch-1movie-2026-theody,1279424,culture,MOVIES,futures,148016,#1 Searched Movie on Google 2026?,The Odyssey,#1 Searched Movie on Google 2026?,2027-01-15T04:00:00Z,0.01,0.095,1795053620
+mcsc-gtavimeta-2026-11-26-gte100,2680603,culture,GAMES,futures,285665,"""GTA VI"" Metacritic Score?",100+,"""GTA VI"" Metacritic Score?",2026-12-11T04:00:00Z,0.01,0.095,1795053620
+mcsc-gtavimeta-2026-11-26-gte98,2680602,culture,GAMES,futures,285665,"""GTA VI"" Metacritic Score?",98+,"""GTA VI"" Metacritic Score?",2026-12-11T04:00:00Z,0.01,0.095,1795053620
+mcsc-gtavimeta-2026-11-26-gte99,2680604,culture,GAMES,futures,285665,"""GTA VI"" Metacritic Score?",99+,"""GTA VI"" Metacritic Score?",2026-12-11T04:00:00Z,0.01,0.095,1795053620
+nphc-nvidiaceo-2028-12-31-matmur,2681685,finance,EXECUTIVE,futures,259467,Next CEO of NVIDIA?,Matt Murphy,Next CEO of NVIDIA?,2029-01-15T04:00:00Z,0.01,0.095,1795053620
+nphc-nvidiaceo-2028-12-31-mikgal,2681686,finance,EXECUTIVE,futures,259467,Next CEO of NVIDIA?,Mike Gallagher,Next CEO of NVIDIA?,2029-01-15T04:00:00Z,0.01,0.095,1795053620
+nphc-unsecgen-1-giainf,2113502,geopolitics,UNITEDNAT,futures,223727,Next UN Secretary-General?,Gianni Infantino,Next UN Secretary-General?,2027-07-15T03:00:00Z,0.01,0.095,1795053620
+prdc-ttwo-gtavionline-2026-12-31,2691598,culture,GAME,futures,286953,GTA VI Online Released By...?,"December 31, 2026",GTA VI Online Released By...?,2027-07-15T03:00:00Z,0.01,0.095,1795053620
+prdc-ttwo-gtavionline-2027-03-31,2691597,culture,GAME,futures,286953,GTA VI Online Released By...?,"March 31, 2027",GTA VI Online Released By...?,2027-07-15T03:00:00Z,0.01,0.095,1795053620
+prdc-ttwo-gtavionline-2027-06-30,2691596,culture,GAME,futures,286953,GTA VI Online Released By...?,"June 30, 2027",GTA VI Online Released By...?,2027-07-15T03:00:00Z,0.01,0.095,1795053620
+tac-globes-nom-actdra-2026-12-07-guila,2362839,culture,AWD,futures,250429,Golden Globe Nominees: Best Actor  Drama,Guitarricadelafuente  La Bola Negra,Golden Globe Nominees: Best Actor  Drama,2026-12-22T04:00:00Z,0.01,0.095,1795053620
+tac-globes-nom-ltdact-2026-12-07-jambel,2362068,culture,AWD,futures,250371,Golden Globe Nominees: Best Actor  Limited Series,Jamie Bell  Half Man,Golden Globe Nominees: Best Actor  Limited Series,2026-12-22T04:00:00Z,0.01,0.095,1795053620
+tac-globes-nom-ltdactre-2026-12-07-ellbea,2362073,culture,AWD,futures,250372,Golden Globe Nominees: Best Actress  Limited Series,Ella Beatty  The Lizzie Borden Story,Golden Globe Nominees: Best Actress  Limited Series,2026-12-22T04:00:00Z,0.01,0.095,1795053620
+tac-globes-nom-tvactmc-2026-12-07-adabro,2361966,culture,AWD,futures,250352,Golden Globe Nominees: Best Actor  Television Musical or Comedy,Adam Brody  Nobody Wants This,Golden Globe Nominees: Best Actor  Television Musical or Comedy,2026-12-22T04:00:00Z,0.01,0.095,1795053620
+tac-globes-nom-tvmc-2026-12-07-hachac,2361990,culture,AWD,futures,250356,Golden Globe Nominees: Best Television Series  Comedy or Musical,Hacks,Golden Globe Nominees: Best Television Series  Comedy or Musical,2026-12-22T04:00:00Z,0.01,0.095,1795053620
+tac-globes-nom-tvsupactre-2026-12-07-alljan,2362098,culture,AWD,futures,250374,Golden Globe Nominees: Best Supporting Actress  Television,Allison Janney  The Diplomat,Golden Globe Nominees: Best Supporting Actress  Television,2026-12-22T04:00:00Z,0.01,0.095,1795053620
+tac-globes-nom-tvsupactre-2026-12-07-katlan,2362090,culture,AWD,futures,250374,Golden Globe Nominees: Best Supporting Actress  Television,Katherine LaNasa  The Pitt,Golden Globe Nominees: Best Supporting Actress  Television,2026-12-22T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-argent,2655453,culture,AWD,futures,282872,Miss Universe 2026 Winner,Argentina,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-cambod,2655452,culture,AWD,futures,282872,Miss Universe 2026 Winner,Cambodia,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-chile,2655442,culture,AWD,futures,282872,Miss Universe 2026 Winner,Chile,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-colomb,2655446,culture,AWD,futures,282872,Miss Universe 2026 Winner,Colombia,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-cuba,2655447,culture,AWD,futures,282872,Miss Universe 2026 Winner,Cuba,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-domrep,2655451,culture,AWD,futures,282872,Miss Universe 2026 Winner,Dominican Republic,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-ecuado,2655450,culture,AWD,futures,282872,Miss Universe 2026 Winner,Ecuador,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-egypt,2655449,culture,AWD,futures,282872,Miss Universe 2026 Winner,Egypt,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-france,2655445,culture,AWD,futures,282872,Miss Universe 2026 Winner,France,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-nether,2655443,culture,AWD,futures,282872,Miss Universe 2026 Winner,Netherlands,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-peru,2655454,culture,AWD,futures,282872,Miss Universe 2026 Winner,Peru,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-philip,2655440,culture,AWD,futures,282872,Miss Universe 2026 Winner,Philippines,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-puerto,2655444,culture,AWD,futures,282872,Miss Universe 2026 Winner,Puerto Rico,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-usa,2655448,culture,AWD,futures,282872,Miss Universe 2026 Winner,USA,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-missuniverse-2026-11-24-venezu,2655441,culture,AWD,futures,282872,Miss Universe 2026 Winner,Venezuela,Miss Universe 2026 Winner,2026-12-09T04:00:00Z,0.01,0.095,1795053620
+tac-oscars-03-14-2027-bestpic-iroc,2686526,culture,AWD,futures,50257,Oscar Winner: Best Picture,I Play Rocky,Oscar Winner: Best Picture,2027-03-29T03:00:00Z,0.01,0.095,1795053620
+tac-oscars-03-14-2027-bestpic-wildwo,2686525,culture,AWD,futures,50257,Oscar Winner: Best Picture,Wildwood,Oscar Winner: Best Picture,2027-03-29T03:00:00Z,0.01,0.095,1795053620
+tac-oscars-nom-2027-01-31-bestpic-iroc,2686530,culture,AWD,futures,60949,Oscar Nominees: Best Picture,I Play Rocky,Oscar Nominees: Best Picture,2027-02-15T04:00:00Z,0.01,0.095,1795053620
+tac-oscars-nom-2027-01-31-bestpic-wildwo,2686528,culture,AWD,futures,60949,Oscar Nominees: Best Picture,Wildwood,Oscar Nominees: Best Picture,2027-02-15T04:00:00Z,0.01,0.095,1795053620
+tac-oscars-nom-2027-01-31-bestpic-youcan,2686529,culture,AWD,futures,60949,Oscar Nominees: Best Picture,You Can See Everything,Oscar Nominees: Best Picture,2027-02-15T04:00:00Z,0.01,0.095,1795053620
+tc-temp-sfohigh-2026-11-20-gte56lt57f,2670366,climate,WEATHER,futures,284274,Highest temperature in San Francisco on November 20?,56 to 57,Highest temperature in San Francisco on November 20?,2026-11-21T13:00:00Z,0.01,0.095,1795053620
+vtc-usseto-nm-2026-11-03-gt650k,470636,politics,USCONGRESS,futures,86681,New Mexico Senate Election: Turnout,Above 650K,New Mexico Senate Election: Turnout,2027-01-15T00:00:00Z,0.01,0.095,1795053620

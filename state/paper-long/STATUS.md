@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-18 17:58 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-19 02:00 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $997.07 |
+| Equity (positions marked at the bid) | $997.11 |
 | Starting bankroll | $1,000.00 |
-| Change | $-2.93 (-0.29%) |
+| Change | $-2.89 (-0.29%) |
 | Cash | $759.84 |
 | In positions (cost) | $240.16 |
 | Realised profit | $+0.00 |
@@ -27,9 +27,9 @@ As of 2026-11-18 17:58 UTC. Started 2026-11-10 20:50 UTC.
 | Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.945 | $-0.50 | 102 |
 | Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.951 | $-0.61 | 116 |
 | Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.930 | $-0.42 | 133 |
-| Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.935 | $-0.17 | 133 |
+| Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.936 | $-0.15 | 133 |
 | Ilhan Omar denaturalization case filed by March 31, 2027? | No | 21.5 | 0.933 | 0.920 | $-0.27 | 133 |
-| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.920 | $-0.33 | 151 |
+| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 151 |
 | Will Jordan Bardella advance to the second round of the next French pr | No | 21.5 | 0.933 | 0.930 | $-0.06 | 151 |
 
 ## Resting orders
@@ -59,4 +59,4 @@ As of 2026-11-18 17:58 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-32 cycles from 2026-11-10 20:50 UTC to 2026-11-18 17:58 UTC; equity $1,000.00 → $997.07. The longest gap between two cycles was 12.1 hours.
+33 cycles from 2026-11-10 20:50 UTC to 2026-11-19 02:00 UTC; equity $1,000.00 → $997.11. The longest gap between two cycles was 12.1 hours.

@@ -62,3 +62,4 @@
 {"action": "order", "dte": 133.78973364886863, "edge": 0.006481291320218574, "filled": 0.0, "kind": "MAKER", "market_id": 7018011, "order_id": "paper-43", "p_win": 0.9164812913202186, "price": 0.89, "reason": "Will Jensen Huang join SpaceX by March 31, 2027? | buy 'No' at 0.910, est. 0.916, edge 0.65c, 134d", "side": "BUY", "size": 22.47, "status": "OPEN", "ts": 1794992507.0127378}
 {"action": "screened", "by_limit": {"event": 4, "theme 'climate-science'": 1}, "count": 5, "ts": 1795003176.914647}
 {"action": "screened", "by_limit": {"event": 4, "theme 'weather'": 1}, "count": 5, "ts": 1795024687.3623438}
+{"action": "screened", "by_limit": {"event": 5, "theme 'weather'": 1}, "count": 6, "ts": 1795053614.377761}
