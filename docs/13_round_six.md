@@ -963,7 +963,8 @@ Q1 were picked up as they opened.** From the saves of 22:03, 23:03 and
   for each by name from a minute before; the exchange opened their books
   a few minutes into the window. Each has its window, price to beat,
   pool, target size and maximum spread written down.
-- Readings half a minute apart throughout, the longest gap 30 seconds.
+- The new markets' readings are half a minute apart, the longest gap 30
+  seconds.
 - The reference prices are in fifteen-second candles without a repeat.
   They have one hole of 14 minutes for gold and silver, from 22:01 to
   22:15 UTC, when neither had a market open. No test uses them, and the
