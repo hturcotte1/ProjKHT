@@ -1,0 +1,7 @@
+run,slug,program,pool,target,discount,max_spread,period,question,window_start,window_end,end,price_to_beat,first_seen,asset,listed,reports
+20261119T012642Z,cpagsp-silver-updown-1d-2026-11-18-2315z,metals_silver_updown_1d_20261110,750.0,3000.0,0.3,0.03,daily_event,Silver Up or Down Daily,1795043700.0,1795125600.0,1795127400.0,45.39,1795051602.7,commodity:silver,1794957324.0,
+20261119T012642Z,cpausp-gold-updown-1d-2026-11-18-2315z,metals_gold_updown_1d_20261110,1000.0,5000.0,0.3,0.03,daily_event,Gold Up or Down Daily,1795043700.0,1795125600.0,1795127400.0,3734.86,1795051602.7,commodity:gold,1794957320.0,
+20261119T012642Z,cpc-btc-updown-1d-2026-11-18-2200z,crypto_btc_updown_1d_20261110,400.0,10000.0,0.3,0.03,daily_event,BTC Up or Down Daily,1795039200.0,1795125600.0,1795127400.0,62240.2,1795051602.7,crypto:btc,1794949218.0,
+20261119T012642Z,cpceth-eth-updown-1d-2026-11-18-2200z,crypto_alt_updown_1d_20261110,150.0,2000.0,0.3,0.05,daily_event,ETH Up or Down Daily,1795039200.0,1795125600.0,1795127400.0,1761.13,1795051602.7,crypto:eth,1794949520.0,
+20261119T012642Z,cpcsol-sol-updown-1d-2026-11-18-2200z,crypto_alt_updown_1d_20261110,150.0,2000.0,0.3,0.05,daily_event,SOL Up or Down Daily,1795039200.0,1795125600.0,1795127400.0,72.8488,1795051602.7,crypto:sol,1794949819.0,
+20261119T012642Z,cpcxrp-xrp-updown-1d-2026-11-18-2200z,crypto_alt_updown_1d_20261110,150.0,2000.0,0.3,0.05,daily_event,XRP Up or Down Daily,1795039200.0,1795125600.0,1795127400.0,0.96561,1795051602.7,crypto:xrp,1794949939.0,

@@ -1,0 +1,13 @@
+run,slug,event,title,first_seen,start_first,dayof_program,dayof_pool,dayof_target,dayof_discount,dayof_max_spread,live_program,live_pool,live_target,live_discount,live_max_spread
+20261119T012642Z,aec-utr-mockot-motyak-2026-11-17,utr-mockot-motyak-2026-11-17,Kotaro Mochizuki vs. Yakumo Motokura,1795051602.7,1795044600.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-shitsu-soekan-2026-11-17,utr-shitsu-soekan-2026-11-17,Tsuki Shibutani vs. Kanna Soeda,1795051602.7,1795044600.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-galpio-zmaden-2026-11-16,utr-galpio-zmaden-2026-11-16,Piotr Galus vs. Deni Zmak,1795051602.7,1795016700.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-gaskan-krimat-2026-11-17,utr-gaskan-krimat-2026-11-17,Kanan Gasimov vs. Matic Kriznik,1795051602.7,1795043100.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-accjua-hanbra-2026-11-17,utr-accjua-hanbra-2026-11-17,Juan Accossatto vs. Braden Hannig,1795051602.7,1795043700.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-simgeo-darval-2026-11-16,utr-simgeo-darval-2026-11-16,Oana Georgeta Simion vs. Valeryia Darashuk,1795051602.7,1795015800.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-donluc-pasgab-2026-11-16,utr-donluc-pasgab-2026-11-16,Lucia Donnelly vs. Gabia Paskauskas,1795051602.7,1794947100.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-shelaw-mohezz-2026-11-17,utr-shelaw-mohezz-2026-11-17,Lawee Sherif vs. Eyad Reda Ezzat Mohamed Sherif,1795051602.7,1795041300.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-tamkur-kuwhir-2026-11-19,utr-tamkur-kuwhir-2026-11-19,Kurumi Tamura vs. Hiroko Kuwata,1795053672.7,1795051800.0,,,,,,,,,,
+20261119T012642Z,aec-utr-kawnan-ononan-2026-11-19,utr-kawnan-ononan-2026-11-19,Nana Kawagishi vs. Nana Onozawa,1795053672.7,1795053600.0,,,,,,,,,,
+20261119T012642Z,aec-utr-krynik-mesjul-2026-11-19,utr-krynik-mesjul-2026-11-19,Nikita Kryvonos vs. Julian Messina,1795054572.7,1795048800.0,,,,,,,,,,
+20261119T012642Z,aec-utr-kobken-wanedw-2026-11-19,utr-kobken-wanedw-2026-11-19,Kensuke Kobayashi vs. Edward Wang,1795054572.7,1795054500.0,,,,,,,,,,
