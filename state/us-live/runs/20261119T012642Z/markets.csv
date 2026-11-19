@@ -7,7 +7,22 @@ run,slug,event,title,first_seen,start_first,dayof_program,dayof_pool,dayof_targe
 20261119T012642Z,aec-utr-simgeo-darval-2026-11-16,utr-simgeo-darval-2026-11-16,Oana Georgeta Simion vs. Valeryia Darashuk,1795051602.7,1795015800.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
 20261119T012642Z,aec-utr-donluc-pasgab-2026-11-16,utr-donluc-pasgab-2026-11-16,Lucia Donnelly vs. Gabia Paskauskas,1795051602.7,1794947100.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
 20261119T012642Z,aec-utr-shelaw-mohezz-2026-11-17,utr-shelaw-mohezz-2026-11-17,Lawee Sherif vs. Eyad Reda Ezzat Mohamed Sherif,1795051602.7,1795041300.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
-20261119T012642Z,aec-utr-tamkur-kuwhir-2026-11-19,utr-tamkur-kuwhir-2026-11-19,Kurumi Tamura vs. Hiroko Kuwata,1795053672.7,1795051800.0,,,,,,,,,,
-20261119T012642Z,aec-utr-kawnan-ononan-2026-11-19,utr-kawnan-ononan-2026-11-19,Nana Kawagishi vs. Nana Onozawa,1795053672.7,1795053600.0,,,,,,,,,,
-20261119T012642Z,aec-utr-krynik-mesjul-2026-11-19,utr-krynik-mesjul-2026-11-19,Nikita Kryvonos vs. Julian Messina,1795054572.7,1795048800.0,,,,,,,,,,
-20261119T012642Z,aec-utr-kobken-wanedw-2026-11-19,utr-kobken-wanedw-2026-11-19,Kensuke Kobayashi vs. Edward Wang,1795054572.7,1795054500.0,,,,,,,,,,
+20261119T012642Z,aec-utr-tamkur-kuwhir-2026-11-19,utr-tamkur-kuwhir-2026-11-19,Kurumi Tamura vs. Hiroko Kuwata,1795053672.7,1795051800.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-kawnan-ononan-2026-11-19,utr-kawnan-ononan-2026-11-19,Nana Kawagishi vs. Nana Onozawa,1795053672.7,1795053600.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-krynik-mesjul-2026-11-19,utr-krynik-mesjul-2026-11-19,Nikita Kryvonos vs. Julian Messina,1795054572.7,1795048800.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-kobken-wanedw-2026-11-19,utr-kobken-wanedw-2026-11-19,Kensuke Kobayashi vs. Edward Wang,1795054572.7,1795054500.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-soumat-farmax-2026-11-17,utr-soumat-farmax-2026-11-17,Mattias Southcombe vs. Max Fardanesh,1795056312.7,1795057200.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-pohsam-djaant-2026-11-17,utr-pohsam-djaant-2026-11-17,Samuel Pohl vs. Antreas Djakouris,1795056312.7,1795057200.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-lammar-olsave-2026-11-17,utr-lammar-olsave-2026-11-17,Marley Lambert vs. Avery Olsen,1795056312.7,1795057200.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-mirver-niepat-2026-11-17,utr-mirver-niepat-2026-11-17,Veronica Miroshnichenko vs. Patrycja Niewiadomska,1795056312.7,1795057200.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-grasop-liesha-2026-11-17,utr-grasop-liesha-2026-11-17,Sophia Graver vs. Shachf Lieberman,1795056312.7,1795057200.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-vendam-djacon-2026-11-17,utr-vendam-djacon-2026-11-17,Alessandro-Damiano Ventre vs. Constantinos Djakouris,1795056312.7,1795057200.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-lewbel-olmzoe-2026-11-18,utr-lewbel-olmzoe-2026-11-18,Bella Lewis vs. Zoe Olmos,1795056312.7,1795057200.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-maeyu-shikos-2026-11-19,utr-maeyu-shikos-2026-11-19,Yu Maeda vs. Kosuke Shibano,1795057272.7,1795048800.0,,,,,,,,,,
+20261119T012642Z,aec-utr-rajmac-kartos-2026-11-19,utr-rajmac-kartos-2026-11-19,Maciej Rajski vs. Toshiki Karigyo,1795057272.7,1795048800.0,,,,,,,,,,
+20261119T012642Z,aec-utr-namjun-kinneo-2026-11-19,utr-namjun-kinneo-2026-11-19,Junri Namigata vs. Neon Kinoshita,1795057272.7,1795055400.0,,,,,,,,,,
+20261119T012642Z,aec-utr-soekan-kawman-2026-11-19,utr-soekan-kawman-2026-11-19,Kanna Soeda vs. Mana Kawamura,1795057272.7,1795057800.0,,,,,,,,,,
+20261119T012642Z,aec-utr-furmic-abechi-2026-11-19,utr-furmic-abechi-2026-11-19,Michiru Furuya vs. Chiharu Abe,1795057272.7,1795057800.0,,,,,,,,,,
+20261119T012642Z,aec-utr-sugkaz-hirtai-2026-11-19,utr-sugkaz-hirtai-2026-11-19,Kazuki Sugimoto vs. Taiyo Hirano,1795057812.7,1795058700.0,,,,,,,,,,
+20261119T012642Z,aec-utr-goltyg-jonada-2026-11-17,utr-goltyg-jonada-2026-11-17,Tygen Goldammer vs. Adam Jones,1795058112.7,1795059000.0,utr_moneyline_day_of_20261008,10.0,250.0,0.35,0.07,utr_moneyline_live_20261008,50.0,500.0,0.3,0.06
+20261119T012642Z,aec-utr-sattai-kawhyu-2026-11-20,utr-sattai-kawhyu-2026-11-20,Taiyo Sato vs. Hyu Kawanishi,1795058142.7,1795059000.0,,,,,,,,,,
