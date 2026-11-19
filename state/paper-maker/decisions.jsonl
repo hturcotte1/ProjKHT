@@ -333,3 +333,4 @@
 {"action": "blocked", "market_id": 665330, "reason": "Will Germany recognize Palestine before 2027? | buy 'No' at 0.969, est. 0.981, edge 1.24c, 43d", "ts": 1795024658.1501114, "why": "theme 'israel' exposure 99.97 above cap 80.00"}
 {"action": "blocked", "market_id": 2370273, "reason": "JD Vance out as VP by December 31? | buy 'No' at 0.966, est. 0.978, edge 1.23c, 43d", "ts": 1795024658.1501114, "why": "total exposure cap"}
 {"action": "screened", "by_limit": {"event": 9, "theme 'iran'": 23, "theme 'israel'": 14, "theme 'middle-east'": 13, "theme 'russia'": 5, "theme 'tech'": 15, "theme 'ukraine'": 12, "total": 45}, "count": 136, "ts": 1795053581.8150349}
+{"action": "screened", "by_limit": {"event": 12, "theme 'iran'": 21, "theme 'israel'": 6, "theme 'middle-east'": 24, "theme 'russia'": 4, "theme 'tech'": 17, "theme 'ukraine'": 10, "total": 44}, "count": 138, "ts": 1795083273.2152195}
