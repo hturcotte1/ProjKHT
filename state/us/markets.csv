@@ -4915,3 +4915,162 @@ vmc-ussemov-al-2026-11-03-rgte35,470002,politics,USCONGRESS,futures,86537,Alabam
 vmc-ussemov-ar-2026-11-03-rgte40,470249,politics,USCONGRESS,futures,86543,Arkansas Senate Election Margin of Victory,Republican 40%+,Arkansas Senate Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1795083311
 vmc-ussemov-il-2026-11-03-dgte35,470766,politics,USCONGRESS,futures,86714,Illinois Senate Election Margin of Victory,Democrat 35%+,Illinois Senate Election Margin of Victory,2027-01-15T00:00:00Z,0.01,0.095,1795083311
 vtc-usseto-or-2026-11-03-gt1pt8m,470617,politics,USCONGRESS,futures,86673,Oregon Senate Election: Turnout,Above 1.8M,Oregon Senate Election: Turnout,2027-01-15T00:00:00Z,0.01,0.095,1795083311
+aaagaspc-usdsl-day-2026-11-20-gt5pt8900,2702086,macro,COMMODITY,futures,288458,US Diesel Prices on November 20th,Above $5.8900,US Diesel Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usdsl-day-2026-11-20-gt5pt8950,2702088,macro,COMMODITY,futures,288458,US Diesel Prices on November 20th,Above $5.8950,US Diesel Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt6800,2702080,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.6800,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt6850,2702081,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.6850,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt6900,2702083,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.6900,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt6950,2702085,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.6950,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7000,2702087,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7000,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7050,2702089,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7050,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7100,2702091,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7100,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7150,2702094,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7150,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7200,2702096,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7200,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7250,2702098,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7250,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7300,2702100,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7300,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7350,2702102,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7350,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7400,2702104,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7400,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7450,2702106,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7450,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7500,2702108,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7500,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7550,2702110,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7550,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-day-2026-11-20-gt3pt7600,2702112,macro,COMMODITY,futures,288457,US Gas Prices on November 20th,Above $3.7600,US Gas Prices on November 20th,2026-11-28T04:59:00Z,0.01,0.095,1795115115
+aaagaspc-usgas-lowm-2026-11-30-lt3pt4000,2702092,macro,COMMODITY,futures,217404,How Low Will US Gas Prices Get This Month?,Below $3.4000,How Low Will US Gas Prices Get This Month?,2026-12-08T04:59:00Z,0.01,0.095,1795115115
+ccrc-ntflx-1movglbl-2026-11-24-insout,2652501,culture,MOVIES,futures,282581,Top Global Netflix Movie This Week?,Insidious: Out of the Further,Top Global Netflix Movie This Week?,2026-12-09T04:00:00Z,0.01,0.095,1795115115
+ccrc-ntflx-1shwglbl-2026-11-24-altrui,2652524,culture,TV,futures,282583,Top Global Netflix Show This Week?,The Altruists: Limited Series,Top Global Netflix Show This Week?,2026-12-09T04:00:00Z,0.01,0.095,1795115115
+ccrc-ntflx-1shwglbl-2026-11-24-winmal,2652526,culture,TV,futures,282583,Top Global Netflix Show This Week?,Win the Mall: Season 1,Top Global Netflix Show This Week?,2026-12-09T04:00:00Z,0.01,0.095,1795115115
+ccrc-ntflx-1shwus-2026-11-24-altrui,2652529,culture,TV,futures,282584,Top US Netflix Show This Week?,The Altruists: Limited Series,Top US Netflix Show This Week?,2026-12-09T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-albm-glbl-yr-2027-ariran,2709021,culture,MUSIC,futures,289438,Top Global Album 2027,Arirang - BTS,Top Global Album 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-albm-glbl-yr-2027-dandel,2709019,culture,MUSIC,futures,289438,Top Global Album 2027,Dandelion - Ella Langley,Top Global Album 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-albm-glbl-yr-2027-debtir,2709023,culture,MUSIC,futures,289438,Top Global Album 2027,Debi Tirar Mas Fotos - Bad Bunny,Top Global Album 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-albm-glbl-yr-2027-lifsho,2709022,culture,MUSIC,futures,289438,Top Global Album 2027,The Life of a Showgirl - Taylor Swift,Top Global Album 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-albm-glbl-yr-2027-yousee,2709020,culture,MUSIC,futures,289438,Top Global Album 2027,You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo,Top Global Album 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-albm-us-yr-2027-ariran,2709026,culture,MUSIC,futures,289439,Top Album in the US 2027,Arirang - BTS,Top Album in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-albm-us-yr-2027-dandel,2709027,culture,MUSIC,futures,289439,Top Album in the US 2027,Dandelion - Ella Langley,Top Album in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-albm-us-yr-2027-debtir,2709028,culture,MUSIC,futures,289439,Top Album in the US 2027,Debi Tirar Mas Fotos - Bad Bunny,Top Album in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-albm-us-yr-2027-lifsho,2709025,culture,MUSIC,futures,289439,Top Album in the US 2027,The Life of a Showgirl - Taylor Swift,Top Album in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-albm-us-yr-2027-yousee,2709024,culture,MUSIC,futures,289439,Top Album in the US 2027,You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo,Top Album in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-badbun,2709010,culture,MUSIC,futures,289437,Top Global Artist 2027,Bad Bunny,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-beyonc,2709018,culture,MUSIC,futures,289437,Top Global Artist 2027,Beyonce,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-brumar,2709011,culture,MUSIC,futures,289437,Top Global Artist 2027,Bruno Mars,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-charoa,2709017,culture,MUSIC,futures,289437,Top Global Artist 2027,Chappell Roan,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-drake,2709012,culture,MUSIC,futures,289437,Top Global Artist 2027,Drake,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-ellang,2709007,culture,MUSIC,futures,289437,Top Global Artist 2027,Ella Langley,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-kenlam,2709014,culture,MUSIC,futures,289437,Top Global Artist 2027,Kendrick Lamar,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-micjac,2709008,culture,MUSIC,futures,289437,Top Global Artist 2027,Michael Jackson,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-morwal,2709015,culture,MUSIC,futures,289437,Top Global Artist 2027,Morgan Wallen,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-sabcar,2709016,culture,MUSIC,futures,289437,Top Global Artist 2027,Sabrina Carpenter,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-tayswi,2709009,culture,MUSIC,futures,289437,Top Global Artist 2027,Taylor Swift,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-glbl-yr-2027-thewee,2709013,culture,MUSIC,futures,289437,Top Global Artist 2027,The Weeknd,Top Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-us-yr-2027-badbun,2708987,culture,MUSIC,futures,289435,Top Artist in the US 2027,Bad Bunny,Top Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-us-yr-2027-beyonc,2708992,culture,MUSIC,futures,289435,Top Artist in the US 2027,Beyonce,Top Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-us-yr-2027-brumar,2708990,culture,MUSIC,futures,289435,Top Artist in the US 2027,Bruno Mars,Top Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-us-yr-2027-charoa,2708993,culture,MUSIC,futures,289435,Top Artist in the US 2027,Chappell Roan,Top Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-us-yr-2027-drake,2708988,culture,MUSIC,futures,289435,Top Artist in the US 2027,Drake,Top Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-us-yr-2027-kenlam,2708989,culture,MUSIC,futures,289435,Top Artist in the US 2027,Kendrick Lamar,Top Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-us-yr-2027-ladgag,2708995,culture,MUSIC,futures,289435,Top Artist in the US 2027,Lady Gaga,Top Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-us-yr-2027-morwal,2708986,culture,MUSIC,futures,289435,Top Artist in the US 2027,Morgan Wallen,Top Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-us-yr-2027-sabcar,2708994,culture,MUSIC,futures,289435,Top Artist in the US 2027,Sabrina Carpenter,Top Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-us-yr-2027-tayswi,2708985,culture,MUSIC,futures,289435,Top Artist in the US 2027,Taylor Swift,Top Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-artst-us-yr-2027-thewee,2708991,culture,MUSIC,futures,289435,Top Artist in the US 2027,The Weeknd,Top Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-glbl-yr-2027-choosi,2709052,culture,MUSIC,futures,289443,Top Global Song 2027,Choosin' Texas - Ella Langley,Top Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-glbl-yr-2027-houwif,2709053,culture,MUSIC,futures,289443,Top Global Song 2027,Housewife - Tate McRae,Top Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-glbl-yr-2027-manine,2709051,culture,MUSIC,futures,289443,Top Global Song 2027,Man I Need - Olivia Dean,Top Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-glbl-yr-2027-nickid,2709055,culture,MUSIC,futures,289443,Top Global Song 2027,Nicole Kidman - ADELA,Top Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-glbl-yr-2027-patzer,2709056,culture,MUSIC,futures,289443,Top Global Song 2027,Patient Zero - Taylor Swift,Top Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-glbl-yr-2027-stopwe,2709054,culture,MUSIC,futures,289443,Top Global Song 2027,Stop The Wedding! - Ashe,Top Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-us-yr-2027-choosi,2709065,culture,MUSIC,futures,289445,Top Song in the US 2027,Choosin' Texas - Ella Langley,Top Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-us-yr-2027-houwif,2709064,culture,MUSIC,futures,289445,Top Song in the US 2027,Housewife - Tate McRae,Top Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-us-yr-2027-manine,2709066,culture,MUSIC,futures,289445,Top Song in the US 2027,Man I Need - Olivia Dean,Top Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-us-yr-2027-nickid,2709067,culture,MUSIC,futures,289445,Top Song in the US 2027,Nicole Kidman - ADELA,Top Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-us-yr-2027-patzer,2709068,culture,MUSIC,futures,289445,Top Song in the US 2027,Patient Zero - Taylor Swift,Top Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-1-song-us-yr-2027-stopwe,2709063,culture,MUSIC,futures,289445,Top Song in the US 2027,Stop The Wedding! - Ashe,Top Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-albm-glbl-yr-2027-ariran,2709048,culture,MUSIC,futures,289442,#2 Global Album 2027,Arirang - BTS,#2 Global Album 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-albm-glbl-yr-2027-dandel,2709049,culture,MUSIC,futures,289442,#2 Global Album 2027,Dandelion - Ella Langley,#2 Global Album 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-albm-glbl-yr-2027-debtir,2709050,culture,MUSIC,futures,289442,#2 Global Album 2027,Debi Tirar Mas Fotos - Bad Bunny,#2 Global Album 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-albm-glbl-yr-2027-lifsho,2709046,culture,MUSIC,futures,289442,#2 Global Album 2027,The Life of a Showgirl - Taylor Swift,#2 Global Album 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-albm-glbl-yr-2027-yousee,2709047,culture,MUSIC,futures,289442,#2 Global Album 2027,You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo,#2 Global Album 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-albm-us-yr-2027-ariran,2709032,culture,MUSIC,futures,289440,#2 Album in the US 2027,Arirang - BTS,#2 Album in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-albm-us-yr-2027-dandel,2709030,culture,MUSIC,futures,289440,#2 Album in the US 2027,Dandelion - Ella Langley,#2 Album in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-albm-us-yr-2027-debtir,2709033,culture,MUSIC,futures,289440,#2 Album in the US 2027,Debi Tirar Mas Fotos - Bad Bunny,#2 Album in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-albm-us-yr-2027-lifsho,2709029,culture,MUSIC,futures,289440,#2 Album in the US 2027,The Life of a Showgirl - Taylor Swift,#2 Album in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-albm-us-yr-2027-yousee,2709031,culture,MUSIC,futures,289440,#2 Album in the US 2027,You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo,#2 Album in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-badbun,2709037,culture,MUSIC,futures,289441,#2 Global Artist 2027,Bad Bunny,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-beyonc,2709045,culture,MUSIC,futures,289441,#2 Global Artist 2027,Beyonce,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-brumar,2709038,culture,MUSIC,futures,289441,#2 Global Artist 2027,Bruno Mars,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-charoa,2709044,culture,MUSIC,futures,289441,#2 Global Artist 2027,Chappell Roan,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-drake,2709034,culture,MUSIC,futures,289441,#2 Global Artist 2027,Drake,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-ellang,2709036,culture,MUSIC,futures,289441,#2 Global Artist 2027,Ella Langley,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-kenlam,2709041,culture,MUSIC,futures,289441,#2 Global Artist 2027,Kendrick Lamar,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-micjac,2709035,culture,MUSIC,futures,289441,#2 Global Artist 2027,Michael Jackson,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-morwal,2709042,culture,MUSIC,futures,289441,#2 Global Artist 2027,Morgan Wallen,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-sabcar,2709043,culture,MUSIC,futures,289441,#2 Global Artist 2027,Sabrina Carpenter,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-tayswi,2709039,culture,MUSIC,futures,289441,#2 Global Artist 2027,Taylor Swift,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-glbl-yr-2027-thewee,2709040,culture,MUSIC,futures,289441,#2 Global Artist 2027,The Weeknd,#2 Global Artist 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-us-yr-2027-badbun,2708996,culture,MUSIC,futures,289436,#2 Artist in the US 2027,Bad Bunny,#2 Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-us-yr-2027-beyonc,2709004,culture,MUSIC,futures,289436,#2 Artist in the US 2027,Beyonce,#2 Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-us-yr-2027-brumar,2709002,culture,MUSIC,futures,289436,#2 Artist in the US 2027,Bruno Mars,#2 Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-us-yr-2027-charoa,2709005,culture,MUSIC,futures,289436,#2 Artist in the US 2027,Chappell Roan,#2 Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-us-yr-2027-drake,2708998,culture,MUSIC,futures,289436,#2 Artist in the US 2027,Drake,#2 Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-us-yr-2027-kenlam,2708999,culture,MUSIC,futures,289436,#2 Artist in the US 2027,Kendrick Lamar,#2 Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-us-yr-2027-ladgag,2709006,culture,MUSIC,futures,289436,#2 Artist in the US 2027,Lady Gaga,#2 Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-us-yr-2027-morwal,2709003,culture,MUSIC,futures,289436,#2 Artist in the US 2027,Morgan Wallen,#2 Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-us-yr-2027-sabcar,2709000,culture,MUSIC,futures,289436,#2 Artist in the US 2027,Sabrina Carpenter,#2 Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-us-yr-2027-tayswi,2708997,culture,MUSIC,futures,289436,#2 Artist in the US 2027,Taylor Swift,#2 Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-artst-us-yr-2027-thewee,2709001,culture,MUSIC,futures,289436,#2 Artist in the US 2027,The Weeknd,#2 Artist in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-glbl-yr-2027-choosi,2709057,culture,MUSIC,futures,289444,#2 Global Song 2027,Choosin' Texas - Ella Langley,#2 Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-glbl-yr-2027-houwif,2709058,culture,MUSIC,futures,289444,#2 Global Song 2027,Housewife - Tate McRae,#2 Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-glbl-yr-2027-manine,2709059,culture,MUSIC,futures,289444,#2 Global Song 2027,Man I Need - Olivia Dean,#2 Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-glbl-yr-2027-nickid,2709061,culture,MUSIC,futures,289444,#2 Global Song 2027,Nicole Kidman - ADELA,#2 Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-glbl-yr-2027-patzer,2709062,culture,MUSIC,futures,289444,#2 Global Song 2027,Patient Zero - Taylor Swift,#2 Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-glbl-yr-2027-stopwe,2709060,culture,MUSIC,futures,289444,#2 Global Song 2027,Stop The Wedding! - Ashe,#2 Global Song 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-us-yr-2027-choosi,2709070,culture,MUSIC,futures,289446,#2 Song in the US 2027,Choosin' Texas - Ella Langley,#2 Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-us-yr-2027-houwif,2709071,culture,MUSIC,futures,289446,#2 Song in the US 2027,Housewife - Tate McRae,#2 Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-us-yr-2027-manine,2709072,culture,MUSIC,futures,289446,#2 Song in the US 2027,Man I Need - Olivia Dean,#2 Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-us-yr-2027-nickid,2709073,culture,MUSIC,futures,289446,#2 Song in the US 2027,Nicole Kidman - ADELA,#2 Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-us-yr-2027-patzer,2709074,culture,MUSIC,futures,289446,#2 Song in the US 2027,Patient Zero - Taylor Swift,#2 Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+ccrc-sptfy-2-song-us-yr-2027-stopwe,2709069,culture,MUSIC,futures,289446,#2 Song in the US 2027,Stop The Wedding! - Ashe,#2 Song in the US 2027,2027-12-16T04:00:00Z,0.01,0.095,1795115115
+cpagsp-silver-updown-15m-2026-11-19-1900z,2700302,finance,COMMODITY,,288190,Silver Up or Down 15m,Silver Up or Down 15m,Silver Up or Down 15m,2026-11-19T19:45:00Z,0.01,0.095,1795115115
+cpagsp-silver-updown-1h-2026-11-19-1900z,2681356,finance,COMMODITY,,285844,Silver Up or Down Hourly,Silver Up or Down Hourly,Silver Up or Down Hourly,2026-11-19T20:30:00Z,0.01,0.095,1795115115
+cpausp-gold-updown-15m-2026-11-19-1900z,2700303,finance,COMMODITY,,288191,Gold Up or Down 15m,Gold Up or Down 15m,Gold Up or Down 15m,2026-11-19T19:45:00Z,0.01,0.095,1795115115
+cpausp-gold-updown-1h-2026-11-19-1900z,2681350,finance,COMMODITY,,285838,Gold Up or Down Hourly,Gold Up or Down Hourly,Gold Up or Down Hourly,2026-11-19T20:30:00Z,0.01,0.095,1795115115
+cpngf-natgas-updown-15m-2026-11-19-1900z,2700292,finance,COMMODITY,,288180,Natural Gas Up or Down 15m,Natural Gas Up or Down 15m,Natural Gas Up or Down 15m,2026-11-19T19:45:00Z,0.01,0.095,1795115115
+cpngf-natgas-updown-1d-2026-11-18-2315z,2679540,finance,COMMODITY,,285357,Natural Gas Up or Down Daily,Natural Gas Up or Down Daily,Natural Gas Up or Down Daily,2026-11-19T22:30:00Z,0.01,0.095,1795115115
+cpngf-natgas-updown-1h-2026-11-19-1900z,2681321,finance,COMMODITY,,285821,Natural Gas Up or Down Hourly,Natural Gas Up or Down Hourly,Natural Gas Up or Down Hourly,2026-11-19T20:30:00Z,0.01,0.095,1795115115
+cpwtif-wti-updown-15m-2026-11-19-1900z,2700323,finance,COMMODITY,,288202,WTI Crude Up or Down 15m,WTI Crude Up or Down 15m,WTI Crude Up or Down 15m,2026-11-19T19:45:00Z,0.01,0.095,1795115115
+cpwtif-wti-updown-1h-2026-11-19-1900z,2681349,finance,COMMODITY,,285837,WTI Crude Up or Down Hourly,WTI Crude Up or Down Hourly,WTI Crude Up or Down Hourly,2026-11-19T20:30:00Z,0.01,0.095,1795115115
+fivyc-5yr-hi-mth-11-2026-gte5pt10,1983769,macro,FISCAL,futures,211143,How High Will 5-YR Treasury Yield Go in November?,5.10% or Higher,How High Will 5-YR Treasury Yield Go in November?,2026-12-11T04:59:00Z,0.01,0.095,1795115115
+fivyc-5yr-lw-mth-11-2026-lte4pt50,1983765,macro,FISCAL,futures,211144,How Low Will 5-YR Treasury Yield Get in November?,4.50% or Lower,How Low Will 5-YR Treasury Yield Get in November?,2026-12-11T04:59:00Z,0.01,0.095,1795115115
+gsrc-gsearch-1movie-2026-avedoo,1279421,culture,MOVIES,futures,148016,#1 Searched Movie on Google 2026?,Avengers: Doomsday,#1 Searched Movie on Google 2026?,2027-01-15T04:00:00Z,0.01,0.095,1795115115
+gsrc-gsearch-1person-us-2026-nicmad,1279694,culture,PEOPLE,futures,148035,#1 Searched Person on Google in the US 2026?,Nicolas Maduro,#1 Searched Person on Google in the US 2026?,2027-01-15T04:00:00Z,0.01,0.095,1795115115
+raincli-rain-daily-2026-11-20-klax,2671573,climate,WEATHER,futures,284435,Where will it rain on Nov 20?,Los Angeles,Where will it rain on Nov 20?,2026-12-05T04:59:59Z,0.01,0.095,1795115115
+raincli-rain-daily-2026-11-20-kmia,2671571,climate,WEATHER,futures,284435,Where will it rain on Nov 20?,Miami,Where will it rain on Nov 20?,2026-12-05T04:59:59Z,0.01,0.095,1795115115
+raincli-rain-daily-2026-11-20-knyc,2671569,climate,WEATHER,futures,284435,Where will it rain on Nov 20?,New York,Where will it rain on Nov 20?,2026-12-05T04:59:59Z,0.01,0.095,1795115115
+raincli-rain-daily-2026-11-20-kphl,2671570,climate,WEATHER,futures,284435,Where will it rain on Nov 20?,Philadelphia,Where will it rain on Nov 20?,2026-12-05T04:59:59Z,0.01,0.095,1795115115
+rvcus-fedfnds-ondt-2027-12-31-gte3pt25,1022800,macro,MONETARY,futures,124116,Fed Funds Rate at the End of 2027?,3.25% Or Above,Fed Funds Rate at the End of 2027?,2028-01-15T04:00:00Z,0.01,0.095,1795115115
+rvcus-fedfnds-ondt-2027-12-31-gte3pt50,1022798,macro,MONETARY,futures,124116,Fed Funds Rate at the End of 2027?,3.50% Or Above,Fed Funds Rate at the End of 2027?,2028-01-15T04:00:00Z,0.01,0.095,1795115115
+rvcus-fedfnds-ondt-2027-12-31-gte3pt75,1022796,macro,MONETARY,futures,124116,Fed Funds Rate at the End of 2027?,3.75% Or Above,Fed Funds Rate at the End of 2027?,2028-01-15T04:00:00Z,0.01,0.095,1795115115
+rvcus-fedfnds-ondt-2027-12-31-gte4pt00,1022794,macro,MONETARY,futures,124116,Fed Funds Rate at the End of 2027?,4.00% Or Above,Fed Funds Rate at the End of 2027?,2028-01-15T04:00:00Z,0.01,0.095,1795115115
+rvcus-fedfnds-ondt-2027-12-31-gte4pt25,1022792,macro,MONETARY,futures,124116,Fed Funds Rate at the End of 2027?,4.25% Or Above,Fed Funds Rate at the End of 2027?,2028-01-15T04:00:00Z,0.01,0.095,1795115115
+rvcus-fedfnds-ondt-2027-12-31-gte4pt50,1022790,macro,MONETARY,futures,124116,Fed Funds Rate at the End of 2027?,4.50% Or Above,Fed Funds Rate at the End of 2027?,2028-01-15T04:00:00Z,0.01,0.095,1795115115
+rvcus-fedfnds-ondt-2027-12-31-gte4pt75,1022788,macro,MONETARY,futures,124116,Fed Funds Rate at the End of 2027?,4.75% Or Above,Fed Funds Rate at the End of 2027?,2028-01-15T04:00:00Z,0.01,0.095,1795115115
+rvcus-fedfnds-ondt-2027-12-31-gte5pt00,1022776,macro,MONETARY,futures,124116,Fed Funds Rate at the End of 2027?,5.00% Or Above,Fed Funds Rate at the End of 2027?,2028-01-15T04:00:00Z,0.01,0.095,1795115115
+spotrc-spotify-1songus-2026-11-20-chotex,2614241,culture,MUSIC,futures,278305,Spotify #1 Song (US) Week of November 20?,Choosin' Texas - Ella Langley,Spotify #1 Song (US) Week of November 20?,2026-12-05T04:00:00Z,0.01,0.095,1795115115
+spotrc-spotify-1songus-2026-11-20-nickid,2614243,culture,MUSIC,futures,278305,Spotify #1 Song (US) Week of November 20?,Nicole Kidman - ADELA,Spotify #1 Song (US) Week of November 20?,2026-12-05T04:00:00Z,0.01,0.095,1795115115
+spotrc-spotify-1songus-2026-11-20-stopwe,2614239,culture,MUSIC,futures,278305,Spotify #1 Song (US) Week of November 20?,Stop The Wedding! - Ashe,Spotify #1 Song (US) Week of November 20?,2026-12-05T04:00:00Z,0.01,0.095,1795115115
+spotrc-spotify-1songus-2026-11-20-stuson,2614242,culture,MUSIC,futures,278305,Spotify #1 Song (US) Week of November 20?,stupid song - Olivia Rodrigo,Spotify #1 Song (US) Week of November 20?,2026-12-05T04:00:00Z,0.01,0.095,1795115115
+spotrc-spotify-1songus-2026-11-20-thecur,2614244,culture,MUSIC,futures,278305,Spotify #1 Song (US) Week of November 20?,the cure - Olivia Rodrigo,Spotify #1 Song (US) Week of November 20?,2026-12-05T04:00:00Z,0.01,0.095,1795115115
+tac-globes-nom-supactre-2026-12-07-olicol,2361941,culture,AWD,futures,250350,Golden Globe Nominees: Best Supporting Actress  Motion Picture,Olivia Colman  Elsinore,Golden Globe Nominees: Best Supporting Actress  Motion Picture,2026-12-22T04:00:00Z,0.01,0.095,1795115115
+tac-globes-nom-supactre-2026-12-07-scajoh,2361949,culture,AWD,futures,250350,Golden Globe Nominees: Best Supporting Actress  Motion Picture,Scarlett Johansson  Paper Tiger,Golden Globe Nominees: Best Supporting Actress  Motion Picture,2026-12-22T04:00:00Z,0.01,0.095,1795115115
+tc-temp-mdwhigh-2026-11-20-gte70lt71f,2670340,climate,WEATHER,futures,284267,Highest temperature in Chicago on November 20?,70 to 71,Highest temperature in Chicago on November 20?,2026-11-21T11:00:00Z,0.01,0.095,1795115115
+tc-temp-mdwlow-2026-11-20-gte40lt41f,2670348,climate,WEATHER,futures,284270,Lowest temperature in Chicago on November 20?,40 to 41,Lowest temperature in Chicago on November 20?,2026-11-21T11:00:00Z,0.01,0.095,1795115115
+tc-temp-mdwlow-2026-11-20-gte42lt43f,2670349,climate,WEATHER,futures,284270,Lowest temperature in Chicago on November 20?,42 to 43,Lowest temperature in Chicago on November 20?,2026-11-21T11:00:00Z,0.01,0.095,1795115115
+tc-temp-mdwlow-2026-11-20-gte44lt45f,2670350,climate,WEATHER,futures,284270,Lowest temperature in Chicago on November 20?,44 to 45,Lowest temperature in Chicago on November 20?,2026-11-21T11:00:00Z,0.01,0.095,1795115115
+tc-temp-miahigh-2026-11-20-gte80lt81f,2670316,climate,WEATHER,futures,284265,Highest temperature in Miami on November 20?,80 to 81,Highest temperature in Miami on November 20?,2026-11-21T10:00:00Z,0.01,0.095,1795115115
+tc-temp-nychigh-2026-11-20-gte68lt69f,2670299,climate,WEATHER,futures,284263,Highest temperature in NYC on November 20?,68 to 69,Highest temperature in NYC on November 20?,2026-11-21T10:00:00Z,0.01,0.095,1795115115
+tenyc-10yr-day-11-20-2026-gte5pt10,2506325,macro,FISCAL,futures,266576,10-YR Treasury Yield on November 20?,5.10% or Higher,10-YR Treasury Yield on November 20?,2026-12-01T04:59:00Z,0.01,0.095,1795115115
+tenyc-10yr-hi-mth-11-2026-gte5pt25,1983780,macro,FISCAL,futures,211145,How High Will 10-YR Treasury Yield Go in November?,5.25% or Higher,How High Will 10-YR Treasury Yield Go in November?,2026-12-11T04:59:00Z,0.01,0.095,1795115115
+twoyc-2yr-hi-mth-11-2026-gte4pt95,1983758,macro,FISCAL,futures,211141,How High Will 2-YR Treasury Yield Go in November?,4.95% or Higher,How High Will 2-YR Treasury Yield Go in November?,2026-12-11T04:59:00Z,0.01,0.095,1795115115
+twoyc-2yr-lw-mth-11-2026-lte4pt25,1983757,macro,FISCAL,futures,211142,How Low Will 2-YR Treasury Yield Get in November?,4.25% or Lower,How Low Will 2-YR Treasury Yield Get in November?,2026-12-11T04:59:00Z,0.01,0.095,1795115115
+twoyc-2yr-lw-mth-11-2026-lte4pt35,1983755,macro,FISCAL,futures,211142,How Low Will 2-YR Treasury Yield Get in November?,4.35% or Lower,How Low Will 2-YR Treasury Yield Get in November?,2026-12-11T04:59:00Z,0.01,0.095,1795115115
+twoyc-2yr-lw-mth-11-2026-lte4pt45,1983753,macro,FISCAL,futures,211142,How Low Will 2-YR Treasury Yield Get in November?,4.45% or Lower,How Low Will 2-YR Treasury Yield Get in November?,2026-12-11T04:59:00Z,0.01,0.095,1795115115
+vtc-usseto-va-2026-11-03-gt4m,470594,politics,USCONGRESS,futures,86661,Virginia Senate Election: Turnout,Above 4M,Virginia Senate Election: Turnout,2027-01-15T00:00:00Z,0.01,0.095,1795115115

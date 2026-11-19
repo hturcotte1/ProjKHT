@@ -1,36 +1,37 @@
 # Account status (paper)
 
-As of 2026-11-19 10:15 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-19 19:05 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $996.64 |
+| Equity (positions marked at the bid) | $996.93 |
 | Starting bankroll | $1,000.00 |
-| Change | $-3.36 (-0.34%) |
-| Cash | $759.84 |
-| In positions (cost) | $240.16 |
+| Change | $-3.07 (-0.31%) |
+| Cash | $739.87 |
+| In positions (cost) | $260.13 |
 | Realised profit | $+0.00 |
 | Fees paid | $0.23 |
-| Open positions | 12 |
-| Fills | 12 |
+| Open positions | 13 |
+| Fills | 13 |
 | Settled positions | 0 |
 
 ## Open positions
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.968 | $-0.26 | 71 |
-| US recession by end of 2026? | No | 20.4 | 0.979 | 0.975 | $-0.08 | 73 |
-| 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.972 | $-0.02 | 74 |
-| Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 91 |
-| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.962 | $-0.23 | 102 |
-| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.923 | $-0.95 | 102 |
-| Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.951 | $-0.61 | 116 |
-| Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.930 | $-0.42 | 133 |
-| Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.937 | $-0.13 | 133 |
-| Ilhan Omar denaturalization case filed by March 31, 2027? | No | 21.5 | 0.933 | 0.920 | $-0.27 | 133 |
-| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 151 |
-| Will Jordan Bardella advance to the second round of the next French pr | No | 21.5 | 0.933 | 0.930 | $-0.06 | 151 |
+| Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.966 | $-0.31 | 70 |
+| US recession by end of 2026? | No | 20.4 | 0.979 | 0.976 | $-0.06 | 72 |
+| 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.972 | $-0.02 | 73 |
+| Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 90 |
+| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.962 | $-0.23 | 101 |
+| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.936 | $-0.68 | 101 |
+| Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.951 | $-0.61 | 115 |
+| Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 132 |
+| Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.937 | $-0.13 | 132 |
+| Ilhan Omar denaturalization case filed by March 31, 2027? | No | 21.5 | 0.933 | 0.920 | $-0.27 | 132 |
+| Will Russia capture Sumy by March 31, 2027? | No | 20.5 | 0.973 | 0.965 | $-0.16 | 132 |
+| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 150 |
+| Will Jordan Bardella advance to the second round of the next French pr | No | 21.5 | 0.933 | 0.930 | $-0.06 | 150 |
 
 ## Resting orders
 
@@ -55,7 +56,8 @@ As of 2026-11-19 10:15 UTC. Started 2026-11-10 20:50 UTC.
 | 2026-11-15 19:11 UTC | Putin out as President of Russia by March 31, 2027? | BUY | 0.950 | 21.1 | 0.0000 |
 | 2026-11-16 21:47 UTC | Will Dua Lipa appear at the 2027 Big Game halftime show? | BUY | 0.935 | 21.4 | 0.0000 |
 | 2026-11-17 21:51 UTC | Ilhan Omar denaturalization case filed by March 31, 2027? | BUY | 0.930 | 21.5 | 0.0560 |
+| 2026-11-19 19:05 UTC | Will Russia capture Sumy by March 31, 2027? | BUY | 0.973 | 20.5 | 0.0000 |
 
 ## Equity history
 
-34 cycles from 2026-11-10 20:50 UTC to 2026-11-19 10:15 UTC; equity $1,000.00 → $996.64. The longest gap between two cycles was 12.1 hours.
+35 cycles from 2026-11-10 20:50 UTC to 2026-11-19 19:05 UTC; equity $1,000.00 → $996.93. The longest gap between two cycles was 12.1 hours.
