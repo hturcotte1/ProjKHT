@@ -950,6 +950,38 @@ were followed from their listed start to play. They waited 3, 4, 22 and
 26 minutes. The orders would have rested through three of those waits
 and been traded against in none.
 
+**19 November, 00:17 UTC. The first markets that count for tests G1 and
+Q1 were picked up as they opened.** From the saves of 22:03, 23:03 and
+00:03 UTC:
+
+- The six markets of the day before were read to their end and seen to
+  close: last open at 21:59:50, closed at 22:00:20.
+- The six new ones were first read open 21 seconds (Solana), 4 to 5
+  minutes (Bitcoin, Ether, XRP) and 3 minutes 50 seconds (gold and
+  silver, whose window began at 23:15) after their windows began. The
+  rule for a whole market-day allows 15 minutes. The recorder had looked
+  for each by name from a minute before; the exchange opened their books
+  a few minutes into the window. Each has its window, price to beat,
+  pool, target size and maximum spread written down.
+- Readings half a minute apart throughout, the longest gap 30 seconds.
+- The reference prices are in fifteen-second candles without a repeat.
+  They have one hole of 14 minutes for gold and silver, from 22:01 to
+  22:15 UTC, when neither had a market open. No test uses them, and the
+  exchange's own history has those minutes if they are ever wanted.
+
+So the first market-day of gold and silver that can count is under way.
+It closes at 22:00 UTC today. In its first 35 minutes both books
+qualified at every reading, 100 contracts at the best prices would have
+held 5% of gold's score and 7% of silver's, and the paper orders were
+traded against fifteen times in each. That is described and decides
+nothing.
+
+The earnings recorder is running: 22 markets every half minute since
+20:28 UTC, no errors. The three events of one market still stand a cent
+apart with 1,700 to 6,500 contracts a side. Five of the nineteen brackets
+in the events of several markets have never qualified in that time. None
+of the events of 19 November counts.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
