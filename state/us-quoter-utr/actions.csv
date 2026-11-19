@@ -5117,3 +5117,7 @@ ts,action,slug,side,intent,price,qty,expires,id,why
 1795055442,cancel,aec-utr-lammar-olsave-2026-11-17,bid,ORDER_INTENT_BUY_LONG,0.59,250.0,1795055562,paper-10180,
 1795055442,cancel,aec-utr-lammar-olsave-2026-11-17,ask,ORDER_INTENT_BUY_SHORT,0.66,250.0,1795055592,paper-10181,
 1795055442,cancel,aec-utr-lewbel-olmzoe-2026-11-18,bid,ORDER_INTENT_BUY_LONG,0.56,250.0,1795055592,paper-10182,
+1795064172,place,aec-utr-ingser-coragu-2026-11-16,bid,ORDER_INTENT_BUY_LONG,0.59,250.0,1795064352,paper-10183,
+1795064172,place,aec-utr-ingser-coragu-2026-11-16,ask,ORDER_INTENT_BUY_SHORT,0.67,250.0,1795064352,paper-10184,
+1795064292,cancel,aec-utr-ingser-coragu-2026-11-16,bid,ORDER_INTENT_BUY_LONG,0.59,250.0,1795064442,paper-10185,
+1795064292,cancel,aec-utr-ingser-coragu-2026-11-16,ask,ORDER_INTENT_BUY_SHORT,0.67,250.0,1795064442,paper-10186,
