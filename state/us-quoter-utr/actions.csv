@@ -5122,3 +5122,7 @@ ts,action,slug,side,intent,price,qty,expires,id,why
 1795064292,cancel,aec-utr-ingser-coragu-2026-11-16,bid,ORDER_INTENT_BUY_LONG,0.59,250.0,1795064442,paper-10185,
 1795064292,cancel,aec-utr-ingser-coragu-2026-11-16,ask,ORDER_INTENT_BUY_SHORT,0.67,250.0,1795064442,paper-10186,
 1795069482,stop,,,,,,,,the run ended
+1795076606,place,aec-utr-hatpet-tacgab-2026-11-17,bid,ORDER_INTENT_BUY_LONG,0.64,250.0,1795076786,paper-10187,
+1795076606,place,aec-utr-hatpet-tacgab-2026-11-17,ask,ORDER_INTENT_BUY_SHORT,0.69,250.0,1795076786,paper-10188,
+1795076666,cancel,aec-utr-hatpet-tacgab-2026-11-17,ask,ORDER_INTENT_BUY_SHORT,0.69,250.0,1795076786,paper-10188,
+1795076666,place,aec-utr-hatpet-tacgab-2026-11-17,ask,ORDER_INTENT_BUY_SHORT,0.68,250.0,1795076846,paper-10189,
