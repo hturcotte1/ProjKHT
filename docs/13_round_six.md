@@ -1092,6 +1092,27 @@ matches, if the six paid hours are counted back from the real start, a
 fifth of R2's resting time on average (an eighth at the median) lay
 before them and earned nothing.
 
+*Added at 09:10 UTC, three smaller things from the same check-in.*
+
+- **Section 4 said the good seconds would be the dangerous ones, and on
+  the first day they were.** In gold half of the day's reward came from
+  the 141 minutes in which the paper orders held 5% or more of the
+  score. In those minutes they were traded against about 40 times an
+  hour, and 65 times an hour when they held more than a fifth. In the
+  rest of the day it was 15 to 33 times an hour. Silver was the same.
+- **Why the 1¢ order of test Q1 rested so little on a dead afternoon.**
+  In gold's last four and a half hours on 19 November the offers within
+  reach of a 1¢ bid held less than the target size in four readings of
+  five (4,200 contracts at the median, where 5,000 are needed). Once one
+  side has gone, the firms on the other side stop keeping the target
+  size there. So for most of that time one order could not have made the
+  book qualify at all.
+- **The recorders keep their half minute.** Across all runs so far the
+  longest gap between two readings of one book is 40 seconds in the
+  recorder of matches (27 matches read in the busiest half minute), 39
+  in the earnings recorder and 34 in the recorder of gold, silver and
+  the coins. No request budget needs raising.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
