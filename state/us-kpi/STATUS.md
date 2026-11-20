@@ -1,19 +1,19 @@
 # The top of the book in single-market reward programmes
 
-*Written by `kht us-top` at the end of a run: 20 November 2026, 17:18 UTC. It lists what was read. The rule of test K1 (`docs/13_round_six.md`) is applied by `scripts/us_kpi_score.py`, not here.*
+*Written by `kht us-top` at the end of a run: 20 November 2026, 22:17 UTC. It lists what was read. The rule of test K1 (`docs/13_round_six.md`) is applied by `scripts/us_kpi_score.py`, not here.*
 
-- Run `20261120T122046Z`: 298 minutes, 17,284 readings of 29 markets, 20 readings of the reward schedule, 0 errors.
+- Run `20261120T171946Z`: 298 minutes, 15,900 readings of 29 markets, 20 readings of the reward schedule, 0 errors.
 
 | Market | Programme | Pool a day | Target size | Readings |
 |---|---|---:|---:|---:|
-| `kpic-ttwo-gta6rec-2027-01-31-gt815pt7m` | kpic_20261116 | $250 | 500 | 596 |
-| `kpic-ttwo-gta6units-2026-12-31-gte12m` | kpic_20261116 | $250 | 500 | 596 |
-| `kpic-ttwo-gta6units-2026-12-31-gte15m` | kpic_20261116 | $250 | 500 | 596 |
-| `kpic-ttwo-gta6units-2026-12-31-gte18m` | kpic_20261116 | $250 | 500 | 596 |
-| `kpic-ttwo-gta6units-2026-12-31-gte21m` | kpic_20261116 | $250 | 500 | 596 |
-| `kpic-ttwo-gta6units-2026-12-31-gte24m` | kpic_20261116 | $250 | 500 | 596 |
-| `kpic-ttwo-gta6units-2026-12-31-gte27m` | kpic_20261116 | $250 | 500 | 596 |
-| `kpic-ttwo-gta6units-2026-12-31-gte30m` | kpic_20261116 | $250 | 500 | 596 |
+| `kpic-ttwo-gta6rec-2027-01-31-gt815pt7m` | kpic_20261116 | $250 | 500 | 345 |
+| `kpic-ttwo-gta6units-2026-12-31-gte12m` | kpic_20261116 | $250 | 500 | 480 |
+| `kpic-ttwo-gta6units-2026-12-31-gte15m` | kpic_20261116 | $250 | 500 | 480 |
+| `kpic-ttwo-gta6units-2026-12-31-gte18m` | kpic_20261116 | $250 | 500 | 481 |
+| `kpic-ttwo-gta6units-2026-12-31-gte21m` | kpic_20261116 | $250 | 500 | 480 |
+| `kpic-ttwo-gta6units-2026-12-31-gte24m` | kpic_20261116 | $250 | 500 | 481 |
+| `kpic-ttwo-gta6units-2026-12-31-gte27m` | kpic_20261116 | $250 | 500 | 481 |
+| `kpic-ttwo-gta6units-2026-12-31-gte30m` | kpic_20261116 | $250 | 500 | 481 |
 | `kpic-ttwo-gta6units-2026-12-31-gte33m` | kpic_20261116 | $250 | 500 | 596 |
 | `kpic-ttwo-gta6units-2026-12-31-gte36m` | kpic_20261116 | $250 | 500 | 596 |
 | `kpic-ttwo-gta6units-2026-12-31-gte39m` | kpic_20261116 | $250 | 500 | 596 |
@@ -24,11 +24,11 @@
 | `kpic-ttwo-gta6units-2026-12-31-gte54m` | kpic_20261116 | $250 | 500 | 596 |
 | `kpic-ttwo-gta6units-2026-12-31-gte57m` | kpic_20261116 | $250 | 500 | 596 |
 | `kpic-ttwo-gta6units-2026-12-31-gte60m` | kpic_20261116 | $250 | 500 | 596 |
-| `kpic-ttwo-gta6units-2026-12-31-nodata` | kpic_20261116 | $250 | 500 | 596 |
+| `kpic-ttwo-gta6units-2026-12-31-nodata` | kpic_20261116 | $250 | 500 | 481 |
 | `kpic-ttwo-gta6units-2027-03-31-gte100m` | kpic_20261116 | $250 | 500 | 596 |
-| `kpic-ttwo-gta6units-2027-03-31-gte10m` | kpic_20261116 | $250 | 500 | 596 |
-| `kpic-ttwo-gta6units-2027-03-31-gte20m` | kpic_20261116 | $250 | 500 | 596 |
-| `kpic-ttwo-gta6units-2027-03-31-gte30m` | kpic_20261116 | $250 | 500 | 596 |
+| `kpic-ttwo-gta6units-2027-03-31-gte10m` | kpic_20261116 | $250 | 500 | 526 |
+| `kpic-ttwo-gta6units-2027-03-31-gte20m` | kpic_20261116 | $250 | 500 | 526 |
+| `kpic-ttwo-gta6units-2027-03-31-gte30m` | kpic_20261116 | $250 | 500 | 526 |
 | `kpic-ttwo-gta6units-2027-03-31-gte40m` | kpic_20261116 | $250 | 500 | 596 |
 | `kpic-ttwo-gta6units-2027-03-31-gte50m` | kpic_20261116 | $250 | 500 | 596 |
 | `kpic-ttwo-gta6units-2027-03-31-gte60m` | kpic_20261116 | $250 | 500 | 596 |
