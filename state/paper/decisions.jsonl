@@ -136,3 +136,4 @@
 {"action": "blocked", "market_id": 694936, "reason": "Will Nebius Group be acquired before 2027? | buy 'No' at 0.980, est. 0.986, edge 0.54c, 42d", "ts": 1795115051.5116394, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 2307824, "reason": "Will Anthropic's valuation hit (HIGH) $4.0T by December 31? | buy 'No' at 0.979, est. 0.985, edge 0.55c, 46d", "ts": 1795115051.5116394, "why": "total exposure cap"}
 {"action": "screened", "by_limit": {"event": 7, "theme 'economy'": 2, "theme 'foreign-policy'": 1, "theme 'iran'": 10, "theme 'israel'": 8, "theme 'middle-east'": 1, "theme 'oil'": 8, "theme 'ukraine'": 10, "theme 'venezuela'": 4, "total": 32}, "count": 83, "ts": 1795137308.5550294}
+{"action": "screened", "by_limit": {"event": 9, "theme 'economy'": 2, "theme 'foreign-policy'": 3, "theme 'iran'": 17, "theme 'israel'": 8, "theme 'oil'": 1, "theme 'ukraine'": 9, "theme 'venezuela'": 4, "total": 29}, "count": 82, "ts": 1795164253.3946514}
