@@ -1,14 +1,10 @@
 # Crypto ladders before they settle
 
-*Written by `kht us-lasttick` at the end of a run: 20 November 2026, 02:21 UTC. This copy of the recorder read only range markets, from 330 minutes before their end. It lists what was read. The rule of `docs/11_crypto_us.md`, section 12, is applied by `scripts/us_ladder_score.py`, not here.*
+*Written by `kht us-lasttick` at the end of a run: 20 November 2026, 07:20 UTC. This copy of the recorder read only range markets, from 330 minutes before their end. It lists what was read. The rule of `docs/11_crypto_us.md`, section 12, is applied by `scripts/us_ladder_score.py`, not here.*
 
-- Run `20261119T212321Z`: 298 minutes, 71 listings, 2,850 readings of 150 markets ending at 1 different times, 0 errors.
-- At the last reading before their end, 1 markets had a best bid of 1¢ (0 contracts) and 7 a best offer of 99¢ (1,283,261 contracts). This counts every such market, near the price or far from it.
-- Index levels last published: BTC 61,429.97, ETH 1,732.9, SOL 71.8417, XRP 0.9503.
+- Run `20261120T022220Z`: 298 minutes, 60 listings, 0 readings of 0 markets ending at 0 different times, 0 errors.
+- At the last reading before their end, 0 markets had a best bid of 1¢ (0 contracts) and 0 a best offer of 99¢ (0 contracts). This counts every such market, near the price or far from it.
+- Index levels last published: BTC 61,922.02, ETH 1,747.45, SOL 72.7253, XRP 0.9672.
 
 | Markets followed | Number |
 |---|---:|
-| btc range (daily) | 76 |
-| eth range (daily) | 34 |
-| sol range (daily) | 30 |
-| xrp range (daily) | 10 |
