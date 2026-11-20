@@ -66,3 +66,4 @@
 {"action": "screened", "by_limit": {"event": 5, "theme 'climate-science'": 1}, "count": 6, "ts": 1795083305.5366256}
 {"action": "screened", "by_limit": {"event": 4, "theme 'climate-science'": 1}, "count": 5, "ts": 1795115109.8024561}
 {"action": "order", "dte": 132.37071987897986, "edge": 0.010940636127900194, "filled": 20.53, "kind": "TAKER", "market_id": 1007579, "order_id": "paper-48", "p_win": 0.9849406361279002, "price": 0.974, "reason": "Will Russia capture Sumy by March 31, 2027? | buy 'No' at 0.974, est. 0.985, edge 1.09c, 132d", "side": "BUY", "size": 20.53, "status": "FILLED", "ts": 1795115109.8024561}
+{"action": "screened", "by_limit": {"event": 5, "theme 'climate-science'": 1}, "count": 6, "ts": 1795137370.0414646}
