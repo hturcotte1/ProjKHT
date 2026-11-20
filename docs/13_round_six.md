@@ -983,6 +983,115 @@ apart with 1,700 to 6,500 contracts a side. Five of the nineteen brackets
 in the events of several markets have never qualified in that time. None
 of the events of 19 November counts.
 
+**20 November, 09:08 UTC. First check-in. Nothing is judged: no test has
+reached its count. These are first looks, and two of them are bad.**
+
+*Health.* The job has run without a break since 18 November, 15:28 UTC:
+eight finished runs of each recorder, 38 to 108 seconds between one run
+and the next, and no error in any of the four logs. The watchdog is
+active. The public reward schedule still carries the same ten fields:
+no cap and no minimum volume.
+
+*Test G1, the first whole market-day* (gold's and silver's window from
+18 November 23:15 to 19 November 22:00 UTC; "up" lost in both). All six
+markets were recorded whole. At 100 contracts a side:
+
+| Market | Book qualified | Our share while resting | Reward | Times traded against | Contracts bought and sold | What the fills made | Net |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Gold | 70% of the window | 3.0% | $21.13 | 435 | 26,704 | −$316.27 | −$295.14 |
+| Silver | 70% | 3.2% | $16.62 | 429 | 30,088 | −$350.34 | −$333.72 |
+| Bitcoin (described) | 65% | 3.3% | $8.64 | 600 | 29,342 | −$272.89 | −$264.24 |
+| Ether, Solana, XRP (described) | 55% to 83% | 10% to 17% | $34.27 | 480 | 29,278 | −$520.35 | −$486.08 |
+
+The reward is about what section 2 guessed. The fills cost fifteen to
+twenty times it. The firms stand a cent apart with 5,000 to 11,000 contracts a side
+nearly all day, so an order at the best price is at the very edge of the
+market, and the paper account is first in line there. In gold each
+contract it was filled for was worth 0.9¢ less against the middle of the
+book half a minute later and 1.1¢ less five minutes later, which is more
+than the half cent the spread gives. The losses come steadily through
+the hours when the market is busy, not in a few bad moments. A real
+order would be further back in the line and filled less often, but
+filled exactly when the price is going through it. The verdict needs ten
+market-days on six dates. One day does not decide it, and I do not
+expect the other nine to change the sign.
+
+*Test Q1, the same day.* Gold: the 1¢ order rested 40 minutes, earned
+$14.23 by the formula and was then sold to for 3,903 contracts, $39.03:
+net −$24.80. Silver: 23 minutes, $6.33, then 3,000 contracts, $30: net
+−$23.67. On 19 November other people kept bids of the target size at
+1¢ in both markets as the price fell towards it: in gold from 15:35 to
+17:19 UTC, in silver from 16:06 to 17:55. Those were sold to as well,
+and from then to the close neither market had a bid in nineteen readings
+of twenty. So the pool does go unpaid for hours, as the test supposed,
+and the
+reason is the one found on 18 November: a bid at 1¢ is a $50 present to
+whoever sells to it. Two market-days on one date; ten on six are asked
+for.
+
+*Test R2, its first US date* (19 November; 64 UTR games old enough and
+settled). R2-utr, 250 a side: reward $63.25 after the minimum, traded
+against in 15 games for 1,304 contracts, fills held to the result
+−$156.59 (+$54.48 at the last middle before the start), net −$93.34,
+−$1.46 a game. R2-top, 100 a side at the best price: reward $44.18,
+fills −$86.33, net −$42.15, −$0.66 a game. One date of 64 games says
+nothing yet either way: last week's seven dates ranged as widely. 800
+games on 12 dates are asked for.
+
+*Test K1.* The recorder is up: seven finished runs, no errors, 51
+markets. The three events of 19 November that are one market do not
+count, and show that the cut-off and the closing work as written:
+
+| Event (not counted) | Hours rested | Share | Reward | Traded against | Closing, fee included | Net |
+|---|---:|---:|---:|---|---:|---:|
+| Intuit, earnings per share | 19.3 of 23.5 | 4.5% | $8.45 | sold 20 | −$0.45 | +$8.00 |
+| Walmart, earnings per share | 8.5 | 3.3% | $2.96 | sold 100 | −$2.19 | +$0.77 |
+| Williams-Sonoma, earnings per share | 8.5 | 3.1% | $2.73 | bought 100, sold 15 | −$1.28 | +$1.45 |
+
+No company's earnings have been listed since the rule was fixed. What
+was listed, in the same programme, is 29 markets on the sales of the
+game Grand Theft Auto VI, which came out on 19 November. One of them is
+an event of one market: "Will GTA VI break the 24-hour sales record?",
+named for 31 January 2027. By the letter of section 4c it counts. It is
+not what the rule was written for: the announcement can come on any day,
+so the cut-off, which is the start of the day in the market's name,
+protects nothing. I have not changed the rule. If the announcement finds
+the paper orders resting, that will be counted as it falls, on 31
+January. So far its book has qualified a third of the time and 100
+contracts would have earned under $1 a day, which is not paid.
+
+*Test D1, its first US date* (19 November; 87 UTR matches recorded
+whole, 85 finished). None began on time. Half began more than 41
+minutes after their first listed start, a quarter more than 98 minutes,
+11 more than three hours. The orders could rest in 37 of the 87, and
+for 36% of the minutes the rule allows: in the rest there was no book
+with two prices within three ticks to stand around. At 500 contracts a
+side:
+
+| | Reward | Fills and their closing | Net | A match |
+|---|---:|---:|---:|---:|
+| Counted as the six hours before the start | $38.66 | −$113.07 | −$74.41 | −$0.86 |
+| With the seconds past the listed start counted as play | $194.54 | −$113.07 | +$81.48 | +$0.94 |
+
+The orders were traded against in three matches, and each says
+something. In two, the firm that makes prices during play arrived with
+its first prices 6¢ and 8¢ away from the middle the orders had stood
+around, on the far side of one of them, at the same reading that first
+showed play: −$19 and −$30 after closing. A real order pulled within
+seconds of the score feed might have been gone; the paper cannot tell.
+In the third the match was called off, which settles a market at 50¢.
+Somebody sold 188 contracts of the 89¢ favourite into the bids while the
+listing still said "not started", and the paper bid at 84¢ took them:
+−$64. A real bid of 500 would have been sold all 500. That is a risk of
+every order resting before a tennis match, test R2's too: whoever learns
+first that a match is off takes the bids on the favourite. 400 matches
+on 10 dates are asked for.
+
+*What this says about the caveat on R2* (section 4d). For those 87
+matches, if the six paid hours are counted back from the real start, a
+fifth of R2's resting time on average (an eighth at the median) lay
+before them and earned nothing.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because

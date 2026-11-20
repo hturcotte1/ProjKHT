@@ -1,0 +1,5 @@
+program,days,with_reward,reward,fills,bought,sold,pnl_fills,net,a_day,worst
+crypto_alt_updown_1d,3,0,0.0,1,400.0,0.0,-4.0,-4.0,-1.33,-4.0
+crypto_btc_updown_1d,1,0,0.0,4,1987.16,0.0,-19.87,-19.87,-19.87,-19.87
+metals_gold_updown_1d,1,1,14.23,1,3903.37,0.0,-39.03,-24.8,-24.8,-24.8
+metals_silver_updown_1d,1,1,6.33,1,3000.0,0.0,-30.0,-23.67,-23.67,-23.67

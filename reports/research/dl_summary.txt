@@ -1,0 +1,17 @@
+Test D1: orders resting between a UTR match's listed start and its real one (docs/13_round_six.md, section 4d)
+scored 20 November 2026, 09:02 UTC. A paper account. No order was placed and no reward was paid to anyone.
+recorded: 56,338 readings of 158 matches, from 18 Nov 20:27 to 20 Nov 08:12 UTC
+
+matches followed: 157; followed from their listed start and seen to start or to close: 125; recorded whole and listed to start from 19 November (US Eastern): 87
+minutes from the first listed start to the first sign of play (or the close): a quarter of matches under 10, half under 27, a quarter over 72; of the minutes in which the rule lets orders rest, the orders rested for 36%
+
+by order size, matches recorded whole and finished (reward both ways; fills closed when play shows, fee paid)
+ size  matches  waited_min  rested_min  past_min  share_before  share_live  reward_before  reward_live  matches_filled  contracts  fees  pnl_fills  net_before  net_live
+250.0       87     5169.72     1847.86   1153.49          0.25        0.00          33.35        11.85               3     687.68 11.26     -88.57      -55.23    -76.73
+500.0       87     5169.72     1847.86   1153.49          0.30        0.25          38.66       194.54               3    1087.78 20.26    -113.07      -74.41     81.48
+
+by US date, 500 contracts a side
+       day  matches  waited_min  reward_before  reward_live  matches_filled  pnl_fills  net_before  net_live
+2026-11-19       87     5169.72          38.66       194.54               3    -113.07      -74.41     81.48
+
+Verdict by the bar fixed in advance (500 contracts a side): NOT YET JUDGED: 85 matches recorded whole and finished on 1 US dates; 400 on 10 are asked for

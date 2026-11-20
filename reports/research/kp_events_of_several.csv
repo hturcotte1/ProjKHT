@@ -1,0 +1,7 @@
+report_date,event,markets,whole,reward,fills,pnl_fills,net
+2026-11-19,intu-q1oerev-2026-11-19,4,False,4.05,1,1.4,5.45
+2026-11-19,wmt-q3uscomp-2026-11-19,5,False,0.0,4,10.85,10.85
+2026-11-19,wmt-q3usecom-2026-11-19,5,False,1.01,0,0.0,1.01
+2026-11-19,wsm-q3comp-2026-11-19,5,False,0.0,1,-1.46,-1.46
+2026-12-31,ttwo-gta6units-2026-12-31,18,False,0.0,6,0.0,0.0
+2027-03-31,ttwo-gta6units-2027-03-31,10,False,0.0,0,0.0,0.0

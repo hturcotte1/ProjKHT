@@ -1,0 +1,24 @@
+Test K1: small orders at the best prices of the earnings markets (docs/13_round_six.md, section 4c)
+scored 20 November 2026, 09:01 UTC. A paper account. No order was placed and no reward was paid to anyone.
+recorded: 125,957 readings of 51 markets, from 18 Nov 20:28 to 20 Nov 08:13 UTC
+
+events that are one market, 100 contracts a side (qualifies: share of the time the book was paid; resting: share of the time our orders rested; share: our part of the score while resting)
+                  event report_date reports  whole  hours  cover  qualifies  resting  share  reward_paid  fills  bought  sold  fees  held_after_cut  pnl_fills   net
+  intu-q1eps-2026-11-19  2026-11-19   after  False 23.458  0.997      0.834    0.823  0.045        8.446      2     0.0  20.0 0.156             0.0     -0.446 8.000
+   wmt-q3eps-2026-11-19  2026-11-19  before  False  8.511  0.998      1.000    1.000  0.033        2.956      1     0.0 100.0 2.189             0.0     -2.189 0.767
+   wsm-q3eps-2026-11-19  2026-11-19  before  False  8.509  0.998      1.000    1.000  0.031        2.727      2   100.0  15.0 1.430             0.0     -1.280 1.447
+ttwo-gta6rec-2027-01-31  2027-01-31          False 29.899  0.996      0.317    0.317  0.010        0.000      3   100.0 100.0 0.000             0.0        NaN   NaN
+
+events that are one market, by order size, recorded whole and finished
+   none yet
+
+events of several markets, the pool divided evenly between them (an assumption; described, not judged)
+report_date                     event  markets  whole  reward  fills  pnl_fills   net
+ 2026-11-19   intu-q1oerev-2026-11-19        4  False    4.05      1       1.40  5.45
+ 2026-11-19   wmt-q3uscomp-2026-11-19        5  False    0.00      4      10.85 10.85
+ 2026-11-19   wmt-q3usecom-2026-11-19        5  False    1.01      0       0.00  1.01
+ 2026-11-19     wsm-q3comp-2026-11-19        5  False    0.00      1      -1.46 -1.46
+ 2026-12-31 ttwo-gta6units-2026-12-31       18  False    0.00      6       0.00  0.00
+ 2027-03-31 ttwo-gta6units-2027-03-31       10  False    0.00      0       0.00  0.00
+
+Verdict by the bar fixed in advance (events that are one market, 100 contracts a side): NOT YET JUDGED: 0 events recorded whole and finished on 0 report dates; 12 on 5 are asked for
