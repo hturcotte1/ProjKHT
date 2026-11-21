@@ -455,3 +455,4 @@
 {"action": "blocked", "market_id": 666861, "reason": "Trump out as President before 2027? | buy 'No' at 0.977, est. 0.987, edge 1.00c, 41d", "ts": 1795195516.1442804, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 677273, "reason": "Israel and Syria normalize relations by December 31, 2026? | buy 'No' at 0.977, est. 0.987, edge 1.00c, 41d", "ts": 1795195516.1442804, "why": "total exposure cap"}
 {"action": "screened", "by_limit": {"event": 9, "theme 'iran'": 35, "theme 'russia'": 3, "theme 'tech'": 13, "theme 'ukraine'": 10, "total": 55}, "count": 125, "ts": 1795216845.1835022}
+{"action": "screened", "by_limit": {"event": 11, "theme 'iran'": 34, "theme 'russia'": 4, "theme 'tech'": 15, "theme 'ukraine'": 9, "total": 54}, "count": 127, "ts": 1795234112.2926598}
