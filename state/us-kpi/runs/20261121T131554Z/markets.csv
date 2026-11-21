@@ -1,0 +1,56 @@
+run,slug,program,pool,target,discount,max_spread,period,question,window_start,window_end,end,price_to_beat,first_seen,asset,listed,reports
+20261121T131554Z,kpic-adi-q4eps-2026-11-24-above-3pt92,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Analog Devices (ADI) beat Q4 FY2026 quarterly earnings?,,,1796788800.0,,1795266990.3,,1795228306.0,before
+20261121T131554Z,kpic-adi-q4indrev-2026-11-24-above-2pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Analog Devices Q4 FY2026 Industrial Revenue?,,,1796788800.0,,1795266990.3,,1795228400.0,before
+20261121T131554Z,kpic-adi-q4indrev-2026-11-24-above-2pt1b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Analog Devices Q4 FY2026 Industrial Revenue?,,,1796788800.0,,1795266990.3,,1795228400.0,before
+20261121T131554Z,kpic-adi-q4indrev-2026-11-24-above-2pt2b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Analog Devices Q4 FY2026 Industrial Revenue?,,,1796788800.0,,1795266990.3,,1795228400.0,before
+20261121T131554Z,kpic-crwd-q3eps-2026-12-01-above-0pt32,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will CrowdStrike (CRWD) beat Q3 FY2027 quarterly earnings?,,,1797393600.0,,1795266990.3,,1795229205.0,after
+20261121T131554Z,kpic-crwd-q3nnarr-2026-12-01-above-320m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CrowdStrike Q3 FY2027 Net New ARR?,,,1797393600.0,,1795266990.3,,1795229298.0,after
+20261121T131554Z,kpic-crwd-q3nnarr-2026-12-01-above-360m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CrowdStrike Q3 FY2027 Net New ARR?,,,1797393600.0,,1795266990.3,,1795229298.0,after
+20261121T131554Z,kpic-crwd-q3nnarr-2026-12-01-above-400m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CrowdStrike Q3 FY2027 Net New ARR?,,,1797393600.0,,1795266990.3,,1795229298.0,after
+20261121T131554Z,kpic-crwd-q3nnarr-2026-12-01-above-440m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CrowdStrike Q3 FY2027 Net New ARR?,,,1797393600.0,,1795266990.3,,1795229298.0,after
+20261121T131554Z,kpic-dell-q3eps-2026-11-24-above-6pt71,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Dell Technologies (DELL) beat Q3 FY2027 quarterly earnings?,,,1796788800.0,,1795266990.3,,1795228642.0,after
+20261121T131554Z,kpic-dell-q3isgrev-2026-11-24-above-33pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Dell Technologies Q3 FY2027 Infrastructure Solutions Group Revenue?,,,1796788800.0,,1795266990.3,,1795228798.0,after
+20261121T131554Z,kpic-dell-q3isgrev-2026-11-24-above-35pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Dell Technologies Q3 FY2027 Infrastructure Solutions Group Revenue?,,,1796788800.0,,1795266990.3,,1795228798.0,after
+20261121T131554Z,kpic-dell-q3isgrev-2026-11-24-above-36pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Dell Technologies Q3 FY2027 Infrastructure Solutions Group Revenue?,,,1796788800.0,,1795266990.3,,1795228798.0,after
+20261121T131554Z,kpic-dell-q3isgrev-2026-11-24-above-38pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Dell Technologies Q3 FY2027 Infrastructure Solutions Group Revenue?,,,1796788800.0,,1795266990.3,,1795228798.0,after
+20261121T131554Z,kpic-dks-q3comp-2026-11-24-1-2pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,DICK'S Sporting Goods Q3 FY2026 DICK'S Business Comparable Sales Growth?,,,1796788800.0,,1795266990.3,,1795228194.0,before
+20261121T131554Z,kpic-dks-q3comp-2026-11-24-2-3pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,DICK'S Sporting Goods Q3 FY2026 DICK'S Business Comparable Sales Growth?,,,1796788800.0,,1795266990.3,,1795228194.0,before
+20261121T131554Z,kpic-dks-q3comp-2026-11-24-3-4pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,DICK'S Sporting Goods Q3 FY2026 DICK'S Business Comparable Sales Growth?,,,1796788800.0,,1795266990.3,,1795228194.0,before
+20261121T131554Z,kpic-dks-q3comp-2026-11-24-gte4pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,DICK'S Sporting Goods Q3 FY2026 DICK'S Business Comparable Sales Growth?,,,1796788800.0,,1795266990.3,,1795228194.0,before
+20261121T131554Z,kpic-dks-q3comp-2026-11-24-lt1pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,DICK'S Sporting Goods Q3 FY2026 DICK'S Business Comparable Sales Growth?,,,1796788800.0,,1795266990.3,,1795228194.0,before
+20261121T131554Z,kpic-dks-q3eps-2026-11-24-above-1pt42,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will DICK'S Sporting Goods (DKS) beat Q3 FY2026 quarterly earnings?,,,1796788800.0,,1795266990.3,,1795227898.0,before
+20261121T131554Z,kpic-mrvl-q3dcrev-2026-12-01-above-2pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Marvell Q3 FY2027 Data Center Revenue?,,,1797393600.0,,1795266990.3,,1795229126.0,after
+20261121T131554Z,kpic-mrvl-q3dcrev-2026-12-01-above-2pt6b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Marvell Q3 FY2027 Data Center Revenue?,,,1797393600.0,,1795266990.3,,1795229125.0,after
+20261121T131554Z,kpic-mrvl-q3dcrev-2026-12-01-above-2pt7b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Marvell Q3 FY2027 Data Center Revenue?,,,1797393600.0,,1795266990.3,,1795229125.0,after
+20261121T131554Z,kpic-mrvl-q3dcrev-2026-12-01-above-2pt8b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Marvell Q3 FY2027 Data Center Revenue?,,,1797393600.0,,1795266990.3,,1795229127.0,after
+20261121T131554Z,kpic-mrvl-q3dcrev-2026-12-01-above-2pt9b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Marvell Q3 FY2027 Data Center Revenue?,,,1797393600.0,,1795266990.3,,1795229125.0,after
+20261121T131554Z,kpic-mrvl-q3eps-2026-12-01-above-1pt11,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Marvell (MRVL) beat Q3 FY2027 quarterly earnings?,,,1797393600.0,,1795266990.3,,1795229025.0,after
+20261121T131554Z,kpic-okta-q3crpo-2026-12-01-12pt5-13pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Okta Q3 FY2027 Current RPO Growth?,,,1797393600.0,,1795266990.3,,1795229675.0,after
+20261121T131554Z,kpic-okta-q3crpo-2026-12-01-13pt5-14pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Okta Q3 FY2027 Current RPO Growth?,,,1797393600.0,,1795266990.3,,1795229675.0,after
+20261121T131554Z,kpic-okta-q3crpo-2026-12-01-14pt5-15pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Okta Q3 FY2027 Current RPO Growth?,,,1797393600.0,,1795266990.3,,1795229676.0,after
+20261121T131554Z,kpic-okta-q3crpo-2026-12-01-gte15pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Okta Q3 FY2027 Current RPO Growth?,,,1797393600.0,,1795266990.3,,1795229676.0,after
+20261121T131554Z,kpic-okta-q3crpo-2026-12-01-lt12pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Okta Q3 FY2027 Current RPO Growth?,,,1797393600.0,,1795266990.3,,1795229675.0,after
+20261121T131554Z,kpic-okta-q3eps-2026-12-01-above-0pt95,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Okta (OKTA) beat Q3 FY2027 quarterly earnings?,,,1797393600.0,,1795266990.3,,1795229518.0,after
+20261121T131554Z,kpic-ttwo-gta6units-2026-12-31-gte33m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795266990.3,,1795122155.0,
+20261121T131554Z,kpic-ttwo-gta6units-2026-12-31-gte36m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795266990.3,,1795122156.0,
+20261121T131554Z,kpic-ttwo-gta6units-2026-12-31-gte39m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795266990.3,,1795122157.0,
+20261121T131554Z,kpic-ttwo-gta6units-2026-12-31-gte42m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795266990.3,,1795122156.0,
+20261121T131554Z,kpic-ttwo-gta6units-2026-12-31-gte45m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795266990.3,,1795122156.0,
+20261121T131554Z,kpic-ttwo-gta6units-2026-12-31-gte48m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795266990.3,,1795122157.0,
+20261121T131554Z,kpic-ttwo-gta6units-2026-12-31-gte51m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795266990.3,,1795122157.0,
+20261121T131554Z,kpic-ttwo-gta6units-2026-12-31-gte54m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795266990.3,,1795122157.0,
+20261121T131554Z,kpic-ttwo-gta6units-2026-12-31-gte57m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795266990.3,,1795122157.0,
+20261121T131554Z,kpic-ttwo-gta6units-2026-12-31-gte60m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795266990.3,,1795122157.0,
+20261121T131554Z,kpic-ttwo-gta6units-2027-03-31-gte100m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795266990.3,,1795050777.0,
+20261121T131554Z,kpic-ttwo-gta6units-2027-03-31-gte40m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795266990.3,,1795050777.0,
+20261121T131554Z,kpic-ttwo-gta6units-2027-03-31-gte50m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795266990.3,,1795050777.0,
+20261121T131554Z,kpic-ttwo-gta6units-2027-03-31-gte60m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795266990.3,,1795050777.0,
+20261121T131554Z,kpic-ttwo-gta6units-2027-03-31-gte70m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795266990.3,,1795050777.0,
+20261121T131554Z,kpic-ttwo-gta6units-2027-03-31-gte80m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795266990.3,,1795050777.0,
+20261121T131554Z,kpic-ttwo-gta6units-2027-03-31-gte90m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795266990.3,,1795050777.0,
+20261121T131554Z,kpic-zs-q1arr-2026-12-02-above-3pt85b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795266990.3,,1795229912.0,after
+20261121T131554Z,kpic-zs-q1arr-2026-12-02-above-3pt86b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795266990.3,,1795229912.0,after
+20261121T131554Z,kpic-zs-q1arr-2026-12-02-above-3pt87b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795266990.3,,1795229912.0,after
+20261121T131554Z,kpic-zs-q1arr-2026-12-02-above-3pt88b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795266990.3,,1795229912.0,after
+20261121T131554Z,kpic-zs-q1arr-2026-12-02-above-3pt89b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795266990.3,,1795229912.0,after
+20261121T131554Z,kpic-zs-q1eps-2026-12-02-above-1pt19,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Zscaler (ZS) beat Q1 FY2027 quarterly earnings?,,,1797480000.0,,1795266990.3,,1795229794.0,after
