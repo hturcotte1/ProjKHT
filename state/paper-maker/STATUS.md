@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-21 12:52 UTC. Started 2026-11-10 07:39 UTC.
+As of 2026-11-21 19:57 UTC. Started 2026-11-10 07:39 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $1,009.82 |
+| Equity (positions marked at the bid) | $1,010.59 |
 | Starting bankroll | $1,000.00 |
-| Change | $+9.82 (+0.98%) |
+| Change | $+10.59 (+1.06%) |
 | Cash | $325.83 |
 | In positions (cost) | $679.83 |
 | Realised profit | $+5.65 |
@@ -19,46 +19,46 @@ As of 2026-11-21 12:52 UTC. Started 2026-11-10 07:39 UTC.
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.969 | $+0.40 | 10 |
-| Israeli airspace closed by November 30, 2026? | No | 21.4 | 0.935 | 0.892 | $-0.92 | 10 |
-| Iran full airspace closure by November 30, 2026? | No | 22.0 | 0.910 | 0.910 | $+0.00 | 10 |
-| Howard Lutnick out as Secretary of Commerce by November 30? | No | 21.3 | 0.940 | 0.930 | $-0.21 | 10 |
-| US imports Russian diesel by November 30? | No | 21.2 | 0.943 | 0.957 | $+0.30 | 10 |
-| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.992 | $+0.91 | 10 |
-| Will Jensen Huang rejoin NVIDIA by November 30, 2026? | No | 21.1 | 0.950 | 0.981 | $+0.65 | 10 |
-| Pete Hegseth out as Secretary of Defense by November 30? | No | 21.1 | 0.946 | 0.982 | $+0.76 | 10 |
-| NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.961 | $+0.02 | 10 |
-| Will WTI Crude Oil (WTI) hit (HIGH) $110 in November? | No | 21.7 | 0.920 | 0.965 | $+0.98 | 10 |
+| Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 21.1 | 0.950 | 0.974 | $+0.51 | 9 |
+| Israeli airspace closed by November 30, 2026? | No | 21.4 | 0.935 | 0.893 | $-0.90 | 9 |
+| Iran full airspace closure by November 30, 2026? | No | 22.0 | 0.910 | 0.920 | $+0.22 | 9 |
+| Howard Lutnick out as Secretary of Commerce by November 30? | No | 21.3 | 0.940 | 0.930 | $-0.21 | 9 |
+| US imports Russian diesel by November 30? | No | 21.2 | 0.943 | 0.957 | $+0.30 | 9 |
+| US-Iran Final Nuclear Deal by November 30, 2026? | No | 21.1 | 0.949 | 0.983 | $+0.72 | 9 |
+| Will Jensen Huang rejoin NVIDIA by November 30, 2026? | No | 21.1 | 0.950 | 0.980 | $+0.63 | 9 |
+| Pete Hegseth out as Secretary of Defense by November 30? | No | 21.1 | 0.946 | 0.982 | $+0.76 | 9 |
+| NATO x Russia military clash by November 30, 2026? | No | 20.8 | 0.960 | 0.940 | $-0.42 | 9 |
+| Will WTI Crude Oil (WTI) hit (HIGH) $110 in November? | No | 21.7 | 0.920 | 0.961 | $+0.89 | 9 |
 | Russia x Ukraine ceasefire by December 31, 2026? | No | 21.7 | 0.920 | 0.944 | $+0.52 | 40 |
-| China x India military clash by December 31, 2026? | No | 21.3 | 0.940 | 0.961 | $+0.45 | 41 |
-| Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.950 | $+1.11 | 41 |
-| Tesla and SpaceX merger officially announced by December 31? | No | 22.2 | 0.900 | 0.830 | $-1.56 | 41 |
-| US strike on Colombia by December 31? | No | 21.7 | 0.920 | 0.950 | $+0.65 | 41 |
-| Zhang Youxia sentenced to prison before 2027? | No | 21.5 | 0.930 | 0.920 | $-0.22 | 41 |
-| Will Russia enter Kramatorsk by December 31, 2026? | No | 21.3 | 0.940 | 0.960 | $+0.43 | 41 |
-| Will Russia capture all of Kostyantynivka by December 31, 2026? | No | 21.5 | 0.930 | 0.930 | $-0.00 | 41 |
-| US x Cuba military clash in 2026? | No | 21.5 | 0.930 | 0.900 | $-0.65 | 41 |
-| Will a new country join the Abraham Accords before 2027? | No | 22.2 | 0.902 | 0.935 | $+0.73 | 41 |
-| Will OpenAI announce another Millennium Prize solution by December 31, | No | 21.8 | 0.917 | 0.943 | $+0.57 | 41 |
-| China x Philippines military clash before 2027? | No | 22.5 | 0.890 | 0.920 | $+0.67 | 41 |
-| US strike on Cuba by December 31? | No | 21.7 | 0.920 | 0.910 | $-0.22 | 41 |
-| Will Israel launch a major ground offensive in Gaza by December 31? | No | 21.7 | 0.920 | 0.960 | $+0.87 | 41 |
-| OpenAI announces it has achieved AGI before 2027? | No | 21.5 | 0.930 | 0.930 | $-0.00 | 41 |
-| Will Gavin Newsom announce a Presidential run before 2027? | No | 21.7 | 0.920 | 0.951 | $+0.67 | 41 |
-| Jerome Powell out from Fed Board by December 31? | No | 21.5 | 0.930 | 0.880 | $-1.08 | 41 |
-| Will there be at least 10000 measles cases in the U.S. in 2026? | No | 20.9 | 0.956 | 0.926 | $-0.63 | 41 |
-| Insurrection Act invoked by December 31? | No | 21.3 | 0.940 | 0.950 | $+0.21 | 41 |
-| Will Half-Life 3 be announced before 2027? | No | 21.7 | 0.920 | 0.910 | $-0.22 | 41 |
-| Will Samuel Alito announce his retirement by December 31, 2026? | No | 20.9 | 0.958 | 0.983 | $+0.52 | 41 |
-| Will FISA Section 702 reauthorization become law this year? | No | 22.2 | 0.900 | 0.880 | $-0.44 | 41 |
-| Alexandre de Moraes out as Brazil Supreme Court Justice? | No | 21.2 | 0.943 | 0.941 | $-0.04 | 41 |
-| Venezuela election scheduled by December 31, 2026? | No | 21.7 | 0.920 | 0.870 | $-1.09 | 41 |
+| China x India military clash by December 31, 2026? | No | 21.3 | 0.940 | 0.968 | $+0.60 | 40 |
+| Will Zelenskyy talk to Putin by December 31? | No | 22.2 | 0.900 | 0.950 | $+1.11 | 40 |
+| Tesla and SpaceX merger officially announced by December 31? | No | 22.2 | 0.900 | 0.830 | $-1.56 | 40 |
+| US strike on Colombia by December 31? | No | 21.7 | 0.920 | 0.950 | $+0.65 | 40 |
+| Zhang Youxia sentenced to prison before 2027? | No | 21.5 | 0.930 | 0.940 | $+0.21 | 40 |
+| Will Russia enter Kramatorsk by December 31, 2026? | No | 21.3 | 0.940 | 0.959 | $+0.40 | 40 |
+| Will Russia capture all of Kostyantynivka by December 31, 2026? | No | 21.5 | 0.930 | 0.940 | $+0.21 | 40 |
+| US x Cuba military clash in 2026? | No | 21.5 | 0.930 | 0.900 | $-0.65 | 40 |
+| Will a new country join the Abraham Accords before 2027? | No | 22.2 | 0.902 | 0.935 | $+0.73 | 40 |
+| Will OpenAI announce another Millennium Prize solution by December 31, | No | 21.8 | 0.917 | 0.900 | $-0.37 | 40 |
+| China x Philippines military clash before 2027? | No | 22.5 | 0.890 | 0.920 | $+0.67 | 40 |
+| US strike on Cuba by December 31? | No | 21.7 | 0.920 | 0.910 | $-0.22 | 40 |
+| Will Israel launch a major ground offensive in Gaza by December 31? | No | 21.7 | 0.920 | 0.963 | $+0.93 | 40 |
+| OpenAI announces it has achieved AGI before 2027? | No | 21.5 | 0.930 | 0.930 | $-0.00 | 40 |
+| Will Gavin Newsom announce a Presidential run before 2027? | No | 21.7 | 0.920 | 0.952 | $+0.70 | 40 |
+| Jerome Powell out from Fed Board by December 31? | No | 21.5 | 0.930 | 0.920 | $-0.22 | 40 |
+| Will there be at least 10000 measles cases in the U.S. in 2026? | No | 20.9 | 0.956 | 0.952 | $-0.08 | 40 |
+| Insurrection Act invoked by December 31? | No | 21.3 | 0.940 | 0.950 | $+0.21 | 40 |
+| Will Half-Life 3 be announced before 2027? | No | 21.7 | 0.920 | 0.910 | $-0.22 | 40 |
+| Will Samuel Alito announce his retirement by December 31, 2026? | No | 20.9 | 0.958 | 0.984 | $+0.54 | 40 |
+| Will FISA Section 702 reauthorization become law this year? | No | 22.2 | 0.900 | 0.870 | $-0.67 | 40 |
+| Alexandre de Moraes out as Brazil Supreme Court Justice? | No | 21.2 | 0.943 | 0.943 | $+0.00 | 40 |
+| Venezuela election scheduled by December 31, 2026? | No | 21.7 | 0.920 | 0.870 | $-1.09 | 40 |
 
 ## Resting orders
 
 | Market | Side | Price | Size | Filled |
 |---|---|---:|---:|---:|
-| Will Scott Bessent leave the Trump administration before 2027? | BUY No | 0.906 | 22.1 | 0.0 |
+| Miguel Díaz-Canel out as leader of Cuba by December 31? | BUY No | 0.925 | 21.6 | 0.0 |
 | Will Russia capture Dobropillia by December 31, 2026? | BUY No | 0.900 | 22.2 | 0.0 |
 | Iran-Oman Hormuz Agreement by November 30? | BUY No | 0.950 | 21.1 | 0.0 |
 | Viktor Orbán arrested by...? | BUY No | 0.934 | 21.4 | 0.0 |
@@ -99,4 +99,4 @@ As of 2026-11-21 12:52 UTC. Started 2026-11-10 07:39 UTC.
 
 ## Equity history
 
-47 cycles from 2026-11-10 07:39 UTC to 2026-11-21 12:52 UTC; equity $1,000.00 → $1,009.82. The longest gap between two cycles was 12.1 hours.
+48 cycles from 2026-11-10 07:39 UTC to 2026-11-21 19:56 UTC; equity $1,000.00 → $1,010.59. The longest gap between two cycles was 12.1 hours.
