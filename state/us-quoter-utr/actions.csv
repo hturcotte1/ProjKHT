@@ -55928,3 +55928,4 @@ ts,action,slug,side,intent,price,qty,expires,id,why
 1795313397,cancel,aec-utr-crojoh-sevmic-2026-11-22,bid,ORDER_INTENT_SELL_SHORT,0.81,6.0,1795313400,paper-60664,
 1795313397,cancel,aec-utr-crojoh-sevmic-2026-11-22,bid,ORDER_INTENT_BUY_LONG,0.81,244.0,1795313400,paper-60665,
 1795313397,cancel,aec-utr-crojoh-sevmic-2026-11-22,ask,ORDER_INTENT_BUY_SHORT,0.83,244.0,1795313400,paper-60666,
+1795320717,stop,,,,,,,,the run ended
