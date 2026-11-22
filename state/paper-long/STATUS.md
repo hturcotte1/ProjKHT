@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-21 19:57 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-22 00:19 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $992.67 |
+| Equity (positions marked at the bid) | $993.55 |
 | Starting bankroll | $1,000.00 |
-| Change | $-7.33 (-0.73%) |
+| Change | $-6.45 (-0.65%) |
 | Cash | $699.76 |
 | In positions (cost) | $300.24 |
 | Realised profit | $+0.00 |
@@ -23,13 +23,13 @@ As of 2026-11-21 19:57 UTC. Started 2026-11-10 20:50 UTC.
 | US recession by end of 2026? | No | 20.4 | 0.979 | 0.969 | $-0.21 | 70 |
 | 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.971 | $-0.04 | 71 |
 | Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 88 |
-| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.950 | $-0.47 | 99 |
+| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.951 | $-0.45 | 99 |
 | Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.942 | $-0.56 | 99 |
 | Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.900 | $-1.65 | 113 |
 | Will Jensen Huang join SpaceX by March 31, 2027? | No | 22.0 | 0.914 | 0.900 | $-0.31 | 130 |
 | Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 130 |
 | Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.934 | $-0.19 | 130 |
-| Ilhan Omar denaturalization case filed by March 31, 2027? | No | 21.5 | 0.933 | 0.810 | $-2.64 | 130 |
+| Ilhan Omar denaturalization case filed by March 31, 2027? | No | 21.5 | 0.933 | 0.850 | $-1.78 | 130 |
 | Major volcano eruption (VEI ≥6) in 2026? | No | 20.7 | 0.970 | 0.941 | $-0.59 | 130 |
 | Will Russia capture Sumy by March 31, 2027? | No | 20.5 | 0.973 | 0.982 | $+0.18 | 130 |
 | Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 148 |
@@ -57,4 +57,4 @@ As of 2026-11-21 19:57 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-42 cycles from 2026-11-10 20:50 UTC to 2026-11-21 19:57 UTC; equity $1,000.00 → $992.67. The longest gap between two cycles was 12.1 hours.
+43 cycles from 2026-11-10 20:50 UTC to 2026-11-22 00:19 UTC; equity $1,000.00 → $993.55. The longest gap between two cycles was 12.1 hours.
