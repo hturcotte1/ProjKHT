@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-22 00:19 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-22 07:12 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $993.55 |
+| Equity (positions marked at the bid) | $993.37 |
 | Starting bankroll | $1,000.00 |
-| Change | $-6.45 (-0.65%) |
+| Change | $-6.63 (-0.66%) |
 | Cash | $699.76 |
 | In positions (cost) | $300.24 |
 | Realised profit | $+0.00 |
@@ -23,17 +23,23 @@ As of 2026-11-22 00:19 UTC. Started 2026-11-10 20:50 UTC.
 | US recession by end of 2026? | No | 20.4 | 0.979 | 0.969 | $-0.21 | 70 |
 | 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.971 | $-0.04 | 71 |
 | Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 88 |
-| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.951 | $-0.45 | 99 |
-| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.942 | $-0.56 | 99 |
+| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.950 | $-0.47 | 99 |
+| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.946 | $-0.47 | 99 |
 | Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.900 | $-1.65 | 113 |
 | Will Jensen Huang join SpaceX by March 31, 2027? | No | 22.0 | 0.914 | 0.900 | $-0.31 | 130 |
 | Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 130 |
 | Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.934 | $-0.19 | 130 |
-| Ilhan Omar denaturalization case filed by March 31, 2027? | No | 21.5 | 0.933 | 0.850 | $-1.78 | 130 |
+| Ilhan Omar denaturalization case filed by March 31, 2027? | No | 21.5 | 0.933 | 0.840 | $-1.99 | 130 |
 | Major volcano eruption (VEI ≥6) in 2026? | No | 20.7 | 0.970 | 0.941 | $-0.59 | 130 |
 | Will Russia capture Sumy by March 31, 2027? | No | 20.5 | 0.973 | 0.982 | $+0.18 | 130 |
-| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 148 |
+| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.920 | $-0.33 | 148 |
 | Will Jordan Bardella advance to the second round of the next French pr | No | 21.5 | 0.933 | 0.930 | $-0.06 | 148 |
+
+## Resting orders
+
+| Market | Side | Price | Size | Filled |
+|---|---|---:|---:|---:|
+| Will Alice Huang be federally charged by March 31, 2027? | BUY No | 0.910 | 22.0 | 0.0 |
 
 ## Latest fills
 
@@ -57,4 +63,4 @@ As of 2026-11-22 00:19 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-43 cycles from 2026-11-10 20:50 UTC to 2026-11-22 00:19 UTC; equity $1,000.00 → $993.55. The longest gap between two cycles was 12.1 hours.
+44 cycles from 2026-11-10 20:50 UTC to 2026-11-22 07:12 UTC; equity $1,000.00 → $993.37. The longest gap between two cycles was 12.1 hours.
