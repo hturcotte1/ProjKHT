@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-23 01:52 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-23 10:20 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $993.05 |
+| Equity (positions marked at the bid) | $993.19 |
 | Starting bankroll | $1,000.00 |
-| Change | $-6.95 (-0.70%) |
+| Change | $-6.81 (-0.68%) |
 | Cash | $699.76 |
 | In positions (cost) | $300.24 |
 | Realised profit | $+0.00 |
@@ -21,7 +21,7 @@ As of 2026-11-23 01:52 UTC. Started 2026-11-10 20:50 UTC.
 |---|---|---:|---:|---:|---:|---:|
 | Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.968 | $-0.26 | 67 |
 | US recession by end of 2026? | No | 20.4 | 0.979 | 0.972 | $-0.14 | 69 |
-| 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.950 | $-0.47 | 70 |
+| 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.957 | $-0.33 | 70 |
 | Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 87 |
 | Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.945 | $-0.58 | 98 |
 | Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.953 | $-0.33 | 98 |
@@ -63,4 +63,4 @@ As of 2026-11-23 01:52 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-47 cycles from 2026-11-10 20:50 UTC to 2026-11-23 01:52 UTC; equity $1,000.00 → $993.05. The longest gap between two cycles was 12.1 hours.
+48 cycles from 2026-11-10 20:50 UTC to 2026-11-23 10:20 UTC; equity $1,000.00 → $993.19. The longest gap between two cycles was 12.1 hours.

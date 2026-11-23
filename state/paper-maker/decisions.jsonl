@@ -523,3 +523,4 @@
 {"action": "blocked", "market_id": 666660, "reason": "Will Marco Rubio leave the Trump administration before 2027? | buy 'No' at 0.950, est. 0.965, edge 1.55c, 39d", "ts": 1795398728.5248184, "why": "event exposure 39.99 above cap 25.00"}
 {"action": "blocked", "market_id": 695208, "reason": "New COVID variant of concern before 2027? | buy 'No' at 0.960, est. 0.975, edge 1.47c, 39d", "ts": 1795398728.5248184, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 2639520, "reason": "Will Israeli forces withdraw from beyond the Litani River by | buy 'No' at 0.960, est. 0.975, edge 1.47c, 39d", "ts": 1795398728.5248184, "why": "theme 'middle-east' exposure 99.98 above cap 80.00"}
+{"action": "screened", "by_limit": {"event": 11, "theme 'iran'": 35, "theme 'middle-east'": 9, "theme 'russia'": 7, "theme 'tech'": 14, "theme 'ukraine'": 5, "theme 'venezuela'": 5, "total": 40}, "count": 126, "ts": 1795429232.8513389}
