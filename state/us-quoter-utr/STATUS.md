@@ -1,9 +1,9 @@
-# Orders before games on Polymarket US (paper): 2026-11-23 05:08 UTC
+# Orders before games on Polymarket US (paper): 2026-11-23 10:07 UTC
 
 On paper: nothing is sent to the exchange.
 
-- reward accrued by the published formula: $566.26; counting only a market and date that reached $1: $526.42
-- games with a position: 2; at risk in them: $0.91
+- reward accrued by the published formula: $611.47; counting only a market and date that reached $1: $563.31
+- games with a position: 4; at risk in them: $5.56
 - markets left alone because their reward is now tied to the account's own trading: 0
 - settled so far: $-183.16
 
