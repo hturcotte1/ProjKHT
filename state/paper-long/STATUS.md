@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-23 10:20 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-23 22:09 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $993.19 |
+| Equity (positions marked at the bid) | $994.94 |
 | Starting bankroll | $1,000.00 |
-| Change | $-6.81 (-0.68%) |
+| Change | $-5.06 (-0.51%) |
 | Cash | $699.76 |
 | In positions (cost) | $300.24 |
 | Realised profit | $+0.00 |
@@ -19,27 +19,28 @@ As of 2026-11-23 10:20 UTC. Started 2026-11-10 20:50 UTC.
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.968 | $-0.26 | 67 |
-| US recession by end of 2026? | No | 20.4 | 0.979 | 0.972 | $-0.14 | 69 |
-| 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.957 | $-0.33 | 70 |
-| Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 87 |
-| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.945 | $-0.58 | 98 |
-| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.953 | $-0.33 | 98 |
-| Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.900 | $-1.65 | 112 |
-| Will Jensen Huang join SpaceX by March 31, 2027? | No | 22.0 | 0.914 | 0.900 | $-0.31 | 129 |
-| Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 129 |
-| Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.935 | $-0.17 | 129 |
-| Ilhan Omar denaturalization case filed by March 31, 2027? | No | 21.5 | 0.933 | 0.840 | $-1.99 | 129 |
-| Major volcano eruption (VEI ≥6) in 2026? | No | 20.7 | 0.970 | 0.941 | $-0.59 | 129 |
-| Will Russia capture Sumy by March 31, 2027? | No | 20.5 | 0.973 | 0.980 | $+0.14 | 129 |
-| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 147 |
-| Will Jordan Bardella advance to the second round of the next French pr | No | 21.5 | 0.933 | 0.930 | $-0.06 | 147 |
+| Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.968 | $-0.26 | 66 |
+| US recession by end of 2026? | No | 20.4 | 0.979 | 0.979 | $-0.00 | 68 |
+| 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.963 | $-0.21 | 69 |
+| Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 86 |
+| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.945 | $-0.58 | 97 |
+| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.942 | $-0.56 | 97 |
+| Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.900 | $-1.65 | 111 |
+| Will Jensen Huang join SpaceX by March 31, 2027? | No | 22.0 | 0.914 | 0.979 | $+1.43 | 128 |
+| Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 128 |
+| Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.934 | $-0.19 | 128 |
+| Ilhan Omar denaturalization case filed by March 31, 2027? | No | 21.5 | 0.933 | 0.840 | $-1.99 | 128 |
+| Major volcano eruption (VEI ≥6) in 2026? | No | 20.7 | 0.970 | 0.941 | $-0.59 | 128 |
+| Will Russia capture Sumy by March 31, 2027? | No | 20.5 | 0.973 | 0.980 | $+0.14 | 128 |
+| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 146 |
+| Will Jordan Bardella advance to the second round of the next French pr | No | 21.5 | 0.933 | 0.930 | $-0.06 | 146 |
 
 ## Resting orders
 
 | Market | Side | Price | Size | Filled |
 |---|---|---:|---:|---:|
 | Will Alice Huang be federally charged by March 31, 2027? | BUY No | 0.910 | 22.0 | 0.0 |
+| Will the Iranian regime fall by March 31, 2027? | BUY No | 0.910 | 22.0 | 0.0 |
 
 ## Latest fills
 
@@ -63,4 +64,4 @@ As of 2026-11-23 10:20 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-48 cycles from 2026-11-10 20:50 UTC to 2026-11-23 10:20 UTC; equity $1,000.00 → $993.19. The longest gap between two cycles was 12.1 hours.
+49 cycles from 2026-11-10 20:50 UTC to 2026-11-23 22:09 UTC; equity $1,000.00 → $994.94. The longest gap between two cycles was 12.1 hours.

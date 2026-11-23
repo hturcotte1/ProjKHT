@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-23 10:20 UTC. Started 2026-11-10 19:18 UTC.
+As of 2026-11-23 22:09 UTC. Started 2026-11-10 19:18 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $978.64 |
+| Equity (positions marked at the bid) | $979.91 |
 | Starting bankroll | $1,000.00 |
-| Change | $-21.36 (-2.14%) |
+| Change | $-20.09 (-2.01%) |
 | Cash | $199.09 |
 | In positions (cost) | $781.57 |
 | Realised profit | $-19.34 |
@@ -19,46 +19,46 @@ As of 2026-11-23 10:20 UTC. Started 2026-11-10 19:18 UTC.
 
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
-| Israel x Iran ceasefire continues through November 20? | Yes | 21.5 | 0.930 | 0.998 | $+1.46 | -2 |
-| Marco Rubio out as Secretary of State by November 30, 2026? | No | 20.6 | 0.971 | 0.980 | $+0.18 | 8 |
-| France accuses foreign country of provoking unrest by November 30? | No | 10.0 | 0.974 | 0.935 | $-0.39 | 8 |
-| Aleksandar Vučić arrested by November 30, 2026? | No | 20.7 | 0.966 | 0.974 | $+0.16 | 8 |
-| Will Trump meet with Volodymyr Zelenskyy by November 30, 2026? | No | 21.4 | 0.934 | 0.940 | $+0.13 | 8 |
-| Perim Island no longer under Houthi control by November 30? | No | 21.1 | 0.950 | 0.980 | $+0.63 | 8 |
-| Will WTI Crude Oil (WTI) hit (LOW) $65 in November? | No | 20.4 | 0.980 | 0.982 | $+0.04 | 8 |
-| Will Marco Rubio be TIME Person of the Year 2026? | No | 20.8 | 0.965 | 0.958 | $-0.14 | 38 |
-| Will Billie Eilish have a #1 song on the Billboard Hot 100 in 2026? | No | 20.6 | 0.971 | 0.971 | $+0.01 | 38 |
-| Will Trump meet with Changpeng Zhao in 2026? | No | 20.6 | 0.973 | 0.956 | $-0.35 | 39 |
-| Will Mamdani raise the minimum wage to $30 before 2027? | No | 20.7 | 0.969 | 0.950 | $-0.40 | 39 |
-| Trump, Putin, and Zelensky meet together before 2027? | No | 20.6 | 0.970 | 0.964 | $-0.12 | 39 |
-| NATO troops fighting in Yemen before 2027? | No | 20.7 | 0.968 | 0.954 | $-0.29 | 39 |
-| AI wins IMO gold medal in 2026? | No | 20.9 | 0.961 | 0.976 | $+0.32 | 39 |
-| Will Greece recognize Palestine before 2027? | No | 20.8 | 0.964 | 0.965 | $+0.01 | 39 |
-| U.S. evacuates Beirut Embassy by December 31? | No | 20.8 | 0.963 | 0.943 | $-0.42 | 39 |
-| Fetterman out by December 31, 2026? | No | 20.9 | 0.960 | 0.974 | $+0.30 | 39 |
-| Greece x Turkey military engagement by December 31? | No | 20.8 | 0.960 | 0.929 | $-0.65 | 39 |
-| Fetterman leaves the Democrats by December 31, 2026? | No | 20.7 | 0.969 | 0.929 | $-0.83 | 39 |
-| Will Tom Homan be arrested before 2027? | No | 20.6 | 0.971 | 0.959 | $-0.25 | 39 |
-| Greenland snap election called by December 31? | No | 21.0 | 0.954 | 0.945 | $-0.19 | 39 |
-| Will Russia capture Borova by December 31, 2026? | No | 20.5 | 0.976 | 0.965 | $-0.23 | 39 |
-| U.S. recognizes Russian sovereignty over Crimea by December 31, 2026? | No | 20.6 | 0.969 | 0.981 | $+0.25 | 39 |
-| Will Tucker Carlson announce a presidential run before 2027? | No | 21.0 | 0.954 | 0.964 | $+0.21 | 39 |
-| Will Russia capture Oleksiievo-Druzhkivka by December 31, 2026? | No | 20.8 | 0.960 | 0.976 | $+0.33 | 39 |
-| Ukraine peace referendum scheduled by December 31? | No | 12.5 | 0.960 | 0.952 | $-0.10 | 39 |
-| Will the US federal government take a stake in Anduril Industries, Inc | No | 20.8 | 0.962 | 0.943 | $-0.39 | 39 |
-| Will Trump pardon Himself before 2027? | No | 20.9 | 0.961 | 0.980 | $+0.41 | 39 |
-| Will Trump visit Greenland by December 31? | No | 20.6 | 0.971 | 0.944 | $-0.56 | 39 |
-| U.S. agrees to a new trade deal with "Indonesia" before 2027? | No | 20.6 | 0.970 | 0.917 | $-1.10 | 39 |
-| Tusk out by December 31? | No | 20.0 | 0.968 | 0.964 | $-0.08 | 39 |
-| Will Prabowo Subianto cease to be President of Indonesia by December 3 | No | 20.9 | 0.957 | 0.966 | $+0.19 | 39 |
-| Joseph Aoun out as President of Lebanon by December 31? | No | 20.6 | 0.971 | 0.961 | $-0.21 | 39 |
-| Meloni out as Prime Minister of Italy by December 31? | No | 20.6 | 0.972 | 0.974 | $+0.04 | 39 |
-| Will the OpenAI spy be accused of working for Russia by December 31? | No | 20.7 | 0.967 | 0.960 | $-0.15 | 39 |
-| Ukraine peace referendum passed by December 31, 2026? | No | 20.6 | 0.973 | 0.979 | $+0.12 | 39 |
-| Will NATO countries clash with each other before 2027? | No | 20.5 | 0.977 | 0.981 | $+0.08 | 39 |
-| Will Russia enter Kherson by December 31, 2026? | No | 20.5 | 0.976 | 0.972 | $-0.08 | 39 |
-| Will Daylight Savings Time become permanent in the US in 2026? | No | 20.8 | 0.962 | 0.955 | $-0.14 | 39 |
-| Will Donald Trump visit Israel in 2026? | No | 20.8 | 0.962 | 0.968 | $+0.13 | 40 |
+| Israel x Iran ceasefire continues through November 20? | Yes | 21.5 | 0.930 | 0.999 | $+1.48 | -3 |
+| Marco Rubio out as Secretary of State by November 30, 2026? | No | 20.6 | 0.971 | 0.965 | $-0.13 | 7 |
+| France accuses foreign country of provoking unrest by November 30? | No | 10.0 | 0.974 | 0.955 | $-0.19 | 7 |
+| Aleksandar Vučić arrested by November 30, 2026? | No | 20.7 | 0.966 | 0.974 | $+0.16 | 7 |
+| Will Trump meet with Volodymyr Zelenskyy by November 30, 2026? | No | 21.4 | 0.934 | 0.960 | $+0.56 | 7 |
+| Perim Island no longer under Houthi control by November 30? | No | 21.1 | 0.950 | 0.981 | $+0.65 | 7 |
+| Will WTI Crude Oil (WTI) hit (LOW) $65 in November? | No | 20.4 | 0.980 | 0.982 | $+0.04 | 7 |
+| Will Marco Rubio be TIME Person of the Year 2026? | No | 20.8 | 0.965 | 0.958 | $-0.14 | 37 |
+| Will Billie Eilish have a #1 song on the Billboard Hot 100 in 2026? | No | 20.6 | 0.971 | 0.971 | $+0.01 | 37 |
+| Will Trump meet with Changpeng Zhao in 2026? | No | 20.6 | 0.973 | 0.956 | $-0.35 | 38 |
+| Will Mamdani raise the minimum wage to $30 before 2027? | No | 20.7 | 0.969 | 0.954 | $-0.31 | 38 |
+| Trump, Putin, and Zelensky meet together before 2027? | No | 20.6 | 0.970 | 0.968 | $-0.04 | 38 |
+| NATO troops fighting in Yemen before 2027? | No | 20.7 | 0.968 | 0.954 | $-0.29 | 38 |
+| AI wins IMO gold medal in 2026? | No | 20.9 | 0.961 | 0.977 | $+0.34 | 38 |
+| Will Greece recognize Palestine before 2027? | No | 20.8 | 0.964 | 0.964 | $-0.01 | 38 |
+| U.S. evacuates Beirut Embassy by December 31? | No | 20.8 | 0.963 | 0.944 | $-0.39 | 38 |
+| Fetterman out by December 31, 2026? | No | 20.9 | 0.960 | 0.972 | $+0.26 | 38 |
+| Greece x Turkey military engagement by December 31? | No | 20.8 | 0.960 | 0.933 | $-0.56 | 38 |
+| Fetterman leaves the Democrats by December 31, 2026? | No | 20.7 | 0.969 | 0.930 | $-0.81 | 38 |
+| Will Tom Homan be arrested before 2027? | No | 20.6 | 0.971 | 0.963 | $-0.17 | 38 |
+| Greenland snap election called by December 31? | No | 21.0 | 0.954 | 0.945 | $-0.19 | 38 |
+| Will Russia capture Borova by December 31, 2026? | No | 20.5 | 0.976 | 0.965 | $-0.23 | 38 |
+| U.S. recognizes Russian sovereignty over Crimea by December 31, 2026? | No | 20.6 | 0.969 | 0.983 | $+0.29 | 38 |
+| Will Tucker Carlson announce a presidential run before 2027? | No | 21.0 | 0.954 | 0.962 | $+0.17 | 38 |
+| Will Russia capture Oleksiievo-Druzhkivka by December 31, 2026? | No | 20.8 | 0.960 | 0.969 | $+0.19 | 38 |
+| Ukraine peace referendum scheduled by December 31? | No | 12.5 | 0.960 | 0.952 | $-0.10 | 38 |
+| Will the US federal government take a stake in Anduril Industries, Inc | No | 20.8 | 0.962 | 0.941 | $-0.43 | 38 |
+| Will Trump pardon Himself before 2027? | No | 20.9 | 0.961 | 0.980 | $+0.41 | 38 |
+| Will Trump visit Greenland by December 31? | No | 20.6 | 0.971 | 0.947 | $-0.50 | 38 |
+| U.S. agrees to a new trade deal with "Indonesia" before 2027? | No | 20.6 | 0.970 | 0.941 | $-0.60 | 38 |
+| Tusk out by December 31? | No | 20.0 | 0.968 | 0.965 | $-0.06 | 38 |
+| Will Prabowo Subianto cease to be President of Indonesia by December 3 | No | 20.9 | 0.957 | 0.966 | $+0.19 | 38 |
+| Joseph Aoun out as President of Lebanon by December 31? | No | 20.6 | 0.971 | 0.961 | $-0.21 | 38 |
+| Meloni out as Prime Minister of Italy by December 31? | No | 20.6 | 0.972 | 0.974 | $+0.04 | 38 |
+| Will the OpenAI spy be accused of working for Russia by December 31? | No | 20.7 | 0.967 | 0.960 | $-0.15 | 38 |
+| Ukraine peace referendum passed by December 31, 2026? | No | 20.6 | 0.973 | 0.979 | $+0.12 | 38 |
+| Will NATO countries clash with each other before 2027? | No | 20.5 | 0.977 | 0.981 | $+0.08 | 38 |
+| Will Russia enter Kherson by December 31, 2026? | No | 20.5 | 0.976 | 0.973 | $-0.06 | 38 |
+| Will Daylight Savings Time become permanent in the US in 2026? | No | 20.8 | 0.962 | 0.963 | $+0.03 | 38 |
+| Will Donald Trump visit Israel in 2026? | No | 20.8 | 0.962 | 0.968 | $+0.13 | 39 |
 
 ## Settled
 
@@ -91,4 +91,4 @@ As of 2026-11-23 10:20 UTC. Started 2026-11-10 19:18 UTC.
 
 ## Equity history
 
-49 cycles from 2026-11-10 19:18 UTC to 2026-11-23 10:20 UTC; equity $997.69 → $978.64. The longest gap between two cycles was 12.1 hours.
+50 cycles from 2026-11-10 19:18 UTC to 2026-11-23 22:09 UTC; equity $997.69 → $979.91. The longest gap between two cycles was 12.1 hours.
