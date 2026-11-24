@@ -167,3 +167,4 @@
 {"action": "blocked", "market_id": 1294700, "reason": "Will Xi Jinping purge Dong Jun in 2026? | buy 'No' at 0.980, est. 0.989, edge 0.88c, 38d", "ts": 1795500685.8137968, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 5659019, "reason": "Kimberly Guilfoyle federally charged by December 31? | buy 'No' at 0.979, est. 0.988, edge 0.86c, 38d", "ts": 1795500685.8137968, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 676450, "reason": "Will Stephen Miller leave the Trump administration before 20 | buy 'No' at 0.980, est. 0.988, edge 0.83c, 38d", "ts": 1795500685.8137968, "why": "total exposure cap"}
+{"action": "screened", "by_limit": {"event": 23, "theme 'big-tech'": 2, "theme 'middle-east'": 8, "theme 'tech'": 16, "total": 38}, "count": 87, "ts": 1795543210.709486}
