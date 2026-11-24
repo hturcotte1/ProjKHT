@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-23 22:09 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-24 06:11 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $994.94 |
+| Equity (positions marked at the bid) | $994.95 |
 | Starting bankroll | $1,000.00 |
-| Change | $-5.06 (-0.51%) |
+| Change | $-5.05 (-0.50%) |
 | Cash | $699.76 |
 | In positions (cost) | $300.24 |
 | Realised profit | $+0.00 |
@@ -23,10 +23,10 @@ As of 2026-11-23 22:09 UTC. Started 2026-11-10 20:50 UTC.
 | US recession by end of 2026? | No | 20.4 | 0.979 | 0.979 | $-0.00 | 68 |
 | 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.963 | $-0.21 | 69 |
 | Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.934 | $-0.02 | 86 |
-| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.945 | $-0.58 | 97 |
-| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.942 | $-0.56 | 97 |
+| Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.943 | $-0.62 | 97 |
+| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.953 | $-0.33 | 97 |
 | Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.900 | $-1.65 | 111 |
-| Will Jensen Huang join SpaceX by March 31, 2027? | No | 22.0 | 0.914 | 0.979 | $+1.43 | 128 |
+| Will Jensen Huang join SpaceX by March 31, 2027? | No | 22.0 | 0.914 | 0.971 | $+1.25 | 128 |
 | Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 128 |
 | Friedrich Merz out as Chancellor of Germany before March 31, 2027? | No | 21.2 | 0.943 | 0.934 | $-0.19 | 128 |
 | Ilhan Omar denaturalization case filed by March 31, 2027? | No | 21.5 | 0.933 | 0.840 | $-1.99 | 128 |
@@ -64,4 +64,4 @@ As of 2026-11-23 22:09 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-49 cycles from 2026-11-10 20:50 UTC to 2026-11-23 22:09 UTC; equity $1,000.00 → $994.94. The longest gap between two cycles was 12.1 hours.
+50 cycles from 2026-11-10 20:50 UTC to 2026-11-24 06:11 UTC; equity $1,000.00 → $994.95. The longest gap between two cycles was 12.1 hours.

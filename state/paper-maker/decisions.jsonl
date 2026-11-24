@@ -555,3 +555,4 @@
 {"action": "blocked", "market_id": 1323083, "reason": "Will Hezbollah disarm by December 31? | buy 'No' at 0.979, est. 0.988, edge 0.93c, 38d", "ts": 1795471735.0548856, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 637910, "reason": "Mitch McConnell steps down from Senate before his term ends? | buy 'No' at 0.975, est. 0.985, edge 1.00c, 41d", "ts": 1795471735.0548856, "why": "total exposure cap"}
 {"action": "blocked", "market_id": 1820798, "reason": "Will a Chinese company have the best AI model by December 31 | buy 'No' at 0.976, est. 0.985, edge 0.91c, 38d", "ts": 1795471735.0548856, "why": "total exposure cap"}
+{"action": "screened", "by_limit": {"event": 7, "theme 'iran'": 36, "theme 'middle-east'": 10, "theme 'russia'": 6, "theme 'ukraine'": 8, "theme 'venezuela'": 5, "total": 55}, "count": 127, "ts": 1795500682.6333647}
