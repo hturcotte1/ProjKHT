@@ -287,3 +287,11 @@ def test_a_match_whose_book_can_no_longer_be_read_is_let_go(tmp_path):
     us.book = gone
     line = live.run(tmp_path, minutes=30.0, us=us, now=clock.now, sleep=clock.sleep, background=False)
     assert line["books"] == 10 and line["errors"] == live.GIVE_UP          # ten readings, then twenty tries, then no more
+
+
+def test_a_finished_match_is_told_apart_by_whether_the_listing_ever_showed_play():
+    assert score.kind({"started": T0 + 600.0, "settle": 1.0}) == score.KINDS[0]
+    assert score.kind({"started": T0 + 600.0, "settle": 0.5}) == score.KINDS[0]         # a retirement after play began is still a match the listing showed
+    assert score.kind({"started": None, "settle": 0.5}) == score.KINDS[1]               # never played, settled between the two
+    assert score.kind({"started": float("nan"), "settle": 1.0}) == score.KINDS[2]       # settled on a player, and the listing never said it had begun
+    assert score.kind({"started": None, "settle": 0.0}) == score.KINDS[2]

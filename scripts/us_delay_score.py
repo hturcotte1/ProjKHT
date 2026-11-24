@@ -232,6 +232,25 @@ def match_rows(slug: str, rows: list[dict], terms: dict, settle: float | None) -
     return out
 
 
+KINDS = ("the listing showed play when it began", "called off before play", "played, and never shown as played")
+
+
+def kind(row: dict) -> str:
+    """How a finished match ended, as far as the rule is concerned.
+
+    The rule trusts the listing's word that a match has not started. A
+    match that settles on one player although the listing never showed
+    play was played unseen, and the orders rested through it: whatever
+    they made there is luck and is the opposite of what the rule means.
+    """
+    started, settle = row.get("started"), row.get("settle")
+    if started is not None and not pd.isna(started):
+        return KINDS[0]
+    if settle is not None and not pd.isna(settle) and 0.01 < float(settle) < 0.99:
+        return KINDS[1]
+    return KINDS[2]
+
+
 def _z(j: pd.DataFrame, col: str) -> tuple[float, float]:
     mean, z, _ = usr.clustered_z(j[col].to_numpy(), j["day"].to_numpy())
     return mean, z
@@ -303,7 +322,7 @@ def main() -> int:
         late = (seen[["started", "closed"]].min(axis=1) - seen["listed"]) / 60.0
         say(f"minutes from the first listed start to the first sign of play (or the close): a quarter of matches under {late.quantile(0.25):.0f}, half under {late.median():.0f}, "
             f"a quarter over {late.quantile(0.75):.0f}; of the minutes in which the rule lets orders rest, {rested}")
-    k = matches[matches["whole"] & matches["net_before"].notna()]
+    k = matches[matches["whole"] & matches["net_before"].notna() & matches["net_live"].notna()]        # the matches the verdict will read
     say()
     say("by order size, matches recorded whole and finished (reward both ways; fills closed when play shows, fee paid)")
     if len(k):
@@ -321,6 +340,15 @@ def main() -> int:
         say()
         say(f"by US date, {SIZE:g} contracts a side")
         say(d.round(2).to_string(index=False))
+        kk = k[k["size"] == SIZE]
+        kk = kk.assign(kind=[kind(r) for r in kk.to_dict("records")])
+        e = kk.groupby("kind").agg(matches=("slug", "size"), rested_in=("rest_min", lambda s: int((s > 0).sum())), matches_filled=("fills", lambda s: int((s > 0).sum())),
+                                   pnl_fills=("pnl_fills", "sum"), reward_before=("reward_before", "sum"), reward_live=("reward_live", "sum"),
+                                   net_before=("net_before", "sum"), net_live=("net_live", "sum")).reindex([x for x in KINDS if x in set(kk["kind"])]).reset_index()
+        e.round(2).to_csv(out / "dl_by_kind.csv", index=False)
+        say()
+        say("by how the match went (described: the rule trusts the listing, and a match played without the listing showing it is the case in which that fails)")
+        say(e.round(2).to_string(index=False))
     else:
         say("   none yet")
     say()
