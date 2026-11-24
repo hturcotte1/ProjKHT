@@ -1,6 +1,6 @@
 # UTR matches around their start
 
-*Written by `kht us-live` at the end of a run: 24 November 2026, 16:02 UTC. It lists what was read. The rule of test D1 (`docs/13_round_six.md`) is applied by `scripts/us_delay_score.py`, not here.*
+*Written by `kht us-live` at the end of a run: 24 November 2026, 21:01 UTC. It lists what was read. The rule of test D1 (`docs/13_round_six.md`) is applied by `scripts/us_delay_score.py`, not here.*
 
-- Run `20261124T110439Z`: 298 minutes, 7,926 readings of 30 matches, 596 readings of the listing, 20 of the reward schedule, 0 errors.
-- Readings of a match past its listed start and still listed as not started: 994. Readings of a match listed as being played: 4,747.
+- Run `20261124T160346Z`: 298 minutes, 4,084 readings of 13 matches, 596 readings of the listing, 20 of the reward schedule, 0 errors.
+- Readings of a match past its listed start and still listed as not started: 489. Readings of a match listed as being played: 2,331.
