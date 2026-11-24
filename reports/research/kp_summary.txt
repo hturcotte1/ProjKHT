@@ -1,16 +1,28 @@
 Test K1: small orders at the best prices of the earnings markets (docs/13_round_six.md, section 4c)
-scored 20 November 2026, 09:01 UTC. A paper account. No order was placed and no reward was paid to anyone.
-recorded: 125,957 readings of 51 markets, from 18 Nov 20:28 to 20 Nov 08:13 UTC
+scored 24 November 2026, 09:01 UTC. A paper account. No order was placed and no reward was paid to anyone.
+recorded: 685,489 readings of 89 markets, from 18 Nov 20:28 to 24 Nov 07:59 UTC
 
 events that are one market, 100 contracts a side (qualifies: share of the time the book was paid; resting: share of the time our orders rested; share: our part of the score while resting)
-                  event report_date reports  whole  hours  cover  qualifies  resting  share  reward_paid  fills  bought  sold  fees  held_after_cut  pnl_fills   net
-  intu-q1eps-2026-11-19  2026-11-19   after  False 23.458  0.997      0.834    0.823  0.045        8.446      2     0.0  20.0 0.156             0.0     -0.446 8.000
-   wmt-q3eps-2026-11-19  2026-11-19  before  False  8.511  0.998      1.000    1.000  0.033        2.956      1     0.0 100.0 2.189             0.0     -2.189 0.767
-   wsm-q3eps-2026-11-19  2026-11-19  before  False  8.509  0.998      1.000    1.000  0.031        2.727      2   100.0  15.0 1.430             0.0     -1.280 1.447
-ttwo-gta6rec-2027-01-31  2027-01-31          False 29.899  0.996      0.317    0.317  0.010        0.000      3   100.0 100.0 0.000             0.0        NaN   NaN
+                  event report_date reports  whole  hours  cover  qualifies  resting  share  reward_paid  fills  bought   sold  fees  held_after_cut  pnl_fills    net
+  intu-q1eps-2026-11-19  2026-11-19   after  False 23.458  0.997      0.834    0.823  0.045        8.446      2    0.00  20.00 0.156            0.00     -0.446  8.000
+   wmt-q3eps-2026-11-19  2026-11-19  before  False  8.511  0.998      1.000    1.000  0.033        2.956      1    0.00 100.00 2.189            0.00     -2.189  0.767
+   wsm-q3eps-2026-11-19  2026-11-19  before  False  8.509  0.998      1.000    1.000  0.031        2.727      2  100.00  15.00 1.430            0.00     -1.280  1.447
+   adi-q4eps-2026-11-24  2026-11-24  before   True 73.593  0.994      0.863    0.860  0.038       25.120     11  215.00 176.33 0.609            0.00      1.154 26.274
+  dell-q3eps-2026-11-24  2026-11-24   after  False 75.826  0.995      0.968    0.964  0.030       22.143      1    0.00 100.00 0.000         -100.00        NaN    NaN
+   dks-q3eps-2026-11-24  2026-11-24  before   True 73.588  0.995      0.926    0.900  0.037       24.790      4  200.00 100.00 2.161            0.00    -16.161  8.629
+  crwd-q3eps-2026-12-01  2026-12-01   after  False 75.829  0.995      0.959    0.956  0.044       33.182     10  160.52 115.22 0.000           45.30        NaN    NaN
+  mrvl-q3eps-2026-12-01  2026-12-01   after  False 75.825  0.995      0.957    0.953  0.041       30.170      8    8.04 108.04 0.000         -100.00        NaN    NaN
+  okta-q3eps-2026-12-01  2026-12-01   after  False 75.825  0.995      0.961    0.958  0.033       25.257      3    7.69 107.69 0.000         -100.00        NaN    NaN
+    zs-q1eps-2026-12-02  2026-12-02   after  False 75.825  0.995      0.239    0.235  0.097       18.092      9  200.00 300.00 0.000         -100.00        NaN    NaN
+ttwo-gta6rec-2027-01-31  2027-01-31          False 41.854  0.996      0.512    0.512  0.011        2.127      5  200.00 110.09 0.000           89.91        NaN    NaN
 
 events that are one market, by order size, recorded whole and finished
-   none yet
+ size  events  reward  fills  contracts  fees  pnl_fills    net  an_event  worst    t  cap_100  cap_50  cap_10
+   25       2   12.39     14     205.00  0.54      -3.39   9.00      4.50   2.40 2.14    12.39   12.39   12.10
+   50       2   25.66     14     380.00  1.08      -6.93  18.73      9.36   4.54 1.94    25.66   25.66   25.33
+  100       2   49.91     15     691.33  2.77     -15.01  34.90     17.45   8.63 1.98    49.91   49.91   49.72
+  250       2  118.06     19    1591.33  8.38     -40.11  77.94     38.97  20.36 2.09   118.06  118.06  118.06
+  500       2  211.53     20    2957.34 14.82     -79.06 132.47     66.23  30.47 1.85   211.53  211.53  208.73
 
 events of several markets, the pool divided evenly between them (an assumption; described, not judged)
 report_date                     event  markets  whole  reward  fills  pnl_fills   net
@@ -18,7 +30,14 @@ report_date                     event  markets  whole  reward  fills  pnl_fills 
  2026-11-19   wmt-q3uscomp-2026-11-19        5  False    0.00      4      10.85 10.85
  2026-11-19   wmt-q3usecom-2026-11-19        5  False    1.01      0       0.00  1.01
  2026-11-19     wsm-q3comp-2026-11-19        5  False    0.00      1      -1.46 -1.46
- 2026-12-31 ttwo-gta6units-2026-12-31       18  False    0.00      6       0.00  0.00
- 2027-03-31 ttwo-gta6units-2027-03-31       10  False    0.00      0       0.00  0.00
+ 2026-11-24   adi-q4indrev-2026-11-24        3   True    0.00      0       0.00  0.00
+ 2026-11-24  dell-q3isgrev-2026-11-24        4  False    0.00      0       0.00  0.00
+ 2026-11-24     dks-q3comp-2026-11-24        5   True    0.00      0       0.00  0.00
+ 2026-12-01   crwd-q3nnarr-2026-12-01        4  False    4.43      0       0.00  0.00
+ 2026-12-01   mrvl-q3dcrev-2026-12-01        5  False    0.00      1       0.00  0.00
+ 2026-12-01    okta-q3crpo-2026-12-01        5  False    0.00      3       0.00  0.00
+ 2026-12-02       zs-q1arr-2026-12-02        5  False   17.53     29       0.00  0.00
+ 2026-12-31 ttwo-gta6units-2026-12-31       18  False   29.63    155       0.00  0.00
+ 2027-03-31 ttwo-gta6units-2027-03-31       10  False    2.00      2       0.00  0.00
 
-Verdict by the bar fixed in advance (events that are one market, 100 contracts a side): NOT YET JUDGED: 0 events recorded whole and finished on 0 report dates; 12 on 5 are asked for
+Verdict by the bar fixed in advance (events that are one market, 100 contracts a side): NOT YET JUDGED: 2 events recorded whole and finished on 1 report dates; 12 on 5 are asked for

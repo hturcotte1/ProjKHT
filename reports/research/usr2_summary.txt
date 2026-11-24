@@ -1,55 +1,71 @@
 Test R2: resting orders before UTR matches (docs/13_round_six.md, section 3)
-scored 20 November 2026, 09:03 UTC. Paper accounts. No order was placed and no reward was paid to anyone.
+scored 24 November 2026, 09:02 UTC. Paper accounts. No order was placed and no reward was paid to anyone.
 games count from 19 November 2026 (US Eastern)
 
 ===== R2-utr: the rule of R1, 250 contracts a side =====
-games followed since then: 1,129; started more than 12 hours ago: 666; of them settled: 656
-UTR, 250 contracts a side: reward by the formula $67.14; after the $1 minimum $63.25; games traded against 15 of 64 (1,304 contracts)
-   fills held to the result $-156.59; at the last middle before the start $54.48; net $-93.34; a game $-1.458; z by date nan over 1 dates
-   if rewards were capped at a share of the account's own executed volume (described only): 100%: $12.76; 50%: $10.65; 10%: $6.22
+games followed since then: 4,273; started more than 12 hours ago: 3,727; of them settled: 3,727
+UTR, 250 contracts a side: reward by the formula $947.45; after the $1 minimum $924.81; games traded against 153 of 369 (10,181 contracts)
+   fills held to the result $-256.43; at the last middle before the start $-510.38; net $668.38; a game $1.811; z by date 1.68 over 5 dates
+   if rewards were capped at a share of the account's own executed volume (described only): 100%: $240.72; 50%: $198.43; 10%: $97.67
        day  games  hours_quoted  share_of_score  reward_paid  games_filled  contracts_filled  fills_at_settlement  fills_at_last_mid     net  net_a_game
-2026-11-19     64        83.539           0.569       63.246            15            1303.9             -156.588             54.476 -93.341      -1.458
-Verdict by the bar fixed in advance, R2-utr: NOT YET JUDGED: 64 games on 1 US dates; 800 on 12 are asked for
+2026-11-19    104       183.182           0.569      145.020            24           2512.80             -124.318             10.843  20.702       0.199
+2026-11-20     96       344.842           0.566      288.012            50           3099.69               73.908           -197.456 361.920       3.770
+2026-11-21     72       242.483           0.529      202.066            33           2208.17              104.862           -134.681 306.929       4.263
+2026-11-22     48       150.816           0.581      139.001            24            786.06              -72.143            -49.013  66.857       1.393
+2026-11-23     49       175.133           0.585      150.711            22           1574.25             -238.736           -140.075 -88.025      -1.796
+Verdict by the bar fixed in advance, R2-utr: NOT YET JUDGED: 369 games on 5 US dates; 800 on 12 are asked for
    UTR at every order size (described; only the size named above is judged)
  contracts_a_side  games  reward_paid  contracts_filled  fills_at_settlement  fills_at_last_mid      net  net_a_game  z_by_date
-               25     64        0.000            196.78              -19.770             10.671  -19.770      -0.309        NaN
-               50     64       10.043            368.09              -34.312             21.528  -24.269      -0.379        NaN
-              100     64       23.924            668.09              -78.218             43.122  -54.294      -0.848        NaN
-              250     64       63.246           1303.90             -156.588             54.476  -93.341      -1.458        NaN
-              500     64       77.995           2033.21             -201.918             43.587 -123.923      -1.936        NaN
+               25    369        4.324           2076.43             -106.812            -61.094 -102.488      -0.278     -2.398
+               50    369      198.733           3479.43             -179.782           -122.605   18.951       0.051      0.287
+              100    369      391.045           5695.09             -262.490           -237.580  128.555       0.348      0.942
+              250    369      924.809          10180.97             -256.426           -510.380  668.383       1.811      1.682
+              500    369     1145.848          15197.40             -126.058           -820.126 1019.791       2.764      1.320
    every programme at 250 contracts a side (described)
                                program  games  share_of_score  reward_paid  games_filled  contracts_filled  fills_at_settlement  fills_at_last_mid      net  net_a_game
-          itf_moneyline_dayof_20261018    182           0.276      370.722           115          19181.58              659.451            -99.361 1030.173       5.660
-         utr_moneyline_day_of_20261008     64           0.569       63.246            15           1303.90             -156.588             54.476  -93.341      -1.458
-   esports_moneyline_pre_game_20261008     46           0.207       42.465            30           6018.53             -202.236            -87.881 -159.771      -3.473
-table_tennis_moneyline_day_of_20261018     32           0.424       18.887             6            592.73               -2.777            -11.639   16.109       0.503
-     atp_wta_moneyline_day_of_20261018     26           0.035       12.354            24           6545.54             -348.317              9.426 -335.963     -12.922
-     doubles_moneyline_day_of_20261018     21           0.344       43.548            16           1886.22               67.225            -17.530  110.772       5.275
-       darts_moneyline_day_of_20260924     17           0.436        3.508             2            205.91               17.495              2.910   21.002       1.235
+          itf_moneyline_dayof_20261018    908           0.346     2636.368           583          86858.28            -2803.345          -1585.745 -166.977      -0.184
+         utr_moneyline_day_of_20261008    369           0.563      924.809           153          10180.97             -256.426           -510.380  668.383       1.811
+     atp_wta_moneyline_day_of_20261018    244           0.021       50.781           231          63277.19              831.501            -36.202  882.282       3.616
+   esports_moneyline_pre_game_20261008    221           0.248      262.423           196          46293.77             -915.118           -502.144 -652.695      -2.953
+table_tennis_moneyline_day_of_20261018    152           0.542       57.220            47           2322.10             -114.660            -52.833  -57.440      -0.378
+       darts_moneyline_day_of_20260924     82           0.569       78.636            30           2306.73              128.468            -10.521  207.104       2.526
+     doubles_moneyline_day_of_20261018     62           0.348      144.673            49           7161.45              308.367            -63.987  453.040       7.307
+ nhl_regular_moneyline_day_of_20261018     31           0.005        0.000            31          15500.00               58.989             58.989   58.989       1.903
   power_slap_moneyline_day_of_20261006      8           0.661       53.582             4            287.83             -141.174             11.333  -87.592     -10.949
+   ufc_prelim_moneyline_dayof_20260924      7           0.008        0.000             7           3500.00               15.753             15.753   15.753       2.250
+     ufc_main_moneyline_dayof_20260924      5           0.002        0.000             5           2500.00               12.431             12.431   12.431       2.486
+      cricket_moneyline_dayof_20260924      1           0.104        0.000             1            500.00                0.135              0.135    0.135       0.135
 
 ===== R2-top: orders at the best price itself, 100 contracts a side =====
-games followed since then: 1,129; started more than 12 hours ago: 666; of them settled: 656
-UTR, 100 contracts a side: reward by the formula $45.42; after the $1 minimum $44.18; games traded against 12 of 64 (398 contracts)
-   fills held to the result $-86.33; at the last middle before the start $6.22; net $-42.15; a game $-0.659; z by date nan over 1 dates
-   if rewards were capped at a share of the account's own executed volume (described only): 100%: $15.50; 50%: $10.89; 10%: $4.07
+games followed since then: 4,273; started more than 12 hours ago: 3,727; of them settled: 3,727
+UTR, 100 contracts a side: reward by the formula $695.69; after the $1 minimum $663.64; games traded against 177 of 369 (8,177 contracts)
+   fills held to the result $-424.88; at the last middle before the start $-389.02; net $238.76; a game $0.647; z by date 1.64 over 5 dates
+   if rewards were capped at a share of the account's own executed volume (described only): 100%: $273.95; 50%: $221.48; 10%: $108.00
        day  games  hours_quoted  share_of_score  reward_paid  games_filled  contracts_filled  fills_at_settlement  fills_at_last_mid     net  net_a_game
-2026-11-19     64       145.823           0.216       44.182            12            398.07              -86.333              6.219 -42.151      -0.659
-Verdict by the bar fixed in advance, R2-top: NOT YET JUDGED: 64 games on 1 US dates; 800 on 12 are asked for
+2026-11-19    104       301.708           0.257      106.107            28           1408.09               -7.101            -57.176  99.006       0.952
+2026-11-20     96       473.962           0.307      200.415            55           2953.29             -221.932           -122.219 -21.518      -0.224
+2026-11-21     72       327.529           0.333      155.501            39           1885.38              -18.862           -111.069 136.639       1.898
+2026-11-22     48       205.764           0.347      104.408            29            670.85              -82.896            -24.742  21.512       0.448
+2026-11-23     49       252.447           0.300       97.211            26           1258.99              -94.094            -73.814   3.117       0.064
+Verdict by the bar fixed in advance, R2-top: NOT YET JUDGED: 369 games on 5 US dates; 800 on 12 are asked for
    UTR at every order size (described; only the size named above is judged)
  contracts_a_side  games  reward_paid  contracts_filled  fills_at_settlement  fills_at_last_mid      net  net_a_game  z_by_date
-               25     64       17.223            148.15              -28.392              1.508  -11.169      -0.175        NaN
-               50     64       30.304            248.07              -41.920              3.132  -11.616      -0.181        NaN
-              100     64       44.182            398.07              -86.333              6.219  -42.151      -0.659        NaN
-              250     64      145.391            704.39             -186.724             16.001  -41.333      -0.646        NaN
-              500     64      155.328           1064.39             -290.124             23.151 -134.796      -2.106        NaN
+               25    369      236.950           2961.70             -165.588           -108.235   71.362       0.193      2.906
+               50    369      435.372           4977.74             -287.239           -203.479  148.132       0.401      2.184
+              100    369      663.641           8176.60             -424.885           -389.020  238.756       0.647      1.637
+              250    369     1865.790          14618.41             -408.948           -837.213 1456.843       3.948      4.538
+              500    369     2066.908          21548.99             -428.216          -1309.177 1638.692       4.441      2.367
    every programme at 100 contracts a side (described)
                                program  games  share_of_score  reward_paid  games_filled  contracts_filled  fills_at_settlement  fills_at_last_mid      net  net_a_game
-          itf_moneyline_dayof_20261018    182           0.181      139.751           118          10889.87              102.552            -64.777  242.302       1.331
-         utr_moneyline_day_of_20261008     64           0.216       44.182            12            398.07              -86.333              6.219  -42.151      -0.659
-   esports_moneyline_pre_game_20261008     46           0.124       20.698            36           4508.26             -168.515           -108.969 -147.817      -3.213
-table_tennis_moneyline_day_of_20261018     32           0.390       25.067            13            724.24              -18.569            -30.587    6.498       0.203
-     atp_wta_moneyline_day_of_20261018     26           0.017        0.000            24           3203.05             -152.385              3.348 -152.385      -5.861
-     doubles_moneyline_day_of_20261018     21           0.275       22.296            19           1808.00             -106.954            -53.721  -84.658      -4.031
-       darts_moneyline_day_of_20260924     17           0.118        4.126             4            489.57              -87.642            -35.276  -83.516      -4.913
+          itf_moneyline_dayof_20261018    908           0.234     1373.397           615          53194.85            -1642.646           -783.148 -269.249      -0.297
+         utr_moneyline_day_of_20261008    369           0.307      663.641           177           8176.60             -424.885           -389.020  238.756       0.647
+     atp_wta_moneyline_day_of_20261018    244           0.010        2.263           234          31256.43              398.830            -63.578  401.093       1.644
+   esports_moneyline_pre_game_20261008    221           0.177      137.863           208          28626.61             -630.599           -552.875 -492.736      -2.230
+table_tennis_moneyline_day_of_20261018    152           0.710      321.857           129           8741.76             -718.000           -540.880 -396.143      -2.606
+       darts_moneyline_day_of_20260924     82           0.328       93.247            44           2399.44              -89.741            -67.312    3.506       0.043
+     doubles_moneyline_day_of_20261018     62           0.270       77.454            55           5392.49             -166.779           -138.508  -89.325      -1.441
+ nhl_regular_moneyline_day_of_20261018     31           0.002        0.000            31           6200.00               25.195             25.195   25.195       0.813
   power_slap_moneyline_day_of_20261006      8           0.538       70.145             6            461.24             -135.664            -24.259  -65.518      -8.190
+   ufc_prelim_moneyline_dayof_20260924      7           0.004        0.000             7           1400.00                6.000              6.000    6.000       0.857
+     ufc_main_moneyline_dayof_20260924      5           0.001        0.000             5           1000.00                5.000              5.000    5.000       1.000
+      cricket_moneyline_dayof_20260924      1           0.058        0.000             1            200.00                0.000              0.000    0.000       0.000

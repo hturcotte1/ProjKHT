@@ -1113,6 +1113,117 @@ before them and earned nothing.
   in the earnings recorder and 34 in the recorder of gold, silver and
   the coins. No request budget needs raising.
 
+**24 November, 09:14 UTC. Second check-in. Nothing is judged: no test
+has reached its count.**
+
+*Health.* 27 finished runs of the job since 18 November, at most two
+minutes between one and the next, and no error in any recorder's log.
+The watchdog is active. The reward schedule still has the same ten
+fields: no cap, no minimum volume.
+
+*Test G1: six market-days on three dates* (19, 20 and 23 November; gold
+and silver list no market on Friday or Saturday evening, so there was
+none over the weekend). Ten on six are asked for.
+
+| Market-day | Book qualified | Reward | Times traded against | What the fills made | Net |
+|---|---:|---:|---:|---:|---:|
+| Gold, 19 Nov | 70% | $21.13 | 435 | −$316.27 | −$295.14 |
+| Gold, 20 Nov | 52% | $17.56 | 285 | −$92.60 | −$75.03 |
+| Gold, 23 Nov | 83% | $13.98 | 442 | −$163.77 | −$149.79 |
+| Silver, 19 Nov | 70% | $16.62 | 429 | −$350.34 | −$333.72 |
+| Silver, 20 Nov | 75% | $20.84 | 203 | −$159.83 | −$138.99 |
+| Silver, 23 Nov | 79% | $11.67 | 340 | −$224.48 | −$212.81 |
+| **All six** | | **$101.80** | | **−$1,307.30** | **−$1,205.49** |
+
+Every one of the six is behind, by $75 to $334; the mean is −$201 a
+market-day where the bar asks for +$20. A cap would change nothing: the
+account trades far more than it is rewarded. The four coins, described:
+20 market-days, $172 of reward, −$1,728 on fills. The firms have not
+changed: a cent apart, with about the target size at each best price.
+
+*Test Q1: the same six market-days.* Reward $94.40, fills −$100.75, net
+−$6.35. A reward on five of the six. In gold on 23 November it was the
+offer side that stood empty, and the order at 99¢ was sold from: 3,171
+contracts, $32. With each order counted as traded against in full fifty
+minutes after it first rested (described): −$114.28. Other people now
+keep orders of the target size at the last tick as a matter of course:
+bids at 1¢ for between a few minutes and an hour and a half a day in
+each market, and on the two days when "up" was winning, offers at 99¢
+for two to four hours.
+
+*Test R2: 369 UTR games on five US dates* (19 to 23 November). 800 on
+12 are asked for.
+
+| Account | Reward after the $1 minimum | Games traded against | Fills, held to the result | Net | A game | z by date | Dates ahead |
+|---|---:|---:|---:|---:|---:|---:|---|
+| R2-utr, 250 a side | $924.81 | 153 of 369 | −$256.43 | +$668.38 | +$1.81 | 1.68 | 4 of 5 |
+| R2-top, 100 a side at the best price | $663.64 | 177 of 369 | −$424.88 | +$238.76 | +$0.65 | 1.64 | 4 of 5 |
+
+By date, R2-utr: +$21, +$362, +$307, +$67, −$88. Both accounts are ahead
+and neither is anywhere near beyond doubt yet. Under a cap at 100% of
+what the account itself traded, R2-utr's reward would be $241. The
+rehearsal of the order system on UTR, which chooses its own games: $679
+of reward after the minimum, −$153 settled. For the caveat of section
+4d: the matches test D1 followed began 69 minutes late on average, 36 at
+the median, so if the six paid hours are counted back from the real
+start, a sixth of R2's resting time on average (a tenth at the median)
+earned nothing, and its reward would be nearer $770 than $925.
+
+*Test K1: two events on one report date.* 12 on 5 are asked for. Seven
+companies' earnings were listed together on 21 November at about 02:30
+UTC, each with one market on earnings per share and one event of several
+markets: Analog
+Devices, Dell and Dick's for 24 November, CrowdStrike, Marvell and Okta
+for 1 December, Zscaler for 2 December. The two whose cut-off has passed:
+
+| Event | Hours recorded | Book qualified | Share | Reward | Traded against | Fills and closing, fee included | Net |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Analog Devices | 73.6 | 86% | 3.8% | $25.12 | 11 times | +$1.15 | +$26.27 |
+| Dick's | 73.6 | 93% | 3.7% | $24.79 | 4 times | −$16.16 | +$8.63 |
+
+Dell's cut-off is at 20:00 UTC today. By 2 December there can be seven
+events on three report dates, which is still short of the count. The
+Grand Theft Auto market has earned $2.13 so far.
+
+*Test D1: 351 finished matches on six US dates.* 400 on 10 are asked
+for. Matches began 69 minutes after their first listed start on average
+and 36 at the median; a quarter more than 79 minutes; 26 more than three
+hours. The orders could rest in 223 of the 351 and for 40% of the
+minutes the rule allows. At 500 contracts a side:
+
+| | Reward | Fills and their closing | Net | A match |
+|---|---:|---:|---:|---:|
+| Counted as the six hours before the start | $194.41 | +$9.13 | +$203.54 | +$0.58 |
+| With the seconds past the listed start counted as play | $1,104.89 | +$9.13 | +$1,114.02 | +$3.17 |
+
+**That total hides the thing this test most needed to find, and it is
+against it.** Section 4d said: "'Not started' is the listing's word. If
+it is late, or wrong, the orders rest into play." On 20 November it was
+wrong for four matches from start to finish. The listing said "not
+started", no score, for the whole of each match, while the market
+traded thousands of contracts and its price went from 30¢ to 98¢ in one
+and from 69¢ down to 3¢ and back up to settle at a dollar in another.
+The paper orders rested through all four. By luck they came out $325
+ahead: in one the 500 contracts bought on the way down belonged to the
+player who then came back and won. It could as easily have been several
+hundred dollars the other way. Taken apart:
+
+| Matches | Number | Fills and closing | Net, as the six hours before | Net, with the wait as play |
+|---|---:|---:|---:|---:|
+| The listing showed play when it began | 332 | −$270.33 | −$79.50 | +$816.04 |
+| Called off before play | 15 | −$45.25 | −$43.23 | −$37.78 |
+| Played, and never shown as played | 4 | +$324.71 | +$326.28 | +$335.76 |
+
+So where the rule worked as meant, it is behind on the careful reading
+and ahead on the other, as on the first day. On the careful reading,
+what puts the whole account ahead is the case in which the rule failed. The verdict will
+be read by the bar as fixed, and this will be said beside it. A real
+order system could not rely on the listing alone: it would also have to
+leave when the book itself shows play, which a firm's ladder of 200 and
+560 contracts or a burst of trading does. In one of the four the
+exchange had moved the listed start back to the real one, as it does
+when play begins, without changing "not started".
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because

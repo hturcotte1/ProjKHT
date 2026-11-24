@@ -1,17 +1,22 @@
 Test D1: orders resting between a UTR match's listed start and its real one (docs/13_round_six.md, section 4d)
-scored 20 November 2026, 09:02 UTC. A paper account. No order was placed and no reward was paid to anyone.
-recorded: 56,338 readings of 158 matches, from 18 Nov 20:27 to 20 Nov 08:12 UTC
+scored 24 November 2026, 09:02 UTC. A paper account. No order was placed and no reward was paid to anyone.
+recorded: 179,940 readings of 455 matches, from 18 Nov 20:27 to 24 Nov 07:59 UTC
 
-matches followed: 157; followed from their listed start and seen to start or to close: 125; recorded whole and listed to start from 19 November (US Eastern): 87
-minutes from the first listed start to the first sign of play (or the close): a quarter of matches under 10, half under 27, a quarter over 72; of the minutes in which the rule lets orders rest, the orders rested for 36%
+matches followed: 454; followed from their listed start and seen to start or to close: 410; recorded whole and listed to start from 19 November (US Eastern): 365
+minutes from the first listed start to the first sign of play (or the close): a quarter of matches under 11, half under 32, a quarter over 79; of the minutes in which the rule lets orders rest, the orders rested for 40%
 
 by order size, matches recorded whole and finished (reward both ways; fills closed when play shows, fee paid)
  size  matches  waited_min  rested_min  past_min  share_before  share_live  reward_before  reward_live  matches_filled  contracts  fees  pnl_fills  net_before  net_live
-250.0       87     5169.72     1847.86   1153.49          0.25        0.00          33.35        11.85               3     687.68 11.26     -88.57      -55.23    -76.73
-500.0       87     5169.72     1847.86   1153.49          0.30        0.25          38.66       194.54               3    1087.78 20.26    -113.07      -74.41     81.48
+250.0      365    23736.21     10067.9   6828.93          0.39        0.00         185.34        65.96              25    6330.71 21.71    -131.38       53.96    -20.28
+500.0      365    23736.21     10067.9   6828.93          0.45        0.38         208.82      1104.89              25    9817.86 42.39     -61.68      147.14   1114.02
 
 by US date, 500 contracts a side
        day  matches  waited_min  reward_before  reward_live  matches_filled  pnl_fills  net_before  net_live
-2026-11-19       87     5169.72          38.66       194.54               3    -113.07      -74.41     81.48
+2026-11-19       88     5741.18          38.66       194.54               3    -113.07      -74.41     81.48
+2026-11-20       88     8005.84          55.90       307.05              10     261.40      317.30    636.86
+2026-11-21       75     5327.47          65.44       289.61               2      -3.99       61.45    285.62
+2026-11-22       45     1922.78          20.01       129.93               4    -102.29      -82.28     27.64
+2026-11-23       65     2708.91          28.53       183.76               6    -103.73      -75.21     82.42
+2026-11-24        4       30.03           0.28         0.00               0       0.00        0.28      0.00
 
-Verdict by the bar fixed in advance (500 contracts a side): NOT YET JUDGED: 85 matches recorded whole and finished on 1 US dates; 400 on 10 are asked for
+Verdict by the bar fixed in advance (500 contracts a side): NOT YET JUDGED: 351 matches recorded whole and finished on 6 US dates; 400 on 10 are asked for
