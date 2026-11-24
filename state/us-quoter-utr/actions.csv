@@ -87708,3 +87708,8 @@ ts,action,slug,side,intent,price,qty,expires,id,why
 1795482152,place,aec-utr-swaelo-cololi-2026-11-23,ask,ORDER_INTENT_BUY_SHORT,0.41,250.0,1795482332,paper-88636,
 1795482182,cancel,aec-utr-swaelo-cololi-2026-11-23,ask,ORDER_INTENT_BUY_SHORT,0.41,250.0,1795482332,paper-88636,
 1795482182,place,aec-utr-swaelo-cololi-2026-11-23,ask,ORDER_INTENT_BUY_SHORT,0.38,250.0,1795482362,paper-88639,
+1795482212,cancel,aec-utr-swaelo-cololi-2026-11-23,ask,ORDER_INTENT_BUY_SHORT,0.38,250.0,1795482362,paper-88639,
+1795482212,place,aec-utr-swaelo-cololi-2026-11-23,ask,ORDER_INTENT_BUY_SHORT,0.41,250.0,1795482392,paper-88641,
+1795482242,cancel,aec-utr-swaelo-cololi-2026-11-23,bid,ORDER_INTENT_BUY_LONG,0.34,250.0,1795482362,paper-88638,
+1795482242,place,aec-utr-swaelo-cololi-2026-11-23,bid,ORDER_INTENT_BUY_LONG,0.37,250.0,1795482422,paper-88646,
+1795482302,stop,,,,,,,,the run ended
