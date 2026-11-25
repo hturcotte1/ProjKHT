@@ -1,27 +1,49 @@
 # The top of the book in single-market reward programmes
 
-*Written by `kht us-top` at the end of a run: 25 November 2026, 02:00 UTC. It lists what was read. The rule of test K1 (`docs/13_round_six.md`) is applied by `scripts/us_kpi_score.py`, not here.*
+*Written by `kht us-top` at the end of a run: 25 November 2026, 07:00 UTC. It lists what was read. The rule of test K1 (`docs/13_round_six.md`) is applied by `scripts/us_kpi_score.py`, not here.*
 
-- Run `20261124T210243Z`: 298 minutes, 26,112 readings of 45 markets, 20 readings of the reward schedule, 0 errors.
+- Run `20261125T020150Z`: 298 minutes, 38,696 readings of 67 markets, 20 readings of the reward schedule, 0 errors.
 
 | Market | Programme | Pool a day | Target size | Readings |
 |---|---|---:|---:|---:|
+| `kpic-amzn-fy26capex-2027-02-04-above-200b` | kpic_20261116 | $250 | 500 | 502 |
+| `kpic-amzn-fy26capex-2027-02-04-above-210b` | kpic_20261116 | $250 | 500 | 502 |
+| `kpic-amzn-fy26capex-2027-02-04-above-220b` | kpic_20261116 | $250 | 500 | 502 |
+| `kpic-amzn-fy26capex-2027-02-04-above-230b` | kpic_20261116 | $250 | 500 | 502 |
+| `kpic-amzn-fy26capex-2027-02-04-above-240b` | kpic_20261116 | $250 | 500 | 502 |
+| `kpic-avgo-q4airev-2026-12-09-above-20b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-avgo-q4airev-2026-12-09-above-21b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-avgo-q4airev-2026-12-09-above-22b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-avgo-q4airev-2026-12-09-above-23b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-avgo-q4airev-2026-12-09-above-24b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-avgo-q4eps-2026-12-09-above-3pt89` | kpic_20261116 | $250 | 500 | 563 |
 | `kpic-crwd-q3eps-2026-12-01-above-0pt32` | kpic_20261116 | $250 | 500 | 595 |
 | `kpic-crwd-q3nnarr-2026-12-01-above-320m` | kpic_20261116 | $250 | 500 | 595 |
 | `kpic-crwd-q3nnarr-2026-12-01-above-360m` | kpic_20261116 | $250 | 500 | 595 |
 | `kpic-crwd-q3nnarr-2026-12-01-above-400m` | kpic_20261116 | $250 | 500 | 595 |
 | `kpic-crwd-q3nnarr-2026-12-01-above-440m` | kpic_20261116 | $250 | 500 | 595 |
-| `kpic-dell-q3eps-2026-11-24-above-6pt71` | kpic_20261116 | $250 | 500 | 462 |
-| `kpic-dell-q3isgrev-2026-11-24-above-33pt5b` | kpic_20261116 | $250 | 500 | 463 |
-| `kpic-dell-q3isgrev-2026-11-24-above-35pt0b` | kpic_20261116 | $250 | 500 | 462 |
-| `kpic-dell-q3isgrev-2026-11-24-above-36pt5b` | kpic_20261116 | $250 | 500 | 462 |
-| `kpic-dell-q3isgrev-2026-11-24-above-38pt0b` | kpic_20261116 | $250 | 500 | 463 |
 | `kpic-mrvl-q3dcrev-2026-12-01-above-2pt5b` | kpic_20261116 | $250 | 500 | 595 |
 | `kpic-mrvl-q3dcrev-2026-12-01-above-2pt6b` | kpic_20261116 | $250 | 500 | 595 |
 | `kpic-mrvl-q3dcrev-2026-12-01-above-2pt7b` | kpic_20261116 | $250 | 500 | 595 |
 | `kpic-mrvl-q3dcrev-2026-12-01-above-2pt8b` | kpic_20261116 | $250 | 500 | 595 |
 | `kpic-mrvl-q3dcrev-2026-12-01-above-2pt9b` | kpic_20261116 | $250 | 500 | 595 |
 | `kpic-mrvl-q3eps-2026-12-01-above-1pt11` | kpic_20261116 | $250 | 500 | 595 |
+| `kpic-mu-q1dram-2026-12-17-above-42b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1dram-2026-12-17-above-44b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1dram-2026-12-17-above-46b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1dram-2026-12-17-above-48b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1dram-2026-12-17-above-50b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1eps-2026-12-17-above-39pt37` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1gm-2026-12-17-82pt5-85pct` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1gm-2026-12-17-85-87pt5pct` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1gm-2026-12-17-87pt5-90pct` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1gm-2026-12-17-90-92pt5pct` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1gm-2026-12-17-gte92pt5pct` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1gm-2026-12-17-lt82pt5pct` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1nand-2026-12-17-above-16pt0b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1nand-2026-12-17-above-17pt0b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1nand-2026-12-17-above-18pt0b` | kpic_20261116 | $250 | 500 | 563 |
+| `kpic-mu-q1nand-2026-12-17-above-19pt0b` | kpic_20261116 | $250 | 500 | 563 |
 | `kpic-okta-q3crpo-2026-12-01-12pt5-13pt5pct` | kpic_20261116 | $250 | 500 | 595 |
 | `kpic-okta-q3crpo-2026-12-01-13pt5-14pt5pct` | kpic_20261116 | $250 | 500 | 595 |
 | `kpic-okta-q3crpo-2026-12-01-14pt5-15pt5pct` | kpic_20261116 | $250 | 500 | 595 |
