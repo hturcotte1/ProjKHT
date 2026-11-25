@@ -559,3 +559,4 @@
 {"action": "screened", "by_limit": {"event": 9, "theme 'cabinet-shakeup'": 1, "theme 'iran'": 34, "theme 'middle-east'": 9, "theme 'russia'": 8, "theme 'ukraine'": 7, "theme 'venezuela'": 4, "total": 52}, "count": 124, "ts": 1795543205.3425086}
 {"action": "screened", "by_limit": {"event": 10, "theme 'cabinet-shakeup'": 1, "theme 'iran'": 35, "theme 'middle-east'": 9, "theme 'russia'": 7, "theme 'ukraine'": 7, "theme 'venezuela'": 5, "total": 56}, "count": 130, "ts": 1795573295.862173}
 {"action": "screened", "by_limit": {"event": 10, "theme 'iran'": 37, "theme 'middle-east'": 9, "theme 'russia'": 5, "theme 'ukraine'": 9, "theme 'venezuela'": 4, "total": 59}, "count": 133, "ts": 1795606444.7925699}
+{"action": "screened", "by_limit": {"event": 10, "theme 'cabinet-shakeup'": 1, "theme 'iran'": 28, "theme 'middle-east'": 18, "theme 'russia'": 5, "theme 'ukraine'": 6, "theme 'venezuela'": 5, "total": 60}, "count": 133, "ts": 1795639139.4412413}
