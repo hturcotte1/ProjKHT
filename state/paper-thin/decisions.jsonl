@@ -169,3 +169,4 @@
 {"action": "blocked", "market_id": 676450, "reason": "Will Stephen Miller leave the Trump administration before 20 | buy 'No' at 0.980, est. 0.988, edge 0.83c, 38d", "ts": 1795500685.8137968, "why": "total exposure cap"}
 {"action": "screened", "by_limit": {"event": 23, "theme 'big-tech'": 2, "theme 'middle-east'": 8, "theme 'tech'": 16, "total": 38}, "count": 87, "ts": 1795543210.709486}
 {"action": "screened", "by_limit": {"event": 22, "theme 'big-tech'": 2, "theme 'middle-east'": 7, "theme 'tech'": 16, "total": 36}, "count": 83, "ts": 1795573300.2782629}
+{"action": "screened", "by_limit": {"event": 20, "theme 'big-tech'": 1, "theme 'middle-east'": 7, "theme 'tech'": 19, "total": 38}, "count": 85, "ts": 1795606448.2274513}
