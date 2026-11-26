@@ -5,3 +5,4 @@ run,slug,program,pool,target,discount,max_spread,period,question,window_start,wi
 20261126T172949Z,cpceth-eth-updown-1d-2026-11-25-2200z,crypto_alt_updown_1d_20261110,150.0,2000.0,0.3,0.05,daily_event,ETH Up or Down Daily,1795644000.0,1795730400.0,1795732200.0,1684.91,1795714189.5,crypto:eth,1795554324.0,
 20261126T172949Z,cpcsol-sol-updown-1d-2026-11-25-2200z,crypto_alt_updown_1d_20261110,150.0,2000.0,0.3,0.05,daily_event,SOL Up or Down Daily,1795644000.0,1795730400.0,1795732200.0,70.5807,1795714189.5,crypto:sol,1795554621.0,
 20261126T172949Z,cpcxrp-xrp-updown-1d-2026-11-25-2200z,crypto_alt_updown_1d_20261110,150.0,2000.0,0.3,0.05,daily_event,XRP Up or Down Daily,1795644000.0,1795730400.0,1795732200.0,0.94029,1795714189.5,crypto:xrp,1795554745.0,
+20261126T172949Z,cpcsol-sol-updown-1d-2026-11-26-2200z,crypto_alt_updown_1d_20261110,150.0,2000.0,0.3,0.05,daily_event,,,,,,1795730389.5,,,
