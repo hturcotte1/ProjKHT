@@ -111663,3 +111663,5 @@ ts,action,slug,side,intent,price,qty,expires,id,why
 1795650088,place,aec-utr-swaelo-khaame-2026-11-23,ask,ORDER_INTENT_BUY_SHORT,0.57,250.0,1795650268,paper-129318,
 1795650148,cancel,aec-utr-swaelo-khaame-2026-11-23,ask,ORDER_INTENT_BUY_SHORT,0.57,250.0,1795650268,paper-129318,
 1795650148,place,aec-utr-swaelo-khaame-2026-11-23,ask,ORDER_INTENT_BUY_SHORT,0.59,250.0,1795650328,paper-129320,
+1795652398,cancel,aec-utr-swaelo-khaame-2026-11-23,bid,ORDER_INTENT_BUY_LONG,0.53,250.0,1795652400,paper-129371,
+1795652398,cancel,aec-utr-swaelo-khaame-2026-11-23,ask,ORDER_INTENT_BUY_SHORT,0.59,250.0,1795652400,paper-129372,
