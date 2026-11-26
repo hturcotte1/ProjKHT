@@ -1,0 +1,109 @@
+run,slug,program,pool,target,discount,max_spread,period,question,window_start,window_end,end,price_to_beat,first_seen,asset,listed,reports
+20261126T222840Z,kpic-amd-q4dcrev-2027-02-02-above-12pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Advanced Micro Devices Q4 2026 Data Center Revenue?,,,1802836800.0,,1795732153.7,,1795652104.0,
+20261126T222840Z,kpic-amd-q4dcrev-2027-02-02-above-12pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Advanced Micro Devices Q4 2026 Data Center Revenue?,,,1802836800.0,,1795732153.7,,1795652104.0,
+20261126T222840Z,kpic-amd-q4dcrev-2027-02-02-above-13pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Advanced Micro Devices Q4 2026 Data Center Revenue?,,,1802836800.0,,1795732153.7,,1795652104.0,
+20261126T222840Z,kpic-amd-q4dcrev-2027-02-02-above-13pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Advanced Micro Devices Q4 2026 Data Center Revenue?,,,1802836800.0,,1795732153.7,,1795652104.0,
+20261126T222840Z,kpic-amd-q4dcrev-2027-02-02-above-14pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Advanced Micro Devices Q4 2026 Data Center Revenue?,,,1802836800.0,,1795732153.7,,1795652104.0,
+20261126T222840Z,kpic-amd-q4eps-2027-02-02-above-2pt98,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Advanced Micro Devices (AMD) beat Q4 2026 quarterly earnings?,,,1802836800.0,,1795732153.7,,1795652001.0,
+20261126T222840Z,kpic-amzn-fy26capex-2027-02-04-above-200b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Amazon 2026 Capital Expenditures?,,,1803009600.0,,1795732153.7,,1795571875.0,
+20261126T222840Z,kpic-amzn-fy26capex-2027-02-04-above-210b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Amazon 2026 Capital Expenditures?,,,1803009600.0,,1795732153.7,,1795571875.0,
+20261126T222840Z,kpic-amzn-fy26capex-2027-02-04-above-220b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Amazon 2026 Capital Expenditures?,,,1803009600.0,,1795732153.7,,1795571875.0,
+20261126T222840Z,kpic-amzn-fy26capex-2027-02-04-above-230b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Amazon 2026 Capital Expenditures?,,,1803009600.0,,1795732153.7,,1795571875.0,
+20261126T222840Z,kpic-amzn-fy26capex-2027-02-04-above-240b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Amazon 2026 Capital Expenditures?,,,1803009600.0,,1795732153.7,,1795571875.0,
+20261126T222840Z,kpic-ant-q4rev-2027-02-25-above-20pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Anthropic Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653991.0,
+20261126T222840Z,kpic-ant-q4rev-2027-02-25-above-21pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Anthropic Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653991.0,
+20261126T222840Z,kpic-ant-q4rev-2027-02-25-above-21pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Anthropic Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653991.0,
+20261126T222840Z,kpic-ant-q4rev-2027-02-25-above-22pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Anthropic Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653991.0,
+20261126T222840Z,kpic-ant-q4rev-2027-02-25-above-22pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Anthropic Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653991.0,
+20261126T222840Z,kpic-ant-q4rev-2027-02-25-above-23pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Anthropic Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653991.0,
+20261126T222840Z,kpic-avgo-q4airev-2026-12-09-above-20b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Broadcom Q4 FY2026 AI Semiconductor Revenue?,,,1798084800.0,,1795732153.7,,1795570917.0,after
+20261126T222840Z,kpic-avgo-q4airev-2026-12-09-above-21b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Broadcom Q4 FY2026 AI Semiconductor Revenue?,,,1798084800.0,,1795732153.7,,1795570917.0,after
+20261126T222840Z,kpic-avgo-q4airev-2026-12-09-above-22b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Broadcom Q4 FY2026 AI Semiconductor Revenue?,,,1798084800.0,,1795732153.7,,1795570917.0,after
+20261126T222840Z,kpic-avgo-q4airev-2026-12-09-above-23b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Broadcom Q4 FY2026 AI Semiconductor Revenue?,,,1798084800.0,,1795732153.7,,1795570917.0,after
+20261126T222840Z,kpic-avgo-q4airev-2026-12-09-above-24b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Broadcom Q4 FY2026 AI Semiconductor Revenue?,,,1798084800.0,,1795732153.7,,1795570917.0,after
+20261126T222840Z,kpic-avgo-q4eps-2026-12-09-above-3pt89,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Broadcom (AVGO) beat Q4 FY2026 quarterly earnings?,,,1798084800.0,,1795732153.7,,1795570776.0,after
+20261126T222840Z,kpic-crwd-q3eps-2026-12-01-above-0pt32,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will CrowdStrike (CRWD) beat Q3 FY2027 quarterly earnings?,,,1797393600.0,,1795732153.7,,1795229205.0,after
+20261126T222840Z,kpic-crwd-q3nnarr-2026-12-01-above-320m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CrowdStrike Q3 FY2027 Net New ARR?,,,1797393600.0,,1795732153.7,,1795229298.0,after
+20261126T222840Z,kpic-crwd-q3nnarr-2026-12-01-above-360m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CrowdStrike Q3 FY2027 Net New ARR?,,,1797393600.0,,1795732153.7,,1795229298.0,after
+20261126T222840Z,kpic-crwd-q3nnarr-2026-12-01-above-400m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CrowdStrike Q3 FY2027 Net New ARR?,,,1797393600.0,,1795732153.7,,1795229298.0,after
+20261126T222840Z,kpic-crwd-q3nnarr-2026-12-01-above-440m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CrowdStrike Q3 FY2027 Net New ARR?,,,1797393600.0,,1795732153.7,,1795229298.0,after
+20261126T222840Z,kpic-crwv-q4eps-2027-02-25-above-neg0pt61,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will CoreWeave (CRWV) beat Q4 2026 quarterly earnings?,,,1804824000.0,,1795732153.7,,1795652811.0,
+20261126T222840Z,kpic-crwv-q4rev-2027-02-25-above-4pt70b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CoreWeave Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653484.0,
+20261126T222840Z,kpic-crwv-q4rev-2027-02-25-above-4pt75b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CoreWeave Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653484.0,
+20261126T222840Z,kpic-crwv-q4rev-2027-02-25-above-4pt80b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CoreWeave Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653484.0,
+20261126T222840Z,kpic-crwv-q4rev-2027-02-25-above-4pt85b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CoreWeave Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653484.0,
+20261126T222840Z,kpic-crwv-q4rev-2027-02-25-above-4pt90b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CoreWeave Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653484.0,
+20261126T222840Z,kpic-crwv-q4rev-2027-02-25-above-4pt95b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CoreWeave Q4 2026 Revenue?,,,1804824000.0,,1795732153.7,,1795653484.0,
+20261126T222840Z,kpic-crwv-q4rpo-2027-02-25-above-132pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CoreWeave Q4 2026 Remaining Performance Obligations (RPO)?,,,1804824000.0,,1795732153.7,,1795653821.0,
+20261126T222840Z,kpic-crwv-q4rpo-2027-02-25-above-135pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CoreWeave Q4 2026 Remaining Performance Obligations (RPO)?,,,1804824000.0,,1795732153.7,,1795653821.0,
+20261126T222840Z,kpic-crwv-q4rpo-2027-02-25-above-137pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CoreWeave Q4 2026 Remaining Performance Obligations (RPO)?,,,1804824000.0,,1795732153.7,,1795653821.0,
+20261126T222840Z,kpic-crwv-q4rpo-2027-02-25-above-140pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CoreWeave Q4 2026 Remaining Performance Obligations (RPO)?,,,1804824000.0,,1795732153.7,,1795653821.0,
+20261126T222840Z,kpic-crwv-q4rpo-2027-02-25-above-142pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,CoreWeave Q4 2026 Remaining Performance Obligations (RPO)?,,,1804824000.0,,1795732153.7,,1795653821.0,
+20261126T222840Z,kpic-mrvl-q3dcrev-2026-12-01-above-2pt5b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Marvell Q3 FY2027 Data Center Revenue?,,,1797393600.0,,1795732153.7,,1795229126.0,after
+20261126T222840Z,kpic-mrvl-q3dcrev-2026-12-01-above-2pt6b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Marvell Q3 FY2027 Data Center Revenue?,,,1797393600.0,,1795732153.7,,1795229125.0,after
+20261126T222840Z,kpic-mrvl-q3dcrev-2026-12-01-above-2pt7b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Marvell Q3 FY2027 Data Center Revenue?,,,1797393600.0,,1795732153.7,,1795229125.0,after
+20261126T222840Z,kpic-mrvl-q3dcrev-2026-12-01-above-2pt8b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Marvell Q3 FY2027 Data Center Revenue?,,,1797393600.0,,1795732153.7,,1795229127.0,after
+20261126T222840Z,kpic-mrvl-q3dcrev-2026-12-01-above-2pt9b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Marvell Q3 FY2027 Data Center Revenue?,,,1797393600.0,,1795732153.7,,1795229125.0,after
+20261126T222840Z,kpic-mrvl-q3eps-2026-12-01-above-1pt11,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Marvell (MRVL) beat Q3 FY2027 quarterly earnings?,,,1797393600.0,,1795732153.7,,1795229025.0,after
+20261126T222840Z,kpic-mu-q1dram-2026-12-17-above-42b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 DRAM Revenue?,,,1798776000.0,,1795732153.7,,1795569937.0,after
+20261126T222840Z,kpic-mu-q1dram-2026-12-17-above-44b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 DRAM Revenue?,,,1798776000.0,,1795732153.7,,1795569937.0,after
+20261126T222840Z,kpic-mu-q1dram-2026-12-17-above-46b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 DRAM Revenue?,,,1798776000.0,,1795732153.7,,1795569937.0,after
+20261126T222840Z,kpic-mu-q1dram-2026-12-17-above-48b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 DRAM Revenue?,,,1798776000.0,,1795732153.7,,1795569937.0,after
+20261126T222840Z,kpic-mu-q1dram-2026-12-17-above-50b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 DRAM Revenue?,,,1798776000.0,,1795732153.7,,1795569937.0,after
+20261126T222840Z,kpic-mu-q1eps-2026-12-17-above-39pt37,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Micron (MU) beat Q1 FY2027 quarterly earnings?,,,1798776000.0,,1795732153.7,,1795569303.0,after
+20261126T222840Z,kpic-mu-q1gm-2026-12-17-82pt5-85pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 Non-GAAP Gross Margin?,,,1798776000.0,,1795732153.7,,1795570345.0,after
+20261126T222840Z,kpic-mu-q1gm-2026-12-17-85-87pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 Non-GAAP Gross Margin?,,,1798776000.0,,1795732153.7,,1795570345.0,after
+20261126T222840Z,kpic-mu-q1gm-2026-12-17-87pt5-90pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 Non-GAAP Gross Margin?,,,1798776000.0,,1795732153.7,,1795570345.0,after
+20261126T222840Z,kpic-mu-q1gm-2026-12-17-90-92pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 Non-GAAP Gross Margin?,,,1798776000.0,,1795732153.7,,1795570345.0,after
+20261126T222840Z,kpic-mu-q1gm-2026-12-17-gte92pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 Non-GAAP Gross Margin?,,,1798776000.0,,1795732153.7,,1795570345.0,after
+20261126T222840Z,kpic-mu-q1gm-2026-12-17-lt82pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 Non-GAAP Gross Margin?,,,1798776000.0,,1795732153.7,,1795570345.0,after
+20261126T222840Z,kpic-mu-q1nand-2026-12-17-above-16pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 NAND Revenue?,,,1798776000.0,,1795732153.7,,1795570046.0,after
+20261126T222840Z,kpic-mu-q1nand-2026-12-17-above-17pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 NAND Revenue?,,,1798776000.0,,1795732153.7,,1795570045.0,after
+20261126T222840Z,kpic-mu-q1nand-2026-12-17-above-18pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 NAND Revenue?,,,1798776000.0,,1795732153.7,,1795570045.0,after
+20261126T222840Z,kpic-mu-q1nand-2026-12-17-above-19pt0b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Micron Q1 FY2027 NAND Revenue?,,,1798776000.0,,1795732153.7,,1795570045.0,after
+20261126T222840Z,kpic-nvda-q4dcrev-2027-02-24-above-119b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,NVIDIA Q4 FY2027 Data Center Revenue?,,,1804737600.0,,1795732153.7,,1795651552.0,
+20261126T222840Z,kpic-nvda-q4dcrev-2027-02-24-above-121b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,NVIDIA Q4 FY2027 Data Center Revenue?,,,1804737600.0,,1795732153.7,,1795651552.0,
+20261126T222840Z,kpic-nvda-q4dcrev-2027-02-24-above-123b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,NVIDIA Q4 FY2027 Data Center Revenue?,,,1804737600.0,,1795732153.7,,1795651552.0,
+20261126T222840Z,kpic-nvda-q4dcrev-2027-02-24-above-125b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,NVIDIA Q4 FY2027 Data Center Revenue?,,,1804737600.0,,1795732153.7,,1795651552.0,
+20261126T222840Z,kpic-nvda-q4dcrev-2027-02-24-above-127b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,NVIDIA Q4 FY2027 Data Center Revenue?,,,1804737600.0,,1795732153.7,,1795651552.0,
+20261126T222840Z,kpic-nvda-q4eps-2027-02-24-above-2pt94,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will NVIDIA (NVDA) beat Q4 FY2027 quarterly earnings?,,,1804737600.0,,1795732153.7,,1795651654.0,
+20261126T222840Z,kpic-nvda-q4gm-2027-02-24-70pt75-71pt25pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,NVIDIA Q4 FY2027 Non-GAAP Gross Margin?,,,1804737600.0,,1795732153.7,,1795651901.0,
+20261126T222840Z,kpic-nvda-q4gm-2027-02-24-71pt25-71pt75pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,NVIDIA Q4 FY2027 Non-GAAP Gross Margin?,,,1804737600.0,,1795732153.7,,1795651901.0,
+20261126T222840Z,kpic-nvda-q4gm-2027-02-24-71pt75-72pt25pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,NVIDIA Q4 FY2027 Non-GAAP Gross Margin?,,,1804737600.0,,1795732153.7,,1795651901.0,
+20261126T222840Z,kpic-nvda-q4gm-2027-02-24-gte72pt25pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,NVIDIA Q4 FY2027 Non-GAAP Gross Margin?,,,1804737600.0,,1795732153.7,,1795651901.0,
+20261126T222840Z,kpic-nvda-q4gm-2027-02-24-lt70pt75pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,NVIDIA Q4 FY2027 Non-GAAP Gross Margin?,,,1804737600.0,,1795732153.7,,1795651901.0,
+20261126T222840Z,kpic-okta-q3crpo-2026-12-01-12pt5-13pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Okta Q3 FY2027 Current RPO Growth?,,,1797393600.0,,1795732153.7,,1795229675.0,after
+20261126T222840Z,kpic-okta-q3crpo-2026-12-01-13pt5-14pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Okta Q3 FY2027 Current RPO Growth?,,,1797393600.0,,1795732153.7,,1795229675.0,after
+20261126T222840Z,kpic-okta-q3crpo-2026-12-01-14pt5-15pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Okta Q3 FY2027 Current RPO Growth?,,,1797393600.0,,1795732153.7,,1795229676.0,after
+20261126T222840Z,kpic-okta-q3crpo-2026-12-01-gte15pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Okta Q3 FY2027 Current RPO Growth?,,,1797393600.0,,1795732153.7,,1795229676.0,after
+20261126T222840Z,kpic-okta-q3crpo-2026-12-01-lt12pt5pct,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Okta Q3 FY2027 Current RPO Growth?,,,1797393600.0,,1795732153.7,,1795229675.0,after
+20261126T222840Z,kpic-okta-q3eps-2026-12-01-above-0pt95,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Okta (OKTA) beat Q3 FY2027 quarterly earnings?,,,1797393600.0,,1795732153.7,,1795229518.0,after
+20261126T222840Z,kpic-spcx-q4launches-2027-02-17-above-37,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Total Rocket Launches?,,,1804132800.0,,1795732153.7,,1795655074.0,
+20261126T222840Z,kpic-spcx-q4launches-2027-02-17-above-39,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Total Rocket Launches?,,,1804132800.0,,1795732153.7,,1795655074.0,
+20261126T222840Z,kpic-spcx-q4launches-2027-02-17-above-41,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Total Rocket Launches?,,,1804132800.0,,1795732153.7,,1795655074.0,
+20261126T222840Z,kpic-spcx-q4launches-2027-02-17-above-43,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Total Rocket Launches?,,,1804132800.0,,1795732153.7,,1795655074.0,
+20261126T222840Z,kpic-spcx-q4launches-2027-02-17-above-45,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Total Rocket Launches?,,,1804132800.0,,1795732153.7,,1795655074.0,
+20261126T222840Z,kpic-spcx-q4launches-2027-02-17-above-47,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Total Rocket Launches?,,,1804132800.0,,1795732153.7,,1795655074.0,
+20261126T222840Z,kpic-ttwo-gta6units-2026-12-31-gte33m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795732153.7,,1795122155.0,
+20261126T222840Z,kpic-ttwo-gta6units-2026-12-31-gte36m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795732153.7,,1795122156.0,
+20261126T222840Z,kpic-ttwo-gta6units-2026-12-31-gte39m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795732153.7,,1795122157.0,
+20261126T222840Z,kpic-ttwo-gta6units-2026-12-31-gte42m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795732153.7,,1795122156.0,
+20261126T222840Z,kpic-ttwo-gta6units-2026-12-31-gte45m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795732153.7,,1795122156.0,
+20261126T222840Z,kpic-ttwo-gta6units-2026-12-31-gte48m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795732153.7,,1795122157.0,
+20261126T222840Z,kpic-ttwo-gta6units-2026-12-31-gte51m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795732153.7,,1795122157.0,
+20261126T222840Z,kpic-ttwo-gta6units-2026-12-31-gte54m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795732153.7,,1795122157.0,
+20261126T222840Z,kpic-ttwo-gta6units-2026-12-31-gte57m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795732153.7,,1795122157.0,
+20261126T222840Z,kpic-ttwo-gta6units-2026-12-31-gte60m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by December 31, 2026?",,,1799985600.0,,1795732153.7,,1795122157.0,
+20261126T222840Z,kpic-ttwo-gta6units-2027-03-31-gte100m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795732153.7,,1795050777.0,
+20261126T222840Z,kpic-ttwo-gta6units-2027-03-31-gte40m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795732153.7,,1795050777.0,
+20261126T222840Z,kpic-ttwo-gta6units-2027-03-31-gte50m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795732153.7,,1795050777.0,
+20261126T222840Z,kpic-ttwo-gta6units-2027-03-31-gte60m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795732153.7,,1795050777.0,
+20261126T222840Z,kpic-ttwo-gta6units-2027-03-31-gte70m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795732153.7,,1795050777.0,
+20261126T222840Z,kpic-ttwo-gta6units-2027-03-31-gte80m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795732153.7,,1795050777.0,
+20261126T222840Z,kpic-ttwo-gta6units-2027-03-31-gte90m,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,"How many GTA VI units sold reported by March 31, 2027?",,,1807758000.0,,1795732153.7,,1795050777.0,
+20261126T222840Z,kpic-zs-q1arr-2026-12-02-above-3pt85b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795732153.7,,1795229912.0,after
+20261126T222840Z,kpic-zs-q1arr-2026-12-02-above-3pt86b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795732153.7,,1795229912.0,after
+20261126T222840Z,kpic-zs-q1arr-2026-12-02-above-3pt87b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795732153.7,,1795229912.0,after
+20261126T222840Z,kpic-zs-q1arr-2026-12-02-above-3pt88b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795732153.7,,1795229912.0,after
+20261126T222840Z,kpic-zs-q1arr-2026-12-02-above-3pt89b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795732153.7,,1795229912.0,after
+20261126T222840Z,kpic-zs-q1eps-2026-12-02-above-1pt19,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Zscaler (ZS) beat Q1 FY2027 quarterly earnings?,,,1797480000.0,,1795732153.7,,1795229794.0,after
