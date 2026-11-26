@@ -172,3 +172,4 @@
 {"action": "screened", "by_limit": {"event": 20, "theme 'big-tech'": 1, "theme 'middle-east'": 7, "theme 'tech'": 19, "total": 38}, "count": 85, "ts": 1795606448.2274513}
 {"action": "screened", "by_limit": {"event": 20, "theme 'big-tech'": 1, "theme 'middle-east'": 9, "theme 'russia'": 1, "theme 'tech'": 17, "total": 38}, "count": 86, "ts": 1795639141.7080677}
 {"action": "screened", "by_limit": {"event": 20, "theme 'big-tech'": 2, "theme 'middle-east'": 10, "theme 'tech'": 17, "total": 34}, "count": 83, "ts": 1795663057.1610544}
+{"action": "screened", "by_limit": {"event": 15, "theme 'big-tech'": 12, "theme 'middle-east'": 8, "theme 'russia'": 1, "theme 'tech'": 7, "total": 38}, "count": 81, "ts": 1795697778.598825}
