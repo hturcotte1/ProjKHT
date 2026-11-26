@@ -91,3 +91,4 @@
 {"action": "screened", "by_limit": {"event": 5}, "count": 5, "ts": 1795606463.601419}
 {"action": "order", "dte": 126.68375461320635, "edge": 0.00862848761284385, "filled": 0.0, "kind": "MAKER", "market_id": 7290140, "order_id": "paper-66", "p_win": 0.9576284876128438, "price": 0.945, "reason": "Will the average Ornn B300 rental price in March 2027 be abo | buy 'No' at 0.949, est. 0.958, edge 0.86c, 127d", "side": "BUY", "size": 21.16, "status": "OPEN", "ts": 1795606463.601419}
 {"action": "screened", "by_limit": {"event": 5, "theme 'business'": 1}, "count": 6, "ts": 1795639164.7340882}
+{"action": "screened", "by_limit": {"event": 4, "theme 'nvidia'": 1}, "count": 5, "ts": 1795663076.3248951}
