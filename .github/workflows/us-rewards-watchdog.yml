@@ -6,7 +6,7 @@
 # only when none is in progress or waiting. It touches nothing else: no
 # market data, no credentials, no orders.
 #
-# It switches itself off once the test is over (3 December 2026); the
+# It switches itself off once the tests are over (20 December 2026); the
 # recording job switches it on again each time it starts.
 # To stop it sooner: Actions tab -> "us-rewards-watchdog" -> "..." ->
 # "Disable workflow".
@@ -35,7 +35,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          if [ "$(date -u +%Y%m%d)" -ge 20261203 ]; then
+          if [ "$(date -u +%Y%m%d)" -ge 20261220 ]; then
             echo "the test is over; switching this watchdog off"
             gh workflow disable us-rewards-watchdog.yml || true
             exit 0
