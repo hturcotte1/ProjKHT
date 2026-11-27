@@ -1,12 +1,12 @@
 Test L3: selling far brackets while the bids are there (docs/11_crypto_us.md, section 13)
-scored 18 November 2026, 09:09 UTC. Paper sales against bids seen in the book. No order was placed.
-recorded: 157,640 readings of 952 brackets, from 12 Nov 16:30 to 17 Nov 21:59 UTC
+scored 27 November 2026, 09:07 UTC. Paper sales against bids seen in the book. No order was placed.
+recorded: 398,038 readings of 2,404 brackets, from 12 Nov 16:30 to 26 Nov 22:00 UTC
 
 what became of each bracket followed (a bracket is counted once, by its sale or by how its last reading was judged)
-   trade                                                     189
-   far enough, nobody bidding                                592
-   not far enough                                            147
-   the index is in this bracket                               24
+   trade                                                     369
+   far enough, nobody bidding                               1606
+   not far enough                                            369
+   the index is in this bracket                               60
 
 L3-all (every sale the rule finds, 2,000 contracts a bracket at most)
      evening  counted  btc_stretches  recorded  sales  of_a_contract_or_more  contracts  tied_up  premium  settled  lost    pnl
@@ -16,6 +16,15 @@ L3-all (every sale the rule finds, 2,000 contracts a bracket at most)
 15 Nov 22:00     True            165      True     57                     47   39156.82 38764.83   355.12     True     0 355.12
 16 Nov 22:00     True            165      True     27                      4     672.17   664.65     6.82     True     0   6.82
 17 Nov 22:00     True            165      True     11                      7    2611.41  2585.30    23.66     True     0  23.66
+18 Nov 22:00     True            165      True     36                     32   17487.41 17312.53   158.43     True     0 158.43
+19 Nov 22:00     True            165      True     29                     20   17574.00 17398.14   159.32     True     0 159.32
+20 Nov 22:00     True            165      True     15                     12    5053.33  5002.79    45.78     True     0  45.78
+21 Nov 22:00     True            165      True     44                     38   25819.95 25561.74   233.92     True     0 233.92
+22 Nov 22:00     True            165      True      5                      5    2525.00  2499.75    22.88     True     0  22.88
+23 Nov 22:00     True            165      True     21                     16   12504.60 12379.52   113.31     True     0 113.31
+24 Nov 22:00     True            165      True     18                     18   14052.80 13912.26   127.32     True     0 127.32
+25 Nov 22:00     True            164      True     10                      3    1537.70  1522.32    13.93     True     0  13.93
+26 Nov 22:00     True            165      True      2                      2    1100.34  1089.34     9.97     True     0   9.97
    by ladder (largest_sale is the most that ladder can lose; still_next: bids sold to that stood as large at the bracket's next reading)
      evening coin horizon  brackets  contracts  premium  tied_up  largest_sale  first_minutes_left  last_minutes_left  nearest still_next  lost    pnl
 12 Nov 22:00  btc   daily        43    23032.2   208.70 22801.87       1980.00                 330                  4   0.0248   43 of 43     0 208.70
@@ -35,6 +44,28 @@ L3-all (every sale the rule finds, 2,000 contracts a bracket at most)
 17 Nov 22:00  btc   daily         5       90.4     0.82    89.50         89.10                 288                 13   0.0338     5 of 5     0   0.82
 17 Nov 22:00  eth   daily         1      500.0     4.53   495.00        495.00                 273                273   0.1478     1 of 1     0   4.53
 17 Nov 22:00  xrp   daily         5     2021.0    18.31  2000.80        499.96                 329                168   0.1643     5 of 5     0  18.31
+18 Nov 22:00  btc   daily        20     9570.3    86.70  9474.60        990.00                 329                155   0.0874    3 of 20     0  86.70
+18 Nov 22:00  eth   daily        11     5034.5    45.61  4984.15        499.95                 329                239   0.1277   10 of 11     0  45.61
+18 Nov 22:00  xrp   daily         5     2882.6    26.12  2853.78       1489.33                 329                 13   0.0698     4 of 5     0  26.12
+19 Nov 22:00  btc   daily        16    13046.5   118.20 12916.02       1489.95                 314                 22   0.0415   16 of 16     0 118.20
+19 Nov 22:00  eth   daily         7     2019.0    18.33  1998.77        499.95                 330                213   0.1465     6 of 7     0  18.33
+19 Nov 22:00  sol   daily         3      502.0     4.55   496.98        495.00                 213                173   0.1790     3 of 3     0   4.55
+19 Nov 22:00  xrp   daily         3     2006.5    18.24  1986.37       1980.00                 329                207   0.1820     3 of 3     0  18.24
+20 Nov 22:00  btc  weekly         2        0.2     0.00     0.20          0.10                 234                194   0.0998     2 of 2     0   0.00
+20 Nov 22:00  xrp  weekly        13     5053.1    45.78  5002.60        499.95                 329                183   0.1719   13 of 13     0  45.78
+21 Nov 22:00  btc   daily        21    15214.6   137.84 15062.48       1980.00                 330                 29   0.0431   17 of 21     0 137.84
+21 Nov 22:00  eth   daily        12     5050.3    45.76  4999.81        499.95                 329                305   0.1311   12 of 12     0  45.76
+21 Nov 22:00  sol   daily        11     5555.0    50.33  5499.45        499.95                 321                237   0.2056   10 of 11     0  50.33
+22 Nov 22:00  sol   daily         5     2525.0    22.88  2499.75        499.95                 301                233   0.2041     5 of 5     0  22.88
+23 Nov 22:00  btc   daily        15     9993.6    90.54  9893.66        990.10                 324                160   0.0869   12 of 15     0  90.54
+23 Nov 22:00  sol   daily         2     1000.0     9.06   990.00        495.00                 211                211   0.2121     0 of 2     0   9.06
+23 Nov 22:00  xrp   daily         4     1511.0    13.72  1495.86        499.46                 329                253   0.2020     3 of 4     0  13.72
+24 Nov 22:00  btc   daily        13    13049.8   118.22 12919.30        994.95                 252                 84   0.0790    6 of 13     0 118.22
+24 Nov 22:00  sol   daily         2     1000.0     9.06   990.00        495.00                 261                 85   0.2332     1 of 2     0   9.06
+24 Nov 22:00  xrp   daily         3        3.0     0.04     2.96          0.99                 329                233   0.1898     3 of 3     0   0.04
+25 Nov 22:00  btc   daily         7        0.7     0.01     0.69          0.10                 330                294   0.1097     7 of 7     0   0.01
+25 Nov 22:00  xrp   daily         3     1537.0    13.92  1521.63        511.83                 329                227   0.1892     3 of 3     0  13.92
+26 Nov 22:00  xrp   daily         2     1100.3     9.97  1089.34        590.38                 323                309   0.2114     2 of 2     0   9.97
 
 L3-10k ($10,000 to tie up at each settlement time)
      evening  counted  btc_stretches  recorded  sales  of_a_contract_or_more  contracts  tied_up  premium  settled  lost   pnl
@@ -44,6 +75,15 @@ L3-10k ($10,000 to tie up at each settlement time)
 15 Nov 22:00     True            165      True     23                     16   10101.43 10000.00    91.89     True     0 91.89
 16 Nov 22:00     True            165      True     27                      4     672.17   664.65     6.82     True     0  6.82
 17 Nov 22:00     True            165      True     11                      7    2611.41  2585.30    23.66     True     0 23.66
+18 Nov 22:00     True            165      True     20                     16   10101.01 10000.00    91.51     True     0 91.51
+19 Nov 22:00     True            165      True     15                     11   10101.09 10000.00    91.58     True     0 91.58
+20 Nov 22:00     True            165      True     15                     12    5053.33  5002.79    45.78     True     0 45.78
+21 Nov 22:00     True            165      True     22                     16   10101.02 10000.00    91.52     True     0 91.52
+22 Nov 22:00     True            165      True      5                      5    2525.00  2499.75    22.88     True     0 22.88
+23 Nov 22:00     True            165      True     16                     12   10101.01 10000.00    91.51     True     0 91.51
+24 Nov 22:00     True            165      True     14                     14   10101.02 10000.00    91.52     True     0 91.52
+25 Nov 22:00     True            164      True     10                      3    1537.70  1522.32    13.93     True     0 13.93
+26 Nov 22:00     True            165      True      2                      2    1100.34  1089.34     9.97     True     0  9.97
    by ladder (largest_sale is the most that ladder can lose; still_next: bids sold to that stood as large at the bracket's next reading)
      evening coin horizon  brackets  contracts  premium  tied_up  largest_sale  first_minutes_left  last_minutes_left  nearest still_next  lost   pnl
 12 Nov 22:00  btc   daily        10     7101.1    64.37  7030.01        995.05                 330                314   0.1091   10 of 10     0 64.37
@@ -62,6 +102,26 @@ L3-10k ($10,000 to tie up at each settlement time)
 17 Nov 22:00  btc   daily         5       90.4     0.82    89.50         89.10                 288                 13   0.0338     5 of 5     0  0.82
 17 Nov 22:00  eth   daily         1      500.0     4.53   495.00        495.00                 273                273   0.1478     1 of 1     0  4.53
 17 Nov 22:00  xrp   daily         5     2021.0    18.31  2000.80        499.96                 329                168   0.1643     5 of 5     0 18.31
+18 Nov 22:00  btc   daily         6     2287.9    20.73  2265.02        990.00                 329                156   0.0922     3 of 6     0 20.73
+18 Nov 22:00  eth   daily        11     5034.5    45.61  4984.15        499.95                 329                239   0.1277   10 of 11     0 45.61
+18 Nov 22:00  xrp   daily         3     2778.6    25.17  2750.82       1489.33                 329                183   0.1741     2 of 3     0 25.17
+19 Nov 22:00  btc   daily         8     8578.6    77.72  8492.80       1489.95                 314                288   0.1090     8 of 8     0 77.72
+19 Nov 22:00  eth   daily         6     1519.0    13.80  1503.77        499.95                 330                316   0.1581     5 of 6     0 13.80
+19 Nov 22:00  xrp   daily         1        3.5     0.06     3.43          3.43                 329                329   0.2289     1 of 1     0  0.06
+20 Nov 22:00  btc  weekly         2        0.2     0.00     0.20          0.10                 234                194   0.0998     2 of 2     0  0.00
+20 Nov 22:00  xrp  weekly        13     5053.1    45.78  5002.60        499.95                 329                183   0.1719   13 of 13     0 45.78
+21 Nov 22:00  btc   daily         7     3535.7    32.03  3500.34       1980.00                 330                286   0.1257     7 of 7     0 32.03
+21 Nov 22:00  eth   daily        12     5050.3    45.76  4999.81        499.95                 329                305   0.1311   12 of 12     0 45.76
+21 Nov 22:00  sol   daily         3     1515.0    13.73  1499.85        499.95                 321                299   0.2493     3 of 3     0 13.73
+22 Nov 22:00  sol   daily         5     2525.0    22.88  2499.75        499.95                 301                233   0.2041     5 of 5     0 22.88
+23 Nov 22:00  btc   daily        13     8593.0    77.85  8507.08        990.00                 324                255   0.1065   10 of 13     0 77.85
+23 Nov 22:00  xrp   daily         3     1508.0    13.66  1492.92        499.46                 329                329   0.2372     2 of 3     0 13.66
+24 Nov 22:00  btc   daily        10     9598.0    86.95  9502.04        994.95                 252                206   0.1003    3 of 10     0 86.95
+24 Nov 22:00  sol   daily         1      500.0     4.53   495.00        495.00                 261                261   0.2338     1 of 1     0  4.53
+24 Nov 22:00  xrp   daily         3        3.0     0.04     2.96          0.99                 329                233   0.1898     3 of 3     0  0.04
+25 Nov 22:00  btc   daily         7        0.7     0.01     0.69          0.10                 330                294   0.1097     7 of 7     0  0.01
+25 Nov 22:00  xrp   daily         3     1537.0    13.92  1521.63        511.83                 329                227   0.1892     3 of 3     0 13.92
+26 Nov 22:00  xrp   daily         2     1100.3     9.97  1089.34        590.38                 323                309   0.2114     2 of 2     0  9.97
 
 Evenings before 13 November were looked at before the rule was fixed. They are shown and counted for nothing.
-Verdict by the bar fixed in advance, for L3-10k: NOT PASSED: 5 evenings, $42.15 an evening on average (at least $50 asked), brackets sold that paid: 0 (none allowed)
+Verdict by the bar fixed in advance, for L3-10k: PASSED: 14 evenings, $54.35 an evening on average (at least $50 asked), brackets sold that paid: 0 (none allowed)

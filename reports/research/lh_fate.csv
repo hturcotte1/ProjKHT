@@ -951,3 +951,1455 @@ cpcxrp-xrp-range-day-2026-11-17-1p1,xrp,daily,1794952800.0,164,"far enough, nobo
 cpcxrp-xrp-range-day-2026-11-17-1p15,xrp,daily,1794952800.0,19,trade
 cpcxrp-xrp-range-day-2026-11-17-above-1p2,xrp,daily,1794952800.0,1,trade
 cpcxrp-xrp-range-day-2026-11-17-below-0p7,xrp,daily,1794952800.0,1,trade
+cpc-btc-range-day-2026-11-18-55000,btc,daily,1795039200.0,86,trade
+cpc-btc-range-day-2026-11-18-55250,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-55500,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-55750,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-56000,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-56250,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-56500,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-56750,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-57000,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-57250,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-57500,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-57750,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-58000,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-58250,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-58500,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-58750,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-59000,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-59250,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-59500,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-59750,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-60000,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-60250,btc,daily,1795039200.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-60500,btc,daily,1795039200.0,165,not far enough
+cpc-btc-range-day-2026-11-18-60750,btc,daily,1795039200.0,165,not far enough
+cpc-btc-range-day-2026-11-18-61000,btc,daily,1795039200.0,165,not far enough
+cpc-btc-range-day-2026-11-18-61250,btc,daily,1795039200.0,165,not far enough
+cpc-btc-range-day-2026-11-18-61500,btc,daily,1795039200.0,165,not far enough
+cpc-btc-range-day-2026-11-18-61750,btc,daily,1795039200.0,165,not far enough
+cpc-btc-range-day-2026-11-18-62000,btc,daily,1795039200.0,165,the index is in this bracket
+cpc-btc-range-day-2026-11-18-62250,btc,daily,1795039200.0,165,not far enough
+cpc-btc-range-day-2026-11-18-62500,btc,daily,1795039200.0,165,not far enough
+cpc-btc-range-day-2026-11-18-62750,btc,daily,1795039200.0,165,not far enough
+cpc-btc-range-day-2026-11-18-63000,btc,daily,1795039200.0,165,not far enough
+cpc-btc-range-day-2026-11-18-63250,btc,daily,1795039200.0,165,not far enough
+cpc-btc-range-day-2026-11-18-63500,btc,daily,1795039200.0,164,not far enough
+cpc-btc-range-day-2026-11-18-63750,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-64000,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-64250,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-64500,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-64750,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-65000,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-65250,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-65500,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-65750,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-66000,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-66250,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-66500,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-66750,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-67000,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-67250,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-67500,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-67750,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-68000,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-68250,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-68500,btc,daily,1795039200.0,81,trade
+cpc-btc-range-day-2026-11-18-68750,btc,daily,1795039200.0,79,trade
+cpc-btc-range-day-2026-11-18-69000,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-69250,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-69500,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-69750,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-70000,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-70250,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-70500,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-70750,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-71000,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-71250,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-71500,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-71750,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-72000,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-18-72250,btc,daily,1795039200.0,88,trade
+cpc-btc-range-day-2026-11-18-above-72500,btc,daily,1795039200.0,1,trade
+cpc-btc-range-day-2026-11-18-below-55000,btc,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1480,eth,daily,1795039200.0,1,trade
+cpceth-eth-range-day-2026-11-18-1500,eth,daily,1795039200.0,46,trade
+cpceth-eth-range-day-2026-11-18-1520,eth,daily,1795039200.0,46,trade
+cpceth-eth-range-day-2026-11-18-1540,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1560,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1580,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1600,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1620,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1640,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1660,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1680,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1700,eth,daily,1795039200.0,164,not far enough
+cpceth-eth-range-day-2026-11-18-1720,eth,daily,1795039200.0,164,not far enough
+cpceth-eth-range-day-2026-11-18-1740,eth,daily,1795039200.0,164,not far enough
+cpceth-eth-range-day-2026-11-18-1760,eth,daily,1795039200.0,164,the index is in this bracket
+cpceth-eth-range-day-2026-11-18-1780,eth,daily,1795039200.0,164,not far enough
+cpceth-eth-range-day-2026-11-18-1800,eth,daily,1795039200.0,164,not far enough
+cpceth-eth-range-day-2026-11-18-1820,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1840,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1860,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1880,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1900,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1920,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1940,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1960,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-1980,eth,daily,1795039200.0,1,trade
+cpceth-eth-range-day-2026-11-18-2000,eth,daily,1795039200.0,46,trade
+cpceth-eth-range-day-2026-11-18-2020,eth,daily,1795039200.0,1,trade
+cpceth-eth-range-day-2026-11-18-2040,eth,daily,1795039200.0,46,trade
+cpceth-eth-range-day-2026-11-18-2060,eth,daily,1795039200.0,46,trade
+cpceth-eth-range-day-2026-11-18-2080,eth,daily,1795039200.0,46,trade
+cpceth-eth-range-day-2026-11-18-2100,eth,daily,1795039200.0,46,trade
+cpceth-eth-range-day-2026-11-18-above-2120,eth,daily,1795039200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-18-below-1480,eth,daily,1795039200.0,46,trade
+cpcsol-sol-range-day-2026-11-18-58,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-59,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-60,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-61,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-62,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-63,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-64,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-65,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-66,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-67,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-68,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-69,sol,daily,1795039200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-18-70,sol,daily,1795039200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-18-71,sol,daily,1795039200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-18-72,sol,daily,1795039200.0,164,the index is in this bracket
+cpcsol-sol-range-day-2026-11-18-73,sol,daily,1795039200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-18-74,sol,daily,1795039200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-18-75,sol,daily,1795039200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-18-76,sol,daily,1795039200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-18-77,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-78,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-79,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-80,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-81,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-82,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-83,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-84,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-85,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-86,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-87,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-above-88,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-18-below-58,sol,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-18-0p75,xrp,daily,1795039200.0,59,trade
+cpcxrp-xrp-range-day-2026-11-18-0p8,xrp,daily,1795039200.0,134,trade
+cpcxrp-xrp-range-day-2026-11-18-0p85,xrp,daily,1795039200.0,159,trade
+cpcxrp-xrp-range-day-2026-11-18-0p9,xrp,daily,1795039200.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-18-0p95,xrp,daily,1795039200.0,164,the index is in this bracket
+cpcxrp-xrp-range-day-2026-11-18-1,xrp,daily,1795039200.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-18-1p05,xrp,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-18-1p1,xrp,daily,1795039200.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-18-above-1p15,xrp,daily,1795039200.0,74,trade
+cpcxrp-xrp-range-day-2026-11-18-below-0p75,xrp,daily,1795039200.0,1,trade
+cpc-btc-range-day-2026-11-19-53250,btc,daily,1795125600.0,17,trade
+cpc-btc-range-day-2026-11-19-53500,btc,daily,1795125600.0,32,trade
+cpc-btc-range-day-2026-11-19-53750,btc,daily,1795125600.0,17,trade
+cpc-btc-range-day-2026-11-19-54000,btc,daily,1795125600.0,17,trade
+cpc-btc-range-day-2026-11-19-54250,btc,daily,1795125600.0,19,trade
+cpc-btc-range-day-2026-11-19-54500,btc,daily,1795125600.0,21,trade
+cpc-btc-range-day-2026-11-19-54750,btc,daily,1795125600.0,21,trade
+cpc-btc-range-day-2026-11-19-55000,btc,daily,1795125600.0,22,trade
+cpc-btc-range-day-2026-11-19-55250,btc,daily,1795125600.0,34,trade
+cpc-btc-range-day-2026-11-19-55500,btc,daily,1795125600.0,36,trade
+cpc-btc-range-day-2026-11-19-55750,btc,daily,1795125600.0,38,trade
+cpc-btc-range-day-2026-11-19-56000,btc,daily,1795125600.0,9,trade
+cpc-btc-range-day-2026-11-19-56250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-56500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-56750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-57000,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-57250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-57500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-57750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-58000,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-58250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-58500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-58750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-59000,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-59250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-59500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-59750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-60000,btc,daily,1795125600.0,165,not far enough
+cpc-btc-range-day-2026-11-19-60250,btc,daily,1795125600.0,165,not far enough
+cpc-btc-range-day-2026-11-19-60500,btc,daily,1795125600.0,165,not far enough
+cpc-btc-range-day-2026-11-19-60750,btc,daily,1795125600.0,165,not far enough
+cpc-btc-range-day-2026-11-19-61000,btc,daily,1795125600.0,165,not far enough
+cpc-btc-range-day-2026-11-19-61250,btc,daily,1795125600.0,165,not far enough
+cpc-btc-range-day-2026-11-19-61500,btc,daily,1795125600.0,165,the index is in this bracket
+cpc-btc-range-day-2026-11-19-61750,btc,daily,1795125600.0,165,not far enough
+cpc-btc-range-day-2026-11-19-62000,btc,daily,1795125600.0,165,not far enough
+cpc-btc-range-day-2026-11-19-62250,btc,daily,1795125600.0,165,not far enough
+cpc-btc-range-day-2026-11-19-62500,btc,daily,1795125600.0,165,not far enough
+cpc-btc-range-day-2026-11-19-62750,btc,daily,1795125600.0,165,not far enough
+cpc-btc-range-day-2026-11-19-63000,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-63250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-63500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-63750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-64000,btc,daily,1795125600.0,155,trade
+cpc-btc-range-day-2026-11-19-64250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-64500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-64750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-65000,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-65250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-65500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-65750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-66000,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-66250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-66500,btc,daily,1795125600.0,114,trade
+cpc-btc-range-day-2026-11-19-66750,btc,daily,1795125600.0,112,trade
+cpc-btc-range-day-2026-11-19-67000,btc,daily,1795125600.0,107,trade
+cpc-btc-range-day-2026-11-19-67250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-67500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-67750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-68000,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-68250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-68500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-68750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-69000,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-69250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-69500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-69750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-70000,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-70250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-70500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-70750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-71000,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-71250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-71500,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-above-71750,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-19-below-53250,btc,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1440,eth,daily,1795125600.0,1,trade
+cpceth-eth-range-day-2026-11-19-1460,eth,daily,1795125600.0,8,trade
+cpceth-eth-range-day-2026-11-19-1480,eth,daily,1795125600.0,8,trade
+cpceth-eth-range-day-2026-11-19-1500,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1520,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1540,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1560,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1580,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1600,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1620,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1640,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1660,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1680,eth,daily,1795125600.0,165,not far enough
+cpceth-eth-range-day-2026-11-19-1700,eth,daily,1795125600.0,165,not far enough
+cpceth-eth-range-day-2026-11-19-1720,eth,daily,1795125600.0,165,the index is in this bracket
+cpceth-eth-range-day-2026-11-19-1740,eth,daily,1795125600.0,165,not far enough
+cpceth-eth-range-day-2026-11-19-1760,eth,daily,1795125600.0,165,not far enough
+cpceth-eth-range-day-2026-11-19-1780,eth,daily,1795125600.0,165,not far enough
+cpceth-eth-range-day-2026-11-19-1800,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1820,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1840,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1860,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1880,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1900,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1920,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1940,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1960,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-1980,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-2000,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-2020,eth,daily,1795125600.0,165,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-19-2040,eth,daily,1795125600.0,59,trade
+cpceth-eth-range-day-2026-11-19-2060,eth,daily,1795125600.0,1,trade
+cpceth-eth-range-day-2026-11-19-above-2080,eth,daily,1795125600.0,1,trade
+cpceth-eth-range-day-2026-11-19-below-1440,eth,daily,1795125600.0,1,trade
+cpcsol-sol-range-day-2026-11-19-59,sol,daily,1795125600.0,62,trade
+cpcsol-sol-range-day-2026-11-19-60,sol,daily,1795125600.0,165,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-61,sol,daily,1795125600.0,165,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-62,sol,daily,1795125600.0,165,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-63,sol,daily,1795125600.0,165,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-64,sol,daily,1795125600.0,165,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-65,sol,daily,1795125600.0,165,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-66,sol,daily,1795125600.0,165,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-67,sol,daily,1795125600.0,165,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-68,sol,daily,1795125600.0,165,not far enough
+cpcsol-sol-range-day-2026-11-19-69,sol,daily,1795125600.0,165,not far enough
+cpcsol-sol-range-day-2026-11-19-70,sol,daily,1795125600.0,165,not far enough
+cpcsol-sol-range-day-2026-11-19-71,sol,daily,1795125600.0,164,not far enough
+cpcsol-sol-range-day-2026-11-19-72,sol,daily,1795125600.0,164,the index is in this bracket
+cpcsol-sol-range-day-2026-11-19-73,sol,daily,1795125600.0,164,not far enough
+cpcsol-sol-range-day-2026-11-19-74,sol,daily,1795125600.0,164,not far enough
+cpcsol-sol-range-day-2026-11-19-75,sol,daily,1795125600.0,164,not far enough
+cpcsol-sol-range-day-2026-11-19-76,sol,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-77,sol,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-78,sol,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-79,sol,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-80,sol,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-81,sol,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-82,sol,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-83,sol,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-84,sol,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-85,sol,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-86,sol,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-19-above-87,sol,daily,1795125600.0,79,trade
+cpcsol-sol-range-day-2026-11-19-below-59,sol,daily,1795125600.0,59,trade
+cpcxrp-xrp-range-day-2026-11-19-0p75,xrp,daily,1795125600.0,62,trade
+cpcxrp-xrp-range-day-2026-11-19-0p8,xrp,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-19-0p85,xrp,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-19-0p9,xrp,daily,1795125600.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-19-0p95,xrp,daily,1795125600.0,164,the index is in this bracket
+cpcxrp-xrp-range-day-2026-11-19-1,xrp,daily,1795125600.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-19-1p05,xrp,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-19-1p1,xrp,daily,1795125600.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-19-above-1p15,xrp,daily,1795125600.0,51,trade
+cpcxrp-xrp-range-day-2026-11-19-below-0p75,xrp,daily,1795125600.0,1,trade
+cpc-btc-range-wk-2026-11-20-50500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-51000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-51500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-52000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-52500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-53000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-53500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-54000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-54500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-55000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-55500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-56000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-56500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-57000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-57500,btc,weekly,1795212000.0,165,not far enough
+cpc-btc-range-wk-2026-11-20-58000,btc,weekly,1795212000.0,165,not far enough
+cpc-btc-range-wk-2026-11-20-58500,btc,weekly,1795212000.0,165,the index is in this bracket
+cpc-btc-range-wk-2026-11-20-59000,btc,weekly,1795212000.0,165,not far enough
+cpc-btc-range-wk-2026-11-20-59500,btc,weekly,1795212000.0,165,not far enough
+cpc-btc-range-wk-2026-11-20-60000,btc,weekly,1795212000.0,165,not far enough
+cpc-btc-range-wk-2026-11-20-60500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-61000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-61500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-62000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-62500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-63000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-63500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-64000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-64500,btc,weekly,1795212000.0,69,trade
+cpc-btc-range-wk-2026-11-20-65000,btc,weekly,1795212000.0,49,trade
+cpc-btc-range-wk-2026-11-20-65500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-66000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-66500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-67000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-67500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-68000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-68500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-69000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-69500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-70000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-70500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-71000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-71500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-72000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-72500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-73000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-73500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-74000,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-74500,btc,weekly,1795212000.0,165,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-75000,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-75500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-76000,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-76500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-77000,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-77500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-78000,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-78500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-79000,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-79500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-80000,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-80500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-81000,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-81500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-82000,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-82500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-83000,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-83500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-84000,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-84500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-85000,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-above-85500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpc-btc-range-wk-2026-11-20-below-50500,btc,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1220,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1240,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1260,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1280,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1300,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1320,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1340,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1360,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1380,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1400,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1420,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1440,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1460,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1480,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1500,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1520,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1540,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1560,eth,weekly,1795212000.0,164,not far enough
+cpceth-eth-range-wk-2026-11-20-1580,eth,weekly,1795212000.0,164,not far enough
+cpceth-eth-range-wk-2026-11-20-1600,eth,weekly,1795212000.0,164,the index is in this bracket
+cpceth-eth-range-wk-2026-11-20-1620,eth,weekly,1795212000.0,164,not far enough
+cpceth-eth-range-wk-2026-11-20-1640,eth,weekly,1795212000.0,164,not far enough
+cpceth-eth-range-wk-2026-11-20-1660,eth,weekly,1795212000.0,164,not far enough
+cpceth-eth-range-wk-2026-11-20-1680,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1700,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1720,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1740,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1760,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1780,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1800,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1820,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1840,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1860,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1880,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1900,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1920,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1940,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1960,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-1980,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2000,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2020,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2040,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2060,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2080,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2100,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2120,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2140,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2160,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2180,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2200,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2220,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2240,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2260,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2280,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2300,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2320,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2340,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2360,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2380,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2400,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2420,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2440,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2460,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2480,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2500,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2520,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2540,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2560,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2580,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-2600,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-above-2620,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-wk-2026-11-20-below-1220,eth,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-100,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-101,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-102,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-103,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-104,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-105,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-106,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-107,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-108,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-45,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-46,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-47,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-48,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-49,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-50,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-51,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-52,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-53,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-54,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-55,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-56,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-57,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-58,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-59,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-60,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-61,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-62,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-63,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-64,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-65,sol,weekly,1795212000.0,164,not far enough
+cpcsol-sol-range-wk-2026-11-20-66,sol,weekly,1795212000.0,164,not far enough
+cpcsol-sol-range-wk-2026-11-20-67,sol,weekly,1795212000.0,164,not far enough
+cpcsol-sol-range-wk-2026-11-20-68,sol,weekly,1795212000.0,164,the index is in this bracket
+cpcsol-sol-range-wk-2026-11-20-69,sol,weekly,1795212000.0,164,not far enough
+cpcsol-sol-range-wk-2026-11-20-70,sol,weekly,1795212000.0,164,not far enough
+cpcsol-sol-range-wk-2026-11-20-71,sol,weekly,1795212000.0,164,not far enough
+cpcsol-sol-range-wk-2026-11-20-72,sol,weekly,1795212000.0,164,not far enough
+cpcsol-sol-range-wk-2026-11-20-73,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-74,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-75,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-76,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-77,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-78,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-79,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-80,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-81,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-82,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-83,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-84,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-85,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-86,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-87,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-88,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-89,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-90,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-91,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-92,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-93,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-94,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-95,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-96,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-97,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-98,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-99,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-above-109,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-wk-2026-11-20-below-45,sol,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-20-0p55,xrp,weekly,1795212000.0,6,trade
+cpcxrp-xrp-range-wk-2026-11-20-0p6,xrp,weekly,1795212000.0,6,trade
+cpcxrp-xrp-range-wk-2026-11-20-0p65,xrp,weekly,1795212000.0,6,trade
+cpcxrp-xrp-range-wk-2026-11-20-0p7,xrp,weekly,1795212000.0,74,trade
+cpcxrp-xrp-range-wk-2026-11-20-0p75,xrp,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-20-0p8,xrp,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-20-0p85,xrp,weekly,1795212000.0,164,not far enough
+cpcxrp-xrp-range-wk-2026-11-20-0p9,xrp,weekly,1795212000.0,164,the index is in this bracket
+cpcxrp-xrp-range-wk-2026-11-20-0p95,xrp,weekly,1795212000.0,164,not far enough
+cpcxrp-xrp-range-wk-2026-11-20-1,xrp,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-20-1p05,xrp,weekly,1795212000.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-wk-2026-11-20-1p1,xrp,weekly,1795212000.0,17,trade
+cpcxrp-xrp-range-wk-2026-11-20-1p15,xrp,weekly,1795212000.0,7,trade
+cpcxrp-xrp-range-wk-2026-11-20-1p2,xrp,weekly,1795212000.0,7,trade
+cpcxrp-xrp-range-wk-2026-11-20-1p25,xrp,weekly,1795212000.0,7,trade
+cpcxrp-xrp-range-wk-2026-11-20-1p3,xrp,weekly,1795212000.0,7,trade
+cpcxrp-xrp-range-wk-2026-11-20-1p35,xrp,weekly,1795212000.0,7,trade
+cpcxrp-xrp-range-wk-2026-11-20-1p4,xrp,weekly,1795212000.0,7,trade
+cpcxrp-xrp-range-wk-2026-11-20-above-1p45,xrp,weekly,1795212000.0,7,trade
+cpcxrp-xrp-range-wk-2026-11-20-below-0p55,xrp,weekly,1795212000.0,1,trade
+cpc-btc-range-day-2026-11-21-50000,btc,daily,1795298400.0,1,trade
+cpc-btc-range-day-2026-11-21-50250,btc,daily,1795298400.0,1,trade
+cpc-btc-range-day-2026-11-21-50500,btc,daily,1795298400.0,1,trade
+cpc-btc-range-day-2026-11-21-50750,btc,daily,1795298400.0,1,trade
+cpc-btc-range-day-2026-11-21-51000,btc,daily,1795298400.0,1,trade
+cpc-btc-range-day-2026-11-21-51250,btc,daily,1795298400.0,61,trade
+cpc-btc-range-day-2026-11-21-51500,btc,daily,1795298400.0,23,trade
+cpc-btc-range-day-2026-11-21-51750,btc,daily,1795298400.0,65,trade
+cpc-btc-range-day-2026-11-21-52000,btc,daily,1795298400.0,24,trade
+cpc-btc-range-day-2026-11-21-52250,btc,daily,1795298400.0,23,trade
+cpc-btc-range-day-2026-11-21-52500,btc,daily,1795298400.0,24,trade
+cpc-btc-range-day-2026-11-21-52750,btc,daily,1795298400.0,23,trade
+cpc-btc-range-day-2026-11-21-53000,btc,daily,1795298400.0,24,trade
+cpc-btc-range-day-2026-11-21-53250,btc,daily,1795298400.0,23,trade
+cpc-btc-range-day-2026-11-21-53500,btc,daily,1795298400.0,61,trade
+cpc-btc-range-day-2026-11-21-53750,btc,daily,1795298400.0,68,trade
+cpc-btc-range-day-2026-11-21-54000,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-54250,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-54500,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-54750,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-55000,btc,daily,1795298400.0,96,trade
+cpc-btc-range-day-2026-11-21-55250,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-55500,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-55750,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-56000,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-56250,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-56500,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-56750,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-57000,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-57250,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-57500,btc,daily,1795298400.0,151,trade
+cpc-btc-range-day-2026-11-21-57750,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-58000,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-58250,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-58500,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-58750,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-59000,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-59250,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-59500,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-59750,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-60000,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-60250,btc,daily,1795298400.0,164,the index is in this bracket
+cpc-btc-range-day-2026-11-21-60500,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-60750,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-61000,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-61250,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-61500,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-61750,btc,daily,1795298400.0,164,not far enough
+cpc-btc-range-day-2026-11-21-62000,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-62250,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-62500,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-62750,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-63000,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-63250,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-63500,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-63750,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-64000,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-64250,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-64500,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-64750,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-65000,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-65250,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-65500,btc,daily,1795298400.0,84,trade
+cpc-btc-range-day-2026-11-21-65750,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-66000,btc,daily,1795298400.0,64,trade
+cpc-btc-range-day-2026-11-21-66250,btc,daily,1795298400.0,36,trade
+cpc-btc-range-day-2026-11-21-66500,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-66750,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-above-67000,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-21-below-50000,btc,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1280,eth,daily,1795298400.0,1,trade
+cpceth-eth-range-day-2026-11-21-1300,eth,daily,1795298400.0,1,trade
+cpceth-eth-range-day-2026-11-21-1320,eth,daily,1795298400.0,1,trade
+cpceth-eth-range-day-2026-11-21-1340,eth,daily,1795298400.0,1,trade
+cpceth-eth-range-day-2026-11-21-1360,eth,daily,1795298400.0,1,trade
+cpceth-eth-range-day-2026-11-21-1380,eth,daily,1795298400.0,1,trade
+cpceth-eth-range-day-2026-11-21-1400,eth,daily,1795298400.0,1,trade
+cpceth-eth-range-day-2026-11-21-1420,eth,daily,1795298400.0,1,trade
+cpceth-eth-range-day-2026-11-21-1440,eth,daily,1795298400.0,9,trade
+cpceth-eth-range-day-2026-11-21-1460,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1480,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1500,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1520,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1540,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1560,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1580,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1600,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1620,eth,daily,1795298400.0,164,not far enough
+cpceth-eth-range-day-2026-11-21-1640,eth,daily,1795298400.0,164,not far enough
+cpceth-eth-range-day-2026-11-21-1660,eth,daily,1795298400.0,164,not far enough
+cpceth-eth-range-day-2026-11-21-1680,eth,daily,1795298400.0,164,the index is in this bracket
+cpceth-eth-range-day-2026-11-21-1700,eth,daily,1795298400.0,164,not far enough
+cpceth-eth-range-day-2026-11-21-1720,eth,daily,1795298400.0,164,not far enough
+cpceth-eth-range-day-2026-11-21-1740,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1760,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1780,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1800,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1820,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1840,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1860,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1880,eth,daily,1795298400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-21-1900,eth,daily,1795298400.0,1,trade
+cpceth-eth-range-day-2026-11-21-above-1920,eth,daily,1795298400.0,1,trade
+cpceth-eth-range-day-2026-11-21-below-1280,eth,daily,1795298400.0,13,trade
+cpcsol-sol-range-day-2026-11-21-49,sol,daily,1795298400.0,5,trade
+cpcsol-sol-range-day-2026-11-21-50,sol,daily,1795298400.0,26,trade
+cpcsol-sol-range-day-2026-11-21-51,sol,daily,1795298400.0,16,trade
+cpcsol-sol-range-day-2026-11-21-52,sol,daily,1795298400.0,16,trade
+cpcsol-sol-range-day-2026-11-21-53,sol,daily,1795298400.0,26,trade
+cpcsol-sol-range-day-2026-11-21-54,sol,daily,1795298400.0,29,trade
+cpcsol-sol-range-day-2026-11-21-55,sol,daily,1795298400.0,44,trade
+cpcsol-sol-range-day-2026-11-21-56,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-57,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-58,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-59,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-60,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-61,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-62,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-63,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-64,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-65,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-66,sol,daily,1795298400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-21-67,sol,daily,1795298400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-21-68,sol,daily,1795298400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-21-69,sol,daily,1795298400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-21-70,sol,daily,1795298400.0,164,the index is in this bracket
+cpcsol-sol-range-day-2026-11-21-71,sol,daily,1795298400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-21-72,sol,daily,1795298400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-21-73,sol,daily,1795298400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-21-74,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-75,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-76,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-77,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-78,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-79,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-80,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-81,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-82,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-83,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-84,sol,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-21-85,sol,daily,1795298400.0,47,trade
+cpcsol-sol-range-day-2026-11-21-86,sol,daily,1795298400.0,39,trade
+cpcsol-sol-range-day-2026-11-21-above-87,sol,daily,1795298400.0,39,trade
+cpcsol-sol-range-day-2026-11-21-below-49,sol,daily,1795298400.0,39,trade
+cpcxrp-xrp-range-day-2026-11-21-0p7,xrp,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-21-0p75,xrp,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-21-0p8,xrp,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-21-0p85,xrp,daily,1795298400.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-21-0p9,xrp,daily,1795298400.0,164,the index is in this bracket
+cpcxrp-xrp-range-day-2026-11-21-0p95,xrp,daily,1795298400.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-21-1,xrp,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-21-1p05,xrp,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-21-above-1p1,xrp,daily,1795298400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-21-below-0p7,xrp,daily,1795298400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-50750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-51000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-51250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-51500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-51750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-52000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-52250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-52500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-52750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-53000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-53250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-53500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-53750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-54000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-54250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-54500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-54750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-55000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-55250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-55500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-55750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-56000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-56250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-56500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-56750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-57000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-57250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-57500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-57750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-58000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-58250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-58500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-58750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-59000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-59250,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-59500,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-59750,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-60000,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-60250,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-60500,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-60750,btc,daily,1795384800.0,164,the index is in this bracket
+cpc-btc-range-day-2026-11-22-61000,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-61250,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-61500,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-61750,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-62000,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-62250,btc,daily,1795384800.0,164,not far enough
+cpc-btc-range-day-2026-11-22-62500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-62750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-63000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-63250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-63500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-63750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-64000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-64250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-64500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-64750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-65000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-65250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-65500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-65750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-66000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-66250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-66500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-66750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-67000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-67250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-67500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-67750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-68000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-68250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-68500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-68750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-69000,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-69250,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-69500,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-above-69750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-22-below-50750,btc,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1360,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1380,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1400,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1420,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1440,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1460,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1480,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1500,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1520,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1540,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1560,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1580,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1600,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1620,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1640,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1660,eth,daily,1795384800.0,164,not far enough
+cpceth-eth-range-day-2026-11-22-1680,eth,daily,1795384800.0,164,not far enough
+cpceth-eth-range-day-2026-11-22-1700,eth,daily,1795384800.0,164,the index is in this bracket
+cpceth-eth-range-day-2026-11-22-1720,eth,daily,1795384800.0,164,not far enough
+cpceth-eth-range-day-2026-11-22-1740,eth,daily,1795384800.0,164,not far enough
+cpceth-eth-range-day-2026-11-22-1760,eth,daily,1795384800.0,164,not far enough
+cpceth-eth-range-day-2026-11-22-1780,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1800,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1820,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1840,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1860,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1880,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1900,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1920,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1940,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1960,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-1980,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-above-2000,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-22-below-1360,eth,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-54,sol,daily,1795384800.0,34,trade
+cpcsol-sol-range-day-2026-11-22-55,sol,daily,1795384800.0,49,trade
+cpcsol-sol-range-day-2026-11-22-56,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-57,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-58,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-59,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-60,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-61,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-62,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-63,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-64,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-65,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-66,sol,daily,1795384800.0,164,not far enough
+cpcsol-sol-range-day-2026-11-22-67,sol,daily,1795384800.0,164,not far enough
+cpcsol-sol-range-day-2026-11-22-68,sol,daily,1795384800.0,164,not far enough
+cpcsol-sol-range-day-2026-11-22-69,sol,daily,1795384800.0,164,not far enough
+cpcsol-sol-range-day-2026-11-22-70,sol,daily,1795384800.0,164,the index is in this bracket
+cpcsol-sol-range-day-2026-11-22-71,sol,daily,1795384800.0,164,not far enough
+cpcsol-sol-range-day-2026-11-22-72,sol,daily,1795384800.0,164,not far enough
+cpcsol-sol-range-day-2026-11-22-73,sol,daily,1795384800.0,164,not far enough
+cpcsol-sol-range-day-2026-11-22-74,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-75,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-76,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-77,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-78,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-79,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-80,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-81,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-82,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-83,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-84,sol,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-22-85,sol,daily,1795384800.0,42,trade
+cpcsol-sol-range-day-2026-11-22-above-86,sol,daily,1795384800.0,27,trade
+cpcsol-sol-range-day-2026-11-22-below-54,sol,daily,1795384800.0,15,trade
+cpcxrp-xrp-range-day-2026-11-22-0p7,xrp,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-22-0p75,xrp,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-22-0p8,xrp,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-22-0p85,xrp,daily,1795384800.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-22-0p9,xrp,daily,1795384800.0,164,the index is in this bracket
+cpcxrp-xrp-range-day-2026-11-22-0p95,xrp,daily,1795384800.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-22-1,xrp,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-22-1p05,xrp,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-22-1p1,xrp,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-22-1p15,xrp,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-22-above-1p2,xrp,daily,1795384800.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-22-below-0p7,xrp,daily,1795384800.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-50000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-50250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-50500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-50750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-51000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-51250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-51500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-51750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-52000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-52250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-52500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-52750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-53000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-53250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-53500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-53750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-54000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-54250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-54500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-54750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-55000,btc,daily,1795471200.0,4,trade
+cpc-btc-range-day-2026-11-23-55250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-55500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-55750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-56000,btc,daily,1795471200.0,86,trade
+cpc-btc-range-day-2026-11-23-56250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-56500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-56750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-57000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-57250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-57500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-57750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-58000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-58250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-58500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-58750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-59000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-59250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-59500,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-59750,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-60000,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-60250,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-60500,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-60750,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-61000,btc,daily,1795471200.0,164,the index is in this bracket
+cpc-btc-range-day-2026-11-23-61250,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-61500,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-61750,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-62000,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-62250,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-62500,btc,daily,1795471200.0,164,not far enough
+cpc-btc-range-day-2026-11-23-62750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-63000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-63250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-63500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-63750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-64000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-64250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-64500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-64750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-65000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-65250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-65500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-65750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-66000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-66250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-66500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-66750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-67000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-67250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-67500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-67750,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-68000,btc,daily,1795471200.0,39,trade
+cpc-btc-range-day-2026-11-23-68250,btc,daily,1795471200.0,37,trade
+cpc-btc-range-day-2026-11-23-68500,btc,daily,1795471200.0,22,trade
+cpc-btc-range-day-2026-11-23-68750,btc,daily,1795471200.0,19,trade
+cpc-btc-range-day-2026-11-23-69000,btc,daily,1795471200.0,9,trade
+cpc-btc-range-day-2026-11-23-69250,btc,daily,1795471200.0,7,trade
+cpc-btc-range-day-2026-11-23-69500,btc,daily,1795471200.0,7,trade
+cpc-btc-range-day-2026-11-23-69750,btc,daily,1795471200.0,21,trade
+cpc-btc-range-day-2026-11-23-70000,btc,daily,1795471200.0,22,trade
+cpc-btc-range-day-2026-11-23-70250,btc,daily,1795471200.0,22,trade
+cpc-btc-range-day-2026-11-23-70500,btc,daily,1795471200.0,22,trade
+cpc-btc-range-day-2026-11-23-70750,btc,daily,1795471200.0,38,trade
+cpc-btc-range-day-2026-11-23-71000,btc,daily,1795471200.0,38,trade
+cpc-btc-range-day-2026-11-23-71250,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-above-71500,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-23-below-50000,btc,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1360,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1380,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1400,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1420,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1440,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1460,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1480,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1500,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1520,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1540,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1560,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1580,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1600,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1620,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1640,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1660,eth,daily,1795471200.0,164,not far enough
+cpceth-eth-range-day-2026-11-23-1680,eth,daily,1795471200.0,164,not far enough
+cpceth-eth-range-day-2026-11-23-1700,eth,daily,1795471200.0,164,not far enough
+cpceth-eth-range-day-2026-11-23-1720,eth,daily,1795471200.0,164,the index is in this bracket
+cpceth-eth-range-day-2026-11-23-1740,eth,daily,1795471200.0,164,not far enough
+cpceth-eth-range-day-2026-11-23-1760,eth,daily,1795471200.0,164,not far enough
+cpceth-eth-range-day-2026-11-23-1780,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1800,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1820,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1840,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1860,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1880,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1900,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1920,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1940,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1960,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-1980,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-2000,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-2020,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-2040,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-2060,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-above-2080,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-23-below-1360,eth,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-55,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-56,sol,daily,1795471200.0,60,trade
+cpcsol-sol-range-day-2026-11-23-57,sol,daily,1795471200.0,60,trade
+cpcsol-sol-range-day-2026-11-23-58,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-59,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-60,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-61,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-62,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-63,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-64,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-65,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-66,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-67,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-68,sol,daily,1795471200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-23-69,sol,daily,1795471200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-23-70,sol,daily,1795471200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-23-71,sol,daily,1795471200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-23-72,sol,daily,1795471200.0,164,the index is in this bracket
+cpcsol-sol-range-day-2026-11-23-73,sol,daily,1795471200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-23-74,sol,daily,1795471200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-23-75,sol,daily,1795471200.0,164,not far enough
+cpcsol-sol-range-day-2026-11-23-76,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-77,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-78,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-79,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-80,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-81,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-82,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-83,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-84,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-above-85,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-23-below-55,sol,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-23-0p65,xrp,daily,1795471200.0,1,trade
+cpcxrp-xrp-range-day-2026-11-23-0p7,xrp,daily,1795471200.0,1,trade
+cpcxrp-xrp-range-day-2026-11-23-0p75,xrp,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-23-0p8,xrp,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-23-0p85,xrp,daily,1795471200.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-23-0p9,xrp,daily,1795471200.0,164,the index is in this bracket
+cpcxrp-xrp-range-day-2026-11-23-0p95,xrp,daily,1795471200.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-23-1,xrp,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-23-1p05,xrp,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-23-1p1,xrp,daily,1795471200.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-23-above-1p15,xrp,daily,1795471200.0,39,trade
+cpcxrp-xrp-range-day-2026-11-23-below-0p65,xrp,daily,1795471200.0,1,trade
+cpc-btc-range-day-2026-11-24-51500,btc,daily,1795557600.0,40,trade
+cpc-btc-range-day-2026-11-24-51750,btc,daily,1795557600.0,40,trade
+cpc-btc-range-day-2026-11-24-52000,btc,daily,1795557600.0,40,trade
+cpc-btc-range-day-2026-11-24-52250,btc,daily,1795557600.0,40,trade
+cpc-btc-range-day-2026-11-24-52500,btc,daily,1795557600.0,40,trade
+cpc-btc-range-day-2026-11-24-52750,btc,daily,1795557600.0,40,trade
+cpc-btc-range-day-2026-11-24-53000,btc,daily,1795557600.0,40,trade
+cpc-btc-range-day-2026-11-24-53250,btc,daily,1795557600.0,40,trade
+cpc-btc-range-day-2026-11-24-53500,btc,daily,1795557600.0,40,trade
+cpc-btc-range-day-2026-11-24-53750,btc,daily,1795557600.0,63,trade
+cpc-btc-range-day-2026-11-24-54000,btc,daily,1795557600.0,84,trade
+cpc-btc-range-day-2026-11-24-54250,btc,daily,1795557600.0,84,trade
+cpc-btc-range-day-2026-11-24-54500,btc,daily,1795557600.0,124,trade
+cpc-btc-range-day-2026-11-24-54750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-55000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-55250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-55500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-55750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-56000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-56250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-56500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-56750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-57000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-57250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-57500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-57750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-58000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-58250,btc,daily,1795557600.0,164,not far enough
+cpc-btc-range-day-2026-11-24-58500,btc,daily,1795557600.0,164,not far enough
+cpc-btc-range-day-2026-11-24-58750,btc,daily,1795557600.0,164,not far enough
+cpc-btc-range-day-2026-11-24-59000,btc,daily,1795557600.0,164,not far enough
+cpc-btc-range-day-2026-11-24-59250,btc,daily,1795557600.0,164,not far enough
+cpc-btc-range-day-2026-11-24-59500,btc,daily,1795557600.0,164,not far enough
+cpc-btc-range-day-2026-11-24-59750,btc,daily,1795557600.0,164,the index is in this bracket
+cpc-btc-range-day-2026-11-24-60000,btc,daily,1795557600.0,164,not far enough
+cpc-btc-range-day-2026-11-24-60250,btc,daily,1795557600.0,164,not far enough
+cpc-btc-range-day-2026-11-24-60500,btc,daily,1795557600.0,164,not far enough
+cpc-btc-range-day-2026-11-24-60750,btc,daily,1795557600.0,164,not far enough
+cpc-btc-range-day-2026-11-24-61000,btc,daily,1795557600.0,164,not far enough
+cpc-btc-range-day-2026-11-24-61250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-61500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-61750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-62000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-62250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-62500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-62750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-63000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-63250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-63500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-63750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-64000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-64250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-64500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-64750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-65000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-65250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-65500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-65750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-66000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-66250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-66500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-66750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-67000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-67250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-67500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-67750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-68000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-68250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-68500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-68750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-69000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-69250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-69500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-69750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-70000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-70250,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-70500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-70750,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-above-71000,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-24-below-51500,btc,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1400,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1420,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1440,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1460,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1480,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1500,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1520,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1540,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1560,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1580,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1600,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1620,eth,daily,1795557600.0,164,not far enough
+cpceth-eth-range-day-2026-11-24-1640,eth,daily,1795557600.0,164,not far enough
+cpceth-eth-range-day-2026-11-24-1660,eth,daily,1795557600.0,164,the index is in this bracket
+cpceth-eth-range-day-2026-11-24-1680,eth,daily,1795557600.0,164,not far enough
+cpceth-eth-range-day-2026-11-24-1700,eth,daily,1795557600.0,164,not far enough
+cpceth-eth-range-day-2026-11-24-1720,eth,daily,1795557600.0,164,not far enough
+cpceth-eth-range-day-2026-11-24-1740,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1760,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1780,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1800,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1820,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1840,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1860,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1880,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1900,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1920,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1940,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1960,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-1980,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-2000,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-2020,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-above-2040,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-24-below-1400,eth,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-59,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-60,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-61,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-62,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-63,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-64,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-65,sol,daily,1795557600.0,164,not far enough
+cpcsol-sol-range-day-2026-11-24-66,sol,daily,1795557600.0,164,not far enough
+cpcsol-sol-range-day-2026-11-24-67,sol,daily,1795557600.0,164,not far enough
+cpcsol-sol-range-day-2026-11-24-68,sol,daily,1795557600.0,164,not far enough
+cpcsol-sol-range-day-2026-11-24-69,sol,daily,1795557600.0,164,the index is in this bracket
+cpcsol-sol-range-day-2026-11-24-70,sol,daily,1795557600.0,164,not far enough
+cpcsol-sol-range-day-2026-11-24-71,sol,daily,1795557600.0,164,not far enough
+cpcsol-sol-range-day-2026-11-24-72,sol,daily,1795557600.0,164,not far enough
+cpcsol-sol-range-day-2026-11-24-73,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-74,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-75,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-76,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-77,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-78,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-79,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-80,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-81,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-82,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-83,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-84,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-85,sol,daily,1795557600.0,123,trade
+cpcsol-sol-range-day-2026-11-24-86,sol,daily,1795557600.0,35,trade
+cpcsol-sol-range-day-2026-11-24-above-87,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-24-below-59,sol,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-24-0p75,xrp,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-24-0p8,xrp,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-24-0p85,xrp,daily,1795557600.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-24-0p9,xrp,daily,1795557600.0,164,the index is in this bracket
+cpcxrp-xrp-range-day-2026-11-24-0p95,xrp,daily,1795557600.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-24-1,xrp,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-24-1p05,xrp,daily,1795557600.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-24-1p1,xrp,daily,1795557600.0,17,trade
+cpcxrp-xrp-range-day-2026-11-24-above-1p15,xrp,daily,1795557600.0,1,trade
+cpcxrp-xrp-range-day-2026-11-24-below-0p75,xrp,daily,1795557600.0,49,trade
+cpc-btc-range-day-2026-11-25-50500,btc,daily,1795644000.0,1,trade
+cpc-btc-range-day-2026-11-25-50750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-51000,btc,daily,1795644000.0,1,trade
+cpc-btc-range-day-2026-11-25-51250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-51500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-51750,btc,daily,1795644000.0,1,trade
+cpc-btc-range-day-2026-11-25-52000,btc,daily,1795644000.0,19,trade
+cpc-btc-range-day-2026-11-25-52250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-52500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-52750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-53000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-53250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-53500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-53750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-54000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-54250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-54500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-54750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-55000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-55250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-55500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-55750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-56000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-56250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-56500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-56750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-57000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-57250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-57500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-57750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-58000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-58250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-58500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-58750,btc,daily,1795644000.0,164,not far enough
+cpc-btc-range-day-2026-11-25-59000,btc,daily,1795644000.0,164,not far enough
+cpc-btc-range-day-2026-11-25-59250,btc,daily,1795644000.0,164,not far enough
+cpc-btc-range-day-2026-11-25-59500,btc,daily,1795644000.0,164,not far enough
+cpc-btc-range-day-2026-11-25-59750,btc,daily,1795644000.0,164,not far enough
+cpc-btc-range-day-2026-11-25-60000,btc,daily,1795644000.0,164,the index is in this bracket
+cpc-btc-range-day-2026-11-25-60250,btc,daily,1795644000.0,164,not far enough
+cpc-btc-range-day-2026-11-25-60500,btc,daily,1795644000.0,164,not far enough
+cpc-btc-range-day-2026-11-25-60750,btc,daily,1795644000.0,164,not far enough
+cpc-btc-range-day-2026-11-25-61000,btc,daily,1795644000.0,164,not far enough
+cpc-btc-range-day-2026-11-25-61250,btc,daily,1795644000.0,164,not far enough
+cpc-btc-range-day-2026-11-25-61500,btc,daily,1795644000.0,164,not far enough
+cpc-btc-range-day-2026-11-25-61750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-62000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-62250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-62500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-62750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-63000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-63250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-63500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-63750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-64000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-64250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-64500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-64750,btc,daily,1795644000.0,7,trade
+cpc-btc-range-day-2026-11-25-65000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-65250,btc,daily,1795644000.0,1,trade
+cpc-btc-range-day-2026-11-25-65500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-65750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-66000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-66250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-66500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-66750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-67000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-67250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-67500,btc,daily,1795644000.0,1,trade
+cpc-btc-range-day-2026-11-25-67750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-68000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-68250,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-68500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-68750,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-above-69000,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-25-below-50500,btc,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1380,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1400,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1420,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1440,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1460,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1480,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1500,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1520,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1540,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1560,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1580,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1600,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1620,eth,daily,1795644000.0,164,not far enough
+cpceth-eth-range-day-2026-11-25-1640,eth,daily,1795644000.0,164,not far enough
+cpceth-eth-range-day-2026-11-25-1660,eth,daily,1795644000.0,164,not far enough
+cpceth-eth-range-day-2026-11-25-1680,eth,daily,1795644000.0,164,the index is in this bracket
+cpceth-eth-range-day-2026-11-25-1700,eth,daily,1795644000.0,164,not far enough
+cpceth-eth-range-day-2026-11-25-1720,eth,daily,1795644000.0,164,not far enough
+cpceth-eth-range-day-2026-11-25-1740,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1760,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1780,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1800,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1820,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1840,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1860,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1880,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1900,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1920,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1940,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-1960,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-above-1980,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-25-below-1380,eth,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-53,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-54,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-55,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-56,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-57,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-58,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-59,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-60,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-61,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-62,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-63,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-64,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-65,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-66,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-67,sol,daily,1795644000.0,164,not far enough
+cpcsol-sol-range-day-2026-11-25-68,sol,daily,1795644000.0,164,not far enough
+cpcsol-sol-range-day-2026-11-25-69,sol,daily,1795644000.0,164,not far enough
+cpcsol-sol-range-day-2026-11-25-70,sol,daily,1795644000.0,164,the index is in this bracket
+cpcsol-sol-range-day-2026-11-25-71,sol,daily,1795644000.0,164,not far enough
+cpcsol-sol-range-day-2026-11-25-72,sol,daily,1795644000.0,164,not far enough
+cpcsol-sol-range-day-2026-11-25-73,sol,daily,1795644000.0,164,not far enough
+cpcsol-sol-range-day-2026-11-25-74,sol,daily,1795644000.0,164,not far enough
+cpcsol-sol-range-day-2026-11-25-75,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-76,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-77,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-78,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-79,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-80,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-81,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-82,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-83,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-84,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-above-85,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-25-below-53,sol,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-25-0p7,xrp,daily,1795644000.0,52,trade
+cpcxrp-xrp-range-day-2026-11-25-0p75,xrp,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-25-0p8,xrp,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-25-0p85,xrp,daily,1795644000.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-25-0p9,xrp,daily,1795644000.0,164,the index is in this bracket
+cpcxrp-xrp-range-day-2026-11-25-0p95,xrp,daily,1795644000.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-25-1,xrp,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-25-1p05,xrp,daily,1795644000.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-25-above-1p1,xrp,daily,1795644000.0,1,trade
+cpcxrp-xrp-range-day-2026-11-25-below-0p7,xrp,daily,1795644000.0,1,trade
+cpc-btc-range-day-2026-11-26-52250,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-52500,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-52750,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-53000,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-53250,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-53500,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-53750,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-54000,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-54250,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-54500,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-54750,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-55000,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-55250,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-55500,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-55750,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-56000,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-56250,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-56500,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-56750,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-57000,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-57250,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-57500,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-57750,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-58000,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-58250,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-58500,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-58750,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-59000,btc,daily,1795730400.0,165,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-59250,btc,daily,1795730400.0,165,not far enough
+cpc-btc-range-day-2026-11-26-59500,btc,daily,1795730400.0,165,not far enough
+cpc-btc-range-day-2026-11-26-59750,btc,daily,1795730400.0,165,not far enough
+cpc-btc-range-day-2026-11-26-60000,btc,daily,1795730400.0,165,not far enough
+cpc-btc-range-day-2026-11-26-60250,btc,daily,1795730400.0,165,not far enough
+cpc-btc-range-day-2026-11-26-60500,btc,daily,1795730400.0,165,not far enough
+cpc-btc-range-day-2026-11-26-60750,btc,daily,1795730400.0,165,the index is in this bracket
+cpc-btc-range-day-2026-11-26-61000,btc,daily,1795730400.0,165,not far enough
+cpc-btc-range-day-2026-11-26-61250,btc,daily,1795730400.0,165,not far enough
+cpc-btc-range-day-2026-11-26-61500,btc,daily,1795730400.0,165,not far enough
+cpc-btc-range-day-2026-11-26-61750,btc,daily,1795730400.0,165,not far enough
+cpc-btc-range-day-2026-11-26-62000,btc,daily,1795730400.0,164,not far enough
+cpc-btc-range-day-2026-11-26-62250,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-62500,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-62750,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-63000,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-63250,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-63500,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-63750,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-64000,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-64250,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-64500,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-64750,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-65000,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-65250,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-65500,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-65750,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-66000,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-66250,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-66500,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-66750,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-67000,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-67250,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-67500,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-67750,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-68000,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-above-68250,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpc-btc-range-day-2026-11-26-below-52250,btc,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1420,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1440,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1460,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1480,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1500,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1520,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1540,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1560,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1580,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1600,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1620,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1640,eth,daily,1795730400.0,164,not far enough
+cpceth-eth-range-day-2026-11-26-1660,eth,daily,1795730400.0,164,not far enough
+cpceth-eth-range-day-2026-11-26-1680,eth,daily,1795730400.0,164,not far enough
+cpceth-eth-range-day-2026-11-26-1700,eth,daily,1795730400.0,164,the index is in this bracket
+cpceth-eth-range-day-2026-11-26-1720,eth,daily,1795730400.0,164,not far enough
+cpceth-eth-range-day-2026-11-26-1740,eth,daily,1795730400.0,164,not far enough
+cpceth-eth-range-day-2026-11-26-1760,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1780,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1800,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1820,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1840,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1860,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1880,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1900,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-1920,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-above-1940,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpceth-eth-range-day-2026-11-26-below-1420,eth,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-55,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-56,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-57,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-58,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-59,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-60,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-61,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-62,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-63,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-64,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-65,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-66,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-67,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-68,sol,daily,1795730400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-26-69,sol,daily,1795730400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-26-70,sol,daily,1795730400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-26-71,sol,daily,1795730400.0,164,the index is in this bracket
+cpcsol-sol-range-day-2026-11-26-72,sol,daily,1795730400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-26-73,sol,daily,1795730400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-26-74,sol,daily,1795730400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-26-75,sol,daily,1795730400.0,164,not far enough
+cpcsol-sol-range-day-2026-11-26-76,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-77,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-78,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-79,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-80,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-81,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-82,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-83,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-84,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-above-85,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcsol-sol-range-day-2026-11-26-below-55,sol,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-26-0p75,xrp,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-26-0p8,xrp,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-26-0p85,xrp,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-26-0p9,xrp,daily,1795730400.0,164,not far enough
+cpcxrp-xrp-range-day-2026-11-26-0p95,xrp,daily,1795730400.0,164,the index is in this bracket
+cpcxrp-xrp-range-day-2026-11-26-1,xrp,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-26-1p05,xrp,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-26-1p1,xrp,daily,1795730400.0,164,"far enough, nobody bidding"
+cpcxrp-xrp-range-day-2026-11-26-above-1p15,xrp,daily,1795730400.0,4,trade
+cpcxrp-xrp-range-day-2026-11-26-below-0p75,xrp,daily,1795730400.0,11,trade

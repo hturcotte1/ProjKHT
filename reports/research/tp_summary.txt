@@ -1,6 +1,6 @@
 Test G1: small orders at the best prices of single-market reward programmes (docs/13_round_six.md, section 4)
-scored 24 November 2026, 09:01 UTC. A paper account. No order was placed and no reward was paid to anyone.
-recorded: 85,347 readings of 38 markets, from 18 Nov 15:29 to 24 Nov 07:59 UTC
+scored 27 November 2026, 09:01 UTC. A paper account. No order was placed and no reward was paid to anyone.
+recorded: 131,035 readings of 54 markets, from 18 Nov 15:29 to 27 Nov 08:25 UTC
 
 each market-day, 100 contracts a side (qualifies: share of the time the book was paid; resting: share of the time our orders rested; share: our part of the score while resting)
        day                 program  whole  open_hours  cover  qualifies  resting  share  reward_paid  fills   bought     sold  held_at_end  settle  pnl_fills      net
@@ -22,101 +22,133 @@ each market-day, 100 contracts a side (qualifies: share of the time the book was
 2026-11-23    crypto_alt_updown_1d   True      23.974  0.996      0.708    0.619  0.145       13.512    207  2555.84  2631.03       -75.19     1.0    -65.726  -52.214
 2026-11-23    crypto_alt_updown_1d   True      23.941  0.996      0.688    0.551  0.205       16.918     86  1625.36  1725.36      -100.00     1.0    -92.235  -75.317
 2026-11-23    crypto_alt_updown_1d   True      23.916  0.996      0.647    0.555  0.241       20.089    120  2342.70  2242.70       100.00     1.0    -39.235  -19.147
-2026-11-24    crypto_alt_updown_1d  False      24.000  0.414      0.402    0.291  0.121        5.277     46   907.97  1007.97      -100.00     NaN        NaN      NaN
-2026-11-24    crypto_alt_updown_1d  False      24.000  0.414      0.404    0.351  0.132        6.960     58   834.18   934.18      -100.00     NaN        NaN      NaN
-2026-11-24    crypto_alt_updown_1d  False      24.000  0.414      0.196    0.172  0.185        4.783     56  1008.92  1008.82         0.10     NaN        NaN      NaN
+2026-11-24    crypto_alt_updown_1d   True      23.978  0.996      0.776    0.629  0.121       11.365    149  3105.94  3005.94       100.00     0.0    -82.614  -71.250
+2026-11-24    crypto_alt_updown_1d   True      23.970  0.996      0.661    0.578  0.173       14.994     94  1647.29  1747.29      -100.00     0.0     -3.975   11.019
+2026-11-24    crypto_alt_updown_1d   True      23.978  0.996      0.361    0.332  0.175        8.710    122  1755.74  1655.74       100.00     0.0     -6.622    2.088
+2026-11-25    crypto_alt_updown_1d   True      23.988  0.995      0.453    0.334  0.196        9.832     58   813.59   913.59      -100.00     1.0   -115.086 -105.253
+2026-11-25    crypto_alt_updown_1d   True      23.996  0.995      0.795    0.567  0.220       18.703    123  2480.92  2558.92       -78.00     1.0   -159.829 -141.126
+2026-11-25    crypto_alt_updown_1d   True      23.971  0.995      0.667    0.552  0.182       15.032    125  1693.67  1705.67       -12.00     1.0    -48.816  -33.784
+2026-11-26    crypto_alt_updown_1d   True      23.922  0.997      0.024    0.001  0.256        0.000      0     0.00     0.00         0.00     1.0      0.000    0.000
+2026-11-26    crypto_alt_updown_1d   True      23.989  0.997      0.716    0.559  0.323       27.086    127  2235.31  2335.31      -100.00     1.0   -146.944 -119.859
+2026-11-26    crypto_alt_updown_1d   True      23.956  0.997      0.747    0.630  0.241       22.728    167  3737.41  3837.41      -100.00     1.0   -121.731  -99.003
+2026-11-27    crypto_alt_updown_1d  False      24.000  0.432      0.380    0.364  0.223       12.150     63  1408.94  1405.03         3.91     NaN        NaN      NaN
+2026-11-27    crypto_alt_updown_1d  False      24.000  0.433      0.424    0.392  0.244       14.333     65  1169.34  1193.75       -24.41     NaN        NaN      NaN
+2026-11-27    crypto_alt_updown_1d  False      24.000  0.432      0.385    0.349  0.247       12.940     54   982.47  1082.47      -100.00     NaN        NaN      NaN
 2026-11-18    crypto_btc_updown_1d  False      24.000  0.271      0.090    0.090  0.015        0.000    133  2916.88  2916.87         0.01     0.0     18.941   18.941
 2026-11-19    crypto_btc_updown_1d   True      23.934  0.996      0.652    0.652  0.033        8.644    600 14721.14 14621.14       100.00     0.0   -272.886 -264.242
 2026-11-20    crypto_btc_updown_1d   True      23.948  0.997      0.007    0.007  0.011        0.000      8   248.12   223.54        24.58     0.0      0.974    0.974
 2026-11-21    crypto_btc_updown_1d   True      23.977  0.996      0.000    0.000  0.000        0.000      0     0.00     0.00         0.00     1.0      0.000    0.000
 2026-11-22    crypto_btc_updown_1d   True      23.987  0.996      0.000    0.000  0.000        0.000      0     0.00     0.00         0.00     1.0      0.000    0.000
 2026-11-23    crypto_btc_updown_1d   True      23.949  0.996      0.035    0.035  0.033        0.000     48  1359.69  1428.27       -68.58     1.0    -38.768  -38.768
-2026-11-24    crypto_btc_updown_1d  False      24.000  0.413      0.203    0.203  0.041        3.316    129  2706.55  2801.57       -95.02     NaN        NaN      NaN
+2026-11-24    crypto_btc_updown_1d   True      23.962  0.996      0.224    0.224  0.038        3.416    152  3551.05  3651.05      -100.00     0.0     18.995   22.412
+2026-11-25    crypto_btc_updown_1d   True      23.963  0.995      0.312    0.312  0.040        5.021    291  6254.68  6154.68       100.00     1.0    -50.590  -45.570
+2026-11-26    crypto_btc_updown_1d   True      23.997  0.997      0.585    0.585  0.042        9.941    546 11661.96 11561.96       100.00     1.0   -159.467 -149.527
+2026-11-27    crypto_btc_updown_1d  False      24.000  0.432      0.262    0.262  0.034        3.584    227  4013.32  4042.12       -28.80     NaN        NaN      NaN
 2026-11-18   metals_gold_updown_1d  False      22.750  0.286      0.023    0.023  0.012        0.000      6    74.44    91.00       -16.56     0.0      1.076    1.076
 2026-11-19   metals_gold_updown_1d   True      22.692  0.996      0.700    0.692  0.031       21.128    435 13352.09 13352.09         0.00     0.0   -316.271 -295.143
 2026-11-20   metals_gold_updown_1d   True      22.682  0.997      0.518    0.452  0.039       17.564    285  5901.97  5801.97       100.00     0.0    -92.597  -75.033
 2026-11-23   metals_gold_updown_1d   True      22.716  0.996      0.831    0.825  0.017       13.976    442 13335.79 13435.79      -100.00     1.0   -163.769 -149.793
-2026-11-24   metals_gold_updown_1d  False      22.750  0.382      0.374    0.373  0.031       11.487    152  6064.77  6164.77      -100.00     NaN        NaN      NaN
+2026-11-24   metals_gold_updown_1d   True      22.737  0.996      0.782    0.778  0.032       24.546    256  8998.99  8948.53        50.46     0.0   -184.912 -160.366
+2026-11-25   metals_gold_updown_1d   True      22.738  0.995      0.760    0.725  0.045       32.993    384 10850.08 10801.20        48.88     1.0   -276.618 -243.625
+2026-11-27   metals_gold_updown_1d  False      22.750  0.402      0.400    0.384  0.018        7.083     93   917.32  1017.32      -100.00     NaN        NaN      NaN
 2026-11-18 metals_silver_updown_1d  False      22.750  0.286      0.000    0.000  0.000        0.000      0     0.00     0.00         0.00     0.0      0.000    0.000
 2026-11-19 metals_silver_updown_1d   True      22.700  0.996      0.704    0.699  0.032       16.622    429 15094.21 14994.21       100.00     0.0   -350.344 -333.722
 2026-11-20 metals_silver_updown_1d   True      22.673  0.997      0.745    0.703  0.040       20.840    203  7110.32  7105.27         5.05     0.0   -159.831 -138.991
 2026-11-23 metals_silver_updown_1d   True      22.716  0.996      0.792    0.788  0.020       11.674    340 12422.30 12322.30       100.00     1.0   -224.484 -212.810
-2026-11-24 metals_silver_updown_1d  False      22.750  0.380      0.362    0.362  0.029        7.765     81  3342.35  3442.35      -100.00     NaN        NaN      NaN
+2026-11-24 metals_silver_updown_1d   True      22.703  0.996      0.705    0.705  0.031       16.430    118  4314.81  4314.81         0.00     0.0   -113.282  -96.852
+2026-11-25 metals_silver_updown_1d   True      22.696  0.995      0.819    0.812  0.040       24.416    302 10706.20 10606.95        99.25     1.0   -269.895 -245.479
+2026-11-27 metals_silver_updown_1d  False      22.750  0.400      0.400    0.400  0.036       10.786    110  2034.38  1940.33        94.05     NaN        NaN      NaN
 
 by programme and order size, market-days recorded whole and settled
                 program  size  days  reward  fills  contracts  pnl_fills      net    a_day    worst     t  cap_100  cap_50  cap_10
-   crypto_alt_updown_1d    25    15   66.03   1842   23878.16    -349.28  -283.24   -18.88   -67.49 -3.84    66.03   66.03   66.03
-   crypto_alt_updown_1d    50    15  106.25   1888   43896.73    -705.63  -599.38   -39.96  -140.01 -4.08   106.25  106.25  106.25
-   crypto_alt_updown_1d   100    15  163.78   1933   80533.13   -1417.17 -1253.39   -83.56  -286.84 -4.23   163.78  163.78  163.78
-   crypto_alt_updown_1d   250    15  272.97   2051  164411.48   -3153.06 -2880.09  -192.01  -679.04 -3.99   272.97  272.97  272.97
-   crypto_alt_updown_1d   500    15  376.94   2133  264435.53   -5285.06 -4908.12  -327.21 -1225.56 -3.53   376.94  376.94  376.94
-   crypto_btc_updown_1d    25     5    2.41    623   10024.98     -70.64   -68.24   -13.65   -58.09 -1.21     2.41    2.41    2.41
-   crypto_btc_updown_1d    50     5    4.65    644   18182.88    -150.05  -145.40   -29.08  -123.61 -1.21     4.65    4.65    4.65
-   crypto_btc_updown_1d   100     5    8.64    656   32601.90    -310.68  -302.04   -60.41  -264.24 -1.17     8.64    8.64    8.64
-   crypto_btc_updown_1d   250     5   19.54    687   67182.16    -815.87  -796.33  -159.27  -721.38 -1.13    19.54   19.54   19.54
-   crypto_btc_updown_1d   500     5   33.72    724  114073.74   -1724.51 -1690.79  -338.16 -1551.36 -1.11    33.72   33.72   33.72
-  metals_gold_updown_1d    25     3   16.47   1122   18329.38    -134.90  -118.43   -39.48   -69.73 -2.43    16.47   16.47   16.47
-  metals_gold_updown_1d    50     3   29.77   1141   34331.36    -279.84  -250.07   -83.36  -144.33 -2.58    29.77   29.77   29.77
-  metals_gold_updown_1d   100     3   52.67   1162   65179.70    -572.64  -519.97  -173.32  -295.14 -2.68    52.67   52.67   52.67
-  metals_gold_updown_1d   250     3  109.85   1182  152554.03   -1421.47 -1311.62  -437.21  -747.64 -2.63   109.85  109.85  109.85
-  metals_gold_updown_1d   500     3  185.62   1190  293142.12   -2827.64 -2642.02  -880.67 -1495.04 -2.66   185.62  185.62  185.62
-metals_silver_updown_1d    25     3   14.17    952   17984.35    -181.74  -167.56   -55.85   -82.93 -3.77    14.17   14.17   14.17
-metals_silver_updown_1d    50     3   26.54    963   35257.05    -363.67  -337.13  -112.38  -165.19 -3.90    26.54   26.54   26.54
-metals_silver_updown_1d   100     3   49.14    972   69048.61    -734.66  -685.52  -228.51  -333.72 -4.03    49.14   49.14   49.14
-metals_silver_updown_1d   250     3   97.56    981  168251.48   -1853.18 -1755.62  -585.21  -842.47 -4.25    97.56   97.56   97.56
-metals_silver_updown_1d   500     3  160.27    989  328386.98   -3730.38 -3570.11 -1190.04 -1701.08 -4.40   160.27  160.27  160.27
+   crypto_alt_updown_1d    25    24  127.12   2796   34878.85    -521.51  -394.39   -16.43   -67.49 -4.74   127.12  127.12  127.12
+   crypto_alt_updown_1d    50    24  197.31   2848   63688.54   -1056.36  -859.05   -35.79  -140.01 -5.11   197.31  197.31  197.31
+   crypto_alt_updown_1d   100    24  292.23   2898  115762.87   -2102.79 -1810.56   -75.44  -286.84 -5.31   292.23  292.23  292.23
+   crypto_alt_updown_1d   250    24  472.51   3100  231653.35   -4484.37 -4011.86  -167.16  -679.04 -4.70   472.51  472.51  472.51
+   crypto_alt_updown_1d   500    24  639.04   3237  364191.25   -7196.26 -6557.21  -273.22 -1225.56 -3.98   639.04  639.04  639.04
+   crypto_btc_updown_1d    25     8    6.26   1544   24364.76    -104.89   -98.63   -12.33   -58.09 -1.65     6.26    6.26    6.26
+   crypto_btc_updown_1d    50     8   13.93   1597   43315.00    -231.27  -217.34   -27.17  -123.61 -1.67    13.93   13.93   13.93
+   crypto_btc_updown_1d   100     8   27.02   1645   75437.28    -501.74  -474.72   -59.34  -264.24 -1.70    27.02   27.02   27.02
+   crypto_btc_updown_1d   250     8   61.83   1721  151256.34   -1352.34 -1290.51  -161.31  -721.38 -1.71    61.83   61.83   61.83
+   crypto_btc_updown_1d   500     8  109.00   1811  245012.79   -2829.89 -2720.90  -340.11 -1551.36 -1.72   109.00  109.00  109.00
+  metals_gold_updown_1d    25     5   34.94   1739   29127.27    -241.16  -206.23   -41.25   -69.73 -4.48    34.94   34.94   34.94
+  metals_gold_updown_1d    50     5   63.30   1768   54945.34    -500.42  -437.13   -87.43  -144.33 -4.71    63.30   63.30   63.30
+  metals_gold_updown_1d   100     5  110.21   1802  104778.50   -1034.17  -923.96  -184.79  -295.14 -4.81   110.21  110.21  110.21
+  metals_gold_updown_1d   250     5  218.98   1842  247621.07   -2584.99 -2366.01  -473.20  -747.64 -4.73   218.98  218.98  218.98
+  metals_gold_updown_1d   500     5  352.71   1858  476709.49   -5192.08 -4839.37  -967.87 -1495.04 -4.78   352.71  352.71  352.71
+metals_silver_updown_1d    25     5   26.18   1353   26141.66    -275.38  -249.20   -49.84   -82.93 -4.74    26.18   26.18   26.18
+metals_silver_updown_1d    50     5   49.56   1376   50887.22    -554.11  -504.54  -100.91  -165.19 -4.82    49.56   49.56   49.56
+metals_silver_updown_1d   100     5   89.98   1392   98991.38   -1117.84 -1027.85  -205.57  -333.72 -4.96    89.98   89.98   89.98
+metals_silver_updown_1d   250     5  174.53   1419  236417.50   -2805.22 -2630.69  -526.14  -842.47 -5.08   174.53  174.53  174.53
+metals_silver_updown_1d   500     5  278.53   1430  456884.78   -5747.99 -5469.47 -1093.89 -1701.08 -5.09   278.53  278.53  278.53
 
-Verdict by the bar fixed in advance (gold and silver together, 100 contracts a side): NOT YET JUDGED: 6 market-days recorded whole and settled on 3 dates; 10 on 6 are asked for
+Verdict by the bar fixed in advance (gold and silver together, 100 contracts a side): NOT YET JUDGED: 10 market-days recorded whole and settled on 5 dates; 10 on 6 are asked for
 
 Test Q1: the target size at the last tick of a side nobody is standing on (docs/13_round_six.md, section 4b)
 each market-day (qualifies: share of the time the book was paid as it was; resting: share of the time our order rested and made it paid)
-       day                 program  whole  open_hours  qualifies  resting  reward_paid  fills  bought    sold  settle  pnl_fills     net
-2026-11-18    crypto_alt_updown_1d  False      24.000      0.164    0.079        4.242      8 1281.00    0.00     0.0    -12.810  -8.568
-2026-11-18    crypto_alt_updown_1d  False      24.000      0.061    0.000        0.000      0    0.00    0.00     0.0      0.000   0.000
-2026-11-18    crypto_alt_updown_1d  False      24.000      0.110    0.000        0.000      0    0.00    0.00     0.0      0.000   0.000
-2026-11-19    crypto_alt_updown_1d   True      23.925      0.829    0.008        0.000      1  400.00    0.00     0.0     -4.000  -4.000
-2026-11-19    crypto_alt_updown_1d   True      24.000      0.550    0.001        0.000      0    0.00    0.00     0.0      0.000   0.000
-2026-11-19    crypto_alt_updown_1d   True      23.925      0.636    0.000        0.000      0    0.00    0.00     0.0      0.000   0.000
-2026-11-20    crypto_alt_updown_1d   True      23.982      0.821    0.020        0.000      1    0.01    0.00     0.0     -0.000  -0.000
-2026-11-20    crypto_alt_updown_1d   True      23.923      0.646    0.015        0.000      1    0.01    0.00     0.0     -0.000  -0.000
-2026-11-20    crypto_alt_updown_1d   True      23.973      0.564    0.001        0.000      0    0.00    0.00     0.0      0.000   0.000
-2026-11-21    crypto_alt_updown_1d   True      24.010      0.788    0.088        5.178      0    0.00    0.00     1.0      0.000   5.178
-2026-11-21    crypto_alt_updown_1d   True      23.935      0.183    0.000        0.000      0    0.00    0.00     1.0      0.000   0.000
-2026-11-21    crypto_alt_updown_1d   True      23.968      0.135    0.001        0.000      0    0.00    0.00     1.0      0.000   0.000
-2026-11-22    crypto_alt_updown_1d   True      23.978      0.566    0.000        0.000      0    0.00    0.00     1.0      0.000   0.000
-2026-11-22    crypto_alt_updown_1d   True      23.995      0.837    0.000        0.000      0    0.00    0.00     1.0      0.000   0.000
-2026-11-22    crypto_alt_updown_1d   True      23.928      0.659    0.000        0.000      0    0.00    0.00     0.0      0.000   0.000
-2026-11-23    crypto_alt_updown_1d   True      23.974      0.708    0.003        0.000      0    0.00    0.00     1.0      0.000   0.000
-2026-11-23    crypto_alt_updown_1d   True      23.941      0.688    0.079        1.513      0    0.00    0.00     1.0      0.000   1.513
-2026-11-23    crypto_alt_updown_1d   True      23.916      0.647    0.008        0.000      0    0.00    0.00     1.0      0.000   0.000
-2026-11-24    crypto_alt_updown_1d  False      24.000      0.402    0.000        0.000      0    0.00    0.00     NaN        NaN     NaN
-2026-11-24    crypto_alt_updown_1d  False      24.000      0.404    0.000        0.000      0    0.00    0.00     NaN        NaN     NaN
-2026-11-24    crypto_alt_updown_1d  False      24.000      0.196    0.000        0.000      0    0.00    0.00     NaN        NaN     NaN
-2026-11-18    crypto_btc_updown_1d  False      24.000      0.090    0.018        3.235     16 5945.50    0.00     0.0    -59.455 -56.220
-2026-11-19    crypto_btc_updown_1d   True      23.934      0.652    0.005        0.000      4 1987.16    0.00     0.0    -19.872 -19.872
-2026-11-20    crypto_btc_updown_1d   True      23.948      0.007    0.058        9.952     30 8384.28    0.00     0.0    -83.843 -73.891
-2026-11-21    crypto_btc_updown_1d   True      23.977      0.000    0.002        0.000      0    0.00    0.00     1.0      0.000   0.000
-2026-11-22    crypto_btc_updown_1d   True      23.987      0.000    0.000        0.000      0    0.00    0.00     1.0      0.000   0.000
-2026-11-23    crypto_btc_updown_1d   True      23.949      0.035    0.000        0.000      0    0.00    0.00     1.0      0.000   0.000
-2026-11-24    crypto_btc_updown_1d  False      24.000      0.203    0.000        0.000      0    0.00    0.00     NaN        NaN     NaN
-2026-11-18   metals_gold_updown_1d  False      22.750      0.023    0.182       87.761      4 4981.56    0.00     0.0    -49.816  37.946
-2026-11-19   metals_gold_updown_1d   True      22.692      0.700    0.029       14.229      1 3903.37    0.00     0.0    -39.034 -24.805
-2026-11-20   metals_gold_updown_1d   True      22.682      0.518    0.000        0.000      0    0.00    0.00     0.0      0.000   0.000
-2026-11-23   metals_gold_updown_1d   True      22.716      0.831    0.078       38.436      4    0.00 3171.23     1.0    -31.712   6.724
-2026-11-24   metals_gold_updown_1d  False      22.750      0.374    0.000        0.000      0    0.00    0.00     NaN        NaN     NaN
-2026-11-18 metals_silver_updown_1d  False      22.750      0.000    0.000        0.000      0    0.00    0.00     0.0      0.000   0.000
-2026-11-19 metals_silver_updown_1d   True      22.700      0.704    0.017        6.333      1 3000.00    0.00     0.0    -30.000 -23.667
-2026-11-20 metals_silver_updown_1d   True      22.673      0.745    0.042       14.103      0    0.00    0.00     0.0      0.000  14.103
-2026-11-23 metals_silver_updown_1d   True      22.716      0.792    0.058       21.297      0    0.00    0.00     1.0      0.000  21.297
-2026-11-24 metals_silver_updown_1d  False      22.750      0.362    0.000        0.000      0    0.00    0.00     NaN        NaN     NaN
+       day                 program  whole  open_hours  qualifies  resting  reward_paid  fills  bought    sold  settle  pnl_fills      net
+2026-11-18    crypto_alt_updown_1d  False      24.000      0.164    0.079        4.242      8 1281.00    0.00     0.0    -12.810   -8.568
+2026-11-18    crypto_alt_updown_1d  False      24.000      0.061    0.000        0.000      0    0.00    0.00     0.0      0.000    0.000
+2026-11-18    crypto_alt_updown_1d  False      24.000      0.110    0.000        0.000      0    0.00    0.00     0.0      0.000    0.000
+2026-11-19    crypto_alt_updown_1d   True      23.925      0.829    0.008        0.000      1  400.00    0.00     0.0     -4.000   -4.000
+2026-11-19    crypto_alt_updown_1d   True      24.000      0.550    0.001        0.000      0    0.00    0.00     0.0      0.000    0.000
+2026-11-19    crypto_alt_updown_1d   True      23.925      0.636    0.000        0.000      0    0.00    0.00     0.0      0.000    0.000
+2026-11-20    crypto_alt_updown_1d   True      23.982      0.821    0.020        0.000      1    0.01    0.00     0.0     -0.000   -0.000
+2026-11-20    crypto_alt_updown_1d   True      23.923      0.646    0.015        0.000      1    0.01    0.00     0.0     -0.000   -0.000
+2026-11-20    crypto_alt_updown_1d   True      23.973      0.564    0.001        0.000      0    0.00    0.00     0.0      0.000    0.000
+2026-11-21    crypto_alt_updown_1d   True      24.010      0.788    0.088        5.178      0    0.00    0.00     1.0      0.000    5.178
+2026-11-21    crypto_alt_updown_1d   True      23.935      0.183    0.000        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-21    crypto_alt_updown_1d   True      23.968      0.135    0.001        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-22    crypto_alt_updown_1d   True      23.978      0.566    0.000        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-22    crypto_alt_updown_1d   True      23.995      0.837    0.000        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-22    crypto_alt_updown_1d   True      23.928      0.659    0.000        0.000      0    0.00    0.00     0.0      0.000    0.000
+2026-11-23    crypto_alt_updown_1d   True      23.974      0.708    0.003        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-23    crypto_alt_updown_1d   True      23.941      0.688    0.079        1.513      0    0.00    0.00     1.0      0.000    1.513
+2026-11-23    crypto_alt_updown_1d   True      23.916      0.647    0.008        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-24    crypto_alt_updown_1d   True      23.978      0.776    0.108        5.447      2  639.55    0.00     0.0     -6.395   -0.948
+2026-11-24    crypto_alt_updown_1d   True      23.970      0.661    0.150        5.722      0    0.00    0.00     0.0      0.000    5.722
+2026-11-24    crypto_alt_updown_1d   True      23.978      0.361    0.124        8.297      1    0.01    0.00     0.0     -0.000    8.297
+2026-11-25    crypto_alt_updown_1d   True      23.988      0.453    0.000        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-25    crypto_alt_updown_1d   True      23.996      0.795    0.001        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-25    crypto_alt_updown_1d   True      23.971      0.667    0.002        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-26    crypto_alt_updown_1d   True      23.922      0.024    0.000        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-26    crypto_alt_updown_1d   True      23.989      0.716    0.000        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-26    crypto_alt_updown_1d   True      23.956      0.747    0.001        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-27    crypto_alt_updown_1d  False      24.000      0.380    0.000        0.000      0    0.00    0.00     NaN        NaN      NaN
+2026-11-27    crypto_alt_updown_1d  False      24.000      0.424    0.000        0.000      0    0.00    0.00     NaN        NaN      NaN
+2026-11-27    crypto_alt_updown_1d  False      24.000      0.385    0.000        0.000      0    0.00    0.00     NaN        NaN      NaN
+2026-11-18    crypto_btc_updown_1d  False      24.000      0.090    0.018        3.235     16 5945.50    0.00     0.0    -59.455  -56.220
+2026-11-19    crypto_btc_updown_1d   True      23.934      0.652    0.005        0.000      4 1987.16    0.00     0.0    -19.872  -19.872
+2026-11-20    crypto_btc_updown_1d   True      23.948      0.007    0.058        9.952     30 8384.28    0.00     0.0    -83.843  -73.891
+2026-11-21    crypto_btc_updown_1d   True      23.977      0.000    0.002        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-22    crypto_btc_updown_1d   True      23.987      0.000    0.000        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-23    crypto_btc_updown_1d   True      23.949      0.035    0.000        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-24    crypto_btc_updown_1d   True      23.962      0.224    0.020        2.056      6  754.92    0.00     0.0     -7.549   -5.493
+2026-11-25    crypto_btc_updown_1d   True      23.963      0.312    0.000        0.000      0    0.00    0.00     1.0      0.000    0.000
+2026-11-26    crypto_btc_updown_1d   True      23.997      0.585    0.003        0.000      3    0.00 2292.25     1.0    -22.923  -22.923
+2026-11-27    crypto_btc_updown_1d  False      24.000      0.262    0.000        0.000      0    0.00    0.00     NaN        NaN      NaN
+2026-11-18   metals_gold_updown_1d  False      22.750      0.023    0.182       87.761      4 4981.56    0.00     0.0    -49.816   37.946
+2026-11-19   metals_gold_updown_1d   True      22.692      0.700    0.029       14.229      1 3903.37    0.00     0.0    -39.034  -24.805
+2026-11-20   metals_gold_updown_1d   True      22.682      0.518    0.000        0.000      0    0.00    0.00     0.0      0.000    0.000
+2026-11-23   metals_gold_updown_1d   True      22.716      0.831    0.078       38.436      4    0.00 3171.23     1.0    -31.712    6.724
+2026-11-24   metals_gold_updown_1d   True      22.737      0.782    0.001        0.000      1 5000.00    0.00     0.0    -50.000  -50.000
+2026-11-25   metals_gold_updown_1d   True      22.738      0.760    0.017        8.429      1 5000.00    0.00     1.0   4950.000 4958.429
+2026-11-27   metals_gold_updown_1d  False      22.750      0.400    0.000        0.000      0    0.00    0.00     NaN        NaN      NaN
+2026-11-18 metals_silver_updown_1d  False      22.750      0.000    0.000        0.000      0    0.00    0.00     0.0      0.000    0.000
+2026-11-19 metals_silver_updown_1d   True      22.700      0.704    0.017        6.333      1 3000.00    0.00     0.0    -30.000  -23.667
+2026-11-20 metals_silver_updown_1d   True      22.673      0.745    0.042       14.103      0    0.00    0.00     0.0      0.000   14.103
+2026-11-23 metals_silver_updown_1d   True      22.716      0.792    0.058       21.297      0    0.00    0.00     1.0      0.000   21.297
+2026-11-24 metals_silver_updown_1d   True      22.703      0.705    0.003        1.028      1 3000.00    0.00     0.0    -30.000  -28.972
+2026-11-25 metals_silver_updown_1d   True      22.696      0.819    0.041       15.284      2    0.71    0.00     1.0      0.703   15.986
+2026-11-27 metals_silver_updown_1d  False      22.750      0.400    0.000        0.000      0    0.00    0.00     NaN        NaN      NaN
 
 by programme, market-days recorded whole and settled
-                program  days  with_reward  reward  fills   bought    sold  pnl_fills    net  a_day  worst
-   crypto_alt_updown_1d    15            2    6.69      3   400.02    0.00      -4.00   2.69   0.18  -4.00
-   crypto_btc_updown_1d     5            1    9.95     34 10371.44    0.00    -103.71 -93.76 -18.75 -73.89
-  metals_gold_updown_1d     3            2   52.67      5  3903.37 3171.23     -70.75 -18.08  -6.03 -24.80
-metals_silver_updown_1d     3            3   41.73      1  3000.00    0.00     -30.00  11.73   3.91 -23.67
+                program  days  with_reward  reward  fills   bought    sold  pnl_fills     net  a_day  worst
+   crypto_alt_updown_1d    24            5   26.16      6  1039.58    0.00     -10.40   15.76   0.66  -4.00
+   crypto_btc_updown_1d     8            2   12.01     43 11126.36 2292.25    -134.19 -122.18 -15.27 -73.89
+  metals_gold_updown_1d     5            3   61.09      7 13903.37 3171.23    4829.25 4890.35 978.07 -50.00
+metals_silver_updown_1d     5            5   58.04      4  6000.71    0.00     -59.30   -1.25  -0.25 -28.97
 
-described, not judged: gold and silver as if each order were traded against in full 50 minutes after it first rested, as the one real order of this kind seen so far was (gold, 18 November 2026): reward $64.75, fills $-179.03, net $-114.28 on 6 market-days, $-19.05 a market-day
+described, not judged: gold and silver as if each order were traded against in full 50 minutes after it first rested, as the one real order of this kind seen so far was (gold, 18 November 2026): reward $87.98, fills $7,660.97, net $7,748.94 on 10 market-days, $774.89 a market-day
 
-Verdict by the bar fixed in advance (gold and silver together): NOT YET JUDGED: 6 market-days recorded whole and settled on 3 dates; 10 on 6 are asked for
+Verdict by the bar fixed in advance (gold and silver together): NOT YET JUDGED: 10 market-days recorded whole and settled on 5 dates; 10 on 6 are asked for
