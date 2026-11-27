@@ -1,8 +1,8 @@
 # The top of the book in single-market reward programmes
 
-*Written by `kht us-top` at the end of a run: 27 November 2026, 08:25 UTC. It lists what was read. The rule of test K1 (`docs/13_round_six.md`) is applied by `scripts/us_kpi_score.py`, not here.*
+*Written by `kht us-top` at the end of a run: 27 November 2026, 13:25 UTC. It lists what was read. The rule of test K1 (`docs/13_round_six.md`) is applied by `scripts/us_kpi_score.py`, not here.*
 
-- Run `20261127T032741Z`: 298 minutes, 51,516 readings of 108 markets, 19 readings of the reward schedule, 0 errors.
+- Run `20261127T082652Z`: 298 minutes, 51,516 readings of 108 markets, 19 readings of the reward schedule, 0 errors.
 
 | Market | Programme | Pool a day | Target size | Readings |
 |---|---|---:|---:|---:|
