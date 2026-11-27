@@ -3,7 +3,7 @@
 Trading how the crowd *perceives* an outcome on Polymarket, rather than the
 outcome itself: research, a tested rule, and a trading system running on paper.
 
-## Where this stands (18 November 2026)
+## Where this stands (18 November 2026, with a note of 27 November)
 
 **The one rule that passed its tests lives on polymarket.com, which a US
 resident cannot use. On Polymarket US, the exchange the account will be on,
@@ -58,6 +58,31 @@ minutes, for $50 against about $11 of reward by the formula. As
 before, no order is placed and nobody has been paid a reward: whether the
 exchange pays what its formula says is the one thing only a real account
 can show.
+
+**27 November: nothing is judged yet, and three things changed**
+(`docs/13_round_six.md`, section 6, under that date).
+
+| Test | Where it stands on paper after nine days | Read on |
+|---|---|---|
+| R2 | Ahead on seven dates of eight: +$1,553 on 566 UTR matches at 250 contracts a side | 2 December |
+| G1 | Behind on every one of ten market-days: $200 of reward against $2,152 lost on the orders traded against | 2 December |
+| Q1 | One paper bid at 1¢ in gold was filled on 25 November and gold then rose 4.3% in six hours: +$4,950, more than the rest of the test put together. By its bar it will read as a pass, and it is a lottery ticket, not evidence. Without it: −$111 | 2 December |
+| D1 | About level if the wait is paid as "before the match" (+$260 on 494 matches, and that only thanks to four matches the score feed never showed), well ahead if it is paid as play (+$1,563) | 2 December |
+| K1 | Three earnings events, all ahead: +$45 at 100 contracts a side. Twelve are asked for | when twelve are in |
+| **L4**, new | The large 1¢ bids on the far crypto brackets came back the evening after test L3 closed. The same rule is tried again on the fourteen evenings from 27 November, judged on bids that still stood two minutes later (`docs/11_crypto_us.md`, section 14) | 11 December |
+
+- **The exchange changed its fees on 26 November.** A small account
+  trading in the app now pays more (a coefficient of 0.11, from 0.095). A
+  program trading through the API pays less: 0.0695, and until
+  31 December the exchange says it returns 70% of that. Every earlier
+  search here was read again at the new fee the same day, and none of
+  them finds anything it did not find before.
+- **A fault in the earnings recorder was found and mended:** from
+  26 November it read each market four times in five half minutes.
+- **The recording job now runs to 20 December** for K1 and L4 (it was to
+  stop on 3 December). To stop it sooner: an empty file
+  `state/us-rewards/STOP`, or "Disable workflow" for *us-rewards* and
+  *us-rewards-watchdog* in the Actions tab.
 
 A fourth round, before those tests, went looking for what carries over
 from polymarket.com. Its answers are below, under "The fourth round"; in
@@ -392,7 +417,7 @@ python scripts/us_ladder_score.py --settle    # test L2 on what has been recorde
 ```
 
 ```bash
-python scripts/us_lasthours_score.py --settle # test L3 on the same recordings
+python scripts/us_lasthours_score.py --settle # tests L3 and, from 27 November, L4 on the same recordings
 ```
 
 ```bash
