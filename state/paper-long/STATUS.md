@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-27 04:22 UTC. Started 2026-11-10 20:50 UTC.
+As of 2026-11-27 09:16 UTC. Started 2026-11-10 20:50 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $994.52 |
+| Equity (positions marked at the bid) | $994.50 |
 | Starting bankroll | $1,000.00 |
-| Change | $-5.48 (-0.55%) |
+| Change | $-5.50 (-0.55%) |
 | Cash | $619.78 |
 | In positions (cost) | $380.22 |
 | Realised profit | $+0.00 |
@@ -21,11 +21,11 @@ As of 2026-11-27 04:22 UTC. Started 2026-11-10 20:50 UTC.
 |---|---|---:|---:|---:|---:|---:|
 | Negative GDP growth in 2026? | No | 20.4 | 0.981 | 0.968 | $-0.26 | 63 |
 | US recession by end of 2026? | No | 20.4 | 0.979 | 0.966 | $-0.27 | 65 |
-| 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.978 | $+0.10 | 66 |
+| 9.0 or above earthquake before 2027? | No | 20.6 | 0.973 | 0.980 | $+0.14 | 66 |
 | Strait of Hormuz traffic returns to normal by January 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 66 |
 | Will Dua Lipa appear at the 2027 Big Game halftime show? | No | 21.4 | 0.935 | 0.940 | $+0.11 | 83 |
 | Major meteor strike (10kt+) in 2026? | No | 20.6 | 0.973 | 0.952 | $-0.43 | 94 |
-| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.948 | $-0.43 | 94 |
+| Natural Disaster in 2026? | No | 20.6 | 0.969 | 0.946 | $-0.47 | 94 |
 | Will "Chains of Love" from Wuthering Heights be nominated for Best Ori | No | 20.4 | 0.981 | 0.902 | $-1.61 | 108 |
 | Will Jensen Huang join SpaceX by March 31, 2027? | No | 22.0 | 0.914 | 0.959 | $+0.99 | 125 |
 | Putin out as President of Russia by March 31, 2027? | No | 21.1 | 0.950 | 0.940 | $-0.21 | 125 |
@@ -36,7 +36,7 @@ As of 2026-11-27 04:22 UTC. Started 2026-11-10 20:50 UTC.
 | Will the Iranian regime fall by March 31, 2027? | No | 21.3 | 0.940 | 0.930 | $-0.21 | 125 |
 | Will the average Ornn B300 rental price in March 2027 be above $21.00? | No | 21.2 | 0.945 | 0.944 | $-0.02 | 125 |
 | Will Russia capture Sumy by March 31, 2027? | No | 20.5 | 0.973 | 0.986 | $+0.27 | 125 |
-| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.921 | $-0.31 | 143 |
+| Will Jordan Bardella be on the ballot for the 2027 French presidential | No | 21.4 | 0.936 | 0.920 | $-0.33 | 143 |
 | Will Jordan Bardella advance to the second round of the next French pr | No | 21.5 | 0.933 | 0.930 | $-0.06 | 143 |
 
 ## Latest fills
@@ -61,4 +61,4 @@ As of 2026-11-27 04:22 UTC. Started 2026-11-10 20:50 UTC.
 
 ## Equity history
 
-58 cycles from 2026-11-10 20:50 UTC to 2026-11-27 04:22 UTC; equity $1,000.00 → $994.52. The longest gap between two cycles was 12.1 hours.
+59 cycles from 2026-11-10 20:50 UTC to 2026-11-27 09:16 UTC; equity $1,000.00 → $994.50. The longest gap between two cycles was 12.1 hours.
