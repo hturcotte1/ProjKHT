@@ -110,16 +110,19 @@ jobs:
           # The recorder of test G1 (docs/13_round_six.md, section 4): the
           # whole book of the gold, silver and coin up-or-down markets every
           # half minute. Read-only as well.
-          (timeout $((mins + 2))m kht us-top --state state/us-top --minutes $((mins - 2)) > us-top.log 2>&1 || true) &
+          (timeout $((mins + 2))m kht us-top --state state/us-top --budget 2 --minutes $((mins - 2)) > us-top.log 2>&1 || true) &
           # The exchange allows twenty requests a second from one address.
-          # The recorders of this job may ask eighteen between them:
-          # us-rewards 5, us-top 4, the two below 3 each, the ladders 3.
-          # The rehearsal above reads a few books a minute beside them.
+          # The recorders of this job may ask nineteen between them:
+          # us-rewards 5, us-top 2, the earnings markets 6, the matches 3,
+          # the ladders 3. In practice they ask about half of that. The
+          # rehearsal above reads a few books a minute beside them.
           # The recorder of test K1 (docs/13_round_six.md, section 4c): the
-          # same program on the earnings markets, into its own folder. Three
-          # a second reads ninety books in a half minute. In a reporting
-          # season there may be more markets than that: see the check-ins.
-          (timeout $((mins + 2))m kht us-top --state state/us-kpi --programmes kpic --budget 3 --minutes $((mins - 2)) > us-kpi.log 2>&1 || true) &
+          # same program on the earnings markets, into its own folder. Six a
+          # second reads 180 books in a half minute. It was three until
+          # 27 November 2026: from 26 November there were 108 markets, a
+          # round of readings took 37 seconds, and a market was read four
+          # times in five half minutes (docs/13, section 6, that date).
+          (timeout $((mins + 2))m kht us-top --state state/us-kpi --programmes kpic --budget 6 --minutes $((mins - 2)) > us-kpi.log 2>&1 || true) &
           # The recorder of test D1 (docs/13_round_six.md, section 4d): each
           # UTR match from a quarter of an hour before its listed start until
           # its market closes, with what the public listing says of the match.
