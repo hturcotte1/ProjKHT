@@ -1224,6 +1224,245 @@ leave when the book itself shows play, which a firm's ladder of 200 and
 exchange had moved the listed start back to the real one, as it does
 when play begins, without changing "not started".
 
+**27 November, 09:24 UTC. Third check-in. Nothing is judged: no test has
+reached its count. G1 and Q1 are one date short. In Q1 a single paper
+order has won a hundred times its cost, a fault in K1's recording was
+found and mended, and the exchange has changed its fees.**
+
+*Health.* 42 finished runs of the job since 18 November, at most two and
+a half minutes between one and the next, and no error in any recorder's
+log. The watchdog is active. The reward schedule, read at 09:07 UTC,
+still has the same ten fields: no cap, no minimum volume.
+
+*Test G1: ten market-days on five dates* (19, 20, 23, 24 and 25
+November). Ten on six are asked for, so the market-days are there and
+the dates are not. The exchange listed no gold or silver market for
+26 November, Thanksgiving: it answers "not found" for both. The sixth
+date is today's market, which settles this evening, and the one look is
+at the check-in of 2 December, as fixed.
+
+| Market-day | Book qualified | Reward | Times traded against | What the fills made | Net |
+|---|---:|---:|---:|---:|---:|
+| Gold, 19 Nov | 70% | $21.13 | 435 | −$316.27 | −$295.14 |
+| Gold, 20 Nov | 52% | $17.56 | 285 | −$92.60 | −$75.03 |
+| Gold, 23 Nov | 83% | $13.98 | 442 | −$163.77 | −$149.79 |
+| Gold, 24 Nov | 78% | $24.55 | 256 | −$184.91 | −$160.37 |
+| Gold, 25 Nov | 76% | $32.99 | 384 | −$276.62 | −$243.63 |
+| Silver, 19 Nov | 70% | $16.62 | 429 | −$350.34 | −$333.72 |
+| Silver, 20 Nov | 75% | $20.84 | 203 | −$159.83 | −$138.99 |
+| Silver, 23 Nov | 79% | $11.67 | 340 | −$224.48 | −$212.81 |
+| Silver, 24 Nov | 71% | $16.43 | 118 | −$113.28 | −$96.85 |
+| Silver, 25 Nov | 82% | $24.42 | 302 | −$269.90 | −$245.48 |
+| **All ten** | | **$200.19** | | **−$2,152.01** | **−$1,951.81** |
+
+Every one of the ten is behind, by $75 to $334; the mean is −$195 a
+market-day where the bar asks for +$20. The orders were traded against
+for 203,770 contracts and lost a little over a cent on each. The four
+coins, described: 32 market-days, $319 of reward, −$2,605 on fills.
+
+*Test Q1: the same ten market-days, and one of them decides
+everything.*
+
+| Market-day | Our order rested | Reward | Traded against | What that made | Net |
+|---|---:|---:|---|---:|---:|
+| Gold, 19 Nov | 40 min | $14.23 | 3,903 bought at 1¢ | −$39.03 | −$24.80 |
+| Gold, 20 Nov | never | none | | | $0.00 |
+| Gold, 23 Nov | 106 min | $38.44 | 3,171 sold at 99¢ | −$31.71 | +$6.72 |
+| Gold, 24 Nov | 1.5 min | under $1 | 5,000 bought at 1¢ | −$50.00 | −$50.00 |
+| Gold, 25 Nov | 23 min | $8.43 | 5,000 bought at 1¢ | +$4,950.00 | +$4,958.43 |
+| Silver, 19 Nov | 23 min | $6.33 | 3,000 bought at 1¢ | −$30.00 | −$23.67 |
+| Silver, 20 Nov | 58 min | $14.10 | | | +$14.10 |
+| Silver, 23 Nov | 80 min | $21.30 | | | +$21.30 |
+| Silver, 24 Nov | 4.5 min | $1.03 | 3,000 bought at 1¢ | −$30.00 | −$28.97 |
+| Silver, 25 Nov | 56 min | $15.28 | 0.7 bought at 1¢ | +$0.70 | +$15.99 |
+| **All ten** | | **$119.14** | | **+$4,769.96** | **+$4,889.09** |
+
+**What happened in gold on 25 November.** Gold fell 3.8% in the first
+sixteen hours of the window. At 15:43 UTC it was 3.4% under its price to
+beat, with six and a quarter hours left, and nobody was bidding for "up"
+at all. At that reading somebody offered 5,070 contracts of "up" at 1¢,
+and by 17:06 there were 15,040 on offer at that price. That is the sale
+section 4b described on 18 November, made this time without waiting for
+a bid. The rule's bid for 5,000 at 1¢ had been resting for 23 minutes,
+and an offer standing at our price fills us (rule 4): 5,000 contracts
+for $50. A real bid would have been filled the same way, since the
+seller asked a cent and the bid offered one. Then gold turned. It rose
+4.3% in six hours, ended 0.74% above its price to beat, and "up" paid a
+dollar. Real buyers took about 5,200 of the contracts on offer at 1¢
+between 15:47 and 17:18 UTC, while gold was still 1.5% to 3.4% under,
+and were paid a hundred for one. Silver did the same that day: 7% under
+at its low, 0.8% over at the close, with up to 13,500 contracts on offer
+at 1¢ for an hour and a half.
+
+**What it means for the verdict.** By the bar as fixed, Q1 passes on
+2 December unless the sixth market-day undoes it, which it cannot: the
+net is +$489 a market-day where $20 is asked, the fills have cost
+nothing where a quarter of the reward is allowed, and there was a reward
+on eight market-days of ten. That pass is one lottery ticket and nothing
+else. Had gold not turned, the ten market-days would stand at −$110.91:
+$119 of reward against $230 paid for contracts that ended worthless.
+Section 4b says: "There is no t in this bar. What the rule can lose is
+fixed by its construction, so the question is not luck." That was half
+of it. What the rule can lose is fixed. What it can win is not, and I did
+not think of that when I wrote the bar. The verdict will be reported by
+the bar as it stands, with this beside it, and I will not call it
+evidence that the order earns money.
+
+It also turns round a sentence of mine in section 4b: that selling 5,000
+contracts at a cent "earns $50 by the evening on $4,950 put up, with
+nothing to fear short of gold rising 2.8% in four hours". Seven days
+later gold rose 4.3% in six. Whoever sold those contracts lost a hundred
+times what they were paid.
+
+Is a cent then too cheap on such a day? This cannot say. *Exploration,
+on the recordings only:* of the 54 daily up-or-down markets recorded
+since 18 November, one side was on offer at 2¢ or less with four hours
+or more to go in 13, twelve of them gold or silver, and it paid in two:
+gold and silver on 25 November, which is one event and not two. The
+exchange has published gold prices since 20 October. In those 28 windows
+gold was at some time 2.5% under its start in eight, and ended above it
+in one, the same day. One in eight says nothing about whether the true
+figure is nearer one in fifty or one in five hundred, and a cent needs
+one in ninety to break even after the fee. What the five weeks do show
+is how wild the metals have been: half of gold's windows ended more than
+1.15% from their start and three of the 27 finished ones more than 3%,
+and silver's median is 2.5%. Somebody who sells the far side for a cent
+at midday is selling against that.
+
+Other people's orders at the last tick are now there for hours. Bids at
+1¢ for the target size or more stood in gold for 86, 20, 6, 373 and 335
+minutes on the five days, and in silver for 34, 70, 44, 192 and 319.
+With each paper order counted as traded against in full fifty minutes
+after it first rested (described): +$7,748.94, which is the same
+accident twice, in gold and in silver, and −$251.06 without it.
+
+*Test R2: 566 UTR games on eight US dates* (19 to 26 November). 800 on
+12 are asked for. At this week's sixty games a day both numbers are
+reached on about 30 November, so the look is on 2 December.
+
+| Account | Reward after the $1 minimum | Games traded against | Fills, held to the result | Net | A game | z by date | Dates ahead |
+|---|---:|---:|---:|---:|---:|---:|---|
+| R2-utr, 250 a side | $1,544.07 | 234 of 566 | +$8.51 | +$1,552.58 | +$2.74 | 3.44 | 7 of 8 |
+| R2-top, 100 a side at the best price | $1,216.20 | 291 of 566 | −$595.48 | +$620.72 | +$1.10 | 3.11 | 7 of 8 |
+
+By date, R2-utr: +$21, +$362, +$307, +$67, −$15, +$370, +$224, +$217.
+(23 November read −$88 at the last check-in, when a third of its games
+had not yet settled.) Under a cap at 100% of what the account itself
+traded, R2-utr's reward would be $366. The rehearsal of the order system
+on UTR: $1,238 of reward after the minimum, −$16 settled. For the caveat
+of section 4d: the matches test D1 followed began 55 minutes late on
+average and 34 at the median, so if the six paid hours are counted back
+from the real start, 15% of R2's resting time on average (a tenth at the
+median) earned nothing, and its reward would be nearer $1,310 than
+$1,544.
+
+*Test K1: three events on one report date.* 12 on 5 are asked for.
+
+| Event | Hours recorded | Book qualified | Share | Reward | Traded against | Fills and closing, fee included | Net |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Analog Devices | 73.6 | 86% | 3.8% | $25.12 | 11 times | +$1.15 | +$26.27 |
+| Dell | 87.8 | 96% | 3.1% | $27.24 | 3 times | −$16.85 | +$10.39 |
+| Dick's | 73.6 | 93% | 3.7% | $24.79 | 4 times | −$16.16 | +$8.63 |
+| **All three** | | | | **$77.15** | | **−$31.86** | **+$45.29** |
+
+In progress: CrowdStrike, Marvell and Okta for 1 December, Zscaler for
+2 December, and, listed since the last check-in, Broadcom for
+9 December, Micron for 17 December, and AMD, Nvidia and CoreWeave for
+February. That makes nine events on five report dates by 17 December if
+nothing else is listed, so the count needs three more companies and the
+recording job has to run past 3 December for it.
+
+**A fault in K1's recording, found at this check-in and mended.** The
+earnings recorder was allowed three requests a second, which reads
+ninety books in a half minute. On 25 November at 02:18 UTC the exchange
+listed Broadcom's and Micron's markets, and on 26 November from 01:06
+UTC AMD's, Nvidia's, CoreWeave's and others: 108 markets where there had
+been 55. From then a round of readings took 37 seconds, and each market
+was read four times in five half minutes. Nothing that was recorded is
+wrong. There is less of it, and the test asks that an event be read in
+at least 85% of its half minutes. The three events of 1 December and
+Zscaler's stand at 95% and stay above the line. Broadcom's and Micron's
+stand at 88% and would have gone under it before they reported. The
+three listed on 26 November stand at 80%, with months to recover in.
+The job's file now gives that recorder six requests a second and the
+gold and silver recorder two, which reads its ten books with room to
+spare: nineteen a second for the five recorders together where the
+exchange allows twenty, and about half of that in use. Tried at
+09:19 UTC in a scratch folder: 108 markets, each read every 30 seconds,
+no errors. The run that starts at about 13:26 UTC is the first to carry
+it. The job's file had said that a reporting season could bring more
+than ninety markets and that the check-ins would look. This one did, a
+day and a half after it happened. No rule and no bar is touched.
+
+*Test D1: 494 finished matches on nine US dates*, the ninth being today
+with two matches so far. 400 on 10 are asked for, so the matches are
+there and one date is missing; the look is on 2 December. Where the
+listing showed play, matches began 55 minutes after their first listed
+start on average and 34 at the median; a quarter more than 76 minutes;
+24 more than three hours. The orders rested in 317 of the 494 matches
+and for 46% of the minutes the rule allows. At 500 contracts a side:
+
+| | Reward | Fills and their closing | Net | A match |
+|---|---:|---:|---:|---:|
+| Counted as the six hours before the start | $288.05 | −$28.04 | +$260.01 | +$0.53 |
+| With the seconds past the listed start counted as play | $1,591.18 | −$28.04 | +$1,563.14 | +$3.16 |
+
+| Matches | Number | Fills and closing | Net, as the six hours before | Net, with the wait as play |
+|---|---:|---:|---:|---:|
+| The listing showed play when it began | 475 | −$307.50 | −$23.03 | +$1,265.17 |
+| Called off before play | 15 | −$45.25 | −$43.23 | −$37.78 |
+| Played, and never shown as played | 4 | +$324.71 | +$326.28 | +$335.76 |
+
+No match since 20 November was played without the listing showing it:
+in the 143 finished since the last check-in the listing showed play each
+time. The picture is the one of 24 November. Where the rule worked as
+meant it is about level on the careful reading (−$23 on 475 matches,
+ahead on four full dates of eight) and well ahead on the other (ahead on
+all eight). Fills were closed in 27 matches, 9,814 contracts, $42 of
+fees. The dearest three cost $94, $72 and $64, the last a match called
+off and settled at 50¢.
+
+**The exchange changed its fees on 26 November, and the change is
+larger for a program than for a person.** Found at this check-in: every
+market now carries a fee coefficient of 0.11, where it carried 0.095 up
+to the paper trader's reading of 20:39 UTC on 25 November. The public fee
+schedule (docs.polymarket.us/fees, read today) says "Effective
+exchange-wide from 09:45 PM ET, Wednesday, November 25, 2026", which is
+02:45 UTC on the 26th. The fee is still the coefficient × contracts ×
+price × (1 − price), paid by the side that takes. A resting order on an
+ordinary market still pays nothing.
+
+| Who takes | Coefficient on 11 November | Now |
+|---|---:|---:|
+| App or website, under $10,000 a month | 0.095 | 0.11 |
+| App or website, $10,000 to $50,000 | 0.085 | 0.10 |
+| App or website, $50,000 to $250,000 | 0.075 | 0.09 |
+| App or website, $250,000 or more | 0.0695 | 0.0695 |
+| Orders placed through the API, any volume | not listed apart | 0.0695 |
+
+On top of that, from 21 November "through December 31, 2026", orders
+that take through the API get 70% of that fee back ("We intend to extend
+the program based on how it performs"), which leaves 0.0209. A new
+account pays 0.0695 for its first seven days however it trades.
+
+*What it changes in the five tests:* nothing in R2, G1 and Q1, whose
+orders rest. D1 and K1 close what they hold as a taker, and their
+scripts charge 0.095 as fixed on 18 November. A program would pay 0.0695,
+so the judged figures are slightly too harsh: D1's $42 of fees would be
+$31, and K1's $3.70 would be $2.71. They stay as fixed.
+
+*What it changes in everything before:* every rule in this repository
+that buys or sells at somebody else's price was judged at 0.095. At 50¢
+that was 2.4¢ a contract. A program now pays 1.7¢, and 0.5¢ until the
+end of December. Rules that failed by a cent have to be read again at
+the new figure, on markets that had not settled when they were searched.
+That is the next piece of work, and it gets its own document.
+
+*The crypto ladders.* The large far bids came back on the evening of the
+day test L3 was closed, and stood on five evenings of the nine since.
+That is written up in `docs/11_crypto_us.md`, section 13, under today's
+date.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
