@@ -26,7 +26,19 @@ RATE = 12.0                     # requests a second; the published public limit 
 # liquidity; resting orders pay nothing. Theta depends on the account's
 # taker volume over the last 30 days (docs.polymarket.us/fees, effective
 # 28 October 2026). A small account is in the first tier.
+#
+# That was the schedule every test up to 26 November 2026 was judged at, and
+# the default below is left at its first tier so that those scripts still
+# give the figures that were reported. The schedule in force since 21:45 US
+# Eastern on 25 November 2026 (02:45 UTC on the 26th; read from the same page
+# on 27 November) is the second table: dearer for a small account that
+# trades in the app, and a flat 0.0695 for any order placed through the API.
+# The exchange also says it returns 70% of that fee to API takers from
+# 21 November to 31 December 2026. Nobody here has been paid it.
 TAKER_THETA = {0: 0.095, 10_000: 0.085, 50_000: 0.075, 250_000: 0.0695}
+TAKER_THETA_SINCE_20261126 = {0: 0.11, 10_000: 0.10, 50_000: 0.09, 250_000: 0.0695}
+API_TAKER_THETA = 0.0695        # an order that takes, placed through the API, at any volume
+API_TAKER_REBATE = 0.70         # the share of that fee the exchange says it returns until 31 December 2026
 
 
 def taker_fee_per_share(price: float, theta: float = 0.095) -> float:

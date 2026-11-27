@@ -36,6 +36,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 
+from kht.api.polymarket_us import API_TAKER_THETA  # noqa: E402
 from kht.trading import lasthours_rule as rule  # noqa: E402
 from kht.trading import lasttick_rule as l1  # noqa: E402
 
@@ -47,7 +48,7 @@ RECORDED, MOST, GRID = 120, 0.9, 120      # an evening counts if this many two-m
 MONEY = 10_000.0
 L4_FROM = 1_795_737_600.0                 # 27 November 2026, 00:00 UTC: ladders ending before this were scored before test L4 was fixed
 L4_EVENINGS, L4_AN_EVENING = 14, 50.0     # the bar of docs/11, section 14: two weeks of evenings
-API_THETA = 0.0695                        # the taker fee coefficient of an order placed through the API since 26 November 2026, before any rebate
+API_THETA = API_TAKER_THETA               # the taker fee coefficient of an order placed through the API since 26 November 2026 (0.0695), before any rebate
 ORDER = ["trade", "far enough, but the book disagrees", "far enough, nobody bidding", "far enough, but the index has been moving fast",
          "far enough, too little index history", "not far enough", "the index is in this bracket", "no fresh index level", "cannot be read",
          "no reach for this coin and time ahead", "outside the time window", "not a bracket of a daily or weekly ladder"]

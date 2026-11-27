@@ -1454,9 +1454,38 @@ $31, and K1's $3.70 would be $2.71. They stay as fixed.
 *What it changes in everything before:* every rule in this repository
 that buys or sells at somebody else's price was judged at 0.095. At 50¢
 that was 2.4¢ a contract. A program now pays 1.7¢, and 0.5¢ until the
-end of December. Rules that failed by a cent have to be read again at
-the new figure, on markets that had not settled when they were searched.
-That is the next piece of work, and it gets its own document.
+end of December. So the closed searches were read again at the new
+figures the same day.
+
+*Added at 09:47 UTC: the lower fee reopens none of them.* Exploration,
+on the tables of the earlier rounds as they are on disk, with nothing
+changed but the fee. A candidate is what it was then: 150 trades or more
+in the discovery part, +0.5% or better, z of 3 or more.
+
+| Search, and where it was fixed | Rules with 30 trades or more | Candidates at 0.095 | At 0.0695 | At 0.0209 | The nearest miss |
+|---|---:|---:|---:|---:|---|
+| News markets (`docs/06`, section 4) | 9,530 | 0 | 0 | 0 | "No" at 90¢ to 99¢ on one answer of several: +2.4% to +2.7% on 166 trades, z 1.6 to 1.7 |
+| Sports moneylines (`docs/06`, section 9) | 2,217 | 0 | 0 | 0 | Favourites at 90¢ to 99¢: z 1.7 to 2.2 before September, and level with nothing since |
+| Crypto up-or-down (`docs/11`, section 7) | 23,251 | 0 | 0 | 2 | One rule in two widths, below |
+| The whole ladder at once, L2 (`docs/11`, section 12) | | one sale in fifteen evenings | the same | the same | The bids near the price are for a tenth of a contract. The fee was never the obstacle |
+
+The two candidates at the lowest fee are one rule: buy "down" in
+Bitcoin's fifteen-minute market eight minutes from the end, at 35¢ to
+65¢, if "down" had been the dearer side at every minute before. +17% to
++21% on 186 purchases before 3 November, z 2.6 to 3.1, and 24 purchases
+in the week after, too few to say anything. Its mirror image, "up" on
+the same terms, lost 14% on 206. The same rule five minutes and twelve
+minutes from the end lost. On the other three coins it made nothing. It
+is one cell of 32,400 that came up alone, and it is not followed.
+
+The two-venue test (`docs/07`) lost 20% before any fee. Following the
+ITF trading as a buyer (above, 18 November) would be about level at the
+lowest fee, with no t to speak of.
+
+So the fee was not what stood between these searches and a result. What
+the new schedule does change is small: a sale in test L4 keeps 0.93¢ a
+contract where L3's kept 0.91¢, and closing a position through the API
+costs a quarter less than the scripts of D1 and K1 charge.
 
 *The crypto ladders.* The large far bids came back on the evening of the
 day test L3 was closed, and stood on five evenings of the nine since.

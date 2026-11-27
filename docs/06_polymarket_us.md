@@ -42,6 +42,14 @@ its fee schedule.
 | Public data | every market's settlement; the order book's best prices on both sides, minute by minute, for any past day; one point a day for a market's whole life; total shares traded. (Section 7 found that these "best prices" are the last trade wherever a side of the book is empty) | every trade ever made |
 | Not public | individual trades | |
 
+*Added on 27 November 2026.* The fee row above is the schedule of
+11 November, and every test in this document was judged at it. Since
+02:45 UTC on 26 November the schedule is different: 0.11 for a small
+account that trades in the app, and a flat 0.0695 for any order placed
+through the API, with 70% of that returned to API takers until
+31 December. The table and what it changes are in
+`docs/13_round_six.md`, section 6, under 27 November.
+
 Three consequences.
 
 1. **The confirmed rule has almost nothing to buy there.** It buys "No" on a
