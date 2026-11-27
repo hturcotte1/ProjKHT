@@ -1507,6 +1507,15 @@ set for 19 December. To stop the job sooner: an empty file
 `state/us-rewards/STOP`, or "Disable workflow" for *us-rewards* and
 *us-rewards-watchdog* in the Actions tab.
 
+*Added at 14:46 UTC, the same day: the mended recorder, checked.* The run
+that began at 13:26 UTC is the first with the changed job file, and it
+does what was meant. The earnings recorder reads each of its 108 markets
+every 30.0 seconds at the median and 34.5 at the longest, where the run
+before it had 36.0 and 51.8. The recorder of the gold, silver and coin
+up-or-down markets reads its six markets every 30.0 seconds on two
+requests a second, as it did on four. The ladder recorder is running in
+the same run for the first evening of test L4. Nothing was scored.
+
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
 programmes, many are paying nobody at the moment they were read, because
