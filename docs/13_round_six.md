@@ -1461,7 +1461,22 @@ That is the next piece of work, and it gets its own document.
 *The crypto ladders.* The large far bids came back on the evening of the
 day test L3 was closed, and stood on five evenings of the nine since.
 That is written up in `docs/11_crypto_us.md`, section 13, under today's
-date.
+date. Those nine evenings were scored before anybody had said what they
+should show, so they count for nothing. The rule is tried again as test
+L4 (same document, section 14), fixed at 09:33 UTC today and committed
+at 09:35, seven hours before its first evening's readings begin: the
+first fourteen evenings from 27 November, the fee of an order placed
+through the API, and an account that sells only to bids that still stood
+two minutes later.
+
+*What runs, and until when.* The recording job was to stop on
+3 December. It now stops by itself on 20 December (both job files,
+changed at 09:36 UTC today), because K1 cannot reach its count before
+then and L4 needs the evenings to 10 December. R2, G1, Q1 and D1 are
+read on 2 December as fixed, L4 on 11 December, and a last check-in is
+set for 19 December. To stop the job sooner: an empty file
+`state/us-rewards/STOP`, or "Disable workflow" for *us-rewards* and
+*us-rewards-watchdog* in the Actions tab.
 
 One thing the scan of the reward schedule showed after the rules were
 fixed, which changes nothing in them: of 15,929 open markets in daily
