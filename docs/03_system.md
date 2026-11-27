@@ -590,6 +590,13 @@ and needs no recorder of its own:
 python scripts/us_lasthours_score.py --settle
 ```
 
+Test L3 was closed on 18 November 2026. From 27 November the same script
+also scores test L4 (same document, section 14): the same rule on the
+evenings from that date, at the fee of an order placed through the API,
+with a third account that sells only to bids that still stood at the
+bracket's next reading. It prints both, each with its own verdict, and
+writes `lh4_by_evening.csv` beside the `lh_` tables.
+
 ### Keeping the recordings
 
 The job on GitHub that runs these recorders lasts five hours. It pushes

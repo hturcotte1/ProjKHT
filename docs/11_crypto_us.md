@@ -1657,3 +1657,132 @@ is not enough. There is no loss to report and no result either. If the
 far 1¢ bids come back in size, the recorder, the rule and the scoring
 script are here and one evening of them would show it. I would not put
 money on it as things stand.
+
+**27 November, 09:33 UTC. The large far bids came back, on the evening of
+the day this test was closed.** At the third check-in of round six
+(`docs/13_round_six.md`, section 6) the scoring script was run on
+everything the ladder recorder has kept since. The verdict above stands:
+the test was five evenings and it did not pass. What follows was looked
+at afterwards and decides nothing.
+
+| Evening | L3-10k: sales | Contracts | Premium after the fee | Bitcoin's bids still as large two minutes later | Lost |
+|---|---:|---:|---:|---:|---:|
+| 18 November | 20 | 10,101 | $91.51 | 3 of 6 | 0 |
+| 19 November | 15 | 10,101 | $91.58 | 8 of 8 | 0 |
+| 20 November | 15 | 5,053 | $45.78 | weekly ladders only | 0 |
+| 21 November | 22 | 10,101 | $91.52 | 7 of 7 | 0 |
+| 22 November | 5 | 2,525 | $22.88 | none sold | 0 |
+| 23 November | 16 | 10,101 | $91.51 | 10 of 13 | 0 |
+| 24 November | 14 | 10,101 | $91.52 | 3 of 10 | 0 |
+| 25 November | 10 | 1,538 | $13.93 | 7 of 7, of a tenth of a contract each | 0 |
+| 26 November | 2 | 1,100 | $9.97 | none sold | 0 |
+| All nine | 119 | 60,722 | $550.20 | | 0 |
+
+That is $61.13 an evening. The $10,000 was used up on five evenings of
+the nine, and the account that takes everything found 97,655 contracts
+and $884.86. On 25 and 26 November, the two evenings round Thanksgiving,
+there was next to nothing. With the five evenings of the test it makes
+$54.35 over fourteen, which the script prints as "PASSED" because it
+knows nothing of dates. It is not a pass. A test that is read again
+until it passes is not a test, and these nine evenings were scored
+before anybody had said what they should show.
+
+They do answer the last sentence of the conclusion above. The bids came
+back in size. So the rule is tried again, as a new test with its own
+number, on evenings that had not happened when it was fixed.
+
+## 14. L4: the rule of L3 again, fixed at 09:33 UTC on 27 November
+
+### What is the same
+
+The recorder (the ladder recorder of section 12, in the job as it was),
+the rule of section 13 word for word, the yardstick as it was computed
+on 13 November (`config/lasthours_reach.json`), the brake, one sale a
+bracket, 2,000 contracts a bracket at most, bids of 5¢ or less only, and
+the scoring script (`scripts/us_lasthours_score.py`, which now prints L4
+below L3).
+
+### What is different, and why
+
+1. **The evenings.** Those from 27 November 2026 on. The test is the
+   first fourteen of them that are recorded whole, by the measure of
+   section 13. Two weeks, so that every day of the week is in it twice:
+   L3 ran into a weekend and could not tell it from a change. Evenings
+   before 27 November count for nothing. A fifteenth is not read.
+2. **The fee.** 0.0695 × price × (1 − price) a contract. That is what an
+   order placed through the API pays since 26 November
+   (`docs/13_round_six.md`, section 6, 27 November), and a real version
+   of this could only be a program. L3 charged 0.095, the fee of a small
+   account at the time. At 1¢ the difference is three hundredths of a
+   cent a contract. The exchange says it returns 70% of that fee until
+   31 December. Nobody here has been paid that, and it is not counted.
+3. **Three accounts, and the one that is judged sells only to bids that
+   stood.** *L4-all* takes every sale the rule finds. *L4-10k* has
+   $10,000 to tie up at each settlement time, as L3-10k had.
+   *L4-standing* has the same $10,000 and takes a sale only if the bid
+   was still there, at that price and for at least that size, at the
+   bracket's next reading about two minutes later.
+
+Why the third account. A sale on paper takes a bid as the public book
+showed it, and that book can be half a minute old. In L3 a fifth of the
+bids sold to were gone or smaller two minutes later, and on 24 November
+seven of Bitcoin's ten. A bid that had gone may have been withdrawn
+before an order could have reached it, or taken by somebody faster. A
+bid that still stood two minutes later was there to be hit. Nobody can
+know that at the moment of selling, so this is a way of counting on
+paper and not a rule a program could follow. A program would send every
+order, and these are the ones it would have got.
+
+### The bar
+
+When fourteen evenings from 27 November have been recorded whole and
+their brackets have settled:
+
+> L4 passes if the standing account collected at least $50 an evening on
+> average, and no bracket that the rule sold on those evenings paid, in
+> any of the three accounts.
+
+One look, at the first check-in after the fourteenth evening: 11 December
+if the recorder loses none.
+
+### What was looked at before this was fixed
+
+Every evening to 26 November, by all three accounts, at the new fee:
+
+| Evenings | L4-10k, an evening | L4-standing, an evening | Lost |
+|---|---:|---:|---:|
+| 13 to 17 November, the five of L3 | $43.32 | $39.37 | 0 |
+| 18 to 26 November, the nine since | $62.84 | $52.63 | 0 |
+
+So the bar is not a formality. By what has been seen, the account that
+is judged would have been under it in L3's week and a little over it
+since.
+
+### What a pass would mean, and what it would not
+
+- **It would say the bids are still posted on most evenings and stand
+  long enough to be hit,** under the reward rules of 18 November and the
+  fees of 26 November.
+- **It would not test the yardstick.** Fourteen evenings cannot test
+  something built to fail once in 500 starts in its worst year. Two days
+  ago somebody sold the far side of the daily gold market for a cent,
+  with six hours to go and gold 3.4% away, and lost a hundred times that
+  when gold came back (`docs/13_round_six.md`, section 6, 27 November).
+  Gold is not in this test, and five and a half hours ahead this
+  yardstick asks 11% of Bitcoin. But it is the same kind of trade: a cent collected on
+  most evenings, and on one evening a hundred of them given back. The
+  yardstick is all that stands between the two, and it rests on six
+  years of coin prices and on nothing recorded here.
+- **It would not say an order is filled.** Others sell to the same bids,
+  and whoever is first has them.
+- **It would not say what the exchange ties up** for a sale (section 12).
+
+If it passes, what follows is a recommendation to the owner of one small
+real evening: a handful of far brackets, 100 contracts each, $99 at risk
+a bracket, to learn what paper cannot. Whether to place a real order is
+the owner's decision and not mine.
+
+### The recording job
+
+It was to stop on 3 December. It is kept running for this test and for
+test K1 of round six, which is a change to the job and to no rule.

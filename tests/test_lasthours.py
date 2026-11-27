@@ -246,5 +246,96 @@ def test_the_script_runs_on_a_recording_and_writes_its_tables(tmp_path, monkeypa
     text = capsys.readouterr().out
     assert "NOT YET JUDGED: 1 evenings" in text and "L3-10k" in text and "14 Nov 22:00" in text
     assert len(pd.read_csv(out / "lh_trades.csv")) > 10 and len(pd.read_csv(out / "lh_by_evening_10k.csv")) == 1 and (out / "lh_summary.txt").exists()
+    # test L4 is printed after it, and an evening of 14 November counts for nothing in it
+    assert "Test L4" in text and "for L4: NOT YET JUDGED: 0 evenings recorded and settled from 27 November, 14 are asked for" in text
+    l4 = pd.read_csv(out / "lh4_by_evening.csv")
+    assert len(l4) == 1 and not l4["counted"].any() and l4.loc[0, "pnl_standing"] > 0 and (out / "lh4_trades_standing.csv").exists()
     monkeypatch.setattr(sys, "argv", ["us_lasthours_score.py", "--state", str(tmp_path / "nothing"), "--out", str(out)])
     assert score.main() == 0 and "Nothing has been recorded yet" in capsys.readouterr().out
+
+
+# ---------------------------------------------------------------------------- test L4 (docs/11 section 14): the same rule on evenings from 27 November
+
+L4_END = score.L4_FROM + 22 * 3600.0          # 27 November 2026, 22:00 UTC: the first evening test L4 counts
+
+
+def l4_rows(n, pnl=60.0):
+    return pd.DataFrame([{"end": L4_END + 86_400.0 * k, "evening": str(k), "counted": True, "recorded": True, "pnl_standing": pnl, "lost_all": 0, "settled": True}
+                         for k in range(n)])
+
+
+def test_l4_starts_on_27_november_and_charges_the_fee_of_an_api_order(tmp_path):
+    assert pd.Timestamp(score.L4_FROM, unit="s") == pd.Timestamp("2026-11-27 00:00:00") and score.L4_EVENINGS == 14 and score.L4_AN_EVENING == 50.0
+    evening(tmp_path)
+    b, m, i = score.load(tmp_path)
+    trades, _ = score.apply(b, m, i, REACH, {"btc": 0.01}, score.known_levels(tmp_path, i, m, look_up=False))
+    before = [dict(t) for t in trades]
+    api = score.at_api_fee(trades)
+    assert trades == before                                                        # the sales of L3 are left as they were
+    assert len(api) == len(trades) and score.API_THETA == 0.0695 < rule.THETA
+    for a, t in zip(api, trades):
+        assert a["fee"] == pytest.approx(0.0695 * t["price"] * (1 - t["price"]) * t["qty"]) and a["fee"] < t["fee"]
+        assert a["premium"] == pytest.approx(t["qty"] * t["price"] - a["fee"]) and a["premium"] > t["premium"]
+        assert (a["qty"], a["locked"], a["price"], a["slug"]) == (t["qty"], t["locked"], t["price"], t["slug"])
+
+
+def test_l4_keeps_an_account_that_sells_only_to_bids_that_stood(tmp_path):
+    evening(tmp_path, end=L4_END, date="2026-11-27")
+    evening(tmp_path, end=L4_END - 86_400.0, run="r0", date="2026-11-26")          # an evening scored before L4 was fixed
+    b, m, i = score.load(tmp_path)
+    trades, _ = score.apply(b, m, i, REACH, {"btc": 0.01}, score.known_levels(tmp_path, i, m, look_up=False))
+    api = score.at_api_fee(trades)
+    gone = {t["slug"] for t in api if t["end"] == L4_END and t["qty"] > 1}
+    gone = set(sorted(gone)[:3])                                                   # three large bids of the counted evening were gone two minutes later
+    marked = [{**t, "still_next": False if t["slug"] in gone else t["still_next"]} for t in api]
+    unknown = next(t for t in marked if t["end"] == L4_END and t["slug"] not in gone)
+    unknown["still_next"] = None                                                   # a sale at a bracket's last reading: nobody knows, so it is not counted as standing
+    stood = score.standing(marked)
+    assert all(t["still_next"] is True for t in stood) and len(stood) == len(marked) - 4
+    paid = {t["slug"]: 0.0 for t in trades}
+    ends = score.recorded(b, m)
+    ev = lambda rows: score.by_evening(score.account(rows, paid), ends)
+    table = score.l4_table(ev(marked), ev(rule.small_account(marked, money=score.MONEY)), ev(rule.small_account(stood, money=score.MONEY)))
+    assert list(table["counted"]) == [False, True] and table["recorded"].all() and table["settled"].all()
+    row = table.iloc[1]
+    assert row["sales_all"] == sum(1 for t in marked if t["end"] == L4_END)
+    assert row["contracts_standing"] <= row["contracts_10k"] <= row["contracts_all"] and row["pnl_standing"] > 0
+    assert row["contracts_standing"] * 0.99 <= score.MONEY + 1e-6                   # the standing account ties up no more than its $10,000
+    assert score.verdict_l4(table).startswith("NOT YET JUDGED: 1 evenings recorded and settled from 27 November")
+    # a bracket that paid in the account that takes every sale fails the test even if the standing account never sold it
+    lost = sorted(gone)[0]
+    table = score.l4_table(score.by_evening(score.account(marked, paid | {lost: 1.0}), ends),
+                           score.by_evening(score.account(rule.small_account(marked, money=score.MONEY), paid | {lost: 1.0}), ends),
+                           score.by_evening(score.account(rule.small_account(stood, money=score.MONEY), paid | {lost: 1.0}), ends))
+    assert table.iloc[1]["lost_all"] == 1 and table.iloc[1]["lost_standing"] == 0
+
+
+def test_the_bar_of_l4():
+    n = score.L4_EVENINGS
+    assert n == 14
+    assert score.verdict_l4(pd.DataFrame()).startswith("NOT YET JUDGED")
+    assert score.verdict_l4(l4_rows(n - 1)).startswith(f"NOT YET JUDGED: {n - 1} evenings")
+    assert score.verdict_l4(l4_rows(n)).startswith(f"PASSES: {n} evenings, $60.00 an evening")
+    assert score.verdict_l4(l4_rows(n, pnl=49.99)).startswith(f"DOES NOT PASS: {n} evenings, $49.99")
+    t = l4_rows(n)
+    t.loc[3, "lost_all"] = 1
+    assert score.verdict_l4(t).startswith("DOES NOT PASS") and "in any account: 1" in score.verdict_l4(t)
+    # one look, at fourteen evenings: a fifteenth is not read, whatever it holds
+    t = l4_rows(n + 1)
+    t.loc[n, ["pnl_standing", "lost_all"]] = [-5000.0, 3]
+    assert score.verdict_l4(t).startswith(f"PASSES: {n} evenings, $60.00")
+    # an evening before 27 November counts for nothing, and one that was not recorded whole is passed over
+    t = l4_rows(n + 1)
+    t.loc[0, "counted"] = False
+    assert score.verdict_l4(t).startswith(f"PASSES: {n} evenings")
+    t = l4_rows(n)
+    t.loc[4, "recorded"] = False
+    assert score.verdict_l4(t).startswith(f"NOT YET JUDGED: {n - 1} evenings")
+    t = l4_rows(n + 1)
+    t.loc[4, "recorded"] = False
+    t.loc[n, "pnl_standing"] = 60.0 - 14 * 10.0                                     # the fifteenth takes the place of the one not recorded
+    assert score.verdict_l4(t).startswith(f"PASSES: {n} evenings, $50.00")
+    # the last of them has not settled yet: nothing is read
+    t = l4_rows(n)
+    t.loc[n - 1, "settled"] = False
+    assert score.verdict_l4(t).startswith(f"NOT YET JUDGED: {n - 1} evenings")

@@ -16,6 +16,12 @@ no key). The answers are remembered in <state>/settlements.csv and
 
 The evening of 12 November 2026 was looked at before the rule was fixed.
 It is shown apart and counted for nothing.
+
+Test L3 was closed on 18 November 2026. From 27 November the same rule is
+tried again as test L4 (docs/11, section 14) on evenings nobody had seen
+when it was fixed, with the fee of an order placed through the API and
+with one account more, which sells only to bids that still stood at the
+bracket's next reading. Both are printed, and each has its own verdict.
 """
 
 from __future__ import annotations
@@ -39,6 +45,9 @@ COUNTED_FROM = 1_794_528_000.0            # 13 November 2026, 00:00 UTC: ladders
 MIN_EVENINGS, MIN_AN_EVENING = 4, 50.0    # the bar of docs/11, section 13
 RECORDED, MOST, GRID = 120, 0.9, 120      # an evening counts if this many two-minute stretches found this share of the Bitcoin ladder read
 MONEY = 10_000.0
+L4_FROM = 1_795_737_600.0                 # 27 November 2026, 00:00 UTC: ladders ending before this were scored before test L4 was fixed
+L4_EVENINGS, L4_AN_EVENING = 14, 50.0     # the bar of docs/11, section 14: two weeks of evenings
+API_THETA = 0.0695                        # the taker fee coefficient of an order placed through the API since 26 November 2026, before any rebate
 ORDER = ["trade", "far enough, but the book disagrees", "far enough, nobody bidding", "far enough, but the index has been moving fast",
          "far enough, too little index history", "not far enough", "the index is in this bracket", "no fresh index level", "cannot be read",
          "no reach for this coin and time ahead", "outside the time window", "not a bracket of a daily or weekly ladder"]
@@ -226,6 +235,55 @@ def verdict(ev: pd.DataFrame) -> str:
             f"brackets sold that paid: {lost} (none allowed)")
 
 
+def at_api_fee(trades: list[dict]) -> list[dict]:
+    """The same sales, charged the fee of an order placed through the API (test L4)."""
+    out = []
+    for t in trades:
+        fee = API_THETA * t["price"] * (1.0 - t["price"]) * t["qty"]
+        out.append({**t, "fee": fee, "premium": t["qty"] * t["price"] - fee})
+    return out
+
+
+def standing(trades: list[dict]) -> list[dict]:
+    """The sales whose bid still stood, at that price and for that size, at the bracket's next reading.
+
+    A sale on paper takes a bid as the public book showed it, and that book
+    can be half a minute old. A bid that was gone two minutes later may have
+    been gone already. A bid that still stood then was there to be hit.
+    """
+    return [t for t in trades if t.get("still_next") is True]
+
+
+def l4_table(ev_all: pd.DataFrame, ev_10k: pd.DataFrame, ev_standing: pd.DataFrame) -> pd.DataFrame:
+    """One row a settlement time for test L4: the three accounts side by side."""
+    if not len(ev_all):
+        return pd.DataFrame()
+    t = ev_all[["end", "evening", "recorded"]].copy()
+    t.insert(2, "counted", t["end"] >= L4_FROM)
+    for name, ev in (("all", ev_all), ("10k", ev_10k), ("standing", ev_standing)):
+        e = ev.set_index("end").reindex(t["end"])
+        t[f"sales_{name}"] = e["sales"].to_numpy()
+        t[f"contracts_{name}"] = e["contracts"].to_numpy()
+        t[f"pnl_{name}"] = e["pnl"].to_numpy()
+        t[f"lost_{name}"] = e["lost"].to_numpy()
+    t["settled"] = (ev_all.set_index("end").reindex(t["end"])["settled"].to_numpy() & ev_standing.set_index("end").reindex(t["end"])["settled"].to_numpy())
+    return t
+
+
+def verdict_l4(table: pd.DataFrame) -> str:
+    """The bar of docs/11, section 14, read on the first fourteen evenings from 27 November that were recorded."""
+    if not len(table):
+        return "NOT YET JUDGED: nothing recorded"
+    rec = table[table["counted"] & table["recorded"]].sort_values("end").head(L4_EVENINGS)
+    if len(rec) < L4_EVENINGS or not rec["settled"].all():
+        return (f"NOT YET JUDGED: {int(rec['settled'].sum())} evenings recorded and settled from 27 November, "
+                f"{L4_EVENINGS} are asked for")
+    mean, lost = float(rec["pnl_standing"].mean()), int(rec["lost_all"].sum())
+    ok = mean >= L4_AN_EVENING and lost == 0
+    return (f"{'PASSES' if ok else 'DOES NOT PASS'}: {len(rec)} evenings, ${mean:,.2f} an evening on average from bids that still stood "
+            f"(at least ${L4_AN_EVENING:,.0f} asked); brackets the rule sold that paid, in any account: {lost} (none allowed)")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--state", default=str(ROOT / "state" / "us-ladder"))
@@ -280,6 +338,22 @@ def main() -> int:
     say()
     say("Evenings before 13 November were looked at before the rule was fixed. They are shown and counted for nothing.")
     say("Verdict by the bar fixed in advance, for L3-10k: " + verdict(ev_10k))
+    say("Test L3 was closed on 18 November 2026 with the verdict of that day (docs/11, section 13). The line above is what the same bar")
+    say("reads on everything recorded since, and decides nothing.")
+
+    api = at_api_fee(trades)
+    l4_all = account(api, paid)
+    l4_10k = account(rule.small_account(api, money=MONEY), paid)
+    l4_standing = account(rule.small_account(standing(api), money=MONEY), paid)
+    l4 = l4_table(by_evening(l4_all, ends), by_evening(l4_10k, ends), by_evening(l4_standing, ends))
+    say()
+    say("Test L4: the rule of L3 again, on evenings from 27 November 2026 (docs/11_crypto_us.md, section 14)")
+    say(f"the fee of an order placed through the API ({API_THETA} x price x (1 - price) a contract, no rebate counted); 'all': every sale the rule finds;")
+    say(f"'10k': ${MONEY:,.0f} to tie up at each settlement time; 'standing': the same ${MONEY:,.0f}, selling only to bids that still stood at the bracket's next reading")
+    if len(l4):
+        say(l4[l4["end"] >= COUNTED_FROM].drop(columns=["end"]).round(2).to_string(index=False))
+    say("Evenings before 27 November were scored before L4 was fixed. They are shown and counted for nothing.")
+    say("Verdict by the bar fixed in advance, for L4: " + verdict_l4(l4))
 
     out.mkdir(parents=True, exist_ok=True)
     fate.to_csv(out / "lh_fate.csv", index=False)
@@ -288,6 +362,8 @@ def main() -> int:
     ev_all.to_csv(out / "lh_by_evening.csv", index=False)
     ev_10k.to_csv(out / "lh_by_evening_10k.csv", index=False)
     by_ladder(t_all).to_csv(out / "lh_ladders.csv", index=False)
+    l4.to_csv(out / "lh4_by_evening.csv", index=False)
+    l4_standing.to_csv(out / "lh4_trades_standing.csv", index=False)
     (out / "lh_summary.txt").write_text("\n".join(lines) + "\n")
     return 0
 
