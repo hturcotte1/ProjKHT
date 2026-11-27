@@ -125777,3 +125777,4 @@ ts,action,slug,side,intent,price,qty,expires,id,why
 1795799913,place,aec-utr-coragu-porces-2026-11-23,bid,ORDER_INTENT_BUY_LONG,0.02,250.0,1795800093,paper-159583,
 1795800123,cancel,aec-utr-coragu-porces-2026-11-23,ask,ORDER_INTENT_BUY_SHORT,0.04,250.0,1795800213,paper-159586,
 1795800123,cancel,aec-utr-coragu-porces-2026-11-23,bid,ORDER_INTENT_BUY_LONG,0.02,250.0,1795800273,paper-159587,
+1795803843,stop,,,,,,,,the run ended
