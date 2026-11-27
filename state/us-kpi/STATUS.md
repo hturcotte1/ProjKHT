@@ -1,8 +1,8 @@
 # The top of the book in single-market reward programmes
 
-*Written by `kht us-top` at the end of a run: 27 November 2026, 18:24 UTC. It lists what was read. The rule of test K1 (`docs/13_round_six.md`) is applied by `scripts/us_kpi_score.py`, not here.*
+*Written by `kht us-top` at the end of a run: 27 November 2026, 23:23 UTC. It lists what was read. The rule of test K1 (`docs/13_round_six.md`) is applied by `scripts/us_kpi_score.py`, not here.*
 
-- Run `20261127T132603Z`: 298 minutes, 64,368 readings of 108 markets, 20 readings of the reward schedule, 0 errors.
+- Run `20261127T182506Z`: 298 minutes, 65,952 readings of 114 markets, 20 readings of the reward schedule, 0 errors.
 
 | Market | Programme | Pool a day | Target size | Readings |
 |---|---|---:|---:|---:|
@@ -85,6 +85,12 @@
 | `kpic-okta-q3crpo-2026-12-01-gte15pt5pct` | kpic_20261116 | $250 | 500 | 596 |
 | `kpic-okta-q3crpo-2026-12-01-lt12pt5pct` | kpic_20261116 | $250 | 500 | 596 |
 | `kpic-okta-q3eps-2026-12-01-above-0pt95` | kpic_20261116 | $250 | 500 | 596 |
+| `kpic-spcx-q4compute-2027-02-17-above-2pt45gw` | kpic_20261116 | $250 | 500 | 264 |
+| `kpic-spcx-q4compute-2027-02-17-above-2pt55gw` | kpic_20261116 | $250 | 500 | 264 |
+| `kpic-spcx-q4compute-2027-02-17-above-2pt65gw` | kpic_20261116 | $250 | 500 | 264 |
+| `kpic-spcx-q4compute-2027-02-17-above-2pt75gw` | kpic_20261116 | $250 | 500 | 264 |
+| `kpic-spcx-q4compute-2027-02-17-above-2pt85gw` | kpic_20261116 | $250 | 500 | 264 |
+| `kpic-spcx-q4compute-2027-02-17-above-2pt95gw` | kpic_20261116 | $250 | 500 | 264 |
 | `kpic-spcx-q4launches-2027-02-17-above-37` | kpic_20261116 | $250 | 500 | 596 |
 | `kpic-spcx-q4launches-2027-02-17-above-39` | kpic_20261116 | $250 | 500 | 596 |
 | `kpic-spcx-q4launches-2027-02-17-above-41` | kpic_20261116 | $250 | 500 | 596 |
