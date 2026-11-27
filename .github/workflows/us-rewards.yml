@@ -16,7 +16,9 @@
 # machine that is lost costs an hour at most, and a second job below then
 # starts the next run at once. It ran from 11 to 18 November 2026 for the
 # first tests and was started again that evening for those of round six.
-# It stops by itself on 3 December 2026.
+# It stops by itself on 20 December 2026. (It was to stop on 3 December. On
+# 27 November that was moved, for the earnings test K1 of docs/13 and the
+# ladder test L4 of docs/11, section 14, which need the later evenings.)
 # To stop it sooner: add an empty file state/us-rewards/STOP, or
 # Actions tab -> "us-rewards" -> "..." -> "Disable workflow" (and the same
 # for "us-rewards-watchdog", which restarts it).
@@ -53,7 +55,7 @@ jobs:
           if [ -f state/us-rewards/STOP ]; then
             echo "stopped by the file state/us-rewards/STOP" | tee -a "$GITHUB_STEP_SUMMARY"
             echo "go=false" >> "$GITHUB_OUTPUT"
-          elif [ "$(date -u +%Y%m%d)" -ge 20261203 ]; then
+          elif [ "$(date -u +%Y%m%d)" -ge 20261220 ]; then
             echo "past the end date of the test" | tee -a "$GITHUB_STEP_SUMMARY"
             echo "go=false" >> "$GITHUB_OUTPUT"
           else
@@ -129,7 +131,8 @@ jobs:
           (timeout $((mins + 2))m kht us-live --state state/us-live --budget 3 --minutes $((mins - 2)) > us-live.log 2>&1 || true) &
           # The recorder of the crypto ladders (docs/11_crypto_us.md, section
           # 12): the brackets, from five and a half hours before they settle,
-          # every two minutes. Kept to see whether the large far bids return.
+          # every two minutes. From 27 November 2026 it is the recorder of
+          # test L4 (docs/11, section 14).
           (timeout $((mins + 2))m kht us-lasttick --state state/us-ladder --kinds range --follow 19800 --sweep 120 --budget 3 --minutes $((mins - 2)) > us-ladder.log 2>&1 || true) &
           # Their output is only shown when the run ends. Say now whether
           # each is up, so that a fault shows in the log the same evening.
@@ -176,7 +179,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if [ "$(date -u +%Y%m%d)" -ge 20261203 ]; then
+          if [ "$(date -u +%Y%m%d)" -ge 20261220 ]; then
             echo "past the end date of the test"
             exit 0
           fi
