@@ -107,3 +107,9 @@ run,slug,program,pool,target,discount,max_spread,period,question,window_start,wi
 20261127T182506Z,kpic-zs-q1arr-2026-12-02-above-3pt88b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795803924.0,,1795229912.0,after
 20261127T182506Z,kpic-zs-q1arr-2026-12-02-above-3pt89b,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Zscaler Q1 FY2027 Total ARR?,,,1797480000.0,,1795803924.0,,1795229912.0,after
 20261127T182506Z,kpic-zs-q1eps-2026-12-02-above-1pt19,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,Will Zscaler (ZS) beat Q1 FY2027 quarterly earnings?,,,1797480000.0,,1795803924.0,,1795229794.0,after
+20261127T182506Z,kpic-spcx-q4compute-2027-02-17-above-2pt45gw,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Nameplate Compute?,,,1804132800.0,,1795813883.4,,1795811799.0,
+20261127T182506Z,kpic-spcx-q4compute-2027-02-17-above-2pt55gw,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Nameplate Compute?,,,1804132800.0,,1795813883.4,,1795811799.0,
+20261127T182506Z,kpic-spcx-q4compute-2027-02-17-above-2pt65gw,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Nameplate Compute?,,,1804132800.0,,1795813883.4,,1795811799.0,
+20261127T182506Z,kpic-spcx-q4compute-2027-02-17-above-2pt75gw,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Nameplate Compute?,,,1804132800.0,,1795813883.4,,1795811799.0,
+20261127T182506Z,kpic-spcx-q4compute-2027-02-17-above-2pt85gw,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Nameplate Compute?,,,1804132800.0,,1795813883.4,,1795811799.0,
+20261127T182506Z,kpic-spcx-q4compute-2027-02-17-above-2pt95gw,kpic_20261116,250.0,500.0,0.5,0.06,daily_event,SpaceX Q4 2026 Nameplate Compute?,,,1804132800.0,,1795813883.4,,1795811799.0,
