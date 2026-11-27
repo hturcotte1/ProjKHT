@@ -349,7 +349,7 @@ tests that ended that day, and was started again the same evening for the
 two tests of round six (`docs/13_round_six.md`): the paper orders before
 games now keep a second account beside the first, and a new recorder,
 `kht us-top`, reads the gold, silver and coin up-or-down markets every
-half minute (`state/us-top/`). It stops by itself on 3 December 2026.
+half minute (`state/us-top/`). It stops by itself on 20 December 2026 (moved from 3 December on 27 November, for the earnings test and the second ladder test).
 What it ran in its first week, in the words written then:
 the **paper orders before games**
 (`kht us-rewards`, `state/us-rewards/`). It follows every game in the

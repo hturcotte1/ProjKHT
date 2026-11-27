@@ -693,9 +693,10 @@ two reward periods, the six hours before the start and play.
 (`docs/13_round_six.md`, section 4d).
 
 All of these run in the *us-rewards* job, which was started again on 18 November
-at 15:28 UTC and stops by itself on 3 December 2026. The last-minutes
-recorder of test L1 is no longer run. The ladder recorder is, to see
-whether the large far bids return. The order system rehearses on paper on
+at 15:28 UTC and stops by itself on 20 December 2026 (moved from 3 December on 27 November, for tests K1 and L4). The last-minutes
+recorder of test L1 is no longer run. The ladder recorder is: the large
+far bids returned, and since 27 November it is the recorder of test L4
+(`docs/11_crypto_us.md`, section 14). The order system rehearses on paper on
 UTR matches only (`config/us_quoter_utr.json`, `state/us-quoter-utr/`).
 
 ## Reproducing the research
