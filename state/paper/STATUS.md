@@ -1,12 +1,12 @@
 # Account status (paper)
 
-As of 2026-11-27 22:48 UTC. Started 2026-11-10 07:37 UTC.
+As of 2026-11-28 04:24 UTC. Started 2026-11-10 07:37 UTC.
 
 | | |
 |---|---|
-| Equity (positions marked at the bid) | $1,003.98 |
+| Equity (positions marked at the bid) | $1,004.04 |
 | Starting bankroll | $1,000.00 |
-| Change | $+3.98 (+0.40%) |
+| Change | $+4.04 (+0.40%) |
 | Cash | $209.39 |
 | In positions (cost) | $791.29 |
 | Realised profit | $+0.68 |
@@ -20,16 +20,16 @@ As of 2026-11-27 22:48 UTC. Started 2026-11-10 07:37 UTC.
 | Market | Holding | Shares | Avg cost | Bid now | Unrealised | Days to end |
 |---|---|---:|---:|---:|---:|---:|
 | Strait of Hormuz traffic returns to normal by November 30? | No | 20.7 | 0.967 | 0.997 | $+0.62 | 3 |
-| Iran leadership change by November 30? | No | 20.5 | 0.977 | 0.994 | $+0.35 | 3 |
+| Iran leadership change by November 30? | No | 20.5 | 0.977 | 0.995 | $+0.37 | 3 |
 | Russia x Ukraine ceasefire agreement by November 30, 2026? | No | 20.8 | 0.960 | 0.990 | $+0.62 | 3 |
 | FAA outage attributed to hack? | No | 20.0 | 0.979 | 0.995 | $+0.32 | 3 |
-| US-Iran Final Nuclear Deal by November 30, 2026? | No | 6.4 | 0.968 | 0.992 | $+0.15 | 3 |
-| Bab el-Mandeb Strait effectively closed by November 30? | No | 20.6 | 0.969 | 0.994 | $+0.52 | 3 |
-| NATO x Russia military clash by November 30, 2026? | No | 20.4 | 0.978 | 0.987 | $+0.18 | 3 |
+| US-Iran Final Nuclear Deal by November 30, 2026? | No | 6.4 | 0.968 | 0.994 | $+0.17 | 3 |
+| Bab el-Mandeb Strait effectively closed by November 30? | No | 20.6 | 0.969 | 0.996 | $+0.56 | 3 |
+| NATO x Russia military clash by November 30, 2026? | No | 20.4 | 0.978 | 0.992 | $+0.29 | 3 |
 | Will WTI Crude Oil (WTI) hit (HIGH) $125 in November? | No | 20.7 | 0.969 | 0.997 | $+0.57 | 3 |
 | UAE x Saudi Arabia sever diplomatic relations in 2026? | No | 20.6 | 0.969 | 0.976 | $+0.14 | 34 |
-| China x Japan military clash before 2027? | No | 18.5 | 0.978 | 0.966 | $-0.22 | 34 |
-| Will Missouri enact a data center moratorium by December 31, 2026? | No | 20.6 | 0.972 | 0.983 | $+0.22 | 34 |
+| China x Japan military clash before 2027? | No | 18.5 | 0.978 | 0.967 | $-0.20 | 34 |
+| Will Missouri enact a data center moratorium by December 31, 2026? | No | 20.6 | 0.972 | 0.982 | $+0.20 | 34 |
 | Will inflation reach more than 5% in 2026? | No | 20.8 | 0.962 | 0.964 | $+0.04 | 34 |
 | France declares state of emergency by December 31, 2026? | No | 20.6 | 0.969 | 0.985 | $+0.32 | 34 |
 | Will Ukraine agree to give up the rest of Donbas by December 31, 2026? | No | 5.0 | 0.963 | 0.974 | $+0.06 | 34 |
@@ -39,28 +39,28 @@ As of 2026-11-27 22:48 UTC. Started 2026-11-10 07:37 UTC.
 | NATO article 5 before 2027? | No | 20.6 | 0.973 | 0.974 | $+0.02 | 34 |
 | Will Russia capture Sloviansk by December 31? | No | 0.5 | 0.965 | 0.978 | $+0.01 | 34 |
 | Trump out as President before 2027? | No | 20.5 | 0.977 | 0.979 | $+0.04 | 34 |
-| Will Hamas agree to disarm by December 31? | No | 20.8 | 0.960 | 0.923 | $-0.77 | 34 |
-| Delcy Rodríguez out as leader of Venezuela by December 31, 2026? | No | 20.8 | 0.964 | 0.945 | $-0.40 | 34 |
+| Will Hamas agree to disarm by December 31? | No | 20.8 | 0.960 | 0.926 | $-0.71 | 34 |
+| Delcy Rodríguez out as leader of Venezuela by December 31, 2026? | No | 20.8 | 0.964 | 0.932 | $-0.67 | 34 |
 | Andrew Tate released from custody by December 31, 2026? | No | 20.6 | 0.971 | 0.958 | $-0.27 | 34 |
 | Will Trump recognize Somaliland before 2027? | No | 20.9 | 0.957 | 0.963 | $+0.13 | 34 |
 | Will the U.S. invade Cuba in 2026? | No | 20.5 | 0.977 | 0.977 | $+0.00 | 34 |
-| China x Taiwan military clash before 2027? | No | 6.6 | 0.968 | 0.973 | $+0.03 | 34 |
-| Will Russia capture Lyman by December 31, 2026? | No | 20.8 | 0.963 | 0.985 | $+0.46 | 34 |
+| China x Taiwan military clash before 2027? | No | 6.6 | 0.968 | 0.974 | $+0.04 | 34 |
+| Will Russia capture Lyman by December 31, 2026? | No | 20.8 | 0.963 | 0.984 | $+0.44 | 34 |
 | JD Vance out as VP by December 31? | No | 20.5 | 0.977 | 0.978 | $+0.02 | 34 |
-| Will there be at least 10000 measles cases in the U.S. in 2026? | No | 20.8 | 0.961 | 0.951 | $-0.21 | 34 |
+| Will there be at least 10000 measles cases in the U.S. in 2026? | No | 20.8 | 0.961 | 0.955 | $-0.12 | 34 |
 | Will Lebanon recognize Israel by December 31? | No | 20.8 | 0.960 | 0.977 | $+0.35 | 34 |
 | Will Syria join the Abraham Accords before 2027? | No | 20.8 | 0.961 | 0.966 | $+0.10 | 34 |
 | Will Samuel Alito announce his retirement by December 31, 2026? | No | 20.7 | 0.965 | 0.990 | $+0.51 | 34 |
 | Miguel Díaz-Canel out as leader of Cuba by December 31? | No | 16.2 | 0.960 | 0.976 | $+0.26 | 34 |
 | Milei out as President of Argentina before 2027? | No | 20.5 | 0.975 | 0.978 | $+0.06 | 34 |
-| Cuban regime falls in 2026? | No | 20.5 | 0.974 | 0.967 | $-0.14 | 34 |
-| Will Russia capture Orikhiv by December 31, 2026? | No | 20.9 | 0.955 | 0.933 | $-0.46 | 34 |
+| Cuban regime falls in 2026? | No | 20.5 | 0.974 | 0.972 | $-0.04 | 34 |
+| Will Russia capture Orikhiv by December 31, 2026? | No | 20.9 | 0.955 | 0.927 | $-0.59 | 34 |
 | US x Russia military clash by December 31, 2026? | No | 20.5 | 0.974 | 0.956 | $-0.37 | 34 |
 | U.S. agrees to a new trade deal with "Pakistan" before 2027? | No | 20.6 | 0.971 | 0.966 | $-0.11 | 34 |
 | Will Austria recognize Palestine before 2027? | No | 20.8 | 0.962 | 0.971 | $+0.18 | 34 |
 | Cilia Flores released from custody by December 31, 2026? | No | 20.7 | 0.965 | 0.938 | $-0.56 | 34 |
 | Alexandre de Moraes out as Brazil Supreme Court Justice? | No | 20.9 | 0.960 | 0.970 | $+0.22 | 34 |
-| Will Louisiana enact a data center moratorium by December 31, 2026? | No | 20.6 | 0.973 | 0.977 | $+0.08 | 34 |
+| Will Louisiana enact a data center moratorium by December 31, 2026? | No | 20.6 | 0.973 | 0.979 | $+0.12 | 34 |
 | Will India strike Pakistan by December 31, 2026? | No | 20.6 | 0.969 | 0.970 | $+0.02 | 34 |
 
 ## Settled
@@ -93,4 +93,4 @@ As of 2026-11-27 22:48 UTC. Started 2026-11-10 07:37 UTC.
 
 ## Equity history
 
-67 cycles from 2026-11-10 07:37 UTC to 2026-11-27 22:48 UTC; equity $999.24 → $1,003.98. The longest gap between two cycles was 12.1 hours.
+68 cycles from 2026-11-10 07:37 UTC to 2026-11-28 04:24 UTC; equity $999.24 → $1,004.04. The longest gap between two cycles was 12.1 hours.

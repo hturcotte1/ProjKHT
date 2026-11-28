@@ -6888,3 +6888,26 @@ vmc-ushrmov-la-06-2026-12-12-r8-12,2986579,politics,USCONGRESS,futures,320468,LA
 vmc-ushrmov-la-06-2026-12-12-rgte28,2986577,politics,USCONGRESS,futures,320468,LA-06 House Runoff Margin of Victory,Miguez (R) 28%+,LA-06 House Runoff Margin of Victory,2026-12-27T04:00:00Z,0.01,0.11,1795819744
 windcli-wind-daily-klga-2026-11-29-35to39,2974322,climate,WEATHER,futures,318998,Peak wind in New York on Nov 29?,35 to 39 mph,Peak wind in New York on Nov 29?,2026-12-14T19:00:00Z,0.01,0.11,1795819744
 windcli-wind-daily-kmdw-2026-11-29-gte40,2974335,climate,WEATHER,futures,319011,Peak wind in Chicago on Nov 29?,40 mph or above,Peak wind in Chicago on Nov 29?,2026-12-14T19:00:00Z,0.01,0.11,1795819744
+aaagaspc-usdsl-day-2026-11-28-gt5pt6550,2972503,macro,COMMODITY,futures,318812,US Diesel Prices on November 28th,Above $5.6550,US Diesel Prices on November 28th,2026-12-06T04:59:00Z,0.01,0.11,1795839867
+aaagaspc-usdsl-day-2026-11-28-gt5pt6600,2972499,macro,COMMODITY,futures,318812,US Diesel Prices on November 28th,Above $5.6600,US Diesel Prices on November 28th,2026-12-06T04:59:00Z,0.01,0.11,1795839867
+aaagaspc-usdsl-day-2026-11-28-gt5pt6650,2972501,macro,COMMODITY,futures,318812,US Diesel Prices on November 28th,Above $5.6650,US Diesel Prices on November 28th,2026-12-06T04:59:00Z,0.01,0.11,1795839867
+aaagaspc-usdsl-day-2026-11-28-gt5pt7200,2972504,macro,COMMODITY,futures,318812,US Diesel Prices on November 28th,Above $5.7200,US Diesel Prices on November 28th,2026-12-06T04:59:00Z,0.01,0.11,1795839867
+aaagaspc-usdsl-day-2026-11-28-gt5pt7300,2972493,macro,COMMODITY,futures,318812,US Diesel Prices on November 28th,Above $5.7300,US Diesel Prices on November 28th,2026-12-06T04:59:00Z,0.01,0.11,1795839867
+aaagaspc-usdsl-day-2026-11-28-gt5pt7550,2972502,macro,COMMODITY,futures,318812,US Diesel Prices on November 28th,Above $5.7550,US Diesel Prices on November 28th,2026-12-06T04:59:00Z,0.01,0.11,1795839867
+aaagaspc-usgas-lowm-2026-11-30-lt3pt2000,2972472,macro,COMMODITY,futures,217404,How Low Will US Gas Prices Get This Month?,Below $3.2000,How Low Will US Gas Prices Get This Month?,2026-12-08T04:59:00Z,0.01,0.11,1795839867
+aimc-anthr-opus-gte5pt6-2026-12-01,2991457,technology,AI,futures,223752,Claude Opus 5.6+ Released?,"By December 1, 2026",Claude Opus 5.6+ Released?,2027-01-15T04:00:00Z,0.01,0.11,1795839867
+aimc-anthr-opus-gte5pt6-2026-12-02,2991452,technology,AI,futures,223752,Claude Opus 5.6+ Released?,"By December 2, 2026",Claude Opus 5.6+ Released?,2027-01-15T04:00:00Z,0.01,0.11,1795839867
+aimc-anthr-opus-gte5pt6-2026-12-03,2991456,technology,AI,futures,223752,Claude Opus 5.6+ Released?,"By December 3, 2026",Claude Opus 5.6+ Released?,2027-01-15T04:00:00Z,0.01,0.11,1795839867
+aimc-anthr-opus-gte5pt6-2026-12-04,2991448,technology,AI,futures,223752,Claude Opus 5.6+ Released?,"By December 4, 2026",Claude Opus 5.6+ Released?,2027-01-15T04:00:00Z,0.01,0.11,1795839867
+aimc-anthr-opus-gte5pt6-2026-12-07,2991450,technology,AI,futures,223752,Claude Opus 5.6+ Released?,"By December 7, 2026",Claude Opus 5.6+ Released?,2027-01-15T04:00:00Z,0.01,0.11,1795839867
+aimc-anthr-opus-gte5pt6-2026-12-08,2991455,technology,AI,futures,223752,Claude Opus 5.6+ Released?,"By December 8, 2026",Claude Opus 5.6+ Released?,2027-01-15T04:00:00Z,0.01,0.11,1795839867
+aimc-anthr-opus-gte5pt6-2026-12-09,2991451,technology,AI,futures,223752,Claude Opus 5.6+ Released?,"By December 9, 2026",Claude Opus 5.6+ Released?,2027-01-15T04:00:00Z,0.01,0.11,1795839867
+aimc-anthr-opus-gte5pt6-2026-12-10,2991449,technology,AI,futures,223752,Claude Opus 5.6+ Released?,"By December 10, 2026",Claude Opus 5.6+ Released?,2027-01-15T04:00:00Z,0.01,0.11,1795839867
+aimc-anthr-opus-gte5pt6-2026-12-11,2991453,technology,AI,futures,223752,Claude Opus 5.6+ Released?,"By December 11, 2026",Claude Opus 5.6+ Released?,2027-01-15T04:00:00Z,0.01,0.11,1795839867
+aimc-anthr-opus-gte5pt6-2026-12-14,2991454,technology,AI,futures,223752,Claude Opus 5.6+ Released?,"By December 14, 2026",Claude Opus 5.6+ Released?,2027-01-15T04:00:00Z,0.01,0.11,1795839867
+ccrc-ntflx-1shwglbl-2026-12-01-taknat,2897657,culture,TV,futures,309583,Top Global Netflix Show This Week?,Taken: Natalee Holloway: Season 1,Top Global Netflix Show This Week?,2026-12-16T04:00:00Z,0.01,0.11,1795839867
+kpic-spcx-q4compute-2027-02-17-above-2pt75gw,2987538,finance,EARNINGS,futures,320537,SpaceX Q4 2026 Nameplate Compute?,Above 2.75 GW,SpaceX Q4 2026 Nameplate Compute?,2027-03-04T04:00:00Z,0.01,0.11,1795839867
+raincli-rain-daily-2026-11-29-knyc,2974312,climate,WEATHER,futures,318992,Where will it rain on Nov 29?,New York,Where will it rain on Nov 29?,2026-12-14T04:59:59Z,0.01,0.11,1795839867
+tac-globes-nom-actmc-2026-12-07-jorfir,2362796,culture,AWD,futures,250426,Golden Globe Nominees: Best Actor  Musical or Comedy,Jordan Firstman  Club Kid,Golden Globe Nominees: Best Actor  Musical or Comedy,2026-12-22T04:00:00Z,0.01,0.11,1795839867
+windcli-wind-daily-kmdw-2026-11-28-gte35,2945022,climate,WEATHER,futures,315389,Peak wind in Chicago on Nov 28?,35 mph or above,Peak wind in Chicago on Nov 28?,2026-12-13T19:00:00Z,0.01,0.11,1795839867
+windcli-wind-daily-kmdw-2026-11-29-20to24,2974336,climate,WEATHER,futures,319011,Peak wind in Chicago on Nov 29?,20 to 24 mph,Peak wind in Chicago on Nov 29?,2026-12-14T19:00:00Z,0.01,0.11,1795839867
